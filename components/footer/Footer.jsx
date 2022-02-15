@@ -41,7 +41,7 @@ const Footer = () => {
                 Copyright 2022 Sustainable Energy for All
                 </p>
                 <div className={styles.imgBox}>
-                    <img src="static/images/forAll.svg" alt="all"/>
+                    <img src="static/images/forall.svg" alt="all"/>
                     <img src="static/images/founder.svg" alt="founder"/>
                     <img src="static/images/star.svg" alt="star"/>
                 </div>
