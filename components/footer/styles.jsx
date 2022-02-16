@@ -31,6 +31,7 @@ export const Icons = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     svg{
         font-size: 22px;
     }
@@ -62,6 +63,7 @@ export const FootDetail = styled.p`
     text-transform: capitalize;
     color: ${colors.white};
     margin: ${space[0]}px;
+    user-select: none;
     @media only screen and (max-width:1200px) {
         font-size: ${fontSizes[0] + 2}px;
     }
@@ -89,6 +91,7 @@ export const CopyRight = styled.p`
     font-size: ${fontSizes[0] + 2}px;
     line-height: 17px;
     text-transform: capitalize;
+    user-select: none;
     color: ${colors.white};
     width: 100%;
 `

@@ -2,13 +2,16 @@ import styled ,{ keyframes } from 'styled-components'
 import { colors, fontSizes, space } from '../../../constant'
 
 export const Wrapper = styled.div`
+    height: 70vh;
+`
+export const Card = styled.div`
     width: 100%;
-    background-color: #fff;
     background: ${colors.white};
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     padding: ${space[10] * 2}px;
-    margin: ${space[1] + 1}rem 0px;
+    margin-top: ${space[1] - 1 }rem;
+    
 `
 
 export const Title = styled.h5`
@@ -17,6 +20,7 @@ export const Title = styled.h5`
     font-size: ${fontSizes[6] + 6}px;
     line-height: 72.4px;
     text-align: center;
+    user-select: none;
     text-transform: uppercase;
     color: ${colors.text};
     text-align: center;
@@ -37,6 +41,7 @@ export const SubTitle = styled.p`
     line-height: 26px;
     text-align: center;
     text-transform: capitalize;
+    user-select: none;
     color: ${colors.text};
     
 `
@@ -49,17 +54,13 @@ export const Icon = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-    margin:auto;
+    margin:auto;  
    svg{
     font-size: ${fontSizes[4] + 2}px;
     color: #13a2bc;
     cursor: pointer;
-    from: {
-        transform: translate3d(0, '-100%', 0),
-        visibility: 'visible'
-      },
-      to: {
-        transform: translate3d(0, 0, 0)
-      }
    }
+`
+export const Bottom = styled.div`
+    height: 70vh;
 `

@@ -6,11 +6,6 @@ export const Wrapper = styled.div`
     background: ${colors.background};
 `
 
-export const HeaderWrap = styled.div`
-    width: 100%;
-    margin: auto;
-`
-
 export const StartCards = styled.div`
 `
 

@@ -15,7 +15,7 @@ export const CardHeader = styled.div`
     padding-bottom: ${space[5]}px;
 `
 export const Border = styled.div`
-    margin: ${space[7] + 1}px 0px;
+    margin: ${space[8]}px 0px;
     border-bottom: 1.6px solid rgba(6, 90, 137, 0.2);
 `
 export const ImgBox = styled.div`
@@ -31,6 +31,7 @@ export const CardTitle = styled.p`
     font-size: ${fontSizes[3] + 6}px;
     line-height: 36px;
     text-transform: capitalize;
+    user-select: none;
     color: ${colors.text};
     user-select: none;
 `
@@ -42,6 +43,7 @@ export const CardSubTitle = styled.p`
     text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
+    padding: 0px ${space[5]}px;
     margin-bottom: ${space[10] * 2}px;
      svg{
         color: ${colors.gray};
