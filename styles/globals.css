@@ -4,24 +4,41 @@ body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-  font-family: "AvenirFont";
+  font-family: 'AvenirFont' !important;
+}
+@font-face {
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProBook.otf');
+  font-weight: 300;
 }
 
 @font-face {
-  font-family: "AvenirFont";
-  src: url('/static/fonts/AvenirLTProBlackOblique.otf'),
-    url('/static/fonts/AvenirLTProBlack.otf'),
-    url('/static/fonts/AvenirLTProBook.otf'),
-    url('/static/fonts/AvenirLTProHeavy.otf'),
-    url('/static/fonts/AvenirLTProHeavyOblique.otf'),
-    url('/static/fonts/AvenirLTProLight.otf'),
-    url('/static/fonts/AvenirLTProLightOblique.otf'),
-    url('/static/fonts/AvenirLTProMedium.otf'),
-    url('/static/fonts/AvenirLTProMediumOblique.otf'),
-    url('/static/fonts/AvenirLTProOblique.otf'),
-    url('/static/fonts/AvenirLTProRoman.otf'),
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProLight.otf');
+  font-weight: 400;
 }
 
+@font-face {
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProMedium.otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProRoman.otf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProBlack.otf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'AvenirFont';
+  src: url('/static/fonts/AvenirLTProHeavy.otf');
+  font-weight: 800;
+}
 a {
   color: inherit;
   text-decoration: none;

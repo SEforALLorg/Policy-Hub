@@ -3,7 +3,7 @@ import { colors, fontSizes} from '../../constant'
 export const Button = styled.button`
     background:  ${colors.lightBlue};
     border-radius: 69px;
-    width: 50%;
+    width: 100%;
     height: 50px;
     text-decoration: underline;
     text-align: center;
