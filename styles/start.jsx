@@ -7,12 +7,11 @@ export const Wrapper = styled.div`
 `
 
 export const HeaderWrap = styled.div`
-    width: 80%;
+    width: 100%;
     margin: auto;
 `
 
 export const StartCards = styled.div`
-    margin: ${space[1] + 1}rem 0px;
 `
 
 export const FooterWrap = styled.div`

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled ,{ keyframes } from 'styled-components'
 import { colors, fontSizes, space } from '../../../constant'
 
 export const Wrapper = styled.div`
@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     padding: ${space[10] * 2}px;
+    margin: ${space[1] + 1}rem 0px;
 `
 
 export const Title = styled.h5`
@@ -37,12 +38,28 @@ export const SubTitle = styled.p`
     text-align: center;
     text-transform: capitalize;
     color: ${colors.text};
+    
 `
-export const Icon = styled.span`
+export const Icon = styled.div`
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 17px 0px rgb(158 158 158);
+    background: ${colors.lightBlue};
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
    svg{
-    font-size: 44px;
-    display: block;
-    margin: auto;
+    font-size: ${fontSizes[4] + 2}px;
     color: #13a2bc;
+    cursor: pointer;
+    from: {
+        transform: translate3d(0, '-100%', 0),
+        visibility: 'visible'
+      },
+      to: {
+        transform: translate3d(0, 0, 0)
+      }
    }
 `

@@ -6,10 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: 'AvenirFont' !important;
 }
-
 @font-face {
   font-family: 'AvenirFont';
-  src: url('/static/fonts/AvenirLTProLight.otf');
+  src: url('/static/fonts/AvenirLTProBook.otf');
   font-weight: 300;
 }
 
@@ -19,10 +18,9 @@ body {
   font-weight: 400;
 }
 
-
 @font-face {
   font-family: 'AvenirFont';
-  src: url('/static/fonts/AvenirLTProBook.otf');
+  src: url('/static/fonts/AvenirLTProMedium.otf');
   font-weight: 500;
 }
 
