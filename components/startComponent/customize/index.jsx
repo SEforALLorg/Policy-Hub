@@ -1,5 +1,5 @@
 import React from 'react';
-import BlueButton from "../../buttons/BlueButton";
+import BlueButton from "../../buttons/component/BlueButton";
 import { FiInfo } from "react-icons/fi";
 import { Wrapper, CardHeader, ImgBox, CardTitle, CardSubTitle, ButtonGrp ,Border} from "./styles";
 const Customize = () => {

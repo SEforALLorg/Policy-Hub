@@ -24,6 +24,9 @@ export const ImgBox = styled.div`
     position: relative;
     user-select: none;
     margin-right: ${space[10]}px;
+    img{
+        max-width: 100%;
+    }
 `
 export const CardTitle = styled.p`
     font-style: normal;
@@ -34,6 +37,7 @@ export const CardTitle = styled.p`
     user-select: none;
     color: ${colors.text};
     user-select: none;
+    margin: ${space[0]}px;
 `
 export const CardSubTitle = styled.p`
     font-style: normal;
@@ -48,6 +52,7 @@ export const CardSubTitle = styled.p`
      svg{
         color: ${colors.gray};
         font-size: 25px;
+        margin-left:  ${space[4]}px;
      }
 `
 export const ButtonGrp = styled.div`
