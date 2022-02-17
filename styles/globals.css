@@ -5,6 +5,7 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   font-family: 'AvenirFont' !important;
+  scroll-behavior: smooth;
 }
 @font-face {
   font-family: 'AvenirFont';
@@ -55,6 +56,7 @@ a {
   line-height: 24px;
   text-transform: uppercase;
   color: #FFFFFF !important;
+  width: 150px;
 }
 
 .header .nav-link:hover {

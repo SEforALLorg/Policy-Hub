@@ -1,19 +1,18 @@
 import styled from 'styled-components'
-import { colors, fontSizes} from '../../constant'
+import { colors, fontSizes} from '../../../../constant'
 export const Button = styled.button`
-    background:  ${colors.lightBlue};
-    border-radius: 69px;
+    background:  ${colors.secondary};
+    border-radius: 70px;
     width: 100%;
-    height: 50px;
-    text-decoration: underline;
+    height: 91px;
     text-align: center;
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[1]}px;
-    line-height: 20px;
+    font-size: ${fontSizes[4] + 2}px;
+    line-height: 42px;
     text-transform: uppercase;
     border: none;
-    color: ${colors.blue};
+    color: ${colors.white};
     outline: none;
     text-decoration: none;
   

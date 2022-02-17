@@ -15,7 +15,7 @@ export const CardHeader = styled.div`
     padding-bottom: ${space[5]}px;
 `
 export const Border = styled.div`
-    margin: ${space[7] + 1}px 0px;
+    margin: ${space[8]}px 0px;
     border-bottom: 1.6px solid rgba(6, 90, 137, 0.2);
 `
 export const ImgBox = styled.div`
@@ -24,6 +24,9 @@ export const ImgBox = styled.div`
     position: relative;
     user-select: none;
     margin-right: ${space[10]}px;
+    img{
+        max-width: 100%;
+    }
 `
 export const CardTitle = styled.p`
     font-style: normal;
@@ -31,8 +34,10 @@ export const CardTitle = styled.p`
     font-size: ${fontSizes[3] + 6}px;
     line-height: 36px;
     text-transform: capitalize;
+    user-select: none;
     color: ${colors.text};
     user-select: none;
+    margin: ${space[0]}px;
 `
 export const CardSubTitle = styled.p`
     font-style: normal;
@@ -42,10 +47,12 @@ export const CardSubTitle = styled.p`
     text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
+    padding: 0px ${space[5]}px;
     margin-bottom: ${space[10] * 2}px;
      svg{
         color: ${colors.gray};
         font-size: 25px;
+        margin-left:  ${space[4]}px;
      }
 `
 export const ButtonGrp = styled.div`
