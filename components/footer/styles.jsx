@@ -15,9 +15,8 @@ export const FooterWrap = styled.div`
 `
 export const IconsWrap = styled.div`
     display: flex;
-    width: 100%;
+    width: 90%;
     align-items: center;
-    gap: 10px;
     @media only screen and (max-width:1200px) {
         width: unset;
     } 
@@ -32,6 +31,7 @@ export const Icons = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    margin-right: ${space[8]}px;
     svg{
         font-size: 22px;
     }
@@ -51,7 +51,6 @@ export const RightWrap = styled.div`
     }   
     @media only screen and (max-width:520px) {
             flex-wrap: wrap;
-            gap: 12px;
             justify-content: flex-start;
     }
 `
@@ -63,6 +62,27 @@ export const FootDetail = styled.p`
     text-transform: capitalize;
     color: ${colors.white};
     margin: ${space[0]}px;
+    user-select: none;
+    @media only screen and (max-width:1200px) {
+        font-size: ${fontSizes[0] + 2}px;
+    }
+`
+export const FootDetailBtn = styled.button`
+    font-style: normal;
+    font-weight: 500;
+    font-size: ${fontSizes[1]}px;
+    line-height: 20px;
+    text-transform: capitalize;
+    color: ${colors.white};
+    margin: ${space[0]}px;
+    padding: ${space[8]}px;
+    border: 1px solid ${colors.white};
+    border-radius: 42px;
+    background:transparent;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     user-select: none;
     @media only screen and (max-width:1200px) {
         font-size: ${fontSizes[0] + 2}px;
@@ -80,7 +100,6 @@ export const BottomWrap = styled.div`
     justify-content: space-between;
     @media only screen and (max-width:991px) {
             flex-wrap: wrap;
-            gap: 12px;
             justify-content: flex-start;
         }
     }
@@ -99,7 +118,6 @@ export const ImgBox = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    gap: 30px;
     justify-content: flex-end;
      img{
          max-width:100%;
