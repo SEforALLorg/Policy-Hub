@@ -46,10 +46,10 @@ const SubCard = ({ HandleOpen }) => {
             for All
             <PrimarySpan>Knowledge</PrimarySpan> Hub
           </Title>
-          <Box style={{paddingBottom: "8rem"}}>
+          <Box className="topStep">
             <Step>
               <Point>
-                <SubTitle>
+                <SubTitle style={{marginLeft:"20px"}}>
                   The Sustainable Energy for All Knowledge Hub is
                   an interactive platform that will help/support
                   policy makers in developing conducive policy and regulatory frameworks for sustainable energy.

@@ -47,7 +47,7 @@ export const SubTitle = styled.p`
     text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
-    margin-left: ${space[10]}px;
+    margin: ${space[0]}px;
     width: 100%;
     span{
         font-weight: 700;
@@ -56,24 +56,28 @@ export const SubTitle = styled.p`
 export const ScrollText = styled.p`
     font-style: normal;
     font-weight: 700;
-    font-size: ${fontSizes[4]}px;
-    line-height: 45px;
+    font-size: ${fontSizes[5] - 2}px;
+    line-height: 48px;
     text-align: center;
     user-select: none;
     color: ${colors.text};
     text-align: center;
     margin: ${space[0]}px;
+    @media only screen and (min-width:1200px) and (max-width:1399px){
+        font-size: ${fontSizes[4]}px;
+        line-height: 40px;
+    }
 `
 export const Icon = styled.div`
     display:flex;
     align-items:center;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     z-index: 99;
-    top: 31%;
+    bottom: 30px;
     animation: 6s ${fadeOutDownAnimation};
    svg{
-    font-size: ${fontSizes[4] + 2}px;
+    font-size: ${fontSizes[5] + 7}px;
     color: #13a2bc;
     cursor: pointer;
    }
