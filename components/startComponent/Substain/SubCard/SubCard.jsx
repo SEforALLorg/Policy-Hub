@@ -45,7 +45,7 @@ const SubCard = ({ HandleOpen }) => {
             Sustainable
             <Span>Energy</Span>
             for All
-            <PrimarySpan>Knowledge</PrimarySpan> Hub
+            <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
           <Box>
             <Step className="topStep">

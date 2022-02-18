@@ -16,7 +16,7 @@ export const Card = styled.div`
   background: ${colors.white};
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: ${space[10] * 2}px ${space[10] * 3}px;
+  padding: ${space[10] * 2}px ${space[10] * 4}px;
   position: relative;
 `;
 
@@ -31,9 +31,11 @@ export const Title = styled.h5`
   color: ${colors.text};
   text-align: center;
   padding-bottom: ${space[5]}px;
+  margin-top: ${space[10] * 2}px;
   @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
     font-size: ${fontSizes[6] + 2}px;
     line-height: 64.4px;
+    margin-top: 0px;
   }
 `;
 export const Span = styled.span`
@@ -83,7 +85,7 @@ export const Icon = styled.div`
   flex-direction: column;
   position: fixed;
   z-index: 99;
-  bottom: 30px;
+  bottom: 46px;
   animation: 2s ${fadeOutAnimation};
   transition: all 0.5s;
   &.hide {
@@ -114,6 +116,8 @@ export const Step = styled.div`
   padding: ${space[10] * 3}px 0px;
   width: 100%;
   &.topStep {
+    padding-top: ${space[10] * 2}px;
+    padding-bottom: ${space[6] + 1}rem;
     @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
       padding-top: ${space[10] * 1}px;
       padding-bottom: ${space[10] * 4}px;
