@@ -121,6 +121,7 @@ export const ImgBox = styled.div`
     justify-content: flex-end;
      img{
          max-width:100%;
+         margin-left:20px;
      }
     @media only screen and (max-width:991px) {
         justify-content: space-evenly; 

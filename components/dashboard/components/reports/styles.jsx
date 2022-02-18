@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors, fontSizes, space } from '../../../../constant/index'
 
 export const FullWrap = styled.div`
-    padding: ${space[10] * 2}px ${space[10]}px ${space[0]}px ${space[6]}px;
+    padding: ${space[10] * 2}px ${space[10]}px ${space[0]}px ${space[68]}px;
     background: ${colors.lightbg};
     width: 100%;
 `

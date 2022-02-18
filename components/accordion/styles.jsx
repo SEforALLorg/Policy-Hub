@@ -5,7 +5,7 @@ export const AccordionWrap = styled.div`
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
     border-radius: 9.8px;
     width:100%;
-    margin-bottom: ${space[3]}px;
+    margin-bottom: ${space[6]}px;
 `
 export const Select = styled.div`
     display: flex;
@@ -13,6 +13,7 @@ export const Select = styled.div`
     justify-content: space-between;
     padding: ${space[6]}px;
     width:100%;
+    height:50px;
 `
 export const Text = styled.p`
     font-style: normal;

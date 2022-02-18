@@ -9,7 +9,9 @@ import {
     SubTitle,
     BottomCard,
     SubHeading,
-    ImgContainer
+    ImgContainer,
+    Box,
+    BottomBox
 } from "./styles";
 const About = () => {
     return (
@@ -42,29 +44,45 @@ const About = () => {
             <BottomCard>
                 <SubHeading> The knowledge hub is financed by </SubHeading>
                 <ImgContainer>
-                    <Detail>
+                    <Box>
                         <Imgcard
+                            style={{height:"236px"}}
                             img={"static/images/rockfound.svg"}
                             title={"Rockefeller Foundation"} />
-                    </Detail>
-                    <Detail>
+                    </Box>
+                    <Box>
                         <Imgcard
+                            style={{height:"236px"}}
                             img={"static/images/farnesina.svg"}
                             title={"Ministry of Foreign Affairs of Italy"} />
-                    </Detail>
+                    </Box>
                 </ImgContainer>
                 <SubHeading> The knowledge hub partners include but not limited to  </SubHeading>
                 <ImgContainer>
-                    <Detail>
+                    <BottomBox>
                         <Imgcard
+                            style={{height:"165px"}}
                             img={"static/images/Era.svg"}
                             title={"International RenewableEnergy Agency"} />
-                    </Detail>
-                    <Detail>
+                    </BottomBox>
+                    <BottomBox>
                         <Imgcard
-                            img={"static/images/farnesina.svg"}
-                            title={"Ministry of Foreign Affairs of Italy"} />
-                    </Detail>
+                            style={{height:"165px"}}
+                            img={"static/images/worldbank.svg"}
+                            title={"The World Bank"} />
+                    </BottomBox>
+                    <BottomBox>
+                        <Imgcard
+                            style={{height:"165px"}}
+                            img={"static/images/esmap.svg"}
+                            title={"Energy Sector Management Assistance Program"} />
+                    </BottomBox>
+                    <BottomBox>
+                        <Imgcard
+                            style={{height:"165px"}}
+                            img={"static/images/giz.svg"}
+                            title={"Deutsche Gesellschaft für Internationale Zusammenarbeit"} />
+                    </BottomBox>
                 </ImgContainer>
             </BottomCard>
         </Wrapper>

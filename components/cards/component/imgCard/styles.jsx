@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { colors, fontSizes,space} from '../../../../constant'
 
 export const CardWrap = styled.div`
+
 `
 export const CardBox = styled.p`
     background: ${colors.white};
@@ -9,6 +10,9 @@ export const CardBox = styled.p`
     border-radius: 16px;
     padding: ${space[10]}px;
     margin-bottom:${space[10] * 2}px;
+    Display:flex;
+    justify-content:center;
+    align-item:center
     width:100%;
     img{
         max-width:100%;

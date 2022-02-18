@@ -4,10 +4,10 @@ import {
     CardBox,
     Text
 } from "./styles";
-const Imgcard = ({ img,title }) => {
+const Imgcard = ({ img,title,style }) => {
     return (
         <CardWrap>
-            <CardBox>
+            <CardBox style={style}>
                 <img src={img} alt="img" />
             </CardBox>
             <Text>{title}</Text>

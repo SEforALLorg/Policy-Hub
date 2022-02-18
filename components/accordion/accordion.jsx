@@ -7,11 +7,11 @@ import {
 } from "./styles";
 import { BiChevronDown } from "react-icons/bi";
 
-const Accordion = () => {
+const Accordion = ({title}) => {
     return (
         <AccordionWrap>
             <Select>
-                <Text>Select Country</Text>
+                <Text>{title}</Text>
                 <Icon>
                     <BiChevronDown />
                 </Icon>

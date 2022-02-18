@@ -6,14 +6,23 @@ export const Wrapper = styled.div`
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
     border-radius: 7.3px;
     width:100%;
-    margin-bottom: ${space[4]}px;
+    margin-bottom: ${space[10]}px;
 `
 export const Detail = styled.div`
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: space-between;
     padding: ${space[6]}px;
     width:100%;
+`
+export const ImgWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: ${space[9]}px;
+    img{
+        width:100%;
+        margin-right: ${space[9]}px;
+    }
 `
 export const Text = styled.p`
     font-style: normal;

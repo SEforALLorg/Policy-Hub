@@ -3,12 +3,12 @@ import { colors, fontSizes,space} from '../../constant'
 
 export const Wrapper = styled.div`
   width:100%;
+  border-radius: 8px;
+  overflow: hidden;
 `
 export const Card= styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     padding: ${space[10] * 2}px;
     display:flex;
     justify-content: space-between;
@@ -62,4 +62,10 @@ export const ImgContainer = styled.div`
    display:flex;
    justify-content: space-between;
    margin: ${space[10] * 2}px 0px;
+`
+export const Box = styled.div`
+   width: 49%;
+`
+export const BottomBox = styled.div`
+   width: 24%;
 `

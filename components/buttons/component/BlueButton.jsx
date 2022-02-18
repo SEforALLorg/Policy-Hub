@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from "./styles";
-const BlueButton = ({title}) => {
+const BlueButton = ({title,style}) => {
     return (
         <>
-        <Button>{title}</Button> 
+        <Button style={style}>{title}</Button> 
         </>
     );
 };

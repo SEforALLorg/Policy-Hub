@@ -5,9 +5,9 @@ import { DashWrap } from "./style"
 const Dashboard = () => {
     return (
         <DashWrap>
-         <ExpandCustomize/>
-         <Reports/>
-         </DashWrap>
+            <ExpandCustomize />
+            <Reports />
+        </DashWrap>
     );
 };
 

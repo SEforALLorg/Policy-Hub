@@ -6,18 +6,19 @@ import {
     Icon,
     Border,
     BottomWrap,
-    Box
+    Box,
+    ImgWrapper
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
-const Filter = () => {
+const Filter = ({ style,title, countryname, mainImg,area, item, date, file }) => {
     return (
         <Wrapper>
             <Detail>
-                <Text>
-                    A review of microgrid development in the United States – A
-                    decade of progress on policies, demonstrations, controls, and software tools
-                </Text>
+                <ImgWrapper>
+                    <img src={mainImg} alt="img" style={style}/>
+                    <Text>{title}</Text>
+                </ImgWrapper>
                 <Icon>
                     <AiFillStar />
                 </Icon>
@@ -25,25 +26,17 @@ const Filter = () => {
             <Border></Border>
             <BottomWrap>
                 <Box>
-                    <img src="static/images/USAflag.svg" alt="flag" />
-                    <Text>
-                        USA
-                    </Text>
+                    <img src={file} alt="flag" />
+                    <Text>{countryname}</Text>
                 </Box>
                 <Box>
-                    <Text>
-                        North America
-                    </Text>
+                    <Text>{area}</Text>
                 </Box>
                 <Box>
-                    <Text>
-                        IRENA
-                    </Text>
+                    <Text>{item}</Text>
                 </Box>
                 <Box>
-                    <Text>
-                        2017
-                    </Text>
+                    <Text>{date}</Text>
                 </Box>
             </BottomWrap>
         </Wrapper>
