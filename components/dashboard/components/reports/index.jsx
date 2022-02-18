@@ -1,6 +1,6 @@
 import React from 'react';
 import Accordion from '../../../accordion/accordion';
-import Filter from '../../../cardFilter/Filter';
+import Filter from '../../../cards/component/filtercard/Filter';
 import {
     FullWrap,
     CardHeader,

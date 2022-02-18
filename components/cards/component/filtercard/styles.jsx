@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space} from '../../../../constant'
 
 export const Wrapper = styled.div`
     background: ${colors.white};

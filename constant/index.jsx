@@ -2,6 +2,7 @@ export const colors = {
     primary: "#13A2BC",
     secondary: "#FCB600",
     text: "#494949",
+    darktext: "#454545",
     background: "#144A68",
     white: "#ffffff",
     black: "#000000",
@@ -9,7 +10,8 @@ export const colors = {
     blue: "#065A89",
     lightBlue: "rgba(19, 166, 191, 0.2)",
     lightbg: "#ECF3F6",
-    lighttext: "#666666" 
+    lighttext: "#666666" ,
+    anqrtext:"#1F668E"
 }
 
 export const fontSizes = [
