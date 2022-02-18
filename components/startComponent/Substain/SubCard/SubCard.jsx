@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import StartButton from "../../../buttons/component/startButton/StartButton"
+import StartButton from "components/buttons/component/startButton/StartButton";
 import {
   Wrapper,
   Title,
@@ -13,8 +13,9 @@ import {
   ScrollText,
   Step,
   Box,
-  BottomBtn
+  BottomBtn,
 } from "./styles";
+
 const SubCard = ({ HandleOpen }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -32,13 +33,13 @@ const SubCard = ({ HandleOpen }) => {
   return (
     <>
       <Wrapper>
-        {
-          scrollPosition <= 300  && <Icon>
-          <ScrollText>Scroll down <br></br>to get started...</ScrollText>
+        <Icon className={scrollPosition <= 300 ? "" : "hide"}>
+          <ScrollText>
+            Scroll down <br></br>to get started...
+          </ScrollText>
           <FaChevronDown />
         </Icon>
-        }
-        
+
         <Card>
           <Title>
             Sustainable
@@ -46,13 +47,14 @@ const SubCard = ({ HandleOpen }) => {
             for All
             <PrimarySpan>Knowledge</PrimarySpan> Hub
           </Title>
-          <Box className="topStep">
-            <Step>
+          <Box>
+            <Step className="topStep">
               <Point>
-                <SubTitle style={{marginLeft:"20px"}}>
-                  The Sustainable Energy for All Knowledge Hub is
-                  an interactive platform that will help/support
-                  policy makers in developing conducive policy and regulatory frameworks for sustainable energy.
+                <SubTitle style={{ marginLeft: "20px" }}>
+                  The Sustainable Energy for All Knowledge Hub is an interactive
+                  platform that will help/support policy makers in developing
+                  conducive policy and regulatory frameworks for sustainable
+                  energy.
                 </SubTitle>
               </Point>
             </Step>
@@ -60,8 +62,8 @@ const SubCard = ({ HandleOpen }) => {
           <Box>
             <Step>
               <SubTitle>
-                <span>The knowledge hub</span> provides key resource
-                material for each step of the decision-making process.
+                <span>The knowledge hub</span> provides key resource material
+                for each step of the decision-making process.
               </SubTitle>
               <img src="static/images/hub.svg" alt="card" />
             </Step>
@@ -70,16 +72,17 @@ const SubCard = ({ HandleOpen }) => {
             <Step>
               <img src="static/images/journey.svg" alt="card" />
               <SubTitle>
-                Currently the platform supports the <span>user journey </span>for electricity access.
+                Currently the platform supports the <span>user journey </span>
+                for electricity access.
               </SubTitle>
             </Step>
           </Box>
           <Box>
             <Step>
               <SubTitle>
-                Find relevant <span>guidelines, tools and templates</span>  on electricity
-                access based on your country’s assessment and matching your
-                needs by answering the following questions.
+                Find relevant <span>guidelines, tools and templates</span> on
+                electricity access based on your country’s assessment and
+                matching your needs by answering the following questions.
               </SubTitle>
               <img src="static/images/guide.svg" alt="card" />
             </Step>
@@ -91,5 +94,5 @@ const SubCard = ({ HandleOpen }) => {
       </Wrapper>
     </>
   );
-}
+};
 export default SubCard;
