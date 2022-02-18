@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { colors, fontSizes, space } from '../../../constant'
 
 export const Wrapper = styled.div`
-    padding:  ${space[10] * 2}px;
+    padding:  ${space[10] + 4}px;
     background: ${colors.white};
     border-radius: 16px;
     width: 100%;
     margin: auto;
+    max-width: 700px;
 `
 export const CardHeader = styled.div`
     display: flex;
@@ -31,7 +32,7 @@ export const ImgBox = styled.div`
 export const CardTitle = styled.p`
     font-style: normal;
     font-weight: 700;
-    font-size: ${fontSizes[3] + 6}px;
+    font-size: ${fontSizes[3] + 4}px;
     line-height: 36px;
     text-transform: capitalize;
     user-select: none;
@@ -42,7 +43,7 @@ export const CardTitle = styled.p`
 export const CardSubTitle = styled.p`
     font-style: normal;
     font-weight: 700;
-    font-size: ${fontSizes[3] + 1}px;
+    font-size: ${fontSizes[2] + 4}px;
     line-height: 30px;
     text-transform: capitalize;
     user-select: none;

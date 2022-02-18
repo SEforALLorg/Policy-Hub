@@ -11,7 +11,8 @@ import {
     Border,
     BottomWrap,
     CopyRight,
-    ImgBox
+    ImgBox,
+    FootDetailBtn
 } from "./styles";
 const Footer = () => {
     return (
@@ -38,12 +39,12 @@ const Footer = () => {
                     <FootDetail>
                         Powered by Sustainable Energy For All
                     </FootDetail>
-                    <FootDetail>
+                    <FootDetailBtn>
                         View Resources
-                    </FootDetail>
-                    <FootDetail>
+                    </FootDetailBtn>
+                    <FootDetailBtn>
                         Download Decision Tree
-                    </FootDetail>
+                    </FootDetailBtn>
                 </RightWrap>
             </FooterWrap>
             <Border></Border>
