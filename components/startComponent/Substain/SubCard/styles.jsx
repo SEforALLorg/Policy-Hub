@@ -32,6 +32,11 @@ export const Title = styled.h5`
   text-align: center;
   padding-bottom: ${space[5]}px;
   margin-top: ${space[10] * 2}px;
+  @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
+    font-size: ${fontSizes[5] + 2}px;
+    line-height: 64.4px;
+    margin-top: 0px;
+  }
   @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
     font-size: ${fontSizes[6] + 2}px;
     line-height: 64.4px;
@@ -59,7 +64,7 @@ export const SubTitle = styled.p`
   span {
     font-weight: 700;
   }
-  @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
     font-size: ${fontSizes[4] + 5}px;
     line-height: 50px;
   }
@@ -74,7 +79,7 @@ export const ScrollText = styled.p`
   color: ${colors.text};
   text-align: center;
   margin: ${space[0]}px;
-  @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
     font-size: ${fontSizes[3]}px;
     line-height: 30px;
   }
@@ -95,12 +100,12 @@ export const Icon = styled.div`
     font-size: ${fontSizes[5] + 7}px;
     color: #13a2bc;
     cursor: pointer;
-    @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+    @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
       font-size: ${fontSizes[5]}px;
       margin-top: -10px;
     }
   }
-  @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
     bottom: ${space[4]}px;
   }
 `;
@@ -118,7 +123,7 @@ export const Step = styled.div`
   &.topStep {
     padding-top: ${space[10] * 2}px;
     padding-bottom: ${space[6] + 1}rem;
-    @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+    @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
       padding-top: ${space[10] * 1}px;
       padding-bottom: ${space[10] * 4}px;
     }
