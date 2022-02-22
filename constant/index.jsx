@@ -8,7 +8,7 @@ export const colors = {
     gray: "#6c6c6c",
     blue: "#065A89",
     lightBlue: "rgba(19, 166, 191, 0.2)",
-    lightbg: "#ECF3F6",
+    lightBg: "#ECF3F6",
     lighttext: "#666666" 
 }
 
