@@ -43,11 +43,13 @@ export const halfWidth = "50%"
 export const fullWidth = "100%"
 
 export const media = {
-    smallMobile: '420px',
+    smallMobile: '480px',
+    mediumMobile: '520px',
     mobile: '767px',
+    mobileX: '991px',
     tablet: '920px',
     smallLaptop: '1024px',
-    laptop: '1220px',
+    laptop: '1200px',
     screen: '1400px',
     mediumScreen: '1680px',
     largeScreen: '2200px' 

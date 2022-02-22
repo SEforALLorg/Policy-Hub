@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../constant'
+import { colors, fontSizes, media,space } from '../../constant'
 
 export const Wrapper = styled.div`
 
@@ -9,7 +9,7 @@ export const FooterWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    @media only screen and (max-width:991px) {
+    @media only screen and (max-width:${media.mobileX}) {
             flex-wrap: wrap;
         }
 `
@@ -17,9 +17,12 @@ export const IconsWrap = styled.div`
     display: flex;
     width: 90%;
     align-items: center;
-    @media only screen and (max-width:1200px) {
-        width: unset;
-    } 
+    @media only screen and (min-width:${media.laptop}) and (max-width:${media.screen}) {
+        width: 60%;
+    }
+    @media only screen and (max-width:${media.laptop}) {
+         width: unset;
+     } 
 `
 export const Icons = styled.div`
     border: 1px solid  ${colors.white};
@@ -41,17 +44,20 @@ export const RightWrap = styled.div`
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    @media only screen and (max-width:1200px) {
+    @media only screen and (max-width:${media.laptop}) {
         margin-top: ${space[10]}px;
         justify-content: space-around;
     }  
-    @media only screen and (max-width:991px) {
+    @media only screen and (max-width:${media.mobileX}) {
         margin-top: ${space[10]}px;
         justify-content: space-between;
     }   
-    @media only screen and (max-width:520px) {
+    @media only screen and (max-width:${media.mediumMobile}) {
             flex-wrap: wrap;
             justify-content: flex-start;
+    }
+    @media only screen and (max-width:${media.mediumMobile}) {
+        display:block;
     }
 `
 export const FootDetail = styled.p`
@@ -61,11 +67,15 @@ export const FootDetail = styled.p`
     line-height: 20px;
     text-transform: capitalize;
     color: ${colors.white};
-    margin: ${space[0]}px;
+    margin-right: ${space[5]}px;
+    margin-bottom: ${space[0]}px;
     user-select: none;
-    @media only screen and (max-width:1200px) {
+    @media only screen and (max-width:${media.laptop}) {
         font-size: ${fontSizes[0] + 2}px;
     }
+    @media only screen and (max-width:${media.mediumMobile}) {
+        margin-bottom: ${space[5]}px;
+}
 `
 export const FootDetailBtn = styled.button`
     font-style: normal;
@@ -74,18 +84,23 @@ export const FootDetailBtn = styled.button`
     line-height: 20px;
     text-transform: capitalize;
     color: ${colors.white};
-    margin: ${space[0]}px;
-    padding: ${space[8]}px;
+    margin-right: ${space[5]}px;
+    padding: ${space[5]}px ${space[8]}px;
     border: 1px solid ${colors.white};
     border-radius: 42px;
     background:transparent;
-    height:36px;
     display:flex;
     align-items:center;
     justify-content:center;
     user-select: none;
-    @media only screen and (max-width:1200px) {
+    &:last-child{
+        margin-right: ${space[0]}px;
+    }
+    @media only screen and (max-width:${media.laptop}) {
         font-size: ${fontSizes[0] + 2}px;
+    }
+    @media only screen and (max-width:${media.mediumMobile}) {
+        margin-bottom: ${space[5]}px;
     }
 `
 export const Border = styled.div`
@@ -98,11 +113,12 @@ export const BottomWrap = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    @media only screen and (max-width:991px) {
+    @media only screen and (max-width:${media.mobileX}) {
             flex-wrap: wrap;
             justify-content: flex-start;
         }
     }
+    
 `
 export const CopyRight = styled.p`
     font-style: normal;
@@ -120,12 +136,16 @@ export const ImgBox = styled.div`
     align-items: center;
     justify-content: flex-end;
      img{
+         margin-right: ${space[5]}px;
          max-width:100%;
+         &:last-child{
+            margin-right: ${space[0]}px;
+        }
      }
-    @media only screen and (max-width:991px) {
+    @media only screen and (max-width:${media.mobileX}) {
         justify-content: space-evenly; 
     }
-    @media only screen and (max-width:480px) {
+    @media only screen and (max-width:${media.smallMobile}) {
             max-width: 30%;
             justify-content: flex-start;
     }
