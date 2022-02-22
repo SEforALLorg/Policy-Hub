@@ -43,7 +43,7 @@ const SubCard = ({ HandleOpen }) => {
         <Card>
           <Title>
             Sustainable
-            <Span>Energy</Span>
+            <Span>{' '} Energy {' '}</Span>
             for All
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>

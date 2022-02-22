@@ -29,22 +29,22 @@ const Header = () => {
                         navbar
                     >
                         <NavItem>
-                            <NavLink href="/">
+                            <NavLink href="/start">
                                 Home
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/resources">
                                 Resources
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/aboutus">
                                 About
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/contactus">
                                 Contact Us
                             </NavLink>
                         </NavItem>

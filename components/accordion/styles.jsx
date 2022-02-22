@@ -5,20 +5,21 @@ export const AccordionWrap = styled.div`
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
     border-radius: 9.8px;
     width:100%;
-    margin-bottom: ${space[6]}px;
+    margin-bottom: ${space[5]}px;
+    cursor: pointer;
 `
 export const Select = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: ${space[6]}px;
+    padding: ${space[5]}px ${space[6]}px ;
     width:100%;
     height:50px;
 `
 export const Text = styled.p`
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[1] + 1}px;
+    font-size: ${fontSizes[1] - 1}px;
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.lighttext};

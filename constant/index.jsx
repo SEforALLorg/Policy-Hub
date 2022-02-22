@@ -9,10 +9,10 @@ export const colors = {
     gray: "#6c6c6c",
     blue: "#065A89",
     lightBlue: "rgba(19, 166, 191, 0.2)",
-    lightbg: "#ECF3F6",
-    lighttext: "#666666" ,
     anqrtext:"#1F668E",
     boldtext: '#393D3F',
+    lightBg: "#ECF3F6",
+    lighttext: "#666666" 
 }
 
 export const fontSizes = [
@@ -52,5 +52,6 @@ export const media = {
     smallLaptop: '1024px',
     laptop: '1220px',
     screen: '1400px',
+    mediumScreen: '1680px',
     largeScreen: '2200px' 
 }
