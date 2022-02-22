@@ -14,7 +14,7 @@ const Reports = () => {
         <FullWrap>
             <CardHeader>
                 <ImgBox>
-                    <img src="static/images/greenfile.svg" alt="card" />
+                    <img src={"static/images/greenfile.svg"} alt="card" />
                 </ImgBox>
                 <CardTitle>
                     Publications that match your input.

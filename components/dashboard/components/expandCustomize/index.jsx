@@ -20,7 +20,7 @@ const ExpandCustomize = () => {
         <Wrapper>
             <CardHeader>
                 <ImgBox>
-                    <img src="static/images/yellowfile.svg" alt="card" />
+                    <img src={"static/images/yellowfile.svg"} alt="card" />
                 </ImgBox>
                 <CardTitle>
                     Assess your country’s situation and customize the decision-making process.

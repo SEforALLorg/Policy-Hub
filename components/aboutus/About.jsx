@@ -18,7 +18,7 @@ const About = () => {
         <Wrapper>
             <Card>
                 <ImgWrap>
-                    <img src="static/images/substain.svg" alt="flag" />
+                    <img src={"static/images/substain.svg"} alt="flag" />
                 </ImgWrap>
                 <Detail>
                     <Heading>About us</Heading>

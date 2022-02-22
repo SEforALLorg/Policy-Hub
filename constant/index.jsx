@@ -11,7 +11,8 @@ export const colors = {
     lightBlue: "rgba(19, 166, 191, 0.2)",
     lightbg: "#ECF3F6",
     lighttext: "#666666" ,
-    anqrtext:"#1F668E"
+    anqrtext:"#1F668E",
+    boldtext: '#393D3F',
 }
 
 export const fontSizes = [
