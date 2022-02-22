@@ -19,7 +19,7 @@ export const  Detail = styled.div`
     justify-content: space-between;
   }
 `
-export const  Heading = styled.div`
+export const  Heading = styled.h6`
     font-style: normal;
     font-size: ${fontSizes[1]}px;
     font-weight: 700;

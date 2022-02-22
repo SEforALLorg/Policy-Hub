@@ -34,16 +34,18 @@ export const Title = styled.p`
     line-height: 26px;
     text-transform: capitalize;
     color: ${colors.lighttext};
+     margin: ${space[0]}px;
 `
 export const Number = styled.p`
     font-style: normal;
     font-weight: 700;
     font-size: ${fontSizes[3]  + 1}px;
     line-height: 26px;
-    color: ${colors.darktext}
+    color: ${colors.darktext};
+    margin: ${space[0]}px;
 `
 export const InnerBody = styled.div`
-    background: ${colors.lightbg};
+    background: ${colors.lightBg};
     padding-top: ${space[10]}px;
     padding-bottom:${space[10] * 2}px;
     margin:auto;

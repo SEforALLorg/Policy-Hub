@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `
 export const Card= styled.div`
     background: ${colors.white};
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 4px 4px rgba(64, 93, 109, 0.15));
     padding: ${space[10] * 2}px;
     display:flex;
     justify-content: space-between;
@@ -35,7 +35,6 @@ export const SubTitle = styled.p`
     font-weight: 400;
     font-size: 20px;
     line-height: 25.3px;
-    text-transform: capitalize;
     color: ${colors.lighttext};
     margin-bottom: ${space[10]}px;
     span{
@@ -45,8 +44,9 @@ export const SubTitle = styled.p`
     }
 `
 export const BottomCard = styled.div`
-    background: ${colors.lightbg};
+    background: ${colors.lightBg};
     padding: ${space[10] * 2}px;
+    filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.25));
 `
 export const SubHeading = styled.p`
     font-style: normal;
@@ -68,4 +68,8 @@ export const Box = styled.div`
 `
 export const BottomBox = styled.div`
    width: 24%;
+`
+export const FootBody = styled.div`
+     background: ${colors.white};
+     padding:  ${space[10] + 4}px  ${space[10] * 3}px;
 `

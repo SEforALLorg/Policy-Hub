@@ -11,7 +11,8 @@ import {
     SubHeading,
     ImgContainer,
     Box,
-    BottomBox
+    BottomBox,
+    FootBody
 } from "./styles";
 const About = () => {
     return (
@@ -46,13 +47,13 @@ const About = () => {
                 <ImgContainer>
                     <Box>
                         <Imgcard
-                            style={{height:"236px"}}
+                            style={{ height: "236px" }}
                             img={"static/images/rockfound.svg"}
                             title={"Rockefeller Foundation"} />
                     </Box>
                     <Box>
                         <Imgcard
-                            style={{height:"236px"}}
+                            style={{ height: "236px" }}
                             img={"static/images/farnesina.svg"}
                             title={"Ministry of Foreign Affairs of Italy"} />
                     </Box>
@@ -61,30 +62,46 @@ const About = () => {
                 <ImgContainer>
                     <BottomBox>
                         <Imgcard
-                            style={{height:"165px"}}
+                            style={{ height: "165px" }}
                             img={"static/images/Era.svg"}
                             title={"International RenewableEnergy Agency"} />
                     </BottomBox>
                     <BottomBox>
                         <Imgcard
-                            style={{height:"165px"}}
+                            style={{ height: "165px" }}
                             img={"static/images/worldbank.svg"}
                             title={"The World Bank"} />
                     </BottomBox>
                     <BottomBox>
                         <Imgcard
-                            style={{height:"165px"}}
+                            style={{ height: "165px" }}
                             img={"static/images/esmap.svg"}
                             title={"Energy Sector Management Assistance Program"} />
                     </BottomBox>
                     <BottomBox>
                         <Imgcard
-                            style={{height:"165px"}}
+                            style={{ height: "165px" }}
                             img={"static/images/giz.svg"}
                             title={"Deutsche Gesellschaft für Internationale Zusammenarbeit"} />
                     </BottomBox>
                 </ImgContainer>
             </BottomCard>
+            <FootBody>
+                <SubTitle>
+                    Many people contributed in many different ways to the creation of the
+                    Sustainable Energy for All Knowledge Hub, and we are most grateful for their efforts.
+                </SubTitle>
+                <SubTitle>
+                    Hadley Taylor, Min Hyejung, Niklas Hayek, Anant Wadhwa, and Stephen Kent led the content creation and review on behalf of Sustainable Energy for All (SEforALL).
+                </SubTitle>
+                <SubTitle>
+                    This website was designed and developed by Keymouse IT. (Details from KMIT)
+                </SubTitle>
+                <SubTitle>
+                    We also wish to thank the following individuals for their consultation and participation: ADD NAMES
+                    The organizations showcased in the case studies were all generous with their time, providing detailed information and reviewing draft versions. Any errors remaining are the responsibility of the website authors.
+                </SubTitle>
+            </FootBody>
         </Wrapper>
     );
 };

@@ -15,15 +15,22 @@ import {
     ResourcesWrap,
     ResourceHeading,
     ResourceContent,
-    BrowserBtn
+    BrowserBtn,
+    InnerBody,
+    BottomHeader,
+    BottomWrapper,
+    VideoWrap,
+    VdWrap,
+    VideoText
 } from "./styles";
 import PrimaryButton from "components/buttons/component/primaryBtn/primarybutton";
 import StartButton from "components/buttons/component/startButton/startButton";
 import ReviewCard from './components/reviewCard';
 import PopularResorces from './components/popularResorces';
 import ViewButton from '../buttons/viewall';
+import VideoCard from './components/video';
 
-const Feature = () => {
+const Feature = ({ hideText }) => {
     return (
         <FullWrapper>
             <TopWrapper>
@@ -51,64 +58,110 @@ const Feature = () => {
                     <ReviewWrap>
                         <div className='cards'>
                             <ReviewCard
+                                hideText={true}
+                                date={"12/02/2022"}
                                 src={"/static/images/bulb.svg"}
                                 heading={"Regional Certification Guidelines For Off-Grid Solar Photovoltaic Technicians"}
                                 subheading="Lorem ipsum dolor sit amet, consectetur..."
+                                showStar={true}
                             />
                         </div>
-                        <div className='card'>
+                        <div>
                             <ReviewCard
+                                date={"12/02/2022"}
                                 src={"/static/images/windfan.svg"}
                                 heading={"Accelerating Mini-Grid Deployment in Sub-Saharan Africa - Lessons from Tanzania "}
                                 subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
+                                showStar={true}
                             />
                         </div>
                     </ReviewWrap>
                 </Wrapper>
             </TopWrapper>
-            <InnerWrap>
-                <Wrapper>
-                    <ResourcesWrap>
-                        <ResourceContent>
-                            <ResourceHeading>Featured Resource </ResourceHeading>
-                            <PopularResorces
-                                src={"/static/images/sun.svg"}
-                                title="Funding the Sun: New Paradigms for Financing Off-Grid Solar Companies"
-                            />
-                            <PopularResorces
-                                src={"/static/images/building.svg"}
-                                title="Bangladesh: Rural Electrification And
+            <InnerBody>
+                <InnerWrap>
+                    <Wrapper>
+                        <ResourcesWrap>
+                            <ResourceContent>
+                                <ResourceHeading>Featured Resource </ResourceHeading>
+                                <PopularResorces
+                                    src={"/static/images/sun.svg"}
+                                    title="Funding the Sun: New Paradigms for Financing Off-Grid Solar Companies"
+                                />
+                                <PopularResorces
+                                    src={"/static/images/building.svg"}
+                                    title="Bangladesh: Rural Electrification And
                                  Renewable Energy Development Project: Environmental And Social Management Framework"
-                            />
-                            <PopularResorces
-                                src={"/static/images/lights.svg"}
-                                title="Living In The Light: The Bangladesh Solar Home Systems Story"
-                            />
-                            <ViewButton title={"View All"} />
-                        </ResourceContent>
-                        <ResourceContent>
-                            <ResourceHeading>Recently added</ResourceHeading>
-                            <PopularResorces
-                                src={"/static/images/windtower.svg"}
-                                title="Measuring Energy Access in India - Insights 
+                                />
+                                <PopularResorces
+                                    src={"/static/images/lights.svg"}
+                                    title="Living In The Light: The Bangladesh Solar Home Systems Story"
+                                />
+                                <ViewButton title={"View All"} />
+                            </ResourceContent>
+                            <ResourceContent>
+                                <ResourceHeading>Recently added</ResourceHeading>
+                                <PopularResorces
+                                    src={"/static/images/windtower.svg"}
+                                    title="Measuring Energy Access in India - Insights 
                                 from applying a multi-tier framework in cooking energy and household electricity"
-                            />
-                            <PopularResorces
-                                src={"/static/images/building.svg"}
-                                title="Off-Grid Appliance Market Survey 2020"
-                            />
-                            <PopularResorces
-                                src={"/static/images/lights.svg"}
-                                title="Strategies for microgrid operation under real-world conditions"
-                            />
-                            <ViewButton title={"View All"} />
-                        </ResourceContent>
-                    </ResourcesWrap>
-                </Wrapper>
+                                />
+                                <PopularResorces
+                                    src={"/static/images/building.svg"}
+                                    title="Off-Grid Appliance Market Survey 2020"
+                                />
+                                <PopularResorces
+                                    src={"/static/images/lights.svg"}
+                                    title="Strategies for microgrid operation under real-world conditions"
+                                />
+                                <ViewButton title={"View All"} />
+                            </ResourceContent>
+                        </ResourcesWrap>
+                    </Wrapper>
+                </InnerWrap>
                 <BrowserBtn>
                     <StartButton title={"Browse all resources"} />
                 </BrowserBtn>
-            </InnerWrap>
+            </InnerBody>
+            <BottomWrapper>
+                <Wrapper>
+                    <BottomHeader>
+                        <VideoText>VIDEOS</VideoText>
+                        <VideoWrap>
+                            <VdWrap>
+                                <VideoCard />
+                            </VdWrap>
+                            <VdWrap>
+                                <VideoCard />
+                            </VdWrap>
+                            <VdWrap>
+                                <VideoCard />
+                            </VdWrap>
+                        </VideoWrap>
+                        <VideoText>News and stories</VideoText>
+                        <ResourcesWrap  className="headingCard">
+                            <VdWrap>
+                                <ReviewCard
+                                    date={"12/02/2022"}
+                                    src={"/static/images/windfan.svg"}
+                                    heading={"Accelerating Mini-Grid Deployment in Sub-Saharan Africa - Lessons from Tanzania "}
+                                    subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
+                                    showStar={false}
+                                />
+                            </VdWrap>
+                            <VdWrap>
+                                <ReviewCard
+                                    date={"12/02/2022"}
+                                    src={"/static/images/windfan.svg"}
+                                    heading={"Accelerating Mini-Grid Deployment in Sub-Saharan Africa - Lessons from Tanzania "}
+                                    subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
+                                    showStar={false}
+                                />
+                            </VdWrap>
+                        </ResourcesWrap>
+                    </BottomHeader>
+                </Wrapper>
+            </BottomWrapper>
         </FullWrapper>
     );
 };

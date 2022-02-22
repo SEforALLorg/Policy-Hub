@@ -6,10 +6,9 @@ export const Full = styled.div`
     overflow: hidden;
 `
 export const Header = styled.div`
-    padding: ${space[10] * 3}px;
+    padding: ${space[10] * 2}px ${space[10] * 3}px;
     background: ${colors.white};
-    box-shadow: 0px 4px 4px rgba(64, 93, 109, 0.15);
-
+    filter: drop-shadow(0px 4px 4px rgba(64, 93, 109, 0.15));
 `
 export const Heading = styled.h5`
     font-style: normal;
@@ -45,7 +44,7 @@ export const BorderWrap = styled.div`
 `
 export const Inner = styled.div`
     padding: ${space[10] + 5 }px ${space[10] * 2}px ${space[0]}px ${space[10]}px;
-    background: ${colors.lightbg};
+    background: ${colors.lightBg};
     width: 100%;
 `
 export const Border = styled.div`

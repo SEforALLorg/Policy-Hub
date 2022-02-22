@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
     Card,
     Detail,
@@ -9,20 +9,20 @@ import {
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 import BlueButton from 'components/buttons/component/BlueButton';
-const ReviewCard = ({src,heading,subheading,date}) => {
+const ReviewCard = ({src,heading,subheading,date, showStar = false}) => {
     return (
         <Card>
             <img src={src} alt="bulb" />
             <Detail>
                 <div className='header'>
                     <Heading>{heading}</Heading>
-                    <Icon>
+                   {showStar ?  <Icon>
                         <AiFillStar />
-                    </Icon>
+                    </Icon>:null}
                 </div>
                 <SubTitle>{subheading}</SubTitle>
                 <Bottom>
-                  <SubTitle>12/02/2022</SubTitle>
+                  <SubTitle>{date}</SubTitle>
                   <BlueButton title={"Read More"}/>
                 </Bottom>
             </Detail>
