@@ -22,7 +22,7 @@ const Filter = () => {
                     <AiFillStar />
                 </Icon>
             </Detail>
-            <Border></Border>
+            <Border />
             <BottomWrap>
                 <Box>
                     <img src="static/images/USAflag.svg" alt="flag" />

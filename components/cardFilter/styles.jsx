@@ -18,7 +18,7 @@ export const Detail = styled.div`
 export const Text = styled.p`
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[1] + 1}px;
+    font-size: ${fontSizes[0] + 2}px;
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.text};
@@ -32,7 +32,7 @@ export const Icon = styled.div`
   }
 `
 export const Border = styled.div`
-    border: 2.4px solid rgba(134, 164, 176, 0.15);
+    border-bottom: 2.4px solid rgba(134, 164, 176, 0.15);
 `
 export const BottomWrap = styled.div`
     display: flex;
