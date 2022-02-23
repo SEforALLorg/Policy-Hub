@@ -19,7 +19,7 @@ const VideoCard = () => {
             <Video>
                 <ImgBox className="videoPlayer">
                     <Player
-                        src={"../static/video/sample.mp4"}
+                         src="../static/video/sample.mp4"
                     />
                     <video
                         controls loop
