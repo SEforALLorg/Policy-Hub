@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const CardBox = styled.div`
     height:100vh;
-    margin: ${space[2] - 1}em 0px;
+    margin: ${space[2] - 1}em 0em;
 `
 
 export const FooterWrap = styled.div`

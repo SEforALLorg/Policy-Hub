@@ -16,7 +16,7 @@ export const FormWrap = styled.div`
     color: ${colors.lighttext};
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[2] - 2}px;
+    font-size: ${fontSizes[1]}px;
     line-height: 21px;
     width:${fullWidth};
     text-transform: capitalize;
@@ -26,8 +26,9 @@ export const FieldTitle = styled.p`
     color: ${colors.text};
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[3]}px;
+    font-size: ${fontSizes[2]}px;
     line-height: 29px;
     text-transform: capitalize;
     margin-right: ${space[10] + 5}px;
+    margin-bottom: ${space[0]}px;
 `

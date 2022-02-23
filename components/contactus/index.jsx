@@ -44,15 +44,15 @@ const ContactBox = () => {
             <InnerBody>
                 <AddressCard>
                     <Address
-                        style={{ height: "240px", margin: "5px" }}
+                        style={{margin: "5px"}}
                         heading={"Vienna Office"}
                         title={"Andromeda Tower 15th floor Donau City Strasse 6 1220, Vienna  Austria  Hours: 9:00 - 18:00 CET"} />
                     <Address
-                        style={{ height: "240px", margin: "5px" }}
+                        style={{margin: "5px"}}
                         heading={"Washington, DC Office"}
-                        title={"1750 Pennsylvania Avenue NW Suite 300 Washington, DC 20006  USA Hours: 9:00 - 18:00 ES"} />
+                        title="1750 Pennsylvania Avenue NW Suite 300 Washington, DC 20006  USA  Hours: 9:00 - 18:00 ES" />
                     <Address
-                        style={{ height: "240px", margin: "5px" }}
+                        style={{margin: "5px"}}
                         heading={"New York Office"}
                         title={"420 5th Ave New York, NY 10018 USA"} />
                 </AddressCard>

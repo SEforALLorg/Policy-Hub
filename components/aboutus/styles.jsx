@@ -14,13 +14,13 @@ export const Card= styled.div`
     justify-content: space-between;
 `
 export const ImgWrap = styled.div`
-   width: 40%;
+   margin-right: ${space[10] * 2}px;
    img{
        max-width: ${fullWidth};
    }
 `
 export const Detail = styled.div`
-   width: fullWidth;
+   width: ${fullWidth};
 `
 export const Heading = styled.h5`
     font-style: normal;
@@ -71,5 +71,5 @@ export const BottomBox = styled.div`
 `
 export const FootBody = styled.div`
      background: ${colors.white};
-     padding:  ${space[10] + 4}px  ${space[10] * 3}px;
+     padding:  ${space[10] * 2}px  ${space[10] * 3}px;
 `

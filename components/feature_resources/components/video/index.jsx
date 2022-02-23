@@ -10,19 +10,20 @@ import {
     Icon,
     ImgBox
 } from "./styles";
-// import sample from '';
+
+
 const VideoCard = () => {
     return (
         <Card>
             <Video>
                 <ImgBox>
                     <video
-                        autoPlay={true}
+                        controls loop
                         src={'../static/video/sample.mp4'}
                         className="videoPlayer" />
                 </ImgBox>
                 <Icon>
-                    <img src={'/static/images/videoplay.svg'} alt="play"/>
+                    <img src={'/static/images/videoplay.svg'} alt="play" />
                 </Icon>
             </Video>
             <Detail>

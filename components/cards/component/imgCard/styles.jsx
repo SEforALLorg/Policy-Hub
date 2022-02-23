@@ -9,7 +9,7 @@ export const CardBox = styled.p`
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
     border-radius: 16px;
     padding: ${space[10]}px;
-    margin-bottom:${space[10] * 2}px;
+    margin-bottom:${space[10]}px;
     Display:flex;
     justify-content:center;
     align-item:center

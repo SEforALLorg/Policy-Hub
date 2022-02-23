@@ -24,21 +24,17 @@ const About = () => {
                 <Detail>
                     <Heading>About us</Heading>
                     <SubTitle>
-                        Sustainable Energy for All (SEforALL) is an international organization
-                        that works in partnership with the United Nations and leaders in government, the
-                        private sector, financial institutions, civil society, and philanthropies to drive
-                        faster action towards the achievement of Sustainable Development Goal 7 (SDG7) – access to
-                        affordable, reliable, sustainable, and modern energy for all by 2030 – in line with the Paris
-                        Agreement on climate. To learn more about SEforALL,
-                        <span>click here.</span>
+                        The Sustainable Energy for All Knowledge Hub is an interactive platform providing
+                        sustainable energy policy makers and practitioners with off-the-shelf guidelines, tools,
+                        templates and cases on energy policy and regulation published by international organizations
+                        and thought leaders. In its first phase, the knowledge hub offers key resources on electricity access.
                     </SubTitle>
                     <SubTitle>
-                        The Sustainable Energy for All Knowledge Hub is an interactive platform providing sustainable
-                        energy policy makers and practitioners with off-the-shelf guidelines, tools, templates and case
-                        on energy policy and regulation published by international organizations and thought leaders. In
-                        the first phase, the knowledge hub gathers key resource material on electricity access. Other
-                        pillars of Sustainable Development Goal 7 (Access to clean cooking, sustainable cooling, energy
-                        efficiency, and renewable energy) to follow soon. Stay tuned for updates.
+                        Further resources to support electrification efforts can be found at <span>electrifyingeconomies.org.</span>
+                    </SubTitle>
+                    <SubTitle>
+                        Additional pillars of sustainable energy (access to clean cooking, sustainable cooling, energy
+                        efficiency and renewable energy) will be added soon.
                     </SubTitle>
                 </Detail>
             </Card>

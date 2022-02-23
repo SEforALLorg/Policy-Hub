@@ -7,9 +7,9 @@ export const Wrapper = styled.div`
 `
 
 export const CardBox = styled.div`
-    margin: ${space[2] - 1}em 0px;
-    @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
-        margin: ${space[1] - 1}em 0px;
+    margin: ${space[2] - 1}em 0em;
+    @media only screen and (min-width: ${media.tabletX}) and (max-width: ${media.screen}) {
+        margin: ${space[1] - 1}em 0em;
     }
 `
 

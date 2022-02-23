@@ -66,7 +66,7 @@ export const Text = styled.p`
     color: ${colors.lighttext};
     font-style: normal;
     font-weight: 400;
-    font-size: ${fontSizes[2]}px;
+    font-size: ${fontSizes[1]}px;
     line-height: 24px;
     text-transform: capitalize;
     margin: ${space[0]}px;

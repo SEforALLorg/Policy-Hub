@@ -20,7 +20,6 @@ export const Video = styled.div`
 `
 
 export const ImgBox = styled.div`
-
   .videoPlayer{
     max-width: ${fullWidth};
     object-fit: fill;
