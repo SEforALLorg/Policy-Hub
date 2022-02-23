@@ -22,23 +22,27 @@ const StartSubstain = () => {
       });
     }
   }, [isOpen]);
-
+  
   return (
     <>
       <FullWrap>
         <TopWrap>
           <SubstainCard HandleOpen={HandleOpen} />
         </TopWrap>
+        {/* <button onClick={() => setIsExpand(false)}>normal</button> */}
         {isOpen ? (
           <Bottom isExpand={isExpand} id="bottom-view">
-            {isExpand ? (
+            <div
+              className={`collapsibleSmall ${isExpand ? "collapsedSmall" : ""}`}
+            >
+              <Customize onYes={() => setIsExpand(!isExpand)} />
+            </div>
+
+            <div className={`collapsible ${isExpand ? "collapsed" : ""}`}>
               <ExpandCustomize />
-            ) : (
-              <Customize onYes={() => setIsExpand(true)} />
-            )}
+            </div>
           </Bottom>
         ) : null}
-        {/* <Dashboard/> */}
       </FullWrap>
     </>
   );
