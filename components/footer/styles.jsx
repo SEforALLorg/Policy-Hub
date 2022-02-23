@@ -9,7 +9,7 @@ export const FooterWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    @media only screen and (max-width:${media.mobileX}) {
+    @media only screen and (max-width:${media.tabletX}) {
             flex-wrap: wrap;
         }
 `
@@ -48,7 +48,7 @@ export const RightWrap = styled.div`
         margin-top: ${space[10]}px;
         justify-content: space-around;
     }  
-    @media only screen and (max-width:${media.mobileX}) {
+    @media only screen and (max-width:${media.tabletX}) {
         margin-top: ${space[10]}px;
         justify-content: space-between;
     }   
@@ -113,7 +113,7 @@ export const BottomWrap = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    @media only screen and (max-width:${media.mobileX}) {
+    @media only screen and (max-width:${media.tabletX}) {
             flex-wrap: wrap;
             justify-content: flex-start;
         }
@@ -142,7 +142,7 @@ export const ImgBox = styled.div`
             margin-right: ${space[0]}px;
         }
      }
-    @media only screen and (max-width:${media.mobileX}) {
+    @media only screen and (max-width:${media.tabletX}) {
         justify-content: space-evenly; 
     }
     @media only screen and (max-width:${media.smallMobile}) {

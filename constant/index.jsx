@@ -46,7 +46,7 @@ export const media = {
     smallMobile: '480px',
     mediumMobile: '520px',
     mobile: '767px',
-    mobileX: '991px',
+    tabletX: '991px',
     tablet: '920px',
     smallLaptop: '1024px',
     laptop: '1200px',
