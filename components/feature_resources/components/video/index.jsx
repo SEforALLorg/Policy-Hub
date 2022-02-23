@@ -10,13 +10,17 @@ import {
     Icon,
     ImgBox
 } from "./styles";
-
+import { Player } from 'video-react';
+import "node_modules/video-react/dist/video-react.css";
 
 const VideoCard = () => {
     return (
         <Card>
             <Video>
-                <ImgBox>
+                <ImgBox className="videoPlayer">
+                    <Player
+                        src={"../static/video/sample.mp4"}
+                    />
                     <video
                         controls loop
                         src={'../static/video/sample.mp4'}
