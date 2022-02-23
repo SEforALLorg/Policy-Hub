@@ -1,8 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import { colors, fontSizes, space } from "../../../../constant/index";
-import { zoomInRight } from "react-animations";
-
-const fadeOutAnimation = keyframes`${zoomInRight}`;
 
 export const Wrapper = styled.div`
   background: ${colors.white};
@@ -13,7 +10,6 @@ export const Wrapper = styled.div`
   margin-top: ${space[10] * 2}px;
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
-  animation: 0.8s ${fadeOutAnimation};
 `;
 
 export const LeftWrap = styled.div`

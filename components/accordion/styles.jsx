@@ -29,3 +29,11 @@ export const Icon = styled.div`
       font-size: ${fontSizes[3] + 2}px;
   }
 `
+
+export const OptionWrap = styled.div`
+    background: ${colors.white};
+    box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
+    border-radius: 9.80336px;
+    padding: 10px;
+    margin-bottom: ${space[5]}px;   
+`
