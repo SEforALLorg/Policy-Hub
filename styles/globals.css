@@ -57,6 +57,7 @@ a {
   text-transform: uppercase;
   color: #FFFFFF !important;
   width: 150px;
+  transition: all .5s;
 }
 
 .header .nav-link:hover {

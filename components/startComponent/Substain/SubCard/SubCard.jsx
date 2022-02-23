@@ -65,12 +65,12 @@ const SubCard = ({ HandleOpen }) => {
                 <span>The knowledge hub</span> provides key resource material
                 for each step of the decision-making process.
               </SubTitle>
-              <img src="static/images/hub.svg" alt="card" />
+              <img src={"static/images/hub.svg"} alt="card" />
             </Step>
           </Box>
           <Box>
             <Step>
-              <img src="static/images/journey.svg" alt="card" />
+              <img src={"static/images/journey.svg"} alt="card" />
               <SubTitle>
                 Currently the platform supports the <span>user journey </span>
                 for electricity access.
@@ -84,7 +84,7 @@ const SubCard = ({ HandleOpen }) => {
                 electricity access based on your country’s assessment and
                 matching your needs by answering the following questions.
               </SubTitle>
-              <img src="static/images/guide.svg" alt="card" />
+              <img src={"static/images/guide.svg"} alt="card" />
             </Step>
           </Box>
         </Card>

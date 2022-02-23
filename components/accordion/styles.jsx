@@ -14,6 +14,7 @@ export const Select = styled.div`
     justify-content: space-between;
     padding: ${space[5]}px ${space[6]}px ;
     width:100%;
+    height:50px;
 `
 export const Text = styled.p`
     font-style: normal;

@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "../../../accordion/accordion";
-import Filter from "../../../cardFilter/Filter";
+import Filter from "../../../cards/component/filtercard/Filter";
 
 import {
   RightWrap,
@@ -9,7 +9,7 @@ import {
   CardTitle,
   ReportsWrap,
   ReportsLeftWrap,
-  ReportsRightWrap
+  ReportsRightWrap,
 } from "./styles";
 
 const RightWrapPage = () => {
@@ -31,10 +31,46 @@ const RightWrapPage = () => {
           <Accordion title="Generation source" />
         </ReportsLeftWrap>
         <ReportsRightWrap>
-          <Filter />
-          <Filter />
-          <Filter />
-          <Filter />
+          <Filter
+            countryname={"USA"}
+            area={"North America "}
+            item={" IRENA"}
+            date={"2017"}
+            file={"static/images/USAflag.svg"}
+            title={
+              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
+            }
+          />
+          <Filter
+            countryname={"USA"}
+            area={"North America "}
+            item={" IRENA"}
+            date={"2017"}
+            file={"static/images/USAflag.svg"}
+            title={
+              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
+            }
+          />
+          <Filter
+            countryname={"USA"}
+            area={"North America "}
+            item={" IRENA"}
+            date={"2017"}
+            file={"static/images/USAflag.svg"}
+            title={
+              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
+            }
+          />
+          <Filter
+            countryname={"USA"}
+            area={"North America "}
+            item={" IRENA"}
+            date={"2017"}
+            file={"static/images/USAflag.svg"}
+            title={
+              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
+            }
+          />
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

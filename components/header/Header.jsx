@@ -20,7 +20,7 @@ const Header = () => {
             >
                 <NavbarBrand href="/">
 
-                    <img src={'static/images/logo.svg'} alt="logo" className="logo" />
+                    <img src={'/static/images/logo.svg'} alt="logo" className="logo" />
                 </NavbarBrand>
                 <NavbarToggler onClick={function noRefCheck() { }} />
                 <Collapse navbar>
@@ -29,22 +29,22 @@ const Header = () => {
                         navbar
                     >
                         <NavItem>
-                            <NavLink href="/">
+                            <NavLink href="/start">
                                 Home
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/resources">
                                 Resources
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/aboutus">
                                 About
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="">
+                            <NavLink href="/contactus">
                                 Contact Us
                             </NavLink>
                         </NavItem>
