@@ -33,12 +33,12 @@ export const Title = styled.h5`
   padding-bottom: ${space[5]}px;
   margin-top: ${space[10] * 2}px;
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
-    font-size: ${fontSizes[5] + 2}px;
-    line-height: 64.4px;
+    font-size: ${fontSizes[4] + 2}px;
+    line-height: 42px;
     margin-top: 0px;
   }
   @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
-    font-size: ${fontSizes[6] + 2}px;
+    font-size: ${fontSizes[5] + 5}px;
     line-height: 64.4px;
     margin-top: 0px;
   }
@@ -64,8 +64,12 @@ export const SubTitle = styled.p`
   span {
     font-weight: 700;
   }
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    font-size: ${fontSizes[4] + 5}px;
+  @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
+    font-size: ${fontSizes[3] + 2}px;
+    line-height: 50px;
+  }
+  @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+    font-size: ${fontSizes[4] + 2}px;
     line-height: 50px;
   }
 `;
@@ -120,6 +124,9 @@ export const Step = styled.div`
   justify-content: space-between;
   padding: ${space[10] * 3}px 0px;
   width: 100%;
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+    padding: ${space[10] * 2}px 0px;
+  }
   &.topStep {
     padding-top: ${space[10] * 2}px;
     padding-bottom: ${space[6] + 1}rem;
@@ -142,4 +149,8 @@ export const BottomBtn = styled.div`
   width: 50%;
   position: absolute;
   bottom: -44px;
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+    width: 44%;
+    bottom: -32px;
+  }
 `;
