@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes, media,space } from '../../constant'
+import { colors, fontSizes, media, space, fullWidth } from '../../constant'
 
 export const Wrapper = styled.div`
 
@@ -8,10 +8,13 @@ export const FooterWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: ${fullWidth};
     @media only screen and (max-width:${media.tabletX}) {
             flex-wrap: wrap;
-        }
+    }
+    @media only screen and (max-width:${media.mobile}) {
+            justify-content: center;
+     }
 `
 export const IconsWrap = styled.div`
     display: flex;
@@ -23,6 +26,7 @@ export const IconsWrap = styled.div`
     @media only screen and (max-width:${media.laptop}) {
          width: unset;
      } 
+     
 `
 export const Icons = styled.div`
     border: 1px solid  ${colors.white};
@@ -42,7 +46,7 @@ export const Icons = styled.div`
 export const RightWrap = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     @media only screen and (max-width:${media.laptop}) {
         margin-top: ${space[10]}px;
@@ -56,7 +60,7 @@ export const RightWrap = styled.div`
             flex-wrap: wrap;
             justify-content: flex-start;
     }
-    @media only screen and (max-width:${media.mediumMobile}) {
+    @media only screen and (max-width:${media.mobile}) {
         display:block;
     }
 `
@@ -73,9 +77,10 @@ export const FootDetail = styled.p`
     @media only screen and (max-width:${media.laptop}) {
         font-size: ${fontSizes[0] + 2}px;
     }
-    @media only screen and (max-width:${media.mediumMobile}) {
+    @media only screen and (max-width:${media.mobile}) {
         margin-bottom: ${space[5]}px;
-}
+        text-align:center;
+   }
 `
 export const FootDetailBtn = styled.button`
     font-style: normal;
@@ -99,18 +104,19 @@ export const FootDetailBtn = styled.button`
     @media only screen and (max-width:${media.laptop}) {
         font-size: ${fontSizes[0] + 2}px;
     }
-    @media only screen and (max-width:${media.mediumMobile}) {
+    @media only screen and (max-width:${media.mobile}) {
+        width: ${fullWidth};
         margin-bottom: ${space[5]}px;
     }
 `
 export const Border = styled.div`
     border-bottom: 1.6px solid ${colors.white};
     margin:${space[7] + 1}px 0px;
-    width: 100%;
+    width: ${fullWidth};
 `
 export const BottomWrap = styled.div`
     display: flex;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     justify-content: space-between;
     @media only screen and (max-width:${media.tabletX}) {
@@ -128,16 +134,19 @@ export const CopyRight = styled.p`
     text-transform: capitalize;
     user-select: none;
     color: ${colors.white};
-    width: 100%;
+    width: ${fullWidth};
+    @media only screen and (max-width:${media.mobile}) {
+        text-align: center;
+    }
 `
 export const ImgBox = styled.div`
     display: flex;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     justify-content: flex-end;
      img{
          margin-right: ${space[5]}px;
-         max-width:100%;
+         max-width:${fullWidth};
          &:last-child{
             margin-right: ${space[0]}px;
         }
