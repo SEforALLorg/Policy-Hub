@@ -50,6 +50,7 @@ export const media = {
     tablet: '920px',
     smallLaptop: '1024px',
     laptop: '1200px',
+    laptopX: '1220px',
     screen: '1400px',
     mediumScreen: '1680px',
     largeScreen: '2200px' 
