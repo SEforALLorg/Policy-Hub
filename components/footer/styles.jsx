@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../constant'
+import { colors, fontSizes, space,fullWidth } from '../../constant'
 
 export const Wrapper = styled.div`
 
@@ -8,7 +8,7 @@ export const FooterWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: ${fullWidth};
     @media only screen and (max-width:991px) {
             flex-wrap: wrap;
         }
@@ -39,7 +39,7 @@ export const Icons = styled.div`
 export const RightWrap = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     @media only screen and (max-width:1200px) {
         margin-top: ${space[10]}px;
@@ -91,11 +91,11 @@ export const FootDetailBtn = styled.button`
 export const Border = styled.div`
     border-bottom: 1.6px solid ${colors.white};
     margin:${space[7] + 1}px 0px;
-    width: 100%;
+    width: ${fullWidth};
 `
 export const BottomWrap = styled.div`
     display: flex;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     justify-content: space-between;
     @media only screen and (max-width:991px) {
@@ -112,15 +112,15 @@ export const CopyRight = styled.p`
     text-transform: capitalize;
     user-select: none;
     color: ${colors.white};
-    width: 100%;
+    width: ${fullWidth};
 `
 export const ImgBox = styled.div`
     display: flex;
-    width: 100%;
+    width: ${fullWidth};
     align-items: center;
     justify-content: flex-end;
      img{
-         max-width:100%;
+         max-width:${fullWidth};
          margin-left:20px;
      }
     @media only screen and (max-width:991px) {

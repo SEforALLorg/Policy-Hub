@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../constant'
 
 export const Full = styled.div`
     border-radius: 16px;
@@ -45,9 +45,9 @@ export const BorderWrap = styled.div`
 export const Inner = styled.div`
     padding: ${space[10] + 5 }px ${space[10] * 2}px ${space[0]}px ${space[10]}px;
     background: ${colors.lightBg};
-    width: 100%;
+    width: ${fullWidth};
 `
 export const Border = styled.div`
-    border: 2.4px solid rgba(134, 164, 176, 0.25);
+    border-bottom: 2.4px solid rgba(134, 164, 176, 0.25);
     margin-bottom: ${space[2]}px;
 `

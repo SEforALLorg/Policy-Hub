@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '/constant'
+import { colors, fontSizes,space,fullWidth} from '/constant'
 
 export const Wrap = styled.div` 
     margin-bottom: ${space[8]}px;
@@ -8,7 +8,7 @@ export const Input = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width:100%;
+    width${fullWidth}:;
     position:relative;
    input{
         font-style: normal;
@@ -22,7 +22,7 @@ export const Input = styled.div`
         box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
         border-radius: 50px;
         border:none;
-        width:100%;
+        width:${fullWidth};
         height:50px;
         padding-left: ${space[10]}px;
         position:relative;

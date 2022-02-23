@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../constant'
 
 export const Wrapper = styled.div`
-  width:100%;
+  width: ${fullWidth};
   border-radius: 8px;
   overflow: hidden;
 `
@@ -16,11 +16,11 @@ export const Card= styled.div`
 export const ImgWrap = styled.div`
    width: 40%;
    img{
-       max-width: 100%;
+       max-width: ${fullWidth};
    }
 `
 export const Detail = styled.div`
-   width: 100%;
+   width: fullWidth;
 `
 export const Heading = styled.h5`
     font-style: normal;
@@ -58,7 +58,7 @@ export const SubHeading = styled.p`
     color: ${colors.darktext}
 `   
 export const ImgContainer = styled.div`
-   width: 100%;
+   width: ${fullWidth};
    display:flex;
    justify-content: space-between;
    margin: ${space[10] * 2}px 0px;

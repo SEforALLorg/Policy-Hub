@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../../../constant'
 
 export const CardWrap = styled.div`
 
@@ -13,9 +13,9 @@ export const CardBox = styled.p`
     Display:flex;
     justify-content:center;
     align-item:center
-    width:100%;
+    width:${fullWidth};
     img{
-        max-width:100%;
+        max-width:${fullWidth};
     }
 `
 export const Text= styled.a`

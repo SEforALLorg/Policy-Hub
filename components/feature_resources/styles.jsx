@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../constant'
+import { colors, fontSizes, fullWidth, space } from '../../constant'
 
 export const FullWrapper = styled.div`
-  width:100%;
+  width: ${fullWidth};
   border-radius: 8px;
   overflow: hidden;
 `
@@ -13,7 +13,7 @@ export const TopWrapper = styled.div`
     background: ${colors.white};
     padding:  ${space[10] + 4}px 0px ${space[10] + 3}px 0px;
     filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.25));
-` 
+`
 export const Heading = styled.h3`
     font-style: normal;
     font-weight: bold;
@@ -31,7 +31,7 @@ export const ReportImg = styled.div`
    margin-right: ${space[10]}px;
 `
 export const Detail = styled.div`
-   width: 100%;
+   width: ${fullWidth};
 `
 export const ReportHeading = styled.h5`
     font-style: normal;
@@ -68,8 +68,11 @@ export const ReviewWrap = styled.div`
     display:flex;
     justify-content: space-between;
     .cards{
-       margin-right:${space[10]}px;
-
+       margin-right:${space[5]}px;
+       width: ${fullWidth};
+       &:last-child{
+        margin-right:${space[0]}px;  
+       }
     }
 `
 export const BrowserBtn = styled.div`

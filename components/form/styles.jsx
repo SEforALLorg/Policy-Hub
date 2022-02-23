@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant/index'
+import { colors, fontSizes,space,fullWidth} from '../../constant/index'
 
 export const FormWrap = styled.div`
   display:flex;
@@ -18,7 +18,7 @@ export const FormWrap = styled.div`
     font-weight: 400;
     font-size: ${fontSizes[2] - 2}px;
     line-height: 21px;
-    width:100%;
+    width:${fullWidth};
     text-transform: capitalize;
   }
 `

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { colors, fontSizes} from '../../../../constant'
+import { colors, fontSizes,fullWidth} from '../../../../constant'
 export const Button = styled.button`
     background:  ${colors.secondary};
     border-radius: 70px;
-    width: 100%;
+    width: ${fullWidth};
     height: 91px;
     text-align: center;
     font-style: normal;

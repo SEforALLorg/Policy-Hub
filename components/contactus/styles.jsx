@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../constant'
 
 export const FullCard = styled.div`
     Background: ${colors.white};
@@ -60,7 +60,7 @@ export const BottomBody = styled.div`
     display:flex;
     align-items:flex-end;
     justify-content: space-between;
-   padding: ${space[10] * 2}px ${space[10] * 3}px ${space[10] * 3}px ${space[10] * 3}px; 
+   padding: ${space[10] * 2}px ${space[10] * 3}px; 
 `
 export const Text = styled.p`
     color: ${colors.lighttext};
@@ -80,10 +80,10 @@ export const Text = styled.p`
     }
 `
 export const BottomInfo = styled.div`
-   width:100%;
+   width:${fullWidth};
 `
 export const FormWrapper = styled.div`
-    width:100%;
+    width:${fullWidth};
     display:flex;
     flex-direction:column;
     align-items:flex-end;

@@ -1,12 +1,12 @@
 import styled, { keyframes } from "styled-components";
-import { colors, fontSizes, space } from "../../../../constant/index";
+import { colors, fontSizes, space,fullWidth } from "../../../../constant/index";
 import { zoomInRight } from "react-animations";
 
 const fadeOutAnimation = keyframes`${zoomInRight}`;
 
 export const Wrapper = styled.div`
   background: ${colors.white};
-  width: 100%;
+  width: ${fullWidth};
   border-radius: 20px;
   display: flex;
   height: 650px;

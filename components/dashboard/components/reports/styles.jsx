@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../../../constant/index'
+import { colors, fontSizes, space,fullWidth} from '../../../../constant/index'
 
 export const FullWrap = styled.div`
     padding: ${space[10] * 2}px ${space[10]}px ${space[0]}px ${space[6]}px;
     background: ${colors.lightBg};
-    width: 100%;
+    width: ${fullWidth};
 `
 export const CardHeader = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ export const ImgBox = styled.div`
     user-select: none;
     margin-right: ${space[10]}px;
     img{
-        // max-width: 100%;
+        // max-width: ${fullWidth};
     }
 `
 export const CardTitle = styled.p`
@@ -39,5 +39,5 @@ export const ReportWrap = styled.div`
     justify-content: space-between;
 `
 export const Cards = styled.div`
-    width: 100%;
+    width: ${fullWidth};
 `

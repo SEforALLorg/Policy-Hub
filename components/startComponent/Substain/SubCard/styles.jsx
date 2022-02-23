@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { colors, fontSizes, media, space } from "../../../../constant";
+import { colors, fontSizes, media, space,fullWidth } from "../../../../constant";
 import { fadeOut } from "react-animations";
 
 const fadeOutAnimation = keyframes`${fadeOut}`;
@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 export const Card = styled.div`
-  width: 100%;
+  width: ${fullWidth};
   background: ${colors.white};
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -60,7 +60,7 @@ export const SubTitle = styled.p`
   user-select: none;
   color: ${colors.text};
   margin: ${space[0]}px;
-  width: 100%;
+  width: ${fullWidth};
   span {
     font-weight: 700;
   }
@@ -119,7 +119,7 @@ export const Step = styled.div`
   gap: 20px;
   justify-content: space-between;
   padding: ${space[10] * 3}px 0px;
-  width: 100%;
+  width: ${fullWidth};
   &.topStep {
     padding-top: ${space[10] * 2}px;
     padding-bottom: ${space[6] + 1}rem;
@@ -135,7 +135,7 @@ export const Box = styled.div`
     border-bottom: none;
   }
   img {
-    max-width: 100%;
+    max-width: ${fullWidth};
   }
 `;
 export const BottomBtn = styled.div`

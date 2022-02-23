@@ -66,7 +66,7 @@ const Feature = ({ hideText }) => {
                                 showStar={true}
                             />
                         </div>
-                        <div>
+                        <div className='cards'>
                             <ReviewCard
                                 date={"12/02/2022"}
                                 src={"/static/images/windfan.svg"}
@@ -144,7 +144,7 @@ const Feature = ({ hideText }) => {
                                 <ReviewCard
                                     date={"12/02/2022"}
                                     src={"/static/images/windfan.svg"}
-                                    heading={"Accelerating Mini-Grid Deployment in Sub-Saharan Africa - Lessons from Tanzania "}
+                                    heading={"Headline"}
                                     subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
                                     showStar={false}
                                 />
@@ -153,7 +153,7 @@ const Feature = ({ hideText }) => {
                                 <ReviewCard
                                     date={"12/02/2022"}
                                     src={"/static/images/windfan.svg"}
-                                    heading={"Accelerating Mini-Grid Deployment in Sub-Saharan Africa - Lessons from Tanzania "}
+                                    heading={"Headline"}
                                     subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
                                     showStar={false}
                                 />

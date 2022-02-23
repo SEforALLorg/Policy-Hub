@@ -1,15 +1,15 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../../../constant'
 export const Card= styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 7.3px;
     display:flex;
     overflow:hidden;
-    width:100%;
+    width:${fullWidth};
     margin-bottom:${space[5]}px;
     img{
-      max-width:100%;
+      max-width:${fullWidth};
     }
 `
 export const  Detail = styled.div`

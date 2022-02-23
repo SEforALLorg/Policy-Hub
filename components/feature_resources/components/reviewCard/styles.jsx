@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../../../constant'
 export const Card= styled.div`
     background: ${colors.white};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 7.3px;
     display:flex;
     overflow:hidden;
-    width:100%;
+    width:${fullWidth};
     img{
-      max-width:100%;
+      max-width:${fullWidth};
     }
 `
 export const Icon = styled.div`
@@ -25,15 +25,15 @@ export const  Detail = styled.div`
     justify-content: space-between;
   }
 `
-export const  Heading = styled.div`
+export const  Heading = styled.h5`
     font-style: normal;
     font-size: ${fontSizes[1]  - 2}px;
     font-weight: 700;
     line-height: 17px;
     color: ${colors.boldtext};
-    margin-bottom: ${space[2] + 1}
+    margin-bottom: ${space[2] + 1}px;
 `
-export const  SubTitle = styled.div`
+export const  SubTitle = styled.p`
   font-style: normal;
   font-size: ${fontSizes[1]  - 2}px;
   font-weight: 400;

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../constant'
 export const AccordionWrap = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
     border-radius: 9.8px;
-    width:100%;
+    width: ${fullWidth};;
     margin-bottom: ${space[5]}px;
     cursor: pointer;
 `
@@ -13,7 +13,7 @@ export const Select = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: ${space[5]}px ${space[6]}px ;
-    width:100%;
+    width: ${fullWidth};
     height:50px;
 `
 export const Text = styled.p`

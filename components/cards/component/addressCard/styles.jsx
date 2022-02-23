@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../../../constant'
 
 export const AddressWrap = styled.div`
     background: ${colors.white};
     border-radius: 7.3px;
     padding: ${space[10]}px;
-    width:100%;
+    width:${fullWidth};
 `
 export const Title= styled.p`
     color: ${colors.darktext};

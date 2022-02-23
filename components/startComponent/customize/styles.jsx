@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../../constant'
+import { colors, fontSizes, space ,fullWidth} from '../../../constant'
 
 export const Wrapper = styled.div`
     padding:  ${space[10] + 4}px;
     background: ${colors.white};
     border-radius: 16px;
-    width: 100%;
+    width: ${fullWidth};
     margin: auto;
     max-width: 700px;
 `
@@ -26,7 +26,7 @@ export const ImgBox = styled.div`
     user-select: none;
     margin-right: ${space[10]}px;
     img{
-        max-width: 100%;
+        max-width: ${fullWidth};
     }
 `
 export const CardTitle = styled.p`
