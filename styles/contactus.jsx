@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
 export const CardBox = styled.div`
     height:100vh;
     margin: ${space[2] - 1}em 0em;
+    @media only screen and (min-width: ${media.tabletX}) and (max-width: ${media.mediumScreen}){
+        margin: ${space[1] - 1}em 0em;
+    }
 `
 
 export const FooterWrap = styled.div`
