@@ -38,6 +38,7 @@ export const Wrapper = styled.div`
   .smallCardAnimation{
     animation: 2s ${fadeOutAnimation};
     opacity: 0;
+    // visibility: hidden;
   }
 `;
 
@@ -163,10 +164,22 @@ export const ReportsLeftWrap = styled.div`
 `;
 export const ReportsRightWrap = styled.div`
   width: 70%;
+  max-width: 427px;
   overflow: auto;
-  height: 500px;
+  height: 435px;
   padding-bottom: ${space[10]}px;
+  display: flex;
   &::-webkit-scrollbar {
     width: 0em;
   }
+`;
+
+export const InnerSlideWrap = styled.div`
+  transition: all 2s;
+  position: relative;
+  margin-right: 20px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  min-width: 100%;
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "../../../accordion/accordion";
 import Filter from "../../../cardFilter/Filter";
 
@@ -9,10 +9,12 @@ import {
   CardTitle,
   ReportsWrap,
   ReportsLeftWrap,
-  ReportsRightWrap
+  ReportsRightWrap,
+  InnerSlideWrap,
 } from "./styles";
 
-const RightWrapPage = () => {
+const RightWrapPage = ({ reports, isNext }) => {
+  const left = 447 * isNext
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -31,10 +33,14 @@ const RightWrapPage = () => {
           <Accordion title="Generation source" />
         </ReportsLeftWrap>
         <ReportsRightWrap>
-          <Filter />
-          <Filter />
-          <Filter />
-          <Filter />
+          {reports?.map((item, index) => (
+            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : '' }}>
+              <Filter />
+              <Filter />
+              <Filter />
+              <Filter />
+            </InnerSlideWrap>
+          ))}
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

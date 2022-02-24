@@ -6,14 +6,30 @@ import Customize from "../../../startComponent/customize";
 
 const ExpandCustomize = () => {
   const [isExpand, setIsExpand] = useState(false);
-
+  const [isNext, setIsNext] = useState(0);
+  const  reports = [
+    {
+      id:1,
+    },
+    {
+      id:2,
+    },
+    {
+      id:3,
+    },
+    {
+      id:4,
+    },
+  ]
+  
   return (
     <Wrapper isExpand={isExpand}>
       <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
         <LeftWrapPage
-          onYes={() => setIsExpand(!isExpand)}
+          onNext={() => setIsNext(isNext + 1)}
+          onPrevious={() => setIsNext(isNext - 1)}
         />
-        <RightWrapPage />
+        <RightWrapPage reports={reports} isNext={isNext} />
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize onYes={() => setIsExpand(!isExpand)} />

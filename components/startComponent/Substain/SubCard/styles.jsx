@@ -23,8 +23,8 @@ export const Card = styled.div`
 export const Title = styled.h5`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[6] + 6}px;
-  line-height: 72.4px;
+  font-size: ${fontSizes[5] + 5}px;
+    line-height: 64.4px;
   text-align: center;
   user-select: none;
   text-transform: uppercase;
@@ -33,13 +33,11 @@ export const Title = styled.h5`
   padding-bottom: ${space[5]}px;
   margin-top: ${space[10] * 2}px;
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
-    font-size: ${fontSizes[5] + 2}px;
-    line-height: 64.4px;
+    font-size: ${fontSizes[4] + 2}px;
+    line-height: 42px;
     margin-top: 0px;
   }
   @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
-    font-size: ${fontSizes[6] + 2}px;
-    line-height: 64.4px;
     margin-top: 0px;
   }
 `;
@@ -54,8 +52,8 @@ export const PrimarySpan = styled.span`
 export const SubTitle = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: ${fontSizes[5] - 3}px;
-  line-height: 54px;
+  font-size: ${fontSizes[4] + 2}px;
+  line-height: 50px;
   text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
@@ -64,25 +62,21 @@ export const SubTitle = styled.p`
   span {
     font-weight: 700;
   }
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    font-size: ${fontSizes[4] + 5}px;
+  @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
+    font-size: ${fontSizes[3] + 2}px;
     line-height: 50px;
   }
 `;
 export const ScrollText = styled.p`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[5] - 2}px;
-  line-height: 48px;
+  font-size: ${fontSizes[3]}px;
+  line-height: 30px;
   text-align: center;
   user-select: none;
   color: ${colors.text};
   text-align: center;
   margin: ${space[0]}px;
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    font-size: ${fontSizes[3]}px;
-    line-height: 30px;
-  }
 `;
 export const Icon = styled.div`
   display: flex;
@@ -90,7 +84,7 @@ export const Icon = styled.div`
   flex-direction: column;
   position: fixed;
   z-index: 99;
-  bottom: 46px;
+  bottom: ${space[4]}px;
   animation: 2s ${fadeOutAnimation};
   transition: all 0.5s;
   &.hide {
@@ -105,9 +99,6 @@ export const Icon = styled.div`
       margin-top: -10px;
     }
   }
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    bottom: ${space[4]}px;
-  }
 `;
 
 export const Point = styled.div`
@@ -120,13 +111,12 @@ export const Step = styled.div`
   justify-content: space-between;
   padding: ${space[10] * 3}px 0px;
   width: 100%;
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+    padding: ${space[10] * 2}px 0px;
+  }
   &.topStep {
-    padding-top: ${space[10] * 2}px;
-    padding-bottom: ${space[6] + 1}rem;
-    @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-      padding-top: ${space[10] * 1}px;
-      padding-bottom: ${space[10] * 4}px;
-    }
+    padding-top: ${space[10] * 1}px;
+    padding-bottom: ${space[10] * 4}px;
   }
 `;
 export const Box = styled.div`
@@ -142,4 +132,8 @@ export const BottomBtn = styled.div`
   width: 50%;
   position: absolute;
   bottom: -44px;
+  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+    width: 44%;
+    bottom: -32px;
+  }
 `;

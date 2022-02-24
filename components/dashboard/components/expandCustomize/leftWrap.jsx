@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BlueButton from "../../../buttons/component/BlueButton";
 import { FiInfo } from "react-icons/fi";
 import {
@@ -15,8 +15,10 @@ import {
   YesButton,
   LeftWrap,
 } from "./styles";
+import StepComponent from "../../../StepComponent";
 
-const LeftWrapPage = ({ onYes }) => {
+const LeftWrapPage = ({ onNext, onPrevious }) => {
+  const [isShowStep, setIsShowStep] = useState(false);
   return (
     <LeftWrap>
       <CardHeader>
@@ -24,8 +26,8 @@ const LeftWrapPage = ({ onYes }) => {
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
         <CardTitle>
-          Assess your country’s situation and customize
-          the decision-making process.
+          Assess your country’s situation and customize the decision-making
+          process.
         </CardTitle>
       </CardHeader>
       <Steps>
@@ -37,16 +39,22 @@ const LeftWrapPage = ({ onYes }) => {
         </Text>
         <YesButton>Yes</YesButton>
       </Steps>
-          <Border></Border>{" "}
+      <Border></Border>{" "}
+      {isShowStep ? (
+        <StepComponent onNext={onNext} onPrevious={onPrevious} />
+      ) : (
+        <>
           <CardSubTitle>
             Are stand-alone systems and mini-grids integrated in the National
             Electrification Strategy (NES)?
             <FiInfo />
           </CardSubTitle>
-      <ButtonGrp>
-        <BlueButton title="yes" onClick={onYes} />
-        <BlueButton title="no" />
-      </ButtonGrp>
+          <ButtonGrp>
+            <BlueButton title="yes" onClick={() => setIsShowStep(true)} />
+            <BlueButton title="no" />
+          </ButtonGrp>
+        </>
+      )}
     </LeftWrap>
   );
 };
