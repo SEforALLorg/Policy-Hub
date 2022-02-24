@@ -10,7 +10,7 @@ import {
     Icon,
     ImgBox
 } from "./styles";
-import { Player } from 'video-react';
+import { Player,BigPlayButton } from 'video-react';
 import "node_modules/video-react/dist/video-react.css";
 
 const VideoCard = () => {
@@ -18,9 +18,10 @@ const VideoCard = () => {
         <Card>
             <Video>
                 <ImgBox className="videoPlayer">
-                    <Player
-                         src="../static/video/sample.mp4"
-                    />
+                    <Player fluid poster="/static/images/windtower.svg">
+                        <source src="../static/video/sample.mp4"/>
+                        <BigPlayButton position="center" />
+                    </Player>
                     <video
                         controls loop
                         src={'../static/video/sample.mp4'}
