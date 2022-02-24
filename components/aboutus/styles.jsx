@@ -15,6 +15,7 @@ export const Card= styled.div`
 `
 export const ImgWrap = styled.div`
    margin-right: ${space[10] * 2}px;
+   align-self: center;
    img{
        max-width: ${fullWidth};
    }
@@ -25,7 +26,7 @@ export const Detail = styled.div`
 export const Heading = styled.h5`
     font-style: normal;
     font-weight: 700;
-    font-size: ${fontSizes[5]  - 3}px
+    font-size: ${fontSizes[5]  - 3}px;
     line-height: 46px;
     text-transform: uppercase;
     color: ${colors.darktext}
@@ -33,7 +34,7 @@ export const Heading = styled.h5`
 export const SubTitle = styled.p`
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: ${fontSizes[1] + 2}px;
     line-height: 25.3px;
     color: ${colors.lighttext};
     margin-bottom: ${space[10]}px;
