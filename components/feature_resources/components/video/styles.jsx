@@ -10,15 +10,6 @@ export const Card= styled.div`
       max-width:${fullWidth};
     }
 `
-
-export const Video = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position:relative;
-  
-`
-
 export const ImgBox = styled.div`
 width:100%;
   .videoPlayer{

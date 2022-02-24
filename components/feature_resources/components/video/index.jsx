@@ -6,7 +6,6 @@ import {
     Title,
     LinkWrap,
     Link,
-    Video,
     ImgBox
 } from "./styles";
 import { Player, BigPlayButton } from 'video-react';
@@ -15,17 +14,15 @@ import "node_modules/video-react/dist/video-react.css";
 const VideoCard = () => {
     return (
         <Card>
-            <Video>
-                <ImgBox className="videoPlayer">
-                    <Player
-                        fluid={true}
-                        playsInline={true}
-                        poster="/static/images/windfan.svg" >
-                        <source src="../static/video/sample.mp4" />
-                        <BigPlayButton position="center"/>
-                    </Player>
-                </ImgBox>
-            </Video>
+            <ImgBox className="videoPlayer">
+                <Player
+                    fluid={true}
+                    playsInline={true}
+                    poster="/static/images/windfan.svg" >
+                    <source src="../static/video/sample.mp4" />
+                    <BigPlayButton position="center" />
+                </Player>
+            </ImgBox>
             <Detail>
                 <Heading>VIDEO TITLE</Heading>
                 <Title>
