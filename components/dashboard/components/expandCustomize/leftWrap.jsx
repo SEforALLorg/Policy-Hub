@@ -16,7 +16,7 @@ import {
   LeftWrap,
 } from "./styles";
 
-const LeftWrapPage = () => {
+const LeftWrapPage = ({ onYes }) => {
   return (
     <LeftWrap>
       <CardHeader>
@@ -24,8 +24,8 @@ const LeftWrapPage = () => {
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
         <CardTitle>
-          Assess your country’s situation and customize the decision-making
-          process.
+          Assess your country’s situation and customize
+          the decision-making process.
         </CardTitle>
       </CardHeader>
       <Steps>
@@ -37,14 +37,14 @@ const LeftWrapPage = () => {
         </Text>
         <YesButton>Yes</YesButton>
       </Steps>
-      <Border></Border>
-      <CardSubTitle>
-        Are stand-alone systems and mini-grids integrated in the National
-        Electrification Strategy (NES)?
-        <FiInfo />
-      </CardSubTitle>
+          <Border></Border>{" "}
+          <CardSubTitle>
+            Are stand-alone systems and mini-grids integrated in the National
+            Electrification Strategy (NES)?
+            <FiInfo />
+          </CardSubTitle>
       <ButtonGrp>
-        <BlueButton title="yes" />
+        <BlueButton title="yes" onClick={onYes} />
         <BlueButton title="no" />
       </ButtonGrp>
     </LeftWrap>
