@@ -1,15 +1,44 @@
 import styled, { keyframes } from "styled-components";
 import { colors, fontSizes, space } from "../../../../constant/index";
+import { fadeOut, fadeIn } from "react-animations";
+
+const fadeOutAnimation = keyframes`${fadeOut}`;
+const fadeInAnimation = keyframes`${fadeIn}`;
 
 export const Wrapper = styled.div`
   background: ${colors.white};
-  width: 100%;
+  margin: auto;
   border-radius: 20px;
   display: flex;
-  height: 650px;
   margin-top: ${space[10] * 2}px;
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
+  transition: transform 2s ease-out;
+  transform: ${({isExpand}) => isExpand ? 'scale(1, 1)' : 'scale(0.5)'} ;
+  position: relative;
+  width: 100%;
+  .bigCard{
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .bigCardAnimation{
+    animation: 2s ${fadeInAnimation};
+    opacity: 1;
+  }
+  .smallCard{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width:100%;
+  }
+  .smallCardAnimation{
+    animation: 2s ${fadeOutAnimation};
+    opacity: 0;
+  }
 `;
 
 export const LeftWrap = styled.div`
@@ -22,7 +51,6 @@ export const LeftWrap = styled.div`
 export const CardHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-bottom: ${space[5]}px;
 `;
 export const Border = styled.div`
@@ -44,7 +72,7 @@ export const CardTitle = styled.p`
   font-style: normal;
   font-weight: 700;
   font-size: ${fontSizes[2] + 2}px;
-  line-height: 26px;
+  line-height:  26px;
   text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
@@ -98,8 +126,8 @@ export const Dot = styled.span`
 `;
 export const StepTitle = styled.p`
   font-style: normal;
-  font-weight: 400;
-  font-size: ${fontSizes[0]}px;
+  font-weight:400;
+  font-size:${fontSizes[0]}px ;
   line-height: 20px;
   text-transform: capitalize;
   color: #454545;
