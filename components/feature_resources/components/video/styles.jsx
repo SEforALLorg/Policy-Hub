@@ -20,13 +20,11 @@ export const Video = styled.div`
 `
 
 export const ImgBox = styled.div`
+width:100%;
   .videoPlayer{
     max-width: ${fullWidth};
     object-fit: fill;
   }
-`
-export const Icon = styled.div`
-    position: absolute;
 `
 export const  Detail = styled.div`
   padding: ${space[10] - 5}px ${space[10]}px ${space[5] + 7}px ${space[10] + 2}px;

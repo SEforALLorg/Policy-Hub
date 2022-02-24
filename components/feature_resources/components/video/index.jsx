@@ -7,10 +7,9 @@ import {
     LinkWrap,
     Link,
     Video,
-    Icon,
     ImgBox
 } from "./styles";
-import { Player,BigPlayButton } from 'video-react';
+import { Player, BigPlayButton } from 'video-react';
 import "node_modules/video-react/dist/video-react.css";
 
 const VideoCard = () => {
@@ -18,21 +17,17 @@ const VideoCard = () => {
         <Card>
             <Video>
                 <ImgBox className="videoPlayer">
-                    <Player fluid poster="/static/images/windtower.svg">
-                        <source src="../static/video/sample.mp4"/>
-                        <BigPlayButton position="center" />
+                    <Player
+                        fluid={true}
+                        playsInline={true}
+                        poster="/static/images/windfan.svg" >
+                        <source src="../static/video/sample.mp4" />
+                        <BigPlayButton position="center"/>
                     </Player>
-                    <video
-                        controls loop
-                        src={'../static/video/sample.mp4'}
-                        className="videoPlayer" />
                 </ImgBox>
-                <Icon>
-                    <img src={'/static/images/videoplay.svg'} alt="play" />
-                </Icon>
             </Video>
             <Detail>
-                <Heading>VIDEO tITLE</Heading>
+                <Heading>VIDEO TITLE</Heading>
                 <Title>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus bibendum lacus mauris. Curabitur lectus tortor,
