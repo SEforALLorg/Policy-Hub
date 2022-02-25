@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { colors, fontSizes, media, space, fullWidth } from '../../constant'
 
 export const Wrapper = styled.div`
-    margin-top: 7rem;
-    
+    margin-top: 10rem;
 `
 export const FooterWrap = styled.div`
     display: flex;
