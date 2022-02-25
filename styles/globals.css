@@ -64,6 +64,10 @@ a {
   transition: all .5s;
 }
 
+.header .active.nav-link{
+  font-weight: 700;
+}
+
 .header .nav-link:hover {
   text-decoration: underline;
 }

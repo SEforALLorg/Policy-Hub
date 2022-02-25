@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
 import StartButton from "components/buttons/component/startButton/StartButton";
 import {
   Wrapper,
@@ -7,10 +6,8 @@ import {
   Span,
   PrimarySpan,
   SubTitle,
-  Icon,
   Point,
   Card,
-  ScrollText,
   Step,
   Box,
   BottomBtn,
@@ -33,13 +30,6 @@ const SubCard = ({ HandleOpen }) => {
   return (
     <>
       <Wrapper>
-        <Icon className={scrollPosition <= 300 ? "" : "hide"}>
-          <ScrollText>
-            Scroll down <br></br>to get started...
-          </ScrollText>
-          <FaChevronDown />
-        </Icon>
-
         <Card>
           <Title>
             Sustainable
