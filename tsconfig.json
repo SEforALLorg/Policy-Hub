@@ -1,4 +1,5 @@
 {
+  "exclude": ["someFile.ts", "otherFile.js"],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
