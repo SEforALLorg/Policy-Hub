@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
+    height:100%;
   }
   .bigCardAnimation{
     animation: 2s ${fadeInAnimation};
@@ -38,7 +39,7 @@ export const Wrapper = styled.div`
   .smallCardAnimation{
     animation: 2s ${fadeOutAnimation};
     opacity: 0;
-    // visibility: hidden;
+    visibility: hidden;
   }
 `;
 
@@ -157,6 +158,7 @@ export const RightWrap = styled.div`
 export const ReportsWrap = styled.div`
   display: flex;
   margin-top: ${space[10] + 10}px;
+  height:100%;
 `;
 export const ReportsLeftWrap = styled.div`
   width: 30%;
@@ -167,6 +169,8 @@ export const ReportsRightWrap = styled.div`
   max-width: 427px;
   overflow: auto;
   height: 435px;
+  min-height: 90%;
+  max-height: 100%;
   padding-bottom: ${space[10]}px;
   display: flex;
   &::-webkit-scrollbar {

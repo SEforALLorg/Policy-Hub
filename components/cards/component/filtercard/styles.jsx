@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
     border-radius: 7.3px;
     width:${fullWidth};
     margin-bottom: ${space[10]}px;
+    
 `
 export const Detail = styled.div`
     display: flex;
