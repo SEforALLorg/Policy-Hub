@@ -55,6 +55,7 @@ export const CardHeader = styled.div`
   align-items: center;
   padding-bottom: ${space[5]}px;
 `;
+
 export const Border = styled.div`
   margin: ${space[8]}px 0px;
   border-bottom: 1.6px solid rgba(6, 90, 137, 0.2);
