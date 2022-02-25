@@ -3,6 +3,7 @@ import { colors, fontSizes, media, space, fullWidth } from '../../constant'
 
 export const Wrapper = styled.div`
     margin-top: 7rem;
+    
 `
 export const FooterWrap = styled.div`
     display: flex;
