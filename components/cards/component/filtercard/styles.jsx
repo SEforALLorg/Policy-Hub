@@ -1,19 +1,29 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space} from '../../constant'
+import { colors, fontSizes,space,fullWidth} from '../../../../constant'
 
 export const Wrapper = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
     border-radius: 7.3px;
-    width:100%;
-    margin-bottom: ${space[4]}px;
+    width:${fullWidth};
+    margin-bottom: ${space[10]}px;
+    
 `
 export const Detail = styled.div`
     display: flex;
-    align-items: baseline;
+    align-items: flex-start;
     justify-content: space-between;
     padding: ${space[6]}px;
-    width:100%;
+    width:${fullWidth};
+`
+export const ImgWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: ${space[9]}px;
+    img{
+        width:${fullWidth};
+        margin-right: ${space[9]}px;
+    }
 `
 export const Text = styled.p`
     font-style: normal;

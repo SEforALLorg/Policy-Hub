@@ -9,7 +9,9 @@ export const colors = {
     blue: "#065A89",
     lightBlue: "rgba(19, 166, 191, 0.2)",
     lightBg: "#ECF3F6",
-    lighttext: "#666666",
+    lighttext: "#666666" ,
+    anqrtext: "#1F668E",
+    darktext: "#393D3F",
     darkText: '#474E52',
     borderColor: '#C4C4C4',
     transparent: 'transparent'
@@ -46,11 +48,14 @@ export const halfWidth = "50%"
 export const fullWidth = "100%"
 
 export const media = {
-    smallMobile: '420px',
+    smallMobile: '480px',
+    mediumMobile: '520px',
     mobile: '767px',
+    tabletX: '991px',
     tablet: '920px',
     smallLaptop: '1024px',
-    laptop: '1220px',
+    laptop: '1200px',
+    laptopX: '1220px',
     screen: '1400px',
     mediumScreen: '1680px',
     largeScreen: '2200px' 

@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space } from '../../../constant'
+import { colors, fontSizes, space ,fullWidth} from '../../../constant'
 
 export const Wrapper = styled.div`
     padding:  ${space[10] * 2}px;
     background: ${colors.white};
     border-radius: 16px;
-    width: 100%;
+    width: ${fullWidth};
     margin: auto;
 `
 export const CardHeader = styled.div`
