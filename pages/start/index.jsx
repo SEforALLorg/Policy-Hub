@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
 import { Container } from "reactstrap";
-import { Wrapper,  StartCards, FooterWrap } from "styles/start";
+import { Wrapper, StartCards, FooterWrap } from "styles/start";
 import StartSubstain from "../../components/startComponent/Substain";
 import Dashboard from "../../components/dashboard/dashboard";
 
@@ -10,7 +10,7 @@ const Start = () => {
   return (
     <Wrapper>
       <Container fulid="md">
-          <Header />
+        <Header />
         <StartCards>
           <StartSubstain />
         </StartCards>
@@ -21,5 +21,5 @@ const Start = () => {
       </Container>
     </Wrapper>
   );
-}
+};
 export default Start;

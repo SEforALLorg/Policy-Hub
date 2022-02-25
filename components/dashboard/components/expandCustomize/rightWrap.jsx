@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Accordion from "../../../accordion/accordion";
 import Filter from "../../../cards/component/filtercard/Filter";
 
@@ -10,16 +10,18 @@ import {
   ReportsWrap,
   ReportsLeftWrap,
   ReportsRightWrap,
+  InnerSlideWrap,
 } from "./styles";
 
-const RightWrapPage = () => {
+const RightWrapPage = ({ reports, isNext }) => {
+  const left = 447 * isNext
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
         <ImgBox>
           <img src="static/images/greenFile.svg" alt="card" />
         </ImgBox>
-        <CardTitle>Resources that match your input.</CardTitle>
+        <CardTitle>Resources that match your input</CardTitle>
       </CardHeader>
       <ReportsWrap>
         <ReportsLeftWrap>
@@ -31,46 +33,14 @@ const RightWrapPage = () => {
           <Accordion title="Generation source" />
         </ReportsLeftWrap>
         <ReportsRightWrap>
-          <Filter
-            countryname={"USA"}
-            area={"North America "}
-            item={" IRENA"}
-            date={"2017"}
-            file={"static/images/USAflag.svg"}
-            title={
-              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-            }
-          />
-          <Filter
-            countryname={"USA"}
-            area={"North America "}
-            item={" IRENA"}
-            date={"2017"}
-            file={"static/images/USAflag.svg"}
-            title={
-              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-            }
-          />
-          <Filter
-            countryname={"USA"}
-            area={"North America "}
-            item={" IRENA"}
-            date={"2017"}
-            file={"static/images/USAflag.svg"}
-            title={
-              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-            }
-          />
-          <Filter
-            countryname={"USA"}
-            area={"North America "}
-            item={" IRENA"}
-            date={"2017"}
-            file={"static/images/USAflag.svg"}
-            title={
-              "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-            }
-          />
+          {reports?.map((item, index) => (
+            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : '' }}>
+              <Filter />
+              <Filter />
+              <Filter />
+              <Filter />
+            </InnerSlideWrap>
+          ))}
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

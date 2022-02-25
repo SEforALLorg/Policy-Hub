@@ -1,19 +1,45 @@
 import styled, { keyframes } from "styled-components";
-import { colors, fontSizes, space,fullWidth } from "../../../../constant/index";
-import { zoomInRight } from "react-animations";
+import { colors, fontSizes, space } from "../../../../constant/index";
+import { fadeOut, fadeIn } from "react-animations";
 
-const fadeOutAnimation = keyframes`${zoomInRight}`;
+const fadeOutAnimation = keyframes`${fadeOut}`;
+const fadeInAnimation = keyframes`${fadeIn}`;
 
 export const Wrapper = styled.div`
   background: ${colors.white};
-  width: ${fullWidth};
+  margin: auto;
   border-radius: 20px;
   display: flex;
-  height: 650px;
   margin-top: ${space[10] * 2}px;
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
-  animation: 0.8s ${fadeOutAnimation};
+  transition: transform 2s ease-out;
+  transform: ${({isExpand}) => isExpand ? 'scale(1, 1)' : 'scale(0.5)'} ;
+  position: relative;
+  width: 100%;
+  .bigCard{
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .bigCardAnimation{
+    animation: 2s ${fadeInAnimation};
+    opacity: 1;
+  }
+  .smallCard{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width:100%;
+  }
+  .smallCardAnimation{
+    animation: 2s ${fadeOutAnimation};
+    opacity: 0;
+    // visibility: hidden;
+  }
 `;
 
 export const LeftWrap = styled.div`
@@ -26,7 +52,6 @@ export const LeftWrap = styled.div`
 export const CardHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-bottom: ${space[5]}px;
 `;
 export const Border = styled.div`
@@ -48,7 +73,7 @@ export const CardTitle = styled.p`
   font-style: normal;
   font-weight: 700;
   font-size: ${fontSizes[2] + 2}px;
-  line-height: 26px;
+  line-height:  26px;
   text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
@@ -102,8 +127,8 @@ export const Dot = styled.span`
 `;
 export const StepTitle = styled.p`
   font-style: normal;
-  font-weight: 400;
-  font-size: ${fontSizes[0]}px;
+  font-weight:400;
+  font-size:${fontSizes[0]}px ;
   line-height: 20px;
   text-transform: capitalize;
   color: #454545;
@@ -139,10 +164,22 @@ export const ReportsLeftWrap = styled.div`
 `;
 export const ReportsRightWrap = styled.div`
   width: 70%;
+  max-width: 427px;
   overflow: auto;
-  height: 500px;
+  height: 435px;
   padding-bottom: ${space[10]}px;
+  display: flex;
   &::-webkit-scrollbar {
     width: 0em;
   }
+`;
+
+export const InnerSlideWrap = styled.div`
+  transition: all 2s;
+  position: relative;
+  margin-right: 20px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  min-width: 100%;
 `;

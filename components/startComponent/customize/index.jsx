@@ -18,13 +18,13 @@ const Customize = ({ onYes }) => {
           <img src="static/images/cards.svg" alt="card" />
         </ImgBox>
         <CardTitle>
-          Assess your country’s situation and customize the decision-making
+          Assess your country’s situation and <br />customize the decision-making
           process.
         </CardTitle>
       </CardHeader>
       <Border></Border>
       <CardSubTitle>
-        Is there an up-to-date National Electrification Strategy (NES)?
+        Is there an up-to-date National Electrification <br /> Strategy (NES)?
         <FiInfo />
       </CardSubTitle>
       <ButtonGrp>

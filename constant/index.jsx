@@ -9,9 +9,10 @@ export const colors = {
     blue: "#065A89",
     lightBlue: "rgba(19, 166, 191, 0.2)",
     lightBg: "#ECF3F6",
-    lighttext: "#666666" ,
-    anqrtext: "#1F668E",
-    darktext: "#393D3F"
+    lighttext: "#666666",
+    darkText: '#474E52',
+    borderColor: '#C4C4C4',
+    transparent: 'transparent'
 }
 
 export const fontSizes = [

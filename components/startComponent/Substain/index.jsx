@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import Customize from "../customize/index";
 import { useEffect } from "react";
-import Dashboard from "../../dashboard/dashboard";
 import { Bottom, FullWrap, TopWrap } from "./styles";
 import SubstainCard from "./SubCard/SubCard.jsx";
 import ExpandCustomize from "../../dashboard/components/expandCustomize";
 
 const StartSubstain = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isExpand, setIsExpand] = useState(false);
   const HandleOpen = () => {
     setIsOpen(true);
   };
@@ -22,7 +19,7 @@ const StartSubstain = () => {
       });
     }
   }, [isOpen]);
-
+  
   return (
     <>
       <FullWrap>
@@ -30,15 +27,10 @@ const StartSubstain = () => {
           <SubstainCard HandleOpen={HandleOpen} />
         </TopWrap>
         {isOpen ? (
-          <Bottom isExpand={isExpand} id="bottom-view">
-            {isExpand ? (
+          <Bottom id="bottom-view">
               <ExpandCustomize />
-            ) : (
-              <Customize onYes={() => setIsExpand(true)} />
-            )}
           </Bottom>
         ) : null}
-        {/* <Dashboard/> */}
       </FullWrap>
     </>
   );
