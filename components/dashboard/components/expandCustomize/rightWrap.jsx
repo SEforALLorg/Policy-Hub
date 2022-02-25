@@ -65,15 +65,15 @@ const RightWrapPage = ({ reports, isNext }) => {
                   "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
                 }
               /><Filter
-              countryname={"USA"}
-              area={"North America "}
-              item={" IRENA"}
-              date={"2017"}
-              file={"static/images/USAflag.svg"}
-              title={
-                "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-              }
-            />
+                countryname={"USA"}
+                area={"North America "}
+                item={" IRENA"}
+                date={"2017"}
+                file={"static/images/USAflag.svg"}
+                title={
+                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
+                }
+              />
             </InnerSlideWrap>
           ))}
         </ReportsRightWrap>
