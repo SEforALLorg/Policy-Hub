@@ -144,7 +144,7 @@ export const ImgBox = styled.div`
     align-items: center;
     justify-content: flex-end;
      img{
-         margin-right: ${space[10]}px;
+         margin-right: ${space[10] + 10}px;
          max-width:${fullWidth};
          &:last-child{
             margin-right: ${space[0]}px;
