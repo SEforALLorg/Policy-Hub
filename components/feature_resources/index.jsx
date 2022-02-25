@@ -24,7 +24,7 @@ import {
     VideoText
 } from "./styles";
 import PrimaryButton from "components/buttons/component/primaryBtn/primarybutton";
-import StartButton from "components/buttons/component/startButton/startButton";
+import StartButton from "components/buttons/component/startButton/StartButton";
 import ReviewCard from './components/reviewCard';
 import PopularResorces from './components/popularResorces';
 import ViewButton from '../buttons/viewall';
