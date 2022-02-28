@@ -36,7 +36,7 @@ const Accordion = ({ title, isOpen, setIsOpen, options }) => {
           <DropDownList>
             {options?.map((option, index) => (
               <>
-                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+                <ListItem onClick={onOptionClicked(option)} key={index}>
                   <Span selectedOption={option === selectedOption}> </Span> {""}{" "}
                   {option}
                 </ListItem>

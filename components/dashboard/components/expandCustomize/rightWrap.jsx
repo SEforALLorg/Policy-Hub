@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useQuery } from 'react-query'
 import { availableOptions } from "../../../../constant/options";
+import { getCountries } from "pages/api/filter";
 import Accordion from "../../../accordion/accordion";
 import Filter from "../../../cards/component/filtercard/Filter";
+import { ErrorNotify, SuccessNotify } from 'components/notification'
 
 import {
   RightWrap,
@@ -17,6 +20,16 @@ import {
 const RightWrapPage = ({ reports, isNext }) => {
   const left = 447 * isNext;
   const [isOpen, setIsOpen] = useState("");
+
+  const {
+    data: countriesData,
+  } = useQuery(['getCountries'], getCountries, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  console.log(countriesData?.data?.data);
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -66,7 +79,7 @@ const RightWrapPage = ({ reports, isNext }) => {
         </ReportsLeftWrap>
         <ReportsRightWrap>
           {reports?.map((item, index) => (
-            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : "" }}>
+            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : "" }} key={index}>
               <Filter
                 countryname={"USA"}
                 area={"North America "}
