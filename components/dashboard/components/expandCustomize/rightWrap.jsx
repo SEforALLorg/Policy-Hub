@@ -65,8 +65,8 @@ const RightWrapPage = ({ reports, isNext }) => {
           />
         </ReportsLeftWrap>
         <ReportsRightWrap>
-          {reports?.map((item, index) => (
-            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : "" }}>
+          {/* {reports?.map((item, index) => ( */}
+            <InnerSlideWrap>
               <Filter
                 countryname={"USA"}
                 area={"North America "}
@@ -128,7 +128,7 @@ const RightWrapPage = ({ reports, isNext }) => {
                 }
               />
             </InnerSlideWrap>
-          ))}
+          {/* ))} */}
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>
