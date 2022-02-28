@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { useQuery } from 'react-query'
-import { availableOptions } from "../../../../constant/options";
-import { getCountries } from "pages/api/filter";
+import {
+  getCountries,
+  getGenerationSources,
+  getYears,
+  getRegions,
+  getSegments,
+  getDocumentTypes
+} from "pages/api/filter";
+import { getReports } from "pages/api/reports";
 import Accordion from "../../../accordion/accordion";
 import Filter from "../../../cards/component/filtercard/Filter";
-import { ErrorNotify, SuccessNotify } from 'components/notification'
+import { ErrorNotify } from 'components/notification'
 
 import {
   RightWrap,
@@ -16,6 +23,8 @@ import {
   ReportsRightWrap,
   InnerSlideWrap,
 } from "./styles";
+import { getFormattedData } from "utilities";
+
 
 const RightWrapPage = ({ reports, isNext }) => {
   const left = 447 * isNext;
@@ -29,7 +38,56 @@ const RightWrapPage = ({ reports, isNext }) => {
     }
   })
 
-  console.log(countriesData?.data?.data);
+  const {
+    data: generationSourcesData,
+  } = useQuery(['getGenerationSources'], getGenerationSources, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  const {
+    data: yearsData,
+  } = useQuery(['getYears'], getYears, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  const {
+    data: regionsData,
+  } = useQuery(['getRegions'], getRegions, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  const {
+    data: segmentsData,
+  } = useQuery(['getSegments'], getSegments, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  const {
+    data: documentTypesData,
+  } = useQuery(['getDocumentTypes'], getDocumentTypes, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  const {
+    data: allReports,
+  } = useQuery(['getReports'], getReports, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    }
+  })
+
+  console.log(allReports, 'allReports');
+
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -44,102 +102,58 @@ const RightWrapPage = ({ reports, isNext }) => {
             title="Select Country"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.country}
+            options={getFormattedData(countriesData?.data?.data)}
           />
           <Accordion
             title="Select Region"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.region}
+            options={getFormattedData(regionsData?.data?.data)}
           />
           <Accordion
             title="Segment"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.segment}
+            options={getFormattedData(segmentsData?.data?.data)}
           />
           <Accordion
             title="Resource type"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.resource}
+            options={getFormattedData(documentTypesData?.data?.data)}
           />
           <Accordion
             title="Year"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.year}
+            options={getFormattedData(yearsData?.data?.data)}
           />
           <Accordion
             title="Generation source"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.source}
+            options={getFormattedData(generationSourcesData?.data?.data)}
           />
         </ReportsLeftWrap>
         <ReportsRightWrap>
           {reports?.map((item, index) => (
             <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : "" }} key={index}>
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
+              {
+                allReports?.data?.data?.map((i) => {
+                  const name = i.attributes.ReportName
+                  const year = i?.attributes?.AddFilters?.years?.data[0]?.attributes?.year
+                  return (
+                    <Filter
+                      countryname={"USA"}
+                      area={"North America "}
+                      item={" IRENA"}
+                      date={year}
+                      file={"static/images/USAflag.svg"}
+                      title={name}
+                    />
+                  )
+                })
+              }
             </InnerSlideWrap>
           ))}
         </ReportsRightWrap>
