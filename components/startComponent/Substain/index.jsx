@@ -19,7 +19,7 @@ const StartSubstain = () => {
       });
     }
   }, [isOpen]);
-  
+
   return (
     <>
       <FullWrap>
@@ -28,7 +28,7 @@ const StartSubstain = () => {
         </TopWrap>
         {isOpen ? (
           <Bottom id="bottom-view">
-              <ExpandCustomize />
+            <ExpandCustomize />
           </Bottom>
         ) : null}
       </FullWrap>

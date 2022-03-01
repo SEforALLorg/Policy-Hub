@@ -76,7 +76,7 @@ const ResouceStep = () => {
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}
@@ -88,7 +88,7 @@ const ResouceStep = () => {
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}
@@ -104,7 +104,7 @@ const ResouceStep = () => {
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}

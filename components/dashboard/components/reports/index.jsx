@@ -26,7 +26,7 @@ const Reports = () => {
                 </Cards>
                 <Cards>
                     <Report
-                        countryname={"USA"}
+                        countryName={"USA"}
                         area={'North America '}
                         item={" IRENA"}
                         date={"2017"}

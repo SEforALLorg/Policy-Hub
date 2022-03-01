@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
   transition: transform 2s ease-out;
-  transform: ${({isExpand}) => isExpand ? 'scale(1, 1)' : 'scale(0.5)'} ;
+  transform: ${({ isExpand }) => isExpand ? 'scale(1, 1)' : 'scale(0.5)'} ;
   position: relative;
   width: 100%;
   .bigCard{
@@ -188,3 +188,25 @@ export const InnerSlideWrap = styled.div`
   position: relative;
   min-width: 100%;
 `;
+
+
+export const QuestionWrap = styled.div`
+  &.animation{
+    animation: 2s ${fadeInAnimation};
+  }
+  &.animation-inner{
+    animation: 2s ${fadeInAnimation};
+  }
+`
+
+export const Restart = styled.div`
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3.75373px 3.75373px rgb(0 0 0 / 25%);
+  border-radius: 11.2612px;
+  cursor: pointer;
+`

@@ -36,12 +36,10 @@ const Accordion = ({ title, isOpen, setIsOpen, options }) => {
           <DropDownList>
             {options?.map((option, index) => {
               return (
-                <>
-                  <ListItem onClick={onOptionClicked(option?.attributes?.label)} key={index}>
-                    <Span selectedOption={option?.attributes?.label === selectedOption}> </Span> {""}{" "}
-                    {option?.attributes?.label}
-                  </ListItem>
-                </>
+                <ListItem onClick={onOptionClicked(option?.attributes?.label)} key={index}>
+                  <Span selectedOption={option?.attributes?.label === selectedOption}> </Span> {""}{" "}
+                  {option?.attributes?.label}
+                </ListItem>
               );
             })}
           </DropDownList>

@@ -1,17 +1,7 @@
 import React, { useState } from "react";
-import { useQuery } from 'react-query'
-import {
-  getCountries,
-  getGenerationSources,
-  getYears,
-  getRegions,
-  getSegments,
-  getDocumentTypes
-} from "pages/api/filter";
-import { getReports } from "pages/api/reports";
-import Accordion from "../../../accordion/accordion";
-import Report from "../../../cards/component/filtercard/Filter";
-import { ErrorNotify } from 'components/notification';
+import Accordion from "components/accordion/accordion";
+import Report from "components/cards/component/filtercard/Filter";
+
 import { getFormattedData } from "utilities";
 
 import {
@@ -25,68 +15,18 @@ import {
   InnerSlideWrap,
 } from "./styles";
 
-
-const RightWrapPage = ({ reports, isNext }) => {
+const RightWrapPage = ({
+  isNext,
+  countriesData,
+  regionsData,
+  segmentsData,
+  documentTypesData,
+  yearsData,
+  generationSourcesData,
+  allReports,
+}) => {
   const left = 447 * isNext;
   const [isOpen, setIsOpen] = useState("");
-
-  const {
-    data: countriesData,
-  } = useQuery(['getCountries'], getCountries, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: generationSourcesData,
-  } = useQuery(['getGenerationSources'], getGenerationSources, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: yearsData,
-  } = useQuery(['getYears'], getYears, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: regionsData,
-  } = useQuery(['getRegions'], getRegions, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: segmentsData,
-  } = useQuery(['getSegments'], getSegments, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: documentTypesData,
-  } = useQuery(['getDocumentTypes'], getDocumentTypes, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  const {
-    data: allReports,
-  } = useQuery(['getReports'], getReports, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    }
-  })
-
-  console.log(allReports, 'allReports');
 
   return (
     <RightWrap>
@@ -136,29 +76,33 @@ const RightWrapPage = ({ reports, isNext }) => {
           />
         </ReportsLeftWrap>
         <ReportsRightWrap>
-          {reports?.map((item, index) => (
-            <InnerSlideWrap style={{ marginLeft: index === 0 ? -left : "" }} key={index}>
-              {
-                allReports?.data?.data?.map((i) => {
-                  const name = i.attributes.ReportName
-                  const year = i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year
-                  const country = i?.attributes?.AddFilters?.countries?.data[0]?.attributes?.CountryName
-                  const area = i?.attributes?.AddFilters?.regions?.data[0]?.attributes?.RegionName
-                  const publishingOrganizations = i?.attributes?.AddFilters?.publishing_organizations?.data[0]?.attributes?.PublishingOrganization
-                  return (
-                    <Report
-                      countryName={country || 'USA'}
-                      area={area || "North America "}
-                      item={publishingOrganizations || "IRENA"}
-                      date={year || '2018'}
-                      file={"static/images/USAflag.svg"}
-                      title={name}
-                    />
-                  )
-                })
-              }
+            <InnerSlideWrap>
+              {allReports?.data?.data?.map((i, index) => {
+                const name = i.attributes.ReportName;
+                const year =
+                  i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
+                const country =
+                  i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                    ?.CountryName;
+                const area =
+                  i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                    ?.RegionName;
+                const publishingOrganizations =
+                  i?.attributes?.AddFilters?.publishing_organizations?.data[0]
+                    ?.attributes?.PublishingOrganization;
+                return (
+                  <Report
+                    countryName={country || "USA"}
+                    area={area || "North America "}
+                    item={publishingOrganizations || "IRENA"}
+                    date={year || "2018"}
+                    file={"static/images/USAflag.svg"}
+                    title={name}
+                    key={index}
+                  />
+                );
+              })}
             </InnerSlideWrap>
-          ))}
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

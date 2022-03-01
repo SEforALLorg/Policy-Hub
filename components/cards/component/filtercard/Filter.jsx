@@ -20,9 +20,10 @@ const Report = ({
   item,
   date,
   file,
+  key
 }) => {
   return (
-    <Wrapper>
+    <Wrapper key={key}>
       <Detail>
         <ImgWrapper>
           {mainImg && <img src={mainImg} alt="img" style={style} />}

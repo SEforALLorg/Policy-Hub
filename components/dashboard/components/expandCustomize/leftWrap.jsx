@@ -14,11 +14,32 @@ import {
   StepTitle,
   YesButton,
   LeftWrap,
+  QuestionWrap,
+  Restart,
 } from "./styles";
 import StepComponent from "../../../StepComponent";
+import { useEffect } from "react";
 
-const LeftWrapPage = ({ onNext, onPrevious }) => {
-  const [isShowStep, setIsShowStep] = useState(false);
+const LeftWrapPage = ({ onNext, onPrevious, questions }) => {
+  const [nextQuestionId, setNextQuestionId] = useState();
+  const [firstQuestionId, setFirstQuestionId] = useState();
+
+  useEffect(() => {
+    if (questions?.length) {
+      setNextQuestionId(
+        questions[0]?.attributes?.MainQuestion?.Question?.data?.id
+      );
+      setFirstQuestionId(
+        questions[0]?.attributes?.MainQuestion?.Question?.data?.id
+      );
+    }
+  }, [questions?.length]);
+
+  const onNextQuestion = (e) => {
+    if (!nextQuestionId) return null;
+    setNextQuestionId(e);
+  };
+
   return (
     <LeftWrap>
       <CardHeader>
@@ -40,21 +61,52 @@ const LeftWrapPage = ({ onNext, onPrevious }) => {
         <YesButton>Yes</YesButton>
       </Steps>
       <Border></Border>{" "}
-      {isShowStep ? (
-        <StepComponent onNext={onNext} onPrevious={onPrevious} />
-      ) : (
-        <>
-          <CardSubTitle>
-            Are stand-alone systems and mini-grids integrated in the National
-            Electrification Strategy (NES)?
-            <FiInfo />
-          </CardSubTitle>
-          <ButtonGrp>
-            <BlueButton title="yes" onClick={() => setIsShowStep(true)} />
-            <BlueButton title="no" />
-          </ButtonGrp>
-        </>
-      )}
+      {!nextQuestionId ? (
+        <Restart onClick={() => setNextQuestionId(firstQuestionId)}>
+          <img src="static/images/restart.svg" alt="" />
+        </Restart>
+      ) : questions?.length ? (
+        questions
+          .filter(
+            (q) =>
+              q?.attributes?.MainQuestion?.Question?.data?.id === nextQuestionId
+          )
+          .map((item, index) => {
+            const questionTitle =
+              item?.attributes?.MainQuestion?.Question?.data?.attributes
+                ?.Question;
+            const singleAnswer = item?.attributes?.AddAnswer;
+            const questionType = item?.attributes?.QuestionType;
+            return (
+              <QuestionWrap key={index}>
+                {questionType === "Questionnaire" ? (
+                  <>
+                    <CardSubTitle>
+                      {questionTitle}
+                      <FiInfo />
+                    </CardSubTitle>
+                    <ButtonGrp>
+                      {singleAnswer?.map((i) => (
+                        <BlueButton
+                          title={i?.Answer}
+                          onClick={() =>
+                            onNextQuestion(i?.NextQuestion?.data?.id)
+                          }
+                        />
+                      ))}
+                    </ButtonGrp>
+                  </>
+                ) : (
+                  <StepComponent
+                    onNext={(e) => onNextQuestion(e)}
+                    onPrevious={onPrevious}
+                    item={item}
+                  />
+                )}
+              </QuestionWrap>
+            );
+          })
+      ) : null}
     </LeftWrap>
   );
 };
