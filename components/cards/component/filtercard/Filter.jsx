@@ -11,10 +11,10 @@ import {
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
-const Filter = ({
+const Report = ({
   style,
   title,
-  countryname,
+  countryName,
   mainImg,
   area,
   item,
@@ -35,10 +35,12 @@ const Filter = ({
       </Detail>
       <Border></Border>
       <BottomWrap>
-        <Box>
-          <img src={file} alt="flag" />
-          <Text>{countryname}</Text>
-        </Box>
+        {
+          countryName && <Box>
+            <img src={file} alt="flag" />
+            <Text>{countryName}</Text>
+          </Box>
+        }
         <Box>
           <Text>{area}</Text>
         </Box>
@@ -53,4 +55,4 @@ const Filter = ({
   );
 };
 
-export default Filter;
+export default Report;

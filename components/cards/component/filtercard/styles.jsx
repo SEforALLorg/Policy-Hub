@@ -59,7 +59,7 @@ export const Box= styled.div`
         border-left: 3px solid rgba(134, 164, 176, 0.15);
         width: 3px;
         height: 20px;
-        margin: 0px ${space[10]}px;
+        margin: 0px ${space[4]}px;
     }
     &:last-child:after{
         border-left: none;  

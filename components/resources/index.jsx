@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Filter from "../../components/cards/component/filtercard/Filter";
+import Report from "../../components/cards/component/filtercard/Filter";
 import { availableOptions } from "../../constant/options";
 import Accordion from "../accordion/accordion";
 import SearchBar from "../searchBar/search";
@@ -69,7 +69,7 @@ const ResouceStep = () => {
             })}
           </Cards>
           <FilterCard>
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/videoicon.svg"}
               title={
@@ -81,7 +81,7 @@ const ResouceStep = () => {
               item={" IRENA"}
               date={"2017"}
             />
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/greenfile.svg"}
               title={
@@ -97,7 +97,7 @@ const ResouceStep = () => {
               <Border></Border>
               <Border></Border>
             </BorderWrap>
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/yellowfile.svg"}
               title={

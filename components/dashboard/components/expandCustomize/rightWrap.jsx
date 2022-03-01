@@ -10,8 +10,9 @@ import {
 } from "pages/api/filter";
 import { getReports } from "pages/api/reports";
 import Accordion from "../../../accordion/accordion";
-import Filter from "../../../cards/component/filtercard/Filter";
-import { ErrorNotify } from 'components/notification'
+import Report from "../../../cards/component/filtercard/Filter";
+import { ErrorNotify } from 'components/notification';
+import { getFormattedData } from "utilities";
 
 import {
   RightWrap,
@@ -23,7 +24,6 @@ import {
   ReportsRightWrap,
   InnerSlideWrap,
 } from "./styles";
-import { getFormattedData } from "utilities";
 
 
 const RightWrapPage = ({ reports, isNext }) => {
@@ -141,13 +141,16 @@ const RightWrapPage = ({ reports, isNext }) => {
               {
                 allReports?.data?.data?.map((i) => {
                   const name = i.attributes.ReportName
-                  const year = i?.attributes?.AddFilters?.years?.data[0]?.attributes?.year
+                  const year = i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year
+                  const country = i?.attributes?.AddFilters?.countries?.data[0]?.attributes?.CountryName
+                  const area = i?.attributes?.AddFilters?.regions?.data[0]?.attributes?.RegionName
+                  const publishingOrganizations = i?.attributes?.AddFilters?.publishing_organizations?.data[0]?.attributes?.PublishingOrganization
                   return (
-                    <Filter
-                      countryname={"USA"}
-                      area={"North America "}
-                      item={" IRENA"}
-                      date={year}
+                    <Report
+                      countryName={country || 'USA'}
+                      area={area || "North America "}
+                      item={publishingOrganizations || "IRENA"}
+                      date={year || '2018'}
                       file={"static/images/USAflag.svg"}
                       title={name}
                     />
