@@ -1,6 +1,6 @@
 import React from 'react';
 import Accordion from '../../../accordion/accordion';
-import Filter from '../../../cards/component/filtercard/Filter';
+import Report from '../../../cards/component/filtercard/Filter';
 import {
     FullWrap,
     CardHeader,
@@ -25,8 +25,8 @@ const Reports = () => {
                     <Accordion title={" Select Country "} />
                 </Cards>
                 <Cards>
-                    <Filter
-                        countryname={"USA"}
+                    <Report
+                        countryName={"USA"}
                         area={'North America '}
                         item={" IRENA"}
                         date={"2017"}

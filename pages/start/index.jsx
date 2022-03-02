@@ -14,7 +14,7 @@ const Start = () => {
         <StartCards>
           <StartSubstain />
         </StartCards>
-        <Dashboard/>
+        <Dashboard />
         <FooterWrap>
           <Footer />
         </FooterWrap>

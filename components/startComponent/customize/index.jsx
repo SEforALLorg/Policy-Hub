@@ -10,27 +10,47 @@ import {
   ButtonGrp,
   Border,
 } from "./styles";
-const Customize = ({ onYes }) => {
+import Loader from "../../loader";
+const Customize = ({ onYes, questions, isFetchingQuestions, onNextQuestion, onReportsFind }) => {
+  const firstQuestion = questions?.length && questions[0]
+
+  const title = firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question
+
+  const singleAnswer = firstQuestion?.attributes?.AddAnswer;
+
   return (
     <Wrapper>
-      <CardHeader>
-        <ImgBox>
-          <img src="static/images/cards.svg" alt="card" />
-        </ImgBox>
-        <CardTitle>
-          Assess your country’s situation and <br />customize the decision-making
-          process.
-        </CardTitle>
-      </CardHeader>
-      <Border></Border>
-      <CardSubTitle>
-        Is there an up-to-date National Electrification <br /> Strategy (NES)?
-        <FiInfo />
-      </CardSubTitle>
-      <ButtonGrp>
-        <BlueButton title="yes" onClick={onYes} />
-        <BlueButton title="no" />
-      </ButtonGrp>
+      {
+        isFetchingQuestions ? <Loader height={100} width={100} /> :
+          <>
+            <CardHeader>
+              <ImgBox>
+                <img src="static/images/cards.svg" alt="card" />
+              </ImgBox>
+              <CardTitle>
+                Assess your country’s situation and <br />customize the decision-making
+                process.
+              </CardTitle>
+            </CardHeader>
+            <Border></Border>
+            <CardSubTitle>
+              {title}
+              <FiInfo />
+            </CardSubTitle>
+            <ButtonGrp>
+              {singleAnswer?.map((i) => (
+                <BlueButton
+                  title={i?.Answer}
+                  onClick={() => {
+                    onYes();
+                    onNextQuestion(i?.NextQuestion?.data?.id);
+                    onReportsFind(i);
+                  }}
+                />
+              ))}
+            </ButtonGrp>
+          </>
+      }
     </Wrapper>
   );
 };

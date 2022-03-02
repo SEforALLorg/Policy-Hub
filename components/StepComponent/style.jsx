@@ -11,17 +11,21 @@ export const Title = styled.p`
   line-height: 29px;
   text-transform: capitalize;
   color: ${colors.darkText};
+  margin:0px;
+  height: 45px;
 `;
 
 export const OptionsWrap = styled.div`
   padding: 0px ${space[5]}px;
-  flex: 1;
+  height: 190px;
+  overflow: auto;
 `;
 
 export const Item = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: ${space[6]}px;
+  cursor: pointer;
   p {
     font-size: ${fontSizes[0] + 2}px;
     line-height: 24px;

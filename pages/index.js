@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Start from "./start";
+
 export default function Home() {
   return (
     <div>

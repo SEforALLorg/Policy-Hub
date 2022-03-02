@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { availableOptions } from "../../../../constant/options";
-import Accordion from "../../../accordion/accordion";
-import Filter from "../../../cards/component/filtercard/Filter";
+import Accordion from "components/accordion/accordion";
+import Report from "components/cards/component/filtercard/Filter";
+
+import { getFormattedData } from "utilities";
 
 import {
   RightWrap,
@@ -12,11 +13,26 @@ import {
   ReportsLeftWrap,
   ReportsRightWrap,
   InnerSlideWrap,
+  Nodata
 } from "./styles";
+import Loader from "components/loader";
 
-const RightWrapPage = ({ reports, isNext }) => {
+const RightWrapPage = ({
+  isNext,
+  countriesData,
+  regionsData,
+  segmentsData,
+  documentTypesData,
+  yearsData,
+  generationSourcesData,
+  allReports,
+  publicationReports,
+  nonPublicationReports,
+  isFetchingReports
+}) => {
   const left = 447 * isNext;
   const [isOpen, setIsOpen] = useState("");
+
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -31,104 +47,71 @@ const RightWrapPage = ({ reports, isNext }) => {
             title="Select Country"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.country}
+            options={getFormattedData(countriesData?.data?.data)}
           />
           <Accordion
             title="Select Region"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.region}
+            options={getFormattedData(regionsData?.data?.data)}
           />
           <Accordion
             title="Segment"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.segment}
+            options={getFormattedData(segmentsData?.data?.data)}
           />
           <Accordion
             title="Resource type"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.resource}
+            options={getFormattedData(documentTypesData?.data?.data)}
           />
           <Accordion
             title="Year"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.year}
+            options={getFormattedData(yearsData?.data?.data)}
           />
           <Accordion
             title="Generation source"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={availableOptions.source}
+            options={getFormattedData(generationSourcesData?.data?.data)}
           />
         </ReportsLeftWrap>
+
         <ReportsRightWrap>
-          {/* {reports?.map((item, index) => ( */}
-            <InnerSlideWrap>
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-              <Filter
-                countryname={"USA"}
-                area={"North America "}
-                item={" IRENA"}
-                date={"2017"}
-                file={"static/images/USAflag.svg"}
-                title={
-                  "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
-                }
-              />
-            </InnerSlideWrap>
-          {/* ))} */}
+          <InnerSlideWrap>
+            {isFetchingReports ? <Loader /> : !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
+              No Reports Found
+            </Nodata> : allReports?.data?.data?.map((i, index) => {
+              const name = i.attributes.ReportName;
+              const year =
+                i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
+              const country =
+                i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                  ?.CountryName;
+              const area =
+                i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                  ?.RegionName;
+              const publishingOrganizations =
+                i?.attributes?.AddFilters?.publishing_organizations?.data[0]
+                  ?.attributes?.PublishingOrganization;
+              return (
+                <Report
+                  countryName={country || "USA"}
+                  area={area || "North America "}
+                  item={publishingOrganizations || "IRENA"}
+                  date={year || "2018"}
+                  file={"static/images/USAflag.svg"}
+                  title={name}
+                  key={index}
+                  star={index > 1}
+                />
+              );
+            })}
+          </InnerSlideWrap>
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Filter from "../../components/cards/component/filtercard/Filter";
+import Report from "../../components/cards/component/filtercard/Filter";
 import { availableOptions } from "../../constant/options";
 import Accordion from "../accordion/accordion";
 import SearchBar from "../searchBar/search";
@@ -69,26 +69,26 @@ const ResouceStep = () => {
             })}
           </Cards>
           <FilterCard>
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/videoicon.svg"}
               title={
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}
             />
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/greenfile.svg"}
               title={
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}
@@ -97,14 +97,14 @@ const ResouceStep = () => {
               <Border></Border>
               <Border></Border>
             </BorderWrap>
-            <Filter
+            <Report
               style={{ height: 66, width: 66 }}
               mainImg={"static/images/yellowfile.svg"}
               title={
                 "A review of microgrid development in the United States – A decade of progress on policies, demonstrations, controls, and software tools"
               }
               file={"static/images/USAflag.svg"}
-              countryname={"USA"}
+              countryName={"USA"}
               area={"North America "}
               item={" IRENA"}
               date={"2017"}

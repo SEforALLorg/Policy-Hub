@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import RadioButton from "../radioButton";
 import {
   StepWrap,
@@ -10,32 +10,43 @@ import {
   Steps,
 } from "./style";
 
-const StepComponent = ({onNext, onPrevious}) => {
+const StepComponent = ({ onNext, onPrevious, item, setOptionReport }) => {
+  const [optionData, setOptionData] = useState();
+  const title =
+    item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
+  const multiAnswer = item?.attributes?.AddAnswer;
+
+  useEffect(() => {
+    if (multiAnswer?.length) {
+      setOptionData(multiAnswer[0]);
+    }
+  }, [multiAnswer?.length]);
+  
   return (
     <StepWrap>
-      <Title>1. Determine mini-grid ownership and operator model </Title>
+      <Title>{title} </Title>
       <OptionsWrap>
-        <Item>
-          <RadioButton checked={true} />
-          <p>Utility operator model</p>
-        </Item>
-        <Item>
-          <RadioButton />
-          <p>Private operator model</p>
-        </Item>
-        <Item>
-          <RadioButton />
-          <p>Community operator model</p>
-        </Item>
-        <Item>
-          <RadioButton />
-          <p> Public-private operator model</p>
-        </Item>
+        {multiAnswer?.map((i, index) => {
+          if(!i?.Answer) return null
+          return (
+            <Item key={index} onClick={() => {
+              setOptionData(i);
+              setOptionReport(i);
+              }}>
+              <RadioButton checked={optionData?.id === i?.id} />
+              <p>{i?.Answer}</p>
+            </Item>
+          );
+        })}
       </OptionsWrap>
       <ButtonsWrap>
-        <SlideButton onClick={onPrevious} className="previous"><img src="static/images/leftArrow.svg" alt="" /> Previous</SlideButton>
+        <SlideButton onClick={onPrevious} className="previous">
+          <img src="static/images/leftArrow.svg" alt="" /> Previous
+        </SlideButton>
         <Steps>1/3</Steps>
-        <SlideButton onClick={onNext}>Next <img src="static/images/rightArrow.svg" alt="" /></SlideButton>
+        <SlideButton onClick={() => onNext(optionData?.NextQuestion?.data?.id)}>
+          Next <img src="static/images/rightArrow.svg" alt="" />
+        </SlideButton>
       </ButtonsWrap>
     </StepWrap>
   );
