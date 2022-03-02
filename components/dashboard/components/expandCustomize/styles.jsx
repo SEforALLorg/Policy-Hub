@@ -14,29 +14,29 @@ export const Wrapper = styled.div`
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
   transition: transform 2s ease-out;
-  transform: ${({ isExpand }) => isExpand ? 'scale(1, 1)' : 'scale(0.5)'} ;
+  transform: ${({ isExpand }) => (isExpand ? "scale(1, 1)" : "scale(0.5)")};
   position: relative;
   width: 100%;
-  .bigCard{
+  .bigCard {
     display: flex;
     opacity: 0;
     position: absolute;
     top: 0px;
     left: 0px;
-    height:100%;
+    height: 100%;
   }
-  .bigCardAnimation{
+  .bigCardAnimation {
     animation: 2s ${fadeInAnimation};
     opacity: 1;
   }
-  .smallCard{
+  .smallCard {
     position: absolute;
     height: 100%;
     top: 0px;
     left: 0px;
-    width:100%;
+    width: 100%;
   }
-  .smallCardAnimation{
+  .smallCardAnimation {
     animation: 2s ${fadeOutAnimation};
     opacity: 0;
     visibility: hidden;
@@ -75,7 +75,7 @@ export const CardTitle = styled.p`
   font-style: normal;
   font-weight: 700;
   font-size: ${fontSizes[2] + 2}px;
-  line-height:  26px;
+  line-height: 26px;
   text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
@@ -112,12 +112,14 @@ export const Steps = styled.div`
   display: flex;
   align-items: center;
   justify-content: baseline;
-  padding: ${space[6]}px 0px;
+  padding: ${space[2]}px 0px;
+  height: 45px;
 `;
 export const Text = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
+  padding-right: 5px;
 `;
 export const Dot = styled.span`
   width: 10px;
@@ -126,15 +128,31 @@ export const Dot = styled.span`
   border-radius: 50%;
   display: inline-block;
   margin-right: ${space[4]}px;
+  position: relative;
+  &::after {
+    content: "";
+    border-left: 2px solid #13a2bc;
+    width: 2px;
+    height: 50px;
+    position: absolute;
+    left: 4px;
+    top: 2px;
+  }
+  &.hideDot {
+    &::after {
+      border-left: none;
+    }
+  }
 `;
 export const StepTitle = styled.p`
   font-style: normal;
-  font-weight:400;
-  font-size:${fontSizes[0]}px ;
+  font-weight: 400;
+  font-size: ${fontSizes[0] - 2}px;
   line-height: 20px;
   text-transform: capitalize;
   color: #454545;
   margin: ${space[0]}px;
+  flex: 1;
 `;
 export const YesButton = styled.button`
   background: ${colors.primary};
@@ -159,7 +177,7 @@ export const RightWrap = styled.div`
 export const ReportsWrap = styled.div`
   display: flex;
   margin-top: ${space[10] + 10}px;
-  height:100%;
+  height: 100%;
 `;
 export const ReportsLeftWrap = styled.div`
   width: 30%;
@@ -189,15 +207,14 @@ export const InnerSlideWrap = styled.div`
   min-width: 100%;
 `;
 
-
 export const QuestionWrap = styled.div`
-  &.animation{
+  &.animation {
     animation: 2s ${fadeInAnimation};
   }
-  &.animation-inner{
+  &.animation-inner {
     animation: 2s ${fadeInAnimation};
   }
-`
+`;
 
 export const Restart = styled.div`
   width: 150px;
@@ -209,4 +226,18 @@ export const Restart = styled.div`
   box-shadow: 0px 3.75373px 3.75373px rgb(0 0 0 / 25%);
   border-radius: 11.2612px;
   cursor: pointer;
-`
+`;
+
+export const Nodata = styled.div`
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+`;
+
+export const LoaderWrap = styled.div`
+  text-align: center;
+  .spinner-border {
+    border: 0.25em solid #065a89;
+    border-right-color: transparent;
+  }
+`;

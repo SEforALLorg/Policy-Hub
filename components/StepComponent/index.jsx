@@ -10,7 +10,7 @@ import {
   Steps,
 } from "./style";
 
-const StepComponent = ({ onNext, onPrevious, item }) => {
+const StepComponent = ({ onNext, onPrevious, item, setOptionReport }) => {
   const [optionData, setOptionData] = useState();
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
@@ -27,8 +27,12 @@ const StepComponent = ({ onNext, onPrevious, item }) => {
       <Title>{title} </Title>
       <OptionsWrap>
         {multiAnswer?.map((i, index) => {
+          if(!i?.Answer) return null
           return (
-            <Item key={index} onClick={() => setOptionData(i)}>
+            <Item key={index} onClick={() => {
+              setOptionData(i);
+              setOptionReport(i);
+              }}>
               <RadioButton checked={optionData?.id === i?.id} />
               <p>{i?.Answer}</p>
             </Item>

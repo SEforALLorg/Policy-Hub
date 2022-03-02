@@ -13,7 +13,9 @@ import {
   ReportsLeftWrap,
   ReportsRightWrap,
   InnerSlideWrap,
+  Nodata
 } from "./styles";
+import Loader from "components/loader";
 
 const RightWrapPage = ({
   isNext,
@@ -24,6 +26,9 @@ const RightWrapPage = ({
   yearsData,
   generationSourcesData,
   allReports,
+  publicationReports,
+  nonPublicationReports,
+  isFetchingReports
 }) => {
   const left = 447 * isNext;
   const [isOpen, setIsOpen] = useState("");
@@ -75,34 +80,38 @@ const RightWrapPage = ({
             options={getFormattedData(generationSourcesData?.data?.data)}
           />
         </ReportsLeftWrap>
+
         <ReportsRightWrap>
-            <InnerSlideWrap>
-              {allReports?.data?.data?.map((i, index) => {
-                const name = i.attributes.ReportName;
-                const year =
-                  i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
-                const country =
-                  i?.attributes?.AddFilters?.countries?.data[0]?.attributes
-                    ?.CountryName;
-                const area =
-                  i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                    ?.RegionName;
-                const publishingOrganizations =
-                  i?.attributes?.AddFilters?.publishing_organizations?.data[0]
-                    ?.attributes?.PublishingOrganization;
-                return (
-                  <Report
-                    countryName={country || "USA"}
-                    area={area || "North America "}
-                    item={publishingOrganizations || "IRENA"}
-                    date={year || "2018"}
-                    file={"static/images/USAflag.svg"}
-                    title={name}
-                    key={index}
-                  />
-                );
-              })}
-            </InnerSlideWrap>
+          <InnerSlideWrap>
+            {isFetchingReports ? <Loader /> : !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
+              No Reports Found
+            </Nodata> : allReports?.data?.data?.map((i, index) => {
+              const name = i.attributes.ReportName;
+              const year =
+                i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
+              const country =
+                i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                  ?.CountryName;
+              const area =
+                i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                  ?.RegionName;
+              const publishingOrganizations =
+                i?.attributes?.AddFilters?.publishing_organizations?.data[0]
+                  ?.attributes?.PublishingOrganization;
+              return (
+                <Report
+                  countryName={country || "USA"}
+                  area={area || "North America "}
+                  item={publishingOrganizations || "IRENA"}
+                  date={year || "2018"}
+                  file={"static/images/USAflag.svg"}
+                  title={name}
+                  key={index}
+                  star={index > 1}
+                />
+              );
+            })}
+          </InnerSlideWrap>
         </ReportsRightWrap>
       </ReportsWrap>
     </RightWrap>

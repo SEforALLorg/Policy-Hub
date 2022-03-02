@@ -20,26 +20,39 @@ import {
 import StepComponent from "../../../StepComponent";
 import { useEffect } from "react";
 
-const LeftWrapPage = ({ onNext, onPrevious, questions }) => {
+const LeftWrapPage = ({
+  onPrevious,
+  questions,
+  setPublicationReports,
+  setNonPublicationReports,
+  firstQuestion,
+  restart
+}) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
-
+  const [userJourney, setUserJourney] = useState([]);
+  
   useEffect(() => {
-    if (questions?.length) {
+    if (questions?.length && firstQuestion) {
       setNextQuestionId(
-        questions[0]?.attributes?.MainQuestion?.Question?.data?.id
+        firstQuestion
       );
       setFirstQuestionId(
-        questions[0]?.attributes?.MainQuestion?.Question?.data?.id
+        firstQuestion
       );
+      setUserJourney([questions[0], ...userJourney])
     }
-  }, [questions?.length]);
+  }, [questions?.length, firstQuestion]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
     setNextQuestionId(e);
   };
 
+  const onReportsFind = (e) => {
+    setPublicationReports(e?.KeyPublication?.data);
+    setNonPublicationReports(e?.NonKeyPublication?.data);
+  };
   return (
     <LeftWrap>
       <CardHeader>
@@ -51,18 +64,31 @@ const LeftWrapPage = ({ onNext, onPrevious, questions }) => {
           process.
         </CardTitle>
       </CardHeader>
-      <Steps>
-        <Text>
-          <Dot />
-          <StepTitle>
-            Is there an up-to-date National Electrification Strategy (NES)?
-          </StepTitle>
-        </Text>
-        <YesButton>Yes</YesButton>
-      </Steps>
+      {userJourney
+        ?.slice(0, 3).map((item, index) => (
+          <Steps key={index}>
+            <Text>
+              <Dot className={index === 0 && "hideDot"} />
+              <StepTitle>
+                {
+                  item?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.Question
+                }
+              </StepTitle>
+            </Text>
+            <YesButton>Yes</YesButton>
+          </Steps>
+        ))
+        .reverse()}
       <Border></Border>{" "}
       {!nextQuestionId ? (
-        <Restart onClick={() => setNextQuestionId(firstQuestionId)}>
+        <Restart
+          onClick={() => {
+            setNextQuestionId(firstQuestionId);
+            setUserJourney([userJourney[0]]);
+            restart()
+          }}
+        >
           <img src="static/images/restart.svg" alt="" />
         </Restart>
       ) : questions?.length ? (
@@ -89,9 +115,11 @@ const LeftWrapPage = ({ onNext, onPrevious, questions }) => {
                       {singleAnswer?.map((i) => (
                         <BlueButton
                           title={i?.Answer}
-                          onClick={() =>
-                            onNextQuestion(i?.NextQuestion?.data?.id)
-                          }
+                          onClick={() => {
+                            onNextQuestion(i?.NextQuestion?.data?.id);
+                            onReportsFind(i);
+                            setUserJourney([item, ...userJourney]);
+                          }}
                         />
                       ))}
                     </ButtonGrp>
@@ -101,6 +129,7 @@ const LeftWrapPage = ({ onNext, onPrevious, questions }) => {
                     onNext={(e) => onNextQuestion(e)}
                     onPrevious={onPrevious}
                     item={item}
+                    setOptionReport={(i) => onReportsFind(i)}
                   />
                 )}
               </QuestionWrap>

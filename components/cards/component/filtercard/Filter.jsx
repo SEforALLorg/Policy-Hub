@@ -20,7 +20,8 @@ const Report = ({
   item,
   date,
   file,
-  key
+  key,
+  star
 }) => {
   return (
     <Wrapper key={key}>
@@ -30,9 +31,11 @@ const Report = ({
 
           <Text>{title}</Text>
         </ImgWrapper>
-        <Icon>
-          <AiFillStar />
-        </Icon>
+        {
+          star && <Icon>
+            <AiFillStar />
+          </Icon>
+        }
       </Detail>
       <Border></Border>
       <BottomWrap>

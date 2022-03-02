@@ -11,12 +11,13 @@ export const Title = styled.p`
   line-height: 29px;
   text-transform: capitalize;
   color: ${colors.darkText};
+  margin:0px;
+  height: 45px;
 `;
 
 export const OptionsWrap = styled.div`
   padding: 0px ${space[5]}px;
-  // flex: 1;
-  height: 260px;
+  height: 190px;
   overflow: auto;
 `;
 
