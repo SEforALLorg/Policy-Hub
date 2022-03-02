@@ -60,8 +60,7 @@ const LeftWrapPage = ({
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
         <CardTitle>
-          Assess your country’s situation and customize the decision-making
-          process.
+          Customize your decision-making process
         </CardTitle>
       </CardHeader>
       {userJourney
