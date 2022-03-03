@@ -75,16 +75,25 @@ export const ListItem = styled.li`
   cursor: pointer;
   font-size: 15px;
   padding: 8px;
+  position: relative;
   :hover{
-    background: #2596be  ;
+    background: #2596be;
     color: #fff;
+  }
+  input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
   }
 `
 
 export const Span = styled.span`
   background: ${prop => prop.selectedOption ? '#2e9fc7' : 'white'};
   margin-right: 10px;
-  border: 1px solid;
+  border:  1px solid;
   display: inline-block;
   height: 13px;
   width: 13px;

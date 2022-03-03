@@ -18,7 +18,6 @@ import {
 import Loader from "components/loader";
 
 const RightWrapPage = ({
-  isNext,
   countriesData,
   regionsData,
   segmentsData,
@@ -30,9 +29,21 @@ const RightWrapPage = ({
   nonPublicationReports,
   isFetchingReports
 }) => {
-  const left = 447 * isNext;
   const [isOpen, setIsOpen] = useState("");
+  const [selectCountry, setSelectCountry] = useState([]);
 
+  const onCountryChange = (e) => {
+    const revisedCountryList = [...selectCountry]
+    const alreadyPresent =  revisedCountryList.includes(e?.target?.id.toString());
+    const targetIndex = revisedCountryList.indexOf(e?.target?.id);
+    if(alreadyPresent){
+      revisedCountryList.splice(targetIndex, 1);
+      console.log(revisedCountryList, 'revisedCountryList',targetIndex)
+      return setSelectCountry(revisedCountryList);
+    }
+    setSelectCountry([e?.target?.id, ...selectCountry])
+  }
+  
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -48,6 +59,8 @@ const RightWrapPage = ({
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(countriesData?.data?.data)}
+            onChange={(e) => onCountryChange(e)}
+            selected={selectCountry}
           />
           <Accordion
             title="Select Region"

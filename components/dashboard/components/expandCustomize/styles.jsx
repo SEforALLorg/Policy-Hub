@@ -114,6 +114,7 @@ export const Steps = styled.div`
   justify-content: baseline;
   padding: ${space[2]}px 0px;
   height: 45px;
+  cursor: pointer;
 `;
 export const Text = styled.div`
   display: flex;
