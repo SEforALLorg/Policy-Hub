@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { BiChevronDown } from "react-icons/bi";
 
-const Accordion = ({ title, isOpen, setIsOpen, options }) => {
+const Accordion = ({ title, isOpen, setIsOpen, options, onChange, selected }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const toggling = () => {
     if (isOpen === title) {
@@ -37,8 +37,9 @@ const Accordion = ({ title, isOpen, setIsOpen, options }) => {
             {options?.map((option, index) => {
               return (
                 <ListItem onClick={onOptionClicked(option?.attributes?.label)} key={index}>
-                  <Span selectedOption={option?.attributes?.label === selectedOption}> </Span> {""}{" "}
+                  <Span selectedOption={selected?.includes(option?.id.toString())} /> {""}{" "}
                   {option?.attributes?.label}
+                  <input type="checkbox" onChange={onChange} id={option?.id} />
                 </ListItem>
               );
             })}

@@ -21,26 +21,22 @@ import StepComponent from "../../../StepComponent";
 import { useEffect } from "react";
 
 const LeftWrapPage = ({
-  onPrevious,
   questions,
   setPublicationReports,
   setNonPublicationReports,
   firstQuestion,
-  restart
+  restart,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
-  
+  const [stepQuestion, setStepQuestion] = useState([]);
+
   useEffect(() => {
     if (questions?.length && firstQuestion) {
-      setNextQuestionId(
-        firstQuestion
-      );
-      setFirstQuestionId(
-        firstQuestion
-      );
-      setUserJourney([questions[0], ...userJourney])
+      setNextQuestionId(firstQuestion);
+      setFirstQuestionId(firstQuestion);
+      setUserJourney([questions[0], ...userJourney]);
     }
   }, [questions?.length, firstQuestion]);
 
@@ -53,19 +49,36 @@ const LeftWrapPage = ({
     setPublicationReports(e?.KeyPublication?.data);
     setNonPublicationReports(e?.NonKeyPublication?.data);
   };
+
+  const onPreviousQuestion = () => {
+    let revisedArray = [...stepQuestion];
+    setNextQuestionId(
+      revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id
+    );
+    revisedArray.splice(0, 1);
+    setStepQuestion(revisedArray);
+  };
+
   return (
     <LeftWrap>
       <CardHeader>
         <ImgBox>
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
-        <CardTitle>
-          Customize your decision-making process
-        </CardTitle>
+        <CardTitle>Customize your decision-making process</CardTitle>
       </CardHeader>
       {userJourney
-        ?.slice(0, 3).map((item, index) => (
-          <Steps key={index}>
+        ?.slice(0, 3)
+        .map((item, index) => (
+          <Steps
+            key={index}
+            onClick={() => {
+              onNextQuestion(
+                item?.attributes?.MainQuestion?.Question?.data?.id
+              );
+              // userJourney.splice(id, index + 1);
+            }}
+          >
             <Text>
               <Dot className={index === 0 && "hideDot"} />
               <StepTitle>
@@ -80,12 +93,13 @@ const LeftWrapPage = ({
         ))
         .reverse()}
       <Border></Border>{" "}
+      {console.log(nextQuestionId,'nextQuestionId')}
       {!nextQuestionId ? (
         <Restart
           onClick={() => {
             setNextQuestionId(firstQuestionId);
             setUserJourney([userJourney[0]]);
-            restart()
+            restart();
           }}
         >
           <img src="static/images/restart.svg" alt="" />
@@ -126,9 +140,13 @@ const LeftWrapPage = ({
                 ) : (
                   <StepComponent
                     onNext={(e) => onNextQuestion(e)}
-                    onPrevious={onPrevious}
+                    setStepQuestion={(e) =>
+                      setStepQuestion([e, ...stepQuestion])
+                    }
                     item={item}
                     setOptionReport={(i) => onReportsFind(i)}
+                    onPrevious={onPreviousQuestion}
+                    stepQuestion={stepQuestion}
                   />
                 )}
               </QuestionWrap>

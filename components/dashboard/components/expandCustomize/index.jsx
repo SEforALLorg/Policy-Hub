@@ -20,8 +20,6 @@ import LeftWrapPage from "./leftWrap";
 
 const ExpandCustomize = () => {
   const [isExpand, setIsExpand] = useState(false);
-  const [isNext, setIsNext] = useState(0);
-
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
   const [firstQuestion, setFirstQuestion] = useState();
@@ -104,7 +102,6 @@ const ExpandCustomize = () => {
     <Wrapper isExpand={isExpand}>
       <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
         <LeftWrapPage
-          onPrevious={() => setIsNext(isNext - 1)}
           questions={questions?.data?.data?.sort((a,b) => a?.id - b?.id)}
           setPublicationReports={(e) => setPublicationReports(e)}
           setNonPublicationReports={(e) => setNonPublicationReports(e)}
@@ -112,7 +109,6 @@ const ExpandCustomize = () => {
           restart={() => setIsExpand(false)}
         />
         <RightWrapPage
-          isNext={isNext}
           countriesData={countriesData}
           generationSourcesData={generationSourcesData}
           yearsData={yearsData}
