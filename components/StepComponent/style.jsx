@@ -17,7 +17,7 @@ export const Title = styled.p`
 
 export const OptionsWrap = styled.div`
   padding: 0px ${space[5]}px;
-  height: 190px;
+  height: 212px;
   overflow: auto;
 `;
 
