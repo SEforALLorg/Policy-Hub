@@ -102,7 +102,7 @@ const ExpandCustomize = () => {
     <Wrapper isExpand={isExpand}>
       <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
         <LeftWrapPage
-          questions={questions?.data?.data?.sort((a,b) => a?.id - b?.id)}
+          questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           setPublicationReports={(e) => setPublicationReports(e)}
           setNonPublicationReports={(e) => setNonPublicationReports(e)}
           firstQuestion={firstQuestion}
@@ -124,7 +124,7 @@ const ExpandCustomize = () => {
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize
           onYes={() => setIsExpand(!isExpand)}
-          questions={questions?.data?.data?.sort((a,b) => a?.id - b?.id)}
+          questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           isFetchingQuestions={isFetchingQuestions}
           onNextQuestion={(e) => setFirstQuestion(e)}
           onReportsFind={(e) => {

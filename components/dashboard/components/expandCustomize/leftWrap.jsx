@@ -31,12 +31,12 @@ const LeftWrapPage = ({
   const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
-
+  
   useEffect(() => {
     if (questions?.length && firstQuestion) {
       setNextQuestionId(firstQuestion);
       setFirstQuestionId(firstQuestion);
-      setUserJourney([questions[0], ...userJourney]);
+      setUserJourney([...userJourney, questions[0]]);
     }
   }, [questions?.length, firstQuestion]);
 
@@ -59,6 +59,18 @@ const LeftWrapPage = ({
     setStepQuestion(revisedArray);
   };
 
+  const onStepChange = (e) => {
+    let revisedArray = [...userJourney];
+    const targetObject = revisedArray.find(i => i.id === e?.id)
+    const targetIndex = revisedArray.indexOf(targetObject)
+    
+    onNextQuestion(
+      e?.attributes?.MainQuestion?.Question?.data?.id
+    );
+    revisedArray.splice(targetIndex, 2);
+    setUserJourney(targetIndex === 0 ? [] : revisedArray)
+  }
+
   return (
     <LeftWrap>
       <CardHeader>
@@ -72,12 +84,7 @@ const LeftWrapPage = ({
         .map((item, index) => (
           <Steps
             key={index}
-            onClick={() => {
-              onNextQuestion(
-                item?.attributes?.MainQuestion?.Question?.data?.id
-              );
-              // userJourney.splice(id, index + 1);
-            }}
+            onClick={() => onStepChange(item)}
           >
             <Text>
               <Dot className={index === 0 && "hideDot"} />
@@ -90,10 +97,8 @@ const LeftWrapPage = ({
             </Text>
             <YesButton>Yes</YesButton>
           </Steps>
-        ))
-        .reverse()}
+        ))}
       <Border></Border>{" "}
-      {console.log(nextQuestionId,'nextQuestionId')}
       {!nextQuestionId ? (
         <Restart
           onClick={() => {
@@ -131,7 +136,7 @@ const LeftWrapPage = ({
                           onClick={() => {
                             onNextQuestion(i?.NextQuestion?.data?.id);
                             onReportsFind(i);
-                            setUserJourney([item, ...userJourney]);
+                            setUserJourney([...userJourney , {...item, answer: i?.Answer}]);
                           }}
                         />
                       ))}

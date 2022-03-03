@@ -24,6 +24,7 @@ export const Wrapper = styled.div`
     top: 0px;
     left: 0px;
     height: 100%;
+    width: 100%;
   }
   .bigCardAnimation {
     animation: 2s ${fadeInAnimation};
@@ -137,7 +138,7 @@ export const Dot = styled.span`
     height: 50px;
     position: absolute;
     left: 4px;
-    top: 2px;
+    bottom: 2px;
   }
   &.hideDot {
     &::after {

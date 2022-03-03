@@ -38,7 +38,6 @@ const RightWrapPage = ({
     const targetIndex = revisedCountryList.indexOf(e?.target?.id);
     if(alreadyPresent){
       revisedCountryList.splice(targetIndex, 1);
-      console.log(revisedCountryList, 'revisedCountryList',targetIndex)
       return setSelectCountry(revisedCountryList);
     }
     setSelectCountry([e?.target?.id, ...selectCountry])
@@ -96,7 +95,7 @@ const RightWrapPage = ({
 
         <ReportsRightWrap>
           <InnerSlideWrap>
-            {isFetchingReports ? <Loader /> : !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
+            {isFetchingReports ? <Loader /> : !allReports?.data?.data?.length ||  !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
               No Reports Found
             </Nodata> : allReports?.data?.data?.map((i, index) => {
               const name = i.attributes.ReportName;
