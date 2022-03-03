@@ -9,7 +9,7 @@ export const TopWrap = styled.div`
   }
 `;
 export const Bottom = styled.div`
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   position: relative;
 `;

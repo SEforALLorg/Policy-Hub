@@ -14,13 +14,13 @@ export const Wrapper = styled.div`
   margin-bottom: ${space[10] * 2}px;
   overflow: hidden;
   transition: transform 2s ease-out;
-  transform: ${({ isExpand }) => (isExpand ? "scale(1, 1)" : "scale(0.5)")};
+  transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   position: relative;
   width: 100%;
   .bigCard {
     display: flex;
     opacity: 0;
-    position: absolute;
+    // position: absolute;
     top: 0px;
     left: 0px;
     height: 100%;
