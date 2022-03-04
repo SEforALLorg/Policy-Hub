@@ -3,6 +3,7 @@ import Accordion from "components/accordion/accordion";
 import Report from "components/cards/component/filtercard/Filter";
 
 import { getFormattedData } from "utilities";
+import { Flags } from "../../../../constant/flags";
 
 import {
   RightWrap,
@@ -150,71 +151,77 @@ const RightWrapPage = ({
               </Nodata>
             ) : (
               <>
-                {Boolean(finalPublicationReports.length) && finalPublicationReports?.map((i, index) => {
-                  const name = i?.attributes.ReportName;
-                  if(!name) return null
-                  const year =
-                    i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
-                  const country =
-                    i?.attributes?.AddFilters?.countries?.data[0]?.attributes
-                      ?.CountryName;
-                  const area =
-                    i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                      ?.RegionName;
-                  const publishingOrganizations =
-                    i?.attributes?.AddFilters?.publishing_organizations?.data[0]
-                      ?.attributes?.PublishingOrganization;
-                  const url = i?.attributes?.URL;
+                {Boolean(finalPublicationReports.length) &&
+                  finalPublicationReports?.map((i, index) => {
+                    const name = i?.attributes.ReportName;
+                    if (!name) return null;
+                    const year =
+                      i?.attributes?.AddFilters?.years?.data[0]?.attributes
+                        ?.Year;
+                    const country =
+                      i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                        ?.CountryName;
+                    const area =
+                      i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                        ?.RegionName;
+                    const publishingOrganizations =
+                      i?.attributes?.AddFilters?.publishing_organizations
+                        ?.data[0]?.attributes?.PublishingOrganization;
+                    const url = i?.attributes?.URL;
+                    const flag = Flags.find((e) => e?.name == country);
 
-                  return (
-                    <Report
-                      countryName={country || "USA"}
-                      area={area || "North America "}
-                      item={publishingOrganizations || "IRENA"}
-                      date={year || "2018"}
-                      file={"static/images/USAflag.svg"}
-                      title={name}
-                      key={index}
-                      star={true}
-                      url={url}
-                    />
-                  );
-                })}
-                {Boolean(finalPublicationReports[0]?.attributes?.ReportName) ?
+                    return (
+                      <Report
+                        countryName={country}
+                        area={area || "North America "}
+                        item={publishingOrganizations || "IRENA"}
+                        date={year || "2018"}
+                        file={flag?.image || "static/images/USAflag.svg"}
+                        title={name}
+                        key={index}
+                        star={true}
+                        url={url}
+                      />
+                    );
+                  })}
+                {Boolean(finalPublicationReports[0]?.attributes?.ReportName) ? (
                   <>
                     <Divider />
                     <Divider style={{ marginBottom: 18, marginTop: 3 }} />
                   </>
-                  : null}
-                {finalNonPublicationReports.length && finalNonPublicationReports?.map((i, index) => {
-                  const name = i?.attributes?.ReportName;
-                  if(!name) return null
-                  const year =
-                    i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
-                  const country =
-                    i?.attributes?.AddFilters?.countries?.data[0]?.attributes
-                      ?.CountryName;
-                  const area =
-                    i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                      ?.RegionName;
-                  const publishingOrganizations =
-                    i?.attributes?.AddFilters?.publishing_organizations?.data[0]
-                      ?.attributes?.PublishingOrganization;
-                  const url = i?.attributes?.URL;
+                ) : null}
+                {finalNonPublicationReports.length &&
+                  finalNonPublicationReports?.map((i, index) => {
+                    const name = i?.attributes?.ReportName;
+                    if (!name) return null;
+                    const year =
+                      i?.attributes?.AddFilters?.years?.data[0]?.attributes
+                        ?.Year;
+                    const country =
+                      i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                        ?.CountryName;
+                    const area =
+                      i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                        ?.RegionName;
+                    const publishingOrganizations =
+                      i?.attributes?.AddFilters?.publishing_organizations
+                        ?.data[0]?.attributes?.PublishingOrganization;
+                    const url = i?.attributes?.URL;
+                    const flag = Flags.find((e) => e?.name == country);
 
-                  return (
-                    <Report
-                      countryName={country || "USA"}
-                      area={area || "North America "}
-                      item={publishingOrganizations || "IRENA"}
-                      date={year || "2018"}
-                      file={"static/images/USAflag.svg"}
-                      title={name}
-                      key={index}
-                      url={url}
-                    />
-                  );
-                })}
+                    return (
+                      <Report
+                        countryName={country}
+                        area={area || "North America "}
+                        item={publishingOrganizations || "IRENA"}
+                        date={year || "2018"}
+                        file={flag?.image || "static/images/USAflag.svg"}
+                        title={name}
+                        key={index}
+                        url={url}
+                      />
+                    );
+                  })}
               </>
             )}
           </InnerSlideWrap>

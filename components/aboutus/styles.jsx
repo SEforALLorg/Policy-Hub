@@ -38,9 +38,8 @@ export const SubTitle = styled.p`
     line-height: 25.3px;
     color: ${colors.lighttext};
     margin-bottom: ${space[10]}px;
-    span{
-        display:block;
-        font-weight: 700;
+    a{
+        font-weight: 600;
         color: ${colors.primary} 
     }
 `

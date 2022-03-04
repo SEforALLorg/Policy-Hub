@@ -3,7 +3,7 @@ import { colors, space ,media,fullWidth} from '../constant'
 
 export const Wrapper = styled.div`
     padding: ${space[5]}px;
-    background: ${colors.background};
+    // background: ${colors.background};
 `
 
 export const CardBox = styled.div`

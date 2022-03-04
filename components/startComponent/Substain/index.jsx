@@ -5,6 +5,7 @@ import SubstainCard from "./SubCard/SubCard.jsx";
 import ExpandCustomize from "../../dashboard/components/expandCustomize";
 
 const StartSubstain = () => {
+  const [isExpand, setIsExpand] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const HandleOpen = () => {
     setIsOpen(true);
@@ -27,8 +28,8 @@ const StartSubstain = () => {
           <SubstainCard HandleOpen={HandleOpen} />
         </TopWrap>
         {isOpen ? (
-          <Bottom id="bottom-view">
-            <ExpandCustomize />
+          <Bottom id="bottom-view" isExpand={isExpand}>
+            <ExpandCustomize onExpand={e => setIsExpand(e)} />
           </Bottom>
         ) : null}
       </FullWrap>

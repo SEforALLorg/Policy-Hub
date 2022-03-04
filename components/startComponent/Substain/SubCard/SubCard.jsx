@@ -42,7 +42,7 @@ const SubCard = ({ HandleOpen }) => {
             <Step className="topStep">
               <Point>
                 <SubTitle style={{ marginLeft: "20px" }}>
-                  The sustainable energy for all knowledge hub is an interactive
+                  The Sustainable Energy for All knowledge hub is an interactive
                   platform that will help/support policy makers in developing
                   conducive policy and regulatory frameworks for sustainable
                   energy. 
