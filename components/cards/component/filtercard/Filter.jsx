@@ -8,6 +8,7 @@ import {
   BottomWrap,
   Box,
   ImgWrapper,
+  ImageWrap
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
@@ -43,7 +44,9 @@ const Report = ({
         {
           countryName && <>
             <Box>
-              <img src={file} alt="flag" />
+              <ImageWrap style={{backgroundImage: `url(${file})`}}>
+                {/* <img src={file} alt="flag" /> */}
+              </ImageWrap>
               <Text>{countryName}</Text>
             </Box>
             <span />

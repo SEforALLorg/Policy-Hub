@@ -18,7 +18,9 @@ import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
-const ExpandCustomize = () => {
+const ExpandCustomize = ({
+  onExpand
+}) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -151,6 +153,7 @@ const ExpandCustomize = () => {
           firstQuestion={firstQuestion}
           restart={() => {
             setIsExpand(false)
+            onExpand(false);
             setSelectInputs({
               countries: [],
               regions: [],
@@ -178,7 +181,10 @@ const ExpandCustomize = () => {
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize
-          onYes={() => setIsExpand(!isExpand)}
+          onYes={() => {
+            setIsExpand(!isExpand)
+            onExpand(true);
+          }}
           questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           isFetchingQuestions={isFetchingQuestions}
           onNextQuestion={(e) => setFirstQuestion(e)}
