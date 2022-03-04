@@ -27,5 +27,4 @@ export const Text= styled.a`
     line-height: 19px;
     text-align: center;
     display:block;
-    text-transform: capitalize;
 `

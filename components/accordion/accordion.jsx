@@ -30,6 +30,14 @@ const Accordion = ({
   };
 
   const onOptionClicked = (value) => () => {
+    const options = [...selectedOption]
+    const target = options?.includes(value)
+    if (target) {
+      const targetIndex = options?.indexOf(value)
+
+      options.splice(targetIndex, 1)
+      return setSelectedOption(options)
+    }
     setSelectedOption([...selectedOption, value]);
   };
   return (

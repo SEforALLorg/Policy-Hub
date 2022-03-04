@@ -8,7 +8,7 @@ import Dashboard from "../../components/dashboard/dashboard";
 
 const Start = () => {
   return (
-    <Wrapper>
+    <Wrapper style={{backgroundImage: `url(static/images/BG.png)`}}>
       <Container fulid="md">
         <Header />
         <StartCards>

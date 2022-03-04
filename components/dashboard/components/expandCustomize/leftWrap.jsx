@@ -31,7 +31,7 @@ const LeftWrapPage = ({
   const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
-  
+
   useEffect(() => {
     if (questions?.length && firstQuestion) {
       setNextQuestionId(firstQuestion);
@@ -61,15 +61,13 @@ const LeftWrapPage = ({
 
   const onStepChange = (e) => {
     let revisedArray = [...userJourney];
-    const targetObject = revisedArray.find(i => i.id === e?.id)
-    const targetIndex = revisedArray.indexOf(targetObject)
-    
-    onNextQuestion(
-      e?.attributes?.MainQuestion?.Question?.data?.id
-    );
+    const targetObject = revisedArray.find((i) => i.id === e?.id);
+    const targetIndex = revisedArray.indexOf(targetObject);
+
+    onNextQuestion(e?.attributes?.MainQuestion?.Question?.data?.id);
     revisedArray.splice(targetIndex, 2);
-    setUserJourney(targetIndex === 0 ? [] : revisedArray)
-  }
+    setUserJourney(targetIndex === 0 ? [] : revisedArray);
+  };
 
   return (
     <LeftWrap>
@@ -79,31 +77,34 @@ const LeftWrapPage = ({
         </ImgBox>
         <CardTitle>Customize your decision-making process</CardTitle>
       </CardHeader>
-      {userJourney
-        ?.slice(0, 3)
-        .map((item, index) => (
-          <Steps
-            key={index}
-            onClick={() => onStepChange(item)}
-          >
-            <Text>
-              <Dot className={index === 0 && "hideDot"} />
-              <StepTitle>
-                {
-                  item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question
-                }
-              </StepTitle>
-            </Text>
-            <YesButton>Yes</YesButton>
-          </Steps>
-        ))}
+      {userJourney?.slice(0, 3).map((item, index) => (
+        <Steps
+          key={index}
+          onClick={() => {
+            if (nextQuestionId) {
+              onStepChange(item);
+            }
+          }}
+        >
+          <Text>
+            <Dot className={index === 0 && "hideDot"} />
+            <StepTitle>
+              {
+                item?.attributes?.MainQuestion?.Question?.data?.attributes
+                  ?.Question
+              }
+            </StepTitle>
+          </Text>
+          <YesButton>Yes</YesButton>
+        </Steps>
+      ))}
       <Border></Border>{" "}
       {!nextQuestionId ? (
         <Restart
           onClick={() => {
             setNextQuestionId(firstQuestionId);
-            setUserJourney([userJourney[0]]);
+            setUserJourney([]);
+            setStepQuestion([]);
             restart();
           }}
         >
@@ -136,7 +137,10 @@ const LeftWrapPage = ({
                           onClick={() => {
                             onNextQuestion(i?.NextQuestion?.data?.id);
                             onReportsFind(i);
-                            setUserJourney([...userJourney , {...item, answer: i?.Answer}]);
+                            setUserJourney([
+                              ...userJourney,
+                              { ...item, answer: i?.Answer },
+                            ]);
                           }}
                         />
                       ))}

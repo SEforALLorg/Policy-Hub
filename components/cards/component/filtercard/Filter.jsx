@@ -21,10 +21,11 @@ const Report = ({
   date,
   file,
   key,
-  star
+  star,
+  url
 }) => {
   return (
-    <Wrapper key={key}>
+    <Wrapper key={key} onClick={() => window.open(url)}>
       <Detail>
         <ImgWrapper>
           {mainImg && <img src={mainImg} alt="img" style={style} />}
@@ -40,19 +41,24 @@ const Report = ({
       <Border></Border>
       <BottomWrap>
         {
-          countryName && <Box>
-            <img src={file} alt="flag" />
-            <Text>{countryName}</Text>
-          </Box>
+          countryName && <>
+            <Box>
+              <img src={file} alt="flag" />
+              <Text>{countryName}</Text>
+            </Box>
+            <span />
+          </>
         }
         <Box>
-          <Text>{area}</Text>
+          <Text className="innerText">{area}</Text>
         </Box>
+        <span />
         <Box>
-          <Text>{item}</Text>
+          <Text className="innerText">{item}</Text>
         </Box>
+        <span />
         <Box>
-          <Text>{date}</Text>
+          <Text className="innerText">{date}</Text>
         </Box>
       </BottomWrap>
     </Wrapper>

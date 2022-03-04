@@ -23,7 +23,6 @@ export const SubHeading = styled.p`
     font-weight: 400;
     font-size: ${fontSizes[3]  + 1}px;
     line-height: 29px;
-    text-transform: capitalize;
     color: ${colors.lighttext};
     margin: ${space[0]}px;
 `

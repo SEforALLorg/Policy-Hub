@@ -9,7 +9,6 @@ export const StepWrap = styled.div`
 export const Title = styled.p`
   font-size: ${fontSizes[0] + 3}px;
   line-height: 29px;
-  text-transform: capitalize;
   color: ${colors.darkText};
   margin:0px;
   height: 45px;
@@ -39,6 +38,11 @@ export const ButtonsWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
+  position: absolute;
+    bottom: 18px;
+    width: 100%;
+    left: 0px;
+    padding: 0px 20px;
 `;
 
 export const SlideButton = styled.button`
@@ -71,4 +75,20 @@ export const Steps = styled.div`
   color: ${colors.blue};
   font-wight: 600;
   font-size: ${fontSizes[0] + 2}px;
+`;
+
+export const BigTitle = styled.p`
+  font-style: normal;
+  font-weight: 700;
+  font-size: ${fontSizes[1] + 1}px;
+  line-height: 24px;
+  user-select: none;
+  color: ${colors.text};
+  margin-bottom: 0px;
+  svg {
+    color: ${colors.gray};
+    font-size: ${fontSizes[2] - 3}px;
+    margin-left: ${space[2] + 1}px;
+    margin-top: -2px;
+  }
 `;

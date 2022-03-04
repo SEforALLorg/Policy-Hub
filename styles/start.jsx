@@ -4,6 +4,8 @@ import { colors, space,fullWidth } from '../constant'
 export const Wrapper = styled.div`
     padding: ${space[5]}px;
     background: ${colors.background};
+    background-attachment: fixed;
+    background-size: 100%; 100%;
 `
 
 export const StartCards = styled.div`

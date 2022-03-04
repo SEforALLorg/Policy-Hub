@@ -71,6 +71,5 @@ export const Label = styled.span`
     font-weight: 400;
     font-size: ${fontSizes[1]}px;
     line-height: 22px;
-    text-transform: capitalize;
     margin: ${space[0]}px;
 `

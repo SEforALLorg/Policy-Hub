@@ -54,7 +54,6 @@ export const SubTitle = styled.p`
   font-weight: 400;
   font-size: ${fontSizes[4] + 2}px;
   line-height: 50px;
-  text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
   margin: ${space[0]}px;

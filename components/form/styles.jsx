@@ -19,7 +19,6 @@ export const FormWrap = styled.div`
     font-size: ${fontSizes[1]}px;
     line-height: 21px;
     width:${fullWidth};
-    text-transform: capitalize;
   }
 `
 export const FieldTitle = styled.p`
@@ -28,7 +27,6 @@ export const FieldTitle = styled.p`
     font-weight: 400;
     font-size: ${fontSizes[2]}px;
     line-height: 29px;
-    text-transform: capitalize;
     margin-right: ${space[10] + 5}px;
     margin-bottom: ${space[0]}px;
 `

@@ -32,7 +32,6 @@ export const Title = styled.p`
     font-weight: 400;
     font-size: ${fontSizes[2]  + 2}px;
     line-height: 26px;
-    text-transform: capitalize;
     color: ${colors.lighttext};
      margin: ${space[0]}px;
 `
@@ -68,7 +67,6 @@ export const Text = styled.p`
     font-weight: 400;
     font-size: ${fontSizes[1]}px;
     line-height: 24px;
-    text-transform: capitalize;
     margin: ${space[0]}px;
     &.text{
         margin-top: ${space[10] * 2}px;

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     border-radius: 7.3px;
     width:${fullWidth};
     margin-bottom: ${space[10]}px;
-    
+    cursor: pointer;
 `
 export const Detail = styled.div`
     display: flex;
@@ -32,8 +32,13 @@ export const Text = styled.p`
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.text};
-    text-transform: capitalize;
-
+    &.innerText{
+        font-size: ${fontSizes[0]}px;
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 `
 export const Icon = styled.div`
   svg{
@@ -47,21 +52,22 @@ export const Border = styled.div`
 export const BottomWrap = styled.div`
     display: flex;
     padding: ${space[6]}px;
-`
-export const Box= styled.div`
-    display: flex;
     align-items: center;
-    img{
-        margin-right: ${space[4]}px;
-    }
-    &:after{
-        content:'';
+    span{
         border-left: 3px solid rgba(134, 164, 176, 0.15);
         width: 3px;
         height: 20px;
         margin: 0px ${space[4]}px;
+        &:last-child:after{
+            border-left: none;  
+        }
     }
-    &:last-child:after{
-        border-left: none;  
+`
+export const Box= styled.div`
+    display: flex;
+    align-items: center;
+    flex:1;
+    img{
+        margin-right: ${space[4]}px;
     }
 `

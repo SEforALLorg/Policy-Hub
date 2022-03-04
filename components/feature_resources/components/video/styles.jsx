@@ -25,7 +25,6 @@ export const  Heading = styled.h6`
     font-size: ${fontSizes[2]}px;
     font-weight: 700;
     line-height: 24px;
-    text-transform: capitalize;
     color: ${colors.boldtext};
     margin-bottom: ${space[1]}px;
 `
@@ -55,7 +54,6 @@ export const  Link= styled.a`
     font-size: ${fontSizes[1]}px;
     font-weight: 400;
     line-height: 24px;
-    text-transform: capitalize;
     text-decoration:none;
     color: ${colors.primary};
 `
