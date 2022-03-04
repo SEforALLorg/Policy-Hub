@@ -150,8 +150,9 @@ const RightWrapPage = ({
               </Nodata>
             ) : (
               <>
-                {finalPublicationReports?.map((i, index) => {
-                  const name = i.attributes.ReportName;
+                {Boolean(finalPublicationReports.length) && finalPublicationReports?.map((i, index) => {
+                  const name = i?.attributes.ReportName;
+                  if(!name) return null
                   const year =
                     i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
                   const country =
@@ -179,14 +180,16 @@ const RightWrapPage = ({
                     />
                   );
                 })}
-                {finalPublicationReports && (
+                {Boolean(finalPublicationReports[0]?.attributes?.ReportName) ?
                   <>
                     <Divider />
                     <Divider style={{ marginBottom: 18, marginTop: 3 }} />
                   </>
-                )}
-                {finalNonPublicationReports?.map((i, index) => {
-                  const name = i.attributes.ReportName;
+                  : null}
+                {console.log(finalNonPublicationReports, 'finalPublicationReports', finalPublicationReports)}
+                {finalNonPublicationReports.length && finalNonPublicationReports?.map((i, index) => {
+                  const name = i?.attributes?.ReportName;
+                  if(!name) return null
                   const year =
                     i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
                   const country =
