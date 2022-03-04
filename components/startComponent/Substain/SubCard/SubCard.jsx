@@ -34,7 +34,8 @@ const SubCard = ({ HandleOpen }) => {
           <Title>
             Sustainable
             <Span>{' '} Energy {' '}</Span>
-            for All <span style={{verticalAlign: 'text-bottom'}}>|</span>
+            for All 
+            {/* <span style={{verticalAlign: 'text-bottom'}}>|</span> */}
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
           <Box>
