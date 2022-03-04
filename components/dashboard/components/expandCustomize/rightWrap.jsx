@@ -179,8 +179,12 @@ const RightWrapPage = ({
                     />
                   );
                 })}
-                <Divider />
-                <Divider style={{ marginBottom: 18, marginTop: 3 }} />
+                {finalPublicationReports && (
+                  <>
+                    <Divider />
+                    <Divider style={{ marginBottom: 18, marginTop: 3 }} />
+                  </>
+                )}
                 {finalNonPublicationReports?.map((i, index) => {
                   const name = i.attributes.ReportName;
                   const year =
