@@ -186,7 +186,6 @@ const RightWrapPage = ({
                     <Divider style={{ marginBottom: 18, marginTop: 3 }} />
                   </>
                   : null}
-                {console.log(finalNonPublicationReports, 'finalPublicationReports', finalPublicationReports)}
                 {finalNonPublicationReports.length && finalNonPublicationReports?.map((i, index) => {
                   const name = i?.attributes?.ReportName;
                   if(!name) return null

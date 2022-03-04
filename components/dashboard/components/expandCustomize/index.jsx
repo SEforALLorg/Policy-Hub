@@ -31,7 +31,7 @@ const ExpandCustomize = () => {
     document_types: [],
     years: [],
     generation_sources: [],
-  });
+  });  
 
   const { data: countriesData } = useQuery(["getCountries"], getCountries, {
     onError: (error) => {
@@ -130,7 +130,7 @@ const ExpandCustomize = () => {
       },
     });
   }, [selectInputs, nonPublicationReports, publicationReports]);
-  
+
   const { data: allReports, isFetching: isFetchingReports } = useQuery(
     ["getReports", query],
     () => getReports(query),
@@ -149,7 +149,17 @@ const ExpandCustomize = () => {
           setPublicationReports={(e) => setPublicationReports(e)}
           setNonPublicationReports={(e) => setNonPublicationReports(e)}
           firstQuestion={firstQuestion}
-          restart={() => setIsExpand(false)}
+          restart={() => {
+            setIsExpand(false)
+            setSelectInputs({
+              countries: [],
+              regions: [],
+              segments: [],
+              document_types: [],
+              years: [],
+              generation_sources: [],
+            })
+          }}
         />
         <RightWrapPage
           countriesData={countriesData}
