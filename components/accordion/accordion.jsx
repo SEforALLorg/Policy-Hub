@@ -11,8 +11,17 @@ import {
 } from "./styles";
 import { BiChevronDown } from "react-icons/bi";
 
-const Accordion = ({ title, isOpen, setIsOpen, options, onChange, selected }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const Accordion = ({
+  title,
+  isOpen,
+  setIsOpen,
+  options,
+  onChange,
+  selected,
+  name,
+}) => {
+  const [selectedOption, setSelectedOption] = useState([]);
+
   const toggling = () => {
     if (isOpen === title) {
       return setIsOpen("");
@@ -21,12 +30,16 @@ const Accordion = ({ title, isOpen, setIsOpen, options, onChange, selected }) =>
   };
 
   const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
+    setSelectedOption([...selectedOption, value]);
   };
   return (
     <AccordionWrap>
       <Select onClick={toggling}>
-        <Text>{title}</Text>
+        <Text>
+          {selectedOption?.length
+            ? selectedOption?.map((i) => i + ", ")
+            : title}
+        </Text>
         <Icon>
           <BiChevronDown />
         </Icon>
@@ -36,10 +49,20 @@ const Accordion = ({ title, isOpen, setIsOpen, options, onChange, selected }) =>
           <DropDownList>
             {options?.map((option, index) => {
               return (
-                <ListItem onClick={onOptionClicked(option?.attributes?.label)} key={index}>
-                  <Span selectedOption={selected?.includes(option?.id.toString())} /> {""}{" "}
-                  {option?.attributes?.label}
-                  <input type="checkbox" onChange={onChange} id={option?.id} />
+                <ListItem
+                  onClick={onOptionClicked(option?.attributes?.label)}
+                  key={index}
+                >
+                  <Span
+                    selectedOption={selected?.includes(option?.id.toString())}
+                  />{" "}
+                  {""} {option?.attributes?.label}
+                  <input
+                    type="checkbox"
+                    onChange={onChange}
+                    id={option?.id}
+                    name={name}
+                  />
                 </ListItem>
               );
             })}

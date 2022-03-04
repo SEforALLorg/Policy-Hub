@@ -7,7 +7,14 @@ import { ToastContainer } from 'react-toastify';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  const queryClient = new QueryClient()
+
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  })
 
   return (
     <QueryClientProvider client={queryClient}>

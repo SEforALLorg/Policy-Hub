@@ -25,6 +25,10 @@ export const Text = styled.p`
     margin: ${space[0]}px;
     color: ${colors.lighttext};
     text-transform: capitalize;
+    width: 136px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `
 export const Icon = styled.div`
   svg{
