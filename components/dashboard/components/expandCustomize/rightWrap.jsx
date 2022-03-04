@@ -27,22 +27,28 @@ const RightWrapPage = ({
   allReports,
   publicationReports,
   nonPublicationReports,
-  isFetchingReports
+  isFetchingReports,
+  setSelectInputs,
+  selectInputs
 }) => {
   const [isOpen, setIsOpen] = useState("");
-  const [selectCountry, setSelectCountry] = useState([]);
 
-  const onCountryChange = (e) => {
-    const revisedCountryList = [...selectCountry]
-    const alreadyPresent =  revisedCountryList.includes(e?.target?.id.toString());
-    const targetIndex = revisedCountryList.indexOf(e?.target?.id);
-    if(alreadyPresent){
+  const onChange = (e) => {
+    const obj = { ...selectInputs }
+    const revisedCountryList = obj[e.target.name]
+    const alreadyPresent = revisedCountryList?.includes(e?.target?.id.toString());
+    const targetIndex = revisedCountryList?.indexOf(e?.target?.id);
+
+    if (alreadyPresent) {
       revisedCountryList.splice(targetIndex, 1);
-      return setSelectCountry(revisedCountryList);
+      obj[e.target.name] = revisedCountryList;
+      return setSelectInputs(obj);
     }
-    setSelectCountry([e?.target?.id, ...selectCountry])
+
+    obj[e.target.name] = [...obj[e.target.name], e?.target?.id]
+    setSelectInputs(obj)
   }
-  
+
   return (
     <RightWrap>
       <CardHeader style={{ justifyContent: "center" }}>
@@ -58,44 +64,60 @@ const RightWrapPage = ({
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(countriesData?.data?.data)}
-            onChange={(e) => onCountryChange(e)}
-            selected={selectCountry}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.countries}
+            name={'countries'}
           />
           <Accordion
             title="Select Region"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(regionsData?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.regions}
+            name={'regions'}
           />
           <Accordion
             title="Segment"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(segmentsData?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.segments}
+            name={'segments'}
           />
           <Accordion
             title="Resource type"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(documentTypesData?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.document_types}
+            name={'document_types'}
           />
           <Accordion
             title="Year"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(yearsData?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.years}
+            name={'years'}
           />
           <Accordion
             title="Generation source"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
             options={getFormattedData(generationSourcesData?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.generation_sources}
+            name={'generation_sources'}
           />
         </ReportsLeftWrap>
 
         <ReportsRightWrap>
           <InnerSlideWrap>
-            {isFetchingReports ? <Loader /> : !allReports?.data?.data?.length ||  !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
+            {isFetchingReports ? <Loader /> : !allReports?.data?.data?.length || !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
               No Reports Found
             </Nodata> : allReports?.data?.data?.map((i, index) => {
               const name = i.attributes.ReportName;

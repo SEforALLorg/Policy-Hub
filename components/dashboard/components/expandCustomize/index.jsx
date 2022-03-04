@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import qs from "qs";
 import {
@@ -24,6 +24,14 @@ const ExpandCustomize = () => {
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
   const [firstQuestion, setFirstQuestion] = useState();
 
+  const [selectInputs, setSelectInputs] = useState({
+    countries: [],
+    regions: [],
+    segments: [],
+    document_types: [],
+    years: [],
+    generation_sources: [],
+  });
 
   const { data: countriesData } = useQuery(["getCountries"], getCountries, {
     onError: (error) => {
@@ -79,15 +87,50 @@ const ExpandCustomize = () => {
     }
   );
 
-  const query = qs.stringify({
-    filters: {
-      id: {
-        $in: [...nonPublicationReports, ...publicationReports].map(
-          (i) => i?.id
-        ),
+  const query = useMemo(() => {
+    return qs.stringify({
+      filters: {
+        id: {
+          $in: [...nonPublicationReports, ...publicationReports].map(
+            (i) => i?.id
+          ),
+        },
+        AddFilters: {
+          countries: {
+            id: {
+              $in: selectInputs?.countries,
+            },
+          },
+          regions: {
+            id: {
+              $in: selectInputs?.regions,
+            },
+          },
+          segments: {
+            id: {
+              $in: selectInputs?.segments,
+            },
+          },
+          document_types: {
+            id: {
+              $in: selectInputs?.document_types,
+            },
+          },
+          years: {
+            id: {
+              $in: selectInputs?.years,
+            },
+          },
+          generation_sources: {
+            id: {
+              $in: selectInputs?.generation_sources,
+            },
+          },
+        },
       },
-    },
-  });
+    });
+  }, [selectInputs, nonPublicationReports, publicationReports]);
+  
   const { data: allReports, isFetching: isFetchingReports } = useQuery(
     ["getReports", query],
     () => getReports(query),
@@ -119,6 +162,8 @@ const ExpandCustomize = () => {
           publicationReports={publicationReports}
           nonPublicationReports={nonPublicationReports}
           isFetchingReports={isFetchingReports}
+          setSelectInputs={setSelectInputs}
+          selectInputs={selectInputs}
         />
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
