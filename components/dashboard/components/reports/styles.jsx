@@ -27,7 +27,6 @@ export const CardTitle = styled.p`
     font-weight: 700;
     font-size: ${fontSizes[3] + 6}px;
     line-height: 36px;
-    text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
     user-select: none;

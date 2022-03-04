@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, fontSizes,space,fullWidth} from '../../constant'
+import { colors, fontSizes, space, fullWidth } from '../../constant'
 export const AccordionWrap = styled.div`
     background: ${colors.white};
     box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
@@ -24,7 +24,6 @@ export const Text = styled.p`
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.lighttext};
-    text-transform: capitalize;
     width: 136px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -70,7 +69,16 @@ export const DropDownList = styled.ul`
   z-index: 9999;
   box-shadow: 0px 4.90168px 17.1559px rgb(0 0 0 / 10%);
   &::-webkit-scrollbar {
-    width: 0em;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(19,166,191,0.2);
+    border-radius: 10px;
   }
 `;
 export const ListItem = styled.li`
@@ -83,6 +91,9 @@ export const ListItem = styled.li`
   :hover{
     background: #2596be;
     color: #fff;
+    span{
+      border: 1px solid white;
+    }
   }
   input{
     width: 100%;
@@ -97,7 +108,7 @@ export const ListItem = styled.li`
 export const Span = styled.span`
   background: ${prop => prop.selectedOption ? '#2e9fc7' : 'white'};
   margin-right: 10px;
-  border:  1px solid;
+  border:  ${prop => prop.selectedOption ? '1px solid #2e9fc7' : '1px solid'} ;
   display: inline-block;
   height: 13px;
   width: 13px;

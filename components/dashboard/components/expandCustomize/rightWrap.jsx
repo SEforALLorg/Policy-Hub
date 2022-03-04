@@ -13,9 +13,11 @@ import {
   ReportsLeftWrap,
   ReportsRightWrap,
   InnerSlideWrap,
-  Nodata
+  Nodata,
+  Divider,
 } from "./styles";
 import Loader from "components/loader";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const RightWrapPage = ({
   countriesData,
@@ -29,14 +31,31 @@ const RightWrapPage = ({
   nonPublicationReports,
   isFetchingReports,
   setSelectInputs,
-  selectInputs
+  selectInputs,
 }) => {
   const [isOpen, setIsOpen] = useState("");
 
+  const finalPublicationReports = publicationReports?.map((publishedReport) => {
+    const report = allReports?.data?.data?.find(
+      (i) => i.id === publishedReport.id
+    );
+    return report;
+  });
+
+  const finalNonPublicationReports = nonPublicationReports?.map(
+    (nonPublishedReport) => {
+      const report = allReports?.data?.data?.find(
+        (i) => i.id === nonPublishedReport.id
+      );
+      return report;
+    }
+  );
   const onChange = (e) => {
-    const obj = { ...selectInputs }
-    const revisedCountryList = obj[e.target.name]
-    const alreadyPresent = revisedCountryList?.includes(e?.target?.id.toString());
+    const obj = { ...selectInputs };
+    const revisedCountryList = obj[e.target.name];
+    const alreadyPresent = revisedCountryList?.includes(
+      e?.target?.id.toString()
+    );
     const targetIndex = revisedCountryList?.indexOf(e?.target?.id);
 
     if (alreadyPresent) {
@@ -45,9 +64,9 @@ const RightWrapPage = ({
       return setSelectInputs(obj);
     }
 
-    obj[e.target.name] = [...obj[e.target.name], e?.target?.id]
-    setSelectInputs(obj)
-  }
+    obj[e.target.name] = [...obj[e.target.name], e?.target?.id];
+    setSelectInputs(obj);
+  };
 
   return (
     <RightWrap>
@@ -66,7 +85,7 @@ const RightWrapPage = ({
             options={getFormattedData(countriesData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.countries}
-            name={'countries'}
+            name={"countries"}
           />
           <Accordion
             title="Select Region"
@@ -75,7 +94,7 @@ const RightWrapPage = ({
             options={getFormattedData(regionsData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.regions}
-            name={'regions'}
+            name={"regions"}
           />
           <Accordion
             title="Segment"
@@ -84,7 +103,7 @@ const RightWrapPage = ({
             options={getFormattedData(segmentsData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.segments}
-            name={'segments'}
+            name={"segments"}
           />
           <Accordion
             title="Resource type"
@@ -93,7 +112,7 @@ const RightWrapPage = ({
             options={getFormattedData(documentTypesData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.document_types}
-            name={'document_types'}
+            name={"document_types"}
           />
           <Accordion
             title="Year"
@@ -102,7 +121,7 @@ const RightWrapPage = ({
             options={getFormattedData(yearsData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.years}
-            name={'years'}
+            name={"years"}
           />
           <Accordion
             title="Generation source"
@@ -111,40 +130,87 @@ const RightWrapPage = ({
             options={getFormattedData(generationSourcesData?.data?.data)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.generation_sources}
-            name={'generation_sources'}
+            name={"generation_sources"}
           />
         </ReportsLeftWrap>
 
         <ReportsRightWrap>
           <InnerSlideWrap>
-            {isFetchingReports ? <Loader /> : !allReports?.data?.data?.length || !publicationReports?.length && !nonPublicationReports?.length ? <Nodata>
-              No Reports Found
-            </Nodata> : allReports?.data?.data?.map((i, index) => {
-              const name = i.attributes.ReportName;
-              const year =
-                i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
-              const country =
-                i?.attributes?.AddFilters?.countries?.data[0]?.attributes
-                  ?.CountryName;
-              const area =
-                i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                  ?.RegionName;
-              const publishingOrganizations =
-                i?.attributes?.AddFilters?.publishing_organizations?.data[0]
-                  ?.attributes?.PublishingOrganization;
-              return (
-                <Report
-                  countryName={country || "USA"}
-                  area={area || "North America "}
-                  item={publishingOrganizations || "IRENA"}
-                  date={year || "2018"}
-                  file={"static/images/USAflag.svg"}
-                  title={name}
-                  key={index}
-                  star={index > 1}
-                />
-              );
-            })}
+            {isFetchingReports ? (
+              <Loader />
+            ) : !allReports?.data?.data?.length ||
+              (!finalPublicationReports?.length &&
+                !finalNonPublicationReports?.length) ? (
+              <Nodata>
+                <p>
+                  <AiOutlineInfoCircle />
+                  No Reports Found.
+                </p>
+                <a href="/resources">View all reports</a>
+              </Nodata>
+            ) : (
+              <>
+                {finalPublicationReports?.map((i, index) => {
+                  const name = i.attributes.ReportName;
+                  const year =
+                    i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
+                  const country =
+                    i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                      ?.CountryName;
+                  const area =
+                    i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                      ?.RegionName;
+                  const publishingOrganizations =
+                    i?.attributes?.AddFilters?.publishing_organizations?.data[0]
+                      ?.attributes?.PublishingOrganization;
+                  const url = i?.attributes?.URL;
+
+                  return (
+                    <Report
+                      countryName={country || "USA"}
+                      area={area || "North America "}
+                      item={publishingOrganizations || "IRENA"}
+                      date={year || "2018"}
+                      file={"static/images/USAflag.svg"}
+                      title={name}
+                      key={index}
+                      star={true}
+                      url={url}
+                    />
+                  );
+                })}
+                <Divider />
+                <Divider style={{ marginBottom: 18, marginTop: 3 }} />
+                {finalNonPublicationReports?.map((i, index) => {
+                  const name = i.attributes.ReportName;
+                  const year =
+                    i?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
+                  const country =
+                    i?.attributes?.AddFilters?.countries?.data[0]?.attributes
+                      ?.CountryName;
+                  const area =
+                    i?.attributes?.AddFilters?.regions?.data[0]?.attributes
+                      ?.RegionName;
+                  const publishingOrganizations =
+                    i?.attributes?.AddFilters?.publishing_organizations?.data[0]
+                      ?.attributes?.PublishingOrganization;
+                  const url = i?.attributes?.URL;
+
+                  return (
+                    <Report
+                      countryName={country || "USA"}
+                      area={area || "North America "}
+                      item={publishingOrganizations || "IRENA"}
+                      date={year || "2018"}
+                      file={"static/images/USAflag.svg"}
+                      title={name}
+                      key={index}
+                      url={url}
+                    />
+                  );
+                })}
+              </>
+            )}
           </InnerSlideWrap>
         </ReportsRightWrap>
       </ReportsWrap>

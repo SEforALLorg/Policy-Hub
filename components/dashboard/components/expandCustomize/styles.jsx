@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   display: flex;
   margin-top: ${space[10] * 2}px;
   margin-bottom: ${space[10] * 2}px;
-  overflow: hidden;
+  // overflow: hidden;
   transition: transform 2s ease-out;
   transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   position: relative;
@@ -49,6 +49,7 @@ export const LeftWrap = styled.div`
   padding: ${space[7] * 2}px;
   box-shadow: 6px 0px 106px -77px ${colors.black};
   z-index: 9999;
+  position: relative;
 `;
 
 export const CardHeader = styled.div`
@@ -77,7 +78,6 @@ export const CardTitle = styled.p`
   font-weight: 700;
   font-size: ${fontSizes[2] + 2}px;
   line-height: 26px;
-  text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
   user-select: none;
@@ -88,15 +88,14 @@ export const CardSubTitle = styled.p`
   font-weight: 700;
   font-size: ${fontSizes[1] + 1}px;
   line-height: 24px;
-  text-transform: capitalize;
   user-select: none;
   color: ${colors.text};
   margin-bottom: ${space[10] * 2}px;
   svg {
     color: ${colors.gray};
-    font-size: ${fontSizes[2]};
+    font-size: ${fontSizes[2] - 3}px;
     margin-left: ${space[2] + 1}px;
-    margin-top: -9px;
+    margin-top: -2px;
   }
 `;
 export const ButtonGrp = styled.div`
@@ -149,9 +148,8 @@ export const Dot = styled.span`
 export const StepTitle = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: ${fontSizes[0] - 2}px;
+  font-size: ${fontSizes[0]}px;
   line-height: 20px;
-  text-transform: capitalize;
   color: #454545;
   margin: ${space[0]}px;
   flex: 1;
@@ -174,12 +172,14 @@ export const RightWrap = styled.div`
   background: ${colors.lightBg};
   padding: ${space[7] * 2}px ${space[5] * 2}px;
   width: 60%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 `;
 
 export const ReportsWrap = styled.div`
   display: flex;
   margin-top: ${space[10] + 10}px;
-  height: 100%;
+  // height: 100%;
 `;
 export const ReportsLeftWrap = styled.div`
   width: 30%;
@@ -189,13 +189,23 @@ export const ReportsRightWrap = styled.div`
   width: 70%;
   max-width: 427px;
   overflow: auto;
+  padding-right: 5px;
   height: 435px;
   min-height: 90%;
   max-height: 100%;
-  padding-bottom: ${space[10]}px;
   display: flex;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
-    width: 0em;
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(19,166,191,0.2);
+    border-radius: 10px;
   }
 `;
 
@@ -234,6 +244,25 @@ export const Nodata = styled.div`
   text-align: center;
   font-size: 18px;
   font-weight: 600;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.text};
+  flex-direction: column;
+  a{
+    color: ${colors.primary};
+    font-size: 14px;
+  }
+  p{
+    display: flex;
+    align-items: center;
+    margin:0px;
+  }
+  svg{
+    margin-right: 5px;
+    margin-top: -3px;
+  }
 `;
 
 export const LoaderWrap = styled.div`
@@ -243,3 +272,10 @@ export const LoaderWrap = styled.div`
     border-right-color: transparent;
   }
 `;
+
+
+export const Divider = styled.div`
+  border-bottom: 2.45084px solid rgba(134, 164, 176, 0.25);
+`;
+
+

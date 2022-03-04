@@ -17,7 +17,6 @@ export const Input = styled.div`
         line-height: 21px;
         margin: ${space[0]}px;
         color: ${colors.lighttext};
-        text-transform: capitalize;
         background: ${colors.white};
         box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
         border-radius: 50px;

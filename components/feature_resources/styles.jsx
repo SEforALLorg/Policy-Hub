@@ -38,7 +38,6 @@ export const ReportHeading = styled.h5`
     font-weight: 700;
     font-size: ${fontSizes[4] + 1}px;
     line-height: 40px;
-    text-transform: capitalize;
     color: ${colors.boldtext};
     margin-bottom: ${space[10] + 3}px;
 `
@@ -55,7 +54,6 @@ export const GoButton = styled.div`
     button{
         width: 183px;
         line-height: 19px;
-        text-transform: capitalize;
         font-weight: 700;
         height: 32px;
         display: block;

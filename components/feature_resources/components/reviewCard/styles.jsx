@@ -53,7 +53,6 @@ export const  Bottom = styled.div`
   button{
     color: ${colors.primary};
     font-size: ${fontSizes[1]}px;
-    text-transform: capitalize;
     font-weight: 400;
     line-height: 19px;
     width: 118px;

@@ -55,7 +55,6 @@ export const SubHeading = styled.p`
     font-size: ${fontSizes[2]  + 2}px;
     line-height: 26px;
     text-align:center;
-    text-transform: capitalize;
     color: ${colors.darktext}
 `   
 export const ImgContainer = styled.div`

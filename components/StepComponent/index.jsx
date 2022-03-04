@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiInfo } from "react-icons/fi";
 import RadioButton from "../radioButton";
 import {
   StepWrap,
@@ -8,6 +9,7 @@ import {
   ButtonsWrap,
   SlideButton,
   Steps,
+  BigTitle,
 } from "./style";
 
 const StepComponent = ({
@@ -19,10 +21,18 @@ const StepComponent = ({
   stepQuestion,
 }) => {
   const [optionData, setOptionData] = useState();
+  const [stepCount, setStepCount] = useState(1);
 
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
+
+  const nextCount =
+    item?.attributes?.QuestionTitle === "Mini-grids"
+      ? 5
+      : item?.attributes?.QuestionTitle?.includes("Standalone")
+      ? 8
+      : 1;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -33,7 +43,15 @@ const StepComponent = ({
 
   return (
     <StepWrap>
-      <Title>{title} </Title>
+      {item?.attributes?.QuestionTitle && (
+        <BigTitle>
+          {item?.attributes?.QuestionTitle}
+          <FiInfo />
+        </BigTitle>
+      )}
+      <Title>
+        {stepCount}. {title}{" "}
+      </Title>
       <OptionsWrap>
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
@@ -53,18 +71,24 @@ const StepComponent = ({
       </OptionsWrap>
       <ButtonsWrap>
         <SlideButton
-          onClick={onPrevious}
+          onClick={() => {
+            onPrevious();
+            setStepCount(stepCount - 1);
+          }}
           className="previous"
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
         >
           <img src="static/images/leftArrow.svg" alt="" /> Previous
         </SlideButton>
-        <Steps>1/3</Steps>
+        <Steps>
+          {stepCount}/{nextCount}
+        </Steps>
         <SlideButton
           onClick={() => {
             onNext(optionData?.NextQuestion?.data?.id);
             setStepQuestion(item);
+            setStepCount(stepCount + 1);
           }}
         >
           Next <img src="static/images/rightArrow.svg" alt="" />

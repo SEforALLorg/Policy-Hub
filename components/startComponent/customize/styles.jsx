@@ -33,7 +33,6 @@ export const CardTitle = styled.p`
     font-weight: 700;
     font-size: ${fontSizes[4] + 5}px;
     line-height: 55px;
-    text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
     user-select: none;
@@ -44,7 +43,6 @@ export const CardSubTitle = styled.p`
     font-weight: 700;
     font-size: ${fontSizes[4] + 4}px;
     line-height: 50px;
-    text-transform: capitalize;
     user-select: none;
     color: ${colors.text};
     padding: 0px ${space[5]}px;

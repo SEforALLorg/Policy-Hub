@@ -34,17 +34,17 @@ const SubCard = ({ HandleOpen }) => {
           <Title>
             Sustainable
             <Span>{' '} Energy {' '}</Span>
-            for All
+            for All <span style={{verticalAlign: 'text-bottom'}}>|</span>
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
           <Box>
             <Step className="topStep">
               <Point>
                 <SubTitle style={{ marginLeft: "20px" }}>
-                  The Sustainable Energy for All Knowledge Hub is an interactive
+                  The sustainable energy for all knowledge hub is an interactive
                   platform that will help/support policy makers in developing
                   conducive policy and regulatory frameworks for sustainable
-                  energy.
+                  energy. 
                 </SubTitle>
               </Point>
             </Step>

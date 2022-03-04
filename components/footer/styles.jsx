@@ -68,7 +68,6 @@ export const FootDetail = styled.p`
     font-weight: 500;
     font-size: ${fontSizes[1]}px;
     line-height: 20px;
-    text-transform: capitalize;
     color: ${colors.white};
     margin-right: ${space[5]}px;
     margin-bottom: ${space[0]}px;
@@ -86,7 +85,6 @@ export const FootDetailBtn = styled.button`
     font-weight: 500;
     font-size: ${fontSizes[1]}px;
     line-height: 20px;
-    text-transform: capitalize;
     color: ${colors.white};
     margin-right: ${space[5]}px;
     padding: ${space[5]}px ${space[8]}px;
@@ -130,7 +128,6 @@ export const CopyRight = styled.p`
     font-weight: 500;
     font-size: ${fontSizes[0] + 2}px;
     line-height: 17px;
-    text-transform: capitalize;
     user-select: none;
     color: ${colors.white};
     width: ${fullWidth};

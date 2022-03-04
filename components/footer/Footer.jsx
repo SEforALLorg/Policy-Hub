@@ -37,20 +37,20 @@ const Footer = () => {
                 </IconsWrap>
                 <RightWrap>
                     <FootDetail>
-                        Powered by Sustainable Energy For All
+                        Powered by sustainable energy for all
                     </FootDetail>
                     <FootDetailBtn>
-                        View Resources
+                        View resources
                     </FootDetailBtn>
                     <FootDetailBtn>
-                        Download Decision Tree
+                     Download decision tree
                     </FootDetailBtn>
                 </RightWrap>
             </FooterWrap>
             <Border></Border>
             <BottomWrap>
                 <CopyRight>
-                    Copyright 2022 Sustainable Energy for All
+                    Copyright 2022 sustainable energy for all
                 </CopyRight>
                 <ImgBox>
                     <img src={"/static/images/setall.svg"} alt="all" />
