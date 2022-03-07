@@ -7,7 +7,14 @@ export const Wrapper = styled.div`
   border-radius: 7.3px;
   width: ${fullWidth};
   margin-bottom: ${space[10]}px;
+  border: 3.67626px solid ${colors.white};
   cursor: pointer;
+  &.active{
+    border: 3.67626px solid #065A89;
+    .title{
+      font-weight: bold;
+    }
+  }
 `;
 export const Detail = styled.div`
   display: flex;
@@ -34,7 +41,7 @@ export const Text = styled.p`
   color: ${colors.text};
   &.innerText {
     font-size: ${fontSizes[0]}px;
-    width: 100px;
+    width: 60px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -82,10 +89,21 @@ export const Box = styled.div`
 
 export const ImageWrap = styled.div`
   margin-right: ${space[4]}px;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   background-size: 60px;
   border-radius: 50%;
   overflow: hidden;
   background-position: center;
+`;
+
+export const GoReportsButton = styled.button`
+  background: rgba(19, 166, 191, 0.2);
+  border-radius: 84.554px;
+  padding: 5px 10px;
+  width: 100px;
+  border: none;
+  font-size: 10px;
+  // margin-left: -48px;
+  color: #13A6BF;
 `;

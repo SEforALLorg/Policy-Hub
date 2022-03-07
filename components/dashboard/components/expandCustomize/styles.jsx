@@ -228,18 +228,6 @@ export const QuestionWrap = styled.div`
   }
 `;
 
-export const Restart = styled.div`
-  width: 150px;
-  height: 150px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0px 3.75373px 3.75373px rgb(0 0 0 / 25%);
-  border-radius: 11.2612px;
-  cursor: pointer;
-`;
-
 export const Nodata = styled.div`
   text-align: center;
   font-size: 18px;

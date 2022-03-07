@@ -1,6 +1,18 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { useQuery } from "react-query";
+import qs from "qs";
+import { ErrorNotify } from "components/notification";
 import Accordion from "components/accordion/accordion";
 import Report from "components/cards/component/filtercard/Filter";
+import { getReports } from "../../../../pages/api/reports";
+import {
+  getCountries,
+  getGenerationSources,
+  getYears,
+  getRegions,
+  getSegments,
+  getDocumentTypes,
+} from "pages/api/filter";
 
 import { getFormattedData } from "utilities";
 import { Flags } from "../../../../constant/flags";
@@ -20,21 +32,117 @@ import {
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
+import SearchBar from "../../../searchBar/search";
+
 const RightWrapPage = ({
-  countriesData,
-  regionsData,
-  segmentsData,
-  documentTypesData,
-  yearsData,
-  generationSourcesData,
-  allReports,
-  publicationReports,
-  nonPublicationReports,
-  isFetchingReports,
+  publicationReports = [],
+  nonPublicationReports = [],
   setSelectInputs,
   selectInputs,
+  showAllReports,
 }) => {
   const [isOpen, setIsOpen] = useState("");
+  const [activeCard, setActiveCard] = useState({});
+  const [search, setSearch] = useState(undefined);
+  const { data: countriesData } = useQuery(["getCountries"], getCountries, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+  });
+
+  const { data: generationSourcesData } = useQuery(
+    ["getGenerationSources"],
+    getGenerationSources,
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+
+  const { data: yearsData } = useQuery(["getYears"], getYears, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+  });
+
+  const { data: regionsData } = useQuery(["getRegions"], getRegions, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+  });
+
+  const { data: segmentsData } = useQuery(["getSegments"], getSegments, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+  });
+
+  const { data: documentTypesData } = useQuery(
+    ["getDocumentTypes"],
+    getDocumentTypes,
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+  const query = useMemo(() => {
+    return qs.stringify({
+      filters: {
+        id: {
+          $in: [...nonPublicationReports, ...publicationReports].map(
+            (i) => i?.id
+          ),
+        },
+        ReportName: {
+          $eq: search,
+        },
+        AddFilters: {
+          countries: {
+            id: {
+              $in: selectInputs?.countries,
+            },
+          },
+          regions: {
+            id: {
+              $in: selectInputs?.regions,
+            },
+          },
+          segments: {
+            id: {
+              $in: selectInputs?.segments,
+            },
+          },
+          document_types: {
+            id: {
+              $in: selectInputs?.document_types,
+            },
+          },
+          years: {
+            id: {
+              $in: selectInputs?.years,
+            },
+          },
+          generation_sources: {
+            id: {
+              $in: selectInputs?.generation_sources,
+            },
+          },
+        },
+      },
+    });
+  }, [selectInputs, nonPublicationReports, publicationReports]);
+
+  const { data: allReports, isFetching: isFetchingReports } = useQuery(
+    ["getReports", query],
+    () => getReports(query),
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
 
   const finalPublicationReports = publicationReports?.map((publishedReport) => {
     const report = allReports?.data?.data?.find(
@@ -69,16 +177,32 @@ const RightWrapPage = ({
     setSelectInputs(obj);
   };
 
+  const reports = showAllReports
+    ? allReports?.data?.data
+    : finalNonPublicationReports;
+
+  const onSearch = (e) => {
+    setSearch(e);
+  };
+
   return (
-    <RightWrap>
-      <CardHeader style={{ justifyContent: "center" }}>
-        <ImgBox>
-          <img src="static/images/greenFile.svg" alt="card" />
-        </ImgBox>
-        <CardTitle>Resources that match your input</CardTitle>
-      </CardHeader>
+    <RightWrap className={"right-wrap"}>
+      {!showAllReports && (
+        <CardHeader style={{ justifyContent: "center" }}>
+          <ImgBox>
+            <img src="static/images/greenFile.svg" alt="card" />
+          </ImgBox>
+          <CardTitle>Resources that match your input</CardTitle>
+        </CardHeader>
+      )}
       <ReportsWrap>
-        <ReportsLeftWrap>
+        <ReportsLeftWrap className={"report-left-wrap"}>
+          {showAllReports && (
+            <SearchBar
+              onChange={(e) => onSearch(e?.target?.value)}
+              value={search}
+            />
+          )}
           <Accordion
             title="Select Country"
             setIsOpen={setIsOpen}
@@ -135,13 +259,14 @@ const RightWrapPage = ({
           />
         </ReportsLeftWrap>
 
-        <ReportsRightWrap>
+        <ReportsRightWrap className={"report-right-wrap"}>
           <InnerSlideWrap>
             {isFetchingReports ? (
               <Loader />
             ) : !allReports?.data?.data?.length ||
               (!finalPublicationReports?.length &&
-                !finalNonPublicationReports?.length) ? (
+                !finalNonPublicationReports?.length &&
+                !showAllReports) ? (
               <Nodata>
                 <p>
                   <AiOutlineInfoCircle />
@@ -181,6 +306,8 @@ const RightWrapPage = ({
                         key={index}
                         star={true}
                         url={url}
+                        onClick={() => setActiveCard(name)}
+                        isActive={activeCard === name}
                       />
                     );
                   })}
@@ -190,8 +317,8 @@ const RightWrapPage = ({
                     <Divider style={{ marginBottom: 18, marginTop: 3 }} />
                   </>
                 ) : null}
-                {finalNonPublicationReports.length &&
-                  finalNonPublicationReports?.map((i, index) => {
+                {Boolean(reports?.length) &&
+                  reports?.map((i, index) => {
                     const name = i?.attributes?.ReportName;
                     if (!name) return null;
                     const year =
@@ -219,6 +346,8 @@ const RightWrapPage = ({
                         title={name}
                         key={index}
                         url={url}
+                        onClick={() => setActiveCard(name)}
+                        isActive={activeCard === name}
                       />
                     );
                   })}

@@ -15,5 +15,6 @@ export const Button = styled.button`
     color: ${colors.white};
     outline: none;
     text-decoration: none;
+    opacity: ${({disabled}) => disabled ? 0.5 : 1}
   
 `
