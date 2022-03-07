@@ -42,7 +42,7 @@ const CompletedSteps = ({ onRestart }) => {
 
   return (
     <Wrapper>
-      <Title>Pocess completed!</Title>
+      <Title>Process completed!</Title>
       <Description>
         The following reports match your specific case.{" "}
       </Description>
