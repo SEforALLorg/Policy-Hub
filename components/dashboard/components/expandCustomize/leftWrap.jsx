@@ -15,10 +15,10 @@ import {
   YesButton,
   LeftWrap,
   QuestionWrap,
-  Restart,
 } from "./styles";
 import StepComponent from "../../../StepComponent";
 import { useEffect } from "react";
+import CompletedSteps from "../../../completedSteps";
 
 const LeftWrapPage = ({
   questions,
@@ -77,39 +77,40 @@ const LeftWrapPage = ({
         </ImgBox>
         <CardTitle>Customize your decision-making process</CardTitle>
       </CardHeader>
-      {userJourney?.slice(0, 3).map((item, index) => (
-        <Steps
-          key={index}
-          onClick={() => {
-            if (nextQuestionId) {
-              onStepChange(item);
-            }
-          }}
-        >
-          <Text>
-            <Dot className={index === 0 && "hideDot"} />
-            <StepTitle>
-              {
-                item?.attributes?.MainQuestion?.Question?.data?.attributes
-                  ?.Question
+      {nextQuestionId &&
+        userJourney?.slice(0, 3).map((item, index) => (
+          <Steps
+            key={index}
+            onClick={() => {
+              if (nextQuestionId) {
+                onStepChange(item);
               }
-            </StepTitle>
-          </Text>
-          <YesButton>Yes</YesButton>
-        </Steps>
-      ))}
-      <Border></Border>{" "}
+            }}
+          >
+            <Text>
+              <Dot className={index === 0 && "hideDot"} />
+              <StepTitle>
+                {
+                  item?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.Question
+                }
+              </StepTitle>
+            </Text>
+            <YesButton>Yes</YesButton>
+          </Steps>
+        ))}
+      {nextQuestionId && <Border></Border>}
       {!nextQuestionId ? (
-        <Restart
-          onClick={() => {
-            setNextQuestionId(firstQuestionId);
-            setUserJourney([]);
-            setStepQuestion([]);
-            restart();
-          }}
-        >
-          <img src="static/images/restart.svg" alt="" />
-        </Restart>
+        <>
+          <CompletedSteps
+            onRestart={() => {
+              setNextQuestionId(firstQuestionId);
+              setUserJourney([]);
+              setStepQuestion([]);
+              restart();
+            }}
+          />
+        </>
       ) : questions?.length ? (
         questions
           .filter(

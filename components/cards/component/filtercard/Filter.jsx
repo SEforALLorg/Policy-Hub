@@ -8,7 +8,8 @@ import {
   BottomWrap,
   Box,
   ImgWrapper,
-  ImageWrap
+  ImageWrap,
+  GoReportsButton,
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
@@ -23,46 +24,57 @@ const Report = ({
   file,
   key,
   star,
-  url
+  url,
+  onClick,
+  isActive,
 }) => {
   return (
-    <Wrapper key={key} onClick={() => window.open(url)}>
+    <Wrapper
+      key={key}
+      className={isActive ? "active" : ""}
+      onClick={() => onClick()}
+    >
       <Detail>
         <ImgWrapper>
           {mainImg && <img src={mainImg} alt="img" style={style} />}
 
-          <Text>{title}</Text>
+          <Text className="title">{title}</Text>
         </ImgWrapper>
-        {
-          star && <Icon>
+        {star && (
+          <Icon>
             <AiFillStar />
           </Icon>
-        }
+        )}
       </Detail>
       <Border></Border>
       <BottomWrap>
-        {
-          countryName && <>
+        {countryName && (
+          <>
             <Box>
-              <ImageWrap style={{backgroundImage: `url(${file})`}}>
+              <ImageWrap style={{ backgroundImage: `url(${file})` }}>
                 {/* <img src={file} alt="flag" /> */}
               </ImageWrap>
               <Text>{countryName}</Text>
             </Box>
             <span />
           </>
-        }
+        )}
         <Box>
           <Text className="innerText">{area}</Text>
         </Box>
         <span />
-        <Box>
+        <Box style={{ width: "38px" }}>
           <Text className="innerText">{item}</Text>
         </Box>
         <span />
-        <Box>
+        <Box style={{ width: "38px" }}>
           <Text className="innerText">{date}</Text>
         </Box>
+        {isActive && (
+          <GoReportsButton onClick={() => window.open(url)}>
+            Go to Report
+          </GoReportsButton>
+        )}
       </BottomWrap>
     </Wrapper>
   );

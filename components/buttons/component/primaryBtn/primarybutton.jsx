@@ -1,9 +1,11 @@
-import React from 'react';
-import { Button } from './style';
-const PrimaryButton = ({title,style, onClick}) => {
-    return (
-        <Button style={style} onClick={onClick}>{title}</Button>
-    );
+import React from "react";
+import { Button } from "./style";
+const PrimaryButton = ({ title, style, onClick, disabled }) => {
+  return (
+    <Button style={style} onClick={onClick} disabled={disabled}>
+      {title}
+    </Button>
+  );
 };
 
 export default PrimaryButton;
