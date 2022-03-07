@@ -23,6 +23,8 @@ const ExpandCustomize = ({
     document_types: [],
     years: [],
     generation_sources: [],
+    co_authors: [],
+    publishing_organizations: []
   });  
 
   const { data: questions, isFetching: isFetchingQuestions } = useQuery(
