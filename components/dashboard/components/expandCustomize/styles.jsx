@@ -184,14 +184,29 @@ export const ReportsWrap = styled.div`
 export const ReportsLeftWrap = styled.div`
   width: 30%;
   margin-right: ${space[8]}px;
+  height: 435px;
+  overflow: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(19,166,191,0.2);
+    border-radius: 10px;
+  }
 `;
 export const ReportsRightWrap = styled.div`
   width: 70%;
   max-width: 427px;
   overflow: auto;
   padding-right: 5px;
-  // height: 435px;
-  height: calc(100vh - 133px);
+  height: 435px;
+  // height: calc(100vh - 133px);
   min-height: 90%;
   max-height: 100%;
   display: flex;
@@ -267,4 +282,10 @@ export const Divider = styled.div`
   border-bottom: 2.45084px solid rgba(134, 164, 176, 0.25);
 `;
 
+export const LoaderWrapFull = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100%;
+`;
 

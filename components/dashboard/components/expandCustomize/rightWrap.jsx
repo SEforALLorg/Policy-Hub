@@ -30,6 +30,7 @@ import {
   InnerSlideWrap,
   Nodata,
   Divider,
+  LoaderWrapFull
 } from "./styles";
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -303,8 +304,10 @@ const RightWrapPage = ({
 
         <ReportsRightWrap className={"report-right-wrap"}>
           <InnerSlideWrap>
-            {isFetchingReports ? (
-              <Loader />
+            {!isFetchingReports ? (
+              <LoaderWrapFull>
+                <Loader />
+              </LoaderWrapFull>
             ) : !allReports?.data?.data?.length ||
               (!finalPublicationReports?.length &&
                 !finalNonPublicationReports?.length &&
@@ -390,6 +393,7 @@ const RightWrapPage = ({
                         url={url}
                         onClick={() => setActiveCard(name)}
                         isActive={activeCard === name}
+                        bigCard={showAllReports}
                       />
                     );
                   })}

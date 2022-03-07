@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
-import { getQuestions } from "pages/api/questions";
 
-import { ErrorNotify } from "components/notification";
 import Customize from "components/startComponent/customize";
 import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
 const ExpandCustomize = ({
-  onExpand
+  onExpand,
+  questions,
+  isFetchingQuestions
 }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
@@ -27,15 +26,7 @@ const ExpandCustomize = ({
     publishing_organizations: []
   });  
 
-  const { data: questions, isFetching: isFetchingQuestions } = useQuery(
-    ["getQuestions"],
-    getQuestions,
-    {
-      onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
-      },
-    }
-  );
+  
 
   return (
     <Wrapper isExpand={isExpand}>

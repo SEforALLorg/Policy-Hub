@@ -84,9 +84,12 @@ const LeftWrapPage = ({
             onClick={() => {
               if (nextQuestionId) {
                 onStepChange(item);
+                onReportsFind(item?.attributes?.AddAnswer[0]);
               }
             }}
           >
+            {console.log(item, 'item')
+            }
             <Text>
               <Dot className={index === 0 && "hideDot"} />
               <StepTitle>
