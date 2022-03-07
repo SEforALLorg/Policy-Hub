@@ -10,6 +10,8 @@ const ALLReports = () => {
     document_types: [],
     years: [],
     generation_sources: [],
+    co_authors: [],
+    publishing_organizations: [],
   });
   return (
     <Full>

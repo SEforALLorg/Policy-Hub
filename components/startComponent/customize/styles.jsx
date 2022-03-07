@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
     border-radius: 16px;
     width: ${fullWidth};
     margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 `
 export const CardHeader = styled.div`
     display: flex;

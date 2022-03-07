@@ -12,6 +12,8 @@ import {
   getRegions,
   getSegments,
   getDocumentTypes,
+  getCoAuthors,
+  getPublishingOrganizations
 } from "pages/api/filter";
 
 import { getFormattedData } from "utilities";
@@ -87,6 +89,27 @@ const RightWrapPage = ({
       },
     }
   );
+
+  const { data: coAuthors } = useQuery(
+    ["getCoAuthors"],
+    getCoAuthors,
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+
+  const { data: publishingOrganizations } = useQuery(
+    ["getPublishingOrganizations"],
+    getPublishingOrganizations,
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+  
   const query = useMemo(() => {
     return qs.stringify({
       filters: {
@@ -182,6 +205,7 @@ const RightWrapPage = ({
     : finalNonPublicationReports;
 
   const onSearch = (e) => {
+    // useDebounce()
     setSearch(e);
   };
 
@@ -256,6 +280,24 @@ const RightWrapPage = ({
             onChange={(e) => onChange(e)}
             selected={selectInputs?.generation_sources}
             name={"generation_sources"}
+          />
+          <Accordion
+            title="Co-Authors"
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            options={getFormattedData(coAuthors?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.co_authors}
+            name={"co_authors"}
+          />
+          <Accordion
+            title="Publishing Organizations"
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            options={getFormattedData(publishingOrganizations?.data?.data)}
+            onChange={(e) => onChange(e)}
+            selected={selectInputs?.publishing_organizations}
+            name={"publishing_organizations"}
           />
         </ReportsLeftWrap>
 

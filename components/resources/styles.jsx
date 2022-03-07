@@ -20,6 +20,8 @@ export const Header = styled.div`
     padding: ${space[10] * 2}px ${space[10] * 3}px;
     background: ${colors.white};
     filter: drop-shadow(0px 4px 4px rgba(64, 93, 109, 0.15));
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 `
 export const Heading = styled.h5`
     font-style: normal;

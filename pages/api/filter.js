@@ -29,3 +29,13 @@ export const getSegments = () => {
 export const getDocumentTypes = () => {
     return instance.get(`/document-types`)
 };
+
+// CoAuthors
+export const getCoAuthors = () => {
+    return instance.get(`/co-authors`)
+};
+
+// Publishing Organizations
+export const getPublishingOrganizations = () => {
+    return instance.get(`/publishing-organizations`)
+};
