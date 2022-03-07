@@ -96,7 +96,7 @@ const RightWrapPage = ({
           ),
         },
         ReportName: {
-          $eq: search,
+          $containsi: search,
         },
         AddFilters: {
           countries: {
