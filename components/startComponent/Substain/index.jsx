@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useQuery } from "react-query";
+import { getQuestions } from "pages/api/questions";
+
+import { ErrorNotify } from "components/notification";
 import { Bottom, FullWrap, TopWrap } from "./styles";
 import SubstainCard from "./SubCard/SubCard.jsx";
 import ExpandCustomize from "../../dashboard/components/expandCustomize";
+
 
 const StartSubstain = () => {
   const [isExpand, setIsExpand] = useState(false);
@@ -21,6 +25,16 @@ const StartSubstain = () => {
     }
   }, [isOpen]);
 
+  const { data: questions, isFetching: isFetchingQuestions } = useQuery(
+    ["getQuestions"],
+    getQuestions,
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+
   return (
     <>
       <FullWrap>
@@ -29,7 +43,7 @@ const StartSubstain = () => {
         </TopWrap>
         {isOpen ? (
           <Bottom id="bottom-view" isExpand={isExpand}>
-            <ExpandCustomize onExpand={e => setIsExpand(e)} />
+            <ExpandCustomize onExpand={e => setIsExpand(e)} questions={questions} isFetchingQuestions={isFetchingQuestions} />
           </Bottom>
         ) : null}
       </FullWrap>

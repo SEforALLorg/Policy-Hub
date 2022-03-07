@@ -75,7 +75,7 @@ export const Box = styled.div`
   align-items: center;
   flex: 1;
   p{
-    width: 61px;
+    width: ${({bigCard}) => bigCard ? '61px' : ''};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

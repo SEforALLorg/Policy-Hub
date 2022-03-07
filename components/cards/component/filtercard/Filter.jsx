@@ -27,6 +27,7 @@ const Report = ({
   url,
   onClick,
   isActive,
+  bigCard
 }) => {
   return (
     <Wrapper
@@ -50,7 +51,7 @@ const Report = ({
       <BottomWrap>
         {countryName && (
           <>
-            <Box>
+            <Box bigCard={bigCard}>
               <ImageWrap style={{ backgroundImage: `url(${file})` }}>
                 {/* <img src={file} alt="flag" /> */}
               </ImageWrap>
@@ -60,15 +61,15 @@ const Report = ({
           </>
         )}
         <Box>
-          <Text className="innerText">{area}</Text>
+          <Text  className={!bigCard && "innerText"}>{area}</Text>
         </Box>
         <span />
         <Box style={{ width: "38px" }}>
-          <Text className="innerText">{item}</Text>
+          <Text className={!bigCard && "innerText"}>{item}</Text>
         </Box>
         <span />
         <Box style={{ width: "38px" }}>
-          <Text className="innerText">{date}</Text>
+          <Text className={!bigCard && "innerText"}>{date}</Text>
         </Box>
         {isActive && (
           <GoReportsButton onClick={() => window.open(url)}>
