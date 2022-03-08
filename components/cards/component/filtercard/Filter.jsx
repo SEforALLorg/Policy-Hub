@@ -10,6 +10,7 @@ import {
   ImgWrapper,
   ImageWrap,
   GoReportsButton,
+  Description,
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
@@ -27,7 +28,8 @@ const Report = ({
   url,
   onClick,
   isActive,
-  bigCard
+  bigCard,
+  description,
 }) => {
   return (
     <Wrapper
@@ -47,6 +49,13 @@ const Report = ({
           </Icon>
         )}
       </Detail>
+      {description && (
+        <Description
+          className={`hideDescription ${isActive ? "showDescription" : ""}`}
+        >
+          {description}
+        </Description>
+      )}
       <Border></Border>
       <BottomWrap>
         {countryName && (
@@ -61,7 +70,7 @@ const Report = ({
           </>
         )}
         <Box>
-          <Text  className={!bigCard && "innerText"}>{area}</Text>
+          <Text className={!bigCard && "innerText"}>{area}</Text>
         </Box>
         <span />
         <Box style={{ width: "38px" }}>

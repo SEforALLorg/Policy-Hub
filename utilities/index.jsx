@@ -7,5 +7,5 @@ export const getFormattedData = (unFormattedData) => {
         newFormat.attributes.label = newFormat.attributes[targetKey];
         return newFormat;
     });
-    return formattedData;
+    return formattedData?.sort((a,b) => a?.attributes?.label.localeCompare(b?.attributes?.label));
 }

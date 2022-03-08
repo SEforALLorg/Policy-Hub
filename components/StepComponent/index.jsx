@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { FiInfo } from "react-icons/fi";
 import RadioButton from "../radioButton";
+import TooltipComponent from "../tooltip";
 import {
   StepWrap,
   Title,
@@ -31,8 +31,8 @@ const StepComponent = ({
     item?.attributes?.QuestionTitle === "Mini-grids"
       ? 5
       : item?.attributes?.QuestionTitle?.includes("Standalone")
-      ? 8
-      : 1;
+        ? 8
+        : 1;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -41,12 +41,15 @@ const StepComponent = ({
     }
   }, [multiAnswer]);
 
+  const ToolTipText = item?.attributes?.ToolTipText;
   return (
     <StepWrap>
       {item?.attributes?.QuestionTitle && (
         <BigTitle>
           {item?.attributes?.QuestionTitle}
-          <FiInfo />
+          {ToolTipText && (
+            <TooltipComponent content={ToolTipText} />
+          )}
         </BigTitle>
       )}
       <Title>

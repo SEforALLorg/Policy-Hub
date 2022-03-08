@@ -14,6 +14,7 @@ const ExpandCustomize = ({
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
   const [firstQuestion, setFirstQuestion] = useState();
+  const [stepAnswer, setStepAnswer] = useState();
 
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
@@ -48,6 +49,7 @@ const ExpandCustomize = ({
               generation_sources: [],
             })
           }}
+          stepAnswer={stepAnswer}
         />
         <RightWrapPage
           publicationReports={publicationReports}
@@ -68,6 +70,7 @@ const ExpandCustomize = ({
           onReportsFind={(e) => {
             setPublicationReports(e?.KeyPublication?.data);
             setNonPublicationReports(e?.NonKeyPublication?.data);
+            setStepAnswer(e?.Answer)
           }}
         />
       </div>

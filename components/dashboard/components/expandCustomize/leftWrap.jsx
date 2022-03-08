@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BlueButton from "../../../buttons/component/BlueButton";
-import { FiInfo } from "react-icons/fi";
+import TooltipComponent from "components/tooltip";
 import {
   CardHeader,
   ImgBox,
@@ -26,6 +26,7 @@ const LeftWrapPage = ({
   setNonPublicationReports,
   firstQuestion,
   restart,
+  stepAnswer
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -33,12 +34,12 @@ const LeftWrapPage = ({
   const [stepQuestion, setStepQuestion] = useState([]);
 
   useEffect(() => {
-    if (questions?.length && firstQuestion) {
+    if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);
       setFirstQuestionId(firstQuestion);
-      setUserJourney([...userJourney, questions[0]]);
+      setUserJourney([...userJourney, { ...questions[0], answer: stepAnswer }]);
     }
-  }, [questions?.length, firstQuestion]);
+  }, [questions?.length, firstQuestion, stepAnswer]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -88,8 +89,6 @@ const LeftWrapPage = ({
               }
             }}
           >
-            {console.log(item, 'item')
-            }
             <Text>
               <Dot className={index === 0 && "hideDot"} />
               <StepTitle>
@@ -99,7 +98,7 @@ const LeftWrapPage = ({
                 }
               </StepTitle>
             </Text>
-            <YesButton>Yes</YesButton>
+            <YesButton>{item?.answer}</YesButton>
           </Steps>
         ))}
       {nextQuestionId && <Border></Border>}
@@ -126,28 +125,37 @@ const LeftWrapPage = ({
                 ?.Question;
             const singleAnswer = item?.attributes?.AddAnswer;
             const questionType = item?.attributes?.QuestionType;
+            const ToolTipText = item?.attributes?.ToolTipText;
+
             return (
               <QuestionWrap key={index}>
                 {questionType === "Questionnaire" ? (
                   <>
                     <CardSubTitle>
                       {questionTitle}
-                      <FiInfo />
+                      {ToolTipText && (
+                        <TooltipComponent content={ToolTipText} />
+                      )}
                     </CardSubTitle>
                     <ButtonGrp>
-                      {singleAnswer?.map((i) => (
-                        <BlueButton
-                          title={i?.Answer}
-                          onClick={() => {
-                            onNextQuestion(i?.NextQuestion?.data?.id);
-                            onReportsFind(i);
-                            setUserJourney([
-                              ...userJourney,
-                              { ...item, answer: i?.Answer },
-                            ]);
-                          }}
-                        />
-                      ))}
+                      {singleAnswer?.map((i, index) => {
+                        if (!i?.Answer) return null
+
+                        return (
+                          <BlueButton
+                            title={i?.Answer}
+                            onClick={() => {
+                              onNextQuestion(i?.NextQuestion?.data?.id);
+                              onReportsFind(i);
+                              setUserJourney([
+                                ...userJourney,
+                                { ...item, answer: i?.Answer },
+                              ]);
+                            }}
+                            key={index}
+                          />
+                        )
+                      })}
                     </ButtonGrp>
                   </>
                 ) : (

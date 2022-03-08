@@ -9,9 +9,13 @@ export const TopWrap = styled.div`
   }
 `;
 export const Bottom = styled.div`
-  height: ${({isExpand}) => isExpand ? '' : '100vh'};
+  // height: ${({isExpand}) => isExpand ? '' : '100vh'};
+  height: 100vh;
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
+  @media only screen and (min-width: 1680px){
+    height: 100vh;
+  }
 `;
