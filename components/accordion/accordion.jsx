@@ -30,13 +30,13 @@ const Accordion = ({
   };
 
   const onOptionClicked = (value) => () => {
-    const options = [...selectedOption]
-    const target = options?.includes(value)
+    const options = [...selectedOption];
+    const target = options?.includes(value);
     if (target) {
-      const targetIndex = options?.indexOf(value)
+      const targetIndex = options?.indexOf(value);
 
-      options.splice(targetIndex, 1)
-      return setSelectedOption(options)
+      options.splice(targetIndex, 1);
+      return setSelectedOption(options);
     }
     setSelectedOption([...selectedOption, value]);
   };
@@ -45,7 +45,7 @@ const Accordion = ({
       <Select onClick={toggling}>
         <Text>
           {selectedOption?.length
-            ? selectedOption?.map((i) => i + ", ")
+            ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}
         </Text>
         <Icon>

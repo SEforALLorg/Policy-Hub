@@ -13,7 +13,8 @@ import {
   getSegments,
   getDocumentTypes,
   getCoAuthors,
-  getPublishingOrganizations
+  getPublishingOrganizations,
+  getFilters
 } from "pages/api/filter";
 
 import { getFormattedData } from "utilities";
@@ -47,6 +48,20 @@ const RightWrapPage = ({
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
+  const { data: filtersData } = useQuery(["getFilters"], getFilters, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+  });
+
+  let filters = {}
+  if(filtersData?.data?.data?.attributes){
+    filters = filtersData?.data?.data?.attributes
+  }
+  
+  console.log(filtersData,'filters',filters);
+  
+  
   const { data: countriesData } = useQuery(["getCountries"], getCountries, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);
@@ -232,12 +247,12 @@ const RightWrapPage = ({
             title="Select Country"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(countriesData?.data?.data)}
+            options={getFormattedData(filters?.countries)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.countries}
             name={"countries"}
           />
-          <Accordion
+          {/* <Accordion
             title="Select Region"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
@@ -299,7 +314,7 @@ const RightWrapPage = ({
             onChange={(e) => onChange(e)}
             selected={selectInputs?.publishing_organizations}
             name={"publishing_organizations"}
-          />
+          /> */}
         </ReportsLeftWrap>
 
         <ReportsRightWrap className={"report-right-wrap"}>
