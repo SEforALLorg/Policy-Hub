@@ -21,7 +21,7 @@ const Customize = ({ onYes, questions, isFetchingQuestions, onNextQuestion, onRe
   return (
     <Wrapper>
       {
-        isFetchingQuestions ? <Loader height={100} width={100} /> :
+        isFetchingQuestions ? <Loader height={80} width={80} /> :
           <>
             <CardHeader>
               <ImgBox>
