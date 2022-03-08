@@ -6,15 +6,7 @@ import Accordion from "components/accordion/accordion";
 import Report from "components/cards/component/filtercard/Filter";
 import { getReports } from "../../../../pages/api/reports";
 import {
-  getCountries,
-  getGenerationSources,
-  getYears,
-  getRegions,
-  getSegments,
-  getDocumentTypes,
-  getCoAuthors,
-  getPublishingOrganizations,
-  getFilters
+  getFilters,
 } from "pages/api/filter";
 
 import { getFormattedData } from "utilities";
@@ -54,78 +46,11 @@ const RightWrapPage = ({
     },
   });
 
-  let filters = {}
-  if(filtersData?.data?.data?.attributes){
-    filters = filtersData?.data?.data?.attributes
+  let filters = {};
+  if (filtersData?.data?.data?.attributes) {
+    filters = filtersData?.data?.data?.attributes;
   }
-  
-  console.log(filtersData,'filters',filters);
-  
-  
-  const { data: countriesData } = useQuery(["getCountries"], getCountries, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-  });
 
-  const { data: generationSourcesData } = useQuery(
-    ["getGenerationSources"],
-    getGenerationSources,
-    {
-      onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
-      },
-    }
-  );
-
-  const { data: yearsData } = useQuery(["getYears"], getYears, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-  });
-
-  const { data: regionsData } = useQuery(["getRegions"], getRegions, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-  });
-
-  const { data: segmentsData } = useQuery(["getSegments"], getSegments, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-  });
-
-  const { data: documentTypesData } = useQuery(
-    ["getDocumentTypes"],
-    getDocumentTypes,
-    {
-      onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
-      },
-    }
-  );
-
-  const { data: coAuthors } = useQuery(
-    ["getCoAuthors"],
-    getCoAuthors,
-    {
-      onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
-      },
-    }
-  );
-
-  const { data: publishingOrganizations } = useQuery(
-    ["getPublishingOrganizations"],
-    getPublishingOrganizations,
-    {
-      onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
-      },
-    }
-  );
-  
   const query = useMemo(() => {
     return qs.stringify({
       filters: {
@@ -252,11 +177,11 @@ const RightWrapPage = ({
             selected={selectInputs?.countries}
             name={"countries"}
           />
-          {/* <Accordion
+          <Accordion
             title="Select Region"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(regionsData?.data?.data)}
+            options={getFormattedData(filters?.region)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.regions}
             name={"regions"}
@@ -265,7 +190,7 @@ const RightWrapPage = ({
             title="Segment"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(segmentsData?.data?.data)}
+            options={getFormattedData(filters?.segment)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.segments}
             name={"segments"}
@@ -274,7 +199,7 @@ const RightWrapPage = ({
             title="Resource type"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(documentTypesData?.data?.data)}
+            options={getFormattedData(filters?.documentType)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.document_types}
             name={"document_types"}
@@ -283,7 +208,7 @@ const RightWrapPage = ({
             title="Year"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(yearsData?.data?.data)}
+            options={getFormattedData(filters?.year)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.years}
             name={"years"}
@@ -292,7 +217,7 @@ const RightWrapPage = ({
             title="Generation source"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(generationSourcesData?.data?.data)}
+            options={getFormattedData(filters?.generationSources)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.generation_sources}
             name={"generation_sources"}
@@ -301,7 +226,7 @@ const RightWrapPage = ({
             title="Co-Authors"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(coAuthors?.data?.data)}
+            options={getFormattedData(filters?.coAuthor)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.co_authors}
             name={"co_authors"}
@@ -310,11 +235,11 @@ const RightWrapPage = ({
             title="Publishing Organizations"
             setIsOpen={setIsOpen}
             isOpen={isOpen}
-            options={getFormattedData(publishingOrganizations?.data?.data)}
+            options={getFormattedData(filters?.publishingOrganization)}
             onChange={(e) => onChange(e)}
             selected={selectInputs?.publishing_organizations}
             name={"publishing_organizations"}
-          /> */}
+          />
         </ReportsLeftWrap>
 
         <ReportsRightWrap className={"report-right-wrap"}>
@@ -354,8 +279,8 @@ const RightWrapPage = ({
                         ?.data[0]?.attributes?.PublishingOrganization;
                     const url = i?.attributes?.URL;
                     const flag = Flags.find((e) => e?.name == country);
-                    const description = i?.attributes?.Description
-                    
+                    const description = i?.attributes?.Description;
+
                     return (
                       <Report
                         countryName={country}
@@ -367,7 +292,13 @@ const RightWrapPage = ({
                         key={index}
                         star={true}
                         url={url}
-                        onClick={() => setActiveCard(name)}
+                        onClick={() => {
+                          if (activeCard === name) {
+                            setActiveCard("");
+                          } else {
+                            setActiveCard(name);
+                          }
+                        }}
                         isActive={activeCard === name}
                         description={description}
                       />
@@ -397,7 +328,7 @@ const RightWrapPage = ({
                         ?.data[0]?.attributes?.PublishingOrganization;
                     const url = i?.attributes?.URL;
                     const flag = Flags.find((e) => e?.name == country);
-                    const description = i?.attributes?.Description
+                    const description = i?.attributes?.Description;
 
                     return (
                       <Report
@@ -409,7 +340,13 @@ const RightWrapPage = ({
                         title={name}
                         key={index}
                         url={url}
-                        onClick={() => setActiveCard(name)}
+                        onClick={() => {
+                          if (activeCard === name) {
+                            setActiveCard("");
+                          } else {
+                            setActiveCard(name);
+                          }
+                        }}
                         isActive={activeCard === name}
                         bigCard={showAllReports}
                         description={description}

@@ -58,13 +58,13 @@ const Accordion = ({
             {options?.map((option, index) => {
               return (
                 <ListItem
-                  onClick={onOptionClicked(option?.attributes?.label)}
+                  onClick={onOptionClicked(option?.label)}
                   key={index}
                 >
                   <Span
                     selectedOption={selected?.includes(option?.id.toString())}
                   />{" "}
-                  {""} {option?.attributes?.label}
+                  {""} {option?.label}
                   <input
                     type="checkbox"
                     onChange={onChange}

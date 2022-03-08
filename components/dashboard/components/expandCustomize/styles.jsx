@@ -197,9 +197,9 @@ export const ReportsWrap = styled.div`
 export const ReportsLeftWrap = styled.div`
   width: 30%;
   margin-right: ${space[8]}px;
-  height: 415px;
-  overflow: auto;
-  overflow-x: hidden;
+  // height: 415px;
+  // overflow: auto;
+  // overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 7px;
   }

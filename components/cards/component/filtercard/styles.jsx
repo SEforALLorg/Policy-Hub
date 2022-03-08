@@ -117,7 +117,7 @@ export const Description = styled.p`
   color: #494949;
   &.hideDescription{
     max-height: 0;
-    transition: max-height 0.25s ease-out;
+    transition: max-height 0.5s ease-out;
     overflow: hidden;
     padding: 0px;
   }
