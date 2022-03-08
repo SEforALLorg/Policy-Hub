@@ -1,23 +1,25 @@
-import React from 'react';
+import React from "react";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
 import { Container } from "reactstrap";
-import { Wrapper,  FooterWrap ,CardBox} from "styles/aboutus";
-import About from '../../components/aboutus/About';
+import { Wrapper, FooterWrap, CardBox } from "styles/aboutus";
+import About from "../../components/aboutus/About";
 const AboutUs = () => {
-    return (
-        <Wrapper>
-      <Container fulid="md">
+  return (
+    <main>
+      <Wrapper>
+        <Container fulid="md">
           <Header />
           <CardBox>
-            <About/>
+            <About />
           </CardBox>
-        <FooterWrap>
-          <Footer />
-        </FooterWrap>
-      </Container>
-    </Wrapper>
-    );
+          <FooterWrap>
+            <Footer />
+          </FooterWrap>
+        </Container>
+      </Wrapper>
+    </main>
+  );
 };
 
 export default AboutUs;

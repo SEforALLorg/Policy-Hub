@@ -13,6 +13,12 @@ body {
   background-color: #144a68 !important;
   background-attachment: fixed;
   background-size: 100%;
+  overflow: hidden;
+}
+
+main{
+  overflow: auto !important;
+  height: 100vh;
 }
 
 @font-face {
