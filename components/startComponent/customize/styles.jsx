@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     // justify-content: center;
     // flex-direction: column;
     // align-items: center;
-    // height: 100%;
+    height: 100%;
 `
 export const CardHeader = styled.div`
     display: flex;
@@ -70,4 +70,12 @@ export const ButtonGrp = styled.div`
         height: 65px;
         font-size: ${fontSizes[2] + 3}px;
     }
+`
+
+export const LoaderWrap = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
 `

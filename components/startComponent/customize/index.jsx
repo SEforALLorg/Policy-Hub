@@ -9,48 +9,61 @@ import {
   CardSubTitle,
   ButtonGrp,
   Border,
+  LoaderWrap,
 } from "./styles";
 import Loader from "../../loader";
-const Customize = ({ onYes, questions, isFetchingQuestions, onNextQuestion, onReportsFind }) => {
-  const firstQuestion = questions?.length && questions[0]
+import TooltipComponent from "../../tooltip";
+const Customize = ({
+  onYes,
+  questions,
+  isFetchingQuestions,
+  onNextQuestion,
+  onReportsFind,
+}) => {
+  const firstQuestion = questions?.length && questions[0];
 
-  const title = firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question
-
+  const title =
+    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
+      ?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-
+  const ToolTipText = firstQuestion?.attributes?.ToolTipText;
   return (
     <Wrapper>
-      {
-        isFetchingQuestions ? <Loader height={80} width={80} /> :
-          <>
-            <CardHeader>
-              <ImgBox>
-                <img src="static/images/cards.svg" alt="card" />
-              </ImgBox>
-              <CardTitle>
-                Assess your country’s situation and <br />customize the decision-making
-                process.
-              </CardTitle>
-            </CardHeader>
-            <Border></Border>
-            <CardSubTitle>
-              {title}
-              <FiInfo />
-            </CardSubTitle>
-            <ButtonGrp>
-              {singleAnswer?.map((i) => (
-                <BlueButton
-                  title={i?.Answer}
-                  onClick={() => {
-                    onYes();
-                    onNextQuestion(i?.NextQuestion?.data?.id);
-                    onReportsFind(i);
-                  }}
-                />
-              ))}
-            </ButtonGrp>
-          </>
-      }
+      {isFetchingQuestions ? (
+        <LoaderWrap>
+          <Loader height={80} width={80} />{" "}
+        </LoaderWrap>
+      ) : (
+        <>
+          <CardHeader>
+            <ImgBox>
+              <img src="static/images/cards.svg" alt="card" />
+            </ImgBox>
+            <CardTitle>
+              Assess your country’s situation and <br />
+              customize the decision-making process.
+            </CardTitle>
+          </CardHeader>
+          <Border></Border>
+          <CardSubTitle>
+            {title}
+            {ToolTipText && <TooltipComponent content={ToolTipText} />}
+          </CardSubTitle>
+          <ButtonGrp>
+            {singleAnswer?.map((i, index) => (
+              <BlueButton
+                title={i?.Answer}
+                onClick={() => {
+                  onYes();
+                  onNextQuestion(i?.NextQuestion?.data?.id);
+                  onReportsFind(i);
+                }}
+                key={index}
+              />
+            ))}
+          </ButtonGrp>
+        </>
+      )}
     </Wrapper>
   );
 };

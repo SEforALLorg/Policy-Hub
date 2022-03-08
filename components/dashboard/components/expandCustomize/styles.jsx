@@ -44,6 +44,9 @@ export const Wrapper = styled.div`
     opacity: 0;
     visibility: hidden;
   }
+  @media only screen and (min-width: 1680px){
+    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.45, 0.5)")};
+  }
 `;
 
 export const LeftWrap = styled.div`
@@ -150,11 +153,16 @@ export const Dot = styled.span`
 export const StepTitle = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: ${fontSizes[0]}px;
+  font-size: ${fontSizes[0] + 2}px;
   line-height: 20px;
   color: #454545;
   margin: ${space[0]}px;
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 export const YesButton = styled.button`
   background: ${colors.primary};
@@ -167,6 +175,9 @@ export const YesButton = styled.button`
   color: ${colors.white};
   border-radius: 84px;
   border: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 // Right Wrap
@@ -186,7 +197,7 @@ export const ReportsWrap = styled.div`
 export const ReportsLeftWrap = styled.div`
   width: 30%;
   margin-right: ${space[8]}px;
-  height: 435px;
+  height: 415px;
   overflow: auto;
   overflow-x: hidden;
   &::-webkit-scrollbar {
@@ -201,13 +212,16 @@ export const ReportsLeftWrap = styled.div`
     background-color: rgba(19,166,191,0.2);
     border-radius: 10px;
   }
+  @media only screen and (min-width: 1680px){
+    height: 500px;
+  }
 `;
 export const ReportsRightWrap = styled.div`
   width: 70%;
-  max-width: 427px;
+  // max-width: 427px;
   overflow: auto;
   padding-right: 5px;
-  height: 435px;
+  height: 415px;
   // height: calc(100vh - 133px);
   min-height: 90%;
   max-height: 100%;
@@ -220,10 +234,12 @@ export const ReportsRightWrap = styled.div`
     box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
     margin-top: 5px;
   }
-   
   &::-webkit-scrollbar-thumb {
     background-color: rgba(19,166,191,0.2);
     border-radius: 10px;
+  }
+  @media only screen and (min-width: 1680px){
+    height: 500px;
   }
 `;
 

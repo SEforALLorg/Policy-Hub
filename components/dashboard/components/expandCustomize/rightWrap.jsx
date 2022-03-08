@@ -213,7 +213,7 @@ const RightWrapPage = ({
   return (
     <RightWrap className={"right-wrap"}>
       {!showAllReports && (
-        <CardHeader style={{ justifyContent: "center" }}>
+        <CardHeader>
           <ImgBox>
             <img src="static/images/greenFile.svg" alt="card" />
           </ImgBox>
@@ -339,7 +339,8 @@ const RightWrapPage = ({
                         ?.data[0]?.attributes?.PublishingOrganization;
                     const url = i?.attributes?.URL;
                     const flag = Flags.find((e) => e?.name == country);
-
+                    const description = i?.attributes?.Description
+                    
                     return (
                       <Report
                         countryName={country}
@@ -353,6 +354,7 @@ const RightWrapPage = ({
                         url={url}
                         onClick={() => setActiveCard(name)}
                         isActive={activeCard === name}
+                        description={description}
                       />
                     );
                   })}
@@ -380,6 +382,7 @@ const RightWrapPage = ({
                         ?.data[0]?.attributes?.PublishingOrganization;
                     const url = i?.attributes?.URL;
                     const flag = Flags.find((e) => e?.name == country);
+                    const description = i?.attributes?.Description
 
                     return (
                       <Report
@@ -394,6 +397,7 @@ const RightWrapPage = ({
                         onClick={() => setActiveCard(name)}
                         isActive={activeCard === name}
                         bigCard={showAllReports}
+                        description={description}
                       />
                     );
                   })}

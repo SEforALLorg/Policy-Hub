@@ -107,3 +107,24 @@ export const GoReportsButton = styled.button`
   // margin-left: -48px;
   color: #13A6BF;
 `;
+
+export const Description = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0px;
+  color: #494949;
+  &.hideDescription{
+    max-height: 0;
+    transition: max-height 0.25s ease-out;
+    overflow: hidden;
+    padding: 0px;
+  }
+  &.showDescription{
+    max-height: 500px;
+    transition: max-height 0.7s ease-in;
+    padding: 0px 12px;
+  }
+`;
+
