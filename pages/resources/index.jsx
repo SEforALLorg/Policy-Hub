@@ -6,17 +6,19 @@ import { Wrapper, FooterWrap, CardBox } from "styles/resources";
 import ALLReports from "../../components/resources";
 const Resources = () => {
   return (
-    <Wrapper>
-      <Container fulid="md">
-        <Header />
-        <CardBox>
-          <ALLReports />
-        </CardBox>
-        <FooterWrap>
-          <Footer />
-        </FooterWrap>
-      </Container>
-    </Wrapper>
+    <main>
+      <Wrapper>
+        <Container fulid="md">
+          <Header />
+          <CardBox>
+            <ALLReports />
+          </CardBox>
+          <FooterWrap>
+            <Footer />
+          </FooterWrap>
+        </Container>
+      </Wrapper>
+    </main>
   );
 };
 

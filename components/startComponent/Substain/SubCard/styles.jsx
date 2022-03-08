@@ -10,6 +10,26 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  height: 100%;
+  .slick-slide{
+    height: 300px;
+  }
+  .slick-dots li button:before{
+    transition: all .5s;
+    font-size: 8px;
+  }
+  .slick-dots li.slick-active button:before{
+    color:#FCB600;
+    font-size: 20px;
+  }
+  .slick-dots{
+    position: absolute;
+    right: -33px;
+    top: 50%;
+    width: 10px;
+    transform: translateY(-50%);
+    
+  }
 `;
 export const Card = styled.div`
   width: ${fullWidth};
@@ -18,6 +38,7 @@ export const Card = styled.div`
   border-radius: 8px;
   padding: ${space[10] * 2}px ${space[10] * 4}px;
   position: relative;
+  height: 100%;
 `;
 
 export const Title = styled.h5`
@@ -119,12 +140,14 @@ export const Step = styled.div`
   }
 `;
 export const Box = styled.div`
-  border-bottom: 2.4px solid rgba(134, 164, 176, 0.25);
+  // border-bottom: 2.4px solid rgba(134, 164, 176, 0.25);
   &:last-child {
     border-bottom: none;
   }
   img {
-    max-width: ${fullWidth};
+    // max-width: ${fullWidth};
+    width: 200px;
+    height: 160px;
   }
 `;
 export const BottomBtn = styled.div`

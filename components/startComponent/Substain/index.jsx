@@ -11,19 +11,22 @@ import ExpandCustomize from "../../dashboard/components/expandCustomize";
 const StartSubstain = () => {
   const [isExpand, setIsExpand] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [goBottom, setGoBottom] = useState(false)
   const HandleOpen = () => {
     setIsOpen(true);
+    setGoBottom(true);
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (goBottom) {
       document.getElementById("bottom-view").scrollIntoView({
         behavior: "smooth",
         inline: "center",
         block: "center",
       });
+      setGoBottom(false);
     }
-  }, [isOpen]);
+  }, [goBottom]);
 
   const { data: questions, isFetching: isFetchingQuestions } = useQuery(
     ["getQuestions"],
