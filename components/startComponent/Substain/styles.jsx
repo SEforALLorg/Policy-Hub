@@ -12,4 +12,6 @@ export const Bottom = styled.div`
   height: ${({isExpand}) => isExpand ? '' : '100vh'};
   display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
 `;

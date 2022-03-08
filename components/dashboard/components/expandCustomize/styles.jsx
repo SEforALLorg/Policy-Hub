@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
   display: flex;
   margin-top: ${space[10] * 2}px;
   margin-bottom: ${space[10] * 2}px;
+  // width: ${({ isExpand }) => (isExpand ? "100%" : "700px")};
+  // height: ${({ isExpand }) => (isExpand ? "100%" : "400px")};
   // overflow: hidden;
   transition: transform 2s ease-out;
   transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};

@@ -304,7 +304,7 @@ const RightWrapPage = ({
 
         <ReportsRightWrap className={"report-right-wrap"}>
           <InnerSlideWrap>
-            {!isFetchingReports ? (
+            {isFetchingReports ? (
               <LoaderWrapFull>
                 <Loader />
               </LoaderWrapFull>

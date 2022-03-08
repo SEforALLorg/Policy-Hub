@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
     border-radius: 16px;
     width: ${fullWidth};
     margin: auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
+    // align-items: center;
+    // height: 100%;
 `
 export const CardHeader = styled.div`
     display: flex;
@@ -20,7 +20,7 @@ export const CardHeader = styled.div`
 `
 export const Border = styled.div`
     margin: ${space[8]}px 0px;
-    border-bottom: 1.6px solid rgba(6, 90, 137, 0.2);
+    border-bottom: 3.6px solid rgba(6, 90, 137, 0.2);
 `
 export const ImgBox = styled.div`
     display: flex;
