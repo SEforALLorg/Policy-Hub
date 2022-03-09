@@ -24,6 +24,7 @@ export const Bottom = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
+  // margin-top: 7rem;
   @media only screen and (min-width: 1680px){
     height: 100vh;
   }
