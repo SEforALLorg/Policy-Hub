@@ -19,6 +19,7 @@ const StepComponent = ({
   setOptionReport,
   setStepQuestion,
   stepQuestion,
+  totalSteps
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
@@ -27,13 +28,8 @@ const StepComponent = ({
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
 
-  const nextCount =
-    item?.attributes?.QuestionTitle === "Mini-grids"
-      ? 5
-      : item?.attributes?.QuestionTitle?.includes("Standalone")
-        ? 8
-        : 1;
-
+  const nextCount = totalSteps?.length || 1
+  
   useEffect(() => {
     if (multiAnswer) {
       setOptionData(multiAnswer[0] || []);
