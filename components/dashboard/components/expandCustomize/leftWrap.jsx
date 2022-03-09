@@ -126,6 +126,11 @@ const LeftWrapPage = ({
             const singleAnswer = item?.attributes?.AddAnswer;
             const questionType = item?.attributes?.QuestionType;
             const ToolTipText = item?.attributes?.ToolTipText;
+            const QuestionKeyType = item?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes?.QuestionKeyType
+            let findSteps
+            if(QuestionKeyType){
+              findSteps = questions?.filter((e) => e?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes?.QuestionKeyType === QuestionKeyType)
+            }
             
             return (
               <QuestionWrap key={index}>
@@ -168,6 +173,7 @@ const LeftWrapPage = ({
                     setOptionReport={(i) => onReportsFind(i)}
                     onPrevious={onPreviousQuestion}
                     stepQuestion={stepQuestion}
+                    totalSteps={findSteps}
                   />
                 )}
               </QuestionWrap>
