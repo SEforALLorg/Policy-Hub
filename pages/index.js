@@ -38,6 +38,7 @@ export default function Home() {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
       </Head>
       <main id="fullWrap" ref={ref}>
         <Start />

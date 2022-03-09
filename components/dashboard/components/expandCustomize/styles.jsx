@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     visibility: hidden;
   }
   @media only screen and (min-width: 1680px){
-    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.45, 0.5)")};
+    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.4, 0.48)")};
   }
 `;
 
@@ -107,7 +107,7 @@ export const ButtonGrp = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 65%;
+  width: 50%;
   margin: ${space[2]}rem auto;
   button {
     margin-bottom: ${space[6]}px;

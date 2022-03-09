@@ -96,7 +96,7 @@ const SubCard = ({ HandleOpen }) => {
           </Slider>
         </Card>
         <BottomBtn onClick={HandleOpen}>
-          <StartButton title={"Click here to start"} />
+          <StartButton title={"Click here to start"} className="w-full" />
         </BottomBtn>
       </Wrapper>
     </>

@@ -63,7 +63,7 @@ export const ButtonGrp = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 40%;
+    max-width: 30%;
     margin:auto;
     button {
         margin-bottom: ${space[10]}px;
