@@ -108,9 +108,12 @@ export const ButtonGrp = styled.div`
   align-items: center;
   flex-direction: column;
   width: 65%;
-  margin: ${space[3]}rem auto;
+  margin: ${space[2]}rem auto;
   button {
     margin-bottom: ${space[6]}px;
+  }
+  @media only screen and (min-width: 1680px){
+    margin: ${space[4]}rem auto;
   }
 `;
 export const Steps = styled.div`
@@ -197,9 +200,9 @@ export const ReportsWrap = styled.div`
 export const ReportsLeftWrap = styled.div`
   width: 30%;
   margin-right: ${space[8]}px;
-  // height: 415px;
-  // overflow: auto;
-  // overflow-x: hidden;
+  height: 410px;
+  overflow: auto;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -221,7 +224,8 @@ export const ReportsRightWrap = styled.div`
   // max-width: 427px;
   overflow: auto;
   padding-right: 5px;
-  height: 475px;
+  height: 410px;
+  // height: 475px;
   // height: calc(100vh - 133px);
   min-height: 90%;
   max-height: 100%;
