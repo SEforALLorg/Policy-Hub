@@ -221,7 +221,7 @@ export const ReportsRightWrap = styled.div`
   // max-width: 427px;
   overflow: auto;
   padding-right: 5px;
-  height: 415px;
+  height: 475px;
   // height: calc(100vh - 133px);
   min-height: 90%;
   max-height: 100%;

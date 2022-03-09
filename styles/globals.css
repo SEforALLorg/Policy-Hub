@@ -87,7 +87,11 @@ a {
 
 .header .navbar-nav {
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.header .navbar-nav li{
+  text-align: center;
 }
 
 .header .logo {
