@@ -82,7 +82,7 @@ const CompletedSteps = ({ onRestart }) => {
       <FlexContainer style={{ marginTop: 20 }}>
         <Checkbox label="Subscribe to our Newsletter" />
       </FlexContainer>
-      <ButtonWrap>
+      <ButtonWrap disabled={!name || !email}>
         <PrimaryButton
           title="Submit"
           onClick={() => onSubmit()}

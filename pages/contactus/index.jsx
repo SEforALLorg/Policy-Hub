@@ -6,7 +6,7 @@ import ContactBox from "../../components/contactus";
 const ContactUs = () => {
   return (
     <main>
-      <div className='mobile:p-2.5 xsm:p-[5px] bg-background'>
+      <div className='mobile:p-2.5 xsm:p-[5px]'>
         <div className='custom-container mx-auto'>
           <div className='px-3 py-2'>
             <Header />
