@@ -126,7 +126,7 @@ const LeftWrapPage = ({
             const singleAnswer = item?.attributes?.AddAnswer;
             const questionType = item?.attributes?.QuestionType;
             const ToolTipText = item?.attributes?.ToolTipText;
-
+            
             return (
               <QuestionWrap key={index}>
                 {questionType === "Questionnaire" ? (

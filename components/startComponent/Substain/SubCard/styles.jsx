@@ -1,5 +1,11 @@
 import styled, { keyframes } from "styled-components";
-import { colors, fontSizes, media, space,fullWidth } from "../../../../constant";
+import {
+  colors,
+  fontSizes,
+  media,
+  space,
+  fullWidth,
+} from "../../../../constant";
 import { fadeOut } from "react-animations";
 
 const fadeOutAnimation = keyframes`${fadeOut}`;
@@ -11,24 +17,23 @@ export const Wrapper = styled.div`
   justify-content: flex-end;
   position: relative;
   height: 100%;
-  .slick-slide{
+  .slick-slide {
     height: 300px;
   }
-  .slick-dots li button:before{
-    transition: all .5s;
+  .slick-dots li button:before {
+    transition: all 0.5s;
     font-size: 8px;
   }
-  .slick-dots li.slick-active button:before{
-    color:#FCB600;
+  .slick-dots li.slick-active button:before {
+    color: #fcb600;
     font-size: 20px;
   }
-  .slick-dots{
+  .slick-dots {
     position: absolute;
     right: -33px;
     top: 50%;
     width: 10px;
     transform: translateY(-50%);
-    
   }
 `;
 export const Card = styled.div`
@@ -44,15 +49,19 @@ export const Card = styled.div`
 export const Title = styled.h5`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[5] + 5}px;
-    line-height: 64.4px;
+  font-size: ${fontSizes[5]}px;
+  line-height: 64.4px;
   text-align: center;
   user-select: none;
   text-transform: uppercase;
   color: ${colors.text};
   text-align: center;
   padding-bottom: ${space[5]}px;
-  margin-top: ${space[10] * 2}px;
+  margin-top: ${space[5]}px;
+  @media only screen and (min-width: 1680px) {
+    margin-top: ${space[10] * 2}px;
+    font-size: ${fontSizes[5] + 5}px;
+  }
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
     font-size: ${fontSizes[4] + 2}px;
     line-height: 42px;
@@ -73,8 +82,8 @@ export const PrimarySpan = styled.span`
 export const SubTitle = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: ${fontSizes[4] + 2}px;
-  line-height: 50px;
+  font-size: ${fontSizes[3] + 2}px;
+  line-height: 45px;
   user-select: none;
   color: ${colors.text};
   margin: ${space[0]}px;
@@ -84,6 +93,10 @@ export const SubTitle = styled.p`
   }
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
     font-size: ${fontSizes[3] + 2}px;
+    line-height: 50px;
+  }
+  @media only screen and (min-width: 1680px) {
+    font-size: ${fontSizes[4] + 2}px;
     line-height: 50px;
   }
 `;
@@ -145,15 +158,14 @@ export const Box = styled.div`
     border-bottom: none;
   }
   img {
-    // max-width: ${fullWidth};
-    width: 200px;
+    width: 175px;
     height: 160px;
   }
 `;
 export const BottomBtn = styled.div`
-  width: 50%;
+  width: 40%;
   position: absolute;
-  bottom: -44px;
+  bottom: -32px;
   @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
     width: 44%;
     bottom: -32px;
