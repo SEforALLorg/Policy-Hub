@@ -83,7 +83,7 @@ export const InputWrap = styled.div`
     border-radius: 9.19916px;
     border: 1px solid ${colors.white};
     padding: 10px 10px;
-    outline: none;
+    outline: none !important;
   }
 `;
 
@@ -94,5 +94,6 @@ export const ButtonWrap = styled.div`
     height: 38px;
     margin: 0 auto;
     display: block;
+    opacity: ${({disabled}) => disabled ? 0.4 : 1}
   }
 `;

@@ -1,81 +1,95 @@
-import styled from 'styled-components'
-import { colors, fontSizes, space ,fullWidth} from '../../../constant'
+import styled from "styled-components";
+import { colors, fontSizes, space, fullWidth } from "../../../constant";
 
 export const Wrapper = styled.div`
-    padding:  ${space[10] * 2}px;
-    background: ${colors.white};
-    border-radius: 16px;
-    width: ${fullWidth};
-    margin: auto;
-    // display: flex;
-    // justify-content: center;
-    // flex-direction: column;
-    // align-items: center;
-    height: 100%;
-`
+  padding: ${space[10] * 2}px;
+  background: ${colors.white};
+  border-radius: 16px;
+  width: ${fullWidth};
+  margin: auto;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+  // align-items: center;
+  height: 100%;
+`;
 export const CardHeader = styled.div`
-    display: flex;
-    align-items: center;
-    padding-bottom: ${space[5]}px;
-`
+  display: flex;
+  align-items: center;
+  padding-bottom: ${space[5]}px;
+`;
 export const Border = styled.div`
-    margin: ${space[8]}px 0px;
-    border-bottom: 3.6px solid rgba(6, 90, 137, 0.2);
-`
+  margin: ${space[8]}px 0px;
+  border-bottom: 3.6px solid rgba(6, 90, 137, 0.2);
+`;
 export const ImgBox = styled.div`
-    display: flex;
-    align-items: center;
-    position: relative;
-    user-select: none;
-    margin-right: ${space[10]}px;
-    img{
-        max-width: 100%;
-        width:230px;
-    }
-`
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+  margin-right: ${space[10]}px;
+  img {
+    max-width: 100%;
+    width: 230px;
+  }
+`;
 export const CardTitle = styled.p`
-    font-style: normal;
-    font-weight: 700;
-    font-size: ${fontSizes[4] + 5}px;
-    line-height: 55px;
-    user-select: none;
-    color: ${colors.text};
-    user-select: none;
-    margin: ${space[0]}px;
-`
+  font-style: normal;
+  font-weight: 700;
+  font-size: ${fontSizes[4] + 5}px;
+  line-height: 55px;
+  user-select: none;
+  color: ${colors.text};
+  user-select: none;
+  margin: ${space[0]}px;
+  @media only screen and (min-width: 1680px) {
+    font-size: 51px;
+    line-height: 62px;
+  }
+`;
 export const CardSubTitle = styled.p`
-    font-style: normal;
-    font-weight: 700;
-    font-size: ${fontSizes[4] + 4}px;
-    line-height: 50px;
-    user-select: none;
-    color: ${colors.text};
-    padding: 0px ${space[5]}px;
-    margin-bottom: ${space[10] * 2}px;
-     svg{
-        color: ${colors.gray};
-        font-size: 25px;
-        margin-left:  ${space[4]}px;
-     }
-`
+  font-style: normal;
+  font-weight: 700;
+  font-size: ${fontSizes[4] + 4}px;
+  line-height: 50px;
+  user-select: none;
+  color: ${colors.text};
+  padding: 0px ${space[5]}px;
+  margin-bottom: ${space[10] * 2}px;
+  svg {
+    color: ${colors.gray};
+    font-size: 25px;
+    margin-left: ${space[4]}px;
+  }
+  @media only screen and (min-width: 1680px) {
+    font-size: 47px;
+    line-height: 62px;
+  }
+`;
 export const ButtonGrp = styled.div`
-    margin-top: ${space[10]}px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    max-width: 30%;
-    margin:auto;
-    button {
-        margin-bottom: ${space[10]}px;
-        height: 65px;
-        font-size: ${fontSizes[2] + 3}px;
+  margin-top: ${space[10]}px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 30%;
+  margin: auto;
+  button {
+    margin-bottom: ${space[10]}px;
+    height: 65px;
+    font-size: ${fontSizes[2] + 3}px;
+    @media only screen and (min-width: 1680px) {
+        height: 80px;
     }
-`
+  }
+  @media only screen and (min-width: 1680px) {
+    max-width: 40%;
+  }
+`;
 
 export const LoaderWrap = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+`;
