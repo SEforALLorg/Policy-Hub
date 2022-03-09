@@ -87,6 +87,8 @@ const CompletedSteps = ({ onRestart }) => {
           title="Submit"
           onClick={() => onSubmit()}
           disabled={!name || !email}
+          className="bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-normal text-small leading-5 uppercase  text-white outline-none no-underline no-underline
+                    border-2 border-transparent duration-500 hover:text-Primary hover:bg-Primary hover:border-2 hover:border-Primary ease-linear transition-all"
         />
       </ButtonWrap>
     </Wrapper>

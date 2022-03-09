@@ -1,51 +1,36 @@
 import React from "react";
-import {
-  FullWrapper,
-  Wrapper,
-  TopWrapper,
-  Heading,
-  ReportCard,
-  ReportImg,
-  Detail,
-  ReportHeading,
-  ReportSubTitle,
-  GoButton,
-  ReviewWrap,
-  InnerWrap,
-  ResourcesWrap,
-  ResourceHeading,
-  ResourceContent,
-  BrowserBtn,
-  InnerBody,
-  BottomHeader,
-  BottomWrapper,
-  VideoWrap,
-  VdWrap,
-  VideoText,
-} from "./styles";
-import PrimaryButton from "components/buttons/component/primaryBtn/primarybutton";
+
 import StartButton from "components/buttons/component/startButton/StartButton";
-import ReviewCard from './components/reviewCard';
-import PopularResorces from './components/popularResorces';
-import ViewButton from '../buttons/viewall';
-import VideoCard from './components/video';
+import ReviewCard from "./components/reviewCard";
+import PopularResorces from "./components/popularResorces";
+import ViewButton from "../buttons/viewall";
+import VideoCard from "./components/video";
 
 const Feature = ({ hideText }) => {
   return (
-    <FullWrapper>
-      <TopWrapper>
-        <Wrapper>
-          <Heading>Featured Resource </Heading>
-          <ReportCard>
-            <ReportImg>
-              <img src={"/static/images/mustardflower.svg"} alt="mustard" />
-            </ReportImg>
-            <Detail>
-              <ReportHeading>
+    <div className="w-full rounded-lg overflow-hidden">
+      <div className="bg-white py-6 drop-shadow-dropShadow">
+        <div className="xsm:px-4 mobile:px-[100px]">
+          <h4 className="font-bold leading-[46px] mobile:text-base medium:text-large m-0 text-Primary uppercase extrasmall:text-xmd xsm:text-[19px]">
+            Featured Resource{" "}
+          </h4>
+          <div className="flex pb-[25px] my-6 border-b-[2.4px] border-borderprimary w-full xsm:flex-wrap large:flex-nowrap">
+            <div className="sm:mr-0 large:mr-5 xsm:w-full large:w-max large:mb-0 xsm:mb-5 screen:min-w-[359px] w-full screen:h-[271px]">
+              <img
+                src={"/static/images/mustardflower.svg"}
+                alt="mustard"
+                className="xsm:w-full large:w-max "
+              />
+            </div>
+            <div className="w-full">
+              <h5
+                className="font-bold medium:leading-10 medium:text-[33px] mb-[23px]
+                             xsm:text-sml xsm:leading-6 extrasmall:text-xmd extrasmall:leading-7"
+              >
                 Regional Certification Guidelines For Off-Grid Solar
                 Photovoltaic Technicians
-              </ReportHeading>
-              <ReportSubTitle>
+              </h5>
+              <p className="mb-0 font-normal leading-[18px] text-boldtext m-0 text-[15px] ">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent porta venenatis velit sit amet posuere. Nam interdum
                 augue at quam consequat semper. Nam ac tempor ex. In hac
@@ -57,17 +42,22 @@ const Feature = ({ hideText }) => {
                 porta varius sed nec ipsum. Quisque a urna nulla. Aliquam tortor
                 ligula, rutrum mollis urna eu, sodales interdum elit. Donec
                 interdum leo.
-              </ReportSubTitle>
-              <GoButton>
-                <PrimaryButton
+              </p>
+              <div className="flex justify-center mt-[29px]">
+                <button
+                  className="bg-Primary rounded-[60px] text-normal text-center 
+                           leading-5 border-2 border-transparent outline-none text-white font-bold uppercase
+                           hover:text-Primary hover:bg-Primary hover:border-2 hover:border-Primary ease-linear
+                           transition-all duration-500 h-[32px] w-[183px]"
                   onClick={() => window.open("/resources", "_self")}
-                  title={"Go to Report"}
-                />
-              </GoButton>
-            </Detail>
-          </ReportCard>
-          <ReviewWrap>
-            <div className="cards">
+                >
+                  Go To Report
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between mt-6 xsm:flex-wrap medium:flex-nowrap">
+            <div className="xsm:mr-0  medium:mr-2.5 w-full ">
               <ReviewCard
                 hideText={true}
                 date={"12/02/2022"}
@@ -79,7 +69,7 @@ const Feature = ({ hideText }) => {
                 showStar={true}
               />
             </div>
-            <div className="cards">
+            <div className="w-full xsm:mt-6 medium:mt-0">
               <ReviewCard
                 date={"12/02/2022"}
                 src={"/static/images/windfan.svg"}
@@ -90,15 +80,20 @@ const Feature = ({ hideText }) => {
                 showStar={true}
               />
             </div>
-          </ReviewWrap>
-        </Wrapper>
-      </TopWrapper>
-      <InnerBody>
-        <InnerWrap>
-          <Wrapper>
-            <ResourcesWrap>
-              <ResourceContent>
-                <ResourceHeading>Featured Resource </ResourceHeading>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-end relative">
+        <div className="bg-lightBg py-[60px] ">
+          <div className="xsm:px-4 mobile:px-[100px]">
+            <div className="flex justify-between items-center xsm:flex-wrap medium:flex-nowrap">
+              <div className="xsm:w-full medium:w-[49%]">
+                <h6
+                  className="font-bold leading-7 large:text-[28px] mb-[27px]
+                 text-center mb-4 text-Primary uppercase extrasmall:text-medium xsm:text-small"
+                >
+                  Featured Resource
+                </h6>
                 <PopularResorces
                   src={"/static/images/sun.svg"}
                   title="Funding the Sun: New Paradigms for Financing Off-Grid Solar Companies"
@@ -112,10 +107,14 @@ const Feature = ({ hideText }) => {
                   src={"/static/images/lights.svg"}
                   title="Living In The Light: The Bangladesh Solar Home Systems Story"
                 />
-                <ViewButton title={"View All"} />
-              </ResourceContent>
-              <ResourceContent>
-                <ResourceHeading>Recently added</ResourceHeading>
+                <div className="flex justify-center mt-3">
+                  <ViewButton title={"View All"} />
+                </div>
+              </div>
+              <div className="xsm:w-full xsm:mt-6 medium:mt-0 medium:w-[49%]">
+                <h6 className="font-bold leading-7 text-center extrasmall:text-medium xsm:text-small large:text-[28px] mb-[27px]  mb-4 text-Primary uppercase">
+                  Recently added
+                </h6>
                 <PopularResorces
                   src={"/static/images/windtower.svg"}
                   title="Measuring Energy Access in India - Insights 
@@ -129,33 +128,45 @@ const Feature = ({ hideText }) => {
                   src={"/static/images/lights.svg"}
                   title="Strategies for microgrid operation under real-world conditions"
                 />
-                <ViewButton title={"View All"} />
-              </ResourceContent>
-            </ResourcesWrap>
-          </Wrapper>
-        </InnerWrap>
-        <BrowserBtn>
-          <StartButton title={"Browse all resources"} />
-        </BrowserBtn>
-      </InnerBody>
-      <BottomWrapper>
-        <Wrapper>
-          <BottomHeader>
-            <VideoText>VIDEOS</VideoText>
-            <VideoWrap>
-              <VdWrap>
+                <div className="flex justify-center mt-3">
+                  <ViewButton title={"View All"} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute small:-bottom-[30px] xsm:-bottom-[18px]">
+          <StartButton title={"Browse all resources"} onClick={() => window.open("/resources", "_self")} />
+        </div>
+      </div>
+      <div className="pt-[35px] pb-[60px] bg-white">
+        <div className="xsm:px-4 mobile:px-[100px]">
+          <div>
+            <h6
+              className="font-bold leading-10 text-large m-0 text-darktext 
+                            uppercase xsm:text-tiny small:text-medium large:text-large"
+            >
+              VIDEOS
+            </h6>
+            <div className="flex items-center pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap">
+              <div className="xsm:mr-0 medium:mr-5 ">
                 <VideoCard />
-              </VdWrap>
-              <VdWrap>
+              </div>
+              <div className="xsm:mr-0 medium:mr-5 xsm:mt-5 medium:mt-0">
                 <VideoCard />
-              </VdWrap>
-              <VdWrap>
+              </div>
+              <div className="xsm:mt-5 medium:mt-0">
                 <VideoCard />
-              </VdWrap>
-            </VideoWrap>
-            <VideoText>News and stories</VideoText>
-            <ResourcesWrap className="headingCard">
-              <VdWrap>
+              </div>
+            </div>
+            <h6
+              className="font-bold leading-10  m-0 text-darktext uppercase xsm:text-tiny small:text-medium 
+            large:text-large"
+            >
+              News and stories
+            </h6>
+            <div className="mt-[25px] flex justify-between xsm:flex-wrap medium:flex-nowrap">
+              <div className="xsm:mr-0 medium:mr-4 w-full ">
                 <ReviewCard
                   date={"12/02/2022"}
                   src={"/static/images/windfan.svg"}
@@ -163,8 +174,8 @@ const Feature = ({ hideText }) => {
                   subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
                   showStar={false}
                 />
-              </VdWrap>
-              <VdWrap>
+              </div>
+              <div className="xsm:mt-5 medium:mt-0 w-full">
                 <ReviewCard
                   date={"12/02/2022"}
                   src={"/static/images/windfan.svg"}
@@ -172,12 +183,12 @@ const Feature = ({ hideText }) => {
                   subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
                   showStar={false}
                 />
-              </VdWrap>
-            </ResourcesWrap>
-          </BottomHeader>
-        </Wrapper>
-      </BottomWrapper>
-    </FullWrapper>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

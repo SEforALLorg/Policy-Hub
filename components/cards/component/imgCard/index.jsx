@@ -1,18 +1,15 @@
+  
 import React from 'react';
-import {
-    CardWrap,
-    CardBox,
-    Text
-} from "./styles";
-const Imgcard = ({ img,title,style }) => {
+
+const ImgCard = ({ img,title,className }) => {
     return (
-        <CardWrap>
-            <CardBox style={style}>
-                <img src={img} alt="img" />
-            </CardBox>
-            <Text>{title}</Text>
-        </CardWrap>
+        <div>
+            <div className={className} >
+                <img src={img} alt="img" className='max-w-full'/>
+            </div>
+            <a className='text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block '>{title}</a>
+        </div>
     );
 };
 
-export default Imgcard;
+export default ImgCard;

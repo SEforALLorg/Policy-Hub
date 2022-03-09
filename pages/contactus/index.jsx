@@ -1,23 +1,24 @@
 import React from "react";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-import { Container } from "reactstrap";
-import { Wrapper, FooterWrap, CardBox } from "styles/contactus";
 import ContactBox from "../../components/contactus";
+
 const ContactUs = () => {
   return (
     <main>
-      <Wrapper>
-        <Container fulid="md">
-          <Header />
-          <CardBox>
+      <div className='mobile:p-2.5 xsm:p-[5px] bg-background'>
+        <div className='custom-container mx-auto'>
+          <div className='px-3 py-2'>
+            <Header />
+          </div>
+          <div className='xsm:my-4 6xl:my-12'>
             <ContactBox />
-          </CardBox>
-          <FooterWrap>
+          </div>
+          <div className='w-full m-auto	pt-10'>
             <Footer />
-          </FooterWrap>
-        </Container>
-      </Wrapper>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };

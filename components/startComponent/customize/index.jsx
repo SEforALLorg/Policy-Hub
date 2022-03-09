@@ -1,6 +1,5 @@
 import React from "react";
 import BlueButton from "../../buttons/component/BlueButton";
-import { FiInfo } from "react-icons/fi";
 import {
   Wrapper,
   CardHeader,
@@ -13,6 +12,7 @@ import {
 } from "./styles";
 import Loader from "../../loader";
 import TooltipComponent from "../../tooltip";
+
 const Customize = ({
   onYes,
   questions,

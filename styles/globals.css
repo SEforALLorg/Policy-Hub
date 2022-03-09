@@ -1,3 +1,8 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -130,8 +135,54 @@ a {
   display: none;
 }
 
+.filterShadow{
+  box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
+}
+.resourceShadow{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.dropShadow{
+  filter: drop-shadow(0px 4px 7px rgba(0, 0, 0, 0.25));
+}
+.imgbox{
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+}
+.custom-container {
+  margin: auto;
+  max-width: 1320px;
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .topStep {
     padding-bottom: 0rem;
+  }
+}
+
+@media  only screen and (max-width: 1400px) {
+  .custom-container {
+    max-width: 1140px;
+  }
+}
+
+@media  only screen and (max-width: 1100px) {
+  .custom-container {
+    max-width: 90%;
+  }
+}
+
+@media  only screen and (max-width: 767px) {
+  .custom-container {
+    max-width: unset;
+  }
+}
+@media  only screen and (max-width: 400px) {
+  .videoPlayer .video-react .video-react-big-play-button.video-react-big-play-button-center {
+    top:34%;
+    background-size: 40% 40%;
+    width: 80px;
+    height: 80px;
   }
 }

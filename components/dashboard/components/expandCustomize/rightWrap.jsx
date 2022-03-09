@@ -45,10 +45,11 @@ const RightWrapPage = ({
       ErrorNotify(error.response.data.error.message);
     },
   });
+  
 
   let filters = {};
-  if (filtersData?.data?.data?.attributes) {
-    filters = filtersData?.data?.data?.attributes;
+  if (filtersData?.data?.results) {
+    filters = filtersData?.data?.results;
   }
 
   const query = useMemo(() => {
