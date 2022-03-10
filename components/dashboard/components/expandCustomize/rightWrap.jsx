@@ -158,7 +158,7 @@ const RightWrapPage = ({
           <ImgBox>
             <img src="static/images/greenFile.svg" alt="card" />
           </ImgBox>
-          <CardTitle>Resources that match your input</CardTitle>
+          <CardTitle>Resources that match your input.</CardTitle>
         </CardHeader>
       )}
       <ReportsWrap>

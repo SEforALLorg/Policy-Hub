@@ -38,7 +38,7 @@ const SubCard = ({ HandleOpen }) => {
     verticalSwiping: true,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false
+    arrows: false,
   };
 
   return (
@@ -57,8 +57,8 @@ const SubCard = ({ HandleOpen }) => {
               <Step className="topStep">
                 <Point>
                   <SubTitle style={{ marginLeft: "20px" }}>
-                    The Sustainable Energy for All knowledge hub is an
-                    interactive platform that will help/support policy makers in
+                    The Sustainable Energy for All Knowledge Hub is an
+                    interactive platform that supports policy makers in
                     developing conducive policy and regulatory frameworks for
                     sustainable energy.
                   </SubTitle>
@@ -68,8 +68,8 @@ const SubCard = ({ HandleOpen }) => {
             <Box>
               <Step>
                 <SubTitle>
-                  <span>The knowledge hub</span> provides key resource material
-                  for each step of the decision-making process.
+                  <span>The knowledge hub</span> provides key resources for
+                  different steps in decision-making.
                 </SubTitle>
                 <img src={"static/images/hub.svg"} alt="card" />
               </Step>
@@ -78,17 +78,19 @@ const SubCard = ({ HandleOpen }) => {
               <Step>
                 <img src={"static/images/journey.svg"} alt="card" />
                 <SubTitle>
-                  Currently the platform supports the <span>user journey </span>
-                  for electricity access.
+                  It currently offers resources on electricity access, but other
+                  pillars of sustainable energy (access to clean cooking,
+                  sustainable cooling, energy efficiency and renewable energy)
+                  will be added soon.
                 </SubTitle>
               </Step>
             </Box>
             <Box>
               <Step>
                 <SubTitle>
-                  Find relevant <span>guidelines, tools and templates</span> on
-                  electricity access based on your country’s assessment and
-                  matching your needs by answering the following questions.
+                  Find <span>guidelines, tools, and templates</span> on
+                  electricity access relevant to your country and matched to
+                  your needs by answering the following questions.
                 </SubTitle>
                 <img src={"static/images/guide.svg"} alt="card" />
               </Step>
