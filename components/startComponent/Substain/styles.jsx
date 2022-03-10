@@ -15,6 +15,7 @@ export const TopWrap = styled.div`
     margin: 0 auto;
     margin-top: ${space[1] + 1}rem;
     margin-bottom: ${space[2]}rem;
+    height: 75vh;
   }
 `;
 export const Bottom = styled.div`

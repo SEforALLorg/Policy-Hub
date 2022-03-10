@@ -24,7 +24,7 @@ export const Text = styled.p`
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.lighttext};
-    width: 136px;
+    width: ${({selectedOption}) => selectedOption ? '93%' : '100%'};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

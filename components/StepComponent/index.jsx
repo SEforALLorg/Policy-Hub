@@ -24,6 +24,8 @@ const StepComponent = ({
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
 
+  console.log(item,'item');
+  
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
@@ -87,6 +89,7 @@ const StepComponent = ({
           onClick={() => {
             onNext(optionData?.NextQuestion?.data?.id);
             setStepQuestion(item);
+            if(!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null
             setStepCount(stepCount + 1);
           }}
         >

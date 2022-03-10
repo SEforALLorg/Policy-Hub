@@ -65,13 +65,24 @@ const ContactBox = () => {
             className={"bg-white p-4 w-full	rounded-lg m-[5px]"}
             heading={"Vienna Office"}
             title={
-              "Andromeda Tower 15th floor Donau City Strasse 6 1220, Vienna  Austria  Hours: 9:00 - 18:00 CET"
+              <>
+                Andromeda Tower 15th floor <br />
+                Donau City Strasse 6<br />
+                1220, Vienna Austria
+              </>
             }
           />
           <Address
             className={"bg-white p-4 w-full	rounded-lg m-[5px]"}
             heading={"Washington, DC Office"}
-            title="1750 Pennsylvania Avenue NW Suite 300 Washington, DC 20006  USA  Hours: 9:00 - 18:00 ES"
+            title={
+              <>
+                1750 Pennsylvania Avenue NW <br />
+                Suite 300 <br />
+                Washington, DC 20006 USA <br />
+                Hours: 9:00 - 18:00 ES
+              </>
+            }
           />
           <Address
             className={"bg-white p-4 w-full	rounded-lg m-[5px]"}

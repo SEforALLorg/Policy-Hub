@@ -43,7 +43,7 @@ const Accordion = ({
   return (
     <AccordionWrap>
       <Select onClick={toggling}>
-        <Text>
+        <Text selectedOption={selectedOption?.length}>
           {selectedOption?.length
             ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}

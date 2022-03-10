@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
     opacity: 0;
     visibility: hidden;
   }
-  @media only screen and (min-width: 1680px){
+  @media only screen and (min-width: 1680px) {
     transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   }
 `;
@@ -112,7 +112,7 @@ export const ButtonGrp = styled.div`
   button {
     margin-bottom: ${space[6]}px;
   }
-  @media only screen and (min-width: 1680px){
+  @media only screen and (min-width: 1680px) {
     margin: ${space[4]}rem auto;
   }
 `;
@@ -203,6 +203,7 @@ export const ReportsLeftWrap = styled.div`
   height: 410px;
   overflow: auto;
   overflow-x: hidden;
+  padding: 0px 7px;
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -210,13 +211,15 @@ export const ReportsLeftWrap = styled.div`
     box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
     margin-top: 5px;
   }
-   
+
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(19,166,191,0.2);
+    background-color: rgba(19, 166, 191, 0.2);
     border-radius: 10px;
   }
-  @media only screen and (min-width: 1680px){
-    height: 500px;
+  @media only screen and (min-width: 1680px) {
+    height: unset;
+    overflow: visible;
+    padding: 0px;
   }
 `;
 export const ReportsRightWrap = styled.div`
@@ -239,11 +242,11 @@ export const ReportsRightWrap = styled.div`
     margin-top: 5px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(19,166,191,0.2);
+    background-color: rgba(19, 166, 191, 0.2);
     border-radius: 10px;
   }
-  @media only screen and (min-width: 1680px){
-    height: 500px;
+  @media only screen and (min-width: 1680px) {
+    height: 530px;
   }
 `;
 
@@ -276,16 +279,16 @@ export const Nodata = styled.div`
   justify-content: center;
   color: ${colors.text};
   flex-direction: column;
-  a{
+  a {
     color: ${colors.primary};
     font-size: 14px;
   }
-  p{
+  p {
     display: flex;
     align-items: center;
-    margin:0px;
+    margin: 0px;
   }
-  svg{
+  svg {
     margin-right: 5px;
     margin-top: -3px;
   }
@@ -299,15 +302,36 @@ export const LoaderWrap = styled.div`
   }
 `;
 
-
 export const Divider = styled.div`
   border-bottom: 2.45084px solid rgba(134, 164, 176, 0.25);
 `;
 
 export const LoaderWrapFull = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`;
+export const BlankData = styled.div`
+  height: 1px;
+`;
+
+export const RestartIcon = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80px;
+  margin-left: auto;
+  margin-bottom: -13px;
+  cursor: pointer;
+  justify-content: flex-end;
+  svg{
+    color: #065a89;
+  }
+  p{
+    color: #065a89;
+    margin-left: 2px;
+    margin-top: 2px;
+    font-size: 14px;
+  }
 `;
 

@@ -18,6 +18,20 @@ export const OptionsWrap = styled.div`
   padding: 0px ${space[5]}px;
   height: 212px;
   overflow: auto;
+  @media only screen and (min-width: 1680px) {
+    height: 300px;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(19, 166, 191, 0.2);
+    border-radius: 10px;
+  }
 `;
 
 export const Item = styled.div`

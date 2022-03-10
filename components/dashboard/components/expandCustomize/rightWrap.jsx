@@ -23,7 +23,8 @@ import {
   InnerSlideWrap,
   Nodata,
   Divider,
-  LoaderWrapFull
+  LoaderWrapFull,
+  BlankData
 } from "./styles";
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -147,8 +148,7 @@ const RightWrapPage = ({
     : finalNonPublicationReports;
 
   const onSearch = (e) => {
-    // useDebounce()
-    setSearch(e);
+    setSearch(e)
   };
 
   return (
@@ -286,7 +286,7 @@ const RightWrapPage = ({
                         area={document_types}
                         item={publishingOrganizations || "IRENA"}
                         date={year || "2018"}
-                        file={flag?.image || "static/images/Globe.svg"}
+                        file={flag?.image || "static/images/globe.png"}
                         title={name}
                         key={index}
                         star={true}
@@ -333,7 +333,7 @@ const RightWrapPage = ({
                         area={document_types || "North America "}
                         item={publishingOrganizations || "IRENA"}
                         date={year || "2018"}
-                        file={flag?.image || "static/images/Globe.svg"}
+                        file={flag?.image || "static/images/globe.png"}
                         title={name}
                         key={index}
                         url={url}
@@ -352,6 +352,7 @@ const RightWrapPage = ({
                   })}
               </>
             )}
+            {Boolean(reports?.length) && <BlankData />}
           </InnerSlideWrap>
         </ReportsRightWrap>
       </ReportsWrap>

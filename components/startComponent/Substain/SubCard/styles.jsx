@@ -35,6 +35,9 @@ export const Wrapper = styled.div`
     width: 10px;
     transform: translateY(-50%);
   }
+  @media only screen and (min-width: 1680px) {
+    height: 90%;
+  }
 `;
 export const Card = styled.div`
   width: ${fullWidth};
