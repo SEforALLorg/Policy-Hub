@@ -61,24 +61,24 @@ const Report = ({
         {countryName && (
           <>
             <Box bigCard={bigCard}>
-              <ImageWrap style={{ backgroundImage: `url(${file})` }}>
+              <ImageWrap style={{ backgroundImage: `url(${file})`, backgroundSize: file === 'static/images/globe.png' ? 'contain' : '' }}>
                 {/* <img src={file} alt="flag" /> */}
               </ImageWrap>
-              <Text  className={!bigCard && "innerText"}>{countryName}</Text>
+              <Text  className={!bigCard && isActive && "innerText"}>{countryName}</Text>
             </Box>
             <span />
           </>
         )}
         <Box>
-          <Text className={!bigCard && "innerText"}>{area}</Text>
+          <Text className={!bigCard && isActive && "innerText"}>{area}</Text>
         </Box>
         <span />
         <Box style={{ width: "38px" }}>
-          <Text className={!bigCard && "innerText"}>{item}</Text>
+          <Text className={!bigCard && isActive && "innerText"}>{item}</Text>
         </Box>
         <span />
         <Box style={{ width: "38px" }}>
-          <Text className={!bigCard && "innerText"}>{date}</Text>
+          <Text className={!bigCard && isActive && "innerText"}>{date}</Text>
         </Box>
         {isActive && (
           <GoReportsButton onClick={() => window.open(url)}>

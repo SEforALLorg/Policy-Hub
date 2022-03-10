@@ -15,10 +15,12 @@ import {
   YesButton,
   LeftWrap,
   QuestionWrap,
+  RestartIcon,
 } from "./styles";
 import StepComponent from "../../../StepComponent";
 import { useEffect } from "react";
 import CompletedSteps from "../../../completedSteps";
+import { VscDebugRestart } from "react-icons/vsc";
 
 const LeftWrapPage = ({
   questions,
@@ -27,7 +29,7 @@ const LeftWrapPage = ({
   firstQuestion,
   restart,
   stepAnswer,
-  resetFilters
+  resetFilters,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -40,7 +42,7 @@ const LeftWrapPage = ({
       setFirstQuestionId(firstQuestion);
       setUserJourney([...userJourney, { ...questions[0], answer: stepAnswer }]);
     }
-  }, [questions?.length, firstQuestion, stepAnswer]);
+  }, [questions?.length, firstQuestion]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -109,6 +111,20 @@ const LeftWrapPage = ({
             </YesButton>
           </Steps>
         ))}
+      {Boolean(userJourney?.length) && (
+        <RestartIcon
+          onClick={() => {
+            setNextQuestionId(firstQuestionId);
+            setUserJourney([]);
+            setStepQuestion([]);
+            restart();
+          }}
+        >
+          <VscDebugRestart />
+          <p>Restart</p>
+        </RestartIcon>
+      )}
+
       {nextQuestionId && <Border></Border>}
       {!nextQuestionId ? (
         <>
@@ -173,7 +189,7 @@ const LeftWrapPage = ({
                             }}
                             key={index}
                           />
-                        )
+                        );
                       })}
                     </ButtonGrp>
                   </>

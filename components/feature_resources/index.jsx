@@ -12,7 +12,7 @@ const Feature = ({ hideText }) => {
       <div className="bg-white py-6 drop-shadow-dropShadow">
         <div className="xsm:px-4 mobile:px-[100px]">
           <h4 className="font-bold leading-[46px] mobile:text-base medium:text-large m-0 text-Primary uppercase extrasmall:text-xmd xsm:text-[19px]">
-            Featured Resource{" "}
+            Resources{" "}
           </h4>
           <div className="flex pb-[25px] my-6 border-b-[2.4px] border-borderprimary w-full xsm:flex-wrap large:flex-nowrap">
             <div className="sm:mr-0 large:mr-5 xsm:w-full large:w-max large:mb-0 xsm:mb-5 screen:min-w-[359px] w-full screen:h-[271px]">
@@ -92,7 +92,7 @@ const Feature = ({ hideText }) => {
                   className="font-bold leading-7 large:text-[28px] mb-[27px]
                  text-center mb-4 text-Primary uppercase extrasmall:text-medium xsm:text-small"
                 >
-                  Featured Resource
+                  Most Popular
                 </h6>
                 <PopularResorces
                   src={"/static/images/sun.svg"}

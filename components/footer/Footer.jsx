@@ -71,7 +71,7 @@ const Footer = () => {
             className="font-medium leading-5 xsm:text-xx text-center text-white mr-6 mb-0
                                   desktoplg:text-small mobile:text-xsmall xsm:w-full mobile:w-max"
           >
-            Powered by sustainable energy for all
+            Powered By Sustainable Energy For All
           </p>
           <button
             onClick={() => window.open("/resources", "_self")}
@@ -82,7 +82,7 @@ const Footer = () => {
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
                                       hover:border hover:border-blue ease-linear transition-all duration-500"
           >
-            View resources
+            View Resources
           </button>
           <button
             onClick={() => window.open('static/pdf/decision-tree.pdf')}
@@ -92,14 +92,14 @@ const Footer = () => {
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
                                        hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500"
           >
-            Download decision tree
+            Download Decision Tree
           </button>
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
       <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap">
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left ">
-          Copyright 2022 sustainable energy for all
+          Copyright 2022 Sustainable Energy For All
         </p>
         <div
           className="flex w-full items-center small:flex  xsm:mt-6 xsm:block

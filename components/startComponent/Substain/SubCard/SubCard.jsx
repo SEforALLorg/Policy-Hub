@@ -30,14 +30,14 @@ const SubCard = ({ HandleOpen }) => {
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     arrows: false
   };
 
