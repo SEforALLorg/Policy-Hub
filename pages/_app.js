@@ -4,6 +4,7 @@ import {
 } from 'react-query'
 import { ToastContainer } from 'react-toastify';
 
+import "../styles/toastify.css";
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

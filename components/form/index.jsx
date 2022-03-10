@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({ field, placeholder, className }) => {
+const Form = ({ field, placeholder, className, onChange, value }) => {
   return (
     <div className="xsm:block extrasmall:flex small:flex mobile:flex items-center mb-2.5 extrasmall:justify-center small:justify-end mobile:justify-end laptop:justify-end">
       <p
@@ -14,6 +14,8 @@ const Form = ({ field, placeholder, className }) => {
         type="text"
         name=""
         placeholder={placeholder}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );

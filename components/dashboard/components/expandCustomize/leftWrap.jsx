@@ -26,7 +26,8 @@ const LeftWrapPage = ({
   setNonPublicationReports,
   firstQuestion,
   restart,
-  stepAnswer
+  stepAnswer,
+  resetFilters
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -87,6 +88,7 @@ const LeftWrapPage = ({
                 onStepChange(item);
                 onReportsFind(item?.attributes?.AddAnswer[0]);
               }
+              resetFilters();
             }}
           >
             <Text>

@@ -5,11 +5,7 @@ import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
-const ExpandCustomize = ({
-  onExpand,
-  questions,
-  isFetchingQuestions
-}) => {
+const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -24,10 +20,8 @@ const ExpandCustomize = ({
     years: [],
     generation_sources: [],
     co_authors: [],
-    publishing_organizations: []
-  });  
-
-  
+    publishing_organizations: [],
+  });
 
   return (
     <Wrapper isExpand={isExpand}>
@@ -38,7 +32,7 @@ const ExpandCustomize = ({
           setNonPublicationReports={(e) => setNonPublicationReports(e)}
           firstQuestion={firstQuestion}
           restart={() => {
-            setIsExpand(false)
+            setIsExpand(false);
             onExpand(false);
             setSelectInputs({
               countries: [],
@@ -47,9 +41,19 @@ const ExpandCustomize = ({
               document_types: [],
               years: [],
               generation_sources: [],
-            })
+            });
           }}
           stepAnswer={stepAnswer}
+          resetFilters={() =>
+            setSelectInputs({
+              countries: [],
+              regions: [],
+              segments: [],
+              document_types: [],
+              years: [],
+              generation_sources: [],
+            })
+          }
         />
         <RightWrapPage
           publicationReports={publicationReports}
@@ -61,7 +65,7 @@ const ExpandCustomize = ({
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize
           onYes={() => {
-            setIsExpand(!isExpand)
+            setIsExpand(!isExpand);
             onExpand(true);
           }}
           questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
@@ -70,7 +74,7 @@ const ExpandCustomize = ({
           onReportsFind={(e) => {
             setPublicationReports(e?.KeyPublication?.data);
             setNonPublicationReports(e?.NonKeyPublication?.data);
-            setStepAnswer(e?.Answer)
+            setStepAnswer(e?.Answer);
           }}
         />
       </div>
