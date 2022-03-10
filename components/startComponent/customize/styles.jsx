@@ -17,6 +17,9 @@ export const CardHeader = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: ${space[5]}px;
+  @media only screen and (min-width: 1680px) {
+    padding: 20px 0px;
+  }
 `;
 export const Border = styled.div`
   margin: ${space[8]}px 0px;
@@ -44,7 +47,7 @@ export const CardTitle = styled.p`
   margin: ${space[0]}px;
   @media only screen and (min-width: 1680px) {
     font-size: 51px;
-    line-height: 62px;
+    line-height: 60px;
   }
 `;
 export const CardSubTitle = styled.p`
@@ -62,8 +65,10 @@ export const CardSubTitle = styled.p`
     margin-left: ${space[4]}px;
   }
   @media only screen and (min-width: 1680px) {
-    font-size: 47px;
-    line-height: 62px;
+    font-size: 45px;
+    line-height: 55px;
+    padding-right: 8rem;
+    padding-top: 10px;
   }
 `;
 export const ButtonGrp = styled.div`
@@ -82,7 +87,7 @@ export const ButtonGrp = styled.div`
     }
   }
   @media only screen and (min-width: 1680px) {
-    max-width: 40%;
+    max-width: 50%;
   }
 `;
 

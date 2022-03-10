@@ -45,7 +45,7 @@ export const Wrapper = styled.div`
     visibility: hidden;
   }
   @media only screen and (min-width: 1680px){
-    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.4, 0.48)")};
+    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   }
 `;
 

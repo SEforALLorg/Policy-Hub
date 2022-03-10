@@ -64,7 +64,7 @@ const Report = ({
               <ImageWrap style={{ backgroundImage: `url(${file})` }}>
                 {/* <img src={file} alt="flag" /> */}
               </ImageWrap>
-              <Text>{countryName}</Text>
+              <Text  className={!bigCard && "innerText"}>{countryName}</Text>
             </Box>
             <span />
           </>

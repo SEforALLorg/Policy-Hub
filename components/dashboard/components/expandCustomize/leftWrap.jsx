@@ -76,7 +76,7 @@ const LeftWrapPage = ({
         <ImgBox>
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
-        <CardTitle>Customize your decision-making process</CardTitle>
+        <CardTitle>Improve your decision-making</CardTitle>
       </CardHeader>
       {nextQuestionId &&
         userJourney?.slice(0, 3).map((item, index) => (
@@ -98,7 +98,13 @@ const LeftWrapPage = ({
                 }
               </StepTitle>
             </Text>
-            <YesButton>{item?.answer}</YesButton>
+            <YesButton>
+              {item?.answer === "Mini-grid"
+                ? "MG"
+                : item?.answer?.includes("Standalone systems")
+                ? "SHS"
+                : item?.answer}
+            </YesButton>
           </Steps>
         ))}
       {nextQuestionId && <Border></Border>}
@@ -126,12 +132,18 @@ const LeftWrapPage = ({
             const singleAnswer = item?.attributes?.AddAnswer;
             const questionType = item?.attributes?.QuestionType;
             const ToolTipText = item?.attributes?.ToolTipText;
-            const QuestionKeyType = item?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes?.QuestionKeyType
-            let findSteps
-            if(QuestionKeyType){
-              findSteps = questions?.filter((e) => e?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes?.QuestionKeyType === QuestionKeyType)
+            const QuestionKeyType =
+              item?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes
+                ?.QuestionKeyType;
+            let findSteps;
+            if (QuestionKeyType) {
+              findSteps = questions?.filter(
+                (e) =>
+                  e?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes
+                    ?.QuestionKeyType === QuestionKeyType
+              );
             }
-            
+
             return (
               <QuestionWrap key={index}>
                 {questionType === "Questionnaire" ? (
@@ -144,7 +156,7 @@ const LeftWrapPage = ({
                     </CardSubTitle>
                     <ButtonGrp>
                       {singleAnswer?.map((i, index) => {
-                        if (!i?.Answer) return null
+                        if (!i?.Answer) return null;
 
                         return (
                           <BlueButton
