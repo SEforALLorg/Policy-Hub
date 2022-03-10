@@ -45,7 +45,7 @@ const RightWrapPage = ({
       ErrorNotify(error.response.data.error.message);
     },
   });
-  
+
 
   let filters = {};
   if (filtersData?.data?.results) {
@@ -272,9 +272,7 @@ const RightWrapPage = ({
                     const country =
                       i?.attributes?.AddFilters?.countries?.data[0]?.attributes
                         ?.CountryName;
-                    const area =
-                      i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                        ?.RegionName;
+                    const document_types = i?.attributes?.AddFilters?.document_types?.data[0]?.attributes?.DocumentType
                     const publishingOrganizations =
                       i?.attributes?.AddFilters?.publishing_organizations
                         ?.data[0]?.attributes?.PublishingOrganization;
@@ -284,11 +282,11 @@ const RightWrapPage = ({
 
                     return (
                       <Report
-                        countryName={country}
-                        area={area || "North America "}
+                        countryName={country || 'Global'}
+                        area={document_types}
                         item={publishingOrganizations || "IRENA"}
                         date={year || "2018"}
-                        file={flag?.image || "static/images/USAflag.svg"}
+                        file={flag?.image || "static/images/Globe.svg"}
                         title={name}
                         key={index}
                         star={true}
@@ -321,9 +319,7 @@ const RightWrapPage = ({
                     const country =
                       i?.attributes?.AddFilters?.countries?.data[0]?.attributes
                         ?.CountryName;
-                    const area =
-                      i?.attributes?.AddFilters?.regions?.data[0]?.attributes
-                        ?.RegionName;
+                    const document_types = i?.attributes?.AddFilters?.document_types?.data[0]?.attributes?.DocumentType
                     const publishingOrganizations =
                       i?.attributes?.AddFilters?.publishing_organizations
                         ?.data[0]?.attributes?.PublishingOrganization;
@@ -333,11 +329,11 @@ const RightWrapPage = ({
 
                     return (
                       <Report
-                        countryName={country}
-                        area={area || "North America "}
+                        countryName={country || 'Global'}
+                        area={document_types || "North America "}
                         item={publishingOrganizations || "IRENA"}
                         date={year || "2018"}
-                        file={flag?.image || "static/images/USAflag.svg"}
+                        file={flag?.image || "static/images/Globe.svg"}
                         title={name}
                         key={index}
                         url={url}

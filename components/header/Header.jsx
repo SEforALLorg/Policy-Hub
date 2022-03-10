@@ -17,8 +17,13 @@ const Header = () => {
   return (
     <div className="header">
       <Navbar expand="md" light>
-        <NavbarBrand href="/">
-          <img src={"/static/images/logo.svg"} alt="logo" className="logo" />
+        <NavbarBrand>
+          <img
+            src={"/static/images/logo.svg"}
+            alt="logo"
+            className="logo cursor-pointer"
+            onClick={() => window.open("https://www.seforall.org/")}
+          />
         </NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Collapse navbar>
