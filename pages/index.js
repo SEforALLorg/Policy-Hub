@@ -1,5 +1,4 @@
 import Head from "next/head";
-import "react-toastify/dist/ReactToastify.css";
 import Start from "./start";
 import createScrollSnap from "scroll-snap";
 import { useEffect, useRef } from "react";

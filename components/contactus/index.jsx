@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useMutation } from "react-query";
 import { MdEmail } from "react-icons/md";
 import Address from "../cards/component/addressCard";
+import { ErrorNotify, SuccessNotify } from "components/notification";
 import Checkbox from "../checkbox/index";
 import Form from "../form";
-import BlueButton from "../buttons/component/BlueButton";
 import PrimaryButton from "../buttons/component/primaryBtn/primarybutton";
+import { postNewsletters } from "../../pages/api/reports";
 
 const ContactBox = () => {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+
+  const { data, mutate } = useMutation(["postNewsletters"], postNewsletters, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+    onSuccess: (e) => {
+      setName("");
+      setEmail("");
+      SuccessNotify("Your info has been submitted successfully");
+    },
+  });
+
+  const onSubmit = () => {
+    const payload = {
+      data: {
+        Name: name,
+        Email: email,
+      },
+    };
+    mutate(payload);
+  };
   return (
     <div className="bg-white rounded-lg	 overflow-hidden shadow-md">
       <div className="xsm:pl-[25px] xsm:py-6 extrasmall:p-6 mobile:p-6 laptop:p-10 bg-white flex justify-center xsm:justify-start small:justify-center xsm:flex-wrap extrasmall:flex-nowrap">
@@ -76,18 +101,27 @@ const ContactBox = () => {
             placeholder={"Enter your name"}
             className="bg-white filterShadow rounded-lg border-none 
                            outline-none xsm:p-2 small:p-3 mobile:p-3 laptop:p-4  h-[50px] xsm:text-xsmall small:text-small text-lighttext font-normal leader-5 xsm:w-full small:w-72 mobile:w-72 laptop:w-72 "
+            onChange={(e) => setName(e?.target?.value)}
+            value={name}
           />
           <Form
             field={"E-mail"}
             placeholder={"Enter your email"}
             className="bg-white filterShadow rounded-lg border-none 
                            outline-none xsm:p-2 small:p-3 mobile:p-3 laptop:p-4  h-[50px] xsm:text-xsmall small:text-small text-lighttext font-normal leader-5 xsm:w-full small:w-72 mobile:w-72 laptop:w-72 "
+            onChange={(e) => setEmail(e?.target?.value)}
+            value={email}
           />
-          <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto">
+          <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
             <PrimaryButton
               title={"submit"}
-              className="bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-normal text-small leading-5 uppercase  text-white outline-none no-underline no-underline
-                    border-2 border-transparent duration-500 hover:text-Primary hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all"
+              className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-normal text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
+                    border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
+              disabled={!name || !email}
+              onClick={() => onSubmit()}
+              style={{
+                opacity: !name || !email ? 0.5 : 1,
+              }}
             />
           </div>
         </div>
