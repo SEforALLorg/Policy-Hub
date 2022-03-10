@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors, space,fullWidth } from '../constant'
 
 export const Wrapper = styled.div`
-    padding: ${space[5]}px;
+    // padding: ${space[5]}px;
 `
 
 export const StartCards = styled.div`
