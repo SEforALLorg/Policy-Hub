@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   // height: ${({ isExpand }) => (isExpand ? "100%" : "400px")};
   // overflow: hidden;
   transition: transform 2s ease-out;
-  transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
+  transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5, 0.55)")};
   position: relative;
   width: 100%;
   .bigCard {

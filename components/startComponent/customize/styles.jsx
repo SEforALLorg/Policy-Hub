@@ -39,8 +39,8 @@ export const ImgBox = styled.div`
 export const CardTitle = styled.p`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[4] + 5}px;
-  line-height: 55px;
+  font-size: 40px;
+  line-height: 50px;
   user-select: none;
   color: ${colors.text};
   user-select: none;
@@ -53,12 +53,13 @@ export const CardTitle = styled.p`
 export const CardSubTitle = styled.p`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[4] + 4}px;
+  font-size: 38px;
   line-height: 50px;
   user-select: none;
   color: ${colors.text};
   padding: 0px ${space[5]}px;
   margin-bottom: ${space[10] * 2}px;
+  padding-right: 5rem;
   svg {
     color: ${colors.gray};
     font-size: 25px;
@@ -76,7 +77,7 @@ export const ButtonGrp = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  max-width: 30%;
+  max-width: 50%;
   margin: auto;
   button {
     margin-bottom: ${space[10]}px;
