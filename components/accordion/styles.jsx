@@ -121,6 +121,7 @@ export const ListItem = styled.li`
   p{
     margin:0px;
     flex:1;
+    word-break: break-word;
   }
 `
 
