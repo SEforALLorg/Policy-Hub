@@ -6,9 +6,10 @@ import {
   space,
   fullWidth,
 } from "../../../../constant";
-import { fadeOut } from "react-animations";
+import { fadeOut, fadeIn } from "react-animations";
 
 const fadeOutAnimation = keyframes`${fadeOut}`;
+const fadeInAnimation = keyframes`${fadeIn}`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -47,13 +48,16 @@ export const Card = styled.div`
   padding: ${space[10] * 2}px ${space[10] * 4}px;
   position: relative;
   height: 100%;
+  @media only screen and (max-width: 1680px) {
+    padding: 30px ${space[10] * 4}px;
+  }
 `;
 
 export const Title = styled.h5`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[5]}px;
-  line-height: 64.4px;
+  font-size: 37px;
+  line-height: 44px;
   text-align: center;
   user-select: none;
   text-transform: uppercase;
@@ -61,9 +65,12 @@ export const Title = styled.h5`
   text-align: center;
   padding-bottom: ${space[5]}px;
   margin-top: ${space[5]}px;
+  // margin-bottom: 10px;
   @media only screen and (min-width: 1680px) {
-    margin-top: ${space[10] * 2}px;
+    margin-top: 7px;
     font-size: ${fontSizes[5] + 5}px;
+    margin-bottom: 20px;
+    line-height: 64.4px;
   }
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
     font-size: ${fontSizes[4] + 2}px;
@@ -169,8 +176,50 @@ export const BottomBtn = styled.div`
   width: 40%;
   position: absolute;
   bottom: -32px;
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    width: 44%;
-    bottom: -32px;
+  opacity: 0;
+  &.animationButton{
+    animation: 2s ${fadeInAnimation};
+    opacity: 1;
+  }
+  button{
+    @media only screen and (max-width: 1680px) {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  @media only screen and (max-width: 1680px) {
+    width: 40%;
+    bottom: -25px;
+  }
+  // animation: 6s ${fadeInAnimation};
+  // transition: all 0.5s;
+  // @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+  //   width: 44%;
+  //   bottom: -32px;
+  // }
+`;
+
+
+export const InnerTitle = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 35px;
+  user-select: none;
+  color: ${colors.text};
+  margin: ${space[0]}px;
+  width: ${fullWidth};
+  margin-bottom: 30px;
+  span {
+    font-weight: 700;
+  }
+  // @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
+  //   font-size: ${fontSizes[3] + 2}px;
+  //   line-height: 50px;
+  // }
+  @media only screen and (max-width: 1680px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 32px;
   }
 `;

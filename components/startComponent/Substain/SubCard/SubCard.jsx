@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import { CharacterReveal } from "react-text-reveal";
+import { MultilineReveal } from "react-text-reveal";
 import StartButton from "components/buttons/component/startButton/StartButton";
 import {
   Wrapper,
@@ -13,11 +13,12 @@ import {
   Step,
   Box,
   BottomBtn,
+  InnerTitle,
 } from "./styles";
 
 const SubCard = ({ HandleOpen }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [startAnimation, setStartAnimation] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     onAnimation();
@@ -27,19 +28,9 @@ const SubCard = ({ HandleOpen }) => {
 
   const onAnimation = () => {
     setTimeout(() => setStartAnimation(true), 500);
+    setTimeout(() => setShowButton(true), 3500);
   };
 
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const settings = {
     dots: true,
@@ -62,69 +53,42 @@ const SubCard = ({ HandleOpen }) => {
             Sustainable
             <Span> Energy </Span>
             for All
-            {/* <span style={{verticalAlign: 'text-bottom'}}>|</span> */}
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
-          <CharacterReveal
-            // animateOpacity={false}
+          <MultilineReveal
+            animateOpacity={true}
             canPlay={startAnimation}
-            characterOffsetDelay={25} // ms
-            characterWordSpacing={"10px"}
-            copy={["Make.", "Something.", "Move."]}
+            copy={[
+              <InnerTitle>
+                The Sustainable Energy for All Knowledge Hub is an interactive
+                platform that supports policy makers in developing conducive
+                policy and regulatory frameworks for sustainable energy.
+              </InnerTitle>,
+              <InnerTitle>
+                <span>The knowledge hub</span> provides key resources for
+                different steps in decision-making.
+              </InnerTitle>,
+              <InnerTitle>
+                It currently offers resources on electricity access, but other
+                pillars of sustainable energy (access to clean cooking,
+                sustainable cooling, energy efficiency and renewable energy)
+                will be added soon.
+              </InnerTitle>,
+              <InnerTitle>
+                Find <span>guidelines, tools, and templates</span> on
+                electricity access relevant to your country and matched to your
+                needs by answering the following questions.
+              </InnerTitle>,
+            ]}
             direction={"bottom"}
-            duration={1275} // ms
+            duration={1125} // ms
             ease={"cubic-bezier(0,0.4,0.4,1)"}
-            offset={"45px"}
-            // multilineMasking={true}
-            multilineOffsetDelay={200} // ms
+            offset={"260px"}
+            multilineMasking={true}
+            multilineOffsetDelay={725} // ms
           />
-
-          {/* <Slider {...settings}>
-            <Box>
-              <Step className="topStep">
-                <Point>
-                  <SubTitle style={{ marginLeft: "20px" }}>
-                    The Sustainable Energy for All Knowledge Hub is an
-                    interactive platform that supports policy makers in
-                    developing conducive policy and regulatory frameworks for
-                    sustainable energy.
-                  </SubTitle>
-                </Point>
-              </Step>
-            </Box>
-            <Box>
-              <Step>
-                <SubTitle>
-                  <span>The knowledge hub</span> provides key resources for
-                  different steps in decision-making.
-                </SubTitle>
-                <img src={"static/images/hub.svg"} alt="card" />
-              </Step>
-            </Box>
-            <Box>
-              <Step>
-                <img src={"static/images/journey.svg"} alt="card" />
-                <SubTitle>
-                  It currently offers resources on electricity access, but other
-                  pillars of sustainable energy (access to clean cooking,
-                  sustainable cooling, energy efficiency and renewable energy)
-                  will be added soon.
-                </SubTitle>
-              </Step>
-            </Box>
-            <Box>
-              <Step>
-                <SubTitle>
-                  Find <span>guidelines, tools, and templates</span> on
-                  electricity access relevant to your country and matched to
-                  your needs by answering the following questions.
-                </SubTitle>
-                <img src={"static/images/guide.svg"} alt="card" />
-              </Step>
-            </Box>
-          </Slider> */}
         </Card>
-        <BottomBtn onClick={HandleOpen}>
+        <BottomBtn className={showButton ? 'animationButton' : ''} onClick={HandleOpen}>
           <StartButton title={"Click here to start"} className="w-full" />
         </BottomBtn>
       </Wrapper>
