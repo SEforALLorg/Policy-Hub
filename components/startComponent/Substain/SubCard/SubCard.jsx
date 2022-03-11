@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import { CharacterReveal } from "react-text-reveal";
 import StartButton from "components/buttons/component/startButton/StartButton";
 import {
   Wrapper,
@@ -16,6 +17,18 @@ import {
 
 const SubCard = ({ HandleOpen }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    onAnimation();
+  }, []);
+
+  console.log(startAnimation, "startAnimation");
+
+  const onAnimation = () => {
+    setTimeout(() => setStartAnimation(true), 500);
+  };
+
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
@@ -52,7 +65,21 @@ const SubCard = ({ HandleOpen }) => {
             {/* <span style={{verticalAlign: 'text-bottom'}}>|</span> */}
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
-          <Slider {...settings}>
+          <CharacterReveal
+            // animateOpacity={false}
+            canPlay={startAnimation}
+            characterOffsetDelay={25} // ms
+            characterWordSpacing={"10px"}
+            copy={["Make.", "Something.", "Move."]}
+            direction={"bottom"}
+            duration={1275} // ms
+            ease={"cubic-bezier(0,0.4,0.4,1)"}
+            offset={"45px"}
+            // multilineMasking={true}
+            multilineOffsetDelay={200} // ms
+          />
+
+          {/* <Slider {...settings}>
             <Box>
               <Step className="topStep">
                 <Point>
@@ -95,7 +122,7 @@ const SubCard = ({ HandleOpen }) => {
                 <img src={"static/images/guide.svg"} alt="card" />
               </Step>
             </Box>
-          </Slider>
+          </Slider> */}
         </Card>
         <BottomBtn onClick={HandleOpen}>
           <StartButton title={"Click here to start"} className="w-full" />
