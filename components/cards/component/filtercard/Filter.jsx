@@ -11,6 +11,7 @@ import {
   ImageWrap,
   GoReportsButton,
   Description,
+  ContentWrap,
 } from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
@@ -31,6 +32,7 @@ const Report = ({
   bigCard,
   description,
 }) => {
+  const countTooltip = bigCard ? 30 : 10
   return (
     <Wrapper
       key={key}
@@ -61,20 +63,34 @@ const Report = ({
         {countryName && (
           <>
             <Box bigCard={bigCard}>
-              <ImageWrap style={{ backgroundImage: `url(${file})`, backgroundSize: file === 'static/images/globe.png' ? 'contain' : '' }}>
+              <ImageWrap
+                style={{
+                  backgroundImage: `url(${file})`,
+                  backgroundSize:
+                    file === "static/images/globe.png" ? "contain" : "",
+                }}
+              >
                 {/* <img src={file} alt="flag" /> */}
               </ImageWrap>
-              <Text  className={!bigCard && isActive && "innerText"}>{countryName}</Text>
+              <Text className={!bigCard && isActive && "innerText"}>
+                {countryName}
+              </Text>
             </Box>
             <span />
           </>
         )}
         <Box>
           <Text className={!bigCard && isActive && "innerText"}>{area}</Text>
+          {area?.length > countTooltip ? (
+            <ContentWrap className={"content"}>{area}</ContentWrap>
+          ) : null}
         </Box>
         <span />
         <Box style={{ width: "38px" }}>
           <Text className={!bigCard && isActive && "innerText"}>{item}</Text>
+          {item?.length > countTooltip ? (
+            <ContentWrap className={"content"}>{item}</ContentWrap>
+          ) : null}
         </Box>
         <span />
         <Box style={{ width: "38px" }}>

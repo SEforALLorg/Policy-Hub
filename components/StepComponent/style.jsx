@@ -12,6 +12,8 @@ export const Title = styled.p`
   color: ${colors.darkText};
   margin:0px;
   height: 45px;
+  display: flex;
+  align-items: center;
 `;
 
 export const OptionsWrap = styled.div`

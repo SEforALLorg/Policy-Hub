@@ -43,13 +43,15 @@ const StepComponent = ({
       {item?.attributes?.QuestionTitle && (
         <BigTitle>
           {item?.attributes?.QuestionTitle}
-          {ToolTipText && (
+          {/* {ToolTipText && (
             <TooltipComponent content={ToolTipText} />
-          )}
+          )} */}
         </BigTitle>
       )}
       <Title>
-        {stepCount}. {title}{" "}
+        {stepCount}. {title}{" "} {ToolTipText && (
+            <TooltipComponent content={ToolTipText} />
+          )}
       </Title>
       <OptionsWrap>
         {multiAnswer?.map((i, index) => {
