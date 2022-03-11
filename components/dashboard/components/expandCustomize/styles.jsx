@@ -96,6 +96,7 @@ export const CardSubTitle = styled.p`
   user-select: none;
   color: ${colors.text};
   margin-bottom: ${space[10] * 2}px;
+  padding-right: 18px;
   svg {
     color: ${colors.gray};
     font-size: ${fontSizes[2] - 3}px;

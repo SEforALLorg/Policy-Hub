@@ -12,8 +12,8 @@ export const Title = styled.p`
   color: ${colors.darkText};
   margin:0px;
   height: 45px;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
 `;
 
 export const OptionsWrap = styled.div`
@@ -38,9 +38,12 @@ export const OptionsWrap = styled.div`
 
 export const Item = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: ${space[6]}px;
   cursor: pointer;
+  > div{
+    margin-top: 3px;
+  }
   p {
     font-size: ${fontSizes[0] + 2}px;
     line-height: 24px;
