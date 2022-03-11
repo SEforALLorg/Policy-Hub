@@ -79,8 +79,7 @@ const ContactBox = () => {
               <>
                 1750 Pennsylvania Avenue NW <br />
                 Suite 300 <br />
-                Washington, DC 20006 USA <br />
-                Hours: 9:00 - 18:00 ES
+                Washington, DC 20006 USA
               </>
             }
           />

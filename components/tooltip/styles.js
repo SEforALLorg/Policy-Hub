@@ -5,6 +5,7 @@ export const TooltipWrap = styled.div`
     display: inline-block;
     position: relative;
     cursor: pointer;
+    margin-left: 6px;
     .content{
         visibility: hidden;
         opacity: 0;
@@ -19,19 +20,19 @@ export const TooltipWrap = styled.div`
 `;
 
 export const ContentWrap = styled.div`
-    width: 158px;
-    height: 77px;
+    width: 230px;
     box-shadow: 0px 0px 8px -4px #000;
-    border-radius: 9px;
+    border-radius: 5px;
     position: absolute;
     left: 50%;
     top: 30px;
     transform: translateX(-50%);
     background-color: ${colors.white};
     z-index: 999;
-    padding: 4px;
-    font-size: 15px;
+    padding: 9px;
+    font-size: 14px;
     font-weight: 400;
+    line-height: 20px;
     &::after {
         content: "";
         position: absolute;

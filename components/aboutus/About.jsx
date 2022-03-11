@@ -18,17 +18,39 @@ const About = () => {
               About us
             </h5>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-              The Sustainable Energy for All Knowledge Hub is an interactive
-              platform providing sustainable energy policy makers and
-              practitioners with off-the-shelf guidelines, tools, templates and
-              cases on energy policy and regulation published by international
-              organizations and thought leaders. In its first phase, the
-              knowledge hub offers key resources on electricity access.
+              <b>Sustainable Energy for All (SEforALL)</b> is an international
+              organization that works in partnership with the United Nations and
+              leaders in government, the private sector, financial institutions,
+              civil society, and philanthropies to drive faster action towards
+              the achievement of Sustainable Development Goal 7 (SDG7) – access
+              to affordable, reliable, sustainable, and modern energy for all by
+              2030 – in line with the Paris Agreement on climate. To learn more
+              about SEforALL,{" "}
+              <span
+                className="text-Primary underline"
+                onClick={() => window.open("https://www.seforall.org/")}
+              >
+                click here
+              </span>
+            </p>
+            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+              The <b>Sustainable Energy for All Knowledge Hub</b> is an
+              interactive platform providing sustainable energy policy makers
+              and practitioners with off-the-shelf guidelines, tools, templates
+              and cases on energy policy and regulation published by
+              international organizations and thought leaders. In its first
+              phase, the knowledge hub offers key resources on electricity
+              access
             </p>
             <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
               Further resources to support electrification efforts can be found
               at{" "}
-              <span className="text-Primary underline">
+              <span
+                className="text-Primary underline"
+                onClick={() =>
+                  window.open("https://www.electrifyingeconomies.org/")
+                }
+              >
                 electrifyingeconomies.org.
               </span>
             </p>
@@ -50,6 +72,7 @@ const About = () => {
                 className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full"
                 img={"static/images/rockfound.svg"}
                 title={"Rockefeller Foundation"}
+                link={"https://www.esteri.it/en/ministero/"}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
@@ -57,6 +80,7 @@ const About = () => {
                 className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox	items-center w-full"
                 img={"static/images/farnesina.svg"}
                 title={"Ministry of Foreign Affairs of Italy"}
+                link={"https://www.esteri.it/en/ministero/"}
               />
             </div>
           </div>
@@ -70,6 +94,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/Era.svg"}
                 title={"International RenewableEnergy Agency"}
+                link={"https://www.irena.org/"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -77,6 +102,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/worldbank.svg"}
                 title={"The World Bank"}
+                link={"https://www.worldbank.org/en/home"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -84,6 +110,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/esmap.svg"}
                 title={"Energy Sector Management Assistance Program"}
+                link={"https://www.esmap.org/"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -93,6 +120,7 @@ const About = () => {
                 title={
                   "Deutsche Gesellschaft für Internationale Zusammenarbeit"
                 }
+                link={"https://www.giz.de/en/html/index.html"}
               />
             </div>
           </div>

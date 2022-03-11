@@ -8,6 +8,8 @@ export const AccordionWrap = styled.div`
     margin-bottom: ${space[5]}px;
     cursor: pointer;
     position: relative;
+    border: ${({active}) => active ? '2px solid #13A2BC' : '2px solid #fff' };
+    box-sizing: border-box;
 `
 export const Select = styled.div`
     display: flex;
@@ -16,6 +18,7 @@ export const Select = styled.div`
     padding: ${space[5]}px ${space[6]}px ;
     width: ${fullWidth};
     height:50px;
+   
 `
 export const Text = styled.p`
     font-style: normal;
@@ -24,7 +27,7 @@ export const Text = styled.p`
     line-height: 21px;
     margin: ${space[0]}px;
     color: ${colors.lighttext};
-    width: ${({selectedOption}) => selectedOption ? '93%' : '100%'};
+    width: ${({ selectedOption }) => selectedOption ? '93%' : '100%'};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -68,6 +71,11 @@ export const DropDownList = styled.ul`
   height: 221px;
   z-index: 9999;
   box-shadow: 0px 4.90168px 17.1559px rgb(0 0 0 / 10%);
+  @media only screen and (max-width: 1680px){
+    top: ${({ top }) => top ? 'unset' : '52px'};
+    bottom: ${({ top }) => top ? '52px' : ''};
+    box-shadow: ${({ top }) => top ? '0px -4.90168px 17.1559px rgb(0 0 0 / 10%)' : '0px 4.90168px 17.1559px rgb(0 0 0 / 10%)'};
+  }
   &::-webkit-scrollbar {
     width: 7px;
   }
@@ -88,6 +96,13 @@ export const ListItem = styled.li`
   font-size: 15px;
   padding: 8px;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  @media only screen and (max-width: 1680px){
+    font-size: 14px;
+    margin-bottom: 7px;
+    padding: 8px 5px;
+  }
   :hover{
     background: #2596be;
     color: #fff;
@@ -103,6 +118,10 @@ export const ListItem = styled.li`
     top: 0px;
     opacity: 0;
   }
+  p{
+    margin:0px;
+    flex:1;
+  }
 `
 
 export const Span = styled.span`
@@ -112,4 +131,8 @@ export const Span = styled.span`
   display: inline-block;
   height: 13px;
   width: 13px;
+  margin-top: 4px;
+  @media only screen and (max-width: 1680px){
+    margin-right: 8px;
+  }
 `

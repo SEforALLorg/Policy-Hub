@@ -23,8 +23,6 @@ const StepComponent = ({
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
-
-  console.log(item,'item');
   
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
@@ -45,13 +43,15 @@ const StepComponent = ({
       {item?.attributes?.QuestionTitle && (
         <BigTitle>
           {item?.attributes?.QuestionTitle}
-          {ToolTipText && (
+          {/* {ToolTipText && (
             <TooltipComponent content={ToolTipText} />
-          )}
+          )} */}
         </BigTitle>
       )}
       <Title>
-        {stepCount}. {title}{" "}
+        {stepCount}. {title}{" "} {ToolTipText && (
+            <TooltipComponent content={ToolTipText} />
+          )}
       </Title>
       <OptionsWrap>
         {multiAnswer?.map((i, index) => {

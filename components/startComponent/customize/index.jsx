@@ -40,7 +40,7 @@ const Customize = ({
               <img src="static/images/cards.svg" alt="card" />
             </ImgBox>
             <CardTitle>
-              Assess your country’s situation and <br />
+              Assess your country’s situation and<br /> 
               customize the decision-making process.
             </CardTitle>
           </CardHeader>
