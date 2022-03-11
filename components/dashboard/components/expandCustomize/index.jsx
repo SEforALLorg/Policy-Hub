@@ -42,6 +42,7 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
               years: [],
               generation_sources: [],
             });
+            setStepAnswer();
           }}
           stepAnswer={stepAnswer}
           resetFilters={() =>

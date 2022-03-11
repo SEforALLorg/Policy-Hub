@@ -42,7 +42,7 @@ const LeftWrapPage = ({
       setFirstQuestionId(firstQuestion);
       setUserJourney([...userJourney, { ...questions[0], answer: stepAnswer }]);
     }
-  }, [questions?.length, firstQuestion]);
+  }, [questions?.length, firstQuestion, stepAnswer]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -111,7 +111,7 @@ const LeftWrapPage = ({
             </YesButton>
           </Steps>
         ))}
-      {Boolean(userJourney?.length) && (
+      {(Boolean(userJourney?.length) && nextQuestionId) && (
         <RestartIcon
           onClick={() => {
             setNextQuestionId(firstQuestionId);

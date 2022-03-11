@@ -23,8 +23,6 @@ const StepComponent = ({
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
-
-  console.log(item,'item');
   
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;

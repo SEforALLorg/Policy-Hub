@@ -72,6 +72,7 @@ const About = () => {
                 className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full"
                 img={"static/images/rockfound.svg"}
                 title={"Rockefeller Foundation"}
+                link={"https://www.esteri.it/en/ministero/"}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
@@ -79,6 +80,7 @@ const About = () => {
                 className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox	items-center w-full"
                 img={"static/images/farnesina.svg"}
                 title={"Ministry of Foreign Affairs of Italy"}
+                link={"https://www.esteri.it/en/ministero/"}
               />
             </div>
           </div>
@@ -92,6 +94,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/Era.svg"}
                 title={"International RenewableEnergy Agency"}
+                link={"https://www.irena.org/"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -99,6 +102,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/worldbank.svg"}
                 title={"The World Bank"}
+                link={"https://www.worldbank.org/en/home"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -106,6 +110,7 @@ const About = () => {
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/esmap.svg"}
                 title={"Energy Sector Management Assistance Program"}
+                link={"https://www.esmap.org/"}
               />
             </div>
             <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
@@ -115,6 +120,7 @@ const About = () => {
                 title={
                   "Deutsche Gesellschaft für Internationale Zusammenarbeit"
                 }
+                link={"https://www.giz.de/en/html/index.html"}
               />
             </div>
           </div>

@@ -19,6 +19,7 @@ const Accordion = ({
   onChange,
   selected,
   name,
+  top
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -41,7 +42,7 @@ const Accordion = ({
     setSelectedOption([...selectedOption, value]);
   };
   return (
-    <AccordionWrap>
+    <AccordionWrap active={isOpen === title}>
       <Select onClick={toggling}>
         <Text selectedOption={selectedOption?.length}>
           {selectedOption?.length
@@ -54,7 +55,7 @@ const Accordion = ({
       </Select>
       {isOpen === title && (
         <DropDownListContainer>
-          <DropDownList>
+          <DropDownList top={top}>
             {options?.map((option, index) => {
               return (
                 <ListItem
@@ -64,7 +65,7 @@ const Accordion = ({
                   <Span
                     selectedOption={selected?.includes(option?.id.toString())}
                   />{" "}
-                  {""} {option?.label}
+                  {""} <p>{option?.label}</p>
                   <input
                     type="checkbox"
                     onChange={onChange}
