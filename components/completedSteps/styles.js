@@ -76,6 +76,7 @@ export const InputWrap = styled.div`
     color: ${colors.text};
     margin: 0px;
     margin-top: 5px;
+    margin-left: 5px;
   }
   input {
     background: ${colors.white};
@@ -84,6 +85,10 @@ export const InputWrap = styled.div`
     border: 1px solid ${colors.white};
     padding: 10px 10px;
     outline: none !important;
+    &:focus{
+      box-shadow: 0px 4.59958px 16.0985px rgba(0, 0, 0, 0.1) !important;
+      border: 1px solid ${colors.primary} !important;
+    }
   }
 `;
 

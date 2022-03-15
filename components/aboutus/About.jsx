@@ -27,9 +27,9 @@ const About = () => {
               2030 – in line with the Paris Agreement on climate. To learn more
               about SEforALL,{" "}
               <span
-                className="text-Primary underline"
+                className="text-Primary hover:underline cursor-pointer"
                 onClick={() => window.open("https://www.seforall.org/")}
-              >
+              > 
                 click here
               </span>
             </p>
@@ -46,7 +46,7 @@ const About = () => {
               Further resources to support electrification efforts can be found
               at{" "}
               <span
-                className="text-Primary underline"
+                className="text-Primary hover:underline cursor-pointer"
                 onClick={() =>
                   window.open("https://www.electrifyingeconomies.org/")
                 }
@@ -93,7 +93,7 @@ const About = () => {
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full"
                 img={"static/images/Era.svg"}
-                title={"International RenewableEnergy Agency"}
+                title={"International Renewable Energy Agency"}
                 link={"https://www.irena.org/"}
               />
             </div>

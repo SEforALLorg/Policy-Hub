@@ -33,6 +33,7 @@ export const Text = styled.p`
     white-space: nowrap;
 `
 export const Icon = styled.div`
+  transition: all .5s;
   svg{
       font-size: ${fontSizes[3] + 2}px;
   }

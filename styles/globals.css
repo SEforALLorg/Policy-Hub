@@ -158,6 +158,14 @@ a {
   padding-right: 0.75rem;
 }
 
+.footer-icon{ 
+  color: #fff;
+}
+
+.white-text{
+  color: #fff;
+}
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .topStep {
     padding-bottom: 0rem;
