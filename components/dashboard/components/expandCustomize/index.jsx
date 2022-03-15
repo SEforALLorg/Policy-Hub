@@ -5,7 +5,7 @@ import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
-const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
+const ExpandCustomize = ({ questions, isFetchingQuestions }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -33,7 +33,6 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
           firstQuestion={firstQuestion}
           restart={() => {
             setIsExpand(false);
-            onExpand(false);
             setSelectInputs({
               countries: [],
               regions: [],
@@ -67,7 +66,6 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
         <Customize
           onYes={() => {
             setIsExpand(!isExpand);
-            onExpand(true);
           }}
           questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           isFetchingQuestions={isFetchingQuestions}

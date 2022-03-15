@@ -74,13 +74,13 @@ const LeftWrapPage = ({
   };
 
   return (
-    <LeftWrap>
-      <CardHeader>
-        <ImgBox>
-          <img src="static/images/yellowfile.svg" alt="card" />
-        </ImgBox>
-        <CardTitle>Improve your decision-making</CardTitle>
-      </CardHeader>
+    <div className="w-[40%] p-7 shadow-lg z-50	 relative">
+      <div className="flex items-center pb-2.5">
+        <div className="flex items-center relative select-none mr-5">
+          <img className="w-[90px] h-[90px]" src="static/images/yellowfile.svg" alt="card" />
+        </div>
+        <div className="font-bold text-medium leading-[26px] select-none text-text m-0">Improve your decision-making</div>
+      </div>
       {nextQuestionId &&
         userJourney?.slice(0, 3).map((item, index) => (
           <Steps
@@ -166,18 +166,19 @@ const LeftWrapPage = ({
               <QuestionWrap key={index}>
                 {questionType === "Questionnaire" ? (
                   <>
-                    <CardSubTitle>
+                    <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
                       {questionTitle}
                       {ToolTipText && (
                         <TooltipComponent content={ToolTipText} />
                       )}
-                    </CardSubTitle>
-                    <ButtonGrp>
+                    </div>
+                    <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto">
                       {singleAnswer?.map((i, index) => {
                         if (!i?.Answer) return null;
 
                         return (
                           <BlueButton
+                            className='mb-3'
                             title={i?.Answer}
                             onClick={() => {
                               onNextQuestion(i?.NextQuestion?.data?.id);
@@ -191,7 +192,7 @@ const LeftWrapPage = ({
                           />
                         );
                       })}
-                    </ButtonGrp>
+                    </div>
                   </>
                 ) : (
                   <StepComponent
@@ -210,7 +211,7 @@ const LeftWrapPage = ({
             );
           })
       ) : null}
-    </LeftWrap>
+    </div>
   );
 };
 

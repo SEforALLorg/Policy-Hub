@@ -4,7 +4,6 @@ import Header from "components/header/Header";
 import { Container } from "reactstrap";
 import { Wrapper, StartCards, FooterWrap } from "styles/start";
 import StartSubstain from "../../components/startComponent/Substain";
-import Dashboard from "../../components/dashboard/dashboard";
 
 const Start = () => {
   return (
@@ -17,7 +16,6 @@ const Start = () => {
           <StartCards>
             <StartSubstain />
           </StartCards>
-          <Dashboard />
           <FooterWrap>
             <Footer />
           </FooterWrap>
