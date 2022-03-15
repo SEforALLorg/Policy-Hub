@@ -29,7 +29,7 @@ const About = () => {
               <span
                 className="text-Primary hover:underline cursor-pointer"
                 onClick={() => window.open("https://www.seforall.org/")}
-              >
+              > 
                 click here
               </span>
             </p>
