@@ -202,7 +202,7 @@ const RightWrapPage = ({
               name={"segments"}
             />
             <Accordion
-              title="Resource type"
+              title="Resource Type"
               setIsOpen={setIsOpen}
               isOpen={isOpen}
               options={getFormattedData(filters?.documentType)}
@@ -221,7 +221,7 @@ const RightWrapPage = ({
               top={true}
             />
             <Accordion
-              title="Generation source"
+              title="Generation Source"
               setIsOpen={setIsOpen}
               isOpen={isOpen}
               options={getFormattedData(filters?.generationSources)}
