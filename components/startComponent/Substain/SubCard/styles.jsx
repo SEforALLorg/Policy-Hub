@@ -36,21 +36,21 @@ export const Wrapper = styled.div`
     width: 10px;
     transform: translateY(-50%);
   }
-  @media only screen and (min-width: 1680px) {
-    height: 90%;
-  }
+  // @media only screen and (min-width: 1680px) {
+  //   height: 90%;
+  // }
 `;
 export const Card = styled.div`
   width: ${fullWidth};
   background: ${colors.white};
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: ${space[10] * 2}px ${space[10] * 4}px;
+  padding: ${space[10] * 2}px ${space[10]}px;
   position: relative;
   height: 100%;
-  @media only screen and (max-width: 1680px) {
-    padding: 30px ${space[10] * 4}px;
-  }
+  // @media only screen and (max-width: 1680px) {
+  //   padding: 30px ${space[10] * 4}px;
+  // }
 `;
 
 export const Title = styled.h5`
@@ -221,5 +221,80 @@ export const InnerTitle = styled.div`
     font-size: 18px;
     margin-bottom: 10px;
     line-height: 32px;
+  }
+`;
+
+
+export const CardsWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+`;
+
+export const InnerCard = styled.div`
+  width:45%;
+  background-color: ${colors.white};
+  padding: 20px;
+  // box-shadow: 0px 0px 7px rgb(0 0 0 / 20%);
+  // border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all .8s;
+  
+  // border-bottom: 1px solid #ccc;
+  // border-right: 1px solid #ccc;
+  img{
+    width: 90px;
+    margin-right: 20px;
+    height: 90px;
+  }
+  &:hover{
+    transform: scale(1.06);
+    // box-shadow: 0px 0px 7px rgba(19, 162, 188, 80%);
+  }
+  // &::before{
+  //   content: '';
+  //   border-bottom: 1px solid #ccc;
+  //   position: absolute;
+  //   left: 0px;
+  //   bottom: 0px;
+  //   width: 100%;
+  // }
+`;
+
+export const DividerBottom = styled.div`
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  position: absolute;
+  // height: 65%;
+  bottom: 0%;
+  left: 10%;
+  width:80%;
+`;
+
+export const DividerRight = styled.div`
+  border-right: 1px solid #ccc;
+  position: absolute;
+  height: 65%;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const InnerCardText = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 35px;
+  user-select: none;
+  color: ${colors.text};
+  margin: ${space[0]}px;
+  width: ${fullWidth};
+  // margin-bottom: 30px;
+  span {
+    font-weight: 700;
   }
 `;
