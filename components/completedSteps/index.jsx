@@ -70,10 +70,10 @@ const CompletedSteps = ({ onRestart }) => {
           />
         </InputWrap>
         <InputWrap>
-          <p>Email</p>
+          <p>E-mail</p>
           <input
             type="text"
-            placeholder="Enter your Email"
+            placeholder="Enter your E-mail"
             onChange={(e) => setEmail(e?.target?.value)}
             value={email}
           />

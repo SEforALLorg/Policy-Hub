@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import qs from "qs";
 import { ErrorNotify } from "components/notification";
@@ -40,6 +40,11 @@ const RightWrapPage = ({
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
+
+  useEffect(() => {
+    setIsOpen('')
+  },[])
+
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);

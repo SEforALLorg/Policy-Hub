@@ -49,7 +49,7 @@ const Accordion = ({
             ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}
         </Text>
-        <Icon>
+        <Icon style={{transform: isOpen === title ? 'rotate(-180deg)' : ''}}>
           <BiChevronDown />
         </Icon>
       </Select>

@@ -280,6 +280,7 @@ export const Nodata = styled.div`
   justify-content: center;
   color: ${colors.text};
   flex-direction: column;
+  margin-top: -25px;
   a {
     color: ${colors.primary};
     font-size: 14px;
@@ -342,4 +343,5 @@ export const Overlay = styled.div`
     left: 0px;
     width: 100%;
     height: 100%;
+    z-index: 9999;
 `;

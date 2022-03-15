@@ -9,11 +9,15 @@ export const Wrapper = styled.div`
   margin-bottom: ${space[10]}px;
   border: 3.67626px solid ${colors.white};
   cursor: pointer;
+  transition: all .5s;
   &.active{
     border: 3.67626px solid #065A89;
     .title{
       font-weight: bold;
     }
+  }
+  &:hover{
+    border: 3.67626px solid #065A89;
   }
 `;
 export const Detail = styled.div`

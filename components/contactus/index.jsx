@@ -51,7 +51,7 @@ const ContactBox = () => {
           <MdEmail className="text-basic text-Primary mr-4" />
           <div>
             <p className="font-normal small:tiny  laptop:text-medium  leading-[26px]  text-lighttext m-0">
-              Email
+              Email:
             </p>
             <p className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0">
               Info@SEforALL.org
