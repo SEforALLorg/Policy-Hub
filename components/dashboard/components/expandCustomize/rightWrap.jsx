@@ -175,15 +175,6 @@ const RightWrapPage = ({
               />
             )}
             <Accordion
-              title="Select Country"
-              setIsOpen={setIsOpen}
-              isOpen={isOpen}
-              options={getFormattedData(filters?.countries)}
-              onChange={(e) => onChange(e)}
-              selected={selectInputs?.countries}
-              name={"countries"}
-            />
-            <Accordion
               title="Select Region"
               setIsOpen={setIsOpen}
               isOpen={isOpen}
@@ -191,6 +182,15 @@ const RightWrapPage = ({
               onChange={(e) => onChange(e)}
               selected={selectInputs?.regions}
               name={"regions"}
+            />
+            <Accordion
+              title="Select Country"
+              setIsOpen={setIsOpen}
+              isOpen={isOpen}
+              options={getFormattedData(filters?.countries)}
+              onChange={(e) => onChange(e)}
+              selected={selectInputs?.countries}
+              name={"countries"}
             />
             <Accordion
               title="Segment"
