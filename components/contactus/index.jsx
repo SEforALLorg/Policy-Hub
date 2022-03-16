@@ -121,7 +121,7 @@ const ContactBox = () => {
           />
           <Form
             field={"E-mail"}
-            placeholder={"Enter your email"}
+            placeholder={"Enter your E-mail"}
             className="bg-white filterShadow rounded-lg border-none 
                            outline-none xsm:p-2 small:p-3 mobile:p-3 laptop:p-4  h-[50px] xsm:text-xsmall small:text-small text-lighttext font-normal leader-5 xsm:w-full small:w-72 mobile:w-72 laptop:w-72 "
             onChange={(e) => setEmail(e?.target?.value)}

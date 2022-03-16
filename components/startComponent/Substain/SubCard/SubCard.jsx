@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import StartButton from "components/buttons/component/startButton/StartButton";
 import {
@@ -15,19 +15,6 @@ import {
 } from "./styles";
 
 const SubCard = ({ HandleOpen }) => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   const settings = {
     dots: true,
     infinite: false,
@@ -49,7 +36,6 @@ const SubCard = ({ HandleOpen }) => {
             Sustainable
             <Span> Energy </Span>
             for All
-            {/* <span style={{verticalAlign: 'text-bottom'}}>|</span> */}
             <PrimarySpan> Knowledge</PrimarySpan> Hub
           </Title>
           <Slider {...settings}>

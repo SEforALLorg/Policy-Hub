@@ -72,6 +72,7 @@ const LeftWrapPage = ({
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
     onReportsFind(e?.attributes?.AddAnswer[0]);
+    setStepQuestion([]);
   };
 
   const onRestart = () => {
@@ -85,6 +86,7 @@ const LeftWrapPage = ({
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
     setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
+    setStepQuestion([]);
   };
 
   return (
