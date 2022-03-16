@@ -24,6 +24,9 @@ import {
   LoaderWrapFull,
   BlankData,
   Overlay,
+  RightTitle,
+  InnerFilters,
+  RightInnerWrap
 } from "./styles";
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -171,7 +174,10 @@ const RightWrapPage = ({
           </CardHeader>
         )}
         <ReportsWrap>
+          
           <ReportsLeftWrap className={"report-left-wrap"}>
+            <RightTitle>Filters</RightTitle>
+            <InnerFilters>
             {showAllReports && (
               <SearchBar
                 onChange={(e) => onSearch(e?.target?.value)}
@@ -254,12 +260,16 @@ const RightWrapPage = ({
               name={"publishing_organizations"}
               top={true}
             />
+            </InnerFilters>
           </ReportsLeftWrap>
 
           <ReportsRightWrap
             className={"report-right-wrap"}
             onClick={() => setIsOpen()}
           >
+            <RightTitle>Resources</RightTitle>
+            <RightInnerWrap>
+            
             <InnerSlideWrap>
               {isFetchingReports ? (
                 <LoaderWrapFull>
@@ -364,6 +374,7 @@ const RightWrapPage = ({
               )}
               {Boolean(reports?.length) && <BlankData />}
             </InnerSlideWrap>
+            </RightInnerWrap>
           </ReportsRightWrap>
         </ReportsWrap>
       </RightWrap>

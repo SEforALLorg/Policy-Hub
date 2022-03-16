@@ -164,7 +164,7 @@ const Feature = ({ hideText }) => {
               className="font-bold leading-10  m-0 text-darktext uppercase xsm:text-tiny small:text-medium 
             large:text-large"
             >
-              News and stories
+              Similar tools
             </h6>
             <div className="mt-[25px] flex justify-between xsm:flex-wrap medium:flex-nowrap">
               <div className="xsm:mr-0 medium:mr-4 w-full ">
