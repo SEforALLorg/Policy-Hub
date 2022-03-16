@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import qs from "qs";
 import { ErrorNotify } from "components/notification";
@@ -40,10 +40,6 @@ const RightWrapPage = ({
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
-
-  useEffect(() => {
-    setIsOpen('')
-  },[])
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -154,6 +150,14 @@ const RightWrapPage = ({
     setSearch(e);
   };
 
+  const onReportClick = (name) => {
+    if (activeCard === name) {
+      setActiveCard("");
+    } else {
+      setActiveCard(name);
+    }
+  };
+
   return (
     <>
       {isOpen ? <Overlay onClick={() => setIsOpen()} /> : null}
@@ -252,7 +256,10 @@ const RightWrapPage = ({
             />
           </ReportsLeftWrap>
 
-          <ReportsRightWrap className={"report-right-wrap"} onClick={() => setIsOpen()}>
+          <ReportsRightWrap
+            className={"report-right-wrap"}
+            onClick={() => setIsOpen()}
+          >
             <InnerSlideWrap>
               {isFetchingReports ? (
                 <LoaderWrapFull>
@@ -302,13 +309,7 @@ const RightWrapPage = ({
                           key={index}
                           star={true}
                           url={url}
-                          onClick={() => {
-                            if (activeCard === name) {
-                              setActiveCard("");
-                            } else {
-                              setActiveCard(name);
-                            }
-                          }}
+                          onClick={() => onReportClick(name)}
                           isActive={activeCard === name}
                           description={description}
                         />
@@ -352,13 +353,7 @@ const RightWrapPage = ({
                           title={name}
                           key={index}
                           url={url}
-                          onClick={() => {
-                            if (activeCard === name) {
-                              setActiveCard("");
-                            } else {
-                              setActiveCard(name);
-                            }
-                          }}
+                          onClick={() => onReportClick(name)}
                           isActive={activeCard === name}
                           bigCard={showAllReports}
                           description={description}

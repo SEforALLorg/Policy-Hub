@@ -62,7 +62,7 @@ const ContactBox = () => {
       <div className="bg-lightBg pt-4 pb-10 m-auto">
         <div className="flex m-auto justify-between w-4/5 xsm:flex-wrap laptop:flex-nowrap">
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px]"}
+            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
             heading={"Vienna Office"}
             title={
               <>
@@ -73,7 +73,7 @@ const ContactBox = () => {
             }
           />
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px]"}
+            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
             heading={"Washington, DC Office"}
             title={
               <>
@@ -84,7 +84,7 @@ const ContactBox = () => {
             }
           />
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px]"}
+            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
             heading={"New York Office"}
             title={"420 5th Ave New York, NY 10018 USA"}
           />
@@ -94,7 +94,12 @@ const ContactBox = () => {
         <div className="  xsm:w-11/12 large:w-full ">
           <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0">
             For any media requests, please contact:{" "}
-            <span className="text-darktext font-bold">Media@SEforALL.org</span>
+            <span
+              className="text-darktext font-bold underline cursor-pointer text-Primary"
+              onClick={() => window.open("mailto:Media@SEforALL.org")}
+            >
+              Media@SEforALL.org
+            </span>
           </p>
           <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0">
             Keep up-to-speed with what's happening at SEforALL and across the
@@ -125,7 +130,7 @@ const ContactBox = () => {
           <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
             <PrimaryButton
               title={"submit"}
-              className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-normal text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
+              className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-bold text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
                     border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
               disabled={!name || !email}
               onClick={() => onSubmit()}

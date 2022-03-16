@@ -9,7 +9,6 @@ import ExpandCustomize from "../../dashboard/components/expandCustomize";
 
 
 const StartSubstain = () => {
-  const [isExpand, setIsExpand] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [goBottom, setGoBottom] = useState(false)
   const HandleOpen = () => {
@@ -33,7 +32,7 @@ const StartSubstain = () => {
     getQuestions,
     {
       onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
+        ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );
@@ -45,8 +44,8 @@ const StartSubstain = () => {
           <SubstainCard HandleOpen={HandleOpen} />
         </TopWrap>
         {isOpen ? (
-          <Bottom id="bottom-view" isExpand={isExpand}>
-            <ExpandCustomize onExpand={e => setIsExpand(e)} questions={questions} isFetchingQuestions={isFetchingQuestions} />
+          <Bottom id="bottom-view">
+            <ExpandCustomize questions={questions} isFetchingQuestions={isFetchingQuestions} />
           </Bottom>
         ) : null}
       </FullWrap>

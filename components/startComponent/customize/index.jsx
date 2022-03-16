@@ -27,6 +27,13 @@ const Customize = ({
       ?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+
+  const onAnswerClick = (i) => {
+    onYes();
+    onNextQuestion(i?.NextQuestion?.data?.id);
+    onReportsFind(i);
+  }
+
   return (
     <Wrapper>
       {isFetchingQuestions ? (
@@ -53,11 +60,7 @@ const Customize = ({
             {singleAnswer?.map((i, index) => (
               <BlueButton
                 title={i?.Answer}
-                onClick={() => {
-                  onYes();
-                  onNextQuestion(i?.NextQuestion?.data?.id);
-                  onReportsFind(i);
-                }}
+                onClick={() => onAnswerClick(i)}
                 key={index}
               />
             ))}
