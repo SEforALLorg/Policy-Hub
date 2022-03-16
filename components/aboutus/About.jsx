@@ -62,7 +62,7 @@ const About = () => {
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
-          <p className="not-italic font-bold text-medium  xsm:text-small xsm:text-tiny med:text-medium leading-6 text-center text-medium text-darktext">
+          <p className="not-italic font-bold text-medium  xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
             The knowledge hub is financed by{" "}
           </p>
@@ -84,7 +84,7 @@ const About = () => {
               />
             </div>
           </div>
-          <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-center text-medium text-darktext">
+          <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
             The knowledge hub partners include but not limited to{" "}
           </p>

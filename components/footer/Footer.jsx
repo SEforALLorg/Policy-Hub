@@ -125,7 +125,7 @@ const Footer = () => {
             className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
             onClick={() =>
               window.open(
-                "https://www.governo.it/it/la-presidenza-del-con-siglio-dei-ministri"
+                "https://www.esteri.it/en/ministero/"
               )
             }
           />
