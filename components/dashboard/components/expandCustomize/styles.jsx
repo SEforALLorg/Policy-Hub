@@ -124,6 +124,13 @@ export const Steps = styled.div`
   padding: ${space[2]}px 0px;
   height: 45px;
   cursor: pointer;
+  &:hover{
+    button{
+      background: ${colors.white};
+      border: 1px solid ${colors.primary};
+      color: ${colors.primary};
+    }
+  }
 `;
 export const Text = styled.div`
   display: flex;
@@ -182,6 +189,13 @@ export const YesButton = styled.button`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  transition: all .5s;
+  border: 1px solid ${colors.primary};
+  &:hover{
+    background: ${colors.white};
+    border: 1px solid ${colors.primary};
+    color: ${colors.primary};
+  }
 `;
 
 // Right Wrap

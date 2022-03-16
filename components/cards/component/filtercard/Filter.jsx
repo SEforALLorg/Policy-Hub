@@ -32,7 +32,7 @@ const Report = ({
   bigCard,
   description,
 }) => {
-  const countTooltip = bigCard ? 30 : 10
+  const countTooltip = bigCard ? 30 : 10;
   return (
     <Wrapper
       key={key}
@@ -79,13 +79,19 @@ const Report = ({
             <span />
           </>
         )}
-        <Box>
-          <Text className={!bigCard && isActive && "innerText"}>{area}</Text>
-          {area?.length > countTooltip ? (
-            <ContentWrap className={"content"}>{area}</ContentWrap>
-          ) : null}
-        </Box>
-        <span />
+        {area && (
+          <>
+            <Box>
+              <Text className={!bigCard && isActive && "innerText"}>
+                {area}
+              </Text>
+              {area?.length > countTooltip ? (
+                <ContentWrap className={"content"}>{area}</ContentWrap>
+              ) : null}
+            </Box>
+            <span />
+          </>
+        )}
         <Box style={{ width: "38px" }}>
           <Text className={!bigCard && isActive && "innerText"}>{item}</Text>
           {item?.length > countTooltip ? (
@@ -93,7 +99,7 @@ const Report = ({
           ) : null}
         </Box>
         <span />
-        <Box style={{ width: "38px" }}>
+        <Box style={{ width: "38px", justifyContent: 'center' }}>
           <Text className={!bigCard && isActive && "innerText"}>{date}</Text>
         </Box>
         {isActive && (
