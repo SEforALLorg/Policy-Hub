@@ -23,7 +23,7 @@ const StepComponent = ({
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
-  
+
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
@@ -67,7 +67,7 @@ const StepComponent = ({
         </BigTitle>
       )}
       <Title>
-        {stepCount}. {title}{" "} {ToolTipText && (
+        <span>{stepCount}.</span> {title}{" "} {ToolTipText && (
             <TooltipComponent content={ToolTipText} />
           )}
       </Title>

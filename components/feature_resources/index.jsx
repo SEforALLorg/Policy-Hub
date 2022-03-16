@@ -46,7 +46,7 @@ const Feature = ({ hideText }) => {
               <div className="flex justify-center mt-[29px]">
                 <button
                   className="bg-Primary rounded-[60px] text-normal text-center 
-                           leading-5 border-2 border-transparent white-text outline-none font-bold uppercase
+                           leading-5 border-2 border-transparent white-text outline-none font-bold
                            hover:text-Primary hover:bg-Primary hover:border-2 hover:border-Primary ease-linear
                            transition-all duration-500 h-[32px] w-[183px] hover:text-Primary hover:bg-white
                            hover:border-Primary"

@@ -42,7 +42,7 @@ const Accordion = ({
     setSelectedOption([...selectedOption, value]);
   };
   return (
-    <AccordionWrap active={isOpen === title}>
+    <AccordionWrap active={isOpen === title || selectedOption?.length}>
       <Select onClick={toggling}>
         <Text selectedOption={selectedOption?.length}>
           {selectedOption?.length

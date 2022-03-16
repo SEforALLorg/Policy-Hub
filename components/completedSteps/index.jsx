@@ -39,7 +39,6 @@ const CompletedSteps = ({ onRestart }) => {
     };
     mutate(payload);
   };
-
   return (
     <Wrapper>
       <Title>Process completed!</Title>
