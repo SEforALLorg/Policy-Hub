@@ -3,7 +3,7 @@ import { AiFillStar } from "react-icons/ai";
 
 const ReviewCard = ({src,heading,subheading,date, showStar = false}) => {
     return (
-        <div className='bg-white resourceShadow flex rounded-lg overflow-hidden w-full small:flex-nowrap xsm:flex-wrap'>
+        <div className='bg-white resourceShadow flex rounded-lg overflow-hidden w-full small:flex-nowrap xsm:flex-wrap cursor-pointer duration-200'>
             <img src={src} alt="bulb" className='small:max-w-max xsm:w-full' />
             <div className='pt-3.5 pr-[9.7px] pb-[7.5px] pl-[12.5px] w-full flex flex-col'>
                 <div className='flex justify-between'>

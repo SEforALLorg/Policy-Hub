@@ -38,6 +38,24 @@ const StepComponent = ({
   }, [multiAnswer]);
 
   const ToolTipText = item?.attributes?.ToolTipText;
+
+  const onAnswerClick = (i) => {
+    setOptionData(i);
+    setOptionReport(i);
+  }
+
+  const onPreviousClick = () => {
+    onPrevious();
+    setStepCount(stepCount - 1);
+  }
+
+  const onNextClick = () => {
+    onNext(optionData?.NextQuestion?.data?.id);
+    setStepQuestion(item);
+    if(!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null
+    setStepCount(stepCount + 1);
+  }
+
   return (
     <StepWrap>
       {item?.attributes?.QuestionTitle && (
@@ -59,10 +77,7 @@ const StepComponent = ({
           return (
             <Item
               key={index}
-              onClick={() => {
-                setOptionData(i);
-                setOptionReport(i);
-              }}
+              onClick={() => onAnswerClick(i)}
             >
               <RadioButton checked={optionData?.id === i?.id} />
               <p>{i?.Answer}</p>
@@ -72,10 +87,7 @@ const StepComponent = ({
       </OptionsWrap>
       <ButtonsWrap>
         <SlideButton
-          onClick={() => {
-            onPrevious();
-            setStepCount(stepCount - 1);
-          }}
+          onClick={() => onPreviousClick()}
           className="previous"
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
@@ -86,12 +98,7 @@ const StepComponent = ({
           {stepCount}/{nextCount}
         </Steps>
         <SlideButton
-          onClick={() => {
-            onNext(optionData?.NextQuestion?.data?.id);
-            setStepQuestion(item);
-            if(!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null
-            setStepCount(stepCount + 1);
-          }}
+          onClick={() => onNextClick()}
         >
           Next <img src="static/images/rightArrow.svg" alt="" />
         </SlideButton>

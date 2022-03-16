@@ -5,7 +5,7 @@ import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
-const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
+const ExpandCustomize = ({ questions, isFetchingQuestions }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -23,6 +23,40 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
     publishing_organizations: [],
   });
 
+  const onRestart = () => {
+    setIsExpand(false);
+    setSelectInputs({
+      countries: [],
+      regions: [],
+      segments: [],
+      document_types: [],
+      years: [],
+      generation_sources: [],
+      co_authors: [],
+      publishing_organizations: [],
+    });
+    setStepAnswer();
+  };
+
+  const onResetFilter = () => {
+    setSelectInputs({
+      countries: [],
+      regions: [],
+      segments: [],
+      document_types: [],
+      years: [],
+      generation_sources: [],
+      co_authors: [],
+      publishing_organizations: [],
+    });
+  };
+
+  const onReportFind = (e) => {
+    setPublicationReports(e?.KeyPublication?.data);
+    setNonPublicationReports(e?.NonKeyPublication?.data);
+    setStepAnswer(e?.Answer);
+  };
+
   return (
     <Wrapper isExpand={isExpand}>
       <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
@@ -31,30 +65,9 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
           setPublicationReports={(e) => setPublicationReports(e)}
           setNonPublicationReports={(e) => setNonPublicationReports(e)}
           firstQuestion={firstQuestion}
-          restart={() => {
-            setIsExpand(false);
-            onExpand(false);
-            setSelectInputs({
-              countries: [],
-              regions: [],
-              segments: [],
-              document_types: [],
-              years: [],
-              generation_sources: [],
-            });
-            setStepAnswer();
-          }}
+          restart={() => onRestart()}
           stepAnswer={stepAnswer}
-          resetFilters={() =>
-            setSelectInputs({
-              countries: [],
-              regions: [],
-              segments: [],
-              document_types: [],
-              years: [],
-              generation_sources: [],
-            })
-          }
+          resetFilters={() => onResetFilter()}
         />
         <RightWrapPage
           publicationReports={publicationReports}
@@ -65,18 +78,11 @@ const ExpandCustomize = ({ onExpand, questions, isFetchingQuestions }) => {
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize
-          onYes={() => {
-            setIsExpand(!isExpand);
-            onExpand(true);
-          }}
+          onYes={() => setIsExpand(!isExpand)}
           questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           isFetchingQuestions={isFetchingQuestions}
           onNextQuestion={(e) => setFirstQuestion(e)}
-          onReportsFind={(e) => {
-            setPublicationReports(e?.KeyPublication?.data);
-            setNonPublicationReports(e?.NonKeyPublication?.data);
-            setStepAnswer(e?.Answer);
-          }}
+          onReportsFind={(e) => onReportFind(e)}
         />
       </div>
     </Wrapper>
