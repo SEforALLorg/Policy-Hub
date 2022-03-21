@@ -332,6 +332,10 @@ export const InnerCardText = styled.p`
     flex: 1;
     text-align: center;
   }
+  @media only screen and (min-width: 1501px) and (max-width: 1600px){
+    font-size: 18px;
+    line-height: 24px;
+  }
   @media only screen and (max-width: 1500px){
     font-size: 14px;
     line-height: 24px;
