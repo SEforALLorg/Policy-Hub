@@ -28,7 +28,7 @@ const Footer = () => {
           <div
             onClick={() => window.open("https://twitter.com/SEforALLorg")}
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full text-white mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
                                 hover:border hover:border-blue ease-linear transition-all duration-500"
           >
             <BsTwitter className="extrasmall:text-medium xsm:text-xsmall hover:text-blue" />
@@ -38,7 +38,7 @@ const Footer = () => {
               window.open("https://www.linkedin.com/company/seforal")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full text-white mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
                                  hover:border hover:border-blue ease-linear transition-all duration-500"
           >
             <FaLinkedinIn className="extrasmall:text-medium xsm:text-xsmall hover:text-blue" />
@@ -46,7 +46,7 @@ const Footer = () => {
           <div
             onClick={() => window.open("https://www.instagram.com/seforall/")}
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full text-white mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
                                 hover:border hover:border-blue ease-linear transition-all duration-500"
           >
             <FaInstagram className="extrasmall:text-medium xsm:text-xsmall hover:text-blue" />
@@ -56,10 +56,10 @@ const Footer = () => {
               window.open("https://www.youtube.com/SEforALL/featured")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full text-white mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
                                  hover:border-blue ease-linear transition-all duration-500"
           >
-            <FaYoutube className="extrasmall:text-medium xsm:text-xsmall hover:text-blue" />
+            <FaYoutube className="extrasmall:text-medium xsm:text-xsmall  hover:text-blue" />
           </div>
         </div>
         <div
@@ -125,7 +125,7 @@ const Footer = () => {
             className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
             onClick={() =>
               window.open(
-                "https://www.governo.it/it/la-presidenza-del-con-siglio-dei-ministri"
+                "https://www.esteri.it/en/ministero/"
               )
             }
           />

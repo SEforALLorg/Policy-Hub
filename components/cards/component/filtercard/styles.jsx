@@ -9,11 +9,15 @@ export const Wrapper = styled.div`
   margin-bottom: ${space[10]}px;
   border: 3.67626px solid ${colors.white};
   cursor: pointer;
+  transition: all .5s;
   &.active{
     border: 3.67626px solid #065A89;
     .title{
       font-weight: bold;
     }
+  }
+  &:hover{
+    border: 3.67626px solid #065A89;
   }
 `;
 export const Detail = styled.div`
@@ -76,15 +80,14 @@ export const Box = styled.div`
   flex: 1;
   position: relative;
   p{
-    width: ${({bigCard}) => bigCard ? '61px' : ''};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    margin-right: ${space[4]}px;
   }
   .content{
     visibility: hidden;
@@ -142,27 +145,29 @@ export const Description = styled.p`
 
 
 export const ContentWrap = styled.div`
-    width: 230px;
-    // height: 77px;
-    box-shadow: 0px 0px 8px -4px #000;
-    border-radius: 5px;
-    position: absolute;
-    left: 50%;
-    top: 30px;
-    transform: translateX(-50%);
-    background-color: ${colors.white};
-    z-index: 999;
-    padding: 9px;
-    font-size: 14px;
-    font-weight: 400;
-    &::after {
-        content: "";
-        position: absolute;
-        top: -16px;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 8px;
-        border-style: solid;
-        border-color: transparent transparent #dfdfdf transparent;
-    }
+  width: 290px;
+  box-shadow: 0px 0px 8px -4px #000;
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+  background: #065A89;
+  border-radius: 3.83823px;
+  z-index: 999;
+  padding: 9px;
+  font-size: 14px;
+  color: ${colors.white};
+  font-weight: 400;
+  line-height: 20px;
+  filter: drop-shadow(5px 5px 12px rgba(31, 99, 148, 0.25));
+  &::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: transparent transparent #065A89 transparent;
+  }
 `;

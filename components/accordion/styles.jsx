@@ -33,6 +33,7 @@ export const Text = styled.p`
     white-space: nowrap;
 `
 export const Icon = styled.div`
+  transition: all .5s;
   svg{
       font-size: ${fontSizes[3] + 2}px;
   }
@@ -121,6 +122,7 @@ export const ListItem = styled.li`
   p{
     margin:0px;
     flex:1;
+    word-break: break-word;
   }
 `
 

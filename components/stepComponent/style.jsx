@@ -12,14 +12,17 @@ export const Title = styled.p`
   color: ${colors.darkText};
   margin:0px;
   height: 45px;
-  display: flex;
-  align-items: center;
+  padding-left: 18px;
+  span{
+    margin-left: -17px;
+  }
 `;
 
 export const OptionsWrap = styled.div`
   padding: 0px ${space[5]}px;
   height: 212px;
   overflow: auto;
+  margin-bottom: 20px;
   @media only screen and (min-width: 1680px) {
     height: 300px;
   }
@@ -38,9 +41,12 @@ export const OptionsWrap = styled.div`
 
 export const Item = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: ${space[6]}px;
   cursor: pointer;
+  > div{
+    margin-top: 3px;
+  }
   p {
     font-size: ${fontSizes[0] + 2}px;
     line-height: 24px;

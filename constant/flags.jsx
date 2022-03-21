@@ -1208,7 +1208,7 @@ export const Flags = [
       "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/ML.svg",
   },
   {
-    name: "Myanmar (Burma)",
+    name: "Myanmar",
     code: "MM",
     emoji: "🇲🇲",
     unicode: "U+1F1F2 U+1F1F2",

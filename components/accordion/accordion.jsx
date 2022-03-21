@@ -42,14 +42,14 @@ const Accordion = ({
     setSelectedOption([...selectedOption, value]);
   };
   return (
-    <AccordionWrap active={isOpen === title}>
+    <AccordionWrap active={isOpen === title || selectedOption?.length}>
       <Select onClick={toggling}>
         <Text selectedOption={selectedOption?.length}>
           {selectedOption?.length
             ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}
         </Text>
-        <Icon>
+        <Icon style={{transform: isOpen === title ? 'rotate(-180deg)' : ''}}>
           <BiChevronDown />
         </Icon>
       </Select>

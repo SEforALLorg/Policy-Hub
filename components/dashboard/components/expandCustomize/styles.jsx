@@ -96,6 +96,7 @@ export const CardSubTitle = styled.p`
   user-select: none;
   color: ${colors.text};
   margin-bottom: ${space[10] * 2}px;
+  padding-right: 18px;
   svg {
     color: ${colors.gray};
     font-size: ${fontSizes[2] - 3}px;
@@ -123,6 +124,13 @@ export const Steps = styled.div`
   padding: ${space[2]}px 0px;
   height: 45px;
   cursor: pointer;
+  &:hover{
+    button{
+      background: ${colors.white};
+      border: 1px solid ${colors.primary};
+      color: ${colors.primary};
+    }
+  }
 `;
 export const Text = styled.div`
   display: flex;
@@ -181,6 +189,13 @@ export const YesButton = styled.button`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  transition: all .5s;
+  border: 1px solid ${colors.primary};
+  &:hover{
+    background: ${colors.white};
+    border: 1px solid ${colors.primary};
+    color: ${colors.primary};
+  }
 `;
 
 // Right Wrap
@@ -200,6 +215,11 @@ export const ReportsWrap = styled.div`
 export const ReportsLeftWrap = styled.div`
   width: 30%;
   margin-right: ${space[8]}px;
+  padding: 0px 7px;
+  position: relative;
+`;
+
+export const InnerFilters = styled.div`
   height: 410px;
   overflow: auto;
   overflow-x: hidden;
@@ -222,14 +242,15 @@ export const ReportsLeftWrap = styled.div`
     padding: 0px;
   }
 `;
+
 export const ReportsRightWrap = styled.div`
   width: 70%;
-  // max-width: 427px;
+`;
+
+export const RightInnerWrap = styled.div`
   overflow: auto;
   padding-right: 5px;
   height: 410px;
-  // height: 475px;
-  // height: calc(100vh - 133px);
   min-height: 90%;
   max-height: 100%;
   display: flex;
@@ -249,6 +270,7 @@ export const ReportsRightWrap = styled.div`
     height: 530px;
   }
 `;
+
 
 export const InnerSlideWrap = styled.div`
   transition: all 2s;
@@ -279,6 +301,7 @@ export const Nodata = styled.div`
   justify-content: center;
   color: ${colors.text};
   flex-direction: column;
+  margin-top: -25px;
   a {
     color: ${colors.primary};
     font-size: 14px;
@@ -341,4 +364,15 @@ export const Overlay = styled.div`
     left: 0px;
     width: 100%;
     height: 100%;
+    z-index: 9999;
 `;
+
+export const RightTitle = styled.h4`
+  padding-bottom: 15px;
+  font-style: normal;
+  font-weight: 700;
+  color: #494949;
+  letter-spacing: 1px;
+  padding-left: 2px;
+`;
+

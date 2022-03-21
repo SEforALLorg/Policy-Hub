@@ -5,26 +5,27 @@ import ReviewCard from "./components/reviewCard";
 import PopularResorces from "./components/popularResorces";
 import ViewButton from "../buttons/viewall";
 import VideoCard from "./components/video";
+import Loader from "../loader";
 
-const Feature = ({ hideText }) => {
+const Feature = ({ reports, isFetchingReports }) => {
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white py-6 drop-shadow-dropShadow">
-        <div className="xsm:px-4 mobile:px-[100px]">
-          <h4 className="font-bold leading-[46px] mobile:text-base medium:text-large m-0 text-Primary uppercase extrasmall:text-xmd xsm:text-[19px]">
+        <div className="xsm:px-4 mobile:px-[100px] relative">
+          {/* <h4 className="font-bold leading-[46px] mobile:text-base medium:text-large m-0 text-Primary uppercase extrasmall:text-xmd xsm:text-[19px]">
             Resources{" "}
-          </h4>
+          </h4> */}
           <div className="flex pb-[25px] my-6 border-b-[2.4px] border-borderprimary w-full xsm:flex-wrap large:flex-nowrap">
-            <div className="sm:mr-0 large:mr-5 xsm:w-full large:w-max large:mb-0 xsm:mb-5 screen:min-w-[359px] w-full screen:h-[271px]">
+            {/* <div className="sm:mr-0 large:mr-5 xsm:w-full large:w-max large:mb-0 xsm:mb-5 screen:min-w-[359px] w-full screen:h-[271px]">
               <img
                 src={"/static/images/mustardflower.svg"}
                 alt="mustard"
                 className="xsm:w-full large:w-max "
               />
-            </div>
+            </div> */}
             <div className="w-full">
               <h5
-                className="font-bold medium:leading-10 medium:text-[33px] mb-[23px]
+                className="font-bold medium:leading-10 medium:text-[33px] mb-[20px]
                              xsm:text-sml xsm:leading-6 extrasmall:text-xmd extrasmall:leading-7"
               >
                 Regional Certification Guidelines For Off-Grid Solar
@@ -43,22 +44,49 @@ const Feature = ({ hideText }) => {
                 ligula, rutrum mollis urna eu, sodales interdum elit. Donec
                 interdum leo.
               </p>
-              <div className="flex justify-center mt-[29px]">
+              {/* <div className="flex justify-center mt-[29px]">
                 <button
                   className="bg-Primary rounded-[60px] text-normal text-center 
-                           leading-5 border-2 border-transparent outline-none text-white font-bold uppercase
+                           leading-5 border-2 border-transparent white-text outline-none font-bold
                            hover:text-Primary hover:bg-Primary hover:border-2 hover:border-Primary ease-linear
-                           transition-all duration-500 h-[32px] w-[183px]"
+                           transition-all duration-500 h-[32px] w-[183px] hover:text-Primary hover:bg-white
+                           hover:border-Primary"
                   onClick={() => window.open("/resources", "_self")}
                 >
                   Go To Report
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="flex justify-between mt-6 xsm:flex-wrap medium:flex-nowrap">
-            <div className="xsm:mr-0  medium:mr-2.5 w-full ">
-              <ReviewCard
+          <div className="flex justify-between mt-6 ml-[-18px] xsm:flex-wrap medium:flex-nowrap">
+            {isFetchingReports ? (
+              <div className="text-center w-full">
+                <Loader />
+              </div>
+            ) : (
+              reports?.slice(0, 2).map((item, index) => {
+                console.log(item, "item");
+
+                return (
+                  <div className="w-full xsm:mt-6 medium:mt-0 pl-5" key={index}>
+                    <ReviewCard
+                      hideText={true}
+                      date={"12/02/2022"}
+                      src={
+                        index === 0
+                          ? "/static/images/bulb.svg"
+                          : "/static/images/windfan.svg"
+                      }
+                      heading={item?.attributes?.ReportName}
+                      subheading={item?.attributes?.Description}
+                      showStar={true}
+                      hideDate={true}
+                    />
+                  </div>
+                );
+              })
+            )}
+            {/* <ReviewCard
                 hideText={true}
                 date={"12/02/2022"}
                 src={"/static/images/bulb.svg"}
@@ -67,9 +95,8 @@ const Feature = ({ hideText }) => {
                 }
                 subheading="Lorem ipsum dolor sit amet, consectetur..."
                 showStar={true}
-              />
-            </div>
-            <div className="w-full xsm:mt-6 medium:mt-0">
+              /> */}
+            {/* <div className="w-full xsm:mt-6 medium:mt-0">
               <ReviewCard
                 date={"12/02/2022"}
                 src={"/static/images/windfan.svg"}
@@ -79,11 +106,17 @@ const Feature = ({ hideText }) => {
                 subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
                 showStar={true}
               />
-            </div>
+            </div> */}
+          </div>
+          <div className="text-center mt-10">
+            <StartButton
+              title={"Browse all resources"}
+              onClick={() => window.open("/resources", "_self")}
+            />
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-end relative">
+      {/* <div className="flex flex-col items-center justify-end relative">
         <div className="bg-lightBg py-[60px] ">
           <div className="xsm:px-4 mobile:px-[100px]">
             <div className="flex justify-between items-center xsm:flex-wrap medium:flex-nowrap">
@@ -138,7 +171,7 @@ const Feature = ({ hideText }) => {
         <div className="absolute small:-bottom-[30px] xsm:-bottom-[18px]">
           <StartButton title={"Browse all resources"} onClick={() => window.open("/resources", "_self")} />
         </div>
-      </div>
+      </div> */}
       <div className="pt-[35px] pb-[60px] bg-white">
         <div className="xsm:px-4 mobile:px-[100px]">
           <div>
@@ -160,10 +193,10 @@ const Feature = ({ hideText }) => {
               </div>
             </div>
             <h6
-              className="font-bold leading-10  m-0 text-darktext uppercase xsm:text-tiny small:text-medium 
+              className="font-bold leading-10  m-0 mt-3 text-darktext uppercase xsm:text-tiny small:text-medium 
             large:text-large"
             >
-              News and stories
+              Similar tools
             </h6>
             <div className="mt-[25px] flex justify-between xsm:flex-wrap medium:flex-nowrap">
               <div className="xsm:mr-0 medium:mr-4 w-full ">

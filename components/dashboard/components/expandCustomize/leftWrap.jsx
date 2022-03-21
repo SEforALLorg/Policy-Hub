@@ -17,7 +17,7 @@ import {
   QuestionWrap,
   RestartIcon,
 } from "./styles";
-import StepComponent from "../../../StepComponent";
+import StepComponent from "../../../stepComponent";
 import { useEffect } from "react";
 import CompletedSteps from "../../../completedSteps";
 import { VscDebugRestart } from "react-icons/vsc";
@@ -71,6 +71,22 @@ const LeftWrapPage = ({
     onNextQuestion(e?.attributes?.MainQuestion?.Question?.data?.id);
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
+    onReportsFind(e?.attributes?.AddAnswer[0]);
+    setStepQuestion([]);
+  };
+
+  const onRestart = () => {
+    setNextQuestionId(firstQuestionId);
+    setUserJourney([]);
+    setStepQuestion([]);
+    restart();
+  };
+
+  const onSubmitAnswer = (i, item) => {
+    onNextQuestion(i?.NextQuestion?.data?.id);
+    onReportsFind(i);
+    setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
+    setStepQuestion([]);
   };
 
   return (
@@ -88,7 +104,6 @@ const LeftWrapPage = ({
             onClick={() => {
               if (nextQuestionId) {
                 onStepChange(item);
-                onReportsFind(item?.attributes?.AddAnswer[0]);
               }
               resetFilters();
             }}
@@ -111,15 +126,8 @@ const LeftWrapPage = ({
             </YesButton>
           </Steps>
         ))}
-      {(Boolean(userJourney?.length) && nextQuestionId) && (
-        <RestartIcon
-          onClick={() => {
-            setNextQuestionId(firstQuestionId);
-            setUserJourney([]);
-            setStepQuestion([]);
-            restart();
-          }}
-        >
+      {Boolean(userJourney?.length) && nextQuestionId && (
+        <RestartIcon onClick={() => onRestart()}>
           <VscDebugRestart />
           <p>Restart</p>
         </RestartIcon>
@@ -128,14 +136,7 @@ const LeftWrapPage = ({
       {nextQuestionId && <Border></Border>}
       {!nextQuestionId ? (
         <>
-          <CompletedSteps
-            onRestart={() => {
-              setNextQuestionId(firstQuestionId);
-              setUserJourney([]);
-              setStepQuestion([]);
-              restart();
-            }}
-          />
+          <CompletedSteps onRestart={() => onRestart()} />
         </>
       ) : questions?.length ? (
         questions
@@ -179,14 +180,7 @@ const LeftWrapPage = ({
                         return (
                           <BlueButton
                             title={i?.Answer}
-                            onClick={() => {
-                              onNextQuestion(i?.NextQuestion?.data?.id);
-                              onReportsFind(i);
-                              setUserJourney([
-                                ...userJourney,
-                                { ...item, answer: i?.Answer },
-                              ]);
-                            }}
+                            onClick={() => onSubmitAnswer(i, item)}
                             key={index}
                           />
                         );
