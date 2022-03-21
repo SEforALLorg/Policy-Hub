@@ -54,7 +54,7 @@ const ContactBox = () => {
               Email:
             </p>
             <p className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0">
-              Info@SEforALL.org
+              KnowledgeHub@SEforALL.org
             </p>
           </div>
         </div>
