@@ -80,15 +80,14 @@ export const Box = styled.div`
   flex: 1;
   position: relative;
   p{
-    width: ${({bigCard}) => bigCard ? '61px' : ''};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    margin-right: ${space[4]}px;
   }
   .content{
     visibility: hidden;
