@@ -7,6 +7,9 @@ export const TopWrap = styled.div`
   margin-top: 10px;
   margin-bottom: ${space[2]}rem;
   height: 70vh;
+  @media only screen and (max-width: 767px){
+    height: 100%;
+  }
   @media only screen and (min-width: 1200px) and (max-width: 1400px) {
     margin-top: ${space[1] - 1}rem;
   }

@@ -6,9 +6,10 @@ import {
   space,
   fullWidth,
 } from "../../../../constant";
-import { fadeOut } from "react-animations";
+import { fadeOut, fadeIn } from "react-animations";
 
 const fadeOutAnimation = keyframes`${fadeOut}`;
+const fadeInAnimation = keyframes`${fadeIn}`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -35,25 +36,28 @@ export const Wrapper = styled.div`
     width: 10px;
     transform: translateY(-50%);
   }
-  @media only screen and (min-width: 1680px) {
-    height: 90%;
-  }
+  // @media only screen and (min-width: 1680px) {
+  //   height: 90%;
+  // }
 `;
 export const Card = styled.div`
   width: ${fullWidth};
   background: ${colors.white};
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: ${space[10] * 2}px ${space[10] * 4}px;
+  padding: ${space[10] * 2}px ${space[10]}px;
   position: relative;
   height: 100%;
+  @media only screen and (max-width: 767px){
+    padding: ${space[10] * 1}px ${space[10]}px;
+  }
 `;
 
 export const Title = styled.h5`
   font-style: normal;
   font-weight: 700;
-  font-size: ${fontSizes[5]}px;
-  line-height: 64.4px;
+  font-size: 37px;
+  line-height: 44px;
   text-align: center;
   user-select: none;
   text-transform: uppercase;
@@ -61,9 +65,12 @@ export const Title = styled.h5`
   text-align: center;
   padding-bottom: ${space[5]}px;
   margin-top: ${space[5]}px;
+  // margin-bottom: 10px;
   @media only screen and (min-width: 1680px) {
-    margin-top: ${space[10] * 2}px;
+    margin-top: 7px;
     font-size: ${fontSizes[5] + 5}px;
+    margin-bottom: 20px;
+    line-height: 64.4px;
   }
   @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
     font-size: ${fontSizes[4] + 2}px;
@@ -71,6 +78,11 @@ export const Title = styled.h5`
     margin-top: 0px;
   }
   @media only screen and (min-width: ${media.laptop}) and (max-width: ${media.screen}) {
+    margin-top: 0px;
+  }
+  @media only screen and (max-width: 767px){
+    font-size: 29px;
+    line-height: 40px;
     margin-top: 0px;
   }
 `;
@@ -169,8 +181,159 @@ export const BottomBtn = styled.div`
   width: 40%;
   position: absolute;
   bottom: -32px;
-  @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
-    width: 44%;
-    bottom: -32px;
+  // opacity: 0;
+  &.animationButton{
+    animation: 2s ${fadeInAnimation};
+    opacity: 1;
+  }
+  button{
+    @media only screen and (max-width: 1680px) {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+  }
+  @media only screen and (max-width: 1680px) {
+    width: 40%;
+    bottom: -25px;
+  }
+  // animation: 6s ${fadeInAnimation};
+  // transition: all 0.5s;
+  // @media only screen and (min-width: ${media.smallLaptop}) and (max-width: ${media.screen}) {
+  //   width: 44%;
+  //   bottom: -32px;
+  // }
+`;
+
+
+export const InnerTitle = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 35px;
+  user-select: none;
+  color: ${colors.text};
+  margin: ${space[0]}px;
+  width: ${fullWidth};
+  margin-bottom: 30px;
+  span {
+    font-weight: 700;
+  }
+  // @media only screen and (min-width: ${media.tablet}) and (max-width: ${media.laptop}) {
+  //   font-size: ${fontSizes[3] + 2}px;
+  //   line-height: 50px;
+  // }
+  @media only screen and (max-width: 1680px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 32px;
+  }
+`;
+
+
+export const CardsWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  @media only screen and (max-width: 767px){
+    display: block;
+  }
+`;
+
+export const CardSection = styled.div`
+  width:45%;
+  background-color: ${colors.white};
+  padding: 10px 20px;
+  position: relative;
+  @media only screen and (max-width: 1500px){
+    padding: 5px 10px;
+  }
+  @media only screen and (max-width: 767px){
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 20px 10px;
+  }
+  &.last-card{
+    @media only screen and (max-width: 767px){
+      border-bottom: none;
+    }
+  }
+`;
+
+export const InnerCard = styled.div`
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: all .8s;
+  // height: 100%;
+  
+  // border-bottom: 1px solid #ccc;
+  // border-right: 1px solid #ccc;
+  img{
+    width: 90px;
+    margin-right: 20px;
+    height: 90px;
+    @media only screen and (max-width: 767px){
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+  &:hover{
+    transform: scale(1.06);
+  }
+  @media only screen and (max-width: 767px){
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const DividerBottom = styled.div`
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+  margin-bottom: 35px;
+  width:90%;
+  @media only screen and (max-width: 1500px){
+    margin-bottom: 20px;
+  }
+  @media only screen and (max-width: 767px){
+    display: none;
+  }
+`;
+
+export const DividerRight = styled.div`
+  border-right: 1px solid #ccc;
+  position: absolute;
+  height: 65%;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media only screen and (max-width: 767px){
+    display: none;
+  }
+`;
+
+export const InnerCardText = styled.p`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 35px;
+  user-select: none;
+  color: ${colors.text};
+  margin: ${space[0]}px;
+  width: ${fullWidth};
+  // margin-bottom: 30px;
+  span {
+    font-weight: 700;
+  }
+  @media only screen and (max-width: 767px){
+    flex: 1;
+    text-align: center;
+  }
+  @media only screen and (max-width: 1500px){
+    font-size: 14px;
+    line-height: 24px;
   }
 `;
