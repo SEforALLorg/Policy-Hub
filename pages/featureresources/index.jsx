@@ -1,10 +1,24 @@
 import React from "react";
+import { useQuery } from "react-query";
+
+import { ErrorNotify } from "components/notification";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-
 import Feature from "components/feature_resources";
 
+import { getReports } from "pages/api/reports";
+
 const FeatureResources = () => {
+  const { data: allReports, isFetching: isFetchingReports } = useQuery(
+    ["getReports", ''],
+    () => getReports(''),
+    {
+      onError: (error) => {
+        ErrorNotify(error.response.data.error.message);
+      },
+    }
+  );
+
   return (
     <main>
       <div className="mobile:p-2.5 xsm:p-[5px]">
@@ -13,7 +27,7 @@ const FeatureResources = () => {
                     <Header />
                 </div>
                 <div className='xsm:my-4 6xl:my-12 '>
-                    <Feature />
+                    <Feature reports={allReports?.data?.data} isFetchingReports={isFetchingReports} />
                 </div>
                 <div className="pt-10 w-full ">
                     <Footer />
