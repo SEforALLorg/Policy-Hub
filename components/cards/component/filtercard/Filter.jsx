@@ -32,7 +32,7 @@ const Report = ({
   bigCard,
   description,
 }) => {
-  const countTooltip = bigCard ? 30 : 10
+  const countTooltip = bigCard ? 30 : 10;
   return (
     <Wrapper
       key={key}
@@ -63,15 +63,14 @@ const Report = ({
         {countryName && (
           <>
             <Box bigCard={bigCard}>
-              <ImageWrap
+              <img src={file} alt='flag' />
+              {/* <ImageWrap
                 style={{
                   backgroundImage: `url(${file})`,
                   backgroundSize:
                     file === "static/images/globe.png" ? "contain" : "",
                 }}
-              >
-                {/* <img src={file} alt="flag" /> */}
-              </ImageWrap>
+              /> */}
               <Text className={!bigCard && isActive && "innerText"}>
                 {countryName}
               </Text>
@@ -79,21 +78,27 @@ const Report = ({
             <span />
           </>
         )}
-        <Box>
-          <Text className={!bigCard && isActive && "innerText"}>{area}</Text>
-          {area?.length > countTooltip ? (
-            <ContentWrap className={"content"}>{area}</ContentWrap>
-          ) : null}
-        </Box>
-        <span />
-        <Box style={{ width: "38px" }}>
+        {area && (
+          <>
+            <Box>
+              <Text className={!bigCard && isActive && "innerText"}>
+                {area}
+              </Text>
+              {area?.length > countTooltip ? (
+                <ContentWrap className={"content"}>{area}</ContentWrap>
+              ) : null}
+            </Box>
+            <span />
+          </>
+        )}
+        <Box style={{ width: "50px"}}>
           <Text className={!bigCard && isActive && "innerText"}>{item}</Text>
           {item?.length > countTooltip ? (
             <ContentWrap className={"content"}>{item}</ContentWrap>
           ) : null}
         </Box>
         <span />
-        <Box style={{ width: "38px" }}>
+        <Box style={{ width: "38px", justifyContent: 'flex-end', flex: 'unset'  }}>
           <Text className={!bigCard && isActive && "innerText"}>{date}</Text>
         </Box>
         {isActive && (

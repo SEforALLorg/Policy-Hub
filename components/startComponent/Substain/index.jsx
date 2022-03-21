@@ -30,7 +30,7 @@ const StartSubstain = () => {
     getQuestions,
     {
       onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
+        ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );

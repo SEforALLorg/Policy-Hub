@@ -18,6 +18,13 @@ const Customize = ({
       ?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+
+  const onAnswerClick = (i) => {
+    onYes();
+    onNextQuestion(i?.NextQuestion?.data?.id);
+    onReportsFind(i);
+  }
+
   return (
     <div className="p-10 bg-white rounded-2xl w-full h-full m-auto">
       {isFetchingQuestions ? (
@@ -49,11 +56,7 @@ const Customize = ({
             {singleAnswer?.map((i, index) => (
               <BlueButton
                 title={i?.Answer}
-                onClick={() => {
-                  onYes();
-                  onNextQuestion(i?.NextQuestion?.data?.id);
-                  onReportsFind(i);
-                }}
+                onClick={() => onAnswerClick(i)}
                 key={index}
                 className="mb-[20px] h-[80px] text-[23px]"
               />

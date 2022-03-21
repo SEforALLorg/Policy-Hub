@@ -2,7 +2,7 @@ import React from "react";
 
 const PopularResorces = ({ src, title, subtitle }) => {
   return (
-    <div className="bg-white shadow-xl flex resourceShadow rounded-lg mb-2.5 overflow-hidden w-full small:flex-nowrap xsm:flex-wrap">
+    <div className="bg-white shadow-xl flex resourceShadow rounded-lg mb-2.5 overflow-hidden w-full small:flex-nowrap xsm:flex-wrap cursor-pointer duration-200">
       <img
         src={src}
         alt="bulb"
