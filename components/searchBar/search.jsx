@@ -1,22 +1,21 @@
 import React from "react";
-import { Wrap, Input, Icon } from "./styles";
 import { RiSearch2Line } from "react-icons/ri";
 
 const SearchBar = ({ onChange, value }) => {
   return (
-    <Wrap>
-      <Input>
+    <div className='mb-[16px]'>
+      <div className="search-input-wrap">
         <input
           type="text"
           value={value}
           placeholder="Search"
           onChange={onChange}
         />
-        <Icon>
-          <RiSearch2Line />
-        </Icon>
-      </Input>
-    </Wrap>
+        <div className="absolute right-[20px]">
+          <RiSearch2Line color="#13A2BC" size={20} />
+        </div>
+      </div>
+    </div>
   );
 };
 

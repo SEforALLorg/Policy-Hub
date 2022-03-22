@@ -1,18 +1,4 @@
 import React from "react";
-import {
-  Wrapper,
-  Detail,
-  Text,
-  Icon,
-  Border,
-  BottomWrap,
-  Box,
-  ImgWrapper,
-  ImageWrap,
-  GoReportsButton,
-  Description,
-  ContentWrap,
-} from "./styles";
 import { AiFillStar } from "react-icons/ai";
 
 const Report = ({
@@ -34,80 +20,104 @@ const Report = ({
 }) => {
   const countTooltip = bigCard ? 30 : 10;
   return (
-    <Wrapper
+    <div
       key={key}
-      className={isActive ? "active" : ""}
+      className={`report-card cursor-pointer ${isActive ? "active" : ""}`}
       onClick={() => onClick()}
     >
-      <Detail>
-        <ImgWrapper>
-          {mainImg && <img src={mainImg} alt="img" style={style} />}
+      <div className="flex items-start justify-between p-[12px] w-[100%]">
+        <div className="flex items-center mr-[18px]">
+          {mainImg && (
+            <img
+              src={mainImg}
+              alt="img"
+              style={style}
+              className="w-[100%] mr-[18px]"
+            />
+          )}
 
-          <Text className="title">{title}</Text>
-        </ImgWrapper>
+          <p className="title font-normal text-[14px] m-0 text-text">{title}</p>
+        </div>
         {star && (
-          <Icon>
-            <AiFillStar />
-          </Icon>
+          <div>
+            <AiFillStar size={26} color={"#FCB600"} />
+          </div>
         )}
-      </Detail>
+      </div>
       {description && (
-        <Description
-          className={`hideDescription ${isActive ? "showDescription" : ""}`}
+        <p
+          className={`report-description hideDescription ${
+            isActive ? "showDescription" : ""
+          }`}
         >
           {description}
-        </Description>
+        </p>
       )}
-      <Border></Border>
-      <BottomWrap>
+      <div style={{ borderBottom: "2.4px solid rgba(134, 164, 176, 0.15)" }} />
+      <div className="flex items-center p-[12px] card-bottom-wrap">
         {countryName && (
           <>
-            <Box bigCard={bigCard}>
-              <img src={file} alt='flag' />
-              {/* <ImageWrap
-                style={{
-                  backgroundImage: `url(${file})`,
-                  backgroundSize:
-                    file === "static/images/globe.png" ? "contain" : "",
-                }}
-              /> */}
-              <Text className={!bigCard && isActive && "innerText"}>
+            <div className="report-bottom-box">
+              <img src={file} alt="flag" />
+              <p
+                className={`font-normal text-[14px] m-0 text-text ${
+                  !bigCard && isActive && "innerText"
+                }`}
+              >
                 {countryName}
-              </Text>
-            </Box>
+              </p>
+            </div>
             <span />
           </>
         )}
         {area && (
           <>
-            <Box>
-              <Text className={!bigCard && isActive && "innerText"}>
+            <div className="report-bottom-box">
+              <p
+                className={`font-normal text-[14px] m-0 text-text ${
+                  !bigCard && isActive && "innerText"
+                }`}
+              >
                 {area}
-              </Text>
+              </p>
               {area?.length > countTooltip ? (
-                <ContentWrap className={"content"}>{area}</ContentWrap>
+                <div className={"content"}>{area}</div>
               ) : null}
-            </Box>
+            </div>
             <span />
           </>
         )}
-        <Box style={{ width: "50px"}}>
-          <Text className={!bigCard && isActive && "innerText"}>{item}</Text>
+        <div className="report-bottom-box" style={{ width: "50px" }}>
+          <p
+            className={`font-normal text-[14px] m-0 text-text ${
+              !bigCard && isActive && "innerText"
+            }`}
+          >
+            {item}
+          </p>
           {item?.length > countTooltip ? (
-            <ContentWrap className={"content"}>{item}</ContentWrap>
+            <div className={"content"}>{item}</div>
           ) : null}
-        </Box>
+        </div>
         <span />
-        <Box style={{ width: "38px", justifyContent: 'flex-end', flex: 'unset'  }}>
-          <Text className={!bigCard && isActive && "innerText"}>{date}</Text>
-        </Box>
+        <div className="report-bottom-box"
+          style={{ width: "38px", justifyContent: "flex-end", flex: "unset" }}
+        >
+          <p
+            className={`font-normal text-[14px] m-0 text-text ${
+              !bigCard && isActive && "innerText"
+            }`}
+          >
+            {date}
+          </p>
+        </div>
         {isActive && (
-          <GoReportsButton onClick={() => window.open(url)}>
+          <button className="go-report-btn" onClick={() => window.open(url)}>
             Go to Report
-          </GoReportsButton>
+          </button>
         )}
-      </BottomWrap>
-    </Wrapper>
+      </div>
+    </div>
   );
 };
 

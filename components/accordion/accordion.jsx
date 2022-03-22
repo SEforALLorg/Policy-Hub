@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 import {
-  AccordionWrap,
-  Text,
-  Select,
-  Icon,
-  DropDownListContainer,
-  ListItem,
   DropDownList,
   Span,
 } from "./styles";
@@ -19,7 +13,7 @@ const Accordion = ({
   onChange,
   selected,
   name,
-  top
+  top,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -41,24 +35,46 @@ const Accordion = ({
     }
     setSelectedOption([...selectedOption, value]);
   };
+  const active = isOpen === title || selectedOption?.length;
+
   return (
-    <AccordionWrap active={isOpen === title || selectedOption?.length}>
-      <Select onClick={toggling}>
-        <Text selectedOption={selectedOption?.length}>
+    <div
+      className="selectWrap"
+      style={{ border: active ? "2px solid #13A2BC" : "2px solid #fff" }}
+    >
+      <div
+        onClick={toggling}
+        className="flex items-center justify-between pl-[12px] pr-[12px] pt-[10px] pb-[10px]"
+      >
+        <p
+          className="font-normal text-[15px] text-lighttext m-0"
+          style={{
+            width: selectedOption?.length ? "93%" : "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
           {selectedOption?.length
             ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}
-        </Text>
-        <Icon style={{transform: isOpen === title ? 'rotate(-180deg)' : ''}}>
-          <BiChevronDown />
-        </Icon>
-      </Select>
+        </p>
+        <div
+          style={{
+            transform: isOpen === title ? "rotate(-180deg)" : "",
+            transition: "all .5s",
+          }}
+        >
+          <BiChevronDown size={26} />
+        </div>
+      </div>
       {isOpen === title && (
-        <DropDownListContainer>
+        <div>
           <DropDownList top={top}>
             {options?.map((option, index) => {
               return (
-                <ListItem
+                <div
+                  className="selectListItem cursor-pointer"
                   onClick={onOptionClicked(option?.label)}
                   key={index}
                 >
@@ -71,14 +87,15 @@ const Accordion = ({
                     onChange={onChange}
                     id={option?.id}
                     name={name}
+                    className="cursor-pointer"
                   />
-                </ListItem>
+                </div>
               );
             })}
           </DropDownList>
-        </DropDownListContainer>
+        </div>
       )}
-    </AccordionWrap>
+    </div>
   );
 };
 
