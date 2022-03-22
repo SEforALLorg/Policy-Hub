@@ -1,96 +1,99 @@
 import React from "react";
-import Slider from "react-slick";
 import StartButton from "components/buttons/component/startButton/StartButton";
-import { Wrapper } from "./styles";
 
 const SubCard = ({ HandleOpen }) => {
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    vertical: true,
-    verticalSwiping: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-  };
-
   return (
     <>
-      <Wrapper>
-        <div className="w-full bg-white dropShadow rounded-lg	py-10 px-[80px] relative h-full">
-          <h5 className="font-normal font-bold	text-[53px] leading-[64.4px] text-center	select-none	uppercase text-text text-center	pb-2.5 mt-10">
+      <div className="flex items-center justify-end relative h-[100%] flex-col">
+        <div className="landing-card-inner w-full bg-white dropShadow rounded-lg	py-10 px-[20px] relative h-full">
+          <h5 className="cardBigHeading font-normal font-bold	text-[53px] leading-[64.4px] text-center	select-none	uppercase text-text text-center	pb-[28px] mt-2">
             Sustainable
             <span className="text-Secondary px-[6px]"> Energy </span>
-            for All
+            for All <br />
             <span className="text-Primary pl-[6px]"> Knowledge</span> Hub
           </h5>
-          <Slider {...settings}>
-            <div>
-              <div className="flex items-center gap-5	justify-between	py-[60px] w-full">
-                <div className="border-l-[17px] border-Primary pl-5">
-                  <div className="ont-normal text-[33.6px] leading-[50px] select-none	text-text m-0 w-full">
-                    The Sustainable Energy for All Knowledge Hub is an
-                    interactive platform that supports policy makers in
-                    developing conducive policy and regulatory frameworks for
-                    sustainable energy.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-5	justify-between	py-[60px] w-full">
-                <div className="ont-normal text-[33.6px] leading-[50px] select-none	text-text m-0 w-full">
-                  <span className="font-bold">The knowledge hub</span> provides
-                  key resources for different steps in decision-making.
-                </div>
+          <div className="flex flex-wrap justify-evenly relative landing-cards-wrap">
+            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+              <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
-                  className="w-[175px] h-[160px]"
                   src={"static/images/hub.svg"}
                   alt="card"
+                  width={80}
+                  height={80}
+                  className="mr-[20px] landing-card-image"
                 />
+                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
+                  The <span className="font-bold">Sustainable Energy</span> for
+                  All Knowledge Hub is an interactive platform that supports
+                  policy makers in developing conducive policy and regulatory
+                  frameworks for sustainable energy.
+                </p>
               </div>
             </div>
-            <div>
-              <div className="flex items-center gap-5	justify-between	py-[60px] w-full">
+
+            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+              <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
-                  className="w-[175px] h-[160px]"
+                  src={"static/images/hub.svg"}
+                  alt="card"
+                  width={80}
+                  height={80}
+                  className="mr-[20px] landing-card-image"
+                />
+                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
+                  <span className="font-bold">The knowledge hub</span> provides
+                  key resources for different steps in decision-making.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="divider-right" />
+          <div className="flex flex-wrap justify-evenly relative landing-cards-wrap">
+            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+              <div className="divider-bottom" />
+              <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
+                <img
                   src={"static/images/journey.svg"}
                   alt="card"
+                  width={80}
+                  height={80}
+                  className="mr-[20px] landing-card-image"
                 />
-                <div className="ont-normal text-[33.6px] leading-[50px] select-none	text-text m-0 w-full">
+                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
                   It currently offers resources on electricity access, but other
                   pillars of sustainable energy (access to clean cooking,
                   sustainable cooling, energy efficiency and renewable energy)
                   will be added soon.
-                </div>
+                </p>
               </div>
             </div>
-            <div>
-              <div className="flex items-center gap-5	justify-between	py-[60px] w-full">
-                <div className="font-normal text-[33.6px] leading-[50px] select-none	text-text m-0 w-full">
+
+            <div className="last-card w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+              <div className="divider-bottom" />
+              <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
+                <img
+                  src={"static/images/guide.svg"}
+                  alt="card"
+                  width={80}
+                  height={80}
+                  className="mr-[20px] landing-card-image"
+                />
+                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
                   Find{" "}
                   <span className="font-bold">
                     guidelines, tools, and templates
                   </span>{" "}
                   on electricity access relevant to your country and matched to
                   your needs by answering the following questions.
-                </div>
-                <img
-                  className="w-[175px] h-[160px]"
-                  src={"static/images/guide.svg"}
-                  alt="card"
-                />
+                </p>
               </div>
             </div>
-          </Slider>
+          </div>
         </div>
-        <div className="w-[40%] absolute bottom-[-32px]" onClick={HandleOpen}>
+        <div className="w-[40%] absolute bottom-[-32px] landing-button-wrap" onClick={HandleOpen}>
           <StartButton title={"Click here to start"} className="w-full" />
         </div>
-      </Wrapper>
+      </div>
     </>
   );
 };

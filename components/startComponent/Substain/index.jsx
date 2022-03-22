@@ -38,7 +38,7 @@ const StartSubstain = () => {
   return (
     <>
       <div>
-        <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh]">
+        <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card">
           <SubstainCard HandleOpen={HandleOpen} />
         </div>
         {isOpen ? (

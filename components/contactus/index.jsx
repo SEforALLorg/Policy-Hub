@@ -54,7 +54,7 @@ const ContactBox = () => {
               Email:
             </p>
             <p className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0">
-              Info@SEforALL.org
+              KnowledgeHub@SEforALL.org
             </p>
           </div>
         </div>
@@ -62,7 +62,9 @@ const ContactBox = () => {
       <div className="bg-lightBg pt-4 pb-10 m-auto">
         <div className="flex m-auto justify-between w-4/5 xsm:flex-wrap laptop:flex-nowrap">
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
+            className={
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+            }
             heading={"Vienna Office"}
             title={
               <>
@@ -73,7 +75,9 @@ const ContactBox = () => {
             }
           />
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
+            className={
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+            }
             heading={"Washington, DC Office"}
             title={
               <>
@@ -84,9 +88,17 @@ const ContactBox = () => {
             }
           />
           <Address
-            className={"bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"}
+            className={
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+            }
             heading={"New York Office"}
-            title={"420 5th Ave New York, NY 10018 USA"}
+            title={
+              <>
+                420 5th Ave
+                <br /> New York,
+                <br /> NY 10018 USA
+              </>
+            }
           />
         </div>
       </div>

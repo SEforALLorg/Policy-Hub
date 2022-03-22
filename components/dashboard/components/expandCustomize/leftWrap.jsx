@@ -84,7 +84,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-          Improve your decision-making
+          Customizing Support
         </div>
       </div>
       {nextQuestionId &&
@@ -173,7 +173,7 @@ const LeftWrapPage = ({
                         <TooltipComponent content={ToolTipText} />
                       )}
                     </div>
-                    <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto">
+                    <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
                       {singleAnswer?.map((i, index) => {
                         if (!i?.Answer) return null;
 
