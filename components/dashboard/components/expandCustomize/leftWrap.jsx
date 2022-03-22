@@ -95,7 +95,7 @@ const LeftWrapPage = ({
         <ImgBox>
           <img src="static/images/yellowfile.svg" alt="card" />
         </ImgBox>
-        <CardTitle>Customizing Support</CardTitle>
+        <CardTitle>Customized Support</CardTitle>
       </CardHeader>
       {nextQuestionId &&
         userJourney?.slice(0, 3).map((item, index) => (
