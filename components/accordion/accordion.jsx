@@ -19,7 +19,9 @@ const Accordion = ({
   onChange,
   selected,
   name,
-  top
+  top,
+  selectedOptions,
+  setSelectedOptions,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -30,7 +32,7 @@ const Accordion = ({
     setIsOpen(title);
   };
 
-  const onOptionClicked = (value) => () => {
+  const onOptionClicked = (value) => {
     const options = [...selectedOption];
     const target = options?.includes(value);
     if (target) {
@@ -41,6 +43,19 @@ const Accordion = ({
     }
     setSelectedOption([...selectedOption, value]);
   };
+
+  const onOptionSelectClicked = (value) => {
+    const options = [...selectedOptions];
+
+    const target = options?.includes(value);
+    if (target) {
+      const targetIndex = options?.indexOf(value);
+
+      options.splice(targetIndex, 1);
+      return setSelectedOptions(options);
+    }
+    setSelectedOptions([...selectedOptions, value]);
+  };
   return (
     <AccordionWrap active={isOpen === title || selectedOption?.length}>
       <Select onClick={toggling}>
@@ -49,7 +64,7 @@ const Accordion = ({
             ? selectedOption?.map((i, index) => `${index > 0 ? ", " : ""}` + i)
             : title}
         </Text>
-        <Icon style={{transform: isOpen === title ? 'rotate(-180deg)' : ''}}>
+        <Icon style={{ transform: isOpen === title ? "rotate(-180deg)" : "" }}>
           <BiChevronDown />
         </Icon>
       </Select>
@@ -59,7 +74,10 @@ const Accordion = ({
             {options?.map((option, index) => {
               return (
                 <ListItem
-                  onClick={onOptionClicked(option?.label)}
+                  onClick={() => {
+                    onOptionClicked(option?.label);
+                    onOptionSelectClicked(option?.label);
+                  }}
                   key={index}
                 >
                   <Span
