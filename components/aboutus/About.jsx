@@ -31,7 +31,7 @@ const About = () => {
                 onClick={() => window.open("https://www.seforall.org/")}
               > 
                 click here
-              </span>
+              </span>.
             </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
               The <b>Sustainable Energy for All Knowledge Hub</b> is an
@@ -40,7 +40,7 @@ const About = () => {
               and cases on energy policy and regulation published by
               international organizations and thought leaders. In its first
               phase, the knowledge hub offers key resources on electricity
-              access
+              access.
             </p>
             <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
               Further resources to support electrification efforts can be found
