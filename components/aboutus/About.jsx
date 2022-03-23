@@ -71,8 +71,8 @@ const About = () => {
               <ImgCard
                 className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full"
                 img={"static/images/rockfound.svg"}
-                title={"Rockefeller Foundation"}
-                link={"https://www.esteri.it/en/ministero/"}
+                title={"The Rockefeller Foundation"}
+                link={"https://www.rockefellerfoundation.org/"}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
@@ -86,7 +86,7 @@ const About = () => {
           </div>
           <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
-            The knowledge hub partners include but not limited to{" "}
+            Knowledge Hub partners include, but are not limited to:{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[24%] xsm:w-100  xsm:w-full ">
