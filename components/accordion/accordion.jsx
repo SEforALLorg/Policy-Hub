@@ -14,6 +14,8 @@ const Accordion = ({
   selected,
   name,
   top,
+  selectedOptions,
+  setSelectedOptions,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -24,7 +26,7 @@ const Accordion = ({
     setIsOpen(title);
   };
 
-  const onOptionClicked = (value) => () => {
+  const onOptionClicked = (value) => {
     const options = [...selectedOption];
     const target = options?.includes(value);
     if (target) {
@@ -35,8 +37,21 @@ const Accordion = ({
     }
     setSelectedOption([...selectedOption, value]);
   };
-  const active = isOpen === title || selectedOption?.length;
 
+  const onOptionSelectClicked = (value) => {
+    const options = [...selectedOptions];
+
+    const target = options?.includes(value);
+    if (target) {
+      const targetIndex = options?.indexOf(value);
+
+      options.splice(targetIndex, 1);
+      return setSelectedOptions(options);
+    }
+    setSelectedOptions([...selectedOptions, value]);
+  };
+
+  const active = isOpen === title || selectedOption?.length;
   return (
     <div
       className="selectWrap"
@@ -75,7 +90,10 @@ const Accordion = ({
               return (
                 <div
                   className="selectListItem cursor-pointer"
-                  onClick={onOptionClicked(option?.label)}
+                  onClick={() => {
+                    onOptionClicked(option?.label);
+                    onOptionSelectClicked(option?.label);
+                  }}
                   key={index}
                 >
                   <Span

@@ -24,6 +24,7 @@ const RightWrapPage = ({
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -187,6 +188,8 @@ const RightWrapPage = ({
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.regions}
                 name={"regions"}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Select Country"
@@ -196,6 +199,8 @@ const RightWrapPage = ({
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.countries}
                 name={"countries"}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Segment"
@@ -205,6 +210,8 @@ const RightWrapPage = ({
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.segments}
                 name={"segments"}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Resource Type"
@@ -214,6 +221,8 @@ const RightWrapPage = ({
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.document_types}
                 name={"document_types"}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Year"
@@ -224,6 +233,8 @@ const RightWrapPage = ({
                 selected={selectInputs?.years}
                 name={"years"}
                 top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Generation Source"
@@ -234,6 +245,8 @@ const RightWrapPage = ({
                 selected={selectInputs?.generation_sources}
                 name={"generation_sources"}
                 top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Co-Authors"
@@ -244,6 +257,8 @@ const RightWrapPage = ({
                 selected={selectInputs?.co_authors}
                 name={"co_authors"}
                 top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
               <Accordion
                 title="Publishing Organizations"
@@ -254,6 +269,8 @@ const RightWrapPage = ({
                 selected={selectInputs?.publishing_organizations}
                 name={"publishing_organizations"}
                 top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
               />
             </div>
           </div>
@@ -294,7 +311,15 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
+                        const findType =
+                          i?.attributes?.AddFilters?.document_types?.data?.find(
+                            (e) =>
+                              selectedOptions?.includes(
+                                e?.attributes?.DocumentType
+                              )
+                          );
                         const document_types =
+                          findType?.attributes?.DocumentType ||
                           i?.attributes?.AddFilters?.document_types?.data[0]
                             ?.attributes?.DocumentType;
                         const publishingOrganizations =
@@ -355,7 +380,15 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
+                        const findType =
+                          i?.attributes?.AddFilters?.document_types?.data?.find(
+                            (e) =>
+                              selectedOptions?.includes(
+                                e?.attributes?.DocumentType
+                              )
+                          );
                         const document_types =
+                          findType?.attributes?.DocumentType ||
                           i?.attributes?.AddFilters?.document_types?.data[0]
                             ?.attributes?.DocumentType;
                         const publishingOrganizations =
@@ -364,7 +397,6 @@ const RightWrapPage = ({
                         const url = i?.attributes?.URL;
                         const flag = Flags.find((e) => e?.name == country);
                         const description = i?.attributes?.Description;
-
                         return (
                           <Report
                             countryName={country || "Global"}
