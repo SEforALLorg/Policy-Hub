@@ -119,7 +119,7 @@ export const GoReportsButton = styled.button`
   width: 100px;
   border: none;
   font-size: 10px;
-  // margin-left: -48px;
+  margin-left: 5px;
   color: #13A6BF;
 `;
 
@@ -134,7 +134,7 @@ export const Description = styled.p`
     max-height: 0;
     transition: max-height 0.5s ease-out;
     overflow: hidden;
-    padding: 0px;
+    padding: 0px 12px;
   }
   &.showDescription{
     max-height: 500px;

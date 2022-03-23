@@ -49,8 +49,8 @@ const SubCard = ({ HandleOpen }) => {
               <InnerCard>
                 <img src={"static/images/hub.svg"} alt="card" />
                 <InnerCardText>
-                  The <span>Sustainable Energy</span> for All Knowledge Hub is an interactive
-                  platform that supports policy makers in developing conducive
+                  The SEforALL <span>Knowledge Hub</span> is an interactive
+                  platform that supports policymakers in developing conducive
                   policy and regulatory frameworks for sustainable energy.
                 </InnerCardText>
               </InnerCard>
@@ -73,10 +73,9 @@ const SubCard = ({ HandleOpen }) => {
               <InnerCard>
                 <img src={"static/images/journey.svg"} alt="card" />
                 <InnerCardText>
-                  It currently offers resources on electricity access, but other
-                  pillars of sustainable energy (access to clean cooking,
-                  sustainable cooling, energy efficiency and renewable energy)
-                  will be added soon.
+                  It currently offers resources on electricity access. Resources
+                  on access to clean cooking, sustainable cooling and energy
+                  efficiency will be added soon.
                 </InnerCardText>
               </InnerCard>
             </CardSection>
@@ -86,9 +85,8 @@ const SubCard = ({ HandleOpen }) => {
               <InnerCard>
                 <img src={"static/images/guide.svg"} alt="card" />
                 <InnerCardText>
-                  Find <span>guidelines, tools, and templates</span> on
-                  electricity access relevant to your country and matched to
-                  your needs by answering the following questions.
+                  Find guidelines, tools and templates on electricity access
+                  relevant to your country and matched to your needs.
                 </InnerCardText>
               </InnerCard>
             </CardSection>
