@@ -25,7 +25,7 @@ const SubCard = ({ HandleOpen }) => {
                 <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
                   The SEforALL <span className="font-bold">Knowledge Hub</span>{" "}
                   is an interactive platform that supports policymakers in
-                  developing conducive policy and regulatory frameworks for
+                  developing policy and regulatory frameworks for
                   sustainable energy.
                 </p>
               </div>

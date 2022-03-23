@@ -20,12 +20,12 @@ const Feature = ({ reports, isFetchingReports }) => {
               >
                 Resources
               </h6>
-              <p className="mb-0 font-normal leading-[18px] text-boldtext m-0 text-[15px] pr-[30px]">
+              <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
                 All of the Knowledge Hub’s resources are available here for you
                 to explore. Simply click on the button below to view all the
                 resources and apply filters to narrow your results.
               </p>
-              <p className="mb-0 font-normal leading-[18px] mt-[10px] text-boldtext mb-0 text-[15px] ">You can also download the filtered resources or you can have
+              <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] ">You can also download the filtered resources or you can have
                 them sent to you via Email.</p>
             </div>
           </div>
