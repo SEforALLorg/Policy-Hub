@@ -3,14 +3,12 @@ import { useQuery } from "react-query";
 import { getQuestions } from "pages/api/questions";
 
 import { ErrorNotify } from "components/notification";
-import { Bottom, FullWrap, TopWrap } from "./styles";
 import SubstainCard from "./SubCard/SubCard.jsx";
 import ExpandCustomize from "../../dashboard/components/expandCustomize";
 
-
 const StartSubstain = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [goBottom, setGoBottom] = useState(false)
+  const [goBottom, setGoBottom] = useState(false);
   const HandleOpen = () => {
     setIsOpen(true);
     setGoBottom(true);
@@ -39,16 +37,22 @@ const StartSubstain = () => {
 
   return (
     <>
-      <FullWrap>
-        <TopWrap>
+      <div>
+        <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card">
           <SubstainCard HandleOpen={HandleOpen} />
-        </TopWrap>
+        </div>
         {isOpen ? (
-          <Bottom id="bottom-view">
-            <ExpandCustomize questions={questions} isFetchingQuestions={isFetchingQuestions} />
-          </Bottom>
+          <div
+            className="h-[100vh] flex relative items-center	justify-center bottom-view"
+            id="bottom-view"
+          >
+            <ExpandCustomize
+              questions={questions}
+              isFetchingQuestions={isFetchingQuestions}
+            />
+          </div>
         ) : null}
-      </FullWrap>
+      </div>
     </>
   );
 };

@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RadioButton from "../radioButton";
 import TooltipComponent from "../tooltip";
-import {
-  StepWrap,
-  Title,
-  OptionsWrap,
-  Item,
-  ButtonsWrap,
-  SlideButton,
-  Steps,
-  BigTitle,
-} from "./style";
 
 const StepComponent = ({
   onNext,
@@ -57,53 +47,54 @@ const StepComponent = ({
   }
 
   return (
-    <StepWrap>
+    <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
-        <BigTitle>
+        <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
           {item?.attributes?.QuestionTitle}
           {/* {ToolTipText && (
             <TooltipComponent content={ToolTipText} />
           )} */}
-        </BigTitle>
+        </h5>
       )}
-      <Title>
+      <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px]" style={{height: '45px'}}>
         <span>{stepCount}.</span> {title}{" "} {ToolTipText && (
             <TooltipComponent content={ToolTipText} />
           )}
-      </Title>
-      <OptionsWrap>
+      </p>
+      <div className="OptionsWrap">
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
           return (
-            <Item
+            <div className="optionItem"
               key={index}
               onClick={() => onAnswerClick(i)}
             >
               <RadioButton checked={optionData?.id === i?.id} />
               <p>{i?.Answer}</p>
-            </Item>
+            </div>
           );
         })}
-      </OptionsWrap>
-      <ButtonsWrap>
-        <SlideButton
+      </div>
+      <div className="optionsButtonWrap">
+        <button
           onClick={() => onPreviousClick()}
-          className="previous"
+          className="SlideButton previous"
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
         >
           <img src="static/images/leftArrow.svg" alt="" /> Previous
-        </SlideButton>
-        <Steps>
+        </button>
+        <p className="text-[14px] text-center text-Primary mb-[5px] font-medium">
           {stepCount}/{nextCount}
-        </Steps>
-        <SlideButton
+        </p>
+        <button
           onClick={() => onNextClick()}
+          className="SlideButton"
         >
           Next <img src="static/images/rightArrow.svg" alt="" />
-        </SlideButton>
-      </ButtonsWrap>
-    </StepWrap>
+        </button>
+      </div>
+    </div>
   );
 };
 

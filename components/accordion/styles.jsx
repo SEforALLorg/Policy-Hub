@@ -1,54 +1,4 @@
 import styled from 'styled-components'
-import { colors, fontSizes, space, fullWidth } from '../../constant'
-export const AccordionWrap = styled.div`
-    background: ${colors.white};
-    box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
-    border-radius: 9.8px;
-    width: ${fullWidth};;
-    margin-bottom: ${space[5]}px;
-    cursor: pointer;
-    position: relative;
-    border: ${({active}) => active ? '2px solid #13A2BC' : '2px solid #fff' };
-    box-sizing: border-box;
-`
-export const Select = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: ${space[5]}px ${space[6]}px ;
-    width: ${fullWidth};
-    height:50px;
-   
-`
-export const Text = styled.p`
-    font-style: normal;
-    font-weight: 400;
-    font-size: ${fontSizes[1] - 1}px;
-    line-height: 21px;
-    margin: ${space[0]}px;
-    color: ${colors.lighttext};
-    width: ${({ selectedOption }) => selectedOption ? '93%' : '100%'};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-`
-export const Icon = styled.div`
-  transition: all .5s;
-  svg{
-      font-size: ${fontSizes[3] + 2}px;
-  }
-`
-
-export const OptionWrap = styled.div`
-    background: ${colors.white};
-    box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
-    border-radius: 9.80336px;
-    padding: 10px;
-    margin-bottom: ${space[5]}px;   
-`
-
-export const DropDownListContainer = styled.div`
-`;
 
 export const DropDownList = styled.ul`
   padding: 10px;
@@ -90,41 +40,6 @@ export const DropDownList = styled.ul`
     border-radius: 10px;
   }
 `;
-export const ListItem = styled.li`
-  list-style: none;
-  margin-bottom: 0.8em;
-  cursor: pointer;
-  font-size: 15px;
-  padding: 8px;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  @media only screen and (max-width: 1680px){
-    font-size: 14px;
-    margin-bottom: 7px;
-    padding: 8px 5px;
-  }
-  :hover{
-    background: #2596be;
-    color: #fff;
-    span{
-      border: 1px solid white;
-    }
-  }
-  input{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    opacity: 0;
-  }
-  p{
-    margin:0px;
-    flex:1;
-    word-break: break-word;
-  }
-`
 
 export const Span = styled.span`
   background: ${prop => prop.selectedOption ? '#2e9fc7' : 'white'};

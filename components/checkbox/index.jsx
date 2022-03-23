@@ -1,15 +1,15 @@
-import React from 'react';
-import { CheckWrap ,Label } from "./styles"
-const Checkbox = ({label}) => {
-    return (
-        <CheckWrap>
-            <div className="container">
-            <Label>{label}</Label>
-            <input type="checkbox" checked="checked" />
-                <span className="checkmark"></span>
-            </div>
-        </CheckWrap>
-    );
+import React from "react";
+
+const Checkbox = ({ label }) => {
+  return (
+    <div className="checkWrap">
+      <div className="container">
+        <p className={"m-0 text-lighttext text-[16px]"}>{label}</p>
+        <input type="checkbox" checked="checked" />
+        <span className="checkmark"></span>
+      </div>
+    </div>
+  );
 };
 
 export default Checkbox;

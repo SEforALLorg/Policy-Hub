@@ -9,25 +9,6 @@ import { getFilters } from "pages/api/filter";
 
 import { getFormattedData } from "utilities";
 import { Flags } from "../../../../constant/flags";
-
-import {
-  RightWrap,
-  CardHeader,
-  ImgBox,
-  CardTitle,
-  ReportsWrap,
-  ReportsLeftWrap,
-  ReportsRightWrap,
-  InnerSlideWrap,
-  Nodata,
-  Divider,
-  LoaderWrapFull,
-  BlankData,
-  Overlay,
-  RightTitle,
-  InnerFilters,
-  RightInnerWrap,
-} from "./styles";
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
@@ -164,20 +145,35 @@ const RightWrapPage = ({
 
   return (
     <>
-      {isOpen ? <Overlay onClick={() => setIsOpen()} /> : null}
-      <RightWrap className={"right-wrap"}>
+      {isOpen ? (
+        <div className="rightOverlay" onClick={() => setIsOpen()} />
+      ) : null}
+      <div className={"right-wrap reportRightWrap"}>
         {!showAllReports && (
-          <CardHeader>
-            <ImgBox>
-              <img src="static/images/greenFile.svg" alt="card" />
-            </ImgBox>
-            <CardTitle>Resources that match your input.</CardTitle>
-          </CardHeader>
+          <div className="flex items-center pb-[10px]">
+            <div className="flex items-center mr-[20px]">
+              <img
+                src="static/images/greenFile.svg"
+                alt="card"
+                width="90"
+                height="90"
+              />
+            </div>
+            <h5 className="font-bold text-[22px] m-0 text-text">
+              Resources that match your input.
+            </h5>
+          </div>
         )}
-        <ReportsWrap>
-          <ReportsLeftWrap className={"report-left-wrap"}>
-            <RightTitle>Filters</RightTitle>
-            <InnerFilters>
+        <div className="flex mt-[30px] reports-inner-section">
+          <div
+            className={
+              "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
+            }
+          >
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px]">
+              Filters
+            </h5>
+            <div className="innerFilter">
               {showAllReports && (
                 <SearchBar
                   onChange={(e) => onSearch(e?.target?.value)}
@@ -276,31 +272,33 @@ const RightWrapPage = ({
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
               />
-            </InnerFilters>
-          </ReportsLeftWrap>
+            </div>
+          </div>
 
-          <ReportsRightWrap
-            className={"report-right-wrap"}
+          <div
+            className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <RightTitle>Resources</RightTitle>
-            <RightInnerWrap>
-              <InnerSlideWrap>
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px]">
+              Resources
+            </h5>
+            <div className="rightInnerWrap">
+              <div className="relative mr-[0px] w-[100%] inline-block">
                 {isFetchingReports ? (
-                  <LoaderWrapFull>
+                  <div className="flex items-center justify-center h-[100%]">
                     <Loader />
-                  </LoaderWrapFull>
+                  </div>
                 ) : !allReports?.data?.data?.length ||
                   (!finalPublicationReports?.length &&
                     !finalNonPublicationReports?.length &&
                     !showAllReports) ? (
-                  <Nodata>
+                  <div className="report-no-data">
                     <p>
                       <AiOutlineInfoCircle />
                       No Reports Found.
                     </p>
                     <a href="/resources">View all reports</a>
-                  </Nodata>
+                  </div>
                 ) : (
                   <>
                     {Boolean(finalPublicationReports.length) &&
@@ -356,8 +354,20 @@ const RightWrapPage = ({
                       finalPublicationReports[0]?.attributes?.ReportName
                     ) ? (
                       <>
-                        <Divider />
-                        <Divider style={{ marginBottom: 18, marginTop: 3 }} />
+                        <div
+                          style={{
+                            borderBottom:
+                              "2.45084px solid rgba(134, 164, 176, 0.25)",
+                          }}
+                        />
+                        <div
+                          style={{
+                            marginBottom: 18,
+                            marginTop: 3,
+                            borderBottom:
+                              "2.45084px solid rgba(134, 164, 176, 0.25)",
+                          }}
+                        />
                       </>
                     ) : null}
                     {Boolean(reports?.length) &&
@@ -412,12 +422,12 @@ const RightWrapPage = ({
                       })}
                   </>
                 )}
-                {Boolean(reports?.length) && <BlankData />}
-              </InnerSlideWrap>
-            </RightInnerWrap>
-          </ReportsRightWrap>
-        </ReportsWrap>
-      </RightWrap>
+                {Boolean(reports?.length) && <div style={{ height: 1 }} />}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

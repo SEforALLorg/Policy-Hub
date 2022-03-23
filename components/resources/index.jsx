@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import RightWrapPage from "../dashboard/components/expandCustomize/rightWrap";
-import { Full, Header, Heading, SubHeading } from "./styles";
 
 const ALLReports = () => {
   const [selectInputs, setSelectInputs] = useState({
@@ -14,17 +13,17 @@ const ALLReports = () => {
     publishing_organizations: [],
   });
   return (
-    <Full>
-      <Header>
-        <Heading>Browse all resources</Heading>
-        <SubHeading>Explore our resource database </SubHeading>
-      </Header>
+    <div className="all-reports">
+      <div className='all-reports-header'>
+        <h4 className="font-bold text-[45px] uppercase mb-[0px] text-text">Browse all resources</h4>
+        <p className="font-normal text-[25px] m-0 text-lighttext">Explore our resource database </p>
+      </div>
       <RightWrapPage
         showAllReports
         selectInputs={selectInputs}
         setSelectInputs={setSelectInputs}
       />
-    </Full>
+    </div>
   );
 };
 

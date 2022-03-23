@@ -8,19 +8,25 @@ import "slick-carousel/slick/slick-theme.css";
 export default function Home() {
   const ref = useRef();
   const bindScrollSnap = () => {
-    const element = ref.current
-    createScrollSnap(element, {
-      snapDestinationX: '0%',
-      snapDestinationY: '100%',
-      timeout: 100,
-      duration: 300,
-      threshold: 0.1,
-    }, () => console.log())
-  }
+    const element = ref.current;
+    createScrollSnap(
+      element,
+      {
+        snapDestinationX: "0%",
+        snapDestinationY: "100%",
+        timeout: 100,
+        duration: 300,
+        threshold: 0.1,
+      },
+      () => console.log()
+    );
+  };
 
   useEffect(() => {
-    bindScrollSnap()
+    if (typeof window !== "undefined" && window?.innerWidth < 767) return null;
+    bindScrollSnap();
   }, []);
+
   return (
     <div>
       <Head>

@@ -1,22 +1,6 @@
 import React, { useState } from "react";
 import BlueButton from "../../../buttons/component/BlueButton";
 import TooltipComponent from "components/tooltip";
-import {
-  CardHeader,
-  ImgBox,
-  CardTitle,
-  CardSubTitle,
-  ButtonGrp,
-  Border,
-  Steps,
-  Text,
-  Dot,
-  StepTitle,
-  YesButton,
-  LeftWrap,
-  QuestionWrap,
-  RestartIcon,
-} from "./styles";
 import StepComponent from "../../../stepComponent";
 import { useEffect } from "react";
 import CompletedSteps from "../../../completedSteps";
@@ -90,16 +74,22 @@ const LeftWrapPage = ({
   };
 
   return (
-    <LeftWrap>
-      <CardHeader>
-        <ImgBox>
-          <img src="static/images/yellowfile.svg" alt="card" />
-        </ImgBox>
-        <CardTitle>Customized Support</CardTitle>
-      </CardHeader>
+    <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap">
+      <div className="flex items-center pb-2.5">
+        <div className="flex items-center relative select-none mr-5">
+          <img
+            className="w-[90px] h-[90px] left-header-image"
+            src="static/images/yellowfile.svg"
+            alt="card"
+          />
+        </div>
+        <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
+        Customized Support
+        </div>
+      </div>
       {nextQuestionId &&
         userJourney?.slice(0, 3).map((item, index) => (
-          <Steps
+          <div
             key={index}
             onClick={() => {
               if (nextQuestionId) {
@@ -107,33 +97,43 @@ const LeftWrapPage = ({
               }
               resetFilters();
             }}
+            className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
+            style={{ height: 45 }}
           >
-            <Text>
-              <Dot className={index === 0 && "hideDot"} />
-              <StepTitle>
+            <p className="flex items-center flex-1 pr-[5px]">
+              <div className={`stepDot ${index === 0 && "hideDot"}`} />
+              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
                 {
                   item?.attributes?.MainQuestion?.Question?.data?.attributes
                     ?.Question
                 }
-              </StepTitle>
-            </Text>
-            <YesButton>
+              </p>
+            </p>
+            <button className="yesButton">
               {item?.answer === "Mini-grid"
                 ? "MG"
                 : item?.answer?.includes("Standalone systems")
-                ? "SHS"
-                : item?.answer}
-            </YesButton>
-          </Steps>
+                  ? "SHS"
+                  : item?.answer}
+            </button>
+          </div>
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (
-        <RestartIcon onClick={() => onRestart()}>
-          <VscDebugRestart />
-          <p>Restart</p>
-        </RestartIcon>
+        <div
+          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end"
+          onClick={() => onRestart()}
+        >
+          <VscDebugRestart color={"#065a89"} />
+          <p
+            className="text-[14px] ml-[2px] mt-[2px]"
+            style={{ color: "#065a89" }}
+          >
+            Restart
+          </p>
+        </div>
       )}
 
-      {nextQuestionId && <Border></Border>}
+      {nextQuestionId && <div className={'mt-[16px] mb-[16px]'} style={{ borderBottom: '1.6px solid rgba(6, 90, 137, 0.2)' }} />}
       {!nextQuestionId ? (
         <>
           <CompletedSteps onRestart={() => onRestart()} />
@@ -164,28 +164,29 @@ const LeftWrapPage = ({
             }
 
             return (
-              <QuestionWrap key={index}>
+              <div className={'QuestionWrap'} key={index}>
                 {questionType === "Questionnaire" ? (
                   <>
-                    <CardSubTitle>
+                    <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
                       {questionTitle}
                       {ToolTipText && (
                         <TooltipComponent content={ToolTipText} />
                       )}
-                    </CardSubTitle>
-                    <ButtonGrp>
+                    </div>
+                    <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
                       {singleAnswer?.map((i, index) => {
                         if (!i?.Answer) return null;
 
                         return (
                           <BlueButton
+                            className="mb-3"
                             title={i?.Answer}
                             onClick={() => onSubmitAnswer(i, item)}
                             key={index}
                           />
                         );
                       })}
-                    </ButtonGrp>
+                    </div>
                   </>
                 ) : (
                   <StepComponent
@@ -200,11 +201,11 @@ const LeftWrapPage = ({
                     totalSteps={findSteps}
                   />
                 )}
-              </QuestionWrap>
+              </div>
             );
           })
       ) : null}
-    </LeftWrap>
+    </div>
   );
 };
 

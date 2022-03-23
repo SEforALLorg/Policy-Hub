@@ -103,7 +103,7 @@ const Footer = () => {
         </p>
         <div
           className="flex w-full items-center small:flex  xsm:mt-6 xsm:block
-                                xsm:justify-center laptop:justify-end large:mt-0"
+                                xsm:justify-center laptop:justify-end large:mt-0 xsm:flex-wrap laptop:flex-nowrap"
         >
           <img
             src={"/static/images/setall.svg"}
