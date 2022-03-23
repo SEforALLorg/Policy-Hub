@@ -64,7 +64,7 @@ const About = () => {
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
           <p className="not-italic font-bold text-medium  xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
-            The knowledge hub is financed by{" "}
+            The Sustainable Energy for All Knowledge Hub is financed by{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[49%]  xsm:w-full ">
@@ -86,7 +86,7 @@ const About = () => {
           </div>
           <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
-            Knowledge Hub partners include, but are not limited to:{" "}
+            Sustainable Energy for All Knowledge Hub partners include, but are not limited to:{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[24%] xsm:w-100  xsm:w-full ">
