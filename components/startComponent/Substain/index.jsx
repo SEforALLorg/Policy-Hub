@@ -43,7 +43,7 @@ const StartSubstain = () => {
         </div>
         {isOpen ? (
           <div
-            className="h-[100vh] flex relative items-center	justify-center"
+            className="h-[100vh] flex relative items-center	justify-center bottom-view"
             id="bottom-view"
           >
             <ExpandCustomize

@@ -24,10 +24,16 @@ export const Wrapper = styled.div`
     left: 0px;
     height: 100%;
     width: 100%;
+    @media only screen and (max-width: 767px){
+      display: none;
+    }
   }
   .bigCardAnimation {
     animation: 2s ${fadeInAnimation};
     opacity: 1;
+    @media only screen and (max-width: 767px){
+      display: block;
+    }
   }
   .smallCard {
     position: absolute;
@@ -35,13 +41,23 @@ export const Wrapper = styled.div`
     top: 0px;
     left: 0px;
     width: 100%;
+    @media only screen and (max-width: 767px){
+      display: block;
+      position: unset;
+    }
   }
   .smallCardAnimation {
     animation: 2s ${fadeOutAnimation};
     opacity: 0;
     visibility: hidden;
+    @media only screen and (max-width: 767px){
+      display: none;
+    }
   }
   @media only screen and (min-width: 1680px) {
     transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
+  }
+  @media only screen and (max-width: 767px){
+    transform: unset;
   }
 `;

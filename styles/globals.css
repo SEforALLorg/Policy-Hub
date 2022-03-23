@@ -926,6 +926,91 @@ a {
     width: 70% !important;
     bottom: -17px !important;
   }
+  .bottom-view{
+    height: 100% !important;
+  }
+  .customize-heading{
+    font-size: 18px !important;
+    line-height: 22px !important;
+  }
+  .customize-title{
+    font-size: 16px !important;
+    line-height: 24px !important;
+    padding: 0px !important;
+    margin-top: 10px;
+    margin-bottom: 20px !important;
+  }
+  .customize-card{
+    padding: 20px !important;
+  }
+  .customize-card img{
+    width: 120px;
+    margin-right: 10px;
+  }
+  .customize-card button{
+    height: 40px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .dashboard-left-wrap{
+    width: 100% !important;
+    padding: 16px !important;
+  }
+  .reportRightWrap{
+    width: 100%;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  .left-header-image{
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .stepRow p{
+    font-size: 13px !important;
+  }
+  .stepRow button{
+    font-size: 12px !important;
+  }
+  .left-wrap-buttons {
+    width: 80% !important;
+    margin: 2rem auto !important;
+  }
+  .OptionsWrap{
+    margin-bottom: 40px;
+  }
+  .inputWrap{
+    width: 100%;
+    margin-top: 20px;
+  }
+  .inputWrap input{
+    width: 100%;
+  }
+  .inputFullWrap{
+    display: block !important;
+  }
+  .reports-inner-section{
+    display: block !important;
+  }
+  .report-left-wrap{
+    width: 100% !important;
+  }
+  .report-right-wrap{
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+  .header .container-fluid{
+    padding: 0px 15px !important;
+  }
+  .header .navbar-toggler{
+    border-color: #fff !important;
+    outline: none !important;
+    box-shadow: unset !important;
+  }
+  .header .navbar-toggler span{
+    filter: brightness(0) invert(1);
+  }
 }
 @media only screen and (max-width: 400px) {
   .videoPlayer

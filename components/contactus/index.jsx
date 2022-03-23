@@ -114,9 +114,18 @@ const ContactBox = () => {
             </span>
           </p>
           <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0">
-            Keep up-to-speed with what's happening at SEforALL and across the
-            sustainable energy movement. We'll send you our monthly update, plus
-            special news and event invites.
+            Keep up-to-speed with what's happening at the Sustainable Energy for
+            ALL Knowledge Hub and across the sustainable energy movement. We'll
+            send you our regular updates, plus special news and event invites.
+            If you would like to recommend a publication to be included in the
+            SEforALL Knowledge Hub, please send us an e- mail at{" "}
+            <span
+              className="text-darktext font-bold underline cursor-pointer text-Primary"
+              onClick={() => window.open("mailto:KnowledgeHub@SEforALL.org")}
+            >
+              KnowledgeHub@SEforALL.org
+            </span>
+            .
           </p>
           <div className="mb-[22px]">
             <Checkbox label={"Subscribe to our Newsletter"} />

@@ -23,10 +23,10 @@ const SubCard = ({ HandleOpen }) => {
                   className="mr-[20px] landing-card-image"
                 />
                 <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  The <span className="font-bold">Sustainable Energy</span> for
-                  All Knowledge Hub is an interactive platform that supports
-                  policy makers in developing conducive policy and regulatory
-                  frameworks for sustainable energy.
+                  The SEforALL <span className="font-bold">Knowledge Hub</span>{" "}
+                  is an interactive platform that supports policymakers in
+                  developing conducive policy and regulatory frameworks for
+                  sustainable energy.
                 </p>
               </div>
             </div>
@@ -60,10 +60,9 @@ const SubCard = ({ HandleOpen }) => {
                   className="mr-[20px] landing-card-image"
                 />
                 <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  It currently offers resources on electricity access, but other
-                  pillars of sustainable energy (access to clean cooking,
-                  sustainable cooling, energy efficiency and renewable energy)
-                  will be added soon.
+                  It currently offers resources on electricity access. Resources
+                  on access to clean cooking, sustainable cooling and energy
+                  efficiency will be added soon.
                 </p>
               </div>
             </div>
@@ -79,18 +78,17 @@ const SubCard = ({ HandleOpen }) => {
                   className="mr-[20px] landing-card-image"
                 />
                 <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  Find{" "}
-                  <span className="font-bold">
-                    guidelines, tools, and templates
-                  </span>{" "}
-                  on electricity access relevant to your country and matched to
-                  your needs by answering the following questions.
+                  Find guidelines, tools and templates on electricity access
+                  relevant to your country and matched to your needs.
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <div className="w-[40%] absolute bottom-[-32px] landing-button-wrap" onClick={HandleOpen}>
+        <div
+          className="w-[40%] absolute bottom-[-32px] landing-button-wrap"
+          onClick={HandleOpen}
+        >
           <StartButton title={"Click here to start"} className="w-full" />
         </div>
       </div>

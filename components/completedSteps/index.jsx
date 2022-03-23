@@ -51,7 +51,7 @@ const CompletedSteps = ({ onRestart }) => {
       <p className="font-normal text-[14px] text-center text-text mt-[30px]">
         Share your contact information for future updates.
       </p>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center inputFullWrap">
         <div className="inputWrap">
           <p>Name</p>
           <input

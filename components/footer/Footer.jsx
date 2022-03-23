@@ -85,7 +85,7 @@ const Footer = () => {
             View Resources
           </button>
           <button
-            onClick={() => window.open('static/pdf/decision-tree.pdf')}
+            onClick={() => window.open("static/pdf/decision-tree.pdf")}
             className="font-medium xsm:text-xx  text-white  last:mr-0 mb-0 py-2.5 xsm:px-3 medium:px-4 
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
@@ -103,7 +103,7 @@ const Footer = () => {
         </p>
         <div
           className="flex w-full items-center small:flex  xsm:mt-6 xsm:block
-                                xsm:justify-center laptop:justify-end large:mt-0"
+                                xsm:justify-center laptop:justify-end large:mt-0 xsm:flex-wrap laptop:flex-nowrap"
         >
           <img
             src={"/static/images/setall.svg"}
@@ -119,16 +119,21 @@ const Footer = () => {
               window.open("https://www.rockefellerfoundation.org/")
             }
           />
-          <img
-            src={"/static/images/star.svg"}
-            alt="star"
-            className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
-            onClick={() =>
-              window.open(
-                "https://www.esteri.it/en/ministero/"
-              )
-            }
-          />
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => window.open("https://www.esteri.it/en/ministero/")}
+          >
+            <img
+              src={"/static/images/esteri_logo.png"}
+              alt="star"
+              className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
+              width={60}
+            />
+            <p className="text-white ml-[10px] mb-0 text-[13px] font-medium">
+              Ministero degli Affari Esteri
+              <br /> e della Cooperazione Internazionale
+            </p>
+          </div>
         </div>
       </div>
     </div>

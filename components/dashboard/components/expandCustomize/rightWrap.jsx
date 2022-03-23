@@ -135,11 +135,11 @@ const RightWrapPage = ({
     setSearch(e);
   };
 
-  const onReportClick = (name) => {
-    if (activeCard === name) {
+  const onReportClick = (id) => {
+    if (activeCard === id) {
       setActiveCard("");
     } else {
-      setActiveCard(name);
+      setActiveCard(id);
     }
   };
 
@@ -164,7 +164,7 @@ const RightWrapPage = ({
             </h5>
           </div>
         )}
-        <div className="flex mt-[30px]">
+        <div className="flex mt-[30px] reports-inner-section">
           <div
             className={
               "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
@@ -344,8 +344,8 @@ const RightWrapPage = ({
                             key={index}
                             star={true}
                             url={url}
-                            onClick={() => onReportClick(name)}
-                            isActive={activeCard === name}
+                            onClick={() => onReportClick(i?.id)}
+                            isActive={activeCard === i?.id}
                             description={description}
                           />
                         );
@@ -372,6 +372,8 @@ const RightWrapPage = ({
                     ) : null}
                     {Boolean(reports?.length) &&
                       reports?.map((i, index) => {
+                        console.log(i,'i');
+                        
                         const name = i?.attributes?.ReportName;
                         if (!name) return null;
                         const year =
@@ -411,8 +413,8 @@ const RightWrapPage = ({
                             title={name}
                             key={index}
                             url={url}
-                            onClick={() => onReportClick(name)}
-                            isActive={activeCard === name}
+                            onClick={() => onReportClick(i?.id)}
+                            isActive={activeCard === i?.id}
                             bigCard={showAllReports}
                             description={description}
                           />
