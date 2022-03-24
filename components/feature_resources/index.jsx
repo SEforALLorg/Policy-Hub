@@ -2,12 +2,9 @@ import React from "react";
 
 import StartButton from "components/buttons/component/startButton/StartButton";
 import ReviewCard from "./components/reviewCard";
-import PopularResorces from "./components/popularResorces";
-import ViewButton from "../buttons/viewall";
 import VideoCard from "./components/video";
-import Loader from "../loader";
 
-const Feature = ({ reports, isFetchingReports }) => {
+const Feature = () => {
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white py-6 drop-shadow-dropShadow">
@@ -28,35 +25,6 @@ const Feature = ({ reports, isFetchingReports }) => {
               <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] ">You can also download the filtered resources or you can have
                 them sent to you via Email.</p>
             </div>
-          </div>
-          <div className="flex justify-between mt-6 ml-[-18px] xsm:flex-wrap medium:flex-nowrap">
-            {isFetchingReports ? (
-              <div className="text-center w-full">
-                <Loader />
-              </div>
-            ) : (
-              reports?.slice(0, 2).map((item, index) => {
-                console.log(item, "item");
-
-                return (
-                  <div className="w-full xsm:mt-6 medium:mt-0 pl-5" key={index}>
-                    <ReviewCard
-                      hideText={true}
-                      date={"12/02/2022"}
-                      src={
-                        index === 0
-                          ? "/static/images/bulb.svg"
-                          : "/static/images/windfan.svg"
-                      }
-                      heading={item?.attributes?.ReportName}
-                      // subheading={item?.attributes?.Description}
-                      showStar={true}
-                      hideDate={true}
-                    />
-                  </div>
-                );
-              })
-            )}
           </div>
           <div className="text-center mt-10">
             <StartButton
