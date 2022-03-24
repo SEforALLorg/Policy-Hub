@@ -20,11 +20,13 @@ const RightWrapPage = ({
   setSelectInputs,
   selectInputs,
   showAllReports,
+  onResetFilter
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [isClearAll, setClearAll] = useState(false)
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -143,6 +145,11 @@ const RightWrapPage = ({
     }
   };
 
+  const onReset = () => {
+    setClearAll(!isClearAll);
+    onResetFilter()
+  }
+
   return (
     <>
       {isOpen ? (
@@ -160,7 +167,7 @@ const RightWrapPage = ({
               />
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text">
-              Resources that match your input.
+              Resources that match your input
             </h5>
           </div>
         )}
@@ -190,6 +197,7 @@ const RightWrapPage = ({
                 name={"regions"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Select Country"
@@ -201,6 +209,7 @@ const RightWrapPage = ({
                 name={"countries"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Segment"
@@ -212,6 +221,7 @@ const RightWrapPage = ({
                 name={"segments"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Resource Type"
@@ -223,6 +233,7 @@ const RightWrapPage = ({
                 name={"document_types"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Year"
@@ -235,6 +246,7 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Generation Source"
@@ -247,8 +259,9 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
-              <Accordion
+              {/* <Accordion
                 title="Co-Authors"
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -271,7 +284,7 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
-              />
+              /> */}
             </div>
           </div>
 
@@ -297,7 +310,7 @@ const RightWrapPage = ({
                       <AiOutlineInfoCircle />
                       No Reports Found.
                     </p>
-                    <a href="/resources">View all reports</a>
+                    <a className="cursor-pointer" onClick={() => onReset()}>Clear all filters</a>
                   </div>
                 ) : (
                   <>

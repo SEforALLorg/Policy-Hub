@@ -23,7 +23,7 @@ const Customize = ({
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
-  }
+  };
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
@@ -42,9 +42,8 @@ const Customize = ({
               />
             </div>
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess your country’s situation and
-              <br />
-              customize the decision-making process.
+              Assess the situation and 
+              customize <br />the decision-making process.
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />

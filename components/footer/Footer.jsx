@@ -82,7 +82,7 @@ const Footer = () => {
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
                                       hover:border hover:border-blue ease-linear transition-all duration-500"
           >
-            View Resources
+            Browse all resources
           </button>
           <button
             onClick={() => window.open("static/pdf/decision-tree.pdf")}

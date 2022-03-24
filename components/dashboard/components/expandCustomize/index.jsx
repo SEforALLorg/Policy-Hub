@@ -74,6 +74,7 @@ const ExpandCustomize = ({ questions, isFetchingQuestions }) => {
           nonPublicationReports={nonPublicationReports}
           setSelectInputs={setSelectInputs}
           selectInputs={selectInputs}
+          onResetFilter={onResetFilter}
         />
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>

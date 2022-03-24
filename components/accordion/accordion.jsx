@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import {
-  DropDownList,
-  Span,
-} from "./styles";
+import React, { useState, useEffect } from "react";
+import { DropDownList, Span } from "./styles";
 import { BiChevronDown } from "react-icons/bi";
 
 const Accordion = ({
@@ -16,8 +13,13 @@ const Accordion = ({
   top,
   selectedOptions,
   setSelectedOptions,
+  isClearAll,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
+
+  useEffect(() => {
+    setSelectedOption([]);
+  }, [isClearAll]);
 
   const toggling = () => {
     if (isOpen === title) {
