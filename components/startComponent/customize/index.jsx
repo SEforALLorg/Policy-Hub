@@ -42,8 +42,8 @@ const Customize = ({
               />
             </div>
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess the situation and 
-              customize <br />the decision-making process.
+              Assess your country’s situation and
+              <br /> customize the decision-making process.
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />

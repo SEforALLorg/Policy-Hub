@@ -84,7 +84,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-        Customized Support
+        Assess the situation
         </div>
       </div>
       {nextQuestionId &&

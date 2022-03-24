@@ -158,6 +158,14 @@ const RightWrapPage = ({
     onResetFilter();
   };
 
+  const optionSelected =
+    selectInputs?.regions?.length ||
+    selectInputs?.countries?.length ||
+    selectInputs?.segments?.length ||
+    selectInputs?.document_types?.length ||
+    selectInputs?.years?.length ||
+    selectInputs?.generation_sources?.length;
+
   return (
     <>
       {isOpen ? (
@@ -187,6 +195,14 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px]">
               Filters
+              {optionSelected ? (
+                <span
+                  className="text-Primary cursor-pointer text-[14px] tracking-[0.4px] underline"
+                  onClick={() => onReset()}
+                >
+                  Clear filters
+                </span>
+              ) : null}
             </h5>
             <div className="innerFilter">
               {showAllReports && (

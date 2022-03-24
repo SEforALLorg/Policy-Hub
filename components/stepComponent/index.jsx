@@ -9,7 +9,7 @@ const StepComponent = ({
   setOptionReport,
   setStepQuestion,
   stepQuestion,
-  totalSteps
+  totalSteps,
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
@@ -18,8 +18,8 @@ const StepComponent = ({
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
 
-  const nextCount = totalSteps?.length || 1
-  
+  const nextCount = totalSteps?.length || 1;
+
   useEffect(() => {
     if (multiAnswer) {
       setOptionData(multiAnswer[0] || []);
@@ -32,19 +32,23 @@ const StepComponent = ({
   const onAnswerClick = (i) => {
     setOptionData(i);
     setOptionReport(i);
-  }
+  };
 
   const onPreviousClick = () => {
     onPrevious();
-    setStepCount(stepCount - 1);
-  }
+    if (stepCount <= 1) {
+      setStepCount(1);
+    } else {
+      setStepCount(stepCount - 1);
+    }
+  };
 
   const onNextClick = () => {
     onNext(optionData?.NextQuestion?.data?.id);
     setStepQuestion(item);
-    if(!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null
+    if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
-  }
+  };
 
   return (
     <div className="flex flex-col">
@@ -56,16 +60,19 @@ const StepComponent = ({
           )} */}
         </h5>
       )}
-      <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px]" style={{height: '45px'}}>
-        <span>{stepCount}.</span> {title}{" "} {ToolTipText && (
-            <TooltipComponent content={ToolTipText} />
-          )}
+      <p
+        className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px]"
+        style={{ height: "45px" }}
+      >
+        <span>{stepCount}.</span> {title}{" "}
+        {ToolTipText && <TooltipComponent content={ToolTipText} />}
       </p>
       <div className="OptionsWrap">
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
           return (
-            <div className="optionItem"
+            <div
+              className="optionItem"
               key={index}
               onClick={() => onAnswerClick(i)}
             >
@@ -87,10 +94,7 @@ const StepComponent = ({
         <p className="text-[14px] text-center text-Primary mb-[5px] font-medium">
           {stepCount}/{nextCount}
         </p>
-        <button
-          onClick={() => onNextClick()}
-          className="SlideButton"
-        >
+        <button onClick={() => onNextClick()} className="SlideButton">
           Next <img src="static/images/rightArrow.svg" alt="" />
         </button>
       </div>
