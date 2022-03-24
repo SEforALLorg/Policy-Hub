@@ -4,15 +4,15 @@ import StartButton from "components/buttons/component/startButton/StartButton";
 const SubCard = ({ HandleOpen }) => {
   return (
     <>
-      <div className="flex items-center justify-end relative h-[100%] flex-col">
+      <div className="flex items-center justify-end relative h-[100%] flex-col subCardFull">
         <div className="landing-card-inner w-full bg-white dropShadow rounded-lg	py-10 px-[20px] relative h-full">
-          <h5 className="cardBigHeading font-normal font-bold	text-[53px] leading-[64.4px] text-center	select-none	uppercase text-text text-center	pb-[48px] mt-2">
+          <h5 className="cardBigHeading font-normal font-bold	text-[53px] leading-[64.4px] text-center	select-none	uppercase text-text text-center	pb-[15px] mt-2">
             Sustainable
             <span className="text-Secondary px-[6px]"> Energy </span>
             for All <br />
             <span className="text-Primary pl-[6px]"> Knowledge</span> Hub
           </h5>
-          <div className="flex flex-wrap justify-evenly relative landing-cards-wrap mb-[25px]">
+          <div className="flex flex-wrap justify-evenly relative landing-cards-wrap mb-[0px]">
             <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
@@ -50,7 +50,7 @@ const SubCard = ({ HandleOpen }) => {
           <div className="divider-right" />
           <div className="flex flex-wrap justify-evenly relative landing-cards-wrap">
             <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
-              <div className="divider-bottom mb-[55px]" />
+              <div className="divider-bottom mb-[30px]" />
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
                   src={"static/images/journey.svg"}
@@ -68,7 +68,7 @@ const SubCard = ({ HandleOpen }) => {
             </div>
 
             <div className="last-card w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
-              <div className="divider-bottom mb-[55px]" />
+              <div className="divider-bottom mb-[30px]" />
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
                   src={"static/images/guide.svg"}
