@@ -10,8 +10,8 @@ import { getFilters } from "pages/api/filter";
 import { getFormattedData } from "utilities";
 import { Flags } from "../../../../constant/flags";
 import Loader from "components/loader";
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { FaShare } from "react-icons/fa";
+import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
+import { BsDownload } from "react-icons/bs";
 
 import SearchBar from "../../../searchBar/search";
 import SharePublicationModal from "../../../sharePublicationModal";
@@ -329,7 +329,9 @@ const RightWrapPage = ({
                       hideInfo={true}
                       top={true}
                     >
-                      Download
+                      <div className="flex">
+                        Download <BsDownload style={{ marginLeft: 7 }} />
+                      </div>
                     </TooltipComponent>
                   </button>
                   <button
@@ -342,7 +344,10 @@ const RightWrapPage = ({
                       hideInfo={true}
                       top={true}
                     >
-                      Email
+                      <div className="flex">
+                        {" "}
+                        Email <AiOutlineMail style={{ marginLeft: 7 }} />
+                      </div>
                     </TooltipComponent>
                   </button>
                 </>

@@ -10,14 +10,7 @@ const About = () => {
       </Head>
       <div className=" rounded-lg overflow-hidden shadow-md">
         <div className="bg-white xsm:p-5 small:p-10 flex justify-between items-center xsm:flex-wrap xsm:justify-center medium:flex-nowrap dropShadow">
-          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 xsm:w-[30%] medium:w-max">
-            <img
-              className="max-w-full"
-              src={"static/images/substain.svg"}
-              alt="flag"
-            />
-          </div>
-          <div className="w-full">
+          <div className="w-full pr-[30px]">
             <h5 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2">
               About us
             </h5>
@@ -64,6 +57,13 @@ const About = () => {
               sustainable cooling, energy efficiency and renewable energy) will
               be added soon.
             </p>
+          </div>
+          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 xsm:w-[30%] medium:w-max">
+            <img
+              className="max-w-full"
+              src={"static/images/substain.svg"}
+              alt="flag"
+            />
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
@@ -133,25 +133,31 @@ const About = () => {
         </div>
         <div className="bg-white pt-10 pb-14 px-16 xsm:px-7 mobile:px-10 laptop:px-16">
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            Many people contributed in many different ways to the creation of
-            the Sustainable Energy for All Knowledge Hub, and we are most
-            grateful for their efforts.
+            Many individuals and organizations contributed in many different
+            ways to the creation of the Sustainable Energy for All Knowledge
+            Hub, and we are most grateful for their efforts.
           </p>
+          <p className="font-bold text-text mb-[3px] text-[16px]">Curators:</p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             Hadley Taylor, Min Hyejung, Niklas Hayek, Anant Wadhwa, and Stephen
             Kent led the content creation and review on behalf of Sustainable
             Energy for All (SEforALL).
           </p>
+          <p className="font-bold text-text mb-[3px] text-[16px]">Developers:</p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            This website was designed and developed by Keymouse IT. (Details
-            from KMIT)
+            This website was designed and developed by Keymouse IT. (Please add
+            details from KeyMouse IT)
+          </p>
+          <p className="font-bold text-text mb-[3px] text-[16px]">Contributors:</p>
+          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            We also thank the following individuals for their consultation and
+            participation:
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base">
-            We also wish to thank the following individuals for their
-            consultation and participation: ADD NAMES The organizations
-            showcased in the case studies were all generous with their time,
-            providing detailed information and reviewing draft versions. Any
-            errors remaining are the responsibility of the website authors.
+            The organizations highlighted in the resources were all generous
+            with their time, providing detailed information and reviewing draft
+            versions. Any errors remaining are the responsibility of the website
+            authors.
           </p>
         </div>
       </div>
