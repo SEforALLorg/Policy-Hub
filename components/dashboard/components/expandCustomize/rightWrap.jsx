@@ -11,8 +11,11 @@ import { getFormattedData } from "utilities";
 import { Flags } from "../../../../constant/flags";
 import Loader from "components/loader";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { FaShare } from "react-icons/fa";
 
 import SearchBar from "../../../searchBar/search";
+import SharePublicationModal from "../../../sharePublicationModal";
+import TooltipComponent from "../../../tooltip";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -25,6 +28,7 @@ const RightWrapPage = ({
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [isShareModal, setShareModal] = useState(false);
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -36,6 +40,10 @@ const RightWrapPage = ({
   if (filtersData?.data?.results) {
     filters = filtersData?.data?.results;
   }
+
+  const toggleShareModal = () => {
+    setShareModal(!isShareModal);
+  };
 
   const query = useMemo(() => {
     return qs.stringify({
@@ -279,8 +287,34 @@ const RightWrapPage = ({
             className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px]">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex">
               Resources
+              <button
+                className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px]"
+              >
+                <TooltipComponent
+                  content="At any step, you can download your report."
+                  hideInfo={true}
+                >
+                  Download Publication
+                </TooltipComponent>
+              </button>
+              <button
+                className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px]"
+                onClick={toggleShareModal}
+              >
+                <TooltipComponent
+                  content="At any step, you can get reports via email."
+                  hideInfo={true}
+                >
+                  Email Publication
+                </TooltipComponent>
+              </button>
+              {isShareModal ? (
+                <SharePublicationModal toggle={toggleShareModal} />
+              ) : null}
             </h5>
             <div className="rightInnerWrap">
               <div className="relative mr-[0px] w-[100%] inline-block">
@@ -372,8 +406,8 @@ const RightWrapPage = ({
                     ) : null}
                     {Boolean(reports?.length) &&
                       reports?.map((i, index) => {
-                        console.log(i,'i');
-                        
+
+
                         const name = i?.attributes?.ReportName;
                         if (!name) return null;
                         const year =
