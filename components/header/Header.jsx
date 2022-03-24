@@ -39,25 +39,25 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={`${
-                  location === "/featureresources" ? "active" : ""
+                  location === "/resources" ? "active" : ""
                 }`}
-                href="/featureresources"
+                href="/resources"
               >
                 Resources
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                className={location === "/aboutus" ? "active" : ""}
-                href="/aboutus"
+                className={location === "/about" ? "active" : ""}
+                href="/about"
               >
                 About
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                className={`${location === "/contactus" ? "active" : ""}`}
-                href="/contactus"
+                className={`${location === "/contact" ? "active" : ""}`}
+                href="/contact"
               >
                 Contact Us
               </NavLink>

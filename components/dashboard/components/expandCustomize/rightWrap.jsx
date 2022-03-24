@@ -23,12 +23,14 @@ const RightWrapPage = ({
   setSelectInputs,
   selectInputs,
   showAllReports,
+  onResetFilter,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isShareModal, setShareModal] = useState(false);
+  const [isClearAll, setClearAll] = useState(false);
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -151,6 +153,11 @@ const RightWrapPage = ({
     }
   };
 
+  const onReset = () => {
+    setClearAll(!isClearAll);
+    onResetFilter();
+  };
+
   return (
     <>
       {isOpen ? (
@@ -168,7 +175,7 @@ const RightWrapPage = ({
               />
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text">
-              Resources that match your input.
+              Resources that match your input
             </h5>
           </div>
         )}
@@ -198,6 +205,7 @@ const RightWrapPage = ({
                 name={"regions"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Select Country"
@@ -209,6 +217,7 @@ const RightWrapPage = ({
                 name={"countries"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Segment"
@@ -220,6 +229,7 @@ const RightWrapPage = ({
                 name={"segments"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Resource Type"
@@ -231,6 +241,7 @@ const RightWrapPage = ({
                 name={"document_types"}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Year"
@@ -243,6 +254,7 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
               <Accordion
                 title="Generation Source"
@@ -255,8 +267,9 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
               />
-              <Accordion
+              {/* <Accordion
                 title="Co-Authors"
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -279,7 +292,7 @@ const RightWrapPage = ({
                 top={true}
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
-              />
+              /> */}
             </div>
           </div>
 
@@ -289,29 +302,35 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex">
               Resources
-              <button
-                className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+              {!showAllReports && (
+                <>
+                  <button
+                    className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px]"
-              >
-                <TooltipComponent
-                  content="At any step, you can download your report."
-                  hideInfo={true}
-                >
-                  Download Publication
-                </TooltipComponent>
-              </button>
-              <button
-                className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+                  >
+                    <TooltipComponent
+                      content="At any step, you can download your report."
+                      hideInfo={true}
+                      top={true}
+                    >
+                      Download
+                    </TooltipComponent>
+                  </button>
+                  <button
+                    className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px]"
-                onClick={toggleShareModal}
-              >
-                <TooltipComponent
-                  content="At any step, you can get reports via email."
-                  hideInfo={true}
-                >
-                  Email Publication
-                </TooltipComponent>
-              </button>
+                    onClick={toggleShareModal}
+                  >
+                    <TooltipComponent
+                      content="At any step, you can get reports via email."
+                      hideInfo={true}
+                      top={true}
+                    >
+                      Email
+                    </TooltipComponent>
+                  </button>
+                </>
+              )}
               {isShareModal ? (
                 <SharePublicationModal toggle={toggleShareModal} />
               ) : null}
@@ -331,7 +350,9 @@ const RightWrapPage = ({
                       <AiOutlineInfoCircle />
                       No Reports Found.
                     </p>
-                    <a href="/resources">View all reports</a>
+                    <a className="cursor-pointer" onClick={() => onReset()}>
+                      Clear all filters
+                    </a>
                   </div>
                 ) : (
                   <>
@@ -406,8 +427,6 @@ const RightWrapPage = ({
                     ) : null}
                     {Boolean(reports?.length) &&
                       reports?.map((i, index) => {
-
-
                         const name = i?.attributes?.ReportName;
                         if (!name) return null;
                         const year =

@@ -74,7 +74,7 @@ const Footer = () => {
             Powered By Sustainable Energy For All
           </p>
           <button
-            onClick={() => window.open("/resources", "_self")}
+            onClick={() => window.open("/allresources", "_self")}
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
                                       border leading-5 border-white rounded-[42px] bg-transparent 
                                       desktoplg:text-small flex items-center justify-center 
@@ -82,7 +82,7 @@ const Footer = () => {
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
                                       hover:border hover:border-blue ease-linear transition-all duration-500"
           >
-            View Resources
+            Browse all resources
           </button>
           <button
             onClick={() => window.open("static/pdf/decision-tree.pdf")}
@@ -130,6 +130,11 @@ const Footer = () => {
               width={60}
             />
             <p className="text-white ml-[10px] mb-0 text-[13px] font-medium">
+              <div className="flex">
+              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#009246'}} />
+              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#ffffff'}} />
+              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#ce2b37'}} />
+              </div>  
               Ministero degli Affari Esteri
               <br /> e della Cooperazione Internazionale
             </p>

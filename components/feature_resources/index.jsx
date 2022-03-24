@@ -49,7 +49,7 @@ const Feature = ({ reports, isFetchingReports }) => {
                           : "/static/images/windfan.svg"
                       }
                       heading={item?.attributes?.ReportName}
-                      subheading={item?.attributes?.Description}
+                      // subheading={item?.attributes?.Description}
                       showStar={true}
                       hideDate={true}
                     />
@@ -61,7 +61,7 @@ const Feature = ({ reports, isFetchingReports }) => {
           <div className="text-center mt-10">
             <StartButton
               title={"Browse all resources"}
-              onClick={() => window.open("/resources", "_self")}
+              onClick={() => window.open("/allresources", "_self")}
             />
           </div>
         </div>

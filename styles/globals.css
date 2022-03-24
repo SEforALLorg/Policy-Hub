@@ -363,17 +363,20 @@ a {
   color: #13a2bc;
   font-weight: 600;
   font-size: 14px;
+  background-color: rgba(19, 166, 191, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
 }
 
 .SlideButton img {
   width: 10px;
   height: 10px;
-  margin-left: 7px;
+  margin-left: 5px;
   margin-top: -3px;
 }
 .SlideButton.previous img {
   margin-left: 0px;
-  margin-right: 7px;
+  margin-right: 5px;
 }
 .rightOverlay {
   position: fixed;
@@ -759,6 +762,15 @@ a {
   line-height: 20px;
   filter: drop-shadow(5px 5px 12px rgba(31, 99, 148, 0.25));
 }
+.tooltipWrap .content.top{
+  top: unset;
+  bottom: 40px;
+}
+.tooltipWrap .content.top::after{
+  border-color: #065a89 transparent  transparent transparent;
+  top: unset;
+  bottom: -16px;
+}
 .tooltipWrap .content::after {
   content: "";
   position: absolute;
@@ -776,7 +788,7 @@ a {
 .divider-right{
   border-right: 1px solid #ccc;
   position: absolute;
-  height: 65%;
+  height: 60%;
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -849,7 +861,7 @@ a {
     margin-bottom: 4rem !important;
   }
   .divider-bottom{
-    margin-bottom: 20px;
+    margin-bottom: 30px !important;
   }
   .landing-card-text{
     font-size: 14px !important;
@@ -862,6 +874,9 @@ a {
   .divider-right{
     height: 58%;
     top: 62%;
+  }
+  .landing-cards-wrap{
+    margin-bottom: 0px !important;
   }
 }
 
