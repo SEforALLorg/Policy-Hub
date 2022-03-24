@@ -74,7 +74,7 @@ const LeftWrapPage = ({
   };
 
   return (
-    <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap">
+    <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
           <img

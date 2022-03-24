@@ -308,6 +308,7 @@ a {
   height: 38px;
   margin: 0 auto;
   display: block;
+  margin-top: 10px !important;
 }
 .OptionsWrap {
   padding: 0px 10px;
@@ -672,6 +673,7 @@ a {
   height: 22px;
   width: 22px;
   background-color: #eee;
+  border: 1px solid #ddd;
 }
 
 .checkWrap .container:hover input ~ .checkmark {
@@ -693,12 +695,12 @@ a {
 }
 
 .checkWrap .container .checkmark:after {
-  left: 9px;
-  top: 3px;
+  left: 8px;
+  top: 1.5px;
   width: 6px;
   height: 13px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -759,6 +761,15 @@ a {
   font-weight: 400;
   line-height: 20px;
   filter: drop-shadow(5px 5px 12px rgba(31, 99, 148, 0.25));
+}
+.tooltipWrap .content.top{
+  top: unset;
+  bottom: 40px;
+}
+.tooltipWrap .content.top::after{
+  border-color: #065a89 transparent  transparent transparent;
+  top: unset;
+  bottom: -16px;
 }
 .tooltipWrap .content::after {
   content: "";

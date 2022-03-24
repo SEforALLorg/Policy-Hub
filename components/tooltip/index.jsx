@@ -1,11 +1,12 @@
 import React from "react";
 import { FiInfo } from "react-icons/fi";
 
-const TooltipComponent = ({ content }) => {
+const TooltipComponent = ({ content, children, hideInfo , top}) => {
   return (
     <div className="tooltipWrap">
-      <FiInfo />
-      <div className={"content"}>{content}</div>
+      {hideInfo ? null : <FiInfo />}
+      {children}
+      <div className={`content ${top ? 'top' : ''}`}>{content}</div>
     </div>
   );
 };

@@ -1,20 +1,24 @@
 import React from "react";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-import ContactBox from "../../components/contactus";
+import About from "../../components/aboutus/About";
+import Head from "next/head";
 
-const ContactUs = () => {
+const AboutUs = () => {
   return (
     <main>
+      <Head>
+        <title>Sustainable Energy for All | Knowledge Hub | About</title>
+      </Head>
       <div className='mobile:p-2.5 xsm:p-[5px]'>
         <div className='custom-container mx-auto'>
           <div className='px-3 py-2'>
             <Header />
           </div>
-          <div className='xsm:my-4 6xl:my-12'>
-            <ContactBox />
+          <div className='xsm:my-4 6xl:my-12 '>
+            <About />
           </div>
-          <div className='w-full m-auto	pt-10'>
+          <div className='w-full pt-10'>
             <Footer />
           </div>
         </div>
@@ -23,4 +27,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default AboutUs;

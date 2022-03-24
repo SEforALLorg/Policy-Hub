@@ -43,7 +43,7 @@ const CompletedSteps = ({ onRestart }) => {
           <img src="static/images/restart.svg" alt="" />
           <p>Restart</p>
         </div>
-        <div className="restartWrap" onClick={() => window.open("/resources", "_self")}>
+        <div className="restartWrap" onClick={() => window.open("/allresources", "_self")}>
           <img src="static/images/file.svg" alt="" />
           <p>View all resources</p>
         </div>

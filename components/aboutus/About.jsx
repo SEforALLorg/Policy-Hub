@@ -1,9 +1,13 @@
 import React from "react";
 import ImgCard from "../cards/component/imgCard";
+import Head from "next/head";
 
 const About = () => {
   return (
     <>
+      <Head>
+        <title>Sustainable Energy for All | Knowledge Hub | About</title>
+      </Head>
       <div className=" rounded-lg overflow-hidden shadow-md">
         <div className="bg-white xsm:p-5 small:p-10 flex justify-between items-center xsm:flex-wrap xsm:justify-center medium:flex-nowrap dropShadow">
           <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 xsm:w-[30%] medium:w-max">
@@ -29,9 +33,10 @@ const About = () => {
               <span
                 className="text-Primary hover:underline cursor-pointer"
                 onClick={() => window.open("https://www.seforall.org/")}
-              > 
+              >
                 click here
-              </span>.
+              </span>
+              .
             </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
               The <b>Sustainable Energy for All Knowledge Hub</b> is an
@@ -86,7 +91,8 @@ const About = () => {
           </div>
           <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
             {" "}
-            Sustainable Energy for All Knowledge Hub partners include, but are not limited to:{" "}
+            Sustainable Energy for All Knowledge Hub partners include, but are
+            not limited to:{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[24%] xsm:w-100  xsm:w-full ">
