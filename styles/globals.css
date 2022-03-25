@@ -799,6 +799,30 @@ a {
   margin-bottom: 35px;
   width:90%;
 }
+.otherDescription{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  /* transition: .5s ease-out; */
+  /* transition: max-height .5s ease-in; */
+}
+
+.otherTitle{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.other-card{
+  border: 3.67626px solid #fff;
+}
+.other-card.active{
+  border: 3.67626px solid #065a89;
+}
 
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
