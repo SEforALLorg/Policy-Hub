@@ -193,7 +193,7 @@ const RightWrapPage = ({
               "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
             }
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px]">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
               {optionSelected ? (
                 <span
@@ -325,7 +325,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px]"
                   >
                     <TooltipComponent
-                      content="At any step, you can download your report."
+                      content="Click here to download the list of matching resources."
                       hideInfo={true}
                       top={true}
                     >
@@ -340,7 +340,7 @@ const RightWrapPage = ({
                     onClick={toggleShareModal}
                   >
                     <TooltipComponent
-                      content="At any step, you can get reports via email."
+                      content="Click to receive a list matching resources via Email."
                       hideInfo={true}
                       top={true}
                     >
