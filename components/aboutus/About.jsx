@@ -81,12 +81,40 @@ const About = () => {
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
-              <ImgCard
-                className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox	items-center w-full"
-                img={"static/images/farnesina.svg"}
-                title={"Ministry of Foreign Affairs of Italy"}
-                link={"https://www.esteri.it/en/ministero/"}
-              />
+              <div
+                className="cursor-pointer h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox	items-center w-full"
+                onClick={() =>
+                  window.open("https://www.esteri.it/en/ministero/")
+                }
+              >
+                <img
+                  src={"/static/images/farnesina.png"}
+                  alt="star"
+                  className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
+                  width={150}
+                />
+                <p
+                  className="ml-[10px] mb-0 text-[18px] font-medium"
+                  style={{ color: "#4869ba" }}
+                >
+                  <div className="flex">
+                    <div
+                      className="flex-1 h-[5px] mb-[10px]"
+                      style={{ backgroundColor: "#009246" }}
+                    />
+                    <div
+                      className="flex-1 h-[5px] mb-[10px]"
+                      style={{ backgroundColor: "#ffffff" }}
+                    />
+                    <div
+                      className="flex-1 h-[5px] mb-[10px]"
+                      style={{ backgroundColor: "#ce2b37" }}
+                    />
+                  </div>
+                  Ministero degli Affari Esteri
+                  <br /> e della Cooperazione Internazionale
+                </p>
+              </div>
             </div>
           </div>
           <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">
@@ -143,12 +171,16 @@ const About = () => {
             Kent led the content creation and review on behalf of Sustainable
             Energy for All (SEforALL).
           </p>
-          <p className="font-bold text-text mb-[3px] text-[16px]">Developers:</p>
+          <p className="font-bold text-text mb-[3px] text-[16px]">
+            Developers:
+          </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             This website was designed and developed by Keymouse IT. (Please add
             details from KeyMouse IT)
           </p>
-          <p className="font-bold text-text mb-[3px] text-[16px]">Contributors:</p>
+          <p className="font-bold text-text mb-[3px] text-[16px]">
+            Contributors:
+          </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             We also thank the following individuals for their consultation and
             participation:
