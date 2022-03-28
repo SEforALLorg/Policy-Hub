@@ -145,6 +145,8 @@ a {
 .videoPlayer iframe{
   width: 100%;
   height: 200px;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
 }
 
 
@@ -552,6 +554,12 @@ a {
 }
 
 .report-card.active {
+  border: 3.67626px solid #065a89;
+}
+.videoCard{
+  border: 3.67626px solid transparent;
+}
+.videoCard.active {
   border: 3.67626px solid #065a89;
 }
 .report-card.active .title {
