@@ -8,6 +8,7 @@ import { videosCard } from "../../constant";
 
 const Feature = () => {
   const [isTitle, setIsTitle] = useState('')
+  const [isVideoCard, setIsVideoCard] = useState('')
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white py-6 drop-shadow-dropShadow">
@@ -55,6 +56,8 @@ const Feature = () => {
                     link={item?.link}
                     title={item?.title}
                     description={item?.description}
+                    setIsVideoCard={setIsVideoCard}
+                    isVideoCard={isVideoCard}
                   />
                 </div>
               ))}
