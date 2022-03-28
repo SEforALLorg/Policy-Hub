@@ -1,32 +1,47 @@
-import React from 'react';
-import { Player, BigPlayButton } from 'video-react';
-import "node_modules/video-react/dist/video-react.css";
+import React, { useState } from "react";
+import YouTube from "react-youtube";
 
-const VideoCard = () => {
+const VideoCard = ({ link, title, description }) => {
+    const opts = {
+        playerVars: {
+            controls: 0,
+            fs: 0,
+            showInfo: 0,
+            showsearch: 0,
+            rel: 1,
+            iv_load_policy: 3,
+            cc_load_policy: 1
+
+        },
+
+    }
+    const [isStart, setIsStart] = useState(true);
     return (
-        <div className='bg-white resourceShadow rounded-2xl  overflow-hidden w-full'>
-            <div className="videoPlayer w-full max-w-full " >
-                <Player
-                    fluid={true}
-                    playsInline={true}
-                    poster="/static/images/windfan.svg" >
-                    <source src="../static/video/sample.mp4" className='max-w-full' />
-                    <BigPlayButton position="center" />
-                </Player>
+        <div className="bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%]">
+            <div className="videoPlayer w-full max-w-full relative">
+                <YouTube
+                    videoId={link}
+                    containerClassName={'vkh-video-player'}
+                    opts={opts}
+                    onPlay={() => setIsStart(false)}
+                    onPause={() => setIsStart(true)}
+                />
+                {/* {
+            isStart ?  <button className="playButton" /> : null
+        } */}
+
             </div>
-            <div className='pt-[15px] pr-4 pb-[17px] pl-[22px]'>
-                <h6 className='font-bold leading-6  text-darktext mb-1 text-medium'>
-                    VIDEO TITLE
+            <div className="pt-[25px] pr-4 pb-[25px] pl-[22px]">
+                <h6 className="font-bold leading-6  text-darktext mb-[10px] text-medium">
+                    {title}
                 </h6>
-                <p className='font-normal leading-[17px] text-darktext mb-2 text-xsmall '>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus bibendum lacus mauris. Curabitur lectus tortor,
-                    sollicitudin in lorem sit amet, porttitor finibu.
+                <p className="font-normal leading-[17px] text-darktext mb-2 text-xsmall ">
+                    {description}
                 </p>
-                <p>
+                {/* <p>
                     <span className='font-medium leading-6  text-darktext text-small mr-1'>IRENA</span>{''}
                     <a className='font-medium leading-6  text-Primary text-xsmall'>https://www.irena.org/</a>
-                </p>
+                </p> */}
             </div>
         </div>
     );
