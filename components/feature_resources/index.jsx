@@ -4,6 +4,7 @@ import StartButton from "components/buttons/component/startButton/StartButton";
 import ReviewCard from "./components/reviewCard";
 import VideoCard from "./components/video";
 import OtherToolsCard from "./components/otherTools";
+import { videosCard } from "../../constant";
 
 const Feature = () => {
   const [isTitle, setIsTitle] = useState('')
@@ -47,16 +48,16 @@ const Feature = () => {
             >
               VIDEOS
             </h6>
-            <div className="flex items-center pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap">
-              <div className="xsm:mr-0 medium:mr-5 ">
-                <VideoCard />
-              </div>
-              <div className="xsm:mr-0 medium:mr-5 xsm:mt-5 medium:mt-0">
-                <VideoCard />
-              </div>
-              <div className="xsm:mt-5 medium:mt-0">
-                <VideoCard />
-              </div>
+            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px]">
+              {videosCard?.map((item, index) => (
+                <div className="w-[33.3%] mb-[0px] p-[10px] cursor-pointer" key={index}>
+                  <VideoCard
+                    link={item?.link}
+                    title={item?.title}
+                    description={item?.description}
+                  />
+                </div>
+              ))}
             </div>
             <h6
               className="font-bold leading-10  m-0 mt-3 text-darktext uppercase xsm:text-tiny small:text-medium 
@@ -89,14 +90,14 @@ const Feature = () => {
                       realize this potential.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/sas.png"
-                  title="SAS Knowledge Hub (ACE-TAF) * Tetra Tech"
+                  title="SAS Knowledge Hub"
                   link="https://www.ace-taf.org/sas-knowledge-hub/"
                   description={
                     <>
@@ -114,14 +115,14 @@ const Feature = () => {
                       stand-alone solar systems.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/policy.png"
-                  title="Policy Knowledge Hub (GOGLA)"
+                  title="Policy Knowledge Hub"
                   link="https://www.gogla.org/policy-knowledge-hub"
                   description={
                     <>
@@ -140,7 +141,7 @@ const Feature = () => {
                       developed a policy knowledge hub.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
@@ -149,8 +150,7 @@ const Feature = () => {
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/nigeria.png"
-                  title="Nigeria Integrated Energy Planning Tool (Federal Government of Nigeria, 
-                    SEforALL)"
+                  title="Nigeria Integrated Energy Planning Tool"
                   link="http://nigeria-iep.sdg7energyplanning.org/"
                   description={
                     <>
@@ -171,14 +171,14 @@ const Feature = () => {
                       by 2030.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/toolbar.png"
-                  title="A Toolbox of African Model Mini-Grid Regulations (AFUR & GET.transform)"
+                  title="A Toolbox of African Model Mini-Grid Regulations"
                   link="https://www.get-transform.eu/a-toolbox-of-african-model-mini-grid-regulations/"
                   description={
                     <>
@@ -192,7 +192,7 @@ const Feature = () => {
                       up mini-grid investment.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
@@ -217,73 +217,11 @@ const Feature = () => {
                       markets can be expanded.
                     </>
                   }
-                  isTitle={isTitle} 
+                  isTitle={isTitle}
                   setIsTitle={setIsTitle}
                 />
               </div>
             </div>
-            {/* <div className="flex items-center">
-              <div className="flex-1 pr-[20px]">
-                <h6 className="text-[23px] mt-[30px] font-bold text-text mb-[15px]">
-                  Electrifying Economies
-                </h6>
-                <p
-                  className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext
-             mb-base mb-[15px]"
-                >
-                  Electrifying economies is a scroll-based narrative, developed
-                  by Rockefeller Foundation, Rocky Mountain Institute, and
-                  Sustainable Energy for All, to illustrate the role of
-                  distributed energy in providing affordable, reliable power for
-                  all.
-                </p>
-                <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-[15px]">
-                  The Electrifying Economies project demonstrates the role
-                  distributed energy will play in ending energy poverty and
-                  catalyzing a green and equitable recovery from the Covid-19
-                  crisis. It draws on the latest data and research from around
-                  the world to show how distributed renewables can provide
-                  sustainable, affordable, and reliable power for all. The
-                  project provides information to support policy makers and
-                  investors in taking action today, to realize this potential.
-                </p>
-                <span
-                  onClick={() =>
-                    window.open(
-                      "https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
-                    )
-                  }
-                  className="cursor-pointer not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 hover:underline small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-Primary mb-base mb-4"
-                >
-                  Click here
-                </span>
-              </div>
-              <img
-                src="/static/images/electrifying-economies.png"
-                alt=""
-                className="w-[450px] h-[280px]"
-              />
-            </div> */}
-            {/* <div className="mt-[25px] flex justify-between xsm:flex-wrap medium:flex-nowrap">
-              <div className="xsm:mr-0 medium:mr-4 w-full ">
-                <ReviewCard
-                  date={"12/02/2022"}
-                  src={"/static/images/windfan.svg"}
-                  heading={"Headline"}
-                  subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
-                  showStar={false}
-                />
-              </div>
-              <div className="xsm:mt-5 medium:mt-0 w-full">
-                <ReviewCard
-                  date={"12/02/2022"}
-                  src={"/static/images/windfan.svg"}
-                  heading={"Headline"}
-                  subheading="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum ..."
-                  showStar={false}
-                />
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

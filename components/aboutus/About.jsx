@@ -115,6 +115,13 @@ const About = () => {
                   <br /> e della Cooperazione Internazionale
                 </p>
               </div>
+              <a
+                className="text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
+                href={"https://www.esteri.it/en/ministero/"}
+                target={"_blank"}
+              >
+                Ministry of Foreign Affairs of Italy
+              </a>
             </div>
           </div>
           <p className="not-italic font-bold text-medium xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext">

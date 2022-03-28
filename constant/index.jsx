@@ -60,3 +60,66 @@ export const media = {
     mediumScreen: '1680px',
     largeScreen: '2200px' 
 }
+
+export const videosCard = [
+    {
+        link: 'QM3jn-e1_GY',
+        title: 'Nepal',
+        description: 'Bringing electricity to hard-to-reach communities'
+    },
+    {
+        link: 'ImcPhTVvv28',
+        title: 'Togo',
+        description: 'High-level political commitment to reach electrification goals'
+    },
+    {
+        link: 'YSKfbRpDSOs',
+        title: 'Ethiopia',
+        description: 'Delivering 100% electricity access by 2025'
+    },
+    {
+        link: 'ny6hh4Khap8',
+        title: 'Energizing Finance',
+        description: 'Impacts of Policies on Electricity Financing in Rwanda'
+    },
+    {
+        link: 'D2ApkVkEov0',
+        title: 'Nigeria Integrated Energy Planning Tool',
+        description: 'Nigeria Integrated Energy Planning Tool - A Guide for Stakeholders'
+    },
+    {
+        link: 'XRIaYKeeGyw',
+        title: 'Promoting Mini-Grids Electrification for Rural Development',
+        description: 'Promoting Mini-Grids Electrification for Rural Development'
+    },
+    {
+        link: 'SkuOWcgH_0I',
+        title: 'Enabling Access to Electricity in Rural Kenya with Solar Mini-grids. 2016',
+        description: 'Enabling Access to Electricity in Rural Kenya with Solar Mini-grids. 2016'
+    },
+    {
+        link: 'QxuyMqDzZko',
+        title: 'SENEGAL',
+        description: 'Processing of agricultural products for local food autonomy with solar photovoltaic energy'
+    },
+    {
+        link: 'lVR9XaeM4WA',
+        title: 'Small Wind Energy System (SWES)',
+        description: 'Small Wind Energy System (SWES)'
+    },
+    {
+        link: 'J1BOVopqdeg',
+        title: 'Mini-grids',
+        description: '"outside-in" electrification'
+    },
+    {
+        link: 'hFeqJZtxiCk',
+        title: 'IRENA/ADF',
+        description: 'IRENA/ADFD Project Facility Changing Lives through Renewable Energy'
+    },
+    {
+        link: 'wdyvLdm26Bs',
+        title: 'Solar-Powered Mini-Grid',
+        description: 'Solar-Powered Mini-Grids Bring Security and New Economic Opportunities in Ghana'
+    }
+]
