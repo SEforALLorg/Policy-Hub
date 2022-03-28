@@ -32,7 +32,7 @@ const OtherToolsCard = ({ image, title, description, link, isTitle, setIsTitle }
         </h6>
         <p
           className="font-normal leading-[17px] text-darktext mb-2 text-xsmall otherDescription"
-          style={{ display: isOpen ? 'block': '', maxHeight: isOpen ? "200px" : "70px", transition: isOpen ? 'max-height .3s ease-in' : 'max-height .5s ease-out' }}
+          style={{ display: isOpen ? 'block': '', maxHeight: isOpen ? "300px" : "70px", transition: isOpen ? 'max-height .3s ease-in' : 'max-height .5s ease-out' }}
         >
           {description}
         </p>
