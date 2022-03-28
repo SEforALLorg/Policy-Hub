@@ -13,7 +13,7 @@ const Feature = () => {
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white py-6 drop-shadow-dropShadow">
         <div className="xsm:px-4 mobile:px-[100px] relative">
-          <div className="flex pb-[25px] my-6 border-b-[2.4px] border-borderprimary w-full xsm:flex-wrap large:flex-nowrap">
+          <div className="flex pb-[25px] my-6 w-full xsm:flex-wrap large:flex-nowrap">
             <div className="w-full">
               <h6
                 className="font-bold leading-10 text-large mb-[20px] text-darktext 
