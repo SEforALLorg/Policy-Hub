@@ -182,8 +182,10 @@ const About = () => {
             Developers:
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            This website was designed and developed by Keymouse IT. (Please add
-            details from KeyMouse IT)
+            The website was designed and developed by KeyMouse IT Services. Pvt.
+            Ltd. based in India. KeyMouse IT has significant depth of expertise
+            and experience in delivering web & mobile based technology solutions
+            to its clients across various verticals.
           </p>
           <p className="font-bold text-text mb-[3px] text-[16px]">
             Contributors:

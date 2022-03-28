@@ -557,7 +557,7 @@ a {
   border: 3.67626px solid #065a89;
 }
 .videoCard{
-  border: 3.67626px solid transparent;
+  /* border: 3.67626px solid transparent; */
 }
 .videoCard.active {
   border: 3.67626px solid #065a89;
@@ -836,7 +836,7 @@ a {
 }
 
 .other-card{
-  border: 3.67626px solid #fff;
+  /* border: 3.67626px solid #fff; */
 }
 .other-card.active{
   border: 3.67626px solid #065a89;
