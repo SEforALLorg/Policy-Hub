@@ -61,7 +61,7 @@ const VideoCard = ({
           className="font-normal leading-[17px] text-darktext mb-2 text-xsmall otherDescription"
           style={{
             display: isOpen ? "block" : "",
-            maxHeight: isOpen ? "200px" : "70px",
+            maxHeight: isOpen ? "400px" : "70px",
             transition: isOpen
               ? "max-height .3s ease-in"
               : "max-height .5s ease-out",
