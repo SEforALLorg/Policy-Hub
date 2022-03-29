@@ -78,7 +78,7 @@ const SubCard = ({ HandleOpen }) => {
                   className="mr-[20px] landing-card-image"
                 />
                 <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  Find guidelines, tools and templates on electricity access
+                  Find <span className="font-bold">guidelines, tools and templates</span> on electricity access
                   relevant to your country and matched to your needs.
                 </p>
               </div>

@@ -16,6 +16,7 @@ import { BsDownload } from "react-icons/bs";
 import SearchBar from "../../../searchBar/search";
 import SharePublicationModal from "../../../sharePublicationModal";
 import TooltipComponent from "../../../tooltip";
+import CsvDownload from "react-json-to-csv";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -165,6 +166,46 @@ const RightWrapPage = ({
     selectInputs?.document_types?.length ||
     selectInputs?.years?.length ||
     selectInputs?.generation_sources?.length;
+
+  const finalReports = [...reports, ...finalPublicationReports];
+
+  const returnReports = () => {
+    const data = finalReports.map((item) => {
+      const co_authors =
+        item?.attributes?.AddFilters?.co_authors?.data[0]?.attributes
+          ?.AuthorName;
+      const countries =
+        item?.attributes?.AddFilters?.countries?.data[0]?.attributes
+          ?.CountryName;
+      const document_types = item?.attributes?.AddFilters?.document_types?.data[0]?.attributes
+      ?.DocumentType
+      const generation_sources = item?.attributes?.AddFilters?.generation_sources?.data[0]?.attributes
+      ?.GenerationSource
+      const publishing_organizations = item?.attributes?.AddFilters?.publishing_organizations?.data[0]?.attributes
+      ?.PublishingOrganization
+      const regions = item?.attributes?.AddFilters?.regions?.data[0]?.attributes
+      ?.RegionName
+      const segments = item?.attributes?.AddFilters?.segments?.data[0]?.attributes
+      ?.SegmentName
+      const years = item?.attributes?.AddFilters?.years?.data[0]?.attributes
+      ?.Year
+      return {
+        ReportName: item?.attributes?.ReportName,
+        Description: item?.attributes?.Description,
+        URL: item?.attributes?.URL,
+        KeyPublication: item?.attributes?.KeyPublication,
+        CoAuthors: co_authors || "-",
+        Countries: countries || "-",
+        DocumentTypes: document_types || '-',
+        GenerationSources: generation_sources || '-',
+        PublishingOrganizations: publishing_organizations || '-',
+        Regions: regions || '-',
+        Segments: segments || '-',
+        Years: years || '-'
+      };
+    });
+    return data;
+  };
 
   return (
     <>
@@ -329,8 +370,12 @@ const RightWrapPage = ({
                       hideInfo={true}
                       top={true}
                     >
-                      <div className="flex">
+                      <div className="flex download-button-inner">
                         Download <BsDownload style={{ marginLeft: 7 }} />
+                        <CsvDownload
+                          data={returnReports()}
+                          filename={"reports.csv"}
+                        />
                       </div>
                     </TooltipComponent>
                   </button>
