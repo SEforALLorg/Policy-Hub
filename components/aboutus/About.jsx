@@ -88,12 +88,12 @@ const About = () => {
                 }
               >
                 <img
-                  src={"/static/images/farnesina.png"}
+                  src={"/static/images/dgcs_rettangolare_eng.jpg"}
                   alt="star"
                   className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
-                  width={150}
+                  width={500}
                 />
-                <p
+                {/* <p
                   className="ml-[10px] mb-0 text-[18px] font-medium"
                   style={{ color: "#4869ba" }}
                 >
@@ -113,7 +113,7 @@ const About = () => {
                   </div>
                   Ministero degli Affari Esteri
                   <br /> e della Cooperazione Internazionale
-                </p>
+                </p> */}
               </div>
               <a
                 className="text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"

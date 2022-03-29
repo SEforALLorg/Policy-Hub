@@ -119,7 +119,16 @@ const Footer = () => {
               window.open("https://www.rockefellerfoundation.org/")
             }
           />
-          <div
+          <img
+            src={"/static/images/dgcs_rettangolare_eng_neg.png"}
+            alt="founder"
+            className="mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            onClick={() =>
+              window.open("https://www.esteri.it/en/ministero/")
+            }
+          />
+          
+          {/* <div
             className="flex items-center cursor-pointer"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}
           >
@@ -138,7 +147,7 @@ const Footer = () => {
               Ministero degli Affari Esteri
               <br /> e della Cooperazione Internazionale
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
