@@ -72,7 +72,7 @@ const Feature = () => {
             <div className="flex items-start pt-6 pb-[0px] xsm:flex-wrap medium:flex-nowrap">
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/electrifying-economies.png"
+                  image="/static/images/electrifying-economies-ImResizer.jpg"
                   title="Electrifying Economies"
                   link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
                   description={
@@ -100,7 +100,7 @@ const Feature = () => {
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/sas.png"
+                  image="/static/images/sas-ImResizer.jpg"
                   title="SAS Knowledge Hub"
                   link="https://www.ace-taf.org/sas-knowledge-hub/"
                   description={
@@ -125,7 +125,7 @@ const Feature = () => {
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/policy.png"
+                  image="/static/images/policy-ImResizer.jpg"
                   title="Policy Knowledge Hub"
                   link="https://www.gogla.org/policy-knowledge-hub"
                   description={
@@ -153,7 +153,7 @@ const Feature = () => {
             <div className="flex items-start pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap">
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/nigeria.png"
+                  image="/static/images/nigeria-ImResizer.jpg"
                   title="Nigeria Integrated Energy Planning Tool"
                   link="http://nigeria-iep.sdg7energyplanning.org/"
                   description={
@@ -181,7 +181,7 @@ const Feature = () => {
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/toolbar.png"
+                  image="/static/images/toolbar-ImResizer.jpg"
                   title="A Toolbox of African Model Mini-Grid Regulations"
                   link="https://www.get-transform.eu/a-toolbox-of-african-model-mini-grid-regulations/"
                   description={
@@ -202,7 +202,7 @@ const Feature = () => {
               </div>
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
-                  image="/static/images/energy.png"
+                  image="/static/images/energy-ImResizer.jpg"
                   title="Energy Access Explorer Beta"
                   link="https://www.energyaccessexplorer.org/"
                   description={
