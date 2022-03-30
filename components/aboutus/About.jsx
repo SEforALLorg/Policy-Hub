@@ -58,10 +58,10 @@ const About = () => {
               be added soon.
             </p>
           </div>
-          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 xsm:w-[30%] medium:w-max">
+          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 w-[300px]">
             <img
               className="max-w-full"
-              src={"static/images/substain.svg"}
+              src={"static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
           </div>
@@ -74,7 +74,7 @@ const About = () => {
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[49%]  xsm:w-full ">
               <ImgCard
-                className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full"
+                className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full cursor-pointer"
                 img={"static/images/rockfound.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
