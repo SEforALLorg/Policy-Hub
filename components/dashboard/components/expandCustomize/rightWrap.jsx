@@ -167,7 +167,7 @@ const RightWrapPage = ({
     selectInputs?.years?.length ||
     selectInputs?.generation_sources?.length;
 
-  const finalReports = [...reports, ...finalPublicationReports];
+  const finalReports = !showAllReports && [...reports, ...finalPublicationReports];
 
   const returnReports = () => {
     const data = finalReports.map((item) => {
