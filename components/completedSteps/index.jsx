@@ -3,14 +3,14 @@ import { useMutation } from "react-query";
 
 import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
-import PrimaryButton from "../buttons/component/primaryBtn/primarybutton";
-import Checkbox from "../checkbox";
+import PrimaryButton from "components/buttons/primarybutton";
+import Checkbox from "components/checkbox";
 
 const CompletedSteps = ({ onRestart }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
-  const { data, mutate } = useMutation(["postNewsletters"], postNewsletters, {
+  const { mutate } = useMutation(["postNewsletters"], postNewsletters, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);
     },
@@ -43,7 +43,10 @@ const CompletedSteps = ({ onRestart }) => {
           <img src="static/images/restart.svg" alt="" />
           <p>Restart</p>
         </div>
-        <div className="restartWrap" onClick={() => window.open("/allresources", "_self")}>
+        <div
+          className="restartWrap"
+          onClick={() => window.open("/allresources", "_self")}
+        >
           <img src="static/images/file.svg" alt="" />
           <p>View all resources</p>
         </div>
@@ -74,7 +77,10 @@ const CompletedSteps = ({ onRestart }) => {
       <div className="flex items-center justify-center mt-[20px]">
         <Checkbox label="Subscribe to our Newsletter" />
       </div>
-      <div className="complete-buttonWrap" style={{ opacity: !name || !email ? 0.4 : 1}}>
+      <div
+        className="complete-buttonWrap"
+        style={{ opacity: !name || !email ? 0.4 : 1 }}
+      >
         <PrimaryButton
           title="Submit"
           onClick={() => onSubmit()}

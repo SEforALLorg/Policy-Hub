@@ -1,10 +1,9 @@
 import React from "react";
 import Head from "next/head";
+
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-import { Container } from "reactstrap";
-import { Wrapper, FooterWrap, CardBox } from "styles/resources";
-import ALLReports from "../../components/resources";
+import ALLReports from "components/resources";
 
 const Resources = () => {
   return (
@@ -12,17 +11,17 @@ const Resources = () => {
        <Head>
         <title>Sustainable Energy for All | Knowledge Hub | All Resources</title>
       </Head>
-      <Wrapper>
-        <Container fulid="md">
+      <div className='p-[10px]'>
+      <div className="custom-container mx-auto">
           <Header />
-          <CardBox>
+          <div className="card-box">
             <ALLReports />
-          </CardBox>
-          <FooterWrap>
+          </div>
+          <div className='pt-[40px]'>
             <Footer />
-          </FooterWrap>
-        </Container>
-      </Wrapper>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };

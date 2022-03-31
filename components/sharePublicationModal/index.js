@@ -3,14 +3,13 @@ import { MdClose } from "react-icons/md";
 import { useMutation } from "react-query";
 import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
-import PrimaryButton from "../buttons/component/primaryBtn/primarybutton";
-import Checkbox from "../checkbox";
+import PrimaryButton from "components/buttons/primarybutton";
+import Checkbox from "components/checkbox";
 
 const SharePublicationModal = ({ toggle }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [isCheckbox, setCheckbox] = useState(true);
-console.log(isCheckbox,'isCheckbox');
 
   const { data, mutate } = useMutation(["postNewsletters"], postNewsletters, {
     onError: (error) => {
@@ -83,7 +82,11 @@ console.log(isCheckbox,'isCheckbox');
               </div>
             </div>
             <div className="flex items-center justify-center mt-[28px]">
-              <Checkbox label="Subscribe to our Newsletter" onClick={() => setCheckbox(!isCheckbox)} checked={isCheckbox} />
+              <Checkbox
+                label="Subscribe to our Newsletter"
+                onClick={() => setCheckbox(!isCheckbox)}
+                checked={isCheckbox}
+              />
             </div>
             <div className="complete-buttonWrap">
               <PrimaryButton

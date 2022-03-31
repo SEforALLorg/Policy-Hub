@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useMutation } from "react-query";
 import { MdEmail } from "react-icons/md";
-import Address from "../cards/component/addressCard";
-import { ErrorNotify, SuccessNotify } from "components/notification";
-import Checkbox from "../checkbox/index";
-import Form from "../form";
-import PrimaryButton from "../buttons/component/primaryBtn/primarybutton";
-import { postNewsletters } from "../../pages/api/reports";
 
-const ContactBox = () => {
+import { postNewsletters } from "pages/api/reports";
+import Address from "components/cards/addressCard";
+import { ErrorNotify, SuccessNotify } from "components/notification";
+import Checkbox from "components/checkbox/index";
+import PrimaryButton from "components/buttons/primarybutton";
+import Input from "../input";
+
+const Contact = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
-  const { data, mutate } = useMutation(["postNewsletters"], postNewsletters, {
+  const { mutate } = useMutation(["postNewsletters"], postNewsletters, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);
     },
@@ -132,7 +133,7 @@ const ContactBox = () => {
           </div>
         </div>
         <div className="w-full flex justify-center align-end flex-col m-auto xsm:px-4 xsm:py-0 extrasmall:p-6 laptop:p-0">
-          <Form
+          <Input
             field={"Name"}
             placeholder={"Enter your name"}
             className="bg-white filterShadow rounded-lg border-none 
@@ -140,7 +141,7 @@ const ContactBox = () => {
             onChange={(e) => setName(e?.target?.value)}
             value={name}
           />
-          <Form
+          <Input
             field={"E-mail"}
             placeholder={"Enter your E-mail"}
             className="bg-white filterShadow rounded-lg border-none 
@@ -166,4 +167,4 @@ const ContactBox = () => {
   );
 };
 
-export default ContactBox;
+export default Contact;

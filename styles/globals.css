@@ -851,6 +851,60 @@ a {
   opacity: 0;
 }
 
+.card-box{
+  margin: 3em 0em;
+}
+
+.radio-button-wrap .container-wrap {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 22px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.radio-button-wrap .container-wrap input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.radio-button-wrap .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 1px solid #C4C4C4;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.radio-button-wrap .container-wrap:hover input ~ .checkmark {
+  background-color: #fff;
+}
+.radio-button-wrap .container-wrap input:checked ~ .checkmark {
+  background-color: #fff;
+}
+.radio-button-wrap .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.radio-button-wrap .container-wrap input:checked ~ .checkmark:after {
+  display: block;
+}
+.radio-button-wrap .container-wrap .checkmark:after {
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FCB600;
+}
+
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
     padding: 0px 10px;
@@ -931,6 +985,9 @@ a {
   }
   .landing-cards-wrap{
     margin-bottom: 0px !important;
+  }
+  .card-box{
+    margin: 1em 0em;
   }
 }
 
