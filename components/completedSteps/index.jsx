@@ -3,7 +3,7 @@ import { useMutation } from "react-query";
 
 import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
-import NewsletterSubscribe from "../NewsletterForm";
+import NewsletterSubscribe from "../newsletterForm";
 
 const CompletedSteps = ({ onRestart }) => {
   const [name, setName] = useState();

@@ -14,10 +14,12 @@ const NewsletterForm = ({
   message,
   onValidated,
   newsletterCheckbox,
+  submitForm,
 }) => {
   const [error, setError] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isCheck, setIsCheck] = useState(true);
 
   const { mutate } = useMutation(["postNewsletters"], postNewsletters, {
     onError: (error) => {
@@ -26,6 +28,10 @@ const NewsletterForm = ({
     onSuccess: (e) => {
       setName("");
       setEmail("");
+      if (!isCheck) {
+        SuccessNotify("Your info has been submitted successfully");
+        submitForm();
+      }
     },
   });
 
@@ -37,7 +43,6 @@ const NewsletterForm = ({
       return null;
     }
 
-    const isFormValidated = onValidated({ EMAIL: email, FNAME: name });
     const payload = {
       data: {
         Name: name,
@@ -45,6 +50,10 @@ const NewsletterForm = ({
       },
     };
     mutate(payload);
+
+    if (!isCheck) return;
+
+    const isFormValidated = onValidated({ EMAIL: email, FNAME: name });
 
     // On success return true
     return name && email && email.indexOf("@") > -1 && isFormValidated;
@@ -65,6 +74,7 @@ const NewsletterForm = ({
   useEffect(() => {
     if (status === "success" && status !== "error" && !error) {
       SuccessNotify(decode(message));
+      submitForm();
     } else {
       ErrorNotify(error || getMessage(message));
     }
@@ -90,8 +100,12 @@ const NewsletterForm = ({
           value={email}
         />
         {newsletterCheckbox && (
-          <div className="flex items-center justify-center mt-[20px]">
-            <Checkbox label="Subscribe to our Newsletter" />
+          <div className="flex items-center justify-end mt-[20px]">
+            <Checkbox
+              label="Subscribe to our Newsletter"
+              checked={isCheck}
+              onClick={() => setIsCheck(!isCheck)}
+            />
           </div>
         )}
 

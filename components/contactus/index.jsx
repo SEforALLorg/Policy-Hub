@@ -3,8 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 import Address from "components/cards/addressCard";
-import Checkbox from "components/checkbox/index";
-import NewsletterSubscribe from "../NewsletterForm";
+import NewsletterSubscribe from "../newsletterForm";
 
 const Contact = () => {
   return (
@@ -101,12 +100,9 @@ const Contact = () => {
             </span>
             .
           </p>
-          <div className="mb-[22px]">
-            <Checkbox label={"Subscribe to our Newsletter"} />
-          </div>
         </div>
         <div className="w-full flex justify-center align-end flex-col m-auto xsm:px-4 xsm:py-0 extrasmall:p-6 laptop:p-0">
-          <NewsletterSubscribe />
+          <NewsletterSubscribe newsletterCheckbox={true} />
         </div>
       </div>
     </div>
