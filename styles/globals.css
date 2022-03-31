@@ -315,11 +315,6 @@ a {
   border: 1px solid #13a2bc !important;
 }
 .complete-buttonWrap button {
-  width: 244px;
-  width: 214px;
-  height: 38px;
-  margin: 0 auto;
-  display: block;
   margin-top: 10px !important;
 }
 .OptionsWrap {
@@ -908,6 +903,10 @@ a {
 .inputFullWrap .newsletter-input-fields > div {
   justify-content: center !important;
   margin-left: unset !important;
+}
+
+.inputFullWrap .cancel-button{
+
 }
 
 @media only screen and (min-width: 1680px) {

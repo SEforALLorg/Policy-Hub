@@ -1,7 +1,7 @@
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 import NewsletterForm from "./newsletterForm";
 
-const NewsletterSubscribe = ({newsletterCheckbox}) => {
+const NewsletterSubscribe = ({ newsletterCheckbox, submitForm = () => {} }) => {
   const MAILCHIMP_URL =
     process.env.NEXT_PUBLIC_MAILCHIMP_URL ||
     "https://keymouseit.us14.list-manage.com/subscribe/post?u=213a9c1ce4c7835eab18a91e5&amp;id=04f9d3a1de";
@@ -17,6 +17,7 @@ const NewsletterSubscribe = ({newsletterCheckbox}) => {
             message={message}
             onValidated={(formData) => subscribe(formData)}
             newsletterCheckbox={newsletterCheckbox}
+            submitForm={submitForm}
           />
         );
       }}
