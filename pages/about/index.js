@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-import About from "../../components/aboutus/About";
+import About from "../../components/aboutus";
 import Head from "next/head";
 
 const AboutUs = () => {

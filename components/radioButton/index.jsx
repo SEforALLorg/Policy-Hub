@@ -1,9 +1,8 @@
 import React from "react";
-import { CheckBoxWrap } from "./style";
 
 const RadioButton = ({ onChange, checked }) => {
   return (
-    <CheckBoxWrap>
+    <div className="radio-button-wrap">
       <label className="container-wrap">
         <input
           type="radio"
@@ -13,7 +12,7 @@ const RadioButton = ({ onChange, checked }) => {
         />
         <span className="checkmark"></span>
       </label>
-    </CheckBoxWrap>
+    </div>
   );
 };
 

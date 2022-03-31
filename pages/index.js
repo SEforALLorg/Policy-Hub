@@ -1,9 +1,7 @@
-import Head from "next/head";
-import Start from "./start";
-import createScrollSnap from "scroll-snap";
 import { useEffect, useRef } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Head from "next/head";
+import Landing from "./landing";
+import createScrollSnap from "scroll-snap";
 
 export default function Home() {
   const ref = useRef();
@@ -64,7 +62,7 @@ export default function Home() {
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
       </Head>
       <main id="fullWrap" ref={ref}>
-        <Start />
+        <Landing />
       </main>
     </div>
   );

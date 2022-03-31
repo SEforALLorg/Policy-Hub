@@ -127,27 +127,6 @@ const Footer = () => {
               window.open("https://www.esteri.it/en/ministero/")
             }
           />
-          
-          {/* <div
-            className="flex items-center cursor-pointer"
-            onClick={() => window.open("https://www.esteri.it/en/ministero/")}
-          >
-            <img
-              src={"/static/images/esteri_logo.png"}
-              alt="star"
-              className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
-              width={60}
-            />
-            <p className="text-white ml-[10px] mb-0 text-[13px] font-medium">
-              <div className="flex">
-              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#009246'}} />
-              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#ffffff'}} />
-              <div className="flex-1 h-[5px] mb-[10px]" style={{backgroundColor:'#ce2b37'}} />
-              </div>  
-              Ministero degli Affari Esteri
-              <br /> e della Cooperazione Internazionale
-            </p>
-          </div> */}
         </div>
       </div>
     </div>
