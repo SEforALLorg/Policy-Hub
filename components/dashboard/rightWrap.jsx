@@ -172,41 +172,20 @@ const RightWrapPage = ({
 
   const returnReports = () => {
     const data = finalReports.map((item) => {
-      const co_authors =
-        item?.attributes?.AddFilters?.co_authors?.data[0]?.attributes
-          ?.AuthorName;
       const countries =
         item?.attributes?.AddFilters?.countries?.data[0]?.attributes
           ?.CountryName;
-      const document_types =
-        item?.attributes?.AddFilters?.document_types?.data[0]?.attributes
-          ?.DocumentType;
-      const generation_sources =
-        item?.attributes?.AddFilters?.generation_sources?.data[0]?.attributes
-          ?.GenerationSource;
       const publishing_organizations =
         item?.attributes?.AddFilters?.publishing_organizations?.data[0]
           ?.attributes?.PublishingOrganization;
-      const regions =
-        item?.attributes?.AddFilters?.regions?.data[0]?.attributes?.RegionName;
-      const segments =
-        item?.attributes?.AddFilters?.segments?.data[0]?.attributes
-          ?.SegmentName;
       const years =
         item?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
       return {
-        ReportName: item?.attributes?.ReportName,
-        Description: item?.attributes?.Description,
-        URL: item?.attributes?.URL,
-        KeyPublication: item?.attributes?.KeyPublication,
-        CoAuthors: co_authors || "-",
+        'Report Name': item?.attributes?.ReportName,
+        Source: item?.attributes?.URL,
         Countries: countries || "-",
-        DocumentTypes: document_types || "-",
-        GenerationSources: generation_sources || "-",
-        PublishingOrganizations: publishing_organizations || "-",
-        Regions: regions || "-",
-        Segments: segments || "-",
-        Years: years || "-",
+        'Publishing Organization(s)': publishing_organizations || "-",
+        Year: years || "-",
       };
     });
     return data;
