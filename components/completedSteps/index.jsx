@@ -3,8 +3,7 @@ import { useMutation } from "react-query";
 
 import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
-import PrimaryButton from "components/buttons/primarybutton";
-import Checkbox from "components/checkbox";
+import NewsletterSubscribe from "../NewsletterForm";
 
 const CompletedSteps = ({ onRestart }) => {
   const [name, setName] = useState();
@@ -55,39 +54,7 @@ const CompletedSteps = ({ onRestart }) => {
         Share your contact information for future updates.
       </p>
       <div className="flex items-center justify-center inputFullWrap">
-        <div className="inputWrap">
-          <p>Name</p>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            onChange={(e) => setName(e?.target?.value)}
-            value={name}
-          />
-        </div>
-        <div className="inputWrap">
-          <p>E-mail</p>
-          <input
-            type="text"
-            placeholder="Enter your E-mail"
-            onChange={(e) => setEmail(e?.target?.value)}
-            value={email}
-          />
-        </div>
-      </div>
-      <div className="flex items-center justify-center mt-[20px]">
-        <Checkbox label="Subscribe to our Newsletter" />
-      </div>
-      <div
-        className="complete-buttonWrap"
-        style={{ opacity: !name || !email ? 0.4 : 1 }}
-      >
-        <PrimaryButton
-          title="Submit"
-          onClick={() => onSubmit()}
-          disabled={!name || !email}
-          className="bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-normal text-small leading-5 uppercase  text-white outline-none no-underline no-underline
-                    border-2 border-transparent duration-500 hover:text-Primary hover:bg-Primary hover:border-2 hover:border-Primary ease-linear transition-all"
-        />
+      <NewsletterSubscribe newsletterCheckbox={true} />
       </div>
     </div>
   );
