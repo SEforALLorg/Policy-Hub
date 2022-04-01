@@ -905,9 +905,6 @@ a {
   margin-left: unset !important;
 }
 
-.inputFullWrap .cancel-button{
-
-}
 
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
@@ -1142,6 +1139,9 @@ a {
   }
   .header .navbar-toggler span{
     filter: brightness(0) invert(1);
+  }
+  .footer-logos img{
+    margin: 8px !important;
   }
 }
 @media only screen and (max-width: 400px) {
