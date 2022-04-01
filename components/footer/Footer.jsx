@@ -106,15 +106,15 @@ const Footer = () => {
                                 xsm:justify-center laptop:justify-end large:mt-0 xsm:flex-wrap laptop:flex-nowrap footer-logos"
         >
           <img
-            src={"/static/images/setall.svg"}
+            src={"/static/images/logo.svg"}
             alt="all"
-            className="mr-[30px] xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer"
+            className="mr-[20px] xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
           <img
             src={"/static/images/rf_negative.png"}
             alt="founder"
-            className="mr-[30px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            className="mr-[20px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() =>
               window.open("https://www.rockefellerfoundation.org/")
             }

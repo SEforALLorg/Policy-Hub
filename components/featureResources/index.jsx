@@ -61,7 +61,7 @@ const Feature = () => {
             >
               VIDEOS
             </h6>
-            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px]">
+            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
               {videosCard?.map((item, index) => (
                 <div
                   className="w-[33.3%] mb-[0px] p-[10px] cursor-pointer"
@@ -83,7 +83,7 @@ const Feature = () => {
             >
               Other Tools
             </h6>
-            <div className="flex items-start pt-6 pb-[0px] xsm:flex-wrap medium:flex-nowrap">
+            <div className="flex items-start pt-6 pb-[0px] xsm:flex-wrap medium:flex-nowrap tools-card">
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/electrifying-economies-ImResizer.jpg"
@@ -164,7 +164,7 @@ const Feature = () => {
                 />
               </div>
             </div>
-            <div className="flex items-start pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap">
+            <div className="flex items-start pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap tools-card">
               <div className="xsm:mr-0 medium:mr-5 w-[33%]">
                 <OtherToolsCard
                   image="/static/images/nigeria-ImResizer.jpg"

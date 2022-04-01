@@ -15,6 +15,8 @@ import SharePublicationModal from "components/sharePublicationModal";
 import TooltipComponent from "components/tooltip";
 import { getReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
+import { FaFilter } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -30,6 +32,7 @@ const RightWrapPage = ({
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isShareModal, setShareModal] = useState(false);
   const [isClearAll, setClearAll] = useState(false);
+  const [isFilter, setIsFilter] = useState(false);
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -213,10 +216,18 @@ const RightWrapPage = ({
           </div>
         )}
         <div className="flex mt-[30px] reports-inner-section">
+          <div className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show" onClick={() => setIsFilter(!isFilter)}>
+            <FaFilter className="text-text mr-[5px]" />
+            Filters
+          </div>
+          {
+            isFilter && <div className={'mobile-overlay mobile-show'} />
+          }
           <div
             className={
               "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
             }
+            style={{display: isFilter ? 'block' : ''}}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
@@ -228,6 +239,7 @@ const RightWrapPage = ({
                   Clear filters
                 </span>
               ) : null}
+              <IoClose className="text-text mr-[5px] mobile-show" onClick={() => setIsFilter(!isFilter)} />
             </h5>
             <div className="innerFilter">
               {showAllReports && (

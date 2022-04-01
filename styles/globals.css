@@ -905,6 +905,9 @@ a {
   margin-left: unset !important;
 }
 
+.mobile-show{
+  display: none !important;
+}
 
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
@@ -939,7 +942,7 @@ a {
 
 @media only screen and (max-width: 1680px) {
   .header .logo {
-    width: 78px;
+    width: 98px;
   }
   .cardBigHeading{
     font-size: 37px !important;
@@ -990,6 +993,21 @@ a {
   .card-box{
     margin: 1em 0em;
   }
+}
+
+@media only screen and (min-width:1500px) and (max-width: 1600px){
+  .landing-card-image{
+    width: 90px !important;
+    height: 90px !important;
+  }
+  .landing-card-text{
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+  .divider-right {
+    height: 63%;
+    top: 59%;
+}
 }
 
 @media only screen and (max-width: 1400px) {
@@ -1140,8 +1158,79 @@ a {
   .header .navbar-toggler span{
     filter: brightness(0) invert(1);
   }
+  .footer-logos{
+    display: flex !important;
+  }
   .footer-logos img{
-    margin: 8px !important;
+    margin: 4px !important;
+  }
+  .customize-title{
+    margin-top: 20px;
+  }
+  .report-left-wrap{
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 9999;
+    background-color: #ecf3f6;
+    height: 100%;
+    width: 100% !important;
+    max-width: 300px;
+    padding: 20px !important;
+    display: none;
+  }
+  .mobile-overlay{
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    height: 100%;
+    width: 100% !important;
+    padding: 20px !important;
+  }
+  .mobile-show{
+    display: flex !important;
+  }
+  .navbar-collapse{
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 9999;
+    background-color: #fff;
+    height: 100% !important;
+    width: 100% !important;
+    max-width: 300px;
+    padding: 20px !important;
+    flex-basis: unset !important;
+    flex-grow: unset !important;
+  }
+  .header .nav-link{
+    color: #494949 !important;
+    text-align: left;
+  }
+  .tools-card{
+    display: block !important;
+  }
+  .tools-card > div{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .all-reports-header{
+    padding: 40px 20px;
+  }
+  .all-reports-header h4{ 
+    font-size: 23px;
+  }
+  .all-reports-header p{
+    font-size: 15px;
+  }
+  .reports-inner-section{
+    margin-top: 0px !important;
+  }
+  .about-logo img{
+    width: 50% !important;
+    margin: 0 auto;
   }
 }
 @media only screen and (max-width: 400px) {
