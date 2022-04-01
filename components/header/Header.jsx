@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import {
   Navbar,
@@ -10,23 +10,27 @@ import {
   NavLink,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const router = useRouter();
   const location = router.pathname;
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="header">
       <Navbar expand="md" light>
         <NavbarBrand>
           <img
-            src={"/static/images/logo.svg"}
+            src={"/static/images/SEforALL_Logo_White.png"}
             alt="logo"
             className="logo cursor-pointer"
             onClick={() => window.open("https://www.seforall.org/")}
           />
         </NavbarBrand>
-        <NavbarToggler onClick={function noRefCheck() {}} />
-        <Collapse navbar>
+        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+       {isOpen && <div className={'mobile-overlay mobile-show'} />}
+        <Collapse navbar isOpen={isOpen}>
+        <IoClose size={20} className="text-text mr-[5px] mobile-show ml-auto" onClick={() => setIsOpen(!isOpen)} />
           <Nav className="m-auto" navbar>
             <NavItem>
               <NavLink
