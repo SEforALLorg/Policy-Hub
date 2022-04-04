@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import YouTube from "react-youtube";
+import ModalVideo from "react-modal-video";
 
 const VideoCard = ({
   link,
@@ -19,37 +20,42 @@ const VideoCard = ({
       cc_load_policy: 1,
     },
   };
-  const [isStart, setIsStart] = useState(true);
   const isOpen = title === isVideoCard;
 
   return (
     <div
-      className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%] videoCard ${
-        isOpen ? "active" : ""
-      }`}
+      className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%] videoCard`}
       onClick={() => {
         if (isOpen) {
-          setIsVideoCard("a");
-        } else {
-          setIsVideoCard(title);
+          setIsVideoCard("");
         }
       }}
     >
+      <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId={link}
+        onClose={() => setIsVideoCard(title)}
+        youtube={{
+          autoplay: 1,
+          mute: 1,
+        }}
+      />
       <div className="videoPlayer w-full max-w-full relative">
         <YouTube
           videoId={link}
           containerClassName={"vkh-video-player"}
           opts={opts}
-          onPlay={() => setIsStart(false)}
-          onPause={() => setIsStart(true)}
+          onPlay={(e) => {
+            setIsVideoCard(title);
+            e.target.pauseVideo();
+            e.target.stopVideo();
+          }}
         />
-        {/* {
-            isStart ?  <button className="playButton" /> : null
-        } */}
       </div>
       <div className="pt-[25px] pr-4 pb-[25px] pl-[22px]">
         <h6
-          className="font-bold leading-6  text-darktext mb-[10px] text-medium otherTitle"
+          className="font-bold leading-7  text-darktext mb-[10px] text-[20px] otherTitle text-center"
           style={{
             display: isOpen ? "block" : "",
             height: isOpen ? "unset" : "",
@@ -57,7 +63,7 @@ const VideoCard = ({
         >
           {title}
         </h6>
-        <p
+        {/* <p
           className="font-normal leading-[17px] text-darktext mb-2 text-xsmall otherDescription"
           style={{
             display: isOpen ? "block" : "",
@@ -68,7 +74,7 @@ const VideoCard = ({
           }}
         >
           {description}
-        </p>
+        </p> */}
       </div>
     </div>
   );

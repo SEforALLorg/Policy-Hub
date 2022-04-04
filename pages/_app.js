@@ -5,7 +5,8 @@ import {
 import { ToastContainer } from 'react-toastify';
 
 import "../styles/toastify.css";
-import '../styles/globals.css'
+import '../styles/globals.css';
+import '../styles/modal-video.css';
 
 function MyApp({ Component, pageProps }) {
 

@@ -64,7 +64,7 @@ const Feature = () => {
             <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
               {videosCard?.map((item, index) => (
                 <div
-                  className="w-[33.3%] mb-[0px] p-[10px] cursor-pointer"
+                  className="w-[33.3%] mb-[0px] p-[10px]"
                   key={index}
                 >
                   <VideoCard
