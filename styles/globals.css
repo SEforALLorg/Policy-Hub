@@ -1022,6 +1022,147 @@ a {
   }
 }
 
+@media only screen and (min-width:768px) and (max-width:1024px){
+  .custom-container{
+    max-width: 100%;
+  }
+  .header .nav-link{
+    font-size: 14px;
+  }
+  .header .container-fluid{
+    padding: 0px 10px;
+  }
+  .header .logo{
+    width: 87px;
+    max-width: unset;
+  }
+  .navbar-brand{
+    margin-right: 0px !important;
+  }
+  .landing-small-card{
+    padding: 0px 10px !important;
+  }
+  .landing-card{
+    height: 85% !important;
+  }
+  .divider-right{
+    height: 65%;
+    top: 60%;
+  }
+  .customize-heading{
+    font-size: 37px !important;
+    line-height: 46px !important;
+  }
+  .customize-title{
+    font-size: 35px !important;
+    line-height: 46px !important;
+    padding: 0px 0rem 4rem 10px !important;
+  }
+  .dashboard-left-wrap{
+    padding: 20px !important;
+  }
+  .reportRightWrap{
+    padding: 28px 15px;
+  }
+  .report-left-wrap{
+    padding: 0px !important;
+    margin-right: 10px !important;
+  }
+  .innerFilter{
+    padding: 0px;
+    height: 450px;
+  }
+  .left-wrap-buttons{
+    width: 80% !important;
+  }
+  .OptionsWrap{
+    padding: 0px;
+    padding-left: 5px;
+  }
+  .optionItem{
+    margin-bottom: 8px;
+  }
+  .optionItem p{
+    line-height: 22px;
+  }
+  .optionItem > div{
+    margin-top: 0px;
+  }
+  .process-text{
+    font-size: 26px !important;
+  }
+  .restartWrap{
+    margin: 2px 4px;
+  }
+  .restartWrap img{
+    width: 50px;
+    height: 50px;
+  }
+  .share-your-text{
+    margin-top: 13px;
+  }
+  .newsletter-input-fields{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .newsletter-input-fields button{
+    width: 100% !important;
+  }
+  .newsletter-input-fields input {
+    flex:1;
+  }
+  .resources-cards-wrap{
+    padding: 0px 30px !important;
+  }
+  .other-card-inner{
+    padding: 10px !important;
+  }
+  .tools-card{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+}
+@media only screen and (min-width:768px) and (max-width:990px){
+  .mobile-show{
+    display: flex !important;
+  }
+  .report-left-wrap{
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 9999;
+    background-color: #ecf3f6;
+    height: 100%;
+    width: 100% !important;
+    max-width: 300px;
+    padding: 20px !important;
+    display: none;
+  }
+  .mobile-overlay{
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.4);
+    height: 100%;
+    width: 100% !important;
+    padding: 20px !important;
+  }
+  .reports-inner-section{
+    display: block !important;
+    margin-top: 10px !important;
+  }
+  .report-right-wrap{
+    width: 100% !important;
+  }
+  .resources-button{
+    margin-top: -10px !important;
+  }
+  .close-icon{
+    display: none !important;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .custom-container {
     max-width: unset;

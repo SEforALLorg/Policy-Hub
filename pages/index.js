@@ -21,27 +21,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window?.innerWidth < 767) return null;
+    if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
     bindScrollSnap();
   }, []);
-
-  // useEffect(() => {
-  //   <script id="mcjs">
-  //     {
-  //       !(function (c, h, i, m, p) {
-  //         (m = c.createElement(h)),
-  //           (p = c?.getElementsByTagName(h)[0]),
-  //           (m.async = 1),
-  //           (m.src = i),
-  //           p.parentNode?.insertBefore(m, p);
-  //       })(
-  //         document,
-  //         "script",
-  //         "https://chimpstatic.com/mcjs-connected/js/users/7538fc5f6603b063a8158282f/b144b3c02621d86ac3892b72c.js"
-  //       )
-  //     }
-  //   </script>;
-  // }, [typeof document !== "undefined" && document]);
 
   return (
     <div>

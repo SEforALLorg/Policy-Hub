@@ -31,7 +31,7 @@ const CompletedSteps = ({ onRestart }) => {
   };
   return (
     <div className="completeWrap">
-      <h5 className="font-bold text-[30px] text-center capitalize text-text">
+      <h5 className="font-bold text-[30px] text-center capitalize text-text process-text">
         Process completed!
       </h5>
       <p className="font-normal text-[14px] text-center text-text">
@@ -50,7 +50,7 @@ const CompletedSteps = ({ onRestart }) => {
           <p>View all resources</p>
         </div>
       </div>
-      <p className="font-normal text-[14px] text-center text-text mt-[30px]">
+      <p className="font-normal text-[14px] text-center text-text mt-[30px] share-your-text">
         Share your contact information for future updates.
       </p>
       <div className="flex items-center justify-center inputFullWrap">

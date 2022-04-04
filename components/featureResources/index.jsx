@@ -53,7 +53,7 @@ const Feature = () => {
         </div>
       </div>
       <div className="pt-[35px] pb-[60px] bg-white">
-        <div className="xsm:px-4 mobile:px-[100px]">
+        <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
             <h6
               className="font-bold leading-10 text-large m-0 text-darktext 
@@ -83,8 +83,8 @@ const Feature = () => {
             >
               Other Tools
             </h6>
-            <div className="flex items-start pt-6 pb-[0px] xsm:flex-wrap medium:flex-nowrap tools-card">
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+            <div className="flex items-start pt-6 pb-[0px] xsm:flex-wrap medium:flex-nowrap tools-card mr-[-10px] ml-[-10px]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/electrifying-economies-ImResizer.jpg"
                   title="Electrifying Economies"
@@ -112,7 +112,7 @@ const Feature = () => {
                   setIsTitle={setIsTitle}
                 />
               </div>
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/sas-ImResizer.jpg"
                   title="SAS Knowledge Hub"
@@ -137,7 +137,7 @@ const Feature = () => {
                   setIsTitle={setIsTitle}
                 />
               </div>
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/policy-ImResizer.jpg"
                   title="Policy Knowledge Hub"
@@ -164,8 +164,8 @@ const Feature = () => {
                 />
               </div>
             </div>
-            <div className="flex items-start pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap tools-card">
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+            <div className="flex items-start pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap tools-card mr-[-10px] ml-[-10px]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/nigeria-ImResizer.jpg"
                   title="Nigeria Integrated Energy Planning Tool"
@@ -193,7 +193,7 @@ const Feature = () => {
                   setIsTitle={setIsTitle}
                 />
               </div>
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/toolbar-ImResizer.jpg"
                   title="A Toolbox of African Model Mini-Grid Regulations"
@@ -214,7 +214,7 @@ const Feature = () => {
                   setIsTitle={setIsTitle}
                 />
               </div>
-              <div className="xsm:mr-0 medium:mr-5 w-[33%]">
+              <div className="xsm:mr-0 medium:mr-5 w-[33%] other-card-inner">
                 <OtherToolsCard
                   image="/static/images/energy-ImResizer.jpg"
                   title="Energy Access Explorer Beta"
