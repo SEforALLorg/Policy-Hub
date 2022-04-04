@@ -216,7 +216,7 @@ const RightWrapPage = ({
           </div>
         )}
         <div className="flex mt-[30px] reports-inner-section">
-          <div className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show" onClick={() => setIsFilter(!isFilter)}>
+          <div className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button" onClick={() => setIsFilter(!isFilter)}>
             <FaFilter className="text-text mr-[5px]" />
             Filters
           </div>
@@ -335,7 +335,7 @@ const RightWrapPage = ({
                 <>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px]"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button"
                   >
                     <TooltipComponent
                       content="Click here to download the list of matching resources."
@@ -353,7 +353,7 @@ const RightWrapPage = ({
                   </button>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px]"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button"
                     onClick={toggleShareModal}
                   >
                     <TooltipComponent

@@ -30,7 +30,7 @@ const Header = () => {
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
        {isOpen && <div className={'mobile-overlay mobile-show'} />}
         <Collapse navbar isOpen={isOpen}>
-        <IoClose size={20} className="text-text mr-[5px] mobile-show ml-auto" onClick={() => setIsOpen(!isOpen)} />
+        <IoClose size={20} className="text-text mr-[5px] mobile-show ml-auto close-icon" onClick={() => setIsOpen(!isOpen)} />
           <Nav className="m-auto" navbar>
             <NavItem>
               <NavLink
