@@ -30,8 +30,12 @@ const ALLReports = () => {
         <h4 className="font-bold text-[45px] uppercase mb-[0px] text-text">
           Browse all resources
         </h4>
-        <p className="font-normal text-[25px] m-0 text-lighttext">
-          Explore our resource database{" "}
+        <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px]">
+          Explore our database for tools and knowledge that will support you in
+          developing policy and regulatory frameworks for sustainable energy.
+          These resources are recommended by stakeholders across the energy
+          sector. Additional resources related to clean cooking, sustainable
+          cooling and energy efficiency are coming soon.
         </p>
       </div>
       <RightWrapPage
