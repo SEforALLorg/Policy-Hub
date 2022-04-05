@@ -11,25 +11,15 @@ const OtherToolsCard = ({
   const isOpen = title === isTitle;
   return (
     <div
-      className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full cursor-pointer other-card ${
-        isOpen ? "active" : ""
-      }`}
-      onClick={() => {
-        if (isOpen) {
-          setIsTitle("");
-        } else {
-          setIsTitle(title);
-        }
-      }}
-    >
-      <div className="videoPlayer w-full max-w-full ">
+      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full cursor-pointer other-card flex items-center mt-[20px]'}    >
+      <div className="videoPlayer w-[30%] ">
         <img
           src={image}
           alt=""
-          className="w-[100%] h-[200px] object-cover object-left"
+          className="w-[100%] h-[230px] object-fill object-left"
         />
       </div>
-      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]">
+      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex-1">
         <h6
           className="font-bold leading-6  text-darktext mb-1 text-medium h-[50px] otherTitle"
           style={{
@@ -40,7 +30,7 @@ const OtherToolsCard = ({
           {title}
         </h6>
         <p
-          className="font-normal leading-[17px] text-darktext mb-2 text-xsmall otherDescription"
+          className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription"
           style={{
             display: isOpen ? "block" : "",
             maxHeight: isOpen ? "300px" : "70px",
