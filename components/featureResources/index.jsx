@@ -51,30 +51,12 @@ const Feature = () => {
       <div className="pt-[35px] pb-[60px] bg-white">
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
-            <h6
-              className="font-bold leading-10 text-large m-0 text-darktext 
-                            uppercase xsm:text-tiny small:text-medium large:text-large"
-            >
-              VIDEOS
-            </h6>
-            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
-              {videosCard?.map((item, index) => (
-                <div className="w-[33.3%] mb-[0px] p-[10px]" key={index}>
-                  <VideoCard
-                    link={item?.link}
-                    title={item?.title}
-                    description={item?.description}
-                    setIsVideoCard={setIsVideoCard}
-                    isVideoCard={isVideoCard}
-                  />
-                </div>
-              ))}
-            </div>
+            
             <h6
               className="font-bold leading-10  m-0 mt-3 text-darktext uppercase xsm:text-tiny small:text-medium 
             large:text-large"
             >
-              Other Tools
+              Other useful platforms
             </h6>
             <OtherToolsCard
               image="/static/images/electrifying-economies-ImResizer.jpg"
@@ -212,6 +194,25 @@ const Feature = () => {
               isTitle={isTitle}
               setIsTitle={setIsTitle}
             />
+            <h6
+              className="font-bold leading-10 text-large text-darktext 
+                            uppercase xsm:text-tiny small:text-medium large:text-large mt-[80px]"
+            >
+              VIDEOS
+            </h6>
+            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
+              {videosCard?.map((item, index) => (
+                <div className="w-[33.3%] mb-[0px] p-[10px]" key={index}>
+                  <VideoCard
+                    link={item?.link}
+                    title={item?.title}
+                    description={item?.description}
+                    setIsVideoCard={setIsVideoCard}
+                    isVideoCard={isVideoCard}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

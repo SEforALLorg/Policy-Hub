@@ -53,9 +53,9 @@ const VideoCard = ({
           }}
         />
       </div>
-      <div className="pt-[25px] pr-4 pb-[25px] pl-[22px]">
+      <div className="pt-[25px] pr-[10px] pb-[25px] pl-[10px]">
         <h6
-          className="font-bold leading-7  text-darktext mb-[10px] text-[20px] otherTitle text-center"
+          className="font-bold leading-5  text-darktext mb-[10px] text-[15px] otherTitle text-center"
           style={{
             display: isOpen ? "block" : "",
             height: isOpen ? "unset" : "",

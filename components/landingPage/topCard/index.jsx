@@ -13,7 +13,7 @@ const TopCard = ({ HandleOpen }) => {
             <span className="text-Primary pl-[6px]"> Knowledge</span> Hub
           </h5>
           <div className="flex flex-wrap justify-evenly relative landing-cards-wrap mb-[0px]">
-            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+            <div className="w-[46%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
                   src={"static/images/hub.svg"}
@@ -22,16 +22,16 @@ const TopCard = ({ HandleOpen }) => {
                   height={80}
                   className="mr-[20px] landing-card-image"
                 />
-                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
+                <p className="font-normal text-[18px] leading-[30px] text-text m-0 flex-1 landing-card-text">
                   The SEforALL <span className="font-bold">Knowledge Hub</span>{" "}
                   is an interactive platform that supports policymakers in
-                  developing policy and regulatory frameworks for
-                  sustainable energy.
+                  developing policy and regulatory frameworks for sustainable
+                  energy.
                 </p>
               </div>
             </div>
 
-            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+            <div className="w-[46%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
                   src={"static/images/hub.svg"}
@@ -40,16 +40,18 @@ const TopCard = ({ HandleOpen }) => {
                   height={80}
                   className="mr-[20px] landing-card-image"
                 />
-                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  <span className="font-bold">The knowledge hub</span> provides
-                  key resources for different steps in decision-making.
+                <p className="font-normal text-[18px] leading-[30px] text-text m-0 flex-1 landing-card-text">
+                  With the right policies and regulations, <span className="font-bold">affordable and clean
+                  energy for all is possible</span>. The Knowledge Hub contains leading
+                  resources, which have been identified by stakeholders from
+                  across the energy sector.
                 </p>
               </div>
             </div>
           </div>
           <div className="divider-right" />
           <div className="flex flex-wrap justify-evenly relative landing-cards-wrap">
-            <div className="w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+            <div className="w-[46%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
               <div className="divider-bottom mb-[30px]" />
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
@@ -59,15 +61,17 @@ const TopCard = ({ HandleOpen }) => {
                   height={80}
                   className="mr-[20px] landing-card-image"
                 />
-                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  It currently offers resources on electricity access. Resources
-                  on access to clean cooking, sustainable cooling and energy
-                  efficiency will be added soon.
+                <p className="font-normal text-[18px] leading-[30px] text-text m-0 flex-1 landing-card-text">
+                  <span className="font-bold">
+                    It currently offers resources on electricity access
+                  </span>
+                  . Resources on access to clean cooking, sustainable cooling
+                  and energy efficiency will be added soon.
                 </p>
               </div>
             </div>
 
-            <div className="last-card w-[45%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
+            <div className="last-card w-[46%] bg-white pl-[20px] pr-[20px] pt-[10px] pb-[10px] landing-small-card">
               <div className="divider-bottom mb-[30px]" />
               <div className="mb-[10px] flex items-start cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap">
                 <img
@@ -77,9 +81,13 @@ const TopCard = ({ HandleOpen }) => {
                   height={80}
                   className="mr-[20px] landing-card-image"
                 />
-                <p className="font-normal text-[18px] leading-[34px] text-text m-0 flex-1 landing-card-text">
-                  Find <span className="font-bold">guidelines, tools and templates</span> on electricity access
-                  relevant to your country and matched to your needs.
+                <p className="font-normal text-[18px] leading-[30px] text-text m-0 flex-1 landing-card-text">
+                  Find{" "}
+                  <span className="font-bold">
+                    guidelines, tools and templates
+                  </span>{" "}
+                  on electricity access relevant to your country and matched to
+                  your needs.
                 </p>
               </div>
             </div>
