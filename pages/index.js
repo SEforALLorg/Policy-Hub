@@ -13,7 +13,7 @@ export default function Home() {
         snapDestinationX: "0%",
         snapDestinationY: "100%",
         timeout: 100,
-        duration: 300,
+        duration: 800,
         threshold: 0.1,
       },
       () => console.log()

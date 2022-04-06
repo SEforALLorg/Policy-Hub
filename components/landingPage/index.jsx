@@ -38,9 +38,9 @@ const LandingPage = () => {
   return (
     <>
       <div>
-        <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card">
+        {/* <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card"> */}
           <TopCard HandleOpen={HandleOpen} />
-        </div>
+        {/* </div> */}
         {isOpen ? (
           <div
             className="h-[100vh] flex relative items-center	justify-center bottom-view"

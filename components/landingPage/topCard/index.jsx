@@ -1,11 +1,100 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StartButton from "components/buttons/startButton";
+import useOnScreen from "../../../hooks/useVisible";
 
 const TopCard = ({ HandleOpen }) => {
+  const ref = useRef()
+  const isVisible = useOnScreen(ref)
+
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    if(isVisible) {
+      setShowButton(true)
+    } else {
+      setShowButton(false)
+    }
+  }, [isVisible])
+
   return (
     <>
-      <div className="flex items-center justify-end relative h-[100%] flex-col subCardFull">
-        <div className="landing-card-inner w-full bg-white dropShadow rounded-lg	py-10 px-[20px] relative h-full">
+      <div className="flex items-center relative h-[100%] flex-col subCardFull">
+        <div className="h-[100vh] pt-[8rem] flex items-center">
+          <div className="mb-[10px] p-[50px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap bg-white dropShadow rounded-lg">
+            <img
+              src={"static/images/hub.svg"}
+              alt="card"
+              width={200}
+              height={200}
+              className="mr-[20px] landing-card-image"
+            />
+            <p className="font-bold text-[42px] leading-[55px] text-text m-0 flex-1">
+              The SEforALL{" "}
+              <span className="font-bold text-Secondary px-[6px]">
+                Knowledge Hub
+              </span>{" "}
+              is an interactive platform that supports policymakers in
+              developing policy and regulatory frameworks for sustainable
+              energy.
+            </p>
+          </div>
+        </div>
+        <div className="h-[100vh] pt-[8rem] flex items-center">
+          <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap bg-white dropShadow rounded-lg p-[50px]">
+            <img
+              src={"static/images/hub.svg"}
+              alt="card"
+              width={200}
+              height={200}
+              className="mr-[20px] landing-card-image"
+            />
+            <p className="font-bold text-[42px] leading-[55px] text-text m-0 flex-1">
+              <span className="font-bold text-Secondary px-[6px]">
+                The knowledge hub
+              </span>{" "}
+              provides key resources for different steps in decision-making.
+            </p>
+          </div>
+        </div>
+        <div className="h-[100vh] pt-[8rem] flex items-center">
+          <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap bg-white dropShadow rounded-lg p-[50px]">
+            <img
+              src={"static/images/journey.svg"}
+              alt="card"
+              width={200}
+              height={200}
+              className="mr-[20px] landing-card-image"
+            />
+            <p className="font-bold text-[42px] leading-[55px] text-text m-0 flex-1">
+            It currently offers resources on electricity access. <span className="font-bold text-Secondary px-[6px]">Resources</span>
+                  on access to clean cooking, sustainable cooling and energy
+                  efficiency will be added soon.
+            </p>
+          </div>
+        </div>
+        <div className="h-[100vh] pt-[8rem] inline-flex flex-wrap items-center" ref={ref}>
+          <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap bg-white dropShadow rounded-lg p-[50px]">
+            <img
+              src={"static/images/guide.svg"}
+              alt="card"
+              width={200}
+              height={200}
+              className="mr-[20px] landing-card-image"
+            />
+            <p className="font-bold text-[42px] leading-[55px] text-text m-0 flex-1">
+            Find <span className="font-bold text-Secondary px-[6px]">guidelines, tools and templates</span> on electricity access
+                  relevant to your country and matched to your needs.
+            </p>
+          </div>
+          <div
+          className="w-[40%] absolute bottom-[6.8%] left-[30%] landingButton"
+          onClick={HandleOpen}
+          style={{opacity: showButton ? 1 : 0}}
+        >
+          <StartButton title={"Click here to start"} className="w-full" />
+        </div>
+        </div>
+        {/* <div className="landing-card-inner w-full bg-white dropShadow rounded-lg	py-10 px-[20px] relative h-full">
           <h5 className="cardBigHeading font-normal font-bold	text-[53px] leading-[64.4px] text-center	select-none	uppercase text-text text-center	pb-[15px] mt-2">
             Sustainable
             <span className="text-Secondary px-[6px]"> Energy </span>
@@ -84,13 +173,13 @@ const TopCard = ({ HandleOpen }) => {
               </div>
             </div>
           </div>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           className="w-[40%] absolute bottom-[-32px] landing-button-wrap"
           onClick={HandleOpen}
         >
           <StartButton title={"Click here to start"} className="w-full" />
-        </div>
+        </div> */}
       </div>
     </>
   );
