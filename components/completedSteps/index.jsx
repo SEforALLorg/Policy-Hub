@@ -34,9 +34,6 @@ const CompletedSteps = ({ onRestart }) => {
       <h5 className="font-bold text-[30px] text-center capitalize text-text process-text">
         Process completed!
       </h5>
-      <p className="font-normal text-[14px] text-center text-text">
-        The following reports match your specific case.{" "}
-      </p>
       <div className="flex items-center justify-center">
         <div className="restartWrap" onClick={onRestart}>
           <img src="static/images/restart.svg" alt="" />
