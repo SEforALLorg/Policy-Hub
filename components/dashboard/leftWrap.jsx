@@ -73,6 +73,11 @@ const LeftWrapPage = ({
     setStepQuestion([]);
   };
 
+  const onSolarClick = () => {
+    setNextQuestionId(16);
+    setUserJourney(userJourney.splice(0, 2));
+  };
+
   return (
     <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
       <div className="flex items-center pb-2.5">
@@ -84,7 +89,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-        Assess the situation
+          Assess the situation
         </div>
       </div>
       {nextQuestionId &&
@@ -113,8 +118,8 @@ const LeftWrapPage = ({
               {item?.answer === "Mini-grid"
                 ? "MG"
                 : item?.answer?.includes("Standalone systems")
-                  ? "SHS"
-                  : item?.answer}
+                ? "SHS"
+                : item?.answer}
             </button>
           </div>
         ))}
@@ -133,10 +138,18 @@ const LeftWrapPage = ({
         </div>
       )}
 
-      {nextQuestionId && <div className={'mt-[16px] mb-[16px]'} style={{ borderBottom: '1.6px solid rgba(6, 90, 137, 0.2)' }} />}
+      {nextQuestionId && (
+        <div
+          className={"mt-[16px] mb-[16px]"}
+          style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
+        />
+      )}
       {!nextQuestionId ? (
         <>
-          <CompletedSteps onRestart={() => onRestart()} />
+          <CompletedSteps
+            onRestart={() => onRestart()}
+            onSolar={() => onSolarClick()}
+          />
         </>
       ) : questions?.length ? (
         questions
@@ -164,7 +177,7 @@ const LeftWrapPage = ({
             }
 
             return (
-              <div className={'QuestionWrap'} key={index}>
+              <div className={"QuestionWrap"} key={index}>
                 {questionType === "Questionnaire" ? (
                   <>
                     <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">

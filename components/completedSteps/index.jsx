@@ -5,7 +5,7 @@ import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
 import NewsletterSubscribe from "../newsletterForm";
 
-const CompletedSteps = ({ onRestart }) => {
+const CompletedSteps = ({ onRestart,onSolar }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
@@ -38,6 +38,13 @@ const CompletedSteps = ({ onRestart }) => {
         <div className="restartWrap" onClick={onRestart}>
           <img src="static/images/restart.svg" alt="" />
           <p>Restart</p>
+        </div>
+        <div
+          className="restartWrap"
+          onClick={() => onSolar()}
+        >
+          <img src="static/images/solaroutline.png" alt="" style={{width: 60}} />
+          <p>Solar home system</p>
         </div>
         <div
           className="restartWrap"
