@@ -51,7 +51,6 @@ const Feature = () => {
       <div className="pt-[35px] pb-[60px] bg-white">
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
-            
             <h6
               className="font-bold leading-10  m-0 mt-3 text-darktext uppercase xsm:text-tiny small:text-medium 
             large:text-large"
@@ -64,20 +63,12 @@ const Feature = () => {
               link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
               description={
                 <>
-                  Electrifying economies is a scroll-based narrative, developed
-                  by Rockefeller Foundation, Rocky Mountain Institute, and
-                  Sustainable Energy for All, to illustrate the role of
-                  distributed energy in providing affordable, reliable power for
-                  all.
-                  {/* <br /> */}
-                  The Electrifying Economies project demonstrates the role
-                  distributed energy will play in ending energy poverty and
-                  catalyzing a green and equitable recovery from the Covid-19
-                  crisis. It draws on the latest data and research from around
-                  the world to show how distributed renewables can provide
-                  sustainable, affordable, and reliable power for all. The
-                  project provides information to support policy makers and
-                  investors in taking action today, to realize this potential.
+                  Electrifying Economies is an information platform
+                  demonstrating the role distributed energy will play in ending
+                  energy poverty and catalyzing a green and equitable recovery
+                  from the Covid-19 crisis. It has been jointly developed by
+                  Rockefeller Foundation, Rocky Mountain Institute, and
+                  Sustainable Energy for All.
                 </>
               }
               isTitle={isTitle}
@@ -89,17 +80,11 @@ const Feature = () => {
               link="https://www.ace-taf.org/sas-knowledge-hub/"
               description={
                 <>
-                  This is a repository of resource materials on stand-alone
-                  solar (SAS) systems. The Africa Clean Energy Technical
-                  Assistance Facility (ACE TAF) has worked with off-grid sector
-                  stakeholders to ensure the resources are not duplicative.
-                  <br />
-                  ACE TAF is a programme funded by the UK Government Foreign,
+                  SAS Knowledge Hub is a digital repository by ACE TAF gathering
+                  resources on stand-alone solar (SAS) systems, ranging from
+                  e-waste and recycling, martket date to productive use. ACE TAF
+                  is a programme funded by the UK Government Foreign,
                   Commonwealth and Development Office (FCDO) between 2018-2022.
-                  It aims to catalyse a market- based approach for private
-                  sector delivery of renewable energy electrification
-                  technologies, with a focus on high quality stand-alone solar
-                  systems.
                 </>
               }
               isTitle={isTitle}
@@ -111,19 +96,12 @@ const Feature = () => {
               link="https://www.gogla.org/policy-knowledge-hub"
               description={
                 <>
-                  The Off-Grid solar sector has significant potential to
-                  contribute towards achieving energy access targets, promoting
-                  socio-economic development and enhancing climate
-                  mitigation/adaptation efforts globally. Despite this, many low
-                  energy access countries are yet to create an enabling
-                  environment for the sector with supportive legal, policy and
-                  regulatory frameworks. Moreover, the available policy
-                  frameworks regulating the sector are not easily accessible as
-                  they are scattered across an expansive list of laws and
-                  policies regulating areas such as taxation, quality assurance,
-                  data protection, consumer protection, e-waste etc. It is
-                  against this background that GOGLA has developed a policy
-                  knowledge hub.
+                  GOGLA’s policy knowledge hub includes a digital repository for
+                  off-grid solar energy laws, policies, and regulations and an
+                  off-Grid VAT and duty tracker for solar companies, as well as
+                  Country Briefs that review the status of sub-Saharan African
+                  countries’ off-grid solar markets. The hub was developed by
+                  GOGLA with input from Power Africa.
                 </>
               }
               isTitle={isTitle}
@@ -135,38 +113,29 @@ const Feature = () => {
               link="http://nigeria-iep.sdg7energyplanning.org/"
               description={
                 <>
-                  The Nigeria Integrated Energy Planning Tool is an online,
-                  interactive data visualization platform that brings together
-                  several layers of data to help Nigerian policy makers and
-                  practitioners make more informed decisions about their
-                  strategies and operations to advance energy access in the
-                  country.
-                  <br />
-                  The tool is powered by extensive geospatial modelling and
-                  optimization and provides actionable intelligence for private
-                  sector and government stakeholders to plan the expansion of
-                  least-cost access to electricity and clean cooking. The tool
-                  presents interactive and downloadable data from Nigeria based
-                  on integrated energy planning analyses to achieve universal
-                  energy access in the country by 2030.
+                  The Nigeria Integrated Energy Planning Tool is a GIS-based
+                  interactive data visualization platform to support Nigerian
+                  policy makers and practitioners in their decision-making
+                  process. It was developed by SEforALL, in collaboration with
+                  the Federal Government of Nigeria, with support from The
+                  Rockefeller Foundation.
                 </>
               }
               isTitle={isTitle}
               setIsTitle={setIsTitle}
             />
             <OtherToolsCard
-              image="/static/images/toolbar-ImResizer.jpg"
-              title="A Toolbox of African Model Mini-Grid Regulations"
-              link="https://www.get-transform.eu/a-toolbox-of-african-model-mini-grid-regulations/"
+              image="/static/images/green-mini.png"
+              title="The Green Mini-Grids Help Desk"
+              link="https://greenminigrid.afdb.org/"
               description={
                 <>
-                  The African Forum of Utility Regulators (AFUR) and
-                  GET.transform have entered a partnership to develop a toolbox
-                  of model mini-grid regulations. The joint activity forms part
-                  of the African Union Mini-Grid Development Plan and the Action
-                  on Rural Electrification and Industrialisation and aims to
-                  provide resources, peer exchange and regulatory best practices
-                  that enable scaled up mini-grid investment.
+                  The Green Mini-Grids Help Desk provides mini-grid developers
+                  and policymakers with practical information on mini-grids,
+                  including market reports, links to industry stakeholders,
+                  instruction guides, business forms and templates, and
+                  financial models. It is implemented by AfDB, UStainable Energy
+                  for All Africa Hub, SEFA, Energy4Impact, and Inensus.
                 </>
               }
               isTitle={isTitle}
@@ -178,17 +147,12 @@ const Feature = () => {
               link="https://www.energyaccessexplorer.org/"
               description={
                 <>
-                  Energy Access Explorer provides the data and tools necessary
-                  to create a future where all people have access to affordable,
-                  reliable and modern energy.
-                  <br />
                   Energy Access Explorer is an online, open-source, interactive
                   platform that uses mapping to visualize the state of energy
                   access in unserved and underserved areas. It analyzes credible
                   and public data to make the connection between the demand and
-                  supply of energy. Individuals can create custom analyses on
-                  Energy Access Explorer to identify and prioritize areas where
-                  energy markets can be expanded.
+                  supply of energy. The platform is led by World Resources
+                  Institute (WRI).
                 </>
               }
               isTitle={isTitle}
