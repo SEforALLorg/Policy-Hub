@@ -5,7 +5,7 @@ import { ErrorNotify, SuccessNotify } from "components/notification";
 import { postNewsletters } from "../../pages/api/reports";
 import NewsletterSubscribe from "../newsletterForm";
 
-const CompletedSteps = ({ onRestart }) => {
+const CompletedSteps = ({ onRestart,onSolar }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
 
@@ -34,13 +34,17 @@ const CompletedSteps = ({ onRestart }) => {
       <h5 className="font-bold text-[30px] text-center capitalize text-text process-text">
         Process completed!
       </h5>
-      <p className="font-normal text-[14px] text-center text-text">
-        The following reports match your specific case.{" "}
-      </p>
       <div className="flex items-center justify-center">
         <div className="restartWrap" onClick={onRestart}>
           <img src="static/images/restart.svg" alt="" />
           <p>Restart</p>
+        </div>
+        <div
+          className="restartWrap"
+          onClick={() => onSolar()}
+        >
+          <img src="static/images/solaroutline.png" alt="" style={{width: 60}} />
+          <p>Solar home system</p>
         </div>
         <div
           className="restartWrap"

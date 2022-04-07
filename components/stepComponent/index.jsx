@@ -64,7 +64,8 @@ const StepComponent = ({
         className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px]"
         style={{ height: "45px" }}
       >
-        <span>{stepCount}.</span> {title}{" "}
+        {/* <span>{stepCount}.</span> */}
+         {title}{" "}
         {ToolTipText && <TooltipComponent content={ToolTipText} />}
       </p>
       <div className="OptionsWrap">

@@ -77,7 +77,7 @@ const Contact = () => {
       </div>
       <div className="flex items-end xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
         <div className="  xsm:w-11/12 large:w-full ">
-          <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0">
+          <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify">
             For any media requests, please contact:{" "}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
@@ -86,7 +86,7 @@ const Contact = () => {
               Media@SEforALL.org
             </span>
           </p>
-          <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0">
+          <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6 text-justify  m-0">
             Keep up-to-speed with what's happening at the Sustainable Energy for
             ALL Knowledge Hub and across the sustainable energy movement. We'll
             send you our regular updates, plus special news and event invites.
