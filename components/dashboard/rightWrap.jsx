@@ -335,7 +335,7 @@ const RightWrapPage = ({
                 <>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button button-animation"
                   >
                     <TooltipComponent
                       content="Click here to download the list of matching resources."
@@ -353,7 +353,7 @@ const RightWrapPage = ({
                   </button>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button button-animation"
                     onClick={toggleShareModal}
                   >
                     <TooltipComponent
