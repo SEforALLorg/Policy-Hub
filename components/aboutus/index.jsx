@@ -14,7 +14,7 @@ const About = () => {
             <h5 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2">
               About us
             </h5>
-            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               <b>Sustainable Energy for All (SEforALL)</b> is an international
               organization that works in partnership with the United Nations and
               leaders in government, the private sector, financial institutions,
@@ -31,7 +31,7 @@ const About = () => {
               </span>
               .
             </p>
-            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               The <b>Sustainable Energy for All Knowledge Hub</b> is an
               interactive platform providing sustainable energy policy makers
               and practitioners with off-the-shelf guidelines, tools, templates
@@ -40,7 +40,7 @@ const About = () => {
               phase, the knowledge hub offers key resources on electricity
               access.
             </p>
-            <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               Further resources to support electrification efforts can be found
               at{" "}
               <span
@@ -52,7 +52,7 @@ const About = () => {
                 electrifyingeconomies.org.
               </span>
             </p>
-            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 ">
+            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               Additional pillars of sustainable energy (access to clean cooking,
               sustainable cooling, energy efficiency and renewable energy) will
               be added soon.
