@@ -40,18 +40,6 @@ const About = () => {
               phase, the knowledge hub offers key resources on electricity
               access.
             </p>
-            <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
-              Further resources to support electrification efforts can be found
-              at{" "}
-              <span
-                className="text-Primary hover:underline cursor-pointer"
-                onClick={() =>
-                  window.open("https://www.electrifyingeconomies.org/")
-                }
-              >
-                electrifyingeconomies.org.
-              </span>
-            </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               Additional pillars of sustainable energy (access to clean cooking,
               sustainable cooling, energy efficiency and renewable energy) will
@@ -154,8 +142,13 @@ const About = () => {
           <p className="font-bold text-text mb-[3px] text-[20px]">Curators:</p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             <b>Hadley Taylor</b>, <b>Min Hyejung</b>, <b>Niklas Hayek</b>, <b>Anant Wadhwa</b>, and <b>Stephen
-            Kent</b> led the content creation and review on behalf of Sustainable
-            Energy for All (SEforALL).
+            Kent</b> led the content creation and review on behalf of <span
+                className="text-Primary hover:underline cursor-pointer"
+                onClick={() =>
+                  window.open("https://www.seforall.org/")
+                }
+              >Sustainable
+            Energy for All</span>.
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px]">
             Developers:

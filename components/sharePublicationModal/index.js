@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
-import NewsletterSubscribe from "../newsletterForm";
+import ShareAttachment from "../shareAttachment";
 
-const SharePublicationModal = ({ toggle }) => {
+const SharePublicationModal = ({ toggle, allReports }) => {
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -31,9 +31,9 @@ const SharePublicationModal = ({ toggle }) => {
               onClick={toggle}
             />
             <div className="flex items-center justify-between inputFullWrap">
-              <NewsletterSubscribe
-                newsletterCheckbox={true}
+              <ShareAttachment
                 submitForm={() => toggle()}
+                allReports={allReports}
               />
             </div>
             <div className="complete-buttonWrap">

@@ -1,84 +1,40 @@
 import { useState, useEffect } from "react";
-import { decode } from "html-entities";
 import { useMutation } from "react-query";
 
 import Input from "../input";
 import PrimaryButton from "components/buttons/primarybutton";
 import Loader from "../loader";
-import Checkbox from "../checkbox";
 import { ErrorNotify, SuccessNotify } from "../notification";
-import { postNewsletters } from "../../pages/api/reports";
+import { sendReports } from "../../pages/api/reports";
 
-const NewsletterForm = ({
-  status,
-  message,
-  onValidated,
-  newsletterCheckbox,
-  submitForm,
-}) => {
-  const [error, setError] = useState(null);
+const ShareAttachment = ({ submitForm, allReports }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isCheck, setIsCheck] = useState(true);
 
-  const { mutate } = useMutation(["postNewsletters"], postNewsletters, {
+  const { mutate } = useMutation(["sendReports"], sendReports, {
     onError: (error) => {
-      //   ErrorNotify(error.response.data.error.message);
+      ErrorNotify(error.response.data.error.message);
     },
     onSuccess: (e) => {
-      setName("");
-      setEmail("");
-      if (!isCheck) {
-        SuccessNotify("Your info has been submitted successfully");
+      if (e?.data?.result?.status) {
+        SuccessNotify(e?.data?.result?.msg);
+        setName("");
+        setEmail("");
         submitForm();
       }
     },
   });
 
   const handleFormSubmit = () => {
-    setError(null);
-
-    if (!email) {
-      setError("Please enter a valid email address");
-      return null;
-    }
-
-    const payload = {
+    const body = {
       data: {
         Name: name,
         Email: email,
+        reports: allReports?.map((i) => i?.id),
       },
     };
-    mutate(payload);
-
-    if (!isCheck) return;
-
-    const isFormValidated = onValidated({ EMAIL: email, FNAME: name });
-
-    // On success return true
-    return name && email && email.indexOf("@") > -1 && isFormValidated;
+    mutate(body);
   };
-
-  const getMessage = (message) => {
-    if (!message) {
-      return null;
-    }
-    const result = message?.split("-") ?? null;
-    if ("0" !== result?.[0]?.trim()) {
-      return decode(message);
-    }
-    const formattedMessage = result?.[1]?.trim() ?? null;
-    return formattedMessage ? decode(formattedMessage) : null;
-  };
-
-  useEffect(() => {
-    if (status === "success" && status !== "error" && !error) {
-      SuccessNotify(decode(message));
-      submitForm();
-    } else {
-      ErrorNotify(error || getMessage(message));
-    }
-  }, [status]);
 
   return (
     <>
@@ -99,19 +55,13 @@ const NewsletterForm = ({
           onChange={(e) => setEmail(e?.target?.value)}
           value={email}
         />
-        {newsletterCheckbox && (
-          <div className="flex items-center justify-end mt-[20px]">
-            <Checkbox
-              label="Subscribe to our Newsletter"
-              checked={isCheck}
-              onClick={() => setIsCheck(!isCheck)}
-            />
-          </div>
-        )}
 
         <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
           <PrimaryButton
-            title={status === "sending" ? <Loader /> : "submit"}
+            title={
+              // status === "sending" ? <Loader /> :
+              "submit"
+            }
             className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-bold text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
                     border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
             disabled={!name || !email}
@@ -126,4 +76,4 @@ const NewsletterForm = ({
   );
 };
 
-export default NewsletterForm;
+export default ShareAttachment;

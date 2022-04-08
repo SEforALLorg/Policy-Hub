@@ -115,6 +115,7 @@ a {
 
 .header .nav-link:hover {
   text-decoration: underline;
+  color: #FCB600 !important;
 }
 
 .header .navbar-nav {
@@ -843,7 +844,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   /* transition: .5s ease-out; */
   /* transition: max-height .5s ease-in; */
@@ -942,6 +943,16 @@ a {
 
 .button-animation:hover {
   transform: scale(0.9);
+}
+
+.card-animation{
+  transition: 1s all cubic-bezier(0.25, 0.1, 0, 1.01);
+}
+
+.card-animation:hover{
+  /* box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px; */
+    transform: translateY(-5px);
+    transition: .5s all cubic-bezier(0.25, 0.1, 0, 1.01);
 }
 
 @media only screen and (min-width: 1680px) {

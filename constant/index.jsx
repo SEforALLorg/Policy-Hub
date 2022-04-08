@@ -141,7 +141,7 @@ export const videosCard = [
   },
   {
     link: "XRIaYKeeGyw",
-    title: "Promoting Mini-Grids Electrification for Rural Development:",
+    title: "Promoting Mini-Grids Electrification for Rural Development",
     description: (
       <>
         Description - Supporting the Government of Uganda in improving framework

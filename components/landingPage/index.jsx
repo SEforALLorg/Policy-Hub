@@ -45,9 +45,9 @@ const LandingPage = ({ setIsDashboardOpen }) => {
     <>
       <div>
         {/* <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card"> */}
-        {/* {!isOpen && */}
+        {!isOpen &&
          <TopCard HandleOpen={HandleOpen} />
-         {/* } */}
+         }
 
         {/* </div> */}
         {isOpen ? (
