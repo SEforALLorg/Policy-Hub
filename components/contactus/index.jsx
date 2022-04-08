@@ -3,7 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 import Address from "components/cards/addressCard";
-import NewsletterSubscribe from "../newsletterForm";
+import SubscribeComponent from "../subscribeComponent";
 
 const Contact = () => {
   return (
@@ -75,7 +75,7 @@ const Contact = () => {
           />
         </div>
       </div>
-      <div className="flex items-end xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
+      <div className="flex items-center xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
         <div className="  xsm:w-11/12 large:w-full ">
           <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify">
             For any media requests, please contact:{" "}
@@ -101,9 +101,7 @@ const Contact = () => {
             .
           </p>
         </div>
-        <div className="w-full flex justify-center align-end flex-col m-auto xsm:px-4 xsm:py-0 extrasmall:p-6 laptop:p-0">
-          <NewsletterSubscribe newsletterCheckbox={true} />
-        </div>
+       <SubscribeComponent />
       </div>
     </div>
   );

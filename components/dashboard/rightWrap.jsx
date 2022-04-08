@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from "react";
-import { useQuery } from "react-query";
+import React, { useEffect, useMemo, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import qs from "qs";
 import CsvDownload from "react-json-to-csv";
 import { BsDownload } from "react-icons/bs";
@@ -17,6 +17,8 @@ import { getReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
 import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import useDebounce from "../../utilities/useDebounce";
+import { downloadReports } from "../../pages/api/reports";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -33,6 +35,10 @@ const RightWrapPage = ({
   const [isShareModal, setShareModal] = useState(false);
   const [isClearAll, setClearAll] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
+  const [previousReports, setPreviousReports] = useState([]);
+  const [isScrollLoader, setIsScrollLoader] = useState(false);
+  const [page, setPage] = useState(1);
+  const debouncedSearch = useDebounce(search, 500);
 
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -51,6 +57,10 @@ const RightWrapPage = ({
 
   const query = useMemo(() => {
     return qs.stringify({
+      pagination: {
+        page: page,
+        pageSize: 20,
+      },
       filters: {
         id: {
           $in: [...nonPublicationReports, ...publicationReports].map(
@@ -58,7 +68,7 @@ const RightWrapPage = ({
           ),
         },
         ReportName: {
-          $containsi: search,
+          $containsi: debouncedSearch,
         },
         AddFilters: {
           countries: {
@@ -139,12 +149,21 @@ const RightWrapPage = ({
     setSelectInputs(obj);
   };
 
-  const reports = showAllReports
-    ? allReports?.data?.data
-    : finalNonPublicationReports;
+  useEffect(() => {
+    if (optionSelected && page === 1) {
+      setPreviousReports(allReports?.data?.data);
+    } else if (allReports?.data?.data?.length) {
+      setPreviousReports([...allReports?.data?.data, ...previousReports]);
+    } else if (!isScrollLoader && !allReports?.data?.data?.length) {
+      setPreviousReports([]);
+    }
+  }, [allReports]);
+
+  const reports = showAllReports ? previousReports : finalNonPublicationReports;
 
   const onSearch = (e) => {
     setSearch(e);
+    setIsScrollLoader(false);
   };
 
   const onReportClick = (id) => {
@@ -158,6 +177,7 @@ const RightWrapPage = ({
   const onReset = () => {
     setClearAll(!isClearAll);
     onResetFilter();
+    setPreviousReports([]);
   };
 
   const optionSelected =
@@ -184,14 +204,43 @@ const RightWrapPage = ({
       const years =
         item?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
       return {
-        'Report Name': item?.attributes?.ReportName,
+        "Report Name": item?.attributes?.ReportName,
         Source: item?.attributes?.URL,
         Countries: countries || "-",
-        'Publishing Organization(s)': publishing_organizations || "-",
+        "Publishing Organization(s)": publishing_organizations || "-",
         Year: years || "-",
       };
     });
     return data;
+  };
+
+  const onScroll = (e) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
+      setPage(page + 1);
+      setPreviousReports([...reports]);
+      setIsScrollLoader(true);
+    }
+  };
+
+  const { mutate } = useMutation(["downloadReports"], downloadReports, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+    onSuccess: (e) => {
+      console.log(e, "e");
+    },
+  });
+
+
+  const onDownload = () => {
+    const body = {
+      data: {
+        reports: finalReports?.map((i) => i?.id),
+      },
+    };
+    mutate(body);
   };
 
   return (
@@ -216,18 +265,19 @@ const RightWrapPage = ({
           </div>
         )}
         <div className="flex mt-[30px] reports-inner-section">
-          <div className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button" onClick={() => setIsFilter(!isFilter)}>
+          <div
+            className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
+            onClick={() => setIsFilter(!isFilter)}
+          >
             <FaFilter className="text-text mr-[5px]" />
             Filters
           </div>
-          {
-            isFilter && <div className={'mobile-overlay mobile-show'} />
-          }
+          {isFilter && <div className={"mobile-overlay mobile-show"} />}
           <div
             className={
               "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
             }
-            style={{display: isFilter ? 'block' : ''}}
+            style={{ display: isFilter ? "block" : "" }}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
@@ -239,7 +289,10 @@ const RightWrapPage = ({
                   Clear filters
                 </span>
               ) : null}
-              <IoClose className="text-text mr-[5px] mobile-show" onClick={() => setIsFilter(!isFilter)} />
+              <IoClose
+                className="text-text mr-[5px] mobile-show"
+                onClick={() => setIsFilter(!isFilter)}
+              />
             </h5>
             <div className="innerFilter">
               {showAllReports && (
@@ -336,6 +389,7 @@ const RightWrapPage = ({
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button"
+                    onClick={() => onDownload()}
                   >
                     <TooltipComponent
                       content="Click here to download the list of matching resources."
@@ -344,10 +398,10 @@ const RightWrapPage = ({
                     >
                       <div className="flex download-button-inner">
                         Download <BsDownload style={{ marginLeft: 7 }} />
-                        <CsvDownload
+                        {/* <CsvDownload
                           data={returnReports()}
                           filename={"reports.csv"}
-                        />
+                        /> */}
                       </div>
                     </TooltipComponent>
                   </button>
@@ -370,16 +424,17 @@ const RightWrapPage = ({
                 </>
               )}
               {isShareModal ? (
-                <SharePublicationModal toggle={toggleShareModal} />
+                <SharePublicationModal toggle={toggleShareModal} allReports={finalReports} />
               ) : null}
             </h5>
-            <div className="rightInnerWrap">
+            <div className="rightInnerWrap" onScroll={(e) => onScroll(e)}>
               <div className="relative mr-[0px] w-[100%] inline-block">
-                {isFetchingReports ? (
+                {isFetchingReports && !isScrollLoader ? (
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>
-                ) : !allReports?.data?.data?.length ||
+                ) : !reports?.length ||
+                  (!allReports?.data?.data?.length && !showAllReports) ||
                   (!finalPublicationReports?.length &&
                     !finalNonPublicationReports?.length &&
                     !showAllReports) ? (
@@ -513,6 +568,11 @@ const RightWrapPage = ({
                       })}
                   </>
                 )}
+                {isFetchingReports && isScrollLoader ? (
+                  <div className="flex items-center justify-center">
+                    <Loader />
+                  </div>
+                ) : null}
                 {Boolean(reports?.length) && <div style={{ height: 1 }} />}
               </div>
             </div>
