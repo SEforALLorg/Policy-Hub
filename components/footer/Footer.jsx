@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
-      <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[12px] pb-[12px]">
+      <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[12px] pb-[12px] footer-center-wrap">
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left ">
         {/* <p className="mt-[20px]">Web Development by <span
                 className="text-Secondary hover:underline cursor-pointer"

@@ -6,13 +6,19 @@ import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
 
-const LandingPage = () => {
+const LandingPage = ({ setIsDashboardOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [goBottom, setGoBottom] = useState(false);
   const HandleOpen = () => {
     setIsOpen(true);
     setGoBottom(true);
   };
+
+  useEffect(() => {
+    if(isOpen){
+      setIsDashboardOpen(true);
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (goBottom) {
@@ -39,11 +45,14 @@ const LandingPage = () => {
     <>
       <div>
         {/* <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card"> */}
-          <TopCard HandleOpen={HandleOpen} />
+        {/* {!isOpen && */}
+         <TopCard HandleOpen={HandleOpen} />
+         {/* } */}
+
         {/* </div> */}
         {isOpen ? (
           <div
-            className="h-[100vh] flex relative items-center	justify-center bottom-view"
+            className="h-[80vh] flex relative items-center	justify-center bottom-view"
             id="bottom-view"
           >
             <Dashboard

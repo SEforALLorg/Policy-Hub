@@ -49,7 +49,7 @@ const TopCard = ({ HandleOpen }) => {
             </div>
           </div>
         )}
-        <div className={"mt-[24rem] w-[80%]"} ref={cardRef}>
+        <div className={"mt-[24rem] w-[80%] mobile-card-width"} ref={cardRef}>
           <div className="h-[100vh] pt-[10rem] flex items-center card-section-wrap">
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
               <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
@@ -89,7 +89,7 @@ const TopCard = ({ HandleOpen }) => {
             className="h-[100vh] pt-[8rem] inline-flex flex-wrap items-center card-section-wrap "
             ref={ref}
           >
-            <div className="sticky top-[22rem] left-[0px]">
+            <div className="sticky top-[22rem] left-[0px] last-card-fixed">
               <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
                 <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
                   Find{" "}
