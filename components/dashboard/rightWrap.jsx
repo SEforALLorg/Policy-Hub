@@ -384,7 +384,7 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex">
               Resources
-              {!showAllReports && (
+              {/* {!showAllReports && ( */}
                 <>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
@@ -421,7 +421,7 @@ const RightWrapPage = ({
                     </TooltipComponent>
                   </button>
                 </>
-              )}
+              {/* )} */}
               {isShareModal ? (
                 <SharePublicationModal toggle={toggleShareModal} allReports={finalReports} />
               ) : null}

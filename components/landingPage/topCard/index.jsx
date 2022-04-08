@@ -77,7 +77,7 @@ const TopCard = ({ HandleOpen }) => {
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
               <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
                 It currently offers resources on electricity access.{" "}
-                <span className="font-bold text-Secondary px-[6px]">
+                <span className="font-bold text-Secondary">
                   Resources
                 </span>
                 on access to clean cooking, sustainable cooling and energy
