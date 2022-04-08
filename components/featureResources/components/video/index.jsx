@@ -23,6 +23,17 @@ const VideoCard = ({
   const isOpen = title === isVideoCard;
 
   return (
+    <>
+     <ModalVideo
+        channel="youtube"
+        isOpen={isOpen}
+        videoId={link}
+        onClose={() => setIsVideoCard('')}
+        youtube={{
+          autoplay: 1,
+          mute: 1,
+        }}
+      />
     <div
       className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%] videoCard card-animation`}
       onClick={() => {
@@ -31,16 +42,6 @@ const VideoCard = ({
         }
       }}
     >
-      <ModalVideo
-        channel="youtube"
-        isOpen={isOpen}
-        videoId={link}
-        onClose={() => setIsVideoCard(title)}
-        youtube={{
-          autoplay: 1,
-          mute: 1,
-        }}
-      />
       <div className="videoPlayer w-full max-w-full relative">
         <YouTube
           videoId={link}
@@ -77,6 +78,7 @@ const VideoCard = ({
         </p> */}
       </div>
     </div>
+    </>
   );
 };
 

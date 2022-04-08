@@ -233,11 +233,12 @@ const RightWrapPage = ({
     },
   });
 
+  const downloadData = showAllReports ? allReports?.data?.data : finalReports
 
   const onDownload = () => {
     const body = {
       data: {
-        reports: finalReports?.map((i) => i?.id),
+        reports: downloadData?.map((i) => i?.id)
       },
     };
     mutate(body);
@@ -384,11 +385,12 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex">
               Resources
-              {!showAllReports && (
+              {/* {!showAllReports && ( */}
                 <>
                   <button
                     className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button button-animation"
+                  onClick={() => onDownload()}
                   >
                     <TooltipComponent
                       content="Click here to download the list of matching resources."
@@ -421,9 +423,9 @@ const RightWrapPage = ({
                     </TooltipComponent>
                   </button>
                 </>
-              )}
+              {/* )} */}
               {isShareModal ? (
-                <SharePublicationModal toggle={toggleShareModal} allReports={finalReports} />
+                <SharePublicationModal toggle={toggleShareModal} allReports={downloadData} />
               ) : null}
             </h5>
             <div className="rightInnerWrap" onScroll={(e) => onScroll(e)}>

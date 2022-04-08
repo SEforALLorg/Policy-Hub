@@ -83,6 +83,7 @@ a {
   margin-right: 0px;
   width: 80% !important;
   position: fixed;
+  max-width: 1320px;
 }
 
 .cardBigHeading {
@@ -111,6 +112,7 @@ a {
 
 .header .active.nav-link {
   font-weight: 700;
+  color: #FCB600 !important;
 }
 
 .header .nav-link:hover {
@@ -1075,6 +1077,9 @@ a {
   .custom-container {
     max-width: 1140px;
   }
+  .header-title-wrap{
+    max-width: 1140px !important;
+  }
 }
 
 @media only screen and (min-width:1480px) and (max-width: 1680px) {
@@ -1096,11 +1101,17 @@ a {
   .custom-container {
     max-width: 90%;
   }
+  .header-title-wrap{
+    max-width: 90% !important;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .custom-container {
     max-width: 100%;
+  }
+  .header-title-wrap{
+    max-width: 100% !important;
   }
   .header .nav-link {
     font-size: 14px;
@@ -1242,6 +1253,9 @@ a {
 @media only screen and (max-width: 767px) {
   .custom-container {
     max-width: unset;
+  }
+  .header-title-wrap{
+    max-width: unset !important;
   }
   .landing-card {
     height: 100% !important;
