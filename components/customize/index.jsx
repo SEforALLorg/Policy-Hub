@@ -51,13 +51,13 @@ const Customize = ({
             {title}
             {ToolTipText && <TooltipComponent content={ToolTipText} />}
           </div>
-          <div className="flex items-center flex-col max-w-[50%] m-auto">
+          <div className="flex items-center flex-col max-w-[40%] m-auto">
             {singleAnswer?.map((i, index) => (
               <BlueButton
                 title={i?.Answer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
-                className="mb-[20px] h-[80px] text-[23px]"
+                className="mb-[20px] h-[95px] text-[23px]"
               />
             ))}
           </div>

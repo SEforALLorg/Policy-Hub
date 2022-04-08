@@ -38,7 +38,7 @@ const SubscribeComponent = () => {
         <PrimaryButton
           title={"Subscribe"}
           className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-70 laptop:w-70 rounded-full h-[45px] text-center font-bold  text-small leading-5 uppercase  outline-none no-underline no-underline
-                    border-2 border-transparent duration-500  ease-linear transition-all mt-[20px] button-animation`}
+                    border-2 border-transparent duration-500  ease-linear transition-all mt-[20px] button-animation pt-[4px]`}
           onClick={() => setShowModal(true)}
         />
       </div>

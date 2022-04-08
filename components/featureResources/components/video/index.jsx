@@ -24,7 +24,7 @@ const VideoCard = ({
 
   return (
     <div
-      className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%] videoCard`}
+      className={`bg-white resourceShadow rounded-2xl  overflow-hidden w-full h-[100%] videoCard card-animation`}
       onClick={() => {
         if (isOpen) {
           setIsVideoCard("");

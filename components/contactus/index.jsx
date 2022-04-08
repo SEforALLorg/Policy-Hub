@@ -36,7 +36,7 @@ const Contact = () => {
         <div className="flex m-auto justify-between w-4/5 xsm:flex-wrap laptop:flex-nowrap">
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
             }
             heading={"Vienna Office"}
             title={
@@ -49,7 +49,7 @@ const Contact = () => {
           />
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
             }
             heading={"Washington, DC Office"}
             title={
@@ -62,13 +62,13 @@ const Contact = () => {
           />
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
             }
             heading={"New York Office"}
             title={
               <>
                 420 5th Ave
-                <br /> New York,
+                <br /> New York
                 <br /> NY 10018 USA
               </>
             }

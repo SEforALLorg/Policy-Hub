@@ -40,18 +40,6 @@ const About = () => {
               phase, the knowledge hub offers key resources on electricity
               access.
             </p>
-            <p className="break-words not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
-              Further resources to support electrification efforts can be found
-              at{" "}
-              <span
-                className="text-Primary hover:underline cursor-pointer"
-                onClick={() =>
-                  window.open("https://www.electrifyingeconomies.org/")
-                }
-              >
-                electrifyingeconomies.org.
-              </span>
-            </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify">
               Additional pillars of sustainable energy (access to clean cooking,
               sustainable cooling, energy efficiency and renewable energy) will
@@ -146,27 +134,37 @@ const About = () => {
           </div>
         </div>
         <div className="bg-white pt-10 pb-14 px-16 xsm:px-7 mobile:px-10 laptop:px-16">
-          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            Many individuals and organizations contributed in many different
+          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-text mb-base mb-4">
+          <b> Many individuals and organizations contributed in many different
             ways to the creation of the Sustainable Energy for All Knowledge
-            Hub, and we are most grateful for their efforts.
+            Hub, and we are most grateful for their efforts.</b>
           </p>
-          <p className="font-bold text-text mb-[3px] text-[16px]">Curators:</p>
+          <p className="font-bold text-text mb-[3px] text-[20px]">Curators:</p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            Hadley Taylor, Min Hyejung, Niklas Hayek, Anant Wadhwa, and Stephen
-            Kent led the content creation and review on behalf of Sustainable
-            Energy for All (SEforALL).
+            <b>Hadley Taylor</b>, <b>Min Hyejung</b>, <b>Niklas Hayek</b>, <b>Anant Wadhwa</b>, and <b>Stephen
+            Kent</b> led the content creation and review on behalf of <span
+                className="text-Primary hover:underline cursor-pointer"
+                onClick={() =>
+                  window.open("https://www.seforall.org/")
+                }
+              >Sustainable
+            Energy for All</span>.
           </p>
-          <p className="font-bold text-text mb-[3px] text-[16px]">
+          <p className="font-bold text-text mb-[3px] text-[20px]">
             Developers:
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            The website was designed and developed by KeyMouse IT Services. Pvt.
-            Ltd. based in India. KeyMouse IT has significant depth of expertise
+            The website was designed and developed by  <span
+                className="text-Primary hover:underline cursor-pointer"
+                onClick={() =>
+                  window.open("https://www.keymouseit.com/")
+                }
+              >KeyMouse IT Services Pvt. Ltd</span>.
+             based in India. <b>KeyMouse IT</b> has significant depth of expertise
             and experience in delivering web & mobile based technology solutions
             to its clients across various verticals.
           </p>
-          <p className="font-bold text-text mb-[3px] text-[16px]">
+          <p className="font-bold text-text mb-[3px] text-[20px]">
             Contributors:
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">

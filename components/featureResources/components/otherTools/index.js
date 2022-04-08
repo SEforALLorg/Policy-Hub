@@ -11,7 +11,7 @@ const OtherToolsCard = ({
   const isOpen = title === isTitle;
   return (
     <div
-      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full cursor-pointer other-card flex items-center mt-[20px]'}    >
+      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full cursor-pointer other-card flex items-center mt-[20px] card-animation'}    >
       <div className="videoPlayer w-[30%] ">
         <img
           src={image}
@@ -33,7 +33,7 @@ const OtherToolsCard = ({
           className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription"
           style={{
             display: isOpen ? "block" : "",
-            maxHeight: isOpen ? "300px" : "70px",
+            // maxHeight: isOpen ? "300px" : "70px",
             transition: isOpen
               ? "max-height .3s ease-in"
               : "max-height .5s ease-out",
@@ -45,7 +45,7 @@ const OtherToolsCard = ({
           onClick={() => window.open(link)}
           className="bg-lightBlue rounded-[60px] w-full  text-normal text-center
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] mt-[10px]"
+                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] mt-[10px] button-animation"
         >
           Go to tool
         </button>

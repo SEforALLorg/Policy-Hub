@@ -71,7 +71,13 @@ const Footer = () => {
             className="font-medium leading-5 xsm:text-xx text-center text-white mr-6 mb-0
                                   desktoplg:text-small mobile:text-xsmall xsm:w-full mobile:w-max"
           >
-            Powered By Sustainable Energy For All
+            Powered By{" "}
+            <span
+              className="text-Secondary hover:underline cursor-pointer"
+              onClick={() => window.open("https://www.seforall.org/")}
+            >
+              Sustainable Energy For All
+            </span>
           </p>
           <button
             onClick={() => window.open("/allresources", "_self")}
@@ -80,7 +86,7 @@ const Footer = () => {
                                       desktoplg:text-small flex items-center justify-center 
                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full  mobile:text-xsmall
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
-                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px]"
+                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation"
           >
             Browse all resources
           </button>
@@ -90,16 +96,21 @@ const Footer = () => {
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px]"
+                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation"
           >
             Download Decision Tree
           </button>
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
-      <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap">
+      <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[12px] pb-[12px] footer-center-wrap">
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left ">
-          Copyright 2022 Sustainable Energy For All
+          {/* <p className="mt-[20px]">Web Development by <span
+                className="text-Secondary hover:underline cursor-pointer"
+                onClick={() =>
+                  window.open("https://www.keymouseit.com/")
+                }
+              >KeyMouse IT Services Pvt. Ltd</span>.</p> */}
         </p>
         <div
           className="flex w-full items-center small:flex  xsm:mt-6 xsm:block
@@ -123,11 +134,25 @@ const Footer = () => {
             src={"/static/images/dgcs_rettangolare_eng_neg.png"}
             alt="founder"
             className="mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-            onClick={() =>
-              window.open("https://www.esteri.it/en/ministero/")
-            }
+            onClick={() => window.open("https://www.esteri.it/en/ministero/")}
           />
         </div>
+      </div>
+      <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
+      <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[20px] pb-[20px] mt-[10px]">
+        <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left m-[0px]">
+          Web Development by{" "}
+          <span
+            className="text-Secondary hover:underline cursor-pointer"
+            onClick={() => window.open("https://www.keymouseit.com/")}
+          >
+            KeyMouse IT Services Pvt. Ltd
+          </span>
+          .
+        </p>
+        <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-right m-[0px]">
+          Copyright 2022 Sustainable Energy For All
+        </p>
       </div>
     </div>
   );

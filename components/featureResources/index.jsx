@@ -24,10 +24,7 @@ const Feature = () => {
               <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
                 All of the Knowledge Hub’s resources are available here for you
                 to explore. Simply click on the button below to view all the
-                resources and apply filters to narrow your results.
-              </p>
-              <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 mt-[10px] text-justify ">
-                You can also download the filtered resources or you can have
+                resources and apply filters to narrow your results. You can also download the filtered resources or you can have
                 them sent to you via Email.
               </p>
               <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] text-justify">
