@@ -1,17 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "react-query";
 
 import Input from "../input";
 import PrimaryButton from "components/buttons/primarybutton";
-import Loader from "../loader";
 import { ErrorNotify, SuccessNotify } from "../notification";
 import { sendReports } from "../../pages/api/reports";
 
-const ShareAttachment = ({ submitForm, allReports }) => {
+const ShareAttachment = ({
+  submitForm,
+  allReports,
+  selectedFilters,
+  showAllReports,
+  searchTerm,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const { mutate } = useMutation(["sendReports"], sendReports, {
+  const { mutate, isLoading } = useMutation(["sendReports"], sendReports, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);
     },
@@ -30,7 +35,9 @@ const ShareAttachment = ({ submitForm, allReports }) => {
       data: {
         Name: name,
         Email: email,
-        reports: allReports?.map((i) => i?.id),
+        reports: showAllReports ? null : allReports?.map((i) => i?.id),
+        searchTerm : searchTerm || '',
+        filters: selectedFilters,
       },
     };
     mutate(body);
@@ -58,10 +65,7 @@ const ShareAttachment = ({ submitForm, allReports }) => {
 
         <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
           <PrimaryButton
-            title={
-              // status === "sending" ? <Loader /> :
-              "submit"
-            }
+            title={"submit"}
             className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-bold text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
                     border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
             disabled={!name || !email}

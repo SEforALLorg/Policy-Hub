@@ -52,11 +52,11 @@ const TopCard = ({ HandleOpen }) => {
         <div className={"mt-[24rem] w-[80%] mobile-card-width"} ref={cardRef}>
           <div className="h-[100vh] pt-[10rem] flex items-center card-section-wrap">
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
-                The SEforALL{" "}
+              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
+                The SEforALL{""}
                 <span className="font-bold text-Secondary px-[6px]">
                   Knowledge Hub
-                </span>{" "}
+                </span>{""}
                 is an interactive platform that supports policymakers in
                 developing policy and regulatory frameworks for sustainable
                 energy.
@@ -65,8 +65,8 @@ const TopCard = ({ HandleOpen }) => {
           </div>
           <div className="h-[100vh] pt-[8rem] flex items-center card-section-wrap">
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
-                With the right policies and regulations, <span className="font-bold text-Secondary px-[6px]">affordable and clean
+              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
+                With the right policies and regulations,<span className="font-bold text-Secondary pl-[6px]">affordable and clean
                 energy for all is possible</span>. The Knowledge Hub contains leading
                 resources, which have been identified by stakeholders from
                 across the energy sector.
@@ -75,12 +75,11 @@ const TopCard = ({ HandleOpen }) => {
           </div>
           <div className="h-[100vh] pt-[8rem] flex items-center card-section-wrap">
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
+              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
                 It currently offers resources on electricity access.{" "}
                 <span className="font-bold text-Secondary">
-                  Resources
-                </span>
-                on access to clean cooking, sustainable cooling and energy
+                  Resources 
+                </span>{' '}on access to clean cooking, sustainable cooling and energy
                 efficiency will be added soon.
               </p>
             </div>
@@ -91,11 +90,11 @@ const TopCard = ({ HandleOpen }) => {
           >
             <div className="sticky top-[22rem] left-[0px] last-card-fixed">
               <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-                <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1">
-                  Find{" "}
+                <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
+                  Find
                   <span className="font-bold text-Secondary px-[6px]">
                     guidelines, tools and templates
-                  </span>{" "}
+                  </span>
                   on electricity access relevant to your country and matched to
                   your needs.
                 </p>

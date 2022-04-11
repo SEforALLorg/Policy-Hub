@@ -73,9 +73,28 @@ const LeftWrapPage = ({
     setStepQuestion([]);
   };
 
-  const onSolarClick = () => {
-    setNextQuestionId(16);
-    setUserJourney(userJourney.splice(0, 2));
+  const onStandaloneClick = () => {
+    setNextQuestionId(24);
+    setUserJourney([
+      ...userJourney.splice(0, 2),
+      {
+        questionName: "Review policy and regulatory  framework to reflect NES",
+        answer: "Standalone systems",
+      },
+    ]);
+    setStepQuestion([]);
+  };
+
+  const onMiniClick = () => {
+    setNextQuestionId(18);
+    setUserJourney([
+      ...userJourney.splice(0, 2),
+      {
+        questionName: "Review policy and regulatory  framework to reflect NES",
+        answer: "Mini-grid",
+      },
+    ]);
+    setStepQuestion([]);
   };
 
   return (
@@ -108,10 +127,9 @@ const LeftWrapPage = ({
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
               <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
-                {
+                {item?.questionName ||
                   item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question
-                }
+                    ?.Question}
               </p>
             </p>
             <button className="yesButton">
@@ -148,7 +166,8 @@ const LeftWrapPage = ({
         <>
           <CompletedSteps
             onRestart={() => onRestart()}
-            onSolar={() => onSolarClick()}
+            onStandaloneClick={() => onStandaloneClick()}
+            onMiniClick={() => onMiniClick()}
           />
         </>
       ) : questions?.length ? (

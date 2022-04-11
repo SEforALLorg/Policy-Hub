@@ -11,7 +11,7 @@ const OtherToolsCard = ({
   const isOpen = title === isTitle;
   return (
     <div
-      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full cursor-pointer other-card flex items-center mt-[20px] card-animation'}    >
+      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex items-center mt-[20px] card-animation'}    >
       <div className="videoPlayer w-[30%] ">
         <img
           src={image}

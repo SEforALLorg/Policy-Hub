@@ -91,7 +91,7 @@ const Contact = () => {
             ALL Knowledge Hub and across the sustainable energy movement. We'll
             send you our regular updates, plus special news and event invites.
             If you would like to recommend a publication to be included in the
-            SEforALL Knowledge Hub, please send us an e- mail at{" "}
+            SEforALL Knowledge Hub, please send us an e-mail at{" "}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
               onClick={() => window.open("mailto:KnowledgeHub@SEforALL.org")}

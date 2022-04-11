@@ -683,6 +683,7 @@ a {
   border: none;
   font-size: 10px;
   color: #13a6bf;
+  margin-left: 10px;
 }
 
 .checkWrap .container {
@@ -1278,15 +1279,47 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
+  #wrapper{
+    display: none !important;
+  }
   .custom-container {
     max-width: unset;
   }
+  .powered-text{
+    margin-right: 0px !important;
+  }
+  .report-bottom-box{
+    width: 51px !important;
+  }
+  .report-bottom-box img{
+    width: 15px;
+    height: 15px;
+  }
+  .close-icon{
+    position: absolute;
+    right: 20px;
+  }
   .header-title-wrap{
-    max-width: unset !important;
+    /* max-width: unset !important; */
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -o-sticky;
+    position: -ms-sticky;
     position: sticky;
     left: 0px !important;
     transform: unset !important;
     width: 100% !important;
+    max-width: 100% !important;
+    overflow: auto !important;
+    height: 100%;
+  }
+  .resource-buttons{
+    position: relative !important;
+    align-items: center;
+  }
+  .resource-buttons-wrap{
+    justify-content: flex-end;
+    overflow: hidden;
   }
   .landing-card {
     height: 100% !important;
@@ -1306,7 +1339,7 @@ a {
     top: 5rem !important;
   }
   .mobile-card-width{
-    width: 100% !important;
+    width: 90% !important;
     margin-top: 0rem !important;
   }
   .cardBigHeading br{
@@ -1528,6 +1561,26 @@ a {
   }
   .public-share-modal{
     width: 100% !important;
+  }
+  .footer-button{
+    width: 100% !important;
+  }
+  .resources-button{
+    margin: 0px !important;
+    margin-top: 0px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin-left: 5px !important;
+  }
+  .complete-buttons-wrap{
+    flex-wrap: wrap;
+  }
+  .card-bottom-wrap span{
+    margin: 0px 4px;
+  }
+  .go-report-btn{
+    padding: 5px 2px;
+    width: 70px;
   }
 }
 @media only screen and (max-width: 400px) {

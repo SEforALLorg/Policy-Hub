@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import qs from "qs";
-import CsvDownload from "react-json-to-csv";
 import { BsDownload } from "react-icons/bs";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
-import { getFormattedData } from "utilities";
+import { getFormattedData, getReportQuery } from "utilities";
 import { Flags } from "constant/flags";
 import { ErrorNotify } from "components/notification";
 import Select from "components/select";
@@ -40,70 +39,22 @@ const RightWrapPage = ({
   const [page, setPage] = useState(1);
   const debouncedSearch = useDebounce(search, 500);
 
+  // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
       ErrorNotify(error.response.data.error.message);
     },
   });
 
-  let filters = {};
-  if (filtersData?.data?.results) {
-    filters = filtersData?.data?.results;
-  }
-
-  const toggleShareModal = () => {
-    setShareModal(!isShareModal);
-  };
-
+  // Get Reports API
   const query = useMemo(() => {
-    return qs.stringify({
-      pagination: {
-        page: page,
-        pageSize: 20,
-      },
-      filters: {
-        id: {
-          $in: [...nonPublicationReports, ...publicationReports].map(
-            (i) => i?.id
-          ),
-        },
-        ReportName: {
-          $containsi: debouncedSearch,
-        },
-        AddFilters: {
-          countries: {
-            id: {
-              $in: selectInputs?.countries,
-            },
-          },
-          regions: {
-            id: {
-              $in: selectInputs?.regions,
-            },
-          },
-          segments: {
-            id: {
-              $in: selectInputs?.segments,
-            },
-          },
-          document_types: {
-            id: {
-              $in: selectInputs?.document_types,
-            },
-          },
-          years: {
-            id: {
-              $in: selectInputs?.years,
-            },
-          },
-          generation_sources: {
-            id: {
-              $in: selectInputs?.generation_sources,
-            },
-          },
-        },
-      },
-    });
+    getReportQuery(
+      selectInputs,
+      nonPublicationReports,
+      publicationReports,
+      page,
+      debouncedSearch
+    );
   }, [selectInputs, nonPublicationReports, publicationReports]);
 
   const { data: allReports, isFetching: isFetchingReports } = useQuery(
@@ -115,6 +66,16 @@ const RightWrapPage = ({
       },
     }
   );
+
+  let filters = {};
+
+  if (filtersData?.data?.results) {
+    filters = filtersData?.data?.results;
+  }
+
+  const toggleShareModal = () => {
+    setShareModal(!isShareModal);
+  };
 
   const finalPublicationReports = publicationReports?.map((publishedReport) => {
     const report = allReports?.data?.data?.find(
@@ -193,27 +154,6 @@ const RightWrapPage = ({
     ...finalPublicationReports,
   ];
 
-  const returnReports = () => {
-    const data = finalReports.map((item) => {
-      const countries =
-        item?.attributes?.AddFilters?.countries?.data[0]?.attributes
-          ?.CountryName;
-      const publishing_organizations =
-        item?.attributes?.AddFilters?.publishing_organizations?.data[0]
-          ?.attributes?.PublishingOrganization;
-      const years =
-        item?.attributes?.AddFilters?.years?.data[0]?.attributes?.Year;
-      return {
-        "Report Name": item?.attributes?.ReportName,
-        Source: item?.attributes?.URL,
-        Countries: countries || "-",
-        "Publishing Organization(s)": publishing_organizations || "-",
-        Year: years || "-",
-      };
-    });
-    return data;
-  };
-
   const onScroll = (e) => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
@@ -229,16 +169,27 @@ const RightWrapPage = ({
       ErrorNotify(error.response.data.error.message);
     },
     onSuccess: (e) => {
-      console.log(e, "e");
+      console.log(e?.data?.result?.csv, "e");
     },
   });
 
-  const downloadData = showAllReports ? allReports?.data?.data : finalReports
+  const downloadData = showAllReports ? allReports?.data?.data : finalReports;
+
+  const selectedFilters = {
+    countries: selectInputs?.countries,
+    regions: selectInputs?.regions,
+    segments: selectInputs?.segments,
+    document_types: selectInputs?.document_types,
+    years: selectInputs?.years,
+    generation_sources: selectInputs?.generation_sources,
+  };
 
   const onDownload = () => {
     const body = {
       data: {
-        reports: downloadData?.map((i) => i?.id)
+        reports: downloadData?.map((i) => i?.id),
+        searchTerm: search || '',
+        filters: selectedFilters,
       },
     };
     mutate(body);
@@ -383,49 +334,51 @@ const RightWrapPage = ({
             className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex">
-              Resources
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons">
+              <p>Resources</p>
               {/* {!showAllReports && ( */}
-                <>
-                  <button
-                    className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-auto mt-[-20px] pt-[4px] resources-button button-animation"
+              <div className="flex resource-buttons-wrap">
+                <button
+                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button button-animation"
                   onClick={() => onDownload()}
+                >
+                  <TooltipComponent
+                    content="Click here to download the list of matching resources."
+                    hideInfo={true}
+                    top={true}
                   >
-                    <TooltipComponent
-                      content="Click here to download the list of matching resources."
-                      hideInfo={true}
-                      top={true}
-                    >
-                      <div className="flex download-button-inner">
-                        Download <BsDownload style={{ marginLeft: 7 }} />
-                        {/* <CsvDownload
-                          data={returnReports()}
-                          filename={"reports.csv"}
-                        /> */}
-                      </div>
-                    </TooltipComponent>
-                  </button>
-                  <button
-                    className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+                    <div className="flex download-button-inner">
+                      Download <BsDownload style={{ marginLeft: 7 }} />
+                    </div>
+                  </TooltipComponent>
+                </button>
+                <button
+                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button button-animation"
-                    onClick={toggleShareModal}
+                  onClick={toggleShareModal}
+                >
+                  <TooltipComponent
+                    content="Click to receive a list matching resources via Email."
+                    hideInfo={true}
+                    top={true}
                   >
-                    <TooltipComponent
-                      content="Click to receive a list matching resources via Email."
-                      hideInfo={true}
-                      top={true}
-                    >
-                      <div className="flex">
-                        {" "}
-                        Email <AiOutlineMail style={{ marginLeft: 7 }} />
-                      </div>
-                    </TooltipComponent>
-                  </button>
-                </>
+                    <div className="flex">
+                      {" "}
+                      Email <AiOutlineMail style={{ marginLeft: 7 }} />
+                    </div>
+                  </TooltipComponent>
+                </button>
+              </div>
               {/* )} */}
               {isShareModal ? (
-                <SharePublicationModal toggle={toggleShareModal} allReports={downloadData} />
+                <SharePublicationModal
+                  toggle={toggleShareModal}
+                  allReports={downloadData}
+                  selectedFilters={selectedFilters}
+                  showAllReports={showAllReports}
+                  searchTerm={search}
+                />
               ) : null}
             </h5>
             <div className="rightInnerWrap" onScroll={(e) => onScroll(e)}>
