@@ -19,6 +19,7 @@ export const getFormattedData = (unFormattedData) => {
   return formattedData?.sort((a, b) => a?.label?.localeCompare(b?.label));
 };
 
+// Get Reports Params
 export const getReportQuery = ({
   selectInputs,
   nonPublicationReports,
@@ -77,4 +78,15 @@ export const getReportQuery = ({
     },
   });
   return query;
+};
+
+export const isSelectedFilters = ({ selectInputs }) => {
+  const isSelected =
+    selectInputs?.regions?.length ||
+    selectInputs?.countries?.length ||
+    selectInputs?.segments?.length ||
+    selectInputs?.document_types?.length ||
+    selectInputs?.years?.length ||
+    selectInputs?.generation_sources?.length;
+  return isSelected;
 };

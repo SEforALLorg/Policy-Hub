@@ -18,6 +18,7 @@ import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import useDebounce from "../../utilities/useDebounce";
 import { downloadReports } from "../../pages/api/reports";
+import { isSelectedFilters } from "../../utilities";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -67,16 +68,23 @@ const RightWrapPage = ({
     }
   );
 
-  let filters = {};
+  // Download Csv
+  const { mutate } = useMutation(["downloadReports"], downloadReports, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+    onSuccess: (e) => {
+      console.log(e?.data?.result?.csv, "e");
+    },
+  });
 
+  // All Filters
+  let filters = {};
   if (filtersData?.data?.results) {
     filters = filtersData?.data?.results;
   }
 
-  const toggleShareModal = () => {
-    setShareModal(!isShareModal);
-  };
-
+  // Publication Reports
   const finalPublicationReports = publicationReports?.map((publishedReport) => {
     const report = allReports?.data?.data?.find(
       (i) => i.id === publishedReport.id
@@ -84,6 +92,7 @@ const RightWrapPage = ({
     return report;
   });
 
+  // on Publication Reports
   const finalNonPublicationReports = nonPublicationReports?.map(
     (nonPublishedReport) => {
       const report = allReports?.data?.data?.find(
@@ -92,6 +101,13 @@ const RightWrapPage = ({
       return report;
     }
   );
+
+  // Share email modal
+  const toggleShareModal = () => {
+    setShareModal(!isShareModal);
+  };
+
+  // Filter onChange
   const onChange = (e) => {
     const obj = { ...selectInputs };
     const revisedCountryList = obj[e.target.name];
@@ -141,13 +157,10 @@ const RightWrapPage = ({
     setPreviousReports([]);
   };
 
-  const optionSelected =
-    selectInputs?.regions?.length ||
-    selectInputs?.countries?.length ||
-    selectInputs?.segments?.length ||
-    selectInputs?.document_types?.length ||
-    selectInputs?.years?.length ||
-    selectInputs?.generation_sources?.length;
+  const optionSelected = isSelectedFilters(selectInputs);
+
+  console.log(optionSelected,'optionSelected');
+  
 
   const finalReports = !showAllReports && [
     ...reports,
@@ -164,15 +177,6 @@ const RightWrapPage = ({
     }
   };
 
-  const { mutate } = useMutation(["downloadReports"], downloadReports, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-    onSuccess: (e) => {
-      console.log(e?.data?.result?.csv, "e");
-    },
-  });
-
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
 
   const selectedFilters = {
@@ -188,7 +192,7 @@ const RightWrapPage = ({
     const body = {
       data: {
         reports: downloadData?.map((i) => i?.id),
-        searchTerm: search || '',
+        searchTerm: search || "",
         filters: selectedFilters,
       },
     };
