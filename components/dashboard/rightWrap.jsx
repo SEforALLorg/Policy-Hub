@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "react-query";
-import qs from "qs";
 import { BsDownload } from "react-icons/bs";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { getFormattedData, getReportQuery } from "utilities";
@@ -18,7 +17,8 @@ import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import useDebounce from "../../utilities/useDebounce";
 import { downloadReports } from "../../pages/api/reports";
-import { isSelectedFilters } from "../../utilities";
+import DownloadCsv from "../downloadCsv";
+
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -74,7 +74,10 @@ const RightWrapPage = ({
       ErrorNotify(error.response.data.error.message);
     },
     onSuccess: (e) => {
-      console.log(e?.data?.result?.csv, "e");
+      const csvData = e?.data?.result?.csv
+      if(csvData){
+        <DownloadCsv csvData={csvData} />
+      }
     },
   });
 
@@ -157,10 +160,12 @@ const RightWrapPage = ({
     setPreviousReports([]);
   };
 
-  const optionSelected = isSelectedFilters(selectInputs);
-
-  console.log(optionSelected,'optionSelected');
-  
+  const optionSelected = selectInputs?.regions?.length ||
+    selectInputs?.countries?.length ||
+    selectInputs?.segments?.length ||
+    selectInputs?.document_types?.length ||
+    selectInputs?.years?.length ||
+    selectInputs?.generation_sources?.length;
 
   const finalReports = !showAllReports && [
     ...reports,
