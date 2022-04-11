@@ -146,7 +146,7 @@ const Footer = () => {
             className="text-Secondary hover:underline cursor-pointer"
             onClick={() => window.open("https://www.keymouseit.com/")}
           >
-            KeyMouse IT Services Pvt. Ltd.
+            KeyMouse IT
           </span>
         </p>
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-right m-[0px]">
