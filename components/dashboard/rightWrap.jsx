@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
-import qs from "qs";
 import { BsDownload } from "react-icons/bs";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { getFormattedData, getReportQuery } from "utilities";
@@ -18,6 +17,7 @@ import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import useDebounce from "../../utilities/useDebounce";
 import { downloadReports } from "../../pages/api/reports";
+import { CSVLink } from "react-csv";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -37,7 +37,9 @@ const RightWrapPage = ({
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
+  const [csvData, setCsvData] = useState("");
   const debouncedSearch = useDebounce(search, 500);
+  const csvLink = useRef();
 
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
@@ -67,16 +69,27 @@ const RightWrapPage = ({
     }
   );
 
-  let filters = {};
+  // Download Csv
+  const { mutate } = useMutation(["downloadReports"], downloadReports, {
+    onError: (error) => {
+      ErrorNotify(error.response.data.error.message);
+    },
+    onSuccess: (e) => {
+      const csvData = e?.data?.result?.csv;
+      if (csvData) {
+        setCsvData(csvData);
+        csvLink.current.link.click();
+      }
+    },
+  });
 
+  // All Filters
+  let filters = {};
   if (filtersData?.data?.results) {
     filters = filtersData?.data?.results;
   }
 
-  const toggleShareModal = () => {
-    setShareModal(!isShareModal);
-  };
-
+  // Publication Reports
   const finalPublicationReports = publicationReports?.map((publishedReport) => {
     const report = allReports?.data?.data?.find(
       (i) => i.id === publishedReport.id
@@ -84,6 +97,7 @@ const RightWrapPage = ({
     return report;
   });
 
+  // on Publication Reports
   const finalNonPublicationReports = nonPublicationReports?.map(
     (nonPublishedReport) => {
       const report = allReports?.data?.data?.find(
@@ -92,6 +106,13 @@ const RightWrapPage = ({
       return report;
     }
   );
+
+  // Share email modal
+  const toggleShareModal = () => {
+    setShareModal(!isShareModal);
+  };
+
+  // Filter onChange
   const onChange = (e) => {
     const obj = { ...selectInputs };
     const revisedCountryList = obj[e.target.name];
@@ -164,15 +185,6 @@ const RightWrapPage = ({
     }
   };
 
-  const { mutate } = useMutation(["downloadReports"], downloadReports, {
-    onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
-    },
-    onSuccess: (e) => {
-      console.log(e?.data?.result?.csv, "e");
-    },
-  });
-
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
 
   const selectedFilters = {
@@ -185,10 +197,11 @@ const RightWrapPage = ({
   };
 
   const onDownload = () => {
+    setCsvData("");
     const body = {
       data: {
         reports: downloadData?.map((i) => i?.id),
-        searchTerm: search || '',
+        searchTerm: search || "",
         filters: selectedFilters,
       },
     };
@@ -197,6 +210,13 @@ const RightWrapPage = ({
 
   return (
     <>
+      <CSVLink
+        data={csvData}
+        filename="reports.csv"
+        className="hidden"
+        ref={csvLink}
+        target="_blank"
+      />
       {isOpen ? (
         <div className="rightOverlay" onClick={() => setIsOpen()} />
       ) : null}

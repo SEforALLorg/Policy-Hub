@@ -19,6 +19,7 @@ export const getFormattedData = (unFormattedData) => {
   return formattedData?.sort((a, b) => a?.label?.localeCompare(b?.label));
 };
 
+// Get Reports Params
 export const getReportQuery = ({
   selectInputs,
   nonPublicationReports,
