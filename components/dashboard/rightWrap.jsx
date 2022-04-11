@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { BsDownload } from "react-icons/bs";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
@@ -17,8 +17,7 @@ import { FaFilter } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import useDebounce from "../../utilities/useDebounce";
 import { downloadReports } from "../../pages/api/reports";
-import DownloadCsv from "../downloadCsv";
-
+import { CSVLink } from "react-csv";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -38,7 +37,9 @@ const RightWrapPage = ({
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
+  const [csvData, setCsvData] = useState("");
   const debouncedSearch = useDebounce(search, 500);
+  const csvLink = useRef();
 
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
@@ -74,9 +75,10 @@ const RightWrapPage = ({
       ErrorNotify(error.response.data.error.message);
     },
     onSuccess: (e) => {
-      const csvData = e?.data?.result?.csv
-      if(csvData){
-        <DownloadCsv csvData={csvData} />
+      const csvData = e?.data?.result?.csv;
+      if (csvData) {
+        setCsvData(csvData);
+        csvLink.current.link.click();
       }
     },
   });
@@ -160,7 +162,8 @@ const RightWrapPage = ({
     setPreviousReports([]);
   };
 
-  const optionSelected = selectInputs?.regions?.length ||
+  const optionSelected =
+    selectInputs?.regions?.length ||
     selectInputs?.countries?.length ||
     selectInputs?.segments?.length ||
     selectInputs?.document_types?.length ||
@@ -194,6 +197,7 @@ const RightWrapPage = ({
   };
 
   const onDownload = () => {
+    setCsvData("");
     const body = {
       data: {
         reports: downloadData?.map((i) => i?.id),
@@ -206,6 +210,13 @@ const RightWrapPage = ({
 
   return (
     <>
+      <CSVLink
+        data={csvData}
+        filename="reports.csv"
+        className="hidden"
+        ref={csvLink}
+        target="_blank"
+      />
       {isOpen ? (
         <div className="rightOverlay" onClick={() => setIsOpen()} />
       ) : null}

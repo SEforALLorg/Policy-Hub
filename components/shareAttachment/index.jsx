@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useMutation } from "react-query";
 
 import Input from "../input";
+import Loader from 'components/loader'
 import PrimaryButton from "components/buttons/primarybutton";
 import { ErrorNotify, SuccessNotify } from "../notification";
 import { sendReports } from "../../pages/api/reports";
@@ -21,7 +22,7 @@ const ShareAttachment = ({
       ErrorNotify(error.response.data.error.message);
     },
     onSuccess: (e) => {
-      if (e?.data?.result?.status) {
+      if (e?.data?.result?.msg) {
         SuccessNotify(e?.data?.result?.msg);
         setName("");
         setEmail("");
@@ -65,7 +66,7 @@ const ShareAttachment = ({
 
         <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
           <PrimaryButton
-            title={"submit"}
+            title={isLoading ? <Loader /> : "submit"}
             className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-bold text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
                     border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
             disabled={!name || !email}
