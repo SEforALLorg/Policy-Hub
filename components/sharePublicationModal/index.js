@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import ShareAttachment from "../shareAttachment";
 
-const SharePublicationModal = ({ toggle, allReports }) => {
+const SharePublicationModal = ({ toggle, allReports, selectedFilters, showAllReports, searchTerm }) => {
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -34,6 +34,9 @@ const SharePublicationModal = ({ toggle, allReports }) => {
               <ShareAttachment
                 submitForm={() => toggle()}
                 allReports={allReports}
+                selectedFilters={selectedFilters}
+                showAllReports={showAllReports}
+                searchTerm={searchTerm}
               />
             </div>
             <div className="complete-buttonWrap">

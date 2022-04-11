@@ -20,8 +20,8 @@ const Footer = () => {
               window.open("https://www.facebook.com/sustainableenergyforall")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full text-white mr-4 hover:text-blue hover:bg-white
-                                 hover:border hover:border-blue ease-linear transition-all duration-500"
+            cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+            hover:border hover:border-blue ease-linear transition-all duration-500"
           >
             <FaFacebookF className="extrasmall:text-medium xsm:text-xsmall hover:text-blue" />
           </div>
@@ -56,7 +56,7 @@ const Footer = () => {
               window.open("https://www.youtube.com/SEforALL/featured")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon hover:text-blue hover:bg-white
                                  hover:border-blue ease-linear transition-all duration-500"
           >
             <FaYoutube className="extrasmall:text-medium xsm:text-xsmall  hover:text-blue" />
@@ -69,7 +69,7 @@ const Footer = () => {
         >
           <p
             className="font-medium leading-5 xsm:text-xx text-center text-white mr-6 mb-0
-                                  desktoplg:text-small mobile:text-xsmall xsm:w-full mobile:w-max"
+                                  desktoplg:text-small mobile:text-xsmall xsm:w-full mobile:w-max powered-text"
           >
             Powered By{" "}
             <span
@@ -86,7 +86,7 @@ const Footer = () => {
                                       desktoplg:text-small flex items-center justify-center 
                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full  mobile:text-xsmall
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
-                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation"
+                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation footer-button"
           >
             Browse all resources
           </button>
@@ -96,7 +96,7 @@ const Footer = () => {
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation"
+                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] footer-button button-animation"
           >
             Download Decision Tree
           </button>
