@@ -1582,6 +1582,9 @@ a {
     padding: 5px 2px;
     width: 70px;
   }
+  .tooltipWrap .content{
+    width: 190px;
+  }
 }
 @media only screen and (max-width: 400px) {
   .videoPlayer
