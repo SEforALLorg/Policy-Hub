@@ -1,8 +1,12 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { CSVLink } from "react-csv";
 import { useMutation, useQuery } from "react-query";
 import { BsDownload } from "react-icons/bs";
+import { FaFilter } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { getFormattedData, getReportQuery } from "utilities";
+import useDebounce from "utilities/useDebounce";
 import { Flags } from "constant/flags";
 import { ErrorNotify } from "components/notification";
 import Select from "components/select";
@@ -11,13 +15,8 @@ import Loader from "components/loader";
 import SearchBar from "components/searchBar/search";
 import SharePublicationModal from "components/sharePublicationModal";
 import TooltipComponent from "components/tooltip";
-import { getReports } from "pages/api/reports";
+import { getReports, downloadReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
-import { FaFilter } from "react-icons/fa";
-import { IoClose } from "react-icons/io5";
-import useDebounce from "../../utilities/useDebounce";
-import { downloadReports } from "../../pages/api/reports";
-import { CSVLink } from "react-csv";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -48,14 +47,21 @@ const RightWrapPage = ({
     },
   });
 
+  // All Filters
+  let filters = {};
+  if (filtersData?.data?.results) {
+    filters = filtersData?.data?.results;
+  }
+
   // Get Reports API
   const query = useMemo(() => {
-    getReportQuery(
+   return getReportQuery(
       selectInputs,
       nonPublicationReports,
       publicationReports,
       page,
-      debouncedSearch
+      debouncedSearch,
+      showAllReports
     );
   }, [selectInputs, nonPublicationReports, publicationReports]);
 
@@ -83,11 +89,26 @@ const RightWrapPage = ({
     },
   });
 
-  // All Filters
-  let filters = {};
-  if (filtersData?.data?.results) {
-    filters = filtersData?.data?.results;
-  }
+  // Download CSV
+  const selectedFilters = {
+    countries: selectInputs?.countries,
+    regions: selectInputs?.regions,
+    segments: selectInputs?.segments,
+    document_types: selectInputs?.document_types,
+    years: selectInputs?.years,
+    generation_sources: selectInputs?.generation_sources,
+  };
+  const onDownload = () => {
+    setCsvData("");
+    const body = {
+      data: {
+        reports: downloadData?.map((i) => i?.id),
+        searchTerm: search || "",
+        filters: selectedFilters,
+      },
+    };
+    mutate(body);
+  };
 
   // Publication Reports
   const finalPublicationReports = publicationReports?.map((publishedReport) => {
@@ -162,6 +183,16 @@ const RightWrapPage = ({
     setPreviousReports([]);
   };
 
+  const onScroll = (e) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
+      setPage(page + 1);
+      setPreviousReports([...reports]);
+      setIsScrollLoader(true);
+    }
+  };
+
   const optionSelected =
     selectInputs?.regions?.length ||
     selectInputs?.countries?.length ||
@@ -175,38 +206,7 @@ const RightWrapPage = ({
     ...finalPublicationReports,
   ];
 
-  const onScroll = (e) => {
-    const bottom =
-      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
-    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
-      setPage(page + 1);
-      setPreviousReports([...reports]);
-      setIsScrollLoader(true);
-    }
-  };
-
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
-
-  const selectedFilters = {
-    countries: selectInputs?.countries,
-    regions: selectInputs?.regions,
-    segments: selectInputs?.segments,
-    document_types: selectInputs?.document_types,
-    years: selectInputs?.years,
-    generation_sources: selectInputs?.generation_sources,
-  };
-
-  const onDownload = () => {
-    setCsvData("");
-    const body = {
-      data: {
-        reports: downloadData?.map((i) => i?.id),
-        searchTerm: search || "",
-        filters: selectedFilters,
-      },
-    };
-    mutate(body);
-  };
 
   return (
     <>
@@ -356,7 +356,6 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons">
               <p>Resources</p>
-              {/* {!showAllReports && ( */}
               <div className="flex resource-buttons-wrap">
                 <button
                   className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
@@ -390,7 +389,6 @@ const RightWrapPage = ({
                   </TooltipComponent>
                 </button>
               </div>
-              {/* )} */}
               {isShareModal ? (
                 <SharePublicationModal
                   toggle={toggleShareModal}

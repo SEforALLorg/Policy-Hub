@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation } from "react-query";
 
 import Input from "../input";
-import Loader from 'components/loader'
+import Loader from "components/loader";
 import PrimaryButton from "components/buttons/primarybutton";
 import { ErrorNotify, SuccessNotify } from "../notification";
 import { sendReports } from "../../pages/api/reports";
@@ -16,6 +16,8 @@ const ShareAttachment = ({
 }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
   const { mutate, isLoading } = useMutation(["sendReports"], sendReports, {
     onError: (error) => {
@@ -36,11 +38,14 @@ const ShareAttachment = ({
       data: {
         Name: name,
         Email: email,
-        reports: showAllReports ? null : allReports?.map((i) => i?.id),
-        searchTerm : searchTerm || '',
+        reports: showAllReports ? [] : allReports?.map((i) => i?.id),
+        searchTerm: searchTerm || "",
         filters: selectedFilters,
       },
     };
+    if (!regex.test(email)) {
+      return ErrorNotify("Invalid email address");
+    }
     mutate(body);
   };
 

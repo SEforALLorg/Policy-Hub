@@ -18,6 +18,7 @@ const VideoCard = ({
       rel: 1,
       iv_load_policy: 3,
       cc_load_policy: 1,
+      mute: 1,
     },
   };
   const isOpen = title === isVideoCard;
