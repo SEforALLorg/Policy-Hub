@@ -20,14 +20,15 @@ export const getFormattedData = (unFormattedData) => {
 };
 
 // Get Reports Params
-export const getReportQuery = ({
+export const getReportQuery = (
   selectInputs,
   nonPublicationReports,
   publicationReports,
   page,
   debouncedSearch,
-}) => {
-  if (!nonPublicationReports?.length && !publicationReports?.length)
+  showAllReports
+) => {
+  if (!nonPublicationReports?.length && !publicationReports?.length && !showAllReports)
     return null;
   const query = qs.stringify({
     pagination: {

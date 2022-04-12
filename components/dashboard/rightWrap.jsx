@@ -55,12 +55,13 @@ const RightWrapPage = ({
 
   // Get Reports API
   const query = useMemo(() => {
-    getReportQuery(
+   return getReportQuery(
       selectInputs,
       nonPublicationReports,
       publicationReports,
       page,
-      debouncedSearch
+      debouncedSearch,
+      showAllReports
     );
   }, [selectInputs, nonPublicationReports, publicationReports]);
 
