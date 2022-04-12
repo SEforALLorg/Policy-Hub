@@ -793,7 +793,7 @@ a {
 .tooltipWrap .content {
   visibility: hidden;
   opacity: 0;
-  width: 290px;
+  width: 250px;
   box-shadow: 0px 0px 8px -4px #000;
   position: absolute;
   left: 50%;
@@ -959,6 +959,18 @@ a {
   /* box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px; */
     transform: translateY(-5px);
     transition: .5s all cubic-bezier(0.25, 0.1, 0, 1.01);
+}
+
+.customize-title .tooltipWrap svg{
+  font-size: 37px;
+}
+
+.customize-title .tooltipWrap .content{
+  width: 500px;
+  font-size: 25px;
+  line-height: 35px;
+  top:41px;
+  padding: 15px;
 }
 
 @media only screen and (min-width: 1680px) {
