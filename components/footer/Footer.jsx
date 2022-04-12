@@ -106,7 +106,7 @@ const Footer = () => {
               Sustainable Energy For All
             </span>
           </p>
-          <button
+          {/* <button
             onClick={() => window.open("/allresources", "_self")}
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
                                       border leading-5 border-white rounded-[42px] bg-transparent 
@@ -116,7 +116,7 @@ const Footer = () => {
                                       hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation footer-button"
           >
             Subscribe
-          </button>
+          </button> */}
           <button
             onClick={() => window.open("/allresources", "_self")}
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
