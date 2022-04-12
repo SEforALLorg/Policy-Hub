@@ -36,7 +36,7 @@ const ShareAttachment = ({
       data: {
         Name: name,
         Email: email,
-        reports: showAllReports ? null : allReports?.map((i) => i?.id),
+        reports: showAllReports ? [] : allReports?.map((i) => i?.id),
         searchTerm : searchTerm || '',
         filters: selectedFilters,
       },
