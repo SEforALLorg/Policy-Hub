@@ -10,6 +10,7 @@ const Resources = () => {
     <main>
        <Head>
         <title>Sustainable Energy for All | Knowledge Hub | All Resources</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
       </Head>
       <div className='p-[10px]'>
       <div className="custom-container mx-auto">

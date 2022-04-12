@@ -134,33 +134,39 @@ const About = () => {
           </div>
         </div>
         <div className="bg-white pt-10 pb-14 px-16 xsm:px-7 mobile:px-10 laptop:px-16">
-          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-text mb-base mb-4">
-          <b> Many individuals and organizations contributed in many different
-            ways to the creation of the Sustainable Energy for All Knowledge
-            Hub, and we are most grateful for their efforts.</b>
+          <p className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-text mb-base mb-4">
+            <b>
+              {" "}
+              Many individuals and organizations contributed in many different
+              ways to the creation of the Sustainable Energy for All Knowledge
+              Hub, and we are most grateful for their efforts.
+            </b>
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px]">Curators:</p>
-          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            <b>Hadley Taylor</b>, <b>Min Hyejung</b>, <b>Niklas Hayek</b>, <b>Anant Wadhwa</b>, and <b>Stephen
-            Kent</b> led the content creation and review on behalf of <span
-                className="text-Primary hover:underline cursor-pointer"
-                onClick={() =>
-                  window.open("https://www.seforall.org/")
-                }
-              >Sustainable
-            Energy for All</span>.
+          <p className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            <b>Hadley Taylor</b>, <b>Min Hyejung</b>, <b>Niklas Hayek</b>,{" "}
+            <b>Anant Wadhwa</b>, and <b>Stephen Kent</b> led the content
+            creation and review on behalf of{" "}
+            <span
+              className="text-Primary hover:underline cursor-pointer"
+              onClick={() => window.open("https://www.seforall.org/")}
+            >
+              Sustainable Energy for All
+            </span>
+            .
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px]">
             Developers:
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            The website was designed and developed by  <span
-                className="text-Primary hover:underline cursor-pointer"
-                onClick={() =>
-                  window.open("https://www.keymouseit.com/")
-                }
-              >KeyMouse IT Services Pvt. Ltd</span>.
-             based in India.
+            The website was designed and developed by{" "}
+            <span
+              className="text-Primary hover:underline cursor-pointer"
+              onClick={() => window.open("https://www.keymouseit.com/")}
+            >
+              KeyMouse IT Services Pvt. Ltd
+            </span>
+            . based in India.
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px]">
             Contributors:
@@ -169,11 +175,23 @@ const About = () => {
             We also thank the following individuals for their consultation and
             participation:
           </p>
-          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base">
+          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 text-justify xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-4">
             The organizations highlighted in the resources were all generous
             with their time, providing detailed information and reviewing draft
             versions. Any errors remaining are the responsibility of the website
             authors.
+          </p>
+          <p className="not-italic font-normal  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 text-justify xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            <b>Freda Akyeabea Opoku</b>, African Development Bank Group;{" "}
+            <b>Catoer Wibowo</b>, Deutsche Gesellschaft für Internationale
+            Zusammenarbeit; {" "}<b>Jonathan Phillips</b>, James E. Rogers Energy
+            Access Project;{" "} <b>Dimitrios Mentis</b>, Energy Access Explorer
+            (WRI);{" "} <b>Ashley Wearne</b>, Deutsche Gesellschaft für
+            Internationale Zusammenarbeit;{" "}
+            <b>Ranisha Basnet</b>, Energypedia;{" "}
+            <b>Prof. Joseph Mutale</b>, Paeradigms;{" "}
+            <b>Dr Moeketsi Mpholo</b>, National University of Lesotho;{" "}
+            <b>Jessica Stephens</b>, AMDA;
           </p>
         </div>
       </div>

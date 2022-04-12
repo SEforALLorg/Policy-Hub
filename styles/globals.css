@@ -23,6 +23,9 @@ body {
 main {
   overflow: auto !important;
   height: 100vh;
+  /* overscroll-behavior: contain !important; */
+    /* -webkit-overflow-scrolling: touch !important; */
+    /* touch-action:none !important; */
 }
 
 @font-face {
@@ -1587,6 +1590,13 @@ a {
   }
   .filter-button{
     width: 100px;
+  }
+  .complete-buttonWrap{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  main{
+    overflow-x: hidden !important;
   }
 }
 @media only screen and (max-width: 400px) {
