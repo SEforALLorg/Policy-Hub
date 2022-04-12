@@ -16,7 +16,7 @@ const CompletedSteps = ({ onRestart,onStandaloneClick, onMiniClick }) => {
           className="restartWrap"
           onClick={() => onMiniClick()}
         >
-          <img src="static/images/solaroutline.png" alt="" style={{width: 60}} />
+          <img src="static/images/mini-grid.png" alt="" style={{width: 80,height: 60}} />
           <p>Mini-Grid</p>
         </div>
         <div

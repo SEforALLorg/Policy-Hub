@@ -160,9 +160,7 @@ const About = () => {
                   window.open("https://www.keymouseit.com/")
                 }
               >KeyMouse IT Services Pvt. Ltd</span>.
-             based in India. <b>KeyMouse IT</b> has significant depth of expertise
-            and experience in delivering web & mobile based technology solutions
-            to its clients across various verticals.
+             based in India.
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px]">
             Contributors:
