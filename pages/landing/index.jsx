@@ -9,7 +9,7 @@ const Landing = () => {
     <div>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
-          <div className={`px-3 py-2 ${!isDashboardOpen ? 'header-title-wrap' : ''}`}>
+          <div className={`px-[1rem] py-2 ${!isDashboardOpen ? 'header-title-wrap' : ''}`}>
             <Header />
           </div>
           <div>
