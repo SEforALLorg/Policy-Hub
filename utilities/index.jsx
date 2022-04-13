@@ -80,3 +80,15 @@ export const getReportQuery = (
   });
   return query;
 };
+
+
+export const isSelectedInput = (selectInputs) => {
+  const optionSelected =
+    selectInputs?.regions?.length ||
+    selectInputs?.countries?.length ||
+    selectInputs?.segments?.length ||
+    selectInputs?.document_types?.length ||
+    selectInputs?.years?.length ||
+    selectInputs?.generation_sources?.length;
+  return optionSelected
+}

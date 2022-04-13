@@ -17,6 +17,7 @@ import SharePublicationModal from "components/sharePublicationModal";
 import TooltipComponent from "components/tooltip";
 import { getReports, downloadReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
+import { isSelectedInput } from "../../utilities";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -193,13 +194,7 @@ const RightWrapPage = ({
     }
   };
 
-  const optionSelected =
-    selectInputs?.regions?.length ||
-    selectInputs?.countries?.length ||
-    selectInputs?.segments?.length ||
-    selectInputs?.document_types?.length ||
-    selectInputs?.years?.length ||
-    selectInputs?.generation_sources?.length;
+  const optionSelected = isSelectedInput(selectInputs);
 
   const finalReports = !showAllReports && [
     ...reports,
