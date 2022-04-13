@@ -8,6 +8,7 @@ import Dashboard from "../dashboard";
 
 const LandingPage = ({ setIsDashboardOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isBigCard, setIsBigCard] = useState(false)
   const [goBottom, setGoBottom] = useState(false);
   const HandleOpen = () => {
     setIsOpen(true);
@@ -52,12 +53,13 @@ const LandingPage = ({ setIsDashboardOpen }) => {
         {/* </div> */}
         {isOpen ? (
           <div
-            className="h-[80vh] flex relative items-center	justify-center bottom-view"
+            className={`${!isBigCard ? 'h-[80vh]' : ''}  flex relative items-center	justify-center bottom-view`}
             id="bottom-view"
           >
             <Dashboard
               questions={questions}
               isFetchingQuestions={isFetchingQuestions}
+              setIsBigCard={setIsBigCard}
             />
           </div>
         ) : null}

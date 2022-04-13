@@ -61,7 +61,7 @@ const StepComponent = ({
         </h5>
       )}
       <p
-        className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px]"
+        className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content"
         style={{ height: "45px" }}
       >
         {/* <span>{stepCount}.</span> */}

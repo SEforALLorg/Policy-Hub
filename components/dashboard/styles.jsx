@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   margin: auto;
   border-radius: 20px;
   display: flex;
-  margin-top: ${space[10] * 2}px;
+  margin-top: 20px;
   margin-bottom: ${space[10] * 2}px;
   transition: transform 2s ease-out;
   transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5, 0.55)")};
@@ -62,5 +62,6 @@ export const Wrapper = styled.div`
   }
   @media only screen and (max-width: 767px){
     transform: unset;
+    margin-top: 0px !important;
   }
 `;

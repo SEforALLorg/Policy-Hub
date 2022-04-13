@@ -5,7 +5,7 @@ import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 
-const Dashboard = ({ questions, isFetchingQuestions }) => {
+const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -39,6 +39,7 @@ const Dashboard = ({ questions, isFetchingQuestions }) => {
     setIsExpand(false);
     onResetFilter();
     setStepAnswer(undefined);
+    setIsBigCard(false)
   };
 
   const onReportFind = (e) => {
@@ -70,7 +71,10 @@ const Dashboard = ({ questions, isFetchingQuestions }) => {
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
         <Customize
-          onYes={() => setIsExpand(!isExpand)}
+          onYes={() => {
+            setIsExpand(!isExpand)
+            setIsBigCard(true)
+          }}
           questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
           isFetchingQuestions={isFetchingQuestions}
           onNextQuestion={(e) => setFirstQuestion(e)}

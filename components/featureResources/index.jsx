@@ -7,27 +7,27 @@ import VideoCard from "./components/video";
 import OtherToolsCard from "./components/otherTools";
 
 const Feature = () => {
-  const [isTitle, setIsTitle] = useState("");
   const [isVideoCard, setIsVideoCard] = useState("");
   return (
     <div className="w-full rounded-lg overflow-hidden">
-      <div className="bg-white py-6 drop-shadow-dropShadow">
+      <div className="bg-white py-6 drop-shadow-dropShadow feature-wrap">
         <div className="xsm:px-4 mobile:px-[100px] relative">
-          <div className="flex pb-[25px] my-6 w-full xsm:flex-wrap large:flex-nowrap">
+          <div className="flex pb-[25px] my-6 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
               <h6
-                className="font-bold leading-10 text-large mb-[20px] text-darktext 
-                            uppercase xsm:text-tiny small:text-medium large:text-large"
+                className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
+                            uppercase small:text-medium large:text-large center-content resources-heading"
               >
                 Resources
               </h6>
-              <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
+              <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
                 All of the Knowledge Hub’s resources are available here for you
                 to explore. Simply click on the button below to view all the
-                resources and apply filters to narrow your results. You can also <b>download the filtered resources</b> or you can have
-                them <b>sent to you via Email</b>.
+                resources and apply filters to narrow your results. You can also{" "}
+                <b>download the filtered resources</b> or you can have them{" "}
+                <b>sent to you via Email</b>.
               </p>
-              <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] text-justify">
+              <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] text-justify">
                 Explore our database for tools and knowledge that will support
                 you in developing policy and regulatory frameworks for
                 sustainable energy. These resources are recommended by
@@ -37,7 +37,7 @@ const Feature = () => {
               </p>
             </div>
           </div>
-          <div className="text-center mt-10">
+          <div className="text-center mt-10 resources-button">
             <StartButton
               title={"Browse all resources"}
               onClick={() => window.open("/allresources", "_self")}
@@ -45,12 +45,12 @@ const Feature = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[35px] pb-[60px] bg-white">
+      <div className="pt-[35px] pb-[60px] bg-white tools-wrap">
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
             <h6
-              className="font-bold leading-10  m-0 mt-3 text-darktext uppercase xsm:text-tiny small:text-medium 
-            large:text-large"
+              className="font-bold leading-10  mt-3 text-darktext uppercase xsm:text-medium small:text-medium 
+            large:text-large center-content"
             >
               Other useful platforms
             </h6>
@@ -68,8 +68,6 @@ const Feature = () => {
                   Sustainable Energy for All.
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <OtherToolsCard
               image="/static/images/sas-ImResizer.jpg"
@@ -84,8 +82,6 @@ const Feature = () => {
                   Commonwealth and Development Office (FCDO) between 2018-2022.
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <OtherToolsCard
               image="/static/images/policy-ImResizer.jpg"
@@ -101,8 +97,6 @@ const Feature = () => {
                   GOGLA with input from Power Africa.
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <OtherToolsCard
               image="/static/images/nigeria-ImResizer.jpg"
@@ -118,8 +112,6 @@ const Feature = () => {
                   Rockefeller Foundation.
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <OtherToolsCard
               image="/static/images/green-mini.png"
@@ -135,8 +127,6 @@ const Feature = () => {
                   for All Africa Hub, SEFA, Energy4Impact, and Inensus.
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <OtherToolsCard
               image="/static/images/energy-ImResizer.jpg"
@@ -152,12 +142,10 @@ const Feature = () => {
                   Institute (WRI).
                 </>
               }
-              isTitle={isTitle}
-              setIsTitle={setIsTitle}
             />
             <h6
               className="font-bold leading-10 text-large text-darktext 
-                            uppercase xsm:text-tiny small:text-medium large:text-large mt-[80px]"
+                            uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
             >
               VIDEOS
             </h6>
@@ -167,7 +155,6 @@ const Feature = () => {
                   <VideoCard
                     link={item?.link}
                     title={item?.title}
-                    description={item?.description}
                     setIsVideoCard={setIsVideoCard}
                     isVideoCard={isVideoCard}
                   />
