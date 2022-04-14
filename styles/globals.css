@@ -1255,6 +1255,66 @@ a {
     margin-top: 20px !important;
     width: 50% !important;
   }
+  .footer-logos{
+    margin-top: 0px !important;
+  }
+  .footer-bottom-wrap p{
+    margin-bottom: 10px !important;
+  }
+  .feature-wrap > div{
+    padding: 0px 30px;
+  }
+  .resources-card{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 10px !important;
+  }
+  .tools-wrap{
+    padding: 20px 0px !important;
+  }
+  .video-title{
+    margin-top: 40px !important;
+  }
+  .tools-card{
+    padding: 0px !important;
+  }
+  .about-logo img{
+    width: 50% !important;
+    margin: 0 auto;
+  }
+  .about-bottom-card{
+    padding-bottom: 20px !important;
+  }
+  .about-logo-card{
+    height: 165px !important;
+  }
+  .reportRightWrap{
+    padding-right: 8px;
+  }
+  .customize-title{
+    padding-bottom: 0px !important;
+  }
+  .customize-buttons{
+    max-width: 70% !important;
+  }
+  .customize-buttons button{
+    height: 70px !important;
+  }
+  .complete-buttons-wrap{
+    flex-wrap: wrap;
+    justify-content: space-around !important;
+  }
+  .restartWrap{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px !important;
+  }
+  .share-your-text{
+    margin-top: 10px !important;
+  }
+  .inputFullWrap{
+    margin-top: 10px !important;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 990px) {
   .mobile-show {
@@ -1270,7 +1330,31 @@ a {
     width: 100% !important;
     max-width: 300px;
     padding: 20px !important;
-    display: none;
+    display: block;
+    transition: 1s;
+  }
+  .transform-filter-animation-hide {
+    transform: translateX(-300px);
+  }
+  .transform-filter-animation-show {
+    transform: translateX(0px);
+  }
+  .filter-button {
+    background-color: #fcb600;
+    color: #fff;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px;
+    border-radius: 20px;
+    padding-top: 8px;
+    font-weight: 600;
+    padding-bottom: 5px !important;
+    width: 100px;
+    margin-bottom: 20px !important;
+  }
+  .filter-button svg{
+    color: #fff !important;
   }
   .mobile-overlay {
     position: fixed !important;
@@ -1291,9 +1375,6 @@ a {
   }
   .resources-button {
     margin-top: -10px !important;
-  }
-  .close-icon {
-    display: none !important;
   }
 }
 

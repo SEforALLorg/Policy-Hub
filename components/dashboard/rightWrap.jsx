@@ -238,7 +238,7 @@ const RightWrapPage = ({
         )}
         <div className="flex mt-[30px] reports-inner-section">
           <div
-            className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
+            className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
             onClick={() => setIsFilter(!isFilter)}
           >
             <BsSliders className="text-text mr-[5px]" />

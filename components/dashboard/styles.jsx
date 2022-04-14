@@ -58,7 +58,7 @@ export const Wrapper = styled.div`
     transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   }
   @media only screen and (min-width:768px) and (max-width: 1024px){
-    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.8,0.75)")};
+    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.85,0.75)")};
   }
   @media only screen and (max-width: 767px){
     transform: unset;
