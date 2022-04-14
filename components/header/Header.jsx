@@ -42,7 +42,7 @@ const Header = () => {
         >
           <IoClose
             size={20}
-            className="text-text mr-[5px] mobile-show ml-auto close-icon"
+            className="text-text mr-[5px] mobile-show ml-auto close-icon header-close"
             onClick={() => setIsOpen(!isOpen)}
           />
           <Nav className="m-auto" navbar>

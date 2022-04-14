@@ -11,6 +11,7 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
   const [firstQuestion, setFirstQuestion] = useState();
   const [stepAnswer, setStepAnswer] = useState();
+  const [isClearAll, setClearAll] = useState(false);
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -39,7 +40,8 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
     setIsExpand(false);
     onResetFilter();
     setStepAnswer(undefined);
-    setIsBigCard(false)
+    setIsBigCard(false);
+    setClearAll(!isClearAll)
   };
 
   const onReportFind = (e) => {
@@ -67,6 +69,8 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
           selectInputs={selectInputs}
           onResetFilter={onResetFilter}
           showAllReports={false}
+          setClearAll={setClearAll}
+          isClearAll={isClearAll}
         />
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
