@@ -976,6 +976,10 @@ a {
   top: 41px;
   padding: 15px;
 }
+.landingButton button{
+  padding-top: 19px !important;
+}
+
 
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
@@ -1243,7 +1247,7 @@ a {
   }
   .mobile-card-width {
     margin-top: 1rem !important;
-    width: 100% !important;
+    width: 90% !important;
   }
   .header-title-wrap {
     width: 100% !important;
@@ -1315,8 +1319,12 @@ a {
   .inputFullWrap{
     margin-top: 10px !important;
   }
+  .mobile-show.close-icon.header-close{
+    display: none !important;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 990px) {
+ 
   .mobile-show {
     display: flex !important;
   }
@@ -1376,11 +1384,23 @@ a {
   .resources-button {
     margin-top: -10px !important;
   }
+  .contact-inner{
+    padding-bottom: 25px !important;
+  }
 }
 
 @media only screen and (max-width: 767px) {
   #wrapper {
     display: none !important;
+  }
+  .videoPlayer img{
+    object-position: center !important;
+  }
+  .cardBigHeading, .header-title-wrap, body{
+    background-size: cover !important;
+  }
+  .contact-inner{
+    padding-bottom: 25px !important;
   }
   .custom-container {
     max-width: unset;
@@ -1608,11 +1628,6 @@ a {
   .footer-logos {
     display: flex !important;
     margin-top: 0px !important;
-  }
-  .footer-logos img {
-    margin: 4px !important;
-    width: 181px;
-    height: 55px;
   }
   .customize-title {
     margin-top: 20px;
@@ -1886,6 +1901,27 @@ a {
     padding: 13px 12px !important;
     margin-top: 5px !important;
   }
+  .footer-logos{
+    flex-direction: column;
+  }
+  .footer-logos img {
+    margin: 4px !important;
+    width: 181px;
+    height: 55px;
+  }
+  .landingButton button{
+    padding-top: 11px !important;
+  }
+}
+@media only screen and (min-width:460px) and (max-width:767px){
+  .footer-logos{
+    flex-direction: row;
+  }
+  .footer-logos img {
+    margin: 4px 6px !important;
+    width: unset;
+    height: 45px;
+  }
 }
 @media only screen and (max-width: 400px) {
   .videoPlayer
@@ -1895,6 +1931,14 @@ a {
     background-size: 40% 40%;
     width: 80px;
     height: 80px;
+  }
+  .footer-logos{
+    flex-direction: row;
+  }
+  .footer-logos img {
+    margin: 4px !important;
+    width: 181px;
+    height: 55px;
   }
 }
 

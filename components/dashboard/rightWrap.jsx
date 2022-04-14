@@ -26,13 +26,14 @@ const RightWrapPage = ({
   selectInputs,
   showAllReports,
   onResetFilter,
+  setClearAll,
+  isClearAll,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isShareModal, setShareModal] = useState(false);
-  const [isClearAll, setClearAll] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);

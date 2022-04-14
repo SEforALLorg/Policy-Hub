@@ -32,7 +32,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="bg-lightBg pt-4 pb-10 m-auto">
+      <div className="bg-lightBg pt-4 pb-10 m-auto contact-inner">
         <div className="flex m-auto justify-between w-4/5 xsm:flex-wrap laptop:flex-nowrap">
           <Address
             className={
