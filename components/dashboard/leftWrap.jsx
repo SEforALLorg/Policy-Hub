@@ -6,7 +6,6 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 
-
 const LeftWrapPage = ({
   questions,
   setPublicationReports,
@@ -32,6 +31,7 @@ const LeftWrapPage = ({
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
     setNextQuestionId(e);
+    resetFilters();
   };
 
   const onReportsFind = (e) => {
@@ -57,6 +57,7 @@ const LeftWrapPage = ({
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
     onReportsFind(e?.attributes?.AddAnswer[0]);
     setStepQuestion([]);
+    resetFilters();
   };
 
   const onRestart = () => {
@@ -71,14 +72,17 @@ const LeftWrapPage = ({
     onReportsFind(i);
     setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
     setStepQuestion([]);
+    resetFilters();
   };
+
+  const completeQuestion = questions?.find((item) => item?.id === 11);
 
   const onStandaloneClick = () => {
     setNextQuestionId(24);
     setUserJourney([
       ...userJourney.splice(0, 2),
       {
-        questionName: "Review policy and regulatory  framework to reflect NES",
+        ...completeQuestion,
         answer: "Standalone systems",
       },
     ]);
@@ -90,7 +94,7 @@ const LeftWrapPage = ({
     setUserJourney([
       ...userJourney.splice(0, 2),
       {
-        questionName: "Review policy and regulatory  framework to reflect NES",
+        ...completeQuestion,
         answer: "Mini-grid",
       },
     ]);

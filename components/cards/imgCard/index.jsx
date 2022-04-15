@@ -9,7 +9,7 @@ const ImgCard = ({ img, title, className, link }) => {
       <a
         className="text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
         href={link}
-        target={'_blank'}
+        target={"_blank"}
       >
         {title}
       </a>

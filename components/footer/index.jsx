@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Script from "next/script";
+import React from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -9,32 +8,6 @@ import {
 import { BsTwitter } from "react-icons/bs";
 
 const Footer = () => {
-  // const [showModal, setShowModal] = useState(false);
-  // useEffect(() => {
-  //   if (showModal) {
-  //     <Script id="mcjs">
-  //       {function showPopup() 
-  //       {
-  //         !(function (c, h, i, m, p) {
-  //           (m = c.createElement(h)),
-  //             (p = c.getElementsByTagName(h)[0]),
-  //             (m.async = 1),
-  //             (m.src = i),
-  //             p.parentNode.insertBefore(m, p);
-  //         })(
-  //           document,
-  //           "script",
-  //           "https://chimpstatic.com/mcjs-connected/js/users/7538fc5f6603b063a8158282f/735c5686af40e9fc407c874a2.js"
-  //         );
-  //         document.cookie =
-  //           "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  //         document.cookie =
-  //           "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  //       }}
-  //     </Script>;
-  //   }
-  // }, [showModal]);
-
   return (
     <div className="xsm:mt-4 medium:mt-20">
       <div className="flex items-center justify-between w-full xsm:flex-wrap laptop:flex-nowrap ">
@@ -106,17 +79,6 @@ const Footer = () => {
               Sustainable Energy For All
             </span>
           </p>
-          {/* <button
-            onClick={() => window.open("/allresources", "_self")}
-            className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
-                                      border leading-5 border-white rounded-[42px] bg-transparent 
-                                      desktoplg:text-small flex items-center justify-center 
-                                      screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full  mobile:text-xsmall
-                                      mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
-                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation footer-button"
-          >
-            Subscribe
-          </button> */}
           <button
             onClick={() => window.open("/allresources", "_self")}
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
@@ -124,7 +86,7 @@ const Footer = () => {
                                       desktoplg:text-small flex items-center justify-center 
                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full  mobile:text-xsmall
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
-                                      hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] button-animation footer-button"
+                                      hover:border hover:border-blue ease-linear transition-all duration-500 button-animation footer-button"
           >
             Browse all resources
           </button>
@@ -134,7 +96,7 @@ const Footer = () => {
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 w-[210px] footer-button button-animation"
+                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 footer-button button-animation"
           >
             Download Decision Tree
           </button>
@@ -149,13 +111,13 @@ const Footer = () => {
           <img
             src={"/static/images/logo.svg"}
             alt="all"
-            className="mr-[20px] xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
+            className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
           <img
             src={"/static/images/rf_negative.png"}
             alt="founder"
-            className="mr-[20px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() =>
               window.open("https://www.rockefellerfoundation.org/")
             }
@@ -163,7 +125,7 @@ const Footer = () => {
           <img
             src={"/static/images/dgcs_rettangolare_eng_neg.png"}
             alt="founder"
-            className="mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}
           />
         </div>

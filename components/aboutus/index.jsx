@@ -46,7 +46,7 @@ const About = () => {
               be added soon.
             </p>
           </div>
-          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 med:mr-10 w-[300px] about-logo">
+          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 w-[300px] about-logo">
             <img
               className="max-w-full"
               src={"static/images/SEforALL_Logo_Colour.png"}
