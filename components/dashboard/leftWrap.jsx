@@ -21,9 +21,6 @@ const LeftWrapPage = ({
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
 
-  console.log(nextQuestionId,'nextQuestionId');
-  
-
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);

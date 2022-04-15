@@ -1,30 +1,7 @@
-import { useEffect, useRef } from "react";
 import Head from "next/head";
 import Landing from "./landing";
-import createScrollSnap from "scroll-snap";
 
 export default function Home() {
-  const ref = useRef();
-  const bindScrollSnap = () => {
-    const element = ref.current;
-    createScrollSnap(
-      element,
-      {
-        snapDestinationX: "0%",
-        snapDestinationY: "100%",
-        timeout: 100,
-        duration: 800,
-        threshold: 0.1,
-      },
-      () => console.log()
-    );
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
-    bindScrollSnap();
-  }, []);
-
   return (
     <div>
       <Head>
@@ -43,9 +20,7 @@ export default function Home() {
         />
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
       </Head>
-      <main id="fullWrap" ref={ref}>
-        <Landing />
-      </main>
+      <Landing />
     </div>
   );
 }
