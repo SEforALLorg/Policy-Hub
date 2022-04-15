@@ -70,7 +70,7 @@ const Feature = () => {
               }
             />
             <OtherToolsCard
-              image="/static/images/sas-ImResizer.jpg"
+              image="/static/images/sas-ImResizer.png"
               title="SAS Knowledge Hub"
               link="https://www.ace-taf.org/sas-knowledge-hub/"
               description={
@@ -84,7 +84,7 @@ const Feature = () => {
               }
             />
             <OtherToolsCard
-              image="/static/images/policy-ImResizer.jpg"
+              image="/static/images/policy-ImResizer.png"
               title="Policy Knowledge Hub"
               link="https://www.gogla.org/policy-knowledge-hub"
               description={
@@ -129,7 +129,7 @@ const Feature = () => {
               }
             />
             <OtherToolsCard
-              image="/static/images/energy-ImResizer.jpg"
+              image="/static/images/energy-ImResizer.png"
               title="Energy Access Explorer Beta"
               link="https://www.energyaccessexplorer.org/"
               description={

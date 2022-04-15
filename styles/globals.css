@@ -1356,6 +1356,16 @@ a {
   .cardBigHeading{
     background-size: cover !important;
   }
+  .public-share-modal .inputFullWrap{
+    width: 18rem;
+    margin: 0 auto;
+  }
+  .public-share-modal .inputFullWrap .newsletter-input-fields{
+    padding: 0px !important;
+  }
+  .public-share-modal > div{
+    padding-bottom: 40px !important;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 990px) {
   .resource-buttons-wrap{
@@ -1427,21 +1437,36 @@ a {
   .contact-inner{
     padding-bottom: 25px !important;
   }
-  .public-share-modal .inputFullWrap{
-    width: 18rem;
-    margin: 0 auto;
-  }
-  .public-share-modal .inputFullWrap .newsletter-input-fields{
-    padding: 0px !important;
-  }
-  .public-share-modal > div{
-    padding-bottom: 40px !important;
-  }
   .report-left-wrap .close-icon{
     top: -5px !important;
     right: 9px !important;
     position: relative !important;
     font-size: 22px !important;
+  }
+  .mobile-hidden{
+    display: none !important;
+  }
+  .apply-wrap{
+    display: flex;
+    justify-content: space-between !important;
+    margin-top: 17px !important;
+    position: absolute;
+    bottom: 14px;
+    left: 0px;
+    width: 100%;
+    padding: 0px 20px;
+    border-top: 2.4px solid rgba(134, 164, 176, 0.15);
+    padding-top: 15px;
+  }
+  .apply-wrap button{
+    font-size: 14px;
+    height: 35px;
+    padding: 0px !important;
+    width: 48%;
+    text-transform: capitalize;
+  }
+  .innerFilter{
+    height: 100%;
   }
 }
 
