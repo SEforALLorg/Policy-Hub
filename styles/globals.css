@@ -1138,6 +1138,13 @@ a {
   }
   .header-title-wrap {
     max-width: 100% !important;
+    background-size: 100% !important;
+    background-attachment: unset !important;
+    background-position: top right !important;
+  }
+  .about-logo-card img{
+    height: 100%;
+    max-width: 50%;
   }
   .header .nav-link {
     font-size: 14px;
@@ -1324,6 +1331,24 @@ a {
   .mobile-show.close-icon.header-close{
     display: none !important;
   }
+  .powered-text{
+    margin-left: 10px;
+  }
+  .footer-button{
+    width: 180px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  main{
+    height: 100%;
+  }
+  body{
+    overflow: auto !important;
+    background-size: cover !important;
+  }
+  .cardBigHeading{
+    background-size: cover !important;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 990px) {
  
@@ -1345,9 +1370,11 @@ a {
   }
   .transform-filter-animation-hide {
     transform: translateX(-300px);
+    opacity: 0;
   }
   .transform-filter-animation-show {
     transform: translateX(0px);
+    opacity: 1;
   }
   .filter-button {
     background-color: #fcb600;
