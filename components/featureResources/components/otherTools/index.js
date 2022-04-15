@@ -13,7 +13,7 @@ const OtherToolsCard = ({
         <img
           src={image}
           alt=""
-          className="w-[100%] h-[230px] object-cover object-left"
+          className="w-[100%] h-[230px] object-cover object-left-top"
         />
       </div>
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex-1">
