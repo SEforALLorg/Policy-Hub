@@ -18,6 +18,7 @@ import { getReports, downloadReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
 import { isSelectedInput } from "../../utilities";
 import BlueButton from "../buttons/blueButton";
+import { RiSearch2Line } from "react-icons/ri";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -56,10 +57,10 @@ const RightWrapPage = ({
   }
 
   useEffect(() => {
-    if(debouncedSearch?.length){
-      setPage(1)
+    if (debouncedSearch?.length) {
+      setPage(1);
     }
-  },[debouncedSearch])
+  }, [debouncedSearch]);
   // Get Reports API
   const query = useMemo(() => {
     return getReportQuery(
@@ -162,7 +163,10 @@ const RightWrapPage = ({
   useEffect(() => {
     if ((optionSelected && page === 1) || allReports?.data?.data?.length < 20) {
       setPreviousReports(allReports?.data?.data);
-    } else if (allReports?.data?.data?.length && allReports?.data?.data?.length >= 20) {
+    } else if (
+      allReports?.data?.data?.length &&
+      allReports?.data?.data?.length >= 20
+    ) {
       setPreviousReports([...allReports?.data?.data, ...previousReports]);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
@@ -209,6 +213,13 @@ const RightWrapPage = ({
 
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
 
+  const disableButtons =
+    !reports?.length ||
+    (!allReports?.data?.data?.length && !showAllReports) ||
+    (!finalPublicationReports?.length &&
+      !finalNonPublicationReports?.length &&
+      !showAllReports);
+
   return (
     <>
       <CSVLink
@@ -245,21 +256,29 @@ const RightWrapPage = ({
             <BsSliders className="text-text mr-[5px]" />
             Filter
           </div>
-          {isFilter && <div className={"mobile-overlay mobile-show"} onClick={() => setIsFilter(!isFilter)} />}
+          {isFilter && (
+            <div
+              className={"mobile-overlay mobile-show"}
+              onClick={() => setIsFilter(!isFilter)}
+            />
+          )}
           <div
-            className={
-              `${isFilter ? "transform-filter-animation-show" : "transform-filter-animation-hide"} report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`
-            }
+            className={`${
+              isFilter
+                ? "transform-filter-animation-show"
+                : "transform-filter-animation-hide"
+            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
               {optionSelected ? (
-                <span
-                  className="text-Primary cursor-pointer text-[14px] tracking-[0.4px] underline mobile-hidden"
+                <button
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-8px] pt-[0px] resources-button button-animation mobile-hidden`}
                   onClick={() => onReset()}
                 >
                   Clear filters
-                </span>
+                </button>
               ) : null}
               <IoClose
                 className="text-text mr-[5px] mobile-show close-icon"
@@ -366,7 +385,7 @@ const RightWrapPage = ({
                 <BlueButton
                   title="Apply"
                   onClick={() => setIsFilter(!isFilter)}
-                  style={{backgroundColor: '#FCB600', color: '#fff'}}
+                  style={{ backgroundColor: "#FCB600", color: "#fff" }}
                 />
               </div>
             </div>
@@ -380,9 +399,13 @@ const RightWrapPage = ({
               <p>Resources</p>
               <div className="flex resource-buttons-wrap">
                 <button
-                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button button-animation"
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={() => onDownload()}
+                  disabled={disableButtons}
+                  style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
                     content="Click here to download the list of matching resources."
@@ -395,9 +418,13 @@ const RightWrapPage = ({
                   </TooltipComponent>
                 </button>
                 <button
-                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button button-animation"
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={toggleShareModal}
+                  disabled={disableButtons}
+                  style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
                     content="Click to receive a list matching resources via Email."
@@ -434,7 +461,7 @@ const RightWrapPage = ({
                     !showAllReports) ? (
                   <div className="report-no-data">
                     <p>
-                      <AiOutlineInfoCircle />
+                      <RiSearch2Line />
                       No Reports Found.
                     </p>
                     <a className="cursor-pointer" onClick={() => onReset()}>

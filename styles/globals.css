@@ -496,8 +496,9 @@ a {
   margin: 0px;
 }
 .report-no-data svg {
-  margin-right: 5px;
-  margin-top: -3px;
+  margin-right: 7px;
+  margin-top: -5px;
+  font-size: 21px;
 }
 .search-input-wrap {
   display: flex;
