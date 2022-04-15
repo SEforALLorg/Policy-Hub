@@ -12,7 +12,7 @@ const Feature = () => {
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white py-6 drop-shadow-dropShadow feature-wrap">
         <div className="xsm:px-4 mobile:px-[100px] relative">
-          <div className="flex pb-[25px] my-6 w-full xsm:flex-wrap large:flex-nowrap resources-card">
+          <div className="flex pb-[0px] my-6 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
               <h6
                 className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
@@ -37,7 +37,7 @@ const Feature = () => {
               </p>
             </div>
           </div>
-          <div className="text-center mt-10 resources-button">
+          <div className="text-center mt-4 resources-button">
             <StartButton
               title={"Browse all resources"}
               onClick={() => window.open("/allresources", "_self")}
@@ -49,8 +49,8 @@ const Feature = () => {
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
             <h6
-              className="font-bold leading-10  mt-3 text-darktext uppercase xsm:text-medium small:text-medium 
-            large:text-large center-content"
+              className="font-bold leading-10 text-large text-darktext 
+              uppercase xsm:text-medium small:text-medium large:text-large mt-[0px] video-title center-content"
             >
               Other useful platforms
             </h6>
@@ -149,7 +149,7 @@ const Feature = () => {
             >
               VIDEOS
             </h6>
-            <div className="flex items-stretch pt-6 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
+            <div className="flex items-stretch pt-0 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
               {videosCard?.map((item, index) => (
                 <div className="w-[33.3%] mb-[0px] p-[10px]" key={index}>
                   <VideoCard
