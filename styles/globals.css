@@ -1142,6 +1142,9 @@ a {
     background-attachment: unset !important;
     background-position: top right !important;
   }
+  .inner-section-content{
+    height: unset !important;
+  }
   .about-logo-card img{
     height: 100%;
     max-width: 50%;
@@ -1265,8 +1268,11 @@ a {
     position: unset !important;
     opacity: 1 !important;
     margin: 0 auto !important;
-    margin-top: 20px !important;
+    margin-top: 40px !important;
     width: 50% !important;
+  }
+  .landingButton button{
+    padding-top: 14px !important;
   }
   .footer-logos{
     margin-top: 0px !important;
@@ -1351,7 +1357,11 @@ a {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 990px) {
- 
+  .resource-buttons-wrap{
+    margin-right: 10px;
+    overflow: hidden;
+    margin-top: -13px;
+  }
   .mobile-show {
     display: flex !important;
   }
@@ -1411,10 +1421,26 @@ a {
     width: 100% !important;
   }
   .resources-button {
-    margin-top: -10px !important;
+    margin-top: 0px !important;
   }
   .contact-inner{
     padding-bottom: 25px !important;
+  }
+  .public-share-modal .inputFullWrap{
+    width: 18rem;
+    margin: 0 auto;
+  }
+  .public-share-modal .inputFullWrap .newsletter-input-fields{
+    padding: 0px !important;
+  }
+  .public-share-modal > div{
+    padding-bottom: 40px !important;
+  }
+  .report-left-wrap .close-icon{
+    top: -5px !important;
+    right: 9px !important;
+    position: relative !important;
+    font-size: 22px !important;
   }
 }
 

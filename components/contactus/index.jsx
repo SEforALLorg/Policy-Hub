@@ -15,7 +15,10 @@ const Contact = () => {
             <p className="font-normal small:tiny  laptop:text-medium leading-[26px]  text-lighttext m-0 center-content">
               Phone:
             </p>
-            <a className="font-bold  xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline" href="tel:+43 676 846 727 200">
+            <a
+              className="font-bold  xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
+              href="tel:+43 676 846 727 200"
+            >
               +43 676 846 727 200
             </a>
           </div>
@@ -26,7 +29,10 @@ const Contact = () => {
             <p className="font-normal small:tiny  laptop:text-medium  leading-[26px]  text-lighttext m-0 center-content">
               Email:
             </p>
-            <a className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline" href="mailTo:KnowledgeHub@SEforALL.org">
+            <a
+              className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
+              href="mailTo:KnowledgeHub@SEforALL.org"
+            >
               KnowledgeHub@SEforALL.org
             </a>
           </div>

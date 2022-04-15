@@ -34,6 +34,7 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
       co_authors: [],
       publishing_organizations: [],
     });
+    setClearAll(!isClearAll)
   };
 
   const onRestart = () => {
