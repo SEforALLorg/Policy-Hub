@@ -51,7 +51,7 @@ const Customize = ({
             {title}
             {ToolTipText && <TooltipComponent content={ToolTipText} />}
           </div>
-          <div className="flex items-center flex-col max-w-[40%] m-auto">
+          <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i, index) => (
               <BlueButton
                 title={i?.Answer}

@@ -1,7 +1,7 @@
 import React from "react";
 import SubscribeComponent from "../subscribeComponent";
 
-const CompletedSteps = ({ onRestart,onStandaloneClick, onMiniClick }) => {
+const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
   return (
     <div className="completeWrap">
       <h5 className="font-bold text-[30px] text-center capitalize text-text process-text">
@@ -12,18 +12,20 @@ const CompletedSteps = ({ onRestart,onStandaloneClick, onMiniClick }) => {
           <img src="static/images/restart.svg" alt="" />
           <p>Restart</p>
         </div>
-        <div
-          className="restartWrap"
-          onClick={() => onMiniClick()}
-        >
-          <img src="static/images/mini-grid.png" alt="" style={{width: 80,height: 60}} />
+        <div className="restartWrap" onClick={() => onMiniClick()}>
+          <img
+            src="static/images/mini-grid.png"
+            alt=""
+            style={{ width: 80, height: 60 }}
+          />
           <p>Mini-Grid</p>
         </div>
-        <div
-          className="restartWrap"
-          onClick={() => onStandaloneClick()}
-        >
-          <img src="static/images/solaroutline.png" alt="" style={{width: 60}} />
+        <div className="restartWrap" onClick={() => onStandaloneClick()}>
+          <img
+            src="static/images/solaroutline.png"
+            alt=""
+            style={{ width: 60 }}
+          />
           <p>Standalone Systems</p>
         </div>
         <div
@@ -38,7 +40,7 @@ const CompletedSteps = ({ onRestart,onStandaloneClick, onMiniClick }) => {
         Share your contact information for future updates.
       </p>
       <div className="flex items-center justify-center inputFullWrap mt-[30px]">
-      <SubscribeComponent />
+        <SubscribeComponent />
       </div>
     </div>
   );

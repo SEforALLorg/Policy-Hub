@@ -31,7 +31,7 @@ const TopCard = ({ HandleOpen }) => {
   return (
     <>
       <div className="flex items-center relative h-[100%] flex-col subCardFull">
-        <h5 className="cardBigHeading font-normal font-bold	text-[65px] leading-[70px] text-center	select-none	uppercase text-white	pb-[15px] mt-[2rem] pt-[25rem] sticky top-[-15rem] left-[0px]">
+        <h5 className="cardBigHeading font-bold	text-[65px] leading-[70px] text-center	select-none	uppercase text-white	pb-[15px] mt-[2rem] pt-[25rem] sticky top-[-15rem] left-[0px]">
           Sustainable
           <span className="text-Secondary px-[6px]"> Energy </span>
           for All <br />
@@ -49,7 +49,7 @@ const TopCard = ({ HandleOpen }) => {
             </div>
           </div>
         )}
-        <div className={"mt-[24rem] w-[80%] mobile-card-width"} ref={cardRef}>
+        <div className={"mt-[25rem] w-[80%] mobile-card-width"} ref={cardRef}>
           <div className="h-[100vh] pt-[10rem] flex items-center card-section-wrap">
             <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
               <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">

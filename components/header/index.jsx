@@ -15,7 +15,7 @@ import { IoClose } from "react-icons/io5";
 const Header = () => {
   const router = useRouter();
   const location = router.pathname;
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="header">
       <Navbar expand="md" light>
@@ -28,9 +28,23 @@ const Header = () => {
           />
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-       {isOpen && <div className={'mobile-overlay mobile-show'} />}
-        <Collapse navbar isOpen={isOpen}>
-        <IoClose size={20} className="text-text mr-[5px] mobile-show ml-auto close-icon" onClick={() => setIsOpen(!isOpen)} />
+        {isOpen && (
+          <div
+            className={"mobile-overlay mobile-show"}
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        )}
+        <Collapse
+          navbar
+          className={
+            isOpen ? "transform-animation-show" : "transform-animation-hide"
+          }
+        >
+          <IoClose
+            size={20}
+            className="text-text mr-[5px] mobile-show ml-auto close-icon header-close"
+            onClick={() => setIsOpen(!isOpen)}
+          />
           <Nav className="m-auto" navbar>
             <NavItem>
               <NavLink
@@ -42,9 +56,7 @@ const Header = () => {
             </NavItem>
             <NavItem>
               <NavLink
-                className={`${
-                  location === "/resources" ? "active" : ""
-                }`}
+                className={`${location === "/resources" ? "active" : ""}`}
                 href="/resources"
               >
                 Resources

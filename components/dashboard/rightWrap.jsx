@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CSVLink } from "react-csv";
 import { useMutation, useQuery } from "react-query";
-import { BsDownload } from "react-icons/bs";
-import { FaFilter } from "react-icons/fa";
+import { BsDownload, BsSliders } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
 import { getFormattedData, getReportQuery } from "utilities";
@@ -17,6 +16,9 @@ import SharePublicationModal from "components/sharePublicationModal";
 import TooltipComponent from "components/tooltip";
 import { getReports, downloadReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
+import { isSelectedInput } from "../../utilities";
+import BlueButton from "../buttons/blueButton";
+import { RiSearch2Line } from "react-icons/ri";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -25,13 +27,14 @@ const RightWrapPage = ({
   selectInputs,
   showAllReports,
   onResetFilter,
+  setClearAll,
+  isClearAll,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isShareModal, setShareModal] = useState(false);
-  const [isClearAll, setClearAll] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
@@ -53,9 +56,14 @@ const RightWrapPage = ({
     filters = filtersData?.data?.results;
   }
 
+  useEffect(() => {
+    if (debouncedSearch?.length) {
+      setPage(1);
+    }
+  }, [debouncedSearch]);
   // Get Reports API
   const query = useMemo(() => {
-   return getReportQuery(
+    return getReportQuery(
       selectInputs,
       nonPublicationReports,
       publicationReports,
@@ -153,9 +161,12 @@ const RightWrapPage = ({
   };
 
   useEffect(() => {
-    if (optionSelected && page === 1) {
+    if ((optionSelected && page === 1) || allReports?.data?.data?.length < 20) {
       setPreviousReports(allReports?.data?.data);
-    } else if (allReports?.data?.data?.length) {
+    } else if (
+      allReports?.data?.data?.length &&
+      allReports?.data?.data?.length >= 20
+    ) {
       setPreviousReports([...allReports?.data?.data, ...previousReports]);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
@@ -193,13 +204,7 @@ const RightWrapPage = ({
     }
   };
 
-  const optionSelected =
-    selectInputs?.regions?.length ||
-    selectInputs?.countries?.length ||
-    selectInputs?.segments?.length ||
-    selectInputs?.document_types?.length ||
-    selectInputs?.years?.length ||
-    selectInputs?.generation_sources?.length;
+  const optionSelected = isSelectedInput(selectInputs);
 
   const finalReports = !showAllReports && [
     ...reports,
@@ -207,6 +212,13 @@ const RightWrapPage = ({
   ];
 
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
+
+  const disableButtons =
+    !reports?.length ||
+    (!allReports?.data?.data?.length && !showAllReports) ||
+    (!finalPublicationReports?.length &&
+      !finalNonPublicationReports?.length &&
+      !showAllReports);
 
   return (
     <>
@@ -238,32 +250,40 @@ const RightWrapPage = ({
         )}
         <div className="flex mt-[30px] reports-inner-section">
           <div
-            className="font-bold text-[16px] m-0 text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
+            className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
             onClick={() => setIsFilter(!isFilter)}
           >
-            <FaFilter className="text-text mr-[5px]" />
-            Filters
+            <BsSliders className="text-text mr-[5px]" />
+            Filter
           </div>
-          {isFilter && <div className={"mobile-overlay mobile-show"} />}
+          {isFilter && (
+            <div
+              className={"mobile-overlay mobile-show"}
+              onClick={() => setIsFilter(!isFilter)}
+            />
+          )}
           <div
-            className={
-              "report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]"
-            }
-            style={{ display: isFilter ? "block" : "" }}
+            className={`${
+              isFilter
+                ? "transform-filter-animation-show"
+                : "transform-filter-animation-hide"
+            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
               {optionSelected ? (
-                <span
-                  className="text-Primary cursor-pointer text-[14px] tracking-[0.4px] underline"
+                <button
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden`}
                   onClick={() => onReset()}
                 >
                   Clear filters
-                </span>
+                </button>
               ) : null}
               <IoClose
-                className="text-text mr-[5px] mobile-show"
+                className="text-text mr-[5px] mobile-show close-icon"
                 onClick={() => setIsFilter(!isFilter)}
+                style={{ top: 14 }}
               />
             </h5>
             <div className="innerFilter">
@@ -347,6 +367,27 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
+
+              <div className="apply-wrap">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (optionSelected) {
+                      onReset();
+                    }
+                  }}
+                  className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
+                small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
+                text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
+                >
+                  Clear Filters
+                </button>
+                <BlueButton
+                  title="Apply"
+                  onClick={() => setIsFilter(!isFilter)}
+                  style={{ backgroundColor: "#FCB600", color: "#fff" }}
+                />
+              </div>
             </div>
           </div>
 
@@ -358,9 +399,13 @@ const RightWrapPage = ({
               <p>Resources</p>
               <div className="flex resource-buttons-wrap">
                 <button
-                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button button-animation"
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={() => onDownload()}
+                  disabled={disableButtons}
+                  style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
                     content="Click here to download the list of matching resources."
@@ -373,9 +418,13 @@ const RightWrapPage = ({
                   </TooltipComponent>
                 </button>
                 <button
-                  className="bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button button-animation"
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={toggleShareModal}
+                  disabled={disableButtons}
+                  style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
                     content="Click to receive a list matching resources via Email."
@@ -412,7 +461,7 @@ const RightWrapPage = ({
                     !showAllReports) ? (
                   <div className="report-no-data">
                     <p>
-                      <AiOutlineInfoCircle />
+                      <RiSearch2Line />
                       No Reports Found.
                     </p>
                     <a className="cursor-pointer" onClick={() => onReset()}>

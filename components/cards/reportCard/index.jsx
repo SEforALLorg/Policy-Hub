@@ -100,7 +100,8 @@ const Report = ({
           ) : null}
         </div>
         <span />
-        <div className="report-bottom-box"
+        <div
+          className="report-bottom-box"
           style={{ width: "38px", justifyContent: "flex-end", flex: "unset" }}
         >
           <p

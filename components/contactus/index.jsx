@@ -8,35 +8,41 @@ import SubscribeComponent from "../subscribeComponent";
 const Contact = () => {
   return (
     <div className="bg-white rounded-lg	 overflow-hidden shadow-md">
-      <div className="xsm:pl-[25px] xsm:py-6 extrasmall:p-6 mobile:p-6 laptop:p-10 bg-white flex justify-center xsm:justify-start small:justify-center xsm:flex-wrap extrasmall:flex-nowrap">
-        <div className="flex items-center xsm:w-full laptop:w-2/5 xsm:justify-start 	">
+      <div className="xsm:pl-[25px] xsm:py-6 extrasmall:p-6 mobile:p-6 laptop:p-10 bg-white flex justify-center xsm:justify-start small:justify-center xsm:flex-wrap extrasmall:flex-nowrap contact-full-wrap">
+        <div className="flex items-center xsm:w-full laptop:w-2/5 xsm:justify-start contact-top-wrap">
           <FaPhoneAlt className="xsm:text-xmd laptop:text-basic text-Primary mr-4" />
           <div>
-            <p className="font-normal small:tiny  laptop:text-medium leading-[26px]  text-lighttext m-0">
+            <p className="font-normal small:tiny  laptop:text-medium leading-[26px]  text-lighttext m-0 center-content">
               Phone:
             </p>
-            <p className="font-bold  xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0">
+            <a
+              className="font-bold  xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
+              href="tel:+43 676 846 727 200"
+            >
               +43 676 846 727 200
-            </p>
+            </a>
           </div>
         </div>
-        <div className="flex items-center xsm:w-full laptop:w-2/5 xsm:justify-start  xsm:mt-5 extrasmall:mt-0">
+        <div className="flex items-center xsm:w-full laptop:w-2/5 xsm:justify-start  xsm:mt-5 extrasmall:mt-0 contact-top-wrap">
           <MdEmail className="text-basic text-Primary mr-4" />
           <div>
-            <p className="font-normal small:tiny  laptop:text-medium  leading-[26px]  text-lighttext m-0">
+            <p className="font-normal small:tiny  laptop:text-medium  leading-[26px]  text-lighttext m-0 center-content">
               Email:
             </p>
-            <p className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0">
+            <a
+              className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
+              href="mailTo:KnowledgeHub@SEforALL.org"
+            >
               KnowledgeHub@SEforALL.org
-            </p>
+            </a>
           </div>
         </div>
       </div>
-      <div className="bg-lightBg pt-4 pb-10 m-auto">
+      <div className="bg-lightBg pt-4 pb-10 m-auto contact-inner">
         <div className="flex m-auto justify-between w-4/5 xsm:flex-wrap laptop:flex-nowrap">
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation center-content"
             }
             heading={"Vienna Office"}
             title={
@@ -49,7 +55,7 @@ const Contact = () => {
           />
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation center-content"
             }
             heading={"Washington, DC Office"}
             title={
@@ -62,7 +68,7 @@ const Contact = () => {
           />
           <Address
             className={
-              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation"
+              "bg-white p-4 w-full	rounded-lg m-[5px] cursor-pointer addressCard transition-all duration-200 card-animation center-content"
             }
             heading={"New York Office"}
             title={
@@ -77,7 +83,7 @@ const Contact = () => {
       </div>
       <div className="flex items-center xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
         <div className="  xsm:w-11/12 large:w-full ">
-          <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify">
+          <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify center-content">
             For any media requests, please contact:{" "}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
@@ -86,7 +92,7 @@ const Contact = () => {
               Media@SEforALL.org
             </span>
           </p>
-          <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6 text-justify  m-0">
+          <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6 text-justify  m-0 center-content">
             Keep up-to-speed with what's happening at the Sustainable Energy for
             ALL Knowledge Hub and across the sustainable energy movement. We'll
             send you our regular updates, plus special news and event invites.
@@ -101,7 +107,9 @@ const Contact = () => {
             .
           </p>
         </div>
-       <SubscribeComponent />
+        <div className="contact-subscribe-wrap">
+          <SubscribeComponent />
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   margin: auto;
   border-radius: 20px;
   display: flex;
-  margin-top: ${space[10] * 2}px;
+  margin-top: 20px;
   margin-bottom: ${space[10] * 2}px;
   transition: transform 2s ease-out;
   transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5, 0.55)")};
@@ -58,9 +58,10 @@ export const Wrapper = styled.div`
     transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.5)")};
   }
   @media only screen and (min-width:768px) and (max-width: 1024px){
-    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.8,0.75)")};
+    transform: ${({ isExpand }) => (isExpand ? "" : "scale(0.85,0.75)")};
   }
   @media only screen and (max-width: 767px){
     transform: unset;
+    margin-top: 0px !important;
   }
 `;
