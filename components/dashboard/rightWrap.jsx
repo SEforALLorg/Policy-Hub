@@ -43,6 +43,13 @@ const RightWrapPage = ({
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
 
+  typeof window !== "undefined" && window.addEventListener("orientationchange", function() {
+    // Announce the new orientation number
+    if(window?.orientation === 90){
+      setIsFilter(false)
+    }
+  }, false);
+
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -192,6 +199,7 @@ const RightWrapPage = ({
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
+    setIsOpen()
   };
 
   const onScroll = (e) => {
@@ -203,6 +211,11 @@ const RightWrapPage = ({
       setIsScrollLoader(true);
     }
   };
+
+  const onApply = () => {
+    setIsFilter(!isFilter);
+    setIsOpen()
+  }
 
   const optionSelected = isSelectedInput(selectInputs);
 
@@ -259,7 +272,10 @@ const RightWrapPage = ({
           {isFilter && (
             <div
               className={"mobile-overlay mobile-show"}
-              onClick={() => setIsFilter(!isFilter)}
+              onClick={() => {
+                setIsFilter(!isFilter);
+                setIsOpen()
+              }}
             />
           )}
           <div
@@ -274,7 +290,7 @@ const RightWrapPage = ({
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden`}
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
                   Clear filters
@@ -384,8 +400,9 @@ const RightWrapPage = ({
                 </button>
                 <BlueButton
                   title="Apply"
-                  onClick={() => setIsFilter(!isFilter)}
-                  style={{ backgroundColor: "#FCB600", color: "#fff" }}
+                  onClick={() => onApply()}
+                  style={{ backgroundColor: "#FCB600", color: "#fff", opacity: optionSelected ? 1 : 0.5 }}
+                  disabled={optionSelected}
                 />
               </div>
             </div>
