@@ -1406,6 +1406,9 @@ a {
     display: block;
     transition: 1s;
   }
+  .about-logo-card img{
+    width: 50%;
+  }
   .transform-filter-animation-hide {
     transform: translateX(-300px);
     opacity: 0;
