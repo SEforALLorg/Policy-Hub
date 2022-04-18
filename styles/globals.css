@@ -1311,6 +1311,19 @@ a {
   .about-logo-card{
     height: 165px !important;
   }
+  .about-logo-card.p-5{
+    padding: 20px !important;
+  }
+  .about-logo-card.imgbox{
+    padding: 3rem!important;
+  }
+  .about-logo-card.imgbox img {
+    max-width: 300px !important;
+    height: unset;
+  }
+  .about-logo-card img{
+    max-width: 100% !important;
+  }
   .reportRightWrap{
     padding-right: 8px;
   }
@@ -1812,6 +1825,7 @@ a {
   }
   .about-logo-card img {
     margin: 0px;
+    max-width: 80%;
   }
   .about-bottom-card {
     padding-bottom: 20px !important;
