@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
+import TooltipComponent from "../../tooltip";
 
 const Report = ({
   style,
@@ -39,9 +40,14 @@ const Report = ({
           <p className="title font-normal text-[14px] m-0 text-text">{title}</p>
         </div>
         {star && (
-          <div>
-            <AiFillStar size={26} color={"#FCB600"} />
-          </div>
+          <TooltipComponent
+            content="Key Publication - Click for more information"
+            hideInfo={true}
+          >
+            <div>
+              <AiFillStar size={26} color={"#FCB600"} />
+            </div>
+          </TooltipComponent>
         )}
       </div>
       {description && (

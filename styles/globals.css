@@ -552,6 +552,15 @@ a {
   display: flex;
   align-items: flex-start;
 }
+.report-card .tooltipWrap .content{
+  transform: unset;
+  left: unset;
+  right: -11px;
+}
+.report-card .tooltipWrap .content::after{
+  left: unset;
+  right: 15px;
+}
 .selectListItem:hover {
   background: #2596be;
   color: #fff;
