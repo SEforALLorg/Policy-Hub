@@ -1406,9 +1406,6 @@ a {
     display: block;
     transition: 1s;
   }
-  .about-logo-card img{
-    width: 50%;
-  }
   .transform-filter-animation-hide {
     transform: translateX(-300px);
     opacity: 0;
@@ -1828,7 +1825,8 @@ a {
   }
   .about-logo-card img {
     margin: 0px;
-    max-width: 80%;
+    max-width: 50%;
+    width: 100%;
   }
   .about-bottom-card {
     padding-bottom: 20px !important;

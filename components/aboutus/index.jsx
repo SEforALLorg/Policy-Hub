@@ -97,38 +97,28 @@ const About = () => {
             not limited to:{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
-            <div className="med:w-[24%] xsm:w-100  xsm:w-full ">
+            <div className="med:w-[32%] xsm:w-100  xsm:w-full ">
               <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/Era.svg"}
-                title={"International Renewable Energy Agency"}
-                link={"https://www.irena.org/"}
+                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
+                img={"static/images/african-development.jpg"}
+                title={"African Development Bank Group"}
+                link={"https://www.afdb.org/en"}
               />
             </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+            <div className="med:w-[32%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/worldbank.svg"}
-                title={"The World Bank"}
-                link={"https://www.worldbank.org/en/home"}
+                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
+                img={"static/images/duke.png"}
+                title={"The Energy Access Project at Duke University"}
+                link={"https://energyaccess.duke.edu/"}
               />
             </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+            <div className="med:w-[32%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/esmap.svg"}
-                title={"Energy Sector Management Assistance Program"}
-                link={"https://www.esmap.org/"}
-              />
-            </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/giz.svg"}
-                title={
-                  "Deutsche Gesellschaft für Internationale Zusammenarbeit"
-                }
-                link={"https://www.giz.de/en/html/index.html"}
+                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
+                img={"static/images/WRI_logo_4c.png"}
+                title={"World Resources Institute"}
+                link={"https://www.wri.org/"}
               />
             </div>
           </div>
