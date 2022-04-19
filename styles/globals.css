@@ -1822,11 +1822,19 @@ a {
   }
   .about-logo-card {
     height: 150px !important;
+    padding: 20px !important;
   }
   .about-logo-card img {
     margin: 0px;
-    max-width: 50%;
+    max-width: 70%;
     width: 100%;
+  }
+  .cardBigHeading{
+    background-image: unset !important;
+    background-color: transparent !important;
+  }
+  body{
+    background-size: 100% 100% !important;
   }
   .about-bottom-card {
     padding-bottom: 20px !important;

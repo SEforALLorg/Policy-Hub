@@ -62,7 +62,7 @@ const About = () => {
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[49%]  xsm:w-full ">
               <ImgCard
-                className="h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
+                className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
                 img={"static/images/rockfound.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
@@ -70,7 +70,7 @@ const About = () => {
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
               <div
-                className="cursor-pointer h-[236px] bg-white shadow-md rounded-2xl p-5 mb-4 flex justify-center imgbox	items-center w-full about-logo-card"
+                className="cursor-pointer h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox	items-center w-full about-logo-card"
                 onClick={() =>
                   window.open("https://www.esteri.it/en/ministero/")
                 }
