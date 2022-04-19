@@ -123,23 +123,8 @@ const Feature = () => {
                   and policymakers with practical information on mini-grids,
                   including market reports, links to industry stakeholders,
                   instruction guides, business forms and templates, and
-                  financial models. It is implemented by AfDB, UStainable Energy
-                  for All Africa Hub, SEFA, Energy4Impact, and Inensus.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/energy-ImResizer.png"
-              title="Energy Access Explorer Beta"
-              link="https://www.energyaccessexplorer.org/"
-              description={
-                <>
-                  Energy Access Explorer is an online, open-source, interactive
-                  platform that uses mapping to visualize the state of energy
-                  access in unserved and underserved areas. It analyzes credible
-                  and public data to make the connection between the demand and
-                  supply of energy. The platform is led by World Resources
-                  Institute (WRI).
+                  financial models. It is implemented by AfDB, Sustainable
+                  Energy for All Africa Hub, SEFA, Energy4Impact, and Inensus.
                 </>
               }
             />

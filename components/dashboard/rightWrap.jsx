@@ -43,12 +43,17 @@ const RightWrapPage = ({
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
 
-  typeof window !== "undefined" && window.addEventListener("orientationchange", function() {
-    // Announce the new orientation number
-    if(window?.orientation === 90){
-      setIsFilter(false)
-    }
-  }, false);
+  typeof window !== "undefined" &&
+    window.addEventListener(
+      "orientationchange",
+      function () {
+        // Announce the new orientation number
+        if (window?.orientation === 90) {
+          setIsFilter(false);
+        }
+      },
+      false
+    );
 
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
@@ -63,11 +68,6 @@ const RightWrapPage = ({
     filters = filtersData?.data?.results;
   }
 
-  useEffect(() => {
-    if (debouncedSearch?.length) {
-      setPage(1);
-    }
-  }, [debouncedSearch]);
   // Get Reports API
   const query = useMemo(() => {
     return getReportQuery(
@@ -85,7 +85,7 @@ const RightWrapPage = ({
     () => getReports(query),
     {
       onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
+        ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );
@@ -150,13 +150,14 @@ const RightWrapPage = ({
 
   // Filter onChange
   const onChange = (e) => {
+    setPage(1);
+    setPreviousReports([]);
     const obj = { ...selectInputs };
     const revisedCountryList = obj[e.target.name];
     const alreadyPresent = revisedCountryList?.includes(
       e?.target?.id.toString()
     );
     const targetIndex = revisedCountryList?.indexOf(e?.target?.id);
-
     if (alreadyPresent) {
       revisedCountryList.splice(targetIndex, 1);
       obj[e.target.name] = revisedCountryList;
@@ -168,17 +169,16 @@ const RightWrapPage = ({
   };
 
   useEffect(() => {
-    if ((optionSelected && page === 1) || allReports?.data?.data?.length < 20) {
+    if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data);
-    } else if (
-      allReports?.data?.data?.length &&
-      allReports?.data?.data?.length >= 20
-    ) {
+      window !== "undefined" && window.scrollTo(0, 0);
+    } else if (allReports?.data?.data?.length) {
       setPreviousReports([...allReports?.data?.data, ...previousReports]);
+      window !== "undefined" && window.scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
-  }, [allReports]);
+  }, [allReports, typeof window !== "undefined" && window]);
 
   const reports = showAllReports ? previousReports : finalNonPublicationReports;
 
@@ -199,25 +199,31 @@ const RightWrapPage = ({
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
-    setIsOpen()
+    setIsOpen();
   };
 
   const onScroll = (e) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 50;
     if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
       setPage(page + 1);
-      setPreviousReports([...reports]);
+      // setPreviousReports([...reports]);
       setIsScrollLoader(true);
     }
   };
 
   const onApply = () => {
     setIsFilter(!isFilter);
-    setIsOpen()
-  }
+    setIsOpen();
+  };
 
   const optionSelected = isSelectedInput(selectInputs);
+
+  useEffect(() => {
+    if (debouncedSearch?.length) {
+      setPage(1);
+    }
+  }, [debouncedSearch]);
 
   const finalReports = !showAllReports && [
     ...reports,
@@ -274,7 +280,7 @@ const RightWrapPage = ({
               className={"mobile-overlay mobile-show"}
               onClick={() => {
                 setIsFilter(!isFilter);
-                setIsOpen()
+                setIsOpen();
               }}
             />
           )}
@@ -401,7 +407,11 @@ const RightWrapPage = ({
                 <BlueButton
                   title="Apply"
                   onClick={() => onApply()}
-                  style={{ backgroundColor: "#FCB600", color: "#fff", opacity: optionSelected ? 1 : 0.5 }}
+                  style={{
+                    backgroundColor: "#FCB600",
+                    color: "#fff",
+                    opacity: optionSelected ? 1 : 0.5,
+                  }}
                   disabled={optionSelected}
                 />
               </div>
@@ -428,6 +438,7 @@ const RightWrapPage = ({
                     content="Click here to download the list of matching resources."
                     hideInfo={true}
                     top={true}
+                    hideContent={disableButtons}
                   >
                     <div className="flex download-button-inner">
                       Download <BsDownload style={{ marginLeft: 7 }} />
@@ -447,6 +458,7 @@ const RightWrapPage = ({
                     content="Click to receive a list matching resources via Email."
                     hideInfo={true}
                     top={true}
+                    hideContent={disableButtons}
                   >
                     <div className="flex">
                       {" "}
@@ -585,8 +597,8 @@ const RightWrapPage = ({
                         const description = i?.attributes?.Description;
                         return (
                           <Report
-                            countryName={country || "Global"}
-                            area={document_types || "North America "}
+                            countryName={country}
+                            area={document_types}
                             item={publishingOrganizations || "IRENA"}
                             date={year || "2018"}
                             file={
