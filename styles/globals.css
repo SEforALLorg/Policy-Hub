@@ -70,6 +70,10 @@ a {
   box-sizing: border-box;
 }
 
+.mc-modal-bg{
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+}
 .header-title-wrap {
   /* background-image: url(/static/images/BG.png);
   background-color: #144a68 !important;
