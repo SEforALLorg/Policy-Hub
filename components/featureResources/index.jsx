@@ -128,6 +128,23 @@ const Feature = () => {
                 </>
               }
             />
+             <OtherToolsCard
+              image="/static/images/energy-ImResizer.png"
+              title="Energy Access Explorer"
+              link="https://www.energyaccessexplorer.org/"
+              description={
+                <>
+                  Energy Access Explorer is an online, open-source, interactive
+                  platform that uses mapping to visualize the state of energy
+                  access in unserved and underserved areas. It analyzes credible
+                  and public data to make the connection between the demand and
+                  supply of energy. The platform is led by World Resources
+                  Institute (WRI).
+                  financial models. It is implemented by AfDB, Sustainable
+                  Energy for All Africa Hub, SEFA, Energy4Impact, and Inensus.
+                </>
+              }
+            />
             <h6
               className="font-bold leading-10 text-large text-darktext 
                             uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
