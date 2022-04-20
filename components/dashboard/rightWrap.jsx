@@ -59,7 +59,7 @@ const RightWrapPage = ({
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
-      ErrorNotify(error.response.data.error.message);
+      ErrorNotify(error?.response?.data?.error?.message);
     },
   });
 
