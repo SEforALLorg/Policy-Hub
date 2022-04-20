@@ -76,23 +76,32 @@ const Report = ({
             <span />
           </>
         )}
-        {area && (
-          <>
-            <div className="report-bottom-box">
-              <p
-                className={`font-normal text-[14px] m-0 text-text ${
-                  !bigCard && isActive && "innerText"
-                }`}
-              >
-                {area}
-              </p>
-              {area?.length > countTooltip ? (
-                <div className={"content"}>{area}</div>
-              ) : null}
-            </div>
-            <span />
-          </>
-        )}
+        <>
+          <div className="report-bottom-box">
+            <p
+              className={`font-normal text-[14px] m-0 text-text ${
+                !bigCard && isActive && "innerText"
+              }`}
+              style={{ width: !bigCard && !isActive && "100px" }}
+            >
+              {area?.length
+                ? area?.map(
+                    (i, index) =>
+                      (index === 0 ? "" : ", ") + i?.attributes?.DocumentType
+                  )
+                : "--"}
+            </p>
+            {area?.length > 2 || !bigCard ? (
+              <div className={"content"}>
+                {area?.map(
+                  (i, index) =>
+                    (index === 0 ? "" : ", ") + i?.attributes?.DocumentType
+                )}
+              </div>
+            ) : null}
+          </div>
+          <span />
+        </>
         <div className="report-bottom-box" style={{ width: "50px" }}>
           <p
             className={`font-normal text-[14px] m-0 text-text ${
@@ -115,7 +124,7 @@ const Report = ({
               !bigCard && isActive && "innerText"
             }`}
           >
-            {date}
+            {date || "-"}
           </p>
         </div>
         {isActive && (

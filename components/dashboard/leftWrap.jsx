@@ -14,6 +14,8 @@ const LeftWrapPage = ({
   restart,
   stepAnswer,
   resetFilters,
+  isResetPage,
+  setIsResetPage
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -32,11 +34,13 @@ const LeftWrapPage = ({
     if (!nextQuestionId) return null;
     setNextQuestionId(e);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const onReportsFind = (e) => {
     setPublicationReports(e?.KeyPublication?.data);
     setNonPublicationReports(e?.NonKeyPublication?.data);
+    setIsResetPage(!isResetPage);
   };
 
   const onPreviousQuestion = () => {
@@ -46,6 +50,7 @@ const LeftWrapPage = ({
     );
     revisedArray.splice(0, 1);
     setStepQuestion(revisedArray);
+    setIsResetPage(!isResetPage);
   };
 
   const onStepChange = (e) => {
@@ -58,6 +63,7 @@ const LeftWrapPage = ({
     onReportsFind(e?.attributes?.AddAnswer[0]);
     setStepQuestion([]);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const onRestart = () => {
@@ -65,6 +71,7 @@ const LeftWrapPage = ({
     setUserJourney([]);
     setStepQuestion([]);
     restart();
+    setIsResetPage(!isResetPage);
   };
 
   const onSubmitAnswer = (i, item) => {
@@ -73,6 +80,7 @@ const LeftWrapPage = ({
     setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
     setStepQuestion([]);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const completeQuestion = questions?.find((item) => item?.id === 11);
@@ -87,6 +95,7 @@ const LeftWrapPage = ({
       },
     ]);
     setStepQuestion([]);
+    setIsResetPage(!isResetPage);
   };
 
   const onMiniClick = () => {
@@ -99,6 +108,7 @@ const LeftWrapPage = ({
       },
     ]);
     setStepQuestion([]);
+    setIsResetPage(!isResetPage);
   };
 
   return (
