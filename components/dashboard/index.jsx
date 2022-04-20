@@ -12,6 +12,7 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
   const [firstQuestion, setFirstQuestion] = useState();
   const [stepAnswer, setStepAnswer] = useState();
   const [isClearAll, setClearAll] = useState(false);
+  const [isResetPage, setIsResetPage] = useState(false);
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -62,6 +63,8 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
           restart={() => onRestart()}
           stepAnswer={stepAnswer}
           resetFilters={() => onResetFilter()}
+          isResetPage={isResetPage}
+          setIsResetPage={setIsResetPage}
         />
         <RightWrapPage
           publicationReports={publicationReports}
@@ -72,6 +75,7 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
           showAllReports={false}
           setClearAll={setClearAll}
           isClearAll={isClearAll}
+          isResetPage={isResetPage}
         />
       </div>
       <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>

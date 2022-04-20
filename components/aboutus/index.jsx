@@ -99,7 +99,7 @@ const About = () => {
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[32%] xsm:w-100  xsm:w-full ">
               <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
+                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
                 img={"static/images/african-development.jpg"}
                 title={"African Development Bank Group"}
                 link={"https://www.afdb.org/en"}

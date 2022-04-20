@@ -29,6 +29,7 @@ const RightWrapPage = ({
   onResetFilter,
   setClearAll,
   isClearAll,
+  isResetPage
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -205,7 +206,7 @@ const RightWrapPage = ({
   const onScroll = (e) => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 50;
-    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
+    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount && showAllReports) {
       setPage(page + 1);
       // setPreviousReports([...reports]);
       setIsScrollLoader(true);
@@ -218,12 +219,16 @@ const RightWrapPage = ({
   };
 
   const optionSelected = isSelectedInput(selectInputs);
-
+  
   useEffect(() => {
     if (debouncedSearch?.length) {
       setPage(1);
     }
   }, [debouncedSearch]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [isResetPage]);
 
   const finalReports = !showAllReports && [
     ...reports,
@@ -509,17 +514,8 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
-                        const findType =
-                          i?.attributes?.AddFilters?.document_types?.data?.find(
-                            (e) =>
-                              selectedOptions?.includes(
-                                e?.attributes?.DocumentType
-                              )
-                          );
                         const document_types =
-                          findType?.attributes?.DocumentType ||
-                          i?.attributes?.AddFilters?.document_types?.data[0]
-                            ?.attributes?.DocumentType;
+                          i?.attributes?.AddFilters?.document_types?.data
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;
@@ -532,7 +528,7 @@ const RightWrapPage = ({
                             countryName={country || "Global"}
                             area={document_types}
                             item={publishingOrganizations || "IRENA"}
-                            date={year || "2018"}
+                            date={year}
                             file={
                               flag?.image
                                 ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
@@ -578,17 +574,8 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
-                        const findType =
-                          i?.attributes?.AddFilters?.document_types?.data?.find(
-                            (e) =>
-                              selectedOptions?.includes(
-                                e?.attributes?.DocumentType
-                              )
-                          );
                         const document_types =
-                          findType?.attributes?.DocumentType ||
-                          i?.attributes?.AddFilters?.document_types?.data[0]
-                            ?.attributes?.DocumentType;
+                          i?.attributes?.AddFilters?.document_types?.data
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;
@@ -600,7 +587,7 @@ const RightWrapPage = ({
                             countryName={country}
                             area={document_types}
                             item={publishingOrganizations || "IRENA"}
-                            date={year || "2018"}
+                            date={year}
                             file={
                               flag?.image
                                 ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
