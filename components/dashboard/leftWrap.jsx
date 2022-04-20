@@ -14,6 +14,8 @@ const LeftWrapPage = ({
   restart,
   stepAnswer,
   resetFilters,
+  isResetPage,
+  setIsResetPage
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -32,11 +34,13 @@ const LeftWrapPage = ({
     if (!nextQuestionId) return null;
     setNextQuestionId(e);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const onReportsFind = (e) => {
     setPublicationReports(e?.KeyPublication?.data);
     setNonPublicationReports(e?.NonKeyPublication?.data);
+    setIsResetPage(!isResetPage);
   };
 
   const onPreviousQuestion = () => {
@@ -46,6 +50,7 @@ const LeftWrapPage = ({
     );
     revisedArray.splice(0, 1);
     setStepQuestion(revisedArray);
+    setIsResetPage(!isResetPage);
   };
 
   const onStepChange = (e) => {
@@ -58,6 +63,7 @@ const LeftWrapPage = ({
     onReportsFind(e?.attributes?.AddAnswer[0]);
     setStepQuestion([]);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const onRestart = () => {
@@ -65,6 +71,7 @@ const LeftWrapPage = ({
     setUserJourney([]);
     setStepQuestion([]);
     restart();
+    setIsResetPage(!isResetPage);
   };
 
   const onSubmitAnswer = (i, item) => {
@@ -73,6 +80,7 @@ const LeftWrapPage = ({
     setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
     setStepQuestion([]);
     resetFilters();
+    setIsResetPage(!isResetPage);
   };
 
   const completeQuestion = questions?.find((item) => item?.id === 11);
@@ -87,6 +95,7 @@ const LeftWrapPage = ({
       },
     ]);
     setStepQuestion([]);
+    setIsResetPage(!isResetPage);
   };
 
   const onMiniClick = () => {
@@ -99,6 +108,7 @@ const LeftWrapPage = ({
       },
     ]);
     setStepQuestion([]);
+    setIsResetPage(!isResetPage);
   };
 
   return (
@@ -166,81 +176,80 @@ const LeftWrapPage = ({
           style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
         />
       )}
-      {!nextQuestionId ? (
-        <>
-          <CompletedSteps
-            onRestart={() => onRestart()}
-            onStandaloneClick={() => onStandaloneClick()}
-            onMiniClick={() => onMiniClick()}
-          />
-        </>
-      ) : questions?.length ? (
-        questions
-          .filter(
-            (q) =>
-              q?.attributes?.MainQuestion?.Question?.data?.id === nextQuestionId
-          )
-          .map((item, index) => {
-            const questionTitle =
-              item?.attributes?.MainQuestion?.Question?.data?.attributes
-                ?.Question;
-            const singleAnswer = item?.attributes?.AddAnswer;
-            const questionType = item?.attributes?.QuestionType;
-            const ToolTipText = item?.attributes?.ToolTipText;
-            const QuestionKeyType =
-              item?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes
-                ?.QuestionKeyType;
-            let findSteps;
-            if (QuestionKeyType) {
-              findSteps = questions?.filter(
-                (e) =>
-                  e?.attributes?.MainQuestion?.QuestionKeyType?.data?.attributes
-                    ?.QuestionKeyType === QuestionKeyType
+      {!nextQuestionId && (
+        <CompletedSteps
+          onRestart={() => onRestart()}
+          onStandaloneClick={() => onStandaloneClick()}
+          onMiniClick={() => onMiniClick()}
+        />
+      )}
+      {questions?.length
+        ? questions
+            .filter(
+              (q) =>
+                q?.attributes?.MainQuestion?.Question?.data?.id ===
+                nextQuestionId
+            )
+            .map((item, index) => {
+              const questionTitle =
+                item?.attributes?.MainQuestion?.Question?.data?.attributes
+                  ?.Question;
+              const singleAnswer = item?.attributes?.AddAnswer;
+              const questionType = item?.attributes?.QuestionType;
+              const ToolTipText = item?.attributes?.ToolTipText;
+              const QuestionKeyType =
+                item?.attributes?.MainQuestion?.QuestionKeyType?.data
+                  ?.attributes?.QuestionKeyType;
+              let findSteps;
+              if (QuestionKeyType) {
+                findSteps = questions?.filter(
+                  (e) =>
+                    e?.attributes?.MainQuestion?.QuestionKeyType?.data
+                      ?.attributes?.QuestionKeyType === QuestionKeyType
+                );
+              }
+              return (
+                <div className={"QuestionWrap"} key={index}>
+                  {questionType === "Questionnaire" ? (
+                    <>
+                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
+                        {questionTitle}
+                        {ToolTipText && (
+                          <TooltipComponent content={ToolTipText} />
+                        )}
+                      </div>
+                      <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
+                        {singleAnswer?.map((i, index) => {
+                          if (!i?.Answer) return null;
+
+                          return (
+                            <BlueButton
+                              className="mb-3"
+                              title={i?.Answer}
+                              onClick={() => onSubmitAnswer(i, item)}
+                              key={index}
+                            />
+                          );
+                        })}
+                      </div>
+                    </>
+                  ) : (
+                    <StepComponent
+                      onNext={(e) => onNextQuestion(e)}
+                      setStepQuestion={(e) =>
+                        setStepQuestion([e, ...stepQuestion])
+                      }
+                      item={item}
+                      setOptionReport={(i) => onReportsFind(i)}
+                      onPrevious={onPreviousQuestion}
+                      stepQuestion={stepQuestion}
+                      totalSteps={findSteps}
+                    />
+                  )}
+                </div>
               );
-            }
-
-            return (
-              <div className={"QuestionWrap"} key={index}>
-                {questionType === "Questionnaire" ? (
-                  <>
-                    <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
-                      {questionTitle}
-                      {ToolTipText && (
-                        <TooltipComponent content={ToolTipText} />
-                      )}
-                    </div>
-                    <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
-                      {singleAnswer?.map((i, index) => {
-                        if (!i?.Answer) return null;
-
-                        return (
-                          <BlueButton
-                            className="mb-3"
-                            title={i?.Answer}
-                            onClick={() => onSubmitAnswer(i, item)}
-                            key={index}
-                          />
-                        );
-                      })}
-                    </div>
-                  </>
-                ) : (
-                  <StepComponent
-                    onNext={(e) => onNextQuestion(e)}
-                    setStepQuestion={(e) =>
-                      setStepQuestion([e, ...stepQuestion])
-                    }
-                    item={item}
-                    setOptionReport={(i) => onReportsFind(i)}
-                    onPrevious={onPreviousQuestion}
-                    stepQuestion={stepQuestion}
-                    totalSteps={findSteps}
-                  />
-                )}
-              </div>
-            );
-          })
-      ) : null}
+            })
+        : null}
     </div>
   );
 };

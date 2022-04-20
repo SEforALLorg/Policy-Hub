@@ -29,6 +29,7 @@ const RightWrapPage = ({
   onResetFilter,
   setClearAll,
   isClearAll,
+  isResetPage
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -43,6 +44,18 @@ const RightWrapPage = ({
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
 
+  typeof window !== "undefined" &&
+    window.addEventListener(
+      "orientationchange",
+      function () {
+        // Announce the new orientation number
+        if (window?.orientation === 90) {
+          setIsFilter(false);
+        }
+      },
+      false
+    );
+
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
     onError: (error) => {
@@ -56,11 +69,6 @@ const RightWrapPage = ({
     filters = filtersData?.data?.results;
   }
 
-  useEffect(() => {
-    if (debouncedSearch?.length) {
-      setPage(1);
-    }
-  }, [debouncedSearch]);
   // Get Reports API
   const query = useMemo(() => {
     return getReportQuery(
@@ -78,7 +86,7 @@ const RightWrapPage = ({
     () => getReports(query),
     {
       onError: (error) => {
-        ErrorNotify(error.response.data.error.message);
+        ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );
@@ -143,13 +151,14 @@ const RightWrapPage = ({
 
   // Filter onChange
   const onChange = (e) => {
+    setPage(1);
+    setPreviousReports([]);
     const obj = { ...selectInputs };
     const revisedCountryList = obj[e.target.name];
     const alreadyPresent = revisedCountryList?.includes(
       e?.target?.id.toString()
     );
     const targetIndex = revisedCountryList?.indexOf(e?.target?.id);
-
     if (alreadyPresent) {
       revisedCountryList.splice(targetIndex, 1);
       obj[e.target.name] = revisedCountryList;
@@ -161,17 +170,16 @@ const RightWrapPage = ({
   };
 
   useEffect(() => {
-    if ((optionSelected && page === 1) || allReports?.data?.data?.length < 20) {
+    if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data);
-    } else if (
-      allReports?.data?.data?.length &&
-      allReports?.data?.data?.length >= 20
-    ) {
+      window !== "undefined" && window.scrollTo(0, 0);
+    } else if (allReports?.data?.data?.length) {
       setPreviousReports([...allReports?.data?.data, ...previousReports]);
+      window !== "undefined" && window.scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
-  }, [allReports]);
+  }, [allReports, typeof window !== "undefined" && window]);
 
   const reports = showAllReports ? previousReports : finalNonPublicationReports;
 
@@ -192,19 +200,35 @@ const RightWrapPage = ({
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
+    setIsOpen();
   };
 
   const onScroll = (e) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 5;
-    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount) {
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 50;
+    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount && showAllReports) {
       setPage(page + 1);
-      setPreviousReports([...reports]);
+      // setPreviousReports([...reports]);
       setIsScrollLoader(true);
     }
   };
 
+  const onApply = () => {
+    setIsFilter(!isFilter);
+    setIsOpen();
+  };
+
   const optionSelected = isSelectedInput(selectInputs);
+  
+  useEffect(() => {
+    if (debouncedSearch?.length) {
+      setPage(1);
+    }
+  }, [debouncedSearch]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [isResetPage]);
 
   const finalReports = !showAllReports && [
     ...reports,
@@ -259,7 +283,10 @@ const RightWrapPage = ({
           {isFilter && (
             <div
               className={"mobile-overlay mobile-show"}
-              onClick={() => setIsFilter(!isFilter)}
+              onClick={() => {
+                setIsFilter(!isFilter);
+                setIsOpen();
+              }}
             />
           )}
           <div
@@ -274,7 +301,7 @@ const RightWrapPage = ({
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden`}
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
                   Clear filters
@@ -384,8 +411,13 @@ const RightWrapPage = ({
                 </button>
                 <BlueButton
                   title="Apply"
-                  onClick={() => setIsFilter(!isFilter)}
-                  style={{ backgroundColor: "#FCB600", color: "#fff" }}
+                  onClick={() => onApply()}
+                  style={{
+                    backgroundColor: "#FCB600",
+                    color: "#fff",
+                    opacity: optionSelected ? 1 : 0.5,
+                  }}
+                  disabled={optionSelected}
                 />
               </div>
             </div>
@@ -411,6 +443,7 @@ const RightWrapPage = ({
                     content="Click here to download the list of matching resources."
                     hideInfo={true}
                     top={true}
+                    hideContent={disableButtons}
                   >
                     <div className="flex download-button-inner">
                       Download <BsDownload style={{ marginLeft: 7 }} />
@@ -430,6 +463,7 @@ const RightWrapPage = ({
                     content="Click to receive a list matching resources via Email."
                     hideInfo={true}
                     top={true}
+                    hideContent={disableButtons}
                   >
                     <div className="flex">
                       {" "}
@@ -480,17 +514,8 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
-                        const findType =
-                          i?.attributes?.AddFilters?.document_types?.data?.find(
-                            (e) =>
-                              selectedOptions?.includes(
-                                e?.attributes?.DocumentType
-                              )
-                          );
                         const document_types =
-                          findType?.attributes?.DocumentType ||
-                          i?.attributes?.AddFilters?.document_types?.data[0]
-                            ?.attributes?.DocumentType;
+                          i?.attributes?.AddFilters?.document_types?.data
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;
@@ -503,7 +528,7 @@ const RightWrapPage = ({
                             countryName={country || "Global"}
                             area={document_types}
                             item={publishingOrganizations || "IRENA"}
-                            date={year || "2018"}
+                            date={year}
                             file={
                               flag?.image
                                 ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
@@ -549,17 +574,8 @@ const RightWrapPage = ({
                         const country =
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
-                        const findType =
-                          i?.attributes?.AddFilters?.document_types?.data?.find(
-                            (e) =>
-                              selectedOptions?.includes(
-                                e?.attributes?.DocumentType
-                              )
-                          );
                         const document_types =
-                          findType?.attributes?.DocumentType ||
-                          i?.attributes?.AddFilters?.document_types?.data[0]
-                            ?.attributes?.DocumentType;
+                          i?.attributes?.AddFilters?.document_types?.data
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;
@@ -568,10 +584,10 @@ const RightWrapPage = ({
                         const description = i?.attributes?.Description;
                         return (
                           <Report
-                            countryName={country || "Global"}
-                            area={document_types || "North America "}
+                            countryName={country}
+                            area={document_types}
                             item={publishingOrganizations || "IRENA"}
-                            date={year || "2018"}
+                            date={year}
                             file={
                               flag?.image
                                 ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`

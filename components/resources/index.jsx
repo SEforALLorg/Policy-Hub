@@ -12,6 +12,7 @@ const ALLReports = () => {
     co_authors: [],
     publishing_organizations: [],
   });
+  const [isClearAll, setClearAll] = useState(false);
   const onResetFilter = () => {
     setSelectInputs({
       countries: [],
@@ -23,6 +24,7 @@ const ALLReports = () => {
       co_authors: [],
       publishing_organizations: [],
     });
+    setClearAll(!isClearAll)
   };
   return (
     <div className="all-reports">
@@ -43,6 +45,8 @@ const ALLReports = () => {
         selectInputs={selectInputs}
         setSelectInputs={setSelectInputs}
         onResetFilter={onResetFilter}
+        setClearAll={setClearAll}
+        isClearAll={isClearAll}
       />
     </div>
   );
