@@ -2063,6 +2063,9 @@ a {
   .resources-button .content{
     display: none !important;
   }
+  .african-development img{
+    max-width: 96%;
+  }
 }
 @media only screen and (min-width:460px) and (max-width:767px){
   .footer-logos{
