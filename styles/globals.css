@@ -496,6 +496,8 @@ a {
 .report-no-data a {
   color: #13a2bc;
   font-size: 14px;
+  position: relative;
+  z-index: 999999;
 }
 .report-no-data p {
   display: flex;
