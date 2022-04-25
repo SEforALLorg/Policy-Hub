@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ToastContainer } from "react-toastify";
 import Head from "next/head";
@@ -7,6 +8,18 @@ import "../styles/globals.css";
 import "../styles/modal-video.css";
 
 function MyApp({ Component, pageProps }) {
+  const [showConsent, setShowConsent] = useState(false);
+
+  const cookie = typeof document === "undefined" ? null : document.cookie;
+  const status = cookie?.includes("cookieconsent_status=1");
+  const onAcceptCookies = () => {
+    document.cookie = "cookieconsent_status = 1";
+    setShowConsent(!showConsent);
+  };
+  useEffect(() => {
+    setShowConsent(status);
+  }, [showConsent]);
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -32,6 +45,23 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ToastContainer theme={"colored"} />
       <Component {...pageProps} />
+      {
+        !showConsent && <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
+          This website uses cookies to ensure you get the best experience.{" "}
+          <a
+            className="text-Primary hover:underline cursor-pointer pl-[3px]"
+            onClick={() => window.open("https://www.seforall.org/privacy-policy")}
+          >
+            Read more
+          </a>
+          <button
+            className="cookies-accept-button"
+            onClick={() => onAcceptCookies()}
+          >
+            Accept
+          </button>
+        </div>
+      }
     </QueryClientProvider>
   );
 }
