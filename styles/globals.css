@@ -1006,6 +1006,34 @@ a {
   position: relative;
 }
 
+.cookies-wrap{
+  width: 100%;
+  height: 70px;
+  background-color: #FCB600;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  right: 0px;
+  /* transition: all .5s; */
+  /* z-index: -1; */
+}
+.cookies-accept-button{
+  background-color: #fff;
+  color: #13A2BC;
+  padding: 7px 15px;
+  border-radius: 20px;
+  margin-left: 10px;
+  font-size: 15px;
+  margin-top: -2px;
+  padding-top: 10px;
+}
+
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
     padding: 0px 10px;
@@ -1520,6 +1548,17 @@ a {
   }
   .rightOverlay{
     width: 300px;
+  }
+  .cookies-wrap{
+    padding: 10px 20px;
+    height: unset;
+    display: block;
+  }
+  .cookies-wrap button{
+    display: block;
+    margin: 10px auto;
+    padding: 7px 35px;
+    margin-bottom: 0px;
   }
   .videoPlayer img{
     object-position: center !important;
