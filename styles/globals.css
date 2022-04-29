@@ -1026,12 +1026,13 @@ a {
 .cookies-accept-button{
   background-color: #fff;
   color: #13A2BC;
-  padding: 7px 15px;
+  padding: 7px 20px;
   border-radius: 20px;
   margin-left: 10px;
   font-size: 15px;
   margin-top: -2px;
   padding-top: 10px;
+  margin-left: 17px;
 }
 
 @media only screen and (min-width: 1680px) {
@@ -1559,6 +1560,7 @@ a {
     margin: 10px auto;
     padding: 7px 35px;
     margin-bottom: 0px;
+    margin-left: 0px;
   }
   .videoPlayer img{
     object-position: center !important;
