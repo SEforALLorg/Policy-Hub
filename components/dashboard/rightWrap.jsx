@@ -19,6 +19,7 @@ import { getFilters } from "pages/api/filter";
 import { isSelectedInput } from "../../utilities";
 import BlueButton from "../buttons/blueButton";
 import { RiSearch2Line } from "react-icons/ri";
+import MobileFilters from "../mobileFilters";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -29,7 +30,7 @@ const RightWrapPage = ({
   onResetFilter,
   setClearAll,
   isClearAll,
-  isResetPage
+  isResetPage,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -41,6 +42,7 @@ const RightWrapPage = ({
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [csvData, setCsvData] = useState("");
+  const [isClear, setIsClear] = useState(false)
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
 
@@ -71,6 +73,7 @@ const RightWrapPage = ({
 
   // Get Reports API
   const query = useMemo(() => {
+    if(typeof window !== "undefined" && window?.innerWidth < 990) return
     return getReportQuery(
       selectInputs,
       nonPublicationReports,
@@ -200,13 +203,19 @@ const RightWrapPage = ({
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
-    setIsOpen();
+    setIsOpen('');
+    setIsClear(!isClear);
+    setSearch('');
   };
 
   const onScroll = (e) => {
     const bottom =
       e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 50;
-    if (bottom && page < allReports?.data?.meta?.pagination?.pageCount && showAllReports) {
+    if (
+      bottom &&
+      page < allReports?.data?.meta?.pagination?.pageCount &&
+      showAllReports
+    ) {
       setPage(page + 1);
       // setPreviousReports([...reports]);
       setIsScrollLoader(true);
@@ -215,11 +224,11 @@ const RightWrapPage = ({
 
   const onApply = () => {
     setIsFilter(!isFilter);
-    setIsOpen();
+    setIsOpen('');
   };
 
   const optionSelected = isSelectedInput(selectInputs);
-  
+
   useEffect(() => {
     if (debouncedSearch?.length) {
       setPage(1);
@@ -254,7 +263,7 @@ const RightWrapPage = ({
         target="_blank"
       />
       {isOpen ? (
-        <div className="rightOverlay" onClick={() => setIsOpen()} />
+        <div className="rightOverlay" onClick={() => setIsOpen('')} />
       ) : null}
       <div className={"right-wrap reportRightWrap"}>
         {!showAllReports && (
@@ -273,28 +282,41 @@ const RightWrapPage = ({
           </div>
         )}
         <div className="flex mt-[30px] reports-inner-section">
-          <div
+          {/* <div
             className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
             onClick={() => setIsFilter(!isFilter)}
           >
             <BsSliders className="text-text mr-[5px]" />
             Filter
+          </div> */}
+          <div className="mobile-show">
+            <MobileFilters
+              publicationReports={publicationReports}
+              nonPublicationReports={nonPublicationReports}
+              setSelectInputs={setSelectInputs}
+              selectInputs={selectInputs}
+              showAllReports={showAllReports}
+              onResetFilter={onResetFilter}
+              setClearAll={setClearAll}
+              isClearAll={isClearAll}
+              isResetPage={isResetPage}
+              isClear={isClear}
+            />
           </div>
           {isFilter && (
             <div
               className={"mobile-overlay mobile-show"}
               onClick={() => {
                 setIsFilter(!isFilter);
-                setIsOpen();
+                setIsOpen('');
               }}
             />
           )}
           <div
-            className={`${
-              isFilter
+            className={`${isFilter
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
-            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
+              } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
@@ -432,9 +454,8 @@ const RightWrapPage = ({
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${
-          disableButtons ? "" : "button-animation"
-        }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+                    }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -452,9 +473,8 @@ const RightWrapPage = ({
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${
-          disableButtons ? "" : "button-animation"
-        }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+                    }`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -515,7 +535,7 @@ const RightWrapPage = ({
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
                         const document_types =
-                          i?.attributes?.AddFilters?.document_types?.data
+                          i?.attributes?.AddFilters?.document_types?.data;
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;
@@ -575,7 +595,7 @@ const RightWrapPage = ({
                           i?.attributes?.AddFilters?.countries?.data[0]
                             ?.attributes?.CountryName;
                         const document_types =
-                          i?.attributes?.AddFilters?.document_types?.data
+                          i?.attributes?.AddFilters?.document_types?.data;
                         const publishingOrganizations =
                           i?.attributes?.AddFilters?.publishing_organizations
                             ?.data[0]?.attributes?.PublishingOrganization;

@@ -1811,7 +1811,7 @@ a {
     width: 100% !important;
     max-width: 300px;
     padding: 20px !important;
-    display: block;
+    display: none;
   }
   .mobile-overlay {
     position: fixed !important;
