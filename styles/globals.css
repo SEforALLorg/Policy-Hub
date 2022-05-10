@@ -1555,6 +1555,9 @@ a {
     height: unset;
     display: block;
   }
+  .energypedia-image img{
+    max-width: 30% !important;
+  }
   .cookies-wrap button{
     display: block;
     margin: 10px auto;
