@@ -171,14 +171,17 @@ const About = () => {
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             We also thank the following individuals for their consultation and
-            participation: <br /> <b>Freda Akyeabea Opoku</b>, African Development Bank Group;{" "}
-            <b>Catoer Wibowo</b>, Deutsche Gesellschaft für Internationale
-            Zusammenarbeit; <b>Jonathan Phillips</b>, James E. Rogers Energy
-            Access Project; <b>Dimitrios Mentis</b>, Energy Access Explorer
-            (WRI); <b>Ashley Wearne</b>, Deutsche Gesellschaft für
-            Internationale Zusammenarbeit; <b>Ranisha Basnet</b>, Energypedia;{" "}
-            <b>Prof. Joseph Mutale</b>, Paeradigms; <b>Dr Moeketsi Mpholo</b>,
-            National University of Lesotho; <b>Jessica Stephens</b>, AMDA.
+            participation: <br /> 
+            <b>Freda Akyeabea Opoku</b>, African Development Bank Group (AfDB);{" "}
+            <b>Catoer Wibowo</b>, Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH;{" "}
+            <b>Ashley Wearne</b>, GIZ / GET.Transform; {" "}
+            <b>Jonathan Phillips</b>, James E. Rogers Energy Access Project / Duke University;{" "}
+            <b>Dimitrios Mentis</b>, World Resources Institute (WRI);{" "}
+            <b>Ranisha Basnet</b>, Energypedia; {" "}
+            <b>Prof. Joseph Mutale</b>, Paeradigms LLC / Zambia Renewable Energy Association (ZARENA);{" "}
+            <b>Dr. Moeketsi Mpholo</b>, National University of Lesotho;{" "}
+            <b>Jessica Stephens</b>, Africa Mini-grid Developers Association (AMDA);{" "}
+            <b>Nasir Ibrahim</b>, Rural Electrification Agency Nigeria.
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 text-justify xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-4">
             The organizations highlighted in the resources were all generous
