@@ -97,7 +97,7 @@ const About = () => {
             not limited to:{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap">
-            <div className="med:w-[24%] xsm:w-100  xsm:w-full ">
+            <div className="med:w-[19%] xsm:w-100  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
                 img={"static/images/african-development.jpg"}
@@ -105,7 +105,7 @@ const About = () => {
                 link={"https://www.afdb.org/en"}
               />
             </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"static/images/duke.png"}
@@ -113,7 +113,7 @@ const About = () => {
                 link={"https://energyaccess.duke.edu/"}
               />
             </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"static/images/WRI_logo_4c.png"}
@@ -121,12 +121,21 @@ const About = () => {
                 link={"https://www.wri.org/"}
               />
             </div>
-            <div className="med:w-[24%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"static/images/ARE_LOGO_2014_cmyk.png"}
                 title={"Alliance for Rural Electrification"}
                 link={"https://www.ruralelec.org/"}
+              />
+            </div>
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
+              <ImgCard
+                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
+                img={"static/images/energypedia_Logo.png"}
+                title={"Energypedia"}
+                link={"https://energypedia.info/wiki/Main_Page"}
+                imgStyle={{maxWidth:'70%'}}
               />
             </div>
           </div>
