@@ -174,9 +174,11 @@ const About = () => {
             participation: <br /> 
             <b>Freda Akyeabea Opoku</b>, African Development Bank Group (AfDB);{" "}
             <b>Catoer Wibowo</b>, Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ) GmbH;{" "}
-            <b>Ashley Wearne</b>, GIZ / GET.Transform; Jonathan Phillips, James E. Rogers Energy Access Project / Duke University;{" "}
+            <b>Ashley Wearne</b>, GIZ / GET.Transform; {" "}
+            <b>Jonathan Phillips</b>, James E. Rogers Energy Access Project / Duke University;{" "}
             <b>Dimitrios Mentis</b>, World Resources Institute (WRI);{" "}
-            <b>Ranisha Basnet</b>, Energypedia; Prof. Joseph Mutale, Paeradigms LLC / Zambia Renewable Energy Association (ZARENA);{" "}
+            <b>Ranisha Basnet</b>, Energypedia; {" "}
+            <b>Prof. Joseph Mutale</b>, Paeradigms LLC / Zambia Renewable Energy Association (ZARENA);{" "}
             <b>Dr. Moeketsi Mpholo</b>, National University of Lesotho;{" "}
             <b>Jessica Stephens</b>, Africa Mini-grid Developers Association (AMDA);{" "}
             <b>Nasir Ibrahim</b>, Rural Electrification Agency Nigeria.
