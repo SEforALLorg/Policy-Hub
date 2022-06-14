@@ -37,9 +37,11 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <script>
           {`
-          window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-          ga('create', 'G-QZE40XCZJQ', 'auto');
-          ga('send', 'pageview');
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-QZE40XCZJQ');
         `}
         </script>
       </Head>
