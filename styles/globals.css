@@ -1035,6 +1035,12 @@ a {
   margin-left: 17px;
 }
 
+@media only screen and (min-width:1900px) {
+  .mobile-card-width {
+    margin-top: 32rem !important;
+  }
+}
+
 @media only screen and (min-width: 1680px) {
   .OptionsWrap {
     padding: 0px 10px;
