@@ -52,7 +52,7 @@ export const videosCard = [
     title: "Promoting Mini-Grids Electrification for Rural Development",
   },
   {
-    link: "QxuyMqDzZko",
+    link: "zYNntqAi5gE",
     title:
       "SENEGAL: Processing of agricultural products for local food autonomy with solar photovoltaic energy",
   },
