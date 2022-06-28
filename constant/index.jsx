@@ -39,6 +39,11 @@ export const media = {
 
 export const videosCard = [
   {
+    link: "zYNntqAi5gE",
+    title:
+      "Sustainable Energy for All Knowledge Hub",
+  },
+  {
     link: "ny6hh4Khap8",
     title:
       "Energizing Finance: Impacts of Policies on Electricity Financing in Rwanda",
@@ -50,11 +55,6 @@ export const videosCard = [
   {
     link: "XRIaYKeeGyw",
     title: "Promoting Mini-Grids Electrification for Rural Development",
-  },
-  {
-    link: "zYNntqAi5gE",
-    title:
-      "SENEGAL: Processing of agricultural products for local food autonomy with solar photovoltaic energy",
   },
   {
     link: "hFeqJZtxiCk",
