@@ -134,7 +134,9 @@ const RightWrapPage = ({
     const report = allReports?.data?.data?.find(
       (i) => i.id === publishedReport.id
     );
-    return report;
+    const isPublishing = 
+        report?.attributes?.AddFilters?.publishing_organizations?.data?.[0]?.attributes?.PublishingOrganization === "SEforALL"
+    return {...report, publishing: isPublishing};
   });
 
   // on Publication Reports
@@ -525,8 +527,8 @@ const RightWrapPage = ({
                 ) : (
                   <>
                     {Boolean(finalPublicationReports.length) &&
-                      finalPublicationReports?.map((i, index) => {
-                        const name = i?.attributes.ReportName;
+                      finalPublicationReports?.sort((a,b) => b?.publishing - a?.publishing).map((i, index) => {
+                        const name = i?.attributes?.ReportName;
                         if (!name) return null;
                         const year =
                           i?.attributes?.AddFilters?.years?.data[0]?.attributes
