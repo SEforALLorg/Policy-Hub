@@ -4,12 +4,14 @@ import Head from "next/head";
 import Footer from "components/footer";
 import Header from "components/header";
 import Feature from "components/featureResources";
+import { useTranslation } from "react-i18next";
 
 const Resources = () => {
+  const { t, i18n } = useTranslation();
   return (
     <main>
       <Head>
-        <title>Sustainable Energy for All | Knowledge Hub | Resources</title>
+        <title>{t("ResourcesTitle")}</title>
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">

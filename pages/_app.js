@@ -74,20 +74,20 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       {!showConsent && (
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
-          This website uses cookies to ensure you get the best experience.{" "}
+          {t("cookiesText")}{" "}
           <a
             className="text-Primary hover:underline cursor-pointer pl-[3px]"
             onClick={() =>
               window.open("https://www.seforall.org/privacy-policy")
             }
           >
-            Read more
+            {t("Readmore")}
           </a>
           <button
             className="cookies-accept-button"
             onClick={() => onAcceptCookies()}
           >
-            Accept
+            {t("Accept")}
           </button>
         </div>
       )}

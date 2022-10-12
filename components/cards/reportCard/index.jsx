@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { AiFillStar } from "react-icons/ai";
 import TooltipComponent from "../../tooltip";
 
@@ -19,6 +20,7 @@ const Report = ({
   bigCard,
   description,
 }) => {
+  const { t, i18n } = useTranslation();
   const countTooltip = bigCard ? 30 : 10;
   return (
     <div
@@ -129,7 +131,7 @@ const Report = ({
         </div>
         {isActive && (
           <button className="go-report-btn" onClick={() => window.open(url)}>
-            Go to Report
+            {t("GotoReport")}
           </button>
         )}
       </div>

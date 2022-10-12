@@ -3,6 +3,7 @@ import React from "react";
 import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
+import { useTranslation } from "react-i18next";
 
 const Customize = ({
   onYes,
@@ -11,6 +12,7 @@ const Customize = ({
   onNextQuestion,
   onReportsFind,
 }) => {
+  const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
 
   const title =
@@ -24,6 +26,7 @@ const Customize = ({
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
   };
+  console.log(ToolTipText, "qwerty");
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
@@ -42,8 +45,7 @@ const Customize = ({
               />
             </div>
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess your country’s situation and
-              <br /> customize the decision-making process.
+              {t("AssessYourCountry")} <br /> {t("AssessYourCountrya")}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />

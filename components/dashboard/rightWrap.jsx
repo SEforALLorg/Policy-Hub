@@ -20,6 +20,7 @@ import { isSelectedInput } from "../../utilities";
 import BlueButton from "../buttons/blueButton";
 import { RiSearch2Line } from "react-icons/ri";
 import MobileFilters from "../mobileFilters";
+import { useTranslation } from "react-i18next";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -42,9 +43,10 @@ const RightWrapPage = ({
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [csvData, setCsvData] = useState("");
-  const [isClear, setIsClear] = useState(false)
+  const [isClear, setIsClear] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
+  const { t } = useTranslation();
 
   typeof window !== "undefined" &&
     window.addEventListener(
@@ -73,7 +75,7 @@ const RightWrapPage = ({
 
   // Get Reports API
   const query = useMemo(() => {
-    if(typeof window !== "undefined" && window?.innerWidth < 990) return
+    if (typeof window !== "undefined" && window?.innerWidth < 990) return;
     return getReportQuery(
       selectInputs,
       nonPublicationReports,
@@ -134,9 +136,10 @@ const RightWrapPage = ({
     const report = allReports?.data?.data?.find(
       (i) => i.id === publishedReport.id
     );
-    const isPublishing = 
-        report?.attributes?.AddFilters?.publishing_organizations?.data?.[0]?.attributes?.PublishingOrganization === "SEforALL"
-    return {...report, publishing: isPublishing};
+    const isPublishing =
+      report?.attributes?.AddFilters?.publishing_organizations?.data?.[0]
+        ?.attributes?.PublishingOrganization === "SEforALL";
+    return { ...report, publishing: isPublishing };
   });
 
   // on Publication Reports
@@ -205,9 +208,9 @@ const RightWrapPage = ({
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
-    setIsOpen('');
+    setIsOpen("");
     setIsClear(!isClear);
-    setSearch('');
+    setSearch("");
   };
 
   const onScroll = (e) => {
@@ -226,7 +229,7 @@ const RightWrapPage = ({
 
   const onApply = () => {
     setIsFilter(!isFilter);
-    setIsOpen('');
+    setIsOpen("");
   };
 
   const optionSelected = isSelectedInput(selectInputs);
@@ -265,7 +268,7 @@ const RightWrapPage = ({
         target="_blank"
       />
       {isOpen ? (
-        <div className="rightOverlay" onClick={() => setIsOpen('')} />
+        <div className="rightOverlay" onClick={() => setIsOpen("")} />
       ) : null}
       <div className={"right-wrap reportRightWrap"}>
         {!showAllReports && (
@@ -279,7 +282,7 @@ const RightWrapPage = ({
               />
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text">
-              Resources that match your input
+              {t("ResourcesInput")}
             </h5>
           </div>
         )}
@@ -310,15 +313,16 @@ const RightWrapPage = ({
               className={"mobile-overlay mobile-show"}
               onClick={() => {
                 setIsFilter(!isFilter);
-                setIsOpen('');
+                setIsOpen("");
               }}
             />
           )}
           <div
-            className={`${isFilter
+            className={`${
+              isFilter
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
-              } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
+            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
               Filters
@@ -456,8 +460,9 @@ const RightWrapPage = ({
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
-                    }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -475,8 +480,9 @@ const RightWrapPage = ({
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
-                    }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -518,7 +524,7 @@ const RightWrapPage = ({
                   <div className="report-no-data">
                     <p>
                       <RiSearch2Line />
-                      No Reports Found.
+                      {t("NoReportsFound")}
                     </p>
                     <a className="cursor-pointer" onClick={() => onReset()}>
                       Clear all filters
@@ -527,45 +533,47 @@ const RightWrapPage = ({
                 ) : (
                   <>
                     {Boolean(finalPublicationReports.length) &&
-                      finalPublicationReports?.sort((a,b) => b?.publishing - a?.publishing).map((i, index) => {
-                        const name = i?.attributes?.ReportName;
-                        if (!name) return null;
-                        const year =
-                          i?.attributes?.AddFilters?.years?.data[0]?.attributes
-                            ?.Year;
-                        const country =
-                          i?.attributes?.AddFilters?.countries?.data[0]
-                            ?.attributes?.CountryName;
-                        const document_types =
-                          i?.attributes?.AddFilters?.document_types?.data;
-                        const publishingOrganizations =
-                          i?.attributes?.AddFilters?.publishing_organizations
-                            ?.data[0]?.attributes?.PublishingOrganization;
-                        const url = i?.attributes?.URL;
-                        const flag = Flags.find((e) => e?.name == country);
-                        const description = i?.attributes?.Description;
+                      finalPublicationReports
+                        ?.sort((a, b) => b?.publishing - a?.publishing)
+                        .map((i, index) => {
+                          const name = i?.attributes?.ReportName;
+                          if (!name) return null;
+                          const year =
+                            i?.attributes?.AddFilters?.years?.data[0]
+                              ?.attributes?.Year;
+                          const country =
+                            i?.attributes?.AddFilters?.countries?.data[0]
+                              ?.attributes?.CountryName;
+                          const document_types =
+                            i?.attributes?.AddFilters?.document_types?.data;
+                          const publishingOrganizations =
+                            i?.attributes?.AddFilters?.publishing_organizations
+                              ?.data[0]?.attributes?.PublishingOrganization;
+                          const url = i?.attributes?.URL;
+                          const flag = Flags.find((e) => e?.name == country);
+                          const description = i?.attributes?.Description;
 
-                        return (
-                          <Report
-                            countryName={country || "Global"}
-                            area={document_types}
-                            item={publishingOrganizations || "IRENA"}
-                            date={year}
-                            file={
-                              flag?.image
-                                ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
-                                : "static/images/globe.png"
-                            }
-                            title={name}
-                            key={index}
-                            star={true}
-                            url={url}
-                            onClick={() => onReportClick(i?.id)}
-                            isActive={activeCard === i?.id}
-                            description={description}
-                          />
-                        );
-                      })}
+                          return (
+                            <Report
+                              countryName={country || "Global"}
+                              area={document_types}
+                              item={publishingOrganizations || "IRENA"}
+                              date={year}
+                              file={
+                                flag?.image
+                                  ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
+                                  : "static/images/globe.png"
+                              }
+                              title={name}
+                              key={index}
+                              star={true}
+                              url={url}
+                              onClick={() => onReportClick(i?.id)}
+                              isActive={activeCard === i?.id}
+                              description={description}
+                            />
+                          );
+                        })}
                     {Boolean(
                       finalPublicationReports[0]?.attributes?.ReportName
                     ) ? (

@@ -4,12 +4,14 @@ import Head from "next/head";
 import Footer from "components/footer";
 import Header from "components/header";
 import Contact from "components/contactus";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
+  const { t, i18n } = useTranslation();
   return (
     <main>
       <Head>
-        <title>Sustainable Energy for All | Knowledge Hub | Contact</title>
+        <title>{t("ContactTitle")}</title>
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">

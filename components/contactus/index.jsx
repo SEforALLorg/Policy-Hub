@@ -4,8 +4,11 @@ import { MdEmail } from "react-icons/md";
 
 import Address from "components/cards/addressCard";
 import SubscribeComponent from "../subscribeComponent";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="bg-white rounded-lg	 overflow-hidden shadow-md">
       <div className="xsm:pl-[25px] xsm:py-6 extrasmall:p-6 mobile:p-6 laptop:p-10 bg-white flex justify-center xsm:justify-start small:justify-center xsm:flex-wrap extrasmall:flex-nowrap contact-full-wrap">
@@ -13,7 +16,7 @@ const Contact = () => {
           <FaPhoneAlt className="xsm:text-xmd laptop:text-basic text-Primary mr-4" />
           <div>
             <p className="font-normal small:tiny  laptop:text-medium leading-[26px]  text-lighttext m-0 center-content">
-              Phone:
+              {t("Phone")}
             </p>
             <a
               className="font-bold  xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
@@ -27,7 +30,7 @@ const Contact = () => {
           <MdEmail className="text-basic text-Primary mr-4" />
           <div>
             <p className="font-normal small:tiny  laptop:text-medium  leading-[26px]  text-lighttext m-0 center-content">
-              Email:
+              {t("Email")}
             </p>
             <a
               className="font-bold xsm:text-xsmall laptop:text-[25px]  leading-[26px] text-darktext m-0 no-underline"
@@ -84,7 +87,7 @@ const Contact = () => {
       <div className="flex items-center xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
         <div className="  xsm:w-11/12 large:w-full ">
           <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify center-content">
-            For any media requests, please contact:{" "}
+            {t("pleasecontact")}{" "}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
               onClick={() => window.open("mailto:Media@SEforALL.org")}
@@ -93,11 +96,7 @@ const Contact = () => {
             </span>
           </p>
           <p className="laptop:pt-10 laptop:pb-[60px] xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6 text-justify  m-0 center-content">
-            Keep up-to-speed with what's happening at the Sustainable Energy for
-            ALL Knowledge Hub and across the sustainable energy movement. We'll
-            send you our regular updates, plus special news and event invites.
-            If you would like to recommend a publication to be included in the
-            SEforALL Knowledge Hub, please send us an e-mail at{" "}
+            {t("KeepUpToSpeed")}{" "}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
               onClick={() => window.open("mailto:KnowledgeHub@SEforALL.org")}
