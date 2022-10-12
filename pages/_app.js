@@ -6,8 +6,20 @@ import Head from "next/head";
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
-
+import "../i18n";
+import { useTranslation } from "react-i18next";
+import { Cookies } from "react-cookie";
+import { useRouter } from "next/router";
+const languages = ["en", "fr"];
+const cookies = new Cookies();
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const { i18n, t } = useTranslation();
+  const changeLanguage = (language) => {
+    if (languages.includes(language)) {
+      i18n.changeLanguage(language);
+    }
+  };
   const [showConsent, setShowConsent] = useState(false);
 
   const cookie = typeof document === "undefined" ? null : document.cookie;
@@ -16,6 +28,19 @@ function MyApp({ Component, pageProps }) {
     document.cookie = "cookieconsent_status = 1";
     setShowConsent(!showConsent);
   };
+  useEffect(() => {
+    let lang = router.locale;
+    console.log("this is the router locale", router.locale);
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 100);
+    cookies.set("language", lang, {
+      expires,
+      secure: true,
+    });
+    changeLanguage(lang);
+    router.locale = lang;
+    window.localStorage.setItem("placeName", "");
+  }, []);
   useEffect(() => {
     setShowConsent(status);
   }, [showConsent]);
@@ -47,12 +72,14 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ToastContainer theme={"colored"} />
       <Component {...pageProps} />
-      {
-        !showConsent && <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
+      {!showConsent && (
+        <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           This website uses cookies to ensure you get the best experience.{" "}
           <a
             className="text-Primary hover:underline cursor-pointer pl-[3px]"
-            onClick={() => window.open("https://www.seforall.org/privacy-policy")}
+            onClick={() =>
+              window.open("https://www.seforall.org/privacy-policy")
+            }
           >
             Read more
           </a>
@@ -63,7 +90,7 @@ function MyApp({ Component, pageProps }) {
             Accept
           </button>
         </div>
-      }
+      )}
     </QueryClientProvider>
   );
 }

@@ -8,14 +8,22 @@ import {
   Collapse,
   NavItem,
   NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
+import { Cookies } from "react-cookie";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { IoClose } from "react-icons/io5";
-
+import { useTranslation } from "react-i18next";
+import Link from "next/link";
+const cookies = new Cookies();
 const Header = () => {
   const router = useRouter();
   const location = router.pathname;
   const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   return (
     <div className="header">
       <Navbar expand="md" light>
@@ -45,13 +53,13 @@ const Header = () => {
             className="text-text mr-[5px] mobile-show ml-auto close-icon header-close"
             onClick={() => setIsOpen(!isOpen)}
           />
-          <Nav className="m-auto" navbar>
+          <Nav className="m-auto items-center" navbar>
             <NavItem>
               <NavLink
                 className={`${location === "/" ? "active" : ""}`}
                 href="/"
               >
-                Home
+                {t("Home")}
               </NavLink>
             </NavItem>
             <NavItem>
@@ -59,7 +67,7 @@ const Header = () => {
                 className={`${location === "/resources" ? "active" : ""}`}
                 href="/resources"
               >
-                Resources
+                {t("Resources")}
               </NavLink>
             </NavItem>
             <NavItem>
@@ -67,7 +75,7 @@ const Header = () => {
                 className={location === "/about" ? "active" : ""}
                 href="/about"
               >
-                About
+                {t("About")}
               </NavLink>
             </NavItem>
             <NavItem>
@@ -75,11 +83,48 @@ const Header = () => {
                 className={`${location === "/contact" ? "active" : ""}`}
                 href="/contact"
               >
-                Contact Us
+                {t("Contact Us")}
               </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
+        <UncontrolledDropdown setActiveFromChild className="customDropdown">
+          <DropdownToggle className="DropdownToggle" tag="a" caret>
+            <p>{i18n.language}</p>
+          </DropdownToggle>
+          <DropdownMenu className="dropdownMenu">
+            {["en", "fr"].map((lang, index) => {
+              return (
+                <DropdownItem
+                  key={index}
+                  style={{
+                    backgroundColor:
+                      lang === i18n.language ? "#fcb600" : "white",
+                    color: lang === i18n.language ? "white" : "#000",
+                  }}
+                >
+                  <Link href="" locale={lang}>
+                    <button
+                      onClick={() => {
+                        const expires = new Date();
+                        expires.setFullYear(expires.getFullYear() + 100);
+                        cookies.set("language", lang, {
+                          expires,
+                          secure: true,
+                        });
+                        i18n.changeLanguage(lang);
+                      }}
+
+                      // className={styles.languageButton}
+                    >
+                      {lang.toUpperCase()}
+                    </button>
+                  </Link>
+                </DropdownItem>
+              );
+            })}
+          </DropdownMenu>
+        </UncontrolledDropdown>
       </Navbar>
     </div>
   );
