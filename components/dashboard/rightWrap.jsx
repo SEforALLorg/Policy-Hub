@@ -325,14 +325,14 @@ const RightWrapPage = ({
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
-              Filters
+              {t("Filters")}
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
-                  Clear filters
+                  {t("Clearfilters")}
                 </button>
               ) : null}
               <IoClose
@@ -349,7 +349,7 @@ const RightWrapPage = ({
                 />
               )}
               <Select
-                title="Select Region"
+                title={t("SelectRegion")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.region)}
@@ -361,7 +361,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Select Country"
+                title={t("SelectCountry")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.countries)}
@@ -373,7 +373,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Segment"
+                title={t("Segment")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.segment)}
@@ -385,7 +385,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Resource Type"
+                title={t("ResourceType")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.documentType)}
@@ -397,7 +397,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Year"
+                title={t("Year")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.year)}
@@ -410,7 +410,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Generation Source"
+                title={t("GenerationSource")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.generationSources)}
@@ -456,7 +456,7 @@ const RightWrapPage = ({
             onClick={() => setIsOpen()}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons">
-              <p>Resources</p>
+              <p>{t("Resources")}</p>
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
@@ -468,13 +468,13 @@ const RightWrapPage = ({
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
-                    content="Click here to download the list of matching resources."
+                    content={t("clicktodownload")}
                     hideInfo={true}
                     top={true}
                     hideContent={disableButtons}
                   >
                     <div className="flex download-button-inner">
-                      Download <BsDownload style={{ marginLeft: 7 }} />
+                      {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
                     </div>
                   </TooltipComponent>
                 </button>
@@ -488,7 +488,7 @@ const RightWrapPage = ({
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
                   <TooltipComponent
-                    content="Click to receive a list matching resources via Email."
+                    content={t("clicktoreceive")}
                     hideInfo={true}
                     top={true}
                     hideContent={disableButtons}

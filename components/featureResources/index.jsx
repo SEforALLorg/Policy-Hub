@@ -13,10 +13,10 @@ const Feature = () => {
   const [lang, setLang] = useState();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setLang(localStorage.getItem("lang"))
+    if (typeof window !== "undefined") {
+      setLang(localStorage.getItem("lang"));
     }
-  }, [])
+  }, []);
 
   return (
     <div className="w-full rounded-lg overflow-hidden">
@@ -42,7 +42,7 @@ const Feature = () => {
           </div>
           <div className="text-center mt-4 resources-button">
             <StartButton
-              title={"Browse all resources"}
+              title={t("BrowseResource")}
               onClick={() => window.open(`/${lang}/allresources`, "_self")}
             />
           </div>
@@ -59,37 +59,37 @@ const Feature = () => {
             </h6>
             <OtherToolsCard
               image="/static/images/electrifying-economies-ImResizer.jpg"
-              title="Electrifying Economies"
+              title={t("Electrifyingeconomies")}
               link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
               description={<>{t("ElectrifyingEconomies")}</>}
             />
             <OtherToolsCard
               image="/static/images/sas-ImResizer.png"
-              title="SAS Knowledge Hub"
+              title={t("SASKnowledgehub")}
               link="https://www.ace-taf.org/sas-knowledge-hub/"
               description={<>{t("SASKnowledgeHub")}</>}
             />
             <OtherToolsCard
               image="/static/images/policy-ImResizer.png"
-              title="Policy Knowledge Hub"
+              title={t("PolicyKnowledgeHub")}
               link="https://www.gogla.org/policy-knowledge-hub"
               description={<>{t("Policyknowledge")}</>}
             />
             <OtherToolsCard
               image="/static/images/nigeria-ImResizer.jpg"
-              title="Nigeria Integrated Energy Planning Tool"
+              title={t("NigeriaIntegratedEnergy")}
               link="http://nigeria-iep.sdg7energyplanning.org/"
               description={<>{t("TheNigeriaIntegrated")}</>}
             />
             <OtherToolsCard
               image="/static/images/green-mini.png"
-              title="The Green Mini-Grids Help Desk"
+              title={t("TheGreenMini-GridsHelpDesk")}
               link="https://greenminigrid.afdb.org/"
               description={<>{t("TheGreenMini")}</>}
             />
             <OtherToolsCard
               image="/static/images/energy-ImResizer.png"
-              title="Energy Access Explorer"
+              title={t("EnergyAccessExplorerr")}
               link="https://www.energyaccessexplorer.org/"
               description={<>{t("EnergyAccessExplorer")}</>}
             />

@@ -36,7 +36,7 @@ const TopCard = ({ HandleOpen }) => {
         <h5 className="cardBigHeading font-bold	text-[65px] leading-[70px] text-center	select-none	uppercase text-white	pb-[15px] mt-[2rem] pt-[25rem] sticky top-[-15rem] left-[0px]">
           {t("Sustainable")}
           <span className="text-Secondary px-[6px]"> {t("Energy")} </span>
-          for All <br />
+          {t("forAll")} <br />
           <span className="text-Primary pl-[6px]"> {t("Knowledge")}</span>{" "}
           {t("Hub")}
         </h5>
@@ -58,7 +58,7 @@ const TopCard = ({ HandleOpen }) => {
               <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
                 {t("TheSEforALL")}{" "}
                 <span className="font-bold text-Secondary px-[6px]">
-                  {t("Knowledge Hub")}
+                  {t("KnowledgeHub")}
                 </span>{" "}
                 {t("PlatformThatSupports")}
               </p>
@@ -101,7 +101,7 @@ const TopCard = ({ HandleOpen }) => {
                 </p>
               </div>
               <div
-                className="w-[38%] absolute bottom-[-100px] left-[30%] landingButton"
+                className="w-[49%] absolute bottom-[-100px] left-[26%] landingButton"
                 onClick={HandleOpen}
                 style={{ opacity: showButton ? 1 : 0 }}
               >

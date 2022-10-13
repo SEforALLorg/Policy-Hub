@@ -28,11 +28,10 @@ const Header = () => {
   const [lang, setLang] = useState();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setLang(localStorage.getItem("lang"))
-      i18n.changeLanguage(lang)
+    if (typeof window !== "undefined") {
+      setLang(localStorage.getItem("lang"));
     }
-  }, [])
+  }, []);
 
   return (
     <div className="header">
@@ -96,47 +95,57 @@ const Header = () => {
                 {t("Contactus")}
               </NavLink>
             </NavItem>
+            <UncontrolledDropdown setActiveFromChild className="customDropdown">
+              <DropdownToggle className="DropdownToggle" tag="a" caret>
+                <p>{lang !== "fr" ? "EN" : "FR"}</p>
+              </DropdownToggle>
+              <DropdownMenu className="dropdownMenu">
+                {["en", "fr"].map((lang, index) => {
+                  return (
+                    <DropdownItem
+                      key={index}
+                      style={{
+                        backgroundColor:
+                          lang === i18n.language ? "#fcb600" : "transparent",
+                        borderRadius:
+                          lang === "en"
+                            ? "10px 10px 0px 0px"
+                            : "0px 0px 10px 10px",
+                        color: lang === i18n.language ? "white" : "#000",
+                      }}
+                    >
+                      <Link href="" locale={lang}>
+                        <button
+                          // style={{
+                          //   borderRadius:
+                          //     lang === i18n.language
+                          //       ? "10px 10px 0px 0px"
+                          //       : "0px 0px 10px 10px",
+                          // }}
+                          onClick={() => {
+                            const expires = new Date();
+                            expires.setFullYear(expires.getFullYear() + 100);
+                            localStorage.setItem("lang", lang);
+                            setLang(lang);
+                            cookies.set("language", lang, {
+                              expires,
+                              secure: true,
+                            });
+                            i18n.changeLanguage(lang);
+                          }}
+
+                          // className={styles.languageButton}
+                        >
+                          {lang.toUpperCase()}
+                        </button>
+                      </Link>
+                    </DropdownItem>
+                  );
+                })}
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </Nav>
         </Collapse>
-        <UncontrolledDropdown setActiveFromChild className="customDropdown">
-          <DropdownToggle className="DropdownToggle" tag="a" caret>
-            <p>{lang !== "fr" ? "EN" : "FR" }</p>
-          </DropdownToggle>
-          <DropdownMenu className="dropdownMenu">
-            {["en", "fr"].map((lang, index) => {
-              return (
-                <DropdownItem
-                  key={index}
-                  style={{
-                    backgroundColor:
-                      lang === i18n.language ? "#fcb600" : "white",
-                    color: lang === i18n.language ? "white" : "#000",
-                  }}
-                >
-                  <Link href="" locale={lang}>
-                    <button
-                      onClick={() => {
-                        const expires = new Date();
-                        expires.setFullYear(expires.getFullYear() + 100);
-                        localStorage.setItem("lang", lang)
-                        setLang(lang)
-                        cookies.set("language", lang, {
-                          expires,
-                          secure: true,
-                        });
-                        i18n.changeLanguage(lang);
-                      }}
-
-                      // className={styles.languageButton}
-                    >
-                      {lang.toUpperCase()}
-                    </button>
-                  </Link>
-                </DropdownItem>
-              );
-            })}
-          </DropdownMenu>
-        </UncontrolledDropdown>
       </Navbar>
     </div>
   );

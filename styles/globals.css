@@ -174,11 +174,14 @@ a {
 .header .DropdownToggle p {
   color: #000;
   margin: 0;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .header .dropdownMenu {
   min-width: 70px;
-  margin: 9px -10px;
+  margin-top: 7px;
+  margin-left: -14px;
   padding: 0;
   text-align: center;
   border-radius: 10px;
@@ -1236,7 +1239,7 @@ a {
   }
 
   .customize-heading {
-    font-size: 40px !important;
+    font-size: 34px !important;
     line-height: 50px !important;
     margin: 0px !important;
   }
@@ -1837,6 +1840,11 @@ a {
 
   .custom-container {
     max-width: unset;
+  }
+
+  .header .customDropdown {
+    background-color: #fcb600 !important;
+    margin-right: 30%;
   }
 
   .powered-text {

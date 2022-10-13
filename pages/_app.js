@@ -31,16 +31,22 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    let lang = router.locale;
-    console.log("this is the router locale", router.locale);
-    const expires = new Date();
-    expires.setFullYear(expires.getFullYear() + 100);
-    cookies.set("language", lang, {
-      expires,
-      secure: true,
-    });
-    changeLanguage(lang);
-    router.locale = lang;
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("lang") !== null
+    ) {
+      let lang = router.locale;
+      const expires = new Date();
+      expires.setFullYear(expires.getFullYear() + 100);
+      cookies.set("language", lang, {
+        expires,
+        secure: true,
+      });
+      changeLanguage(lang);
+      router.locale = lang;
+    } else {
+      localStorage.setItem("lang", "en");
+    }
   }, []);
 
   useEffect(() => {
