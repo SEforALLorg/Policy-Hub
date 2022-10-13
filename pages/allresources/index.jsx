@@ -4,8 +4,10 @@ import Head from "next/head";
 import Footer from "components/footer";
 import Header from "components/header";
 import ALLReports from "components/resources";
+import { useTranslation } from "react-i18next";
 
 const Resources = () => {
+  const { t } = useTranslation();
   return (
     <main>
       <Head>

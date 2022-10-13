@@ -40,7 +40,7 @@ const About = () => {
           <div className="xsm:mr-0 xsm:mb-4 med:mb-0 w-[300px] about-logo">
             <img
               className="max-w-full"
-              src={"static/images/SEforALL_Logo_Colour.png"}
+              src={"../../static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
           </div>
@@ -54,7 +54,7 @@ const About = () => {
             <div className="med:w-[49%]  xsm:w-full ">
               <ImgCard
                 className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
-                img={"static/images/rockfound.svg"}
+                img={"../../static/images/rockfound.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
               />
@@ -67,7 +67,7 @@ const About = () => {
                 }
               >
                 <img
-                  src={"/static/images/dgcs_rettangolare_eng.jpg"}
+                  src={"../../static/images/dgcs_rettangolare_eng.jpg"}
                   alt="star"
                   className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
                   width={500}
@@ -90,7 +90,7 @@ const About = () => {
             <div className="med:w-[19%] xsm:w-100  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
-                img={"static/images/african-development.jpg"}
+                img={"../../static/images/african-development.jpg"}
                 title={"African Development Bank Group"}
                 link={"https://www.afdb.org/en"}
               />
@@ -98,7 +98,7 @@ const About = () => {
             <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/duke.png"}
+                img={"../../static/images/duke.png"}
                 title={"The Energy Access Project at Duke University"}
                 link={"https://energyaccess.duke.edu/"}
               />
@@ -106,7 +106,7 @@ const About = () => {
             <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/WRI_logo_4c.png"}
+                img={"../../static/images/WRI_logo_4c.png"}
                 title={"World Resources Institute"}
                 link={"https://www.wri.org/"}
               />
@@ -114,7 +114,7 @@ const About = () => {
             <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"static/images/ARE_LOGO_2014_cmyk.png"}
+                img={"../../static/images/ARE_LOGO_2014_cmyk.png"}
                 title={"Alliance for Rural Electrification"}
                 link={"https://www.ruralelec.org/"}
               />
@@ -122,7 +122,7 @@ const About = () => {
             <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"static/images/energypedia_Logo.png"}
+                img={"../../static/images/energypedia_Logo.png"}
                 title={"Energypedia"}
                 link={"https://energypedia.info/wiki/Main_Page"}
                 imgStyle={{ maxWidth: "70%" }}

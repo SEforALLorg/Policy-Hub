@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RightWrapPage from "components/dashboard/rightWrap";
+import { useTranslation } from "react-i18next";
 
 const ALLReports = () => {
   const [selectInputs, setSelectInputs] = useState({
@@ -26,6 +27,7 @@ const ALLReports = () => {
     });
     setClearAll(!isClearAll);
   };
+  const { t } = useTranslation();
   return (
     <div className="all-reports">
       <div className="all-reports-header">

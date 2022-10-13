@@ -67,7 +67,7 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={`${location === "/" ? "active" : ""}`}
-                href={`/${lang}`}
+                href={`/${lang === null ? "" : lang}`}
               >
                 {t("Home")}
               </NavLink>
@@ -100,7 +100,7 @@ const Header = () => {
         </Collapse>
         <UncontrolledDropdown setActiveFromChild className="customDropdown">
           <DropdownToggle className="DropdownToggle" tag="a" caret>
-            <p>{lang === "en" ? "en" : "fr" }</p>
+            <p>{lang !== "fr" ? "EN" : "FR" }</p>
           </DropdownToggle>
           <DropdownMenu className="dropdownMenu">
             {["en", "fr"].map((lang, index) => {
