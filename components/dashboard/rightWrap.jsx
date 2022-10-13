@@ -562,7 +562,7 @@ const RightWrapPage = ({
                               file={
                                 flag?.image
                                   ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
-                                  : "static/images/globe.png"
+                                  : "../../static/images/globe.png"
                               }
                               title={name}
                               key={index}
@@ -621,7 +621,7 @@ const RightWrapPage = ({
                             file={
                               flag?.image
                                 ? `https://hatscripts.github.io/circle-flags/flags/${flag?.code?.toLocaleLowerCase()}.svg`
-                                : "static/images/globe.png"
+                                : "../../static/images/globe.png"
                             }
                             title={name}
                             key={index}
