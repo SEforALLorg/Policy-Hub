@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { videosCard } from "constant";
 import StartButton from "components/buttons/startButton";
@@ -10,6 +10,13 @@ import { useTranslation } from "react-i18next";
 const Feature = () => {
   const [isVideoCard, setIsVideoCard] = useState("");
   const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setLang(localStorage.getItem("lang"))
+    }
+  }, [])
 
   return (
     <div className="w-full rounded-lg overflow-hidden">
@@ -36,7 +43,7 @@ const Feature = () => {
           <div className="text-center mt-4 resources-button">
             <StartButton
               title={"Browse all resources"}
-              onClick={() => window.open("/allresources", "_self")}
+              onClick={() => window.open(`/${lang}/allresources`, "_self")}
             />
           </div>
         </div>

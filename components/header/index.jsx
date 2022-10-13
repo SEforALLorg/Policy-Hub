@@ -18,12 +18,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
+import { useEffect } from "react";
 const cookies = new Cookies();
 const Header = () => {
   const router = useRouter();
   const location = router.pathname;
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setLang(localStorage.getItem("lang"))
+      i18n.changeLanguage(lang)
+    }
+  }, [])
+
   return (
     <div className="header">
       <Navbar expand="md" light>
@@ -57,7 +67,7 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={`${location === "/" ? "active" : ""}`}
-                href="/"
+                href={`/${lang}`}
               >
                 {t("Home")}
               </NavLink>
@@ -65,7 +75,7 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={`${location === "/resources" ? "active" : ""}`}
-                href="/resources"
+                href={`/${lang}/resources`}
               >
                 {t("Resources")}
               </NavLink>
@@ -73,7 +83,7 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={location === "/about" ? "active" : ""}
-                href="/about"
+                href={`/${lang}/about`}
               >
                 {t("About")}
               </NavLink>
@@ -81,16 +91,16 @@ const Header = () => {
             <NavItem>
               <NavLink
                 className={`${location === "/contact" ? "active" : ""}`}
-                href="/contact"
+                href={`/${lang}/contact`}
               >
-                {t("Contact Us")}
+                {t("Contactus")}
               </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
         <UncontrolledDropdown setActiveFromChild className="customDropdown">
           <DropdownToggle className="DropdownToggle" tag="a" caret>
-            <p>{i18n.language}</p>
+            <p>{lang === "en" ? "en" : "fr" }</p>
           </DropdownToggle>
           <DropdownMenu className="dropdownMenu">
             {["en", "fr"].map((lang, index) => {
@@ -108,6 +118,8 @@ const Header = () => {
                       onClick={() => {
                         const expires = new Date();
                         expires.setFullYear(expires.getFullYear() + 100);
+                        localStorage.setItem("lang", lang)
+                        setLang(lang)
                         cookies.set("language", lang, {
                           expires,
                           secure: true,

@@ -6,7 +6,7 @@ import Head from "next/head";
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
-import "../i18n";
+import "../I18n";
 import { useTranslation } from "react-i18next";
 import { Cookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -15,12 +15,13 @@ const cookies = new Cookies();
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const { i18n, t } = useTranslation();
+  const [showConsent, setShowConsent] = useState(false);
+
   const changeLanguage = (language) => {
     if (languages.includes(language)) {
       i18n.changeLanguage(language);
     }
   };
-  const [showConsent, setShowConsent] = useState(false);
 
   const cookie = typeof document === "undefined" ? null : document.cookie;
   const status = cookie?.includes("cookieconsent_status=1");
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }) {
     document.cookie = "cookieconsent_status = 1";
     setShowConsent(!showConsent);
   };
+
   useEffect(() => {
     let lang = router.locale;
     console.log("this is the router locale", router.locale);
@@ -39,8 +41,8 @@ function MyApp({ Component, pageProps }) {
     });
     changeLanguage(lang);
     router.locale = lang;
-    window.localStorage.setItem("placeName", "");
   }, []);
+
   useEffect(() => {
     setShowConsent(status);
   }, [showConsent]);
