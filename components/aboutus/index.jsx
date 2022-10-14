@@ -18,8 +18,8 @@ const About = () => {
               {t("Aboutus")}
             </h5>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
-              <b>{t("SEforALLa")}</b>
-              {t("SEforALLb")}{" "}
+              <b>{t("SEforALL")}</b>
+              {t("international")}{" "}
               <span
                 className="text-Primary hover:underline cursor-pointer"
                 onClick={() => window.open("https://www.seforall.org/")}
@@ -30,8 +30,8 @@ const About = () => {
             </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("The")}
-              <b>{t("SustainableEnergyPlatforma")}</b>
-              {t("SustainableEnergyPlatformb")}
+              <b>{t("SustainableEnergyPlatform")}</b>
+              {t("InteractivePlatform")}
             </p>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("AdditionalPillars")}
@@ -138,8 +138,8 @@ const About = () => {
             {t("Curators")}
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] center-content xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            <b>{t("HadleyTaylora")}</b>
-            {t("and")} {t("HadleyTaylorb")}
+            <b>{t("HadleyTaylor")}</b>
+            {t("and")} {t("ledthecontent")}
             <span
               className="text-Primary hover:underline cursor-pointer"
               onClick={() => window.open("https://www.seforall.org/")}
@@ -157,7 +157,7 @@ const About = () => {
               className="text-Primary hover:underline cursor-pointer"
               onClick={() => window.open("https://www.keymouseit.com/")}
             >
-              {t("companyName")}
+              KeyMouse IT Services Pvt. Ltd
             </span>
             {t("BasedInIndia")}
           </p>
@@ -165,27 +165,17 @@ const About = () => {
             {t("Contributors")}
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            {t("WeAlsoThanka")} <br />
-            <b>{t("WeAlsoThankb")}</b>
-            {t("WeAlsoThankc")}
-            <b>{t("WeAlsoThankd")}</b>
-            {t("WeAlsoThanke")}
-            <b>{t("WeAlsoThankf")}</b>
-            {t("WeAlsoThankg")}
-            <b>{t("WeAlsoThankh")}</b>
-            {t("WeAlsoThanki")}
-            <b>{t("WeAlsoThankj")}</b>
-            {t("WeAlsoThankk")}
-            <b>{t("WeAlsoThankl")}</b>
-            {t("WeAlsoThankm")}
-            <b>{t("WeAlsoThankn")}</b>
-            {t("WeAlsoThanko")}
-            <b>{t("WeAlsoThankp")}</b>
-            {t("WeAlsoThankq")}
-            <b>{t("WeAlsoThankr")}</b>
-            {t("WeAlsoThanks")}
-            <b>{t("WeAlsoThankt")}</b>
-            {t("WeAlsoThanku")}
+            {t("WeAlsoThank")} <br />
+            <b>Freda Akyeabea Opoku</b>,{t("AfricanDevelopment")}
+            <b>Catoer Wibowo</b>,{t("Deutsche")}
+            <b>Ashley Wearne</b>,{t("Transform")}
+            <b>Jonathan Phillips</b>,{t("JamesE")}
+            <b> Dimitrios Mentis</b>,{t("WRI")}
+            <b>Ranisha Basnet</b>, Energypedia;
+            <b> Prof. Joseph Mutale</b>,{t("ZARENA")}
+            <b> Dr. Moeketsi Mpholo</b>,{t("NationalUniversity")}
+            <b> Jessica Stephens</b>,{t("AMDA")}
+            <b> Nasir Ibrahim</b>,{t("Electrification")}
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 text-justify xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-4">
             {t("OrganizationsHighlighted")}

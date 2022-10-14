@@ -31,9 +31,9 @@ const Feature = () => {
                 {t("Resources")}
               </h6>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
-                {t("AllOfTheKnowledge")} <b>{t("AllOfTheKnowledgeb")}</b>
-                {t("AllOfTheKnowledgec")}
-                <b>{t("AllOfTheKnowledged")}</b>
+                {t("AllOfTheKnowledge")} <b>{t("Downloadthefiltered")}</b>
+                {t("Havethem")}
+                <b>{t("ViaEmail")}</b>
               </p>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] text-justify">
                 {t("ExploreOurDatabase")}
@@ -61,19 +61,19 @@ const Feature = () => {
               image="/static/images/electrifying-economies-ImResizer.jpg"
               title={t("Electrifyingeconomies")}
               link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
-              description={<>{t("ElectrifyingEconomies")}</>}
+              description={<>{t("ElectrifyingEconomiesDescription")}</>}
             />
             <OtherToolsCard
               image="/static/images/sas-ImResizer.png"
               title={t("SASKnowledgehub")}
               link="https://www.ace-taf.org/sas-knowledge-hub/"
-              description={<>{t("SASKnowledgeHub")}</>}
+              description={<>{t("SASKnowledgeHubDescription")}</>}
             />
             <OtherToolsCard
               image="/static/images/policy-ImResizer.png"
               title={t("PolicyKnowledgeHub")}
               link="https://www.gogla.org/policy-knowledge-hub"
-              description={<>{t("Policyknowledge")}</>}
+              description={<>{t("PolicyKnowledgeHubDescription")}</>}
             />
             <OtherToolsCard
               image="/static/images/nigeria-ImResizer.jpg"
@@ -89,9 +89,9 @@ const Feature = () => {
             />
             <OtherToolsCard
               image="/static/images/energy-ImResizer.png"
-              title={t("EnergyAccessExplorerr")}
+              title={t("EnergyAccessExplorer")}
               link="https://www.energyaccessexplorer.org/"
-              description={<>{t("EnergyAccessExplorer")}</>}
+              description={<>{t("EnergyAccessExplorerDescription")}</>}
             />
             <h6
               className="font-bold leading-10 text-large text-darktext 

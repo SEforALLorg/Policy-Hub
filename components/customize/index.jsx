@@ -45,7 +45,7 @@ const Customize = ({
               />
             </div>
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              {t("AssessYourCountry")} <br /> {t("AssessYourCountrya")}
+              {t("AssessYourCountry")} <br /> {t("Customize")}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
