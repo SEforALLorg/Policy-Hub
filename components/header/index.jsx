@@ -97,7 +97,7 @@ const Header = () => {
             </NavItem>
             <UncontrolledDropdown setActiveFromChild className="customDropdown">
               <DropdownToggle className="DropdownToggle" tag="a" caret>
-                <p>{lang !== "fr" ? "EN" : "FR"}</p>
+                <p>{ i18n.language !== 'fr' ? "EN" : "FR" }</p>
               </DropdownToggle>
               <DropdownMenu className="dropdownMenu">
                 {["en", "fr"].map((lang, index) => {
