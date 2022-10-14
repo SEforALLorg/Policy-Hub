@@ -157,7 +157,7 @@ const About = () => {
               className="text-Primary hover:underline cursor-pointer"
               onClick={() => window.open("https://www.keymouseit.com/")}
             >
-              KeyMouse IT Services Pvt. Ltd
+              KeyMouse IT Services Pvt. Ltd 
             </span>
             {t("BasedInIndia")}
           </p>
