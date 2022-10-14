@@ -1,14 +1,15 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
-const OtherToolsCard = ({
-  image,
-  title,
-  description,
-  link,
-}) => {
+const OtherToolsCard = ({ image, title, description, link }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div
-      className={'bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex items-center mt-[20px] card-animation'}    >
+      className={
+        "bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex items-center mt-[20px] card-animation"
+      }
+    >
       <div className="videoPlayer w-[30%] ">
         <img
           src={image}
@@ -17,14 +18,10 @@ const OtherToolsCard = ({
         />
       </div>
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex-1">
-        <h6
-          className="font-bold leading-6  text-darktext mb-1 text-medium h-[50px] otherTitle center-content"
-        >
+        <h6 className="font-bold leading-6  text-darktext mb-1 text-medium h-[50px] otherTitle center-content">
           {title}
         </h6>
-        <p
-          className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content"
-        >
+        <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content">
           {description}
         </p>
         <button
@@ -33,7 +30,7 @@ const OtherToolsCard = ({
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
                                       hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] mt-[10px] button-animation card-tool-button"
         >
-          Go to tool
+          {t("gototool")}
         </button>
       </div>
     </div>

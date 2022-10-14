@@ -5,6 +5,7 @@ import BlueButton from "components/buttons/blueButton";
 import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
+import { useTranslation } from "react-i18next";
 
 const LeftWrapPage = ({
   questions,
@@ -15,7 +16,7 @@ const LeftWrapPage = ({
   stepAnswer,
   resetFilters,
   isResetPage,
-  setIsResetPage
+  setIsResetPage,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [firstQuestionId, setFirstQuestionId] = useState();
@@ -110,6 +111,7 @@ const LeftWrapPage = ({
     setStepQuestion([]);
     setIsResetPage(!isResetPage);
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
@@ -122,7 +124,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-          Assess the situation
+          {t("Assessthesituation")}
         </div>
       </div>
       {nextQuestionId &&
@@ -165,7 +167,7 @@ const LeftWrapPage = ({
             className="text-[14px] ml-[2px] mt-[2px]"
             style={{ color: "#065a89" }}
           >
-            Restart
+            {t("Restart")}
           </p>
         </div>
       )}

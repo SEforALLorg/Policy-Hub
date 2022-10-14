@@ -40,8 +40,7 @@ export const media = {
 export const videosCard = [
   {
     link: "zYNntqAi5gE",
-    title:
-      "Sustainable Energy for All Knowledge Hub",
+    title: "Sustainable Energy for All Knowledge Hub",
   },
   {
     link: "ny6hh4Khap8",

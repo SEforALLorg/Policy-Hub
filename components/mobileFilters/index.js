@@ -11,6 +11,7 @@ import { getReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
 import { isSelectedInput } from "../../utilities";
 import BlueButton from "../buttons/blueButton";
+import { useTranslation } from "react-i18next";
 
 const MobileFilters = ({
   publicationReports = [],
@@ -126,7 +127,7 @@ const MobileFilters = ({
     onResetFilter();
     setPreviousReports([]);
     setIsOpen("");
-    setSearch('');
+    setSearch("");
   };
 
   const optionSelected = isSelectedInput(selectInputs);
@@ -152,8 +153,9 @@ const MobileFilters = ({
       showAllReports
     );
     refetch();
-    setSearch('')
+    setSearch("");
   }, [isClear]);
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -211,7 +213,7 @@ const MobileFilters = ({
                 />
               )}
               <Select
-                title="Select Region"
+                title={t("SelectRegion")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.region)}
@@ -223,7 +225,7 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Select Country"
+                title={t("SelectCountry")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.countries)}
@@ -235,7 +237,7 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Segment"
+                title={t("Segment")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.segment)}
@@ -247,7 +249,7 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Resource Type"
+                title={t("ResourceType")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.documentType)}
@@ -259,7 +261,7 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Year"
+                title={t("Year")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.year)}
@@ -272,7 +274,7 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />
               <Select
-                title="Generation Source"
+                title={t("GenerationSource")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(filters?.generationSources)}
@@ -297,7 +299,7 @@ const MobileFilters = ({
                 small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
                 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
                 >
-                  Clear Filters
+                  {t("ClearFilters")}
                 </button>
                 <BlueButton
                   title="Apply"

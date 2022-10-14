@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import RadioButton from "../radioButton";
 import TooltipComponent from "../tooltip";
 
@@ -49,6 +50,7 @@ const StepComponent = ({
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
   };
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="flex flex-col">
@@ -65,8 +67,7 @@ const StepComponent = ({
         // style={{ height: "45px" }}
       >
         {/* <span>{stepCount}.</span> */}
-         {title}{" "}
-        {ToolTipText && <TooltipComponent content={ToolTipText} />}
+        {title} {ToolTipText && <TooltipComponent content={ToolTipText} />}
       </p>
       <div className="OptionsWrap">
         {multiAnswer?.map((i, index) => {
@@ -90,13 +91,13 @@ const StepComponent = ({
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
         >
-          <img src="static/images/leftArrow.svg" alt="" /> Previous
+          <img src="static/images/leftArrow.svg" alt="" /> {t("Previous")}
         </button>
         <p className="text-[14px] text-center text-Primary mb-[5px] font-medium">
           {stepCount}/{nextCount}
         </p>
         <button onClick={() => onNextClick()} className="SlideButton">
-          Next <img src="static/images/rightArrow.svg" alt="" />
+          {t("Next")} <img src="static/images/rightArrow.svg" alt="" />
         </button>
       </div>
     </div>
