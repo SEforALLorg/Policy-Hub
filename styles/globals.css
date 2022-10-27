@@ -90,6 +90,9 @@ a {
   max-width: 1320px;
 }
 
+.collapse{
+  visibility: unset !important;
+}
 .cardBigHeading {
   background-image: url(/static/images/BG.png);
   background-color: #144a68 !important;
