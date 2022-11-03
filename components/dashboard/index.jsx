@@ -4,12 +4,21 @@ import Customize from "components/customize";
 import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
+import Resources from "../resourcesType";
+import { useEffect } from "react";
 
-const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
+const Dashboard = ({
+  questions,
+  isFetchingQuestions,
+  setIsBigCard,
+  resources,
+}) => {
   const [isExpand, setIsExpand] = useState(false);
+  const [isResource, setIsResource] = useState(true);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
   const [firstQuestion, setFirstQuestion] = useState();
+  const [firstQuestionId, setFirstQuestionId] = useState();
   const [stepAnswer, setStepAnswer] = useState();
   const [isClearAll, setClearAll] = useState(false);
   const [isResetPage, setIsResetPage] = useState(false);
@@ -35,15 +44,16 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
       co_authors: [],
       publishing_organizations: [],
     });
-    setClearAll(!isClearAll)
+    setClearAll(!isClearAll);
   };
 
   const onRestart = () => {
     setIsExpand(false);
-    onResetFilter();
-    setStepAnswer(undefined);
+    // onResetFilter();
+    // setStepAnswer(undefined);
     setIsBigCard(false);
-    setClearAll(!isClearAll)
+    // setClearAll(!isClearAll);
+    setIsResource(true)
   };
 
   const onReportFind = (e) => {
@@ -52,44 +62,63 @@ const Dashboard = ({ questions, isFetchingQuestions, setIsBigCard }) => {
     setStepAnswer(e?.Answer);
   };
 
+  useEffect(() => {
+    if (firstQuestionId) {
+      const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
+      setFirstQuestion(question);
+    }
+  }, [firstQuestionId])
+
   return (
     <Wrapper isExpand={isExpand}>
-      <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
-        <LeftWrapPage
-          questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
-          setPublicationReports={(e) => setPublicationReports(e)}
-          setNonPublicationReports={(e) => setNonPublicationReports(e)}
-          firstQuestion={firstQuestion}
-          restart={() => onRestart()}
-          stepAnswer={stepAnswer}
-          resetFilters={() => onResetFilter()}
-          isResetPage={isResetPage}
-          setIsResetPage={setIsResetPage}
-        />
-        <RightWrapPage
-          publicationReports={publicationReports}
-          nonPublicationReports={nonPublicationReports}
-          setSelectInputs={setSelectInputs}
-          selectInputs={selectInputs}
-          onResetFilter={onResetFilter}
-          showAllReports={false}
-          setClearAll={setClearAll}
-          isClearAll={isClearAll}
-          isResetPage={isResetPage}
-        />
-      </div>
-      <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
-        <Customize
-          onYes={() => {
-            setIsExpand(!isExpand)
-            setIsBigCard(true)
-          }}
-          questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
-          isFetchingQuestions={isFetchingQuestions}
-          onNextQuestion={(e) => setFirstQuestion(e)}
-          onReportsFind={(e) => onReportFind(e)}
-        />
-      </div>
+      {!isResource ? (
+        <>
+          <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
+            <LeftWrapPage
+              questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
+              setPublicationReports={(e) => setPublicationReports(e)}
+              setNonPublicationReports={(e) => setNonPublicationReports(e)}
+              firstQuestion={firstQuestion}
+              restart={() => onRestart()}
+              stepAnswer={stepAnswer}
+              resetFilters={() => onResetFilter()}
+              isResetPage={isResetPage}
+              setIsResetPage={setIsResetPage}
+            />
+            <RightWrapPage
+              publicationReports={publicationReports}
+              nonPublicationReports={nonPublicationReports}
+              setSelectInputs={setSelectInputs}
+              selectInputs={selectInputs}
+              onResetFilter={onResetFilter}
+              showAllReports={false}
+              setClearAll={setClearAll}
+              isClearAll={isClearAll}
+              isResetPage={isResetPage}
+            />
+          </div>
+          <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
+            <Customize
+              onYes={() => {
+                setIsExpand(!isExpand);
+                setIsBigCard(true);
+              }}
+              questions={[firstQuestion]}
+              isFetchingQuestions={isFetchingQuestions}
+              onNextQuestion={(e) => setFirstQuestion(e)}
+              onReportsFind={(e) => onReportFind(e)}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+            <Resources
+              resources={resources}
+              onYes={() => setIsResource(false)}
+              onNextQuestionId={(e) => setFirstQuestionId(e)}
+            />
+        </>
+      )}
     </Wrapper>
   );
 };
