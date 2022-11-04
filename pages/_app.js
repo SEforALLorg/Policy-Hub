@@ -6,9 +6,22 @@ import Head from "next/head";
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
-
+import "../I18n";
+import { useTranslation } from "react-i18next";
+import { Cookies } from "react-cookie";
+import { useRouter } from "next/router";
+const languages = ["en", "fr"];
+const cookies = new Cookies();
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const { i18n, t } = useTranslation();
   const [showConsent, setShowConsent] = useState(false);
+
+  const changeLanguage = (language) => {
+    if (languages.includes(language)) {
+      i18n.changeLanguage(language);
+    }
+  };
 
   const cookie = typeof document === "undefined" ? null : document.cookie;
   const status = cookie?.includes("cookieconsent_status=1");
@@ -16,6 +29,26 @@ function MyApp({ Component, pageProps }) {
     document.cookie = "cookieconsent_status = 1";
     setShowConsent(!showConsent);
   };
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("lang") !== null
+    ) {
+      let lang = router.locale;
+      const expires = new Date();
+      expires.setFullYear(expires.getFullYear() + 100);
+      cookies.set("language", lang, {
+        expires,
+        secure: true,
+      });
+      changeLanguage(lang);
+      router.locale = lang;
+    } else {
+      localStorage.setItem("lang", "en");
+    }
+  }, []);
+
   useEffect(() => {
     setShowConsent(status);
   }, [showConsent]);
@@ -47,23 +80,25 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ToastContainer theme={"colored"} />
       <Component {...pageProps} />
-      {
-        !showConsent && <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
-          This website uses cookies to ensure you get the best experience.{" "}
+      {!showConsent && (
+        <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
+          {t("cookiesText")}{" "}
           <a
             className="text-Primary hover:underline cursor-pointer pl-[3px]"
-            onClick={() => window.open("https://www.seforall.org/privacy-policy")}
+            onClick={() =>
+              window.open("https://www.seforall.org/privacy-policy")
+            }
           >
-            Read more
+            {t("Readmore")}
           </a>
           <button
             className="cookies-accept-button"
             onClick={() => onAcceptCookies()}
           >
-            Accept
+            {t("Accept")}
           </button>
         </div>
-      }
+      )}
     </QueryClientProvider>
   );
 }

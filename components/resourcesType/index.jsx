@@ -20,10 +20,14 @@ const Resources = ({ onYes, resources, onNextQuestionId }) => {
           />
         </div>
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-          All resources
-        </div>
+              Assess your country’s situation and
+              <br /> customize the decision-making process.
+            </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
+        <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
+          Which area you want to investigate?
+        </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         {resources?.map((resource, index) => (
           <BlueButton

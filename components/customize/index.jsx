@@ -3,6 +3,7 @@ import React from "react";
 import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
+import { useTranslation } from "react-i18next";
 
 const Customize = ({
   onYes,
@@ -11,19 +12,19 @@ const Customize = ({
   onNextQuestion,
   onReportsFind,
 }) => {
+  const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
-
-  const title =
-    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
-      ?.Question;
+  console.log(questions,"questions", firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question)
+  const title =firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
 
-  const onAnswerClick = (i) => {
+  const onAnswerClick = (i) => {console.log(i,'si')
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
   };
+  console.log(ToolTipText, "qwerty");
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
@@ -42,8 +43,7 @@ const Customize = ({
               />
             </div>
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess your country’s situation and
-              <br /> customize the decision-making process.
+              {t("AssessYourCountry")} <br /> {t("Customize")}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />

@@ -50,7 +50,7 @@ const Dashboard = ({
   const onRestart = () => {
     setIsExpand(false);
     // onResetFilter();
-    // setStepAnswer(undefined);
+    setStepAnswer(undefined);
     setIsBigCard(false);
     // setClearAll(!isClearAll);
     setIsResource(true)
@@ -79,6 +79,7 @@ const Dashboard = ({
               setPublicationReports={(e) => setPublicationReports(e)}
               setNonPublicationReports={(e) => setNonPublicationReports(e)}
               firstQuestion={firstQuestion}
+              perviousId={firstQuestionId}
               restart={() => onRestart()}
               stepAnswer={stepAnswer}
               resetFilters={() => onResetFilter()}

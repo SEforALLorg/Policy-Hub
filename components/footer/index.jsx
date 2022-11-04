@@ -6,8 +6,11 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="xsm:mt-4 medium:mt-20">
       <div className="flex items-center justify-between w-full xsm:flex-wrap laptop:flex-nowrap ">
@@ -71,12 +74,12 @@ const Footer = () => {
             className="font-medium leading-5 xsm:text-xx text-center text-white mr-6 mb-0
                                   desktoplg:text-small mobile:text-xsmall xsm:w-full mobile:w-max powered-text"
           >
-            Powered By{" "}
+            {t("Poweredby")}{" "}
             <span
               className="text-Secondary hover:underline cursor-pointer"
               onClick={() => window.open("https://www.seforall.org/")}
             >
-              Sustainable Energy For All
+              {t("SustainableEnergyforAll")}
             </span>
           </p>
           <button
@@ -88,7 +91,7 @@ const Footer = () => {
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
                                       hover:border hover:border-blue ease-linear transition-all duration-500 button-animation footer-button"
           >
-            Browse all resources
+            {t("BrowseResource")}
           </button>
           <button
             onClick={() => window.open("static/pdf/decision-tree.pdf")}
@@ -98,7 +101,7 @@ const Footer = () => {
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
                                        hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 footer-button button-animation"
           >
-            Download Decision Tree
+            {t("DownloadDecisionTree")}
           </button>
         </div>
       </div>
@@ -133,7 +136,7 @@ const Footer = () => {
       <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
       <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[20px] pb-[20px] mt-[10px] footer-bottom-wrap">
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left m-[0px]">
-          Web Development by{" "}
+          {t("WebDevelopmentby")}{" "}
           <span
             className="text-Secondary hover:underline cursor-pointer"
             onClick={() => window.open("https://www.keymouseit.com/")}
@@ -142,7 +145,7 @@ const Footer = () => {
           </span>
         </p>
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-right m-[0px]">
-          Copyright 2022 Sustainable Energy For All
+          {t("Copyright")}
         </p>
       </div>
     </div>

@@ -2,5 +2,6 @@ import { instance } from './instance';
 
 // Questions Lists
 export const getQuestions = () => {
-    return instance.get(`/question-lists`)
+    const lang = localStorage.getItem("lang")
+    return instance.get(`/question-lists?lang=${lang}`)
 };
