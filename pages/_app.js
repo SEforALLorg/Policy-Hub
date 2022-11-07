@@ -10,6 +10,8 @@ import "../I18n";
 import { useTranslation } from "react-i18next";
 import { Cookies } from "react-cookie";
 import { useRouter } from "next/router";
+import { applyTheme } from "../theme/utils";
+import baseTheme from "../theme/base";
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 function MyApp({ Component, pageProps }) {
@@ -52,6 +54,10 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setShowConsent(status);
   }, [showConsent]);
+
+  useEffect(() => {
+    applyTheme(baseTheme);
+  }, []);
 
   const queryClient = new QueryClient({
     defaultOptions: {

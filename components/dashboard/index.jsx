@@ -6,6 +6,8 @@ import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { useEffect } from "react";
+import { applyTheme } from "../../theme/utils";
+import baseTheme from "../../theme/base";
 
 const Dashboard = ({
   questions,
@@ -48,6 +50,7 @@ const Dashboard = ({
   };
 
   const onRestart = () => {
+    applyTheme(baseTheme);
     setIsExpand(false);
     // onResetFilter();
     setStepAnswer(undefined);

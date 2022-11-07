@@ -14,7 +14,7 @@ body {
 
 body {
   background-image: url("/static/images/BG.png");
-  background-color: #144a68 !important;
+  background-color: var(--theme-back-ground) !important;
   background-attachment: fixed;
   background-size: 100%;
   overflow: hidden;
@@ -121,19 +121,19 @@ a {
   font-size: 18px;
   line-height: 24px;
   text-transform: uppercase;
-  color: #ffffff !important;
+  color: var(--theme-primary-button)  !important;
   width: 185px;
   transition: all 0.5s;
 }
 
 .header .active.nav-link {
   font-weight: 700;
-  color: #fcb600 !important;
+  color: var(--theme-actve-primary-button) !important;
 }
 
 .header .nav-link:hover {
   text-decoration: underline;
-  color: #fcb600 !important;
+  color: var(--theme-actve-primary-button) !important;
 }
 
 .header .navbar-nav {

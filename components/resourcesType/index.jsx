@@ -1,13 +1,40 @@
 import React from "react";
-
+import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
+import { applyTheme } from "../../theme/utils";
+import darkTheme from "../../theme/dark";
+import greenTheme from "../../theme/green";
+import yellowTheme from "../../theme/yellow";
+import baseTheme from "../../theme/base";
+import blueTheme from "../../theme/blue";
 
 const Resources = ({ onYes, resources, onNextQuestionId }) => {
+  const { t } = useTranslation();
   const onAnswerClick = (i) => {
     console.log(i, "i");
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
   };
+
+  const changeColor = (e) => {
+    switch (e.target.innerText) {
+      case "ELECTRIFICATION":
+        applyTheme(greenTheme);
+        break;
+      case "CLEAN COOKING":
+          applyTheme(yellowTheme);
+        break;
+      case "SUSTAINABLE COOLING":
+          applyTheme(darkTheme);
+        break;
+      case "ENERGY EFFICIENCY":
+          applyTheme(blueTheme);
+        break;
+      
+      default: applyTheme(baseTheme);
+        break;
+    }
+  }
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
@@ -20,19 +47,21 @@ const Resources = ({ onYes, resources, onNextQuestionId }) => {
           />
         </div>
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess your country’s situation and
-              <br /> customize the decision-making process.
+        {t("AssessYourCountry")} <br /> {t("Customize")}
             </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
-          Which area you want to investigate?
+        {t("AreaWantToInvestigate")}
         </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         {resources?.map((resource, index) => (
           <BlueButton
             title={resource?.attributes.Name}
-            onClick={() => onAnswerClick(resource)}
+            onClick={(e) => {
+              onAnswerClick(resource);
+              changeColor(e)
+            }}
             key={index}
             className="mb-[20px] h-[95px] text-[23px]"
           />
