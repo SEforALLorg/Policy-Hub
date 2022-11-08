@@ -14,17 +14,15 @@ const Customize = ({
 }) => {
   const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
-  console.log(questions,"questions", firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question)
   const title =firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
 
-  const onAnswerClick = (i) => {console.log(i,'si')
+  const onAnswerClick = (i) => {
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
   };
-  console.log(ToolTipText, "qwerty");
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">

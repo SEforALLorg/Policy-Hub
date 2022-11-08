@@ -6,6 +6,7 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
+import SubscribeComponent from "../subscribeComponent";
 
 const LeftWrapPage = ({
   questions,
@@ -23,6 +24,7 @@ const LeftWrapPage = ({
   const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
+  const [subcription, setSubscription] = useState(false);
 
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
@@ -36,6 +38,14 @@ const LeftWrapPage = ({
       setUserJourney([...userJourney, { ...question[0], answer: stepAnswer }]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
+
+  useEffect(() => {
+    const val = Object.values(userJourney);
+    if (val.length === 3) {
+      setSubscription(true);
+      console.log("subsciption", val,nextQuestionId);
+    }
+  }, [userJourney]) 
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -145,7 +155,7 @@ const LeftWrapPage = ({
             }}
             className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
             style={{ height: 45 }}
-          >{console.log("userJourny", userJourney)}
+          >
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
               <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
@@ -189,6 +199,12 @@ const LeftWrapPage = ({
           onRestart={() => onRestart()}
           onStandaloneClick={() => onStandaloneClick()}
           onMiniClick={() => onMiniClick()}
+          subcription={subcription}
+        />
+      )}
+      {subcription && (
+        <SubscribeComponent
+          subcription={subcription}
         />
       )}
       {questions?.length

@@ -4,11 +4,17 @@ import { FaEnvelopeOpenText } from "react-icons/fa";
 import PrimaryButton from "components/buttons/primarybutton";
 import { useTranslation } from "react-i18next";
 
-const SubscribeComponent = () => {
+const SubscribeComponent = ({subcription}) => {
   const [showModal, setShowModal] = useState(false);
   const [modalClick, setModalClick] = useState(false);
   const { t, i18n } = useTranslation();
 
+  useEffect(() => {
+    if (subcription === true) {
+      setShowModal(true)
+    }
+  }, [subcription])
+  
   useEffect(() => {
     if (showModal) {
       <Script id="mcjs">
@@ -38,7 +44,8 @@ const SubscribeComponent = () => {
     setModalClick(!modalClick);
   };
   return (
-    <div className="w-full">
+    <>
+      {(subcription === true || subcription === false) ? "" : <div className="w-full">
       <div className="flex items-center justify-center mt-[10px]">
         <FaEnvelopeOpenText size={50} className={"text-Primary"} />
       </div>
@@ -55,7 +62,8 @@ const SubscribeComponent = () => {
           onClick={() => onSubscribe()}
         />
       </div>
-    </div>
+      </div>}
+    </>
   );
 };
 
