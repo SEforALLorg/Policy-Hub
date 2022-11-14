@@ -102,13 +102,14 @@ export const getResourses = (allQuestions) => {
       if (item.attributes.Resource?.id) {
         return item;
       }
-    }).map((item) => {
-      return item?.attributes?.Resource;
+  }).map((item) => {
+    const ac = Object.values(item?.attributes?.Resource?.resources);
+    return ac[0];
     });
   
   const groupedResources = groupBy(resourceGroup, "id");
   const allArray = Object.values(groupedResources);
   const allResources = [].concat.apply([], allArray)?.map((item) => item?.resource?.data);
 
-  return allResources;
+  return resourceGroup;
 };

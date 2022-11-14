@@ -64,21 +64,40 @@ const Dashboard = ({
     setNonPublicationReports(e?.NonKeyPublication?.data);
     setStepAnswer(e?.Answer);
   };
+  
+  const onNextQuestionId = (e) => {
+    console.log(e)
+    setFirstQuestionId(e)
+    const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
+    setFirstQuestion(question);
+  }
 
   useEffect(() => {
-    if (firstQuestionId) {
-      const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
-      setFirstQuestion(question);
-    }
+    console.log("e")
+    const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
+    setFirstQuestion(question);
   }, [firstQuestionId])
 
+  // useEffect(() => {
+  //   const list = questions?.data?.data?.filter((key) => {
+      
+  //     if (key.attributes?.Resource?.id && key.attributes.Resource.resources.data[0].attributes.QuestionId === firstQuestionId) {
+  //       console.log(key.attributes.Resource.resources.data[0].attributes.QuestionId, "qes")
+  //       console.log(firstQuestionId,"firstQuestionId")
+  //       return key;
+  //     }
+  //   })
+  //   setQuestionList(list)
+  // },[firstQuestionId])
+  
+  // console.log(questionList, questions?.data?.data, "data")
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
         <>
           <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
             <LeftWrapPage
-              questions={questions?.data?.data?.sort((a, b) => a?.id - b?.id)}
+              questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
               setPublicationReports={(e) => setPublicationReports(e)}
               setNonPublicationReports={(e) => setNonPublicationReports(e)}
               firstQuestion={firstQuestion}
@@ -117,9 +136,9 @@ const Dashboard = ({
       ) : (
         <>
             <Resources
-              resources={resources}
+              resourcesData={resources}
               onYes={() => setIsResource(false)}
-              onNextQuestionId={(e) => setFirstQuestionId(e)}
+              onNextQuestionId={onNextQuestionId}
             />
         </>
       )}

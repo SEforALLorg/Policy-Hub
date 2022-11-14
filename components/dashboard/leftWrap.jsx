@@ -43,7 +43,6 @@ const LeftWrapPage = ({
     const val = Object.values(userJourney);
     if (val.length === 3) {
       setSubscription(true);
-      console.log("subsciption", val,nextQuestionId);
     }
   }, [userJourney]) 
 

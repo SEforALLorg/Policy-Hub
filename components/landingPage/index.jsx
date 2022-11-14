@@ -47,10 +47,16 @@ const LandingPage = ({ setIsDashboardOpen }) => {
   const allQuestions = questions?.data?.data;
 
   useEffect(async () => {
+    const dataObject = {};
     if (allQuestions?.length) {
       const resources = await getResourses(allQuestions);
-      setResources(resources);
+      const flatArray = resources.flat();
+      flatArray.map((element) => {
+        dataObject[element.id] = element;
+      });
+      setResources(dataObject);
     }
+    console.log(allQuestions,"all")
   }, [allQuestions]);
 
   return (

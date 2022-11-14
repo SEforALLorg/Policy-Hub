@@ -7,11 +7,42 @@ import greenTheme from "../../theme/green";
 import yellowTheme from "../../theme/yellow";
 import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
+import { useEffect } from "react";
 
-const Resources = ({ onYes, resources, onNextQuestionId }) => {
+// const resources = [
+//   {
+//     attributes: {
+//       Name: "Electrification",
+//       QuestionId: "9",
+//     }
+//   },
+//   {
+//     attributes: {
+//       Name: "Clean Cooking",
+//       QuestionId: "32",
+//     }
+//   },
+//   {
+//     attributes: {
+//       Name: "Sustainable Cooling",
+//       QuestionId: "52",
+//     }
+//   },
+//   {
+//     attributes: {
+//       Name: "Energy Efficiency",
+//       QuestionId: "80",
+//     }
+//   },
+// ] 
+
+const Resources = ({
+  onYes,
+  resourcesData,
+  onNextQuestionId
+}) => {
   const { t } = useTranslation();
   const onAnswerClick = (i) => {
-    console.log(i, "i");
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
   };
@@ -19,22 +50,23 @@ const Resources = ({ onYes, resources, onNextQuestionId }) => {
   const changeColor = (e) => {
     switch (e.target.innerText) {
       case "ELECTRIFICATION":
-        applyTheme(greenTheme);
+        applyTheme(baseTheme);
         break;
       case "CLEAN COOKING":
-          applyTheme(yellowTheme);
+        applyTheme(greenTheme); 
         break;
       case "SUSTAINABLE COOLING":
-          applyTheme(darkTheme);
+        applyTheme(darkTheme);
         break;
       case "ENERGY EFFICIENCY":
-          applyTheme(blueTheme);
+        applyTheme(yellowTheme);//blueTheme
         break;
-      
-      default: applyTheme(baseTheme);
+
+      default:
+        applyTheme(baseTheme);
         break;
     }
-  }
+  };
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
@@ -47,20 +79,21 @@ const Resources = ({ onYes, resources, onNextQuestionId }) => {
           />
         </div>
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-        {t("AssessYourCountry")} <br /> {t("Customize")}
-            </div>
+          {t("AssessYourCountry")} <br /> {t("Customize")}
+        </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
-        <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
+      <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
         {t("AreaWantToInvestigate")}
-        </div>
+      </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-        {resources?.map((resource, index) => (
+        {Object.values(resourcesData).map((resource, index) => (
           <BlueButton
             title={resource?.attributes.Name}
             onClick={(e) => {
+              console.log(resource?.attributes.QuestionId,"name")
               onAnswerClick(resource);
-              changeColor(e)
+              changeColor(e);
             }}
             key={index}
             className="mb-[20px] h-[95px] text-[23px]"
