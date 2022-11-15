@@ -98,18 +98,22 @@ export const isSelectedInput = (selectInputs) => {
 };
 
 export const getResourses = (allQuestions) => {
-  const resourceGroup = allQuestions.filter((item) => {
+  const resourceGroup = allQuestions
+    .filter((item) => {
       if (item.attributes.Resource?.id) {
         return item;
       }
-  }).map((item) => {
-    const ac = Object.values(item?.attributes?.Resource?.resources);
-    return ac[0];
+    })
+    .map((item) => {
+      const ac = Object.values(item?.attributes?.Resource?.resources);
+      return ac[0];
     });
-  
-  const groupedResources = groupBy(resourceGroup, "id");
-  const allArray = Object.values(groupedResources);
-  const allResources = [].concat.apply([], allArray)?.map((item) => item?.resource?.data);
+
+  // const groupedResources = groupBy(resourceGroup, "id");
+  // const allArray = Object.values(groupedResources);
+  // const allResources = [].concat
+  //   .apply([], allArray)
+  //   ?.map((item) => item?.resource?.data);
 
   return resourceGroup;
 };

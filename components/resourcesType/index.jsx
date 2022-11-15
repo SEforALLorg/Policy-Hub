@@ -59,7 +59,7 @@ const Resources = ({
         {t("AreaWantToInvestigate")}
       </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-        {Object.values(resourcesData).map((resource, index) => (
+        {resourcesData && Object?.values(resourcesData)?.map((resource, index) => (
           <BlueButton
             title={resource?.attributes.Name}
             onClick={(e) => {
