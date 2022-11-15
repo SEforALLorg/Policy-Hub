@@ -56,7 +56,6 @@ const LandingPage = ({ setIsDashboardOpen }) => {
       });
       setResources(dataObject);
     }
-    console.log(allQuestions,"all")
   }, [allQuestions]);
 
   return (

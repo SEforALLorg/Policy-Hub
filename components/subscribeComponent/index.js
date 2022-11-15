@@ -45,7 +45,7 @@ const SubscribeComponent = ({subcription}) => {
   };
   return (
     <>
-      {(subcription === true || subcription === false) ? "" : <div className="w-full">
+      {subcription !== true && <div className="w-full">
       <div className="flex items-center justify-center mt-[10px]">
         <FaEnvelopeOpenText size={50} className={"text-Primary"} />
       </div>

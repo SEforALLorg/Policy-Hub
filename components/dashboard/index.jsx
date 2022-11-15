@@ -52,10 +52,10 @@ const Dashboard = ({
   const onRestart = () => {
     applyTheme(baseTheme);
     setIsExpand(false);
-    // onResetFilter();
+    onResetFilter();
     setStepAnswer(undefined);
     setIsBigCard(false);
-    // setClearAll(!isClearAll);
+    setClearAll(!isClearAll);
     setIsResource(true)
   };
 
@@ -66,31 +66,16 @@ const Dashboard = ({
   };
   
   const onNextQuestionId = (e) => {
-    console.log(e)
     setFirstQuestionId(e)
     const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
     setFirstQuestion(question);
   }
 
   useEffect(() => {
-    console.log("e")
     const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
     setFirstQuestion(question);
   }, [firstQuestionId])
 
-  // useEffect(() => {
-  //   const list = questions?.data?.data?.filter((key) => {
-      
-  //     if (key.attributes?.Resource?.id && key.attributes.Resource.resources.data[0].attributes.QuestionId === firstQuestionId) {
-  //       console.log(key.attributes.Resource.resources.data[0].attributes.QuestionId, "qes")
-  //       console.log(firstQuestionId,"firstQuestionId")
-  //       return key;
-  //     }
-  //   })
-  //   setQuestionList(list)
-  // },[firstQuestionId])
-  
-  // console.log(questionList, questions?.data?.data, "data")
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (

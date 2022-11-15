@@ -21,7 +21,6 @@ const LeftWrapPage = ({
   setIsResetPage,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
-  const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
   const [subcription, setSubscription] = useState(false);
@@ -29,7 +28,6 @@ const LeftWrapPage = ({
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);
-      setFirstQuestionId(firstQuestion);
       const question = questions.filter((key) => {
         if (key.id === Number(perviousId)) {
           return key;

@@ -7,34 +7,6 @@ import greenTheme from "../../theme/green";
 import yellowTheme from "../../theme/yellow";
 import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
-import { useEffect } from "react";
-
-// const resources = [
-//   {
-//     attributes: {
-//       Name: "Electrification",
-//       QuestionId: "9",
-//     }
-//   },
-//   {
-//     attributes: {
-//       Name: "Clean Cooking",
-//       QuestionId: "32",
-//     }
-//   },
-//   {
-//     attributes: {
-//       Name: "Sustainable Cooling",
-//       QuestionId: "52",
-//     }
-//   },
-//   {
-//     attributes: {
-//       Name: "Energy Efficiency",
-//       QuestionId: "80",
-//     }
-//   },
-// ] 
 
 const Resources = ({
   onYes,
@@ -91,7 +63,6 @@ const Resources = ({
           <BlueButton
             title={resource?.attributes.Name}
             onClick={(e) => {
-              console.log(resource?.attributes.QuestionId,"name")
               onAnswerClick(resource);
               changeColor(e);
             }}
