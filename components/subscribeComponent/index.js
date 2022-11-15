@@ -10,7 +10,7 @@ const SubscribeComponent = ({subcription}) => {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    if (subcription === true) {
+    if (subcription) {
       setShowModal(true)
     }
   }, [subcription])
@@ -45,7 +45,7 @@ const SubscribeComponent = ({subcription}) => {
   };
   return (
     <>
-      {subcription !== true && <div className="w-full">
+      {!subcription && <div className="w-full">
       <div className="flex items-center justify-center mt-[10px]">
         <FaEnvelopeOpenText size={50} className={"text-Primary"} />
       </div>

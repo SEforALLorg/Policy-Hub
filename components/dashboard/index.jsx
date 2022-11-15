@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Customize from "components/customize";
 
 import { Wrapper } from "./styles";
 import RightWrapPage from "./rightWrap";
 import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
-import { useEffect } from "react";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
 
