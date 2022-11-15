@@ -1,0 +1,78 @@
+import React from "react";
+import { useTranslation } from "react-i18next";
+import BlueButton from "components/buttons/blueButton";
+import { applyTheme } from "../../theme/utils";
+import darkTheme from "../../theme/dark";
+import greenTheme from "../../theme/green";
+import yellowTheme from "../../theme/yellow";
+import baseTheme from "../../theme/base";
+import blueTheme from "../../theme/blue";
+
+const Resources = ({
+  onYes,
+  resourcesData,
+  onNextQuestionId
+}) => {
+  const { t } = useTranslation();
+  const onAnswerClick = (i) => {
+    onYes();
+    onNextQuestionId(i?.attributes?.QuestionId);
+  };
+
+  const changeColor = (e) => {
+    switch (e.target.innerText) {
+      case "ELECTRIFICATION":
+        applyTheme(baseTheme);
+        break;
+      case "CLEAN COOKING":
+        applyTheme(greenTheme); 
+        break;
+      case "SUSTAINABLE COOLING":
+        applyTheme(darkTheme);
+        break;
+      case "ENERGY EFFICIENCY":
+        applyTheme(yellowTheme);//blueTheme
+        break;
+
+      default:
+        applyTheme(baseTheme);
+        break;
+    }
+  };
+
+  return (
+    <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
+      <div className="flex items-center customize-header">
+        <div className="flex items-center relative select-none mr-5">
+          <img
+            className="w-[230px] mx-full"
+            src="static/images/cards.svg"
+            alt="card"
+          />
+        </div>
+        <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
+          {t("AssessYourCountry")} <br /> {t("Customize")}
+        </div>
+      </div>
+      <div className="my-3 border-b-[4px] border-primary opacity-20" />
+      <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
+        {t("AreaWantToInvestigate")}
+      </div>
+      <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
+        {Object.values(resourcesData).map((resource, index) => (
+          <BlueButton
+            title={resource?.attributes.Name}
+            onClick={(e) => {
+              onAnswerClick(resource);
+              changeColor(e);
+            }}
+            key={index}
+            className="mb-[20px] h-[95px] text-[23px]"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Resources;

@@ -6,12 +6,14 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
+import SubscribeComponent from "../subscribeComponent";
 
 const LeftWrapPage = ({
   questions,
   setPublicationReports,
   setNonPublicationReports,
   firstQuestion,
+  perviousId,
   restart,
   stepAnswer,
   resetFilters,
@@ -19,17 +21,28 @@ const LeftWrapPage = ({
   setIsResetPage,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
-  const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
+  const [subcription, setSubscription] = useState(false);
 
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);
-      setFirstQuestionId(firstQuestion);
-      setUserJourney([...userJourney, { ...questions[0], answer: stepAnswer }]);
+      const question = questions.filter((key) => {
+        if (key.id === Number(perviousId)) {
+          return key;
+        }
+      })
+      setUserJourney([...userJourney, { ...question[0], answer: stepAnswer }]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
+
+  useEffect(() => {
+    const val = Object.values(userJourney);
+    if (val.length === 3) {
+      setSubscription(true);
+    }
+  }, [userJourney]) 
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -68,7 +81,7 @@ const LeftWrapPage = ({
   };
 
   const onRestart = () => {
-    setNextQuestionId(firstQuestionId);
+    setNextQuestionId(Number(perviousId));
     setUserJourney([]);
     setStepQuestion([]);
     restart();
@@ -183,6 +196,12 @@ const LeftWrapPage = ({
           onRestart={() => onRestart()}
           onStandaloneClick={() => onStandaloneClick()}
           onMiniClick={() => onMiniClick()}
+          subcription={subcription}
+        />
+      )}
+      {subcription && (
+        <SubscribeComponent
+          subcription={subcription}
         />
       )}
       {questions?.length

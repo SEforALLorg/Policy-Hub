@@ -11,7 +11,7 @@ const StepComponent = ({
   setStepQuestion,
   stepQuestion,
   totalSteps,
-}) => {
+}) => { 
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
 
