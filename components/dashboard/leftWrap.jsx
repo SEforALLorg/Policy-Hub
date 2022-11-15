@@ -39,7 +39,7 @@ const LeftWrapPage = ({
 
   useEffect(() => {
     const val = Object.values(userJourney);
-    if (val.length === 3) {
+    if (val?.length === 3) {
       setSubscription(true);
     }
   }, [userJourney]) 
