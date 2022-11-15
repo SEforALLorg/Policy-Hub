@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ToastContainer } from "react-toastify";
 import Head from "next/head";
-
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
@@ -14,6 +13,7 @@ import { applyTheme } from "../theme/utils";
 import baseTheme from "../theme/base";
 const languages = ["en", "fr"];
 const cookies = new Cookies();
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const { i18n, t } = useTranslation();
