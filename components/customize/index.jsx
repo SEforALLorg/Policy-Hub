@@ -55,7 +55,7 @@ const Customize = ({
                 title={i?.Answer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
-                className="mb-[20px] h-[95px] text-[23px]"
+                className="mb-[20px] h-[80px] text-[23px]"
               />
             ))}
           </div>

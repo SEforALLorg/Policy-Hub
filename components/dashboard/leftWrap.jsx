@@ -239,13 +239,13 @@ const LeftWrapPage = ({
                           <TooltipComponent content={ToolTipText} />
                         )}
                       </div>
-                      <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
+                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
                         {singleAnswer?.map((i, index) => {
                           if (!i?.Answer) return null;
 
                           return (
                             <BlueButton
-                              className="mb-3"
+                              className="mb-3 p-2"
                               title={i?.Answer}
                               onClick={() => onSubmitAnswer(i, item)}
                               key={index}
