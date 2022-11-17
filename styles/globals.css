@@ -90,13 +90,15 @@ a {
   position: fixed;
   max-width: 1320px;
 }
-.collapse{
+
+.collapse {
   visibility: unset !important;
 }
 
-.collapse{
+.collapse {
   visibility: unset !important;
 }
+
 .cardBigHeading {
   background-image: url(/static/images/BG.png);
   background-color: #144a68 !important;
@@ -121,7 +123,7 @@ a {
   font-size: 18px;
   line-height: 24px;
   text-transform: uppercase;
-  color: var(--theme-primary-button)  !important;
+  color: var(--theme-primary-button) !important;
   width: 185px;
   transition: all 0.5s;
 }
@@ -1361,6 +1363,10 @@ a {
     max-width: 100%;
   }
 
+  .header .nav-link {
+    width: 130px;
+  }
+
   .header-title-wrap {
     max-width: 100% !important;
     background-size: 100% !important;
@@ -1653,6 +1659,7 @@ a {
 
   .cardBigHeading {
     background-size: cover !important;
+    font-size: 44px !important;
   }
 
   .public-share-modal .inputFullWrap {
@@ -1850,7 +1857,7 @@ a {
 
   .header .customDropdown {
     background-color: #fcb600 !important;
-    margin-right: 30%;
+    margin-right: 45%;
   }
 
   .powered-text {
