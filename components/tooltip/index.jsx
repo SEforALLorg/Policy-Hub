@@ -3,7 +3,7 @@ import { FiInfo } from "react-icons/fi";
 
 const TooltipComponent = ({ content, children, hideInfo , top, hideContent}) => {
   return (
-    <div className="tooltipWrap">
+    <div className="tooltipWrap" style={{ cursor: hideContent ? "" : "pointer"  }}>
       {hideInfo ? null : <FiInfo />}
       {children}
       {hideContent ? '' : <div className={`content ${top ? 'top' : ''}`}>{content}</div>}
