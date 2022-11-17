@@ -7,6 +7,7 @@ import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
+import { shortName } from "../../utilities";
 
 const LeftWrapPage = ({
   questions,
@@ -32,7 +33,7 @@ const LeftWrapPage = ({
         if (key.id === Number(perviousId)) {
           return key;
         }
-      })
+      });
       setUserJourney([...userJourney, { ...question[0], answer: stepAnswer }]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
@@ -42,7 +43,7 @@ const LeftWrapPage = ({
     if (val?.length === 3) {
       setSubscription(true);
     }
-  }, [userJourney]) 
+  }, [userJourney]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -162,11 +163,7 @@ const LeftWrapPage = ({
               </p>
             </p>
             <button className="yesButton">
-              {item?.answer === "Mini-grid"
-                ? "MG"
-                : item?.answer?.includes("Standalone systems")
-                ? "SHS"
-                : item?.answer}
+              {shortName(item?.answer)}
             </button>
           </div>
         ))}
@@ -199,11 +196,7 @@ const LeftWrapPage = ({
           subcription={subcription}
         />
       )}
-      {subcription && (
-        <SubscribeComponent
-          subcription={subcription}
-        />
-      )}
+      {subcription && <SubscribeComponent subcription={subcription} />}
       {questions?.length
         ? questions
             .filter(
@@ -239,13 +232,13 @@ const LeftWrapPage = ({
                           <TooltipComponent content={ToolTipText} />
                         )}
                       </div>
-                      <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
+                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
                         {singleAnswer?.map((i, index) => {
                           if (!i?.Answer) return null;
 
                           return (
                             <BlueButton
-                              className="mb-3"
+                              className="mb-3 p-2"
                               title={i?.Answer}
                               onClick={() => onSubmitAnswer(i, item)}
                               key={index}
