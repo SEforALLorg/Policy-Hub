@@ -117,3 +117,21 @@ export const getResourses = (allQuestions) => {
 
   return resourceGroup;
 };
+
+export const shortName = (str) => {
+  const matches = str?.match(/\b(\w)/g);
+  const acronym = matches?.join("");
+  let string;
+  if (str === "Yes" || str === "No") {
+    return str;
+  } else if (str?.includes("-")) {
+    const matches = str?.replace("-", " ")?.match(/\b(\w)/g);
+    const acronym = matches?.join("");
+    string = acronym;
+  } else if (str?.indexOf(" ") >= 0) {
+    string = acronym;
+  } else {
+    string = str?.substring(0, 2);
+  }
+  return string || str;
+};

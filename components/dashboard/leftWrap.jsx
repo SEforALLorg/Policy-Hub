@@ -7,6 +7,7 @@ import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
+import { shortName } from "../../utilities";
 
 const LeftWrapPage = ({
   questions,
@@ -32,7 +33,7 @@ const LeftWrapPage = ({
         if (key.id === Number(perviousId)) {
           return key;
         }
-      })
+      });
       setUserJourney([...userJourney, { ...question[0], answer: stepAnswer }]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
@@ -42,7 +43,7 @@ const LeftWrapPage = ({
     if (val?.length === 3) {
       setSubscription(true);
     }
-  }, [userJourney]) 
+  }, [userJourney]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -161,8 +162,8 @@ const LeftWrapPage = ({
                     ?.Question}
               </p>
             </p>
-            <button className="yesButton">{console.log(item.answer)}
-              {item?.answer === "Mini-grid" ? "MG" : item?.answer?.includes("Standalone systems") ? "SHS" : item?.answer?.includes("Policy and institutional framework") ? "P&IF" : item?.answer?.includes("Regulations and Standards") ? "R&S" : item?.answer?.includes("Market development and financing") ? "MD&F" : item?.answer?.includes("Awareness raising") ?"AR" : item?.answer?.includes("Thermal comfort and safety") ? "TC&S" : item?.answer?.includes("Food & agricultural cold chains") ? "F&ACC" : item?.answer?.includes("Healthcare and medical cold chains") ? "H&MCC" : item?.answer?.includes("Buildings") ? "BLD" : item?.answer?.includes("Industry") ? "IDU" : item?.answer?.includes("Transport/ Mobility") ? "T/M" : item?.answer?.includes("Products / Appliances") ? "P/A" : item?.answer?.includes("Utilities") ? "UTL" : item?.answer?.includes("Energy efficiency services") ? "EES" : item?.answer}
+            <button className="yesButton">
+              {shortName(item?.answer)}
             </button>
           </div>
         ))}
@@ -195,11 +196,7 @@ const LeftWrapPage = ({
           subcription={subcription}
         />
       )}
-      {subcription && (
-        <SubscribeComponent
-          subcription={subcription}
-        />
-      )}
+      {subcription && <SubscribeComponent subcription={subcription} />}
       {questions?.length
         ? questions
             .filter(
