@@ -28,6 +28,13 @@ function MyApp({ Component, pageProps }) {
   const cookie = typeof document === "undefined" ? null : document.cookie;
   const status = cookie?.includes("cookieconsent_status=1");
   const onAcceptCookies = () => {
+    try {
+      fetch("https://api.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((data) => cookies.set("ip", data.ip))
+    } catch (error) {
+      console.log(error);
+    }
     document.cookie = "cookieconsent_status = 1";
     setShowConsent(!showConsent);
   };
