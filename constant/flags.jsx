@@ -1,5 +1,12 @@
 export const Flags = [
   {
+    name: "",
+    code: "",
+    emoji: "",
+    unicode: "",
+    image: "",
+  },
+  {
     name: "Ascension Island",
     code: "AC",
     emoji: "🇦🇨",
