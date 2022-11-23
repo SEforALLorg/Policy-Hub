@@ -11,8 +11,10 @@ export function createTheme({
     primary,
     secondary,
     textBase,
+    backGroundImage,
 }) {
     return {
+        "--theme-back-ground-image": backGroundImage,
         "--theme-back-ground": backGround,
         "--theme-actve-primary-button": primaryActveButton,
         "--theme-primary-button": primaryButton,

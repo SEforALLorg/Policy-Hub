@@ -10,6 +10,10 @@ export const postNewsletters = (payload) => {
     return instance.post(`/newsletters`, payload)
 };
 
+// Post newsletters
+export const postUserDetails = (payload) => {
+    return instance.post(`/user-infos`, payload)
+};
 
 //  Download Reports
 export const downloadReports = (payload) => {

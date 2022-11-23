@@ -42,9 +42,9 @@ const LeftWrapPage = ({
 
   useEffect(() => {
     const val = Object.values(userJourney);
-    if (val?.length === 3) {
-      setSubscription(true);
-    }
+    // if (val?.length === 3) {
+    //   setSubscription(true);
+    // }
     if (val?.length === 1) {
       return setDetailModal(true);
     }

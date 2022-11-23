@@ -18,6 +18,7 @@ body {
   background-attachment: fixed;
   background-size: 100%;
   overflow: hidden;
+  /* backdrop-filter: brightness(0.5); */
 }
 
 main {
