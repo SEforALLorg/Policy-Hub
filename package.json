@@ -42,6 +42,7 @@
     "reactstrap": "^9.0.1",
     "scroll-snap": "^4.0.2",
     "styled-components": "^5.3.3",
+    "uuidv4": "^6.2.13",
     "yarn": "^1.22.18"
   },
   "devDependencies": {
