@@ -30,9 +30,9 @@ function MyApp({ Component, pageProps }) {
   const status = cookie?.includes("cookieconsent_status=1");
   const onAcceptCookies = () => {
     try {
-      fetch("https://api.ipify.org?format=json")
+      fetch("https://geolocation-db.com/json/")
         .then((response) => response.json())
-        .then((data) => localStorage.setItem("ip", data.ip))
+        .then((data) => localStorage.setItem("ip", data.IPv4))
     } catch (error) {
       console.log(error);
     }

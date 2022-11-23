@@ -1,12 +1,21 @@
 import { omit } from "lodash";
 import React, { useState } from "react";
 import { Flags } from "../../constant/flags";
+import { validation } from "../../utilities";
 
 const DetailModal = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({});
-  const [errors, setErrors] = useState({});
-  // const [danger, setDanger] = useState(false);
+  const [errors, setErrors] = useState();
+  const [danger, setDanger] = useState({
+    FirstName: false,
+    LastName: false,
+    PhoneNumber: false,
+    Email: false,
+    Organization: false,
+    Country: false,
+    JobTitle: false
+  });
 
   const onSubmitHandler = (event) => {
     if (event) event.preventDefault();
@@ -14,10 +23,17 @@ const DetailModal = () => {
       Object.keys(errors).length === 0 &&
       Object.keys(formInput).length !== 0
     ) {
-      alert("sumbitted");
       setIsOpen(false);
     } else {
-      alert("There is an Error!");
+      setDanger({
+        FirstName: true,
+        LastName: true,
+        PhoneNumber: true,
+        Email: true,
+        Organization: true,
+        Country: true,
+        JobTitle: true
+      });
     }
   };
 
@@ -25,54 +41,14 @@ const DetailModal = () => {
     event.persist();
     let name = event.target.name;
     let val = event.target.value;
-    validate(event, name, val);
+    const formError = validation(event, name, val);
+    setErrors(formError)
     setFormInput({
       ...formInput,
       [name]: val,
     });
   };
-  const validate = (event, name, value) => {
-    switch (name) {
-      case "FirstName":
-        if (value.length <= 4) {
-          setErrors({
-            ...errors,
-            FirstName: "FirstName atleast have 5 letters",
-          });
-        } else {
-          let newObj = omit(errors, "FirstName");
-          setErrors(newObj);
-        }
-        break;
-      case "LastName":
-        if (value.length <= 4) {
-          setErrors({
-            ...errors,
-            LastName: "LastName atleast have 5 letters",
-          });
-        } else {
-          let newObj = omit(errors, "LastName");
-          setErrors(newObj);
-        }
-        break;
-      case "Email":
-        if (
-          !new RegExp(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          ).test(value)
-        ) {
-          setErrors({
-            ...errors,
-            Email: "Enter a valid Email Address",
-          });
-        } else {
-          let newObj = omit(errors, "Email");
-          setErrors(newObj);
-        }
-      default:
-        break;
-    }
-  };
+  
 
   return (
     <>
@@ -124,13 +100,13 @@ const DetailModal = () => {
                     First Name
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.FirstName && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.FirstName && "border-red-900"}`}
                     id="inline-first-name"
                     name="FirstName"
                     type="text"
                     onChange={handleChange}
                   />
-                  {errors.FirstName && <h3>{errors.FirstName}</h3>}
+                  {errors?.FirstName && <h3>{errors?.FirstName}</h3>}
                 </div>
                 <div>
                   <label
@@ -140,13 +116,13 @@ const DetailModal = () => {
                     Last Name
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.LastName && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.LastName && "border-red-900"}`}
                     id="inline-last-name"
                     name="LastName"
                     type="text"
                     onChange={handleChange}
                   />
-                  {errors.LastName && <h3>{errors.LastName}</h3>}
+                  {errors?.LastName && <h3>{errors?.LastName}</h3>}
                 </div>
                 <div>
                   <label
@@ -156,13 +132,13 @@ const DetailModal = () => {
                     Email
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.Email && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.Email && "border-red-900"}`}
                     id="inline-email"
                     type="email"
                     name="Email"
                     onChange={handleChange}
                   />
-                  {errors.Email && <h3>{errors.Email}</h3>}
+                  {errors?.Email && <h3>{errors?.Email}</h3>}
                 </div>
                 <div>
                   <label
@@ -172,7 +148,7 @@ const DetailModal = () => {
                     Phone Number
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.PhoneNumber && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.PhoneNumber && "border-red-900"}`}
                     id="inline-phone-number"
                     type="number"
                     name="PhoneNumber"
@@ -187,7 +163,7 @@ const DetailModal = () => {
                     Job Title
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.JobTitle && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.JobTitle && "border-red-900"}`}
                     id="inline-job-title"
                     type="text"
                     name="JobTitle"
@@ -202,7 +178,7 @@ const DetailModal = () => {
                     Organization
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.Organization && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.Organization && "border-red-900"}`}
                     id="inline-organization"
                     type="text"
                     name="Organization"
@@ -216,15 +192,8 @@ const DetailModal = () => {
                   >
                     Country
                   </label>
-                  {/* <input
-                    className="bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 "
-                    id="inline-country"
-                    type="text"
-                    name="Country"
-                    onChange={handleChange}
-                  /> */}
                   <select
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${errors.Country && "border-red-900"}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger.Country && "border-red-900"}`}
                     id="inline-country"
                     name="Country"
                     onChange={handleChange}
@@ -249,14 +218,6 @@ const DetailModal = () => {
                 >
                   Submit
                 </button>
-                {/* <button
-                  data-modal-toggle="defaultModal"
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-                >
-                  Decline
-                </button> */}
               </div>
             </div>
           </div>
