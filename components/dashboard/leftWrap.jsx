@@ -8,6 +8,7 @@ import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
 import { shortName } from "../../utilities";
+import DetailModal from "../detailModal";
 
 const LeftWrapPage = ({
   questions,
@@ -25,6 +26,7 @@ const LeftWrapPage = ({
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
   const [subcription, setSubscription] = useState(false);
+  const [detailModal, setDetailModal] = useState(false);
 
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
@@ -42,6 +44,9 @@ const LeftWrapPage = ({
     const val = Object.values(userJourney);
     if (val?.length === 3) {
       setSubscription(true);
+    }
+    if (val?.length === 1) {
+      return setDetailModal(true);
     }
   }, [userJourney]);
 
@@ -197,6 +202,7 @@ const LeftWrapPage = ({
         />
       )}
       {subcription && <SubscribeComponent subcription={subcription} />}
+      {detailModal && <DetailModal open={detailModal} />}
       {questions?.length
         ? questions
             .filter(

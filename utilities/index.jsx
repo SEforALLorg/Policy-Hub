@@ -1,5 +1,6 @@
 import qs from "qs";
 import groupBy from "lodash/groupBy";
+import { omit } from "lodash";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -134,4 +135,47 @@ export const shortName = (str) => {
     string = str?.substring(0, 2);
   }
   return string || str;
+};
+
+export const validation = (event, name, val) => {
+  let formError;
+  switch (name) {
+    case "FirstName":
+      if (val?.length <= 4) {
+        formError = {
+          FirstName: "FirstName atleast have 5 letters",
+        };
+      } else {
+        let newObj = omit(formError, "FirstName");
+        formError = { newObj };
+      }
+      break;
+    case "LastName":
+      if (val.length <= 4) {
+        formError = {
+          LastName: "LastName atleast have 5 letters",
+        };
+      } else {
+        let newObj = omit(formError, "LastName");
+        formError = { newObj };
+      }
+      break;
+    case "Email":
+      if (
+        !new RegExp(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ).test(val)
+      ) {
+        formError = {
+          Email: "Enter a valid Email Address",
+        };
+      } else {
+        let newObj = omit(formError, "Email");
+        formError = { newObj };
+      }
+
+    default:
+      break;
+  }
+  return formError;
 };
