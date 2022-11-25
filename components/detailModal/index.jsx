@@ -1,6 +1,7 @@
 import { omit } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { validation } from "../../utilities";
@@ -8,7 +9,7 @@ import { validation } from "../../utilities";
 const DetailModal = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({});
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState([]);
   const [danger, setDanger] = useState(false);
 
   useEffect(() => {
@@ -18,19 +19,28 @@ const DetailModal = () => {
     }
    }, []);
 
-  const onSubmitHandler = (event) => {
+  const onSubmitHandler = async(event) => {
     if (event) event.preventDefault();
     if (Object.keys(formInput).length === 7) {
       let ip = localStorage.getItem("ip")
+      let uuid = localStorage.getItem("uuid");
       let payload = {
         "data": {
           ...formInput,
-          IPAddress: ip}
+          IPAddress: ip ? ip : "",
+          UID: uuid
+        }
       }
-      postUserDetails(payload)
-      setIsOpen(false);
-      localStorage.setItem("UserModal", false);
-    } else if (Object.keys(formInput).length === 0) {
+      const response = await postUserDetails(payload);
+      if(response.status === 200) {
+        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
+        localStorage.setItem("UserId", response?.data?.data?.id);
+        setIsOpen(false);
+        localStorage.setItem("UserModal", false);
+      } else {
+        toast.error("Error", { position: toast.POSITION.TOP_CENTER });
+      }
+    } else if (Object.keys(formInput).length < 7) {
       setDanger(true);
     }
   };
@@ -41,6 +51,15 @@ const DetailModal = () => {
     let val = event.target.value;
     const formError = validation(event, name, val);
     setErrors(formError);
+    // if (errors.length === 0) {
+    //   let arr = [];
+    //   arr.push(formError);
+    // } else if (errors.length !== 0) {
+    //   let arr = [];
+    //   arr.push([...errors, formError]);
+    //   setErrors(arr)
+    // }
+    // console.log(typeof errors)
     setFormInput({
       ...formInput,
       [name]: val,
@@ -224,6 +243,7 @@ const DetailModal = () => {
           </div>
         </div>
       )}
+      <ToastContainer/>
     </>
   );
 };

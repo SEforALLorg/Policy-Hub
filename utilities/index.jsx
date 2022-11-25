@@ -1,6 +1,7 @@
 import qs from "qs";
 import groupBy from "lodash/groupBy";
 import { omit } from "lodash";
+import { postJourney, putJourney } from "../pages/api/reports";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -139,6 +140,7 @@ export const shortName = (str) => {
 
 export const validation = (event, name, val) => {
   let formError;
+  let arr = [];
   switch (name) {
     case "FirstName":
       if (val?.length <= 4) {
@@ -177,5 +179,37 @@ export const validation = (event, name, val) => {
     default:
       break;
   }
+
+  if (arr.length === 0) {
+    arr.push(formError);//length
+  } else if (arr.length > 0) {
+    let arr2 = [];
+    arr2.push(...arr, formError)
+    console.log(arr2);    
+  }
   return formError;
 };
+
+export const postJourneyStep = async(payload) => {
+  let data = {
+    data: {
+      UserInfoId: "",
+      UID: localStorage.getItem("uuid"),
+      Journey: [payload]
+    }
+  }
+  const response = await postJourney(data);
+  localStorage.setItem("postId", response?.data?.data?.id);
+}
+
+export const putJourneyStep = async (payload) => { 
+  let userId = localStorage.getItem("UserId");
+  let data = {
+    data: {
+      UserInfoId: userId ? userId : "",
+      UID: localStorage.getItem("uuid"),
+      Journey: payload
+    }
+  }
+  await putJourney(data);
+}

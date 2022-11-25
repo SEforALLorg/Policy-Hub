@@ -7,6 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
+import { putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -23,6 +24,9 @@ const Dashboard = ({
   const [stepAnswer, setStepAnswer] = useState();
   const [isClearAll, setClearAll] = useState(false);
   const [isResetPage, setIsResetPage] = useState(false);
+  const [oldJourney, setOldJourney] = useState([]);
+  const [newJourneyData, setNewJourneyData] = useState([]);
+  const [payload, setPayload] = useState([]);
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -75,6 +79,20 @@ const Dashboard = ({
     setFirstQuestion(question);
   }, [firstQuestionId])
 
+  useEffect(() => { 
+    if (newJourneyData.length) {
+      let arr = [];
+      if (!payload?.length) {
+        arr = oldJourney.concat(newJourneyData);
+        setPayload(arr);
+      } else if (payload?.length) {
+        arr = payload.concat(newJourneyData);
+        setPayload(arr);
+      }
+      putJourneyStep(arr);
+    }
+  }, [newJourneyData]);
+
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -91,6 +109,7 @@ const Dashboard = ({
               resetFilters={() => onResetFilter()}
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
+              newJourney={(e) => setNewJourneyData([e])}
             />
             <RightWrapPage
               publicationReports={publicationReports}
@@ -110,6 +129,7 @@ const Dashboard = ({
                 setIsExpand(!isExpand);
                 setIsBigCard(true);
               }}
+              setJourney={(e) => setOldJourney([e])}
               questions={[firstQuestion]}
               isFetchingQuestions={isFetchingQuestions}
               onNextQuestion={(e) => setFirstQuestion(e)}
