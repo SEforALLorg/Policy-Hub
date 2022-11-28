@@ -193,7 +193,7 @@ export const validation = (event, name, val) => {
 export const postJourneyStep = async(payload) => {
   let data = {
     data: {
-      UserInfoId: "",
+      UserInfoId: localStorage.getItem("UserId") ?? "",
       UID: localStorage.getItem("uuid"),
       Journey: [payload]
     }

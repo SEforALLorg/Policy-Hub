@@ -22,6 +22,7 @@ const LeftWrapPage = ({
   isResetPage,
   setIsResetPage,
   newJourney,
+  firstHit
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
@@ -210,7 +211,7 @@ const LeftWrapPage = ({
         />
       )}
       {subcription && <SubscribeComponent subcription={subcription} />}
-      {detailModal && <DetailModal open={detailModal} />}
+      {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
       {questions?.length
         ? questions
             .filter(
@@ -272,6 +273,7 @@ const LeftWrapPage = ({
                       onPrevious={onPreviousQuestion}
                       stepQuestion={stepQuestion}
                       totalSteps={findSteps}
+                      sendData={data => newJourney(data)}
                     />
                   )}
                 </div>

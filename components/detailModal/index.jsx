@@ -1,4 +1,3 @@
-import { omit } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -6,7 +5,7 @@ import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { validation } from "../../utilities";
 
-const DetailModal = () => {
+const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({});
   const [errors, setErrors] = useState([]);
@@ -37,6 +36,7 @@ const DetailModal = () => {
         localStorage.setItem("UserId", response?.data?.data?.id);
         setIsOpen(false);
         localStorage.setItem("UserModal", false);
+        firstHit();
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });
       }
@@ -51,15 +51,6 @@ const DetailModal = () => {
     let val = event.target.value;
     const formError = validation(event, name, val);
     setErrors(formError);
-    // if (errors.length === 0) {
-    //   let arr = [];
-    //   arr.push(formError);
-    // } else if (errors.length !== 0) {
-    //   let arr = [];
-    //   arr.push([...errors, formError]);
-    //   setErrors(arr)
-    // }
-    // console.log(typeof errors)
     setFormInput({
       ...formInput,
       [name]: val,
@@ -234,6 +225,7 @@ const DetailModal = () => {
                   data-modal-toggle="defaultModal"
                   type="button"
                   onClick={onSubmitHandler}
+                  // disabled={true}
                   className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 >
                   Submit

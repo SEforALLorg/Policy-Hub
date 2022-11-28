@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { uuid } from "uuidv4";
 import BlueButton from "components/buttons/blueButton";
 import { applyTheme } from "../../theme/utils";
 import darkTheme from "../../theme/dark";
@@ -14,6 +15,7 @@ const Resources = ({
   onNextQuestionId
 }) => {
   const { t } = useTranslation();
+  localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);

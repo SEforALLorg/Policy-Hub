@@ -7,7 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { putJourneyStep } from "../../utilities";
+import { postJourneyStep, putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -93,6 +93,10 @@ const Dashboard = ({
     }
   }, [newJourneyData]);
 
+  const postFirst = () => {
+    postJourneyStep(oldJourney[0]);
+  }
+
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -110,6 +114,7 @@ const Dashboard = ({
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}
+              firstHit={()=> postFirst()}
             />
             <RightWrapPage
               publicationReports={publicationReports}

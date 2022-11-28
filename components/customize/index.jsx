@@ -31,7 +31,9 @@ const Customize = ({
       atext: i.Answer
     }
     setJourney(payload);
-    postJourneyStep(payload);
+    if (localStorage.getItem("UserId")) {
+      postJourneyStep(payload);
+    }
   };
 
   return (
