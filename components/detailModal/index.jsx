@@ -8,8 +8,9 @@ import { validation } from "../../utilities";
 const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({});
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState(true);
 
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
@@ -20,7 +21,7 @@ const DetailModal = ({firstHit}) => {
 
   const onSubmitHandler = async(event) => {
     if (event) event.preventDefault();
-    if (Object.keys(formInput).length === 7) {
+    if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
       let uuid = localStorage.getItem("uuid");
       let payload = {
@@ -40,7 +41,7 @@ const DetailModal = ({firstHit}) => {
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });
       }
-    } else if (Object.keys(formInput).length < 7) {
+    } else {
       setDanger(true);
     }
   };
@@ -55,6 +56,9 @@ const DetailModal = ({firstHit}) => {
       ...formInput,
       [name]: val,
     });
+    if (name === "Country") {
+      setButtonDisable(false)
+    }
   };
   
 
@@ -106,7 +110,7 @@ const DetailModal = ({firstHit}) => {
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-first-name"
+                    htmlFor="inline-first-name"
                   >
                     First Name
                   </label>
@@ -122,7 +126,7 @@ const DetailModal = ({firstHit}) => {
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-last-name"
+                    htmlFor="inline-last-name"
                   >
                     Last Name
                   </label>
@@ -138,7 +142,7 @@ const DetailModal = ({firstHit}) => {
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-email"
+                    htmlFor="inline-email"
                   >
                     Email
                   </label>
@@ -154,7 +158,7 @@ const DetailModal = ({firstHit}) => {
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-phone-number"
+                    htmlFor="inline-phone-number"
                   >
                     Phone Number
                   </label>
@@ -165,11 +169,12 @@ const DetailModal = ({firstHit}) => {
                     name="PhoneNumber"
                     onChange={handleChange}
                   />
+                  {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>}
                 </div>
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-job-title"
+                    htmlFor="inline-job-title"
                   >
                     Job Title
                   </label>
@@ -180,11 +185,12 @@ const DetailModal = ({firstHit}) => {
                     name="JobTitle"
                     onChange={handleChange}
                   />
+                  {errors?.JobTitle && <h3 className="text-red-900 p-2">{errors?.JobTitle}</h3>}
                 </div>
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-organization"
+                    htmlFor="inline-organization"
                   >
                     Organization
                   </label>
@@ -195,11 +201,12 @@ const DetailModal = ({firstHit}) => {
                     name="Organization"
                     onChange={handleChange}
                   />
+                  {errors?.Organization && <h3 className="text-red-900 p-2">{errors?.Organization}</h3>}
                 </div>
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    for="inline-country"
+                    htmlFor="inline-country"
                   >
                     Country
                   </label>
@@ -217,6 +224,7 @@ const DetailModal = ({firstHit}) => {
                     })
                   }
                   </select>
+                  {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>}
                 </div>
               </form>
               {/* <!-- Modal footer --> */}
@@ -225,7 +233,7 @@ const DetailModal = ({firstHit}) => {
                   data-modal-toggle="defaultModal"
                   type="button"
                   onClick={onSubmitHandler}
-                  // disabled={true}
+                  disabled={buttonDisable}
                   className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 >
                   Submit

@@ -148,8 +148,7 @@ export const validation = (event, name, val) => {
           FirstName: "FirstName atleast have 5 letters",
         };
       } else {
-        let newObj = omit(formError, "FirstName");
-        formError = { newObj };
+        formError = {  };
       }
       break;
     case "LastName":
@@ -158,8 +157,7 @@ export const validation = (event, name, val) => {
           LastName: "LastName atleast have 5 letters",
         };
       } else {
-        let newObj = omit(formError, "LastName");
-        formError = { newObj };
+        formError = { };
       }
       break;
     case "Email":
@@ -172,44 +170,63 @@ export const validation = (event, name, val) => {
           Email: "Enter a valid Email Address",
         };
       } else {
-        let newObj = omit(formError, "Email");
-        formError = { newObj };
+        formError = {  };
       }
-
+      break;
+    case "PhoneNumber":
+      if (val.length >= 10) {
+        formError = {
+          PhoneNumber: "PhoneNumber is required",
+        };
+      } else {
+        formError = {  };
+      }
+      break;
+    case "JobTitle":
+      if (val.length <= 3) {
+        formError = {
+          JobTitle: "JobTitle is required",
+        };
+      } else {
+        formError = {  };
+      }
+      break;
+    case "Organization":
+      if (val.length <= 3) {
+        formError = {
+          Organization: "Organization is required",
+        };
+      } else {
+        formError = { };
+      }
+      break;
     default:
       break;
   }
 
-  if (arr.length === 0) {
-    arr.push(formError);//length
-  } else if (arr.length > 0) {
-    let arr2 = [];
-    arr2.push(...arr, formError)
-    console.log(arr2);    
-  }
   return formError;
 };
 
-export const postJourneyStep = async(payload) => {
+export const postJourneyStep = async (payload) => {
   let data = {
     data: {
       UserInfoId: localStorage.getItem("UserId") ?? "",
       UID: localStorage.getItem("uuid"),
-      Journey: [payload]
-    }
-  }
+      Journey: [payload],
+    },
+  };
   const response = await postJourney(data);
   localStorage.setItem("postId", response?.data?.data?.id);
-}
+};
 
-export const putJourneyStep = async (payload) => { 
+export const putJourneyStep = async (payload) => {
   let userId = localStorage.getItem("UserId");
   let data = {
     data: {
       UserInfoId: userId ? userId : "",
       UID: localStorage.getItem("uuid"),
-      Journey: payload
-    }
-  }
+      Journey: payload,
+    },
+  };
   await putJourney(data);
-}
+};
