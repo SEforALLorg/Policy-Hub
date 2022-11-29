@@ -180,6 +180,19 @@ a {
   text-decoration: none;
 }
 
+.footer .DropdownToggle {
+  display: flex;
+  align-self: center;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer .DropdownToggle:hover {
+  color: #fff
+}
+
 .header .DropdownToggle p {
   color: #000;
   margin: 0;

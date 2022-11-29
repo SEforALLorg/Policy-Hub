@@ -43,7 +43,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="xsm:mt-4 medium:mt-20">
+    <div className="footer xsm:mt-4 medium:mt-20">
       <div className="flex items-center justify-between w-full xsm:flex-wrap laptop:flex-nowrap ">
         <div
           className="flex items-center laptop:w-2/5 laptop:justify-start 
@@ -134,11 +134,13 @@ const Footer = () => {
           >
             {t("DownloadDecisionTree")}
           </button> */}
-          <UncontrolledDropdown setActiveFromChild className="customDropdown font-medium xsm:text-xx  text-white  last:mr-0 mb-0 py-2.5 xsm:px-3 medium:px-4 
+          <UncontrolledDropdown setActiveFromChild className="
+                                      customDropdown font-medium xsm:text-xx  text-white  last:mr-0 mb-0 
+                                      py-2.5 xsm:px-3 medium:px-4 
                                        border leading-5 border-white rounded-[42px] bg-transparent 
-                                       desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
+                                       desktoplg:text-small  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:bg-white hover:border ease-linear transition-all duration-500 footer-button button-animation">
+                                       hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button button-animation cursor-p">
             <DropdownToggle className="DropdownToggle" tag="a" caret>
               <p>{title}</p>
             </DropdownToggle>
