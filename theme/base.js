@@ -1,6 +1,7 @@
 import { createTheme } from "./utils";
 
 const baseTheme = createTheme({
+    backGroundImage: "../static/images/BG.png",
     backGround: "#034e68",
     primaryButton: "white",
     primaryActveButton: "#fcb600",

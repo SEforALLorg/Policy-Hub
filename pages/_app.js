@@ -6,7 +6,6 @@ import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
 import "../I18n";
-import { uuid } from "uuidv4";
 import { useTranslation } from "react-i18next";
 import { Cookies } from "react-cookie";
 import { useRouter } from "next/router";
@@ -56,10 +55,6 @@ function MyApp({ Component, pageProps }) {
       router.locale = lang;
     } else {
       localStorage.setItem("lang", "en");
-    }
-    const uniqueId = localStorage.getItem("uuid");
-    if (!uniqueId) {
-      localStorage.setItem("uuid", uuid())
     }
   }, []);
 

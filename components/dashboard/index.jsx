@@ -7,6 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
+import { postJourneyStep, putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -23,6 +24,9 @@ const Dashboard = ({
   const [stepAnswer, setStepAnswer] = useState();
   const [isClearAll, setClearAll] = useState(false);
   const [isResetPage, setIsResetPage] = useState(false);
+  const [oldJourney, setOldJourney] = useState([]);
+  const [newJourneyData, setNewJourneyData] = useState([]);
+  const [payload, setPayload] = useState([]);
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -75,6 +79,24 @@ const Dashboard = ({
     setFirstQuestion(question);
   }, [firstQuestionId])
 
+  useEffect(() => { 
+    if (newJourneyData.length) {
+      let data = [];
+      if (!payload?.length) {
+        data = oldJourney.concat(newJourneyData);
+        setPayload(data);
+      } else if (payload?.length) {
+        data = payload.concat(newJourneyData);
+        setPayload(data);
+      }
+      putJourneyStep(data);
+    }
+  }, [newJourneyData]);
+
+  const postFirst = () => {
+    postJourneyStep(oldJourney[0]);
+  }
+
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -91,6 +113,8 @@ const Dashboard = ({
               resetFilters={() => onResetFilter()}
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
+              newJourney={(e) => setNewJourneyData([e])}
+              firstHit={()=> postFirst()}
             />
             <RightWrapPage
               publicationReports={publicationReports}
@@ -110,6 +134,7 @@ const Dashboard = ({
                 setIsExpand(!isExpand);
                 setIsBigCard(true);
               }}
+              setJourney={(e) => setOldJourney([e])}
               questions={[firstQuestion]}
               isFetchingQuestions={isFetchingQuestions}
               onNextQuestion={(e) => setFirstQuestion(e)}

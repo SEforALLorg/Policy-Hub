@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -7,9 +7,40 @@ import {
 } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { useTranslation } from "react-i18next";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+} from "reactstrap";
+import Link from "next/link";
+import { resource } from "../../constant/resource";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
+  const [title, setTitle] = useState("Download Decision Tree");
+  const onClickHandler = (resource) => {
+    switch (resource) {
+      case "Electrification":
+        window.open("static/pdf/Electrification.pdf");
+        setTitle("Electrification");
+        break;
+      case "Clean Cooking":
+        window.open("static/pdf/Cleancooking.pdf");
+        setTitle("Clean Cooking");
+        break;
+      case "Sustainable Cooling":
+        window.open("static/pdf/Sustainablecooling.pdf");
+        setTitle("Sustainable Cooling");
+        break;
+      case "Energy Efficency":
+        window.open("static/pdf/Energyefficiency.pdf");
+        setTitle("Energy Efficency");
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="xsm:mt-4 medium:mt-20">
@@ -93,7 +124,7 @@ const Footer = () => {
           >
             {t("BrowseResource")}
           </button>
-          <button
+          {/* <button
             onClick={() => window.open("static/pdf/decision-tree.pdf")}
             className="font-medium xsm:text-xx  text-white  last:mr-0 mb-0 py-2.5 xsm:px-3 medium:px-4 
                                        border leading-5 border-white rounded-[42px] bg-transparent 
@@ -102,7 +133,33 @@ const Footer = () => {
                                        hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 footer-button button-animation"
           >
             {t("DownloadDecisionTree")}
-          </button>
+          </button> */}
+          <UncontrolledDropdown setActiveFromChild className="customDropdown font-medium xsm:text-xx  text-white  last:mr-0 mb-0 py-2.5 xsm:px-3 medium:px-4 
+                                       border leading-5 border-white rounded-[42px] bg-transparent 
+                                       desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
+                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
+                                       hover:bg-white hover:border ease-linear transition-all duration-500 footer-button button-animation">
+            <DropdownToggle className="DropdownToggle" tag="a" caret>
+              <p>{title}</p>
+            </DropdownToggle>
+            <DropdownMenu className="dropdownMenu">
+              {resource.map((resources, index) => {
+                return (
+                  <DropdownItem>
+                    <Link href="">
+                      <button
+                        onClick={() => {
+                          onClickHandler(resources);
+                        }}
+                      >
+                        {resources}
+                      </button>
+                    </Link>
+                  </DropdownItem>
+                );
+              })}
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>

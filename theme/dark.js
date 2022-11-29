@@ -1,5 +1,6 @@
 import { createTheme } from "./utils";
 const darkTheme = createTheme({
+  backGroundImage: "../static/images/Cooling.jpg",
   backGround: "black",
   primaryButton: "white",
   primaryActveButton: "#fcb600",

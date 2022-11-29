@@ -58,10 +58,10 @@ const Feature = () => {
               {t("OtherUsefulPlatforms")}
             </h6>
             <OtherToolsCard
-              image="/static/images/electrifying-economies-ImResizer.jpg"
-              title={t("Electrifyingeconomies")}
-              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
-              description={<>{t("ElectrifyingEconomiesDescription")}</>}
+              image="/static/images/nigeria-ImResizer.jpg"
+              title={t("NigeriaIntegratedEnergy")}
+              link="http://nigeria-iep.sdg7energyplanning.org/"
+              description={<>{t("TheNigeriaIntegrated")}</>}
             />
             <OtherToolsCard
               image="/static/images/sas-ImResizer.png"
@@ -76,10 +76,10 @@ const Feature = () => {
               description={<>{t("PolicyKnowledgeHubDescription")}</>}
             />
             <OtherToolsCard
-              image="/static/images/nigeria-ImResizer.jpg"
-              title={t("NigeriaIntegratedEnergy")}
-              link="http://nigeria-iep.sdg7energyplanning.org/"
-              description={<>{t("TheNigeriaIntegrated")}</>}
+              image="/static/images/electrifying-economies-ImResizer.jpg"
+              title={t("Electrifyingeconomies")}
+              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
+              description={<>{t("ElectrifyingEconomiesDescription")}</>}
             />
             <OtherToolsCard
               image="/static/images/green-mini.png"

@@ -11,12 +11,14 @@ const StepComponent = ({
   setStepQuestion,
   stepQuestion,
   totalSteps,
+  sendData,
 }) => { 
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
 
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
+  const questionId = item?.id
   const multiAnswer = item?.attributes?.AddAnswer;
 
   const nextCount = totalSteps?.length || 1;
@@ -49,6 +51,13 @@ const StepComponent = ({
     setStepQuestion(item);
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
+    const data = {
+      qid: questionId,
+      qtext: title,
+      aid: optionData.id ?? "" ,
+      atext: optionData.Answer ?? ""
+    }
+    sendData(data);
   };
   const { t, i18n } = useTranslation();
 

@@ -4,6 +4,7 @@ import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
+import { postJourneyStep } from "../../utilities";
 
 const Customize = ({
   onYes,
@@ -11,6 +12,7 @@ const Customize = ({
   isFetchingQuestions,
   onNextQuestion,
   onReportsFind,
+  setJourney
 }) => {
   const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
@@ -22,6 +24,16 @@ const Customize = ({
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
+    let payload = {
+      qid: firstQuestion.id,
+      qtext: title,
+      aid: i.id,
+      atext: i.Answer
+    }
+    setJourney(payload);
+    if (localStorage.getItem("UserId")) {
+      postJourneyStep(payload);
+    }
   };
 
   return (

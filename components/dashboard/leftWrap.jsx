@@ -7,7 +7,7 @@ import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
-import { shortName } from "../../utilities";
+import { putJourneyStep, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
 
 const LeftWrapPage = ({
@@ -21,6 +21,8 @@ const LeftWrapPage = ({
   resetFilters,
   isResetPage,
   setIsResetPage,
+  newJourney,
+  firstHit
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
@@ -42,9 +44,9 @@ const LeftWrapPage = ({
 
   useEffect(() => {
     const val = Object.values(userJourney);
-    if (val?.length === 3) {
-      setSubscription(true);
-    }
+    // if (val?.length === 3) {
+    //   setSubscription(true);
+    // }
     if (val?.length === 1) {
       return setDetailModal(true);
     }
@@ -101,6 +103,13 @@ const LeftWrapPage = ({
     setStepQuestion([]);
     resetFilters();
     setIsResetPage(!isResetPage);
+    const data = {
+      qid: item.id,
+      qtext: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      aid: i.id,
+      atext: i.Answer
+    }
+    newJourney(data);
   };
 
   const completeQuestion = questions?.find((item) => item?.id === 11);
@@ -202,7 +211,7 @@ const LeftWrapPage = ({
         />
       )}
       {subcription && <SubscribeComponent subcription={subcription} />}
-      {detailModal && <DetailModal open={detailModal} />}
+      {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
       {questions?.length
         ? questions
             .filter(
@@ -264,6 +273,7 @@ const LeftWrapPage = ({
                       onPrevious={onPreviousQuestion}
                       stepQuestion={stepQuestion}
                       totalSteps={findSteps}
+                      sendData={data => newJourney(data)}
                     />
                   )}
                 </div>
