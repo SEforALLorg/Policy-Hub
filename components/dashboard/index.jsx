@@ -81,15 +81,15 @@ const Dashboard = ({
 
   useEffect(() => { 
     if (newJourneyData.length) {
-      let arr = [];
+      let data = [];
       if (!payload?.length) {
-        arr = oldJourney.concat(newJourneyData);
-        setPayload(arr);
+        data = oldJourney.concat(newJourneyData);
+        setPayload(data);
       } else if (payload?.length) {
-        arr = payload.concat(newJourneyData);
-        setPayload(arr);
+        data = payload.concat(newJourneyData);
+        setPayload(data);
       }
-      putJourneyStep(arr);
+      putJourneyStep(data);
     }
   }, [newJourneyData]);
 

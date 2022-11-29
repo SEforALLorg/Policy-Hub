@@ -18,7 +18,7 @@ const StepComponent = ({
 
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
-  const qId = item?.id
+  const questionId = item?.id
   const multiAnswer = item?.attributes?.AddAnswer;
 
   const nextCount = totalSteps?.length || 1;
@@ -52,7 +52,7 @@ const StepComponent = ({
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
     const data = {
-      qid: qId,
+      qid: questionId,
       qtext: title,
       aid: optionData.id ?? "" ,
       atext: optionData.Answer ?? ""

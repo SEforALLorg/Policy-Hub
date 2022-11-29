@@ -14,6 +14,7 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import Link from "next/link";
+import { resource } from "../../constant/resource";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
@@ -142,12 +143,7 @@ const Footer = () => {
               <p>{title}</p>
             </DropdownToggle>
             <DropdownMenu className="dropdownMenu">
-              {[
-                "Electrification",
-                "Clean Cooking",
-                "Sustainable Cooling",
-                "Energy Efficency",
-              ].map((resources, index) => {
+              {resource.map((resources, index) => {
                 return (
                   <DropdownItem>
                     <Link href="">
