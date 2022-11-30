@@ -143,18 +143,18 @@ export const validation = (event, name, val) => {
   let arr = [];
   switch (name) {
     case "FirstName":
-      if (val?.length <= 4) {
+      if (val?.length <= 3) {
         formError = {
-          FirstName: "FirstName atleast have 5 letters",
+          FirstName: "First Name atleast have  letters",
         };
       } else {
         formError = {  };
       }
       break;
     case "LastName":
-      if (val.length <= 4) {
+      if (val.length <= 3) {
         formError = {
-          LastName: "LastName atleast have 5 letters",
+          LastName: "Last Name atleast have 5 letters",
         };
       } else {
         formError = { };
@@ -176,7 +176,7 @@ export const validation = (event, name, val) => {
     case "PhoneNumber":
       if (val.length >= 10) {
         formError = {
-          PhoneNumber: "PhoneNumber is required",
+          PhoneNumber: "Phone Number is required",
         };
       } else {
         formError = {  };
@@ -185,7 +185,7 @@ export const validation = (event, name, val) => {
     case "JobTitle":
       if (val.length <= 3) {
         formError = {
-          JobTitle: "JobTitle is required",
+          JobTitle: "Job Title is required",
         };
       } else {
         formError = {  };

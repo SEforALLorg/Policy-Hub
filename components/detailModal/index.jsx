@@ -134,7 +134,7 @@ const DetailModal = ({firstHit}) => {
                     type="text"
                     onChange={handleChange}
                   />
-                  {errors?.FirstName && <h3 className="text-red-900 p-2">{errors?.FirstName}</h3>}
+                  {/* {errors?.FirstName && <h3 className="text-red-900 p-2">{errors?.FirstName}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -150,7 +150,7 @@ const DetailModal = ({firstHit}) => {
                     type="text"
                     onChange={handleChange}
                   />
-                  {errors?.LastName && <h3 className="text-red-900 p-2">{errors?.LastName}</h3>}
+                  {/* {errors?.LastName && <h3 className="text-red-900 p-2">{errors?.LastName}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -166,7 +166,7 @@ const DetailModal = ({firstHit}) => {
                     name="Email"
                     onChange={handleChange}
                   />
-                  {errors?.Email && <h3 className="text-red-900 p-2">{errors?.Email}</h3>}
+                  {/* {errors?.Email && <h3 className="text-red-900 p-2">{errors?.Email}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -182,7 +182,7 @@ const DetailModal = ({firstHit}) => {
                     name="PhoneNumber"
                     onChange={handleChange}
                   />
-                  {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>}
+                  {/* {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -198,7 +198,7 @@ const DetailModal = ({firstHit}) => {
                     name="JobTitle"
                     onChange={handleChange}
                   />
-                  {errors?.JobTitle && <h3 className="text-red-900 p-2">{errors?.JobTitle}</h3>}
+                  {/* {errors?.JobTitle && <h3 className="text-red-900 p-2">{errors?.JobTitle}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -214,7 +214,7 @@ const DetailModal = ({firstHit}) => {
                     name="Organization"
                     onChange={handleChange}
                   />
-                  {errors?.Organization && <h3 className="text-red-900 p-2">{errors?.Organization}</h3>}
+                  {/* {errors?.Organization && <h3 className="text-red-900 p-2">{errors?.Organization}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -237,7 +237,7 @@ const DetailModal = ({firstHit}) => {
                     })
                   }
                   </select>
-                  {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>}
+                  {/* {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>} */}
                 </div>
                 {/* <!-- Modal footer --> */}              
                 <div className="flex justify-center p-6 space-x-2 rounded-b">
@@ -245,6 +245,7 @@ const DetailModal = ({firstHit}) => {
                   data-modal-toggle="defaultModal"
                   type="submit"
                   disabled={buttonDisable}
+                  style={{opacity: buttonDisable && 0.7}}
                   className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 >
                   Submit
