@@ -1,3 +1,4 @@
+import { filter, isEmpty } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,7 +8,15 @@ import { validation } from "../../utilities";
 
 const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState({
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    PhoneNumber: "",
+    JobTitle: "",
+    Organization: "",
+    Country: "",
+  });
   const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
@@ -17,9 +26,10 @@ const DetailModal = ({firstHit}) => {
     if (UserModal) {
       setIsOpen(false);
     }
-   }, []);
+  }, []);
 
-  const onSubmitHandler = async(event) => {
+  const onSubmitHandler = async (event) => {
+    console.log(event);
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
@@ -52,15 +62,18 @@ const DetailModal = ({firstHit}) => {
     let val = event.target.value;
     const formError = validation(event, name, val);
     setErrors(formError);
-    setFormInput({
-      ...formInput,
-      [name]: val,
-    });
-    if (name === "Country") {
-      setButtonDisable(false)
+    setFormInput({ ...formInput, [name]: val });
+    
+  }
+
+  useEffect(() => { 
+    const result = Object.values(formInput).map((val) => {return isEmpty(val)}).every((element) => !element);
+    if (result) {
+      setButtonDisable(false);
+    } else {
+      setButtonDisable(true);
     }
-  };
-  
+  }, [formInput]);
 
   return (
     <>
@@ -106,7 +119,7 @@ const DetailModal = ({firstHit}) => {
                 </h3>
               </div>
               {/* <!-- Modal body --> */}
-              <form className="w-full pl-4 pr-4">
+              <form className="w-full pl-4 pr-4" onSubmit={onSubmitHandler}>
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
@@ -119,7 +132,7 @@ const DetailModal = ({firstHit}) => {
                     id="inline-first-name"
                     name="FirstName"
                     type="text"
-                    onChange={(e)=> handleChange(e)}
+                    onChange={handleChange}
                   />
                   {errors?.FirstName && <h3 className="text-red-900 p-2">{errors?.FirstName}</h3>}
                 </div>
@@ -226,19 +239,18 @@ const DetailModal = ({firstHit}) => {
                   </select>
                   {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>}
                 </div>
-              </form>
-              {/* <!-- Modal footer --> */}
-              <div className="flex justify-center p-6 space-x-2 rounded-b">
+                {/* <!-- Modal footer --> */}              
+                <div className="flex justify-center p-6 space-x-2 rounded-b">
                 <button
                   data-modal-toggle="defaultModal"
-                  type="button"
-                  onClick={onSubmitHandler}
+                  type="submit"
                   disabled={buttonDisable}
                   className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 >
                   Submit
                 </button>
               </div>
+              </form>
             </div>
           </div>
         </div>
