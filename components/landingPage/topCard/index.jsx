@@ -113,9 +113,9 @@ const TopCard = ({ HandleOpen }) => {
   //   </div>
   // </>
   return (
-    <div className="customize-card p-10  bg-white rounded-2xl w-full relative top-[7rem] mb-[2rem]">
-      <div className="flex items-center customize-header">
-        <h5 className="font-bold	text-[65px] leading-[70px] text-center	select-none	uppercase">
+    <div className="customize-card p-10  bg-white rounded-2xl w-[80%] relative top-[7rem] my-[2rem] mx-[auto]">
+      <div className="items-center customize-header">
+        <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}
           <span className="text-Secondary px-[6px]"> {t("Energy")} </span>
           {t("forAll")} <br />
@@ -123,45 +123,72 @@ const TopCard = ({ HandleOpen }) => {
           {t("Hub")}
         </h5>
       </div>
-      <div className="my-3 border-b-[4px] border-primary opacity-20" />
-      <div className="grid grid-cols-2 gap-2 w-full h-[35vh]">
-        <div className="bg-white-900 mobile-card-width items-center card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[10px] flex">
-          <img className="w-[9%] mr-[8px]" src="../../../static/images/hub.svg" alt="hub" />
-          <p className="font-bold text-[42px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-            {t("TheSEforALL")}{" "}
-            <span className="font-bold text-black px-[6px]">
-              {t("KnowledgeHub")}
-            </span>{" "}
-            {t("PlatformThatSupports")}
-          </p>
+      {/* <div className="my-3 border-b-[4px] border-primary opacity-20" /> */}
+      <div className="flex my-[1rem] h-[40vh]">
+        <div className="w-[50%]">
+          <div className="flex flex-col h-[50%]">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+              <img
+                className="w-[16%] mr-[8px]"
+                src="../../../static/images/hub.svg"
+                alt="hub"
+              />
+              <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-justify">
+                {t("TheSEforALL")}{" "}
+                <span className="font-bold text-[#000000b3] px-[6px]">
+                  {t("KnowledgeHub")}
+                </span>{" "}
+                {t("PlatformThatSupports")}
+              </p>
+            </div>
+            <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
+          </div>
+          <div className="bg-white-900 mobile-card-width card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
+            <img
+              className="w-[16%] mr-[8px]"
+              src="../../../static/images/journey.svg"
+              alt="hub"
+            />
+            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+              {t("CurrentlyOffers")}{" "}
+              <span className="font-bold text-[#000000b3]">{t("Electricity")}</span>
+              {""} {t("ResourcesOnAccess")}
+            </p>
+          </div>
         </div>
-        <div className="bg-white-900 mobile-card-width items-center card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[10px] flex">
-        <img className="w-[9%] mr-[8px]" src="../../../static/images/hub.svg" alt="hub" />
-          <p className="font-bold text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-            {t("TheRightPolicies")}
-            <span className="font-bold text-black pl-[6px]">
-              {t("AffordableAndClean")}
-            </span>
-            {t("TheKnowledgeHub")}
-          </p>
-        </div>
-        <div className="bg-white-900 mobile-card-width items-center card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[10px] flex">
-        <img className="w-[9%] mr-[8px]" src="../../../static/images/journey.svg" alt="hub" />
-          <p className="font-bold text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-            {t("CurrentlyOffers")}{" "}
-            <span className="font-bold text-black">{t("Electricity")}</span>
-            {""} {t("ResourcesOnAccess")}
-          </p>
-        </div>
-        <div className="bg-white-900 mobile-card-width items-center card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[10px] flex">
-        <img className="w-[9%] mr-[8px]" src="../../../static/images/guide.svg" alt="hub" />
-          <p className="font-bold text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-            {t("Find")}{" "}
-            <span className="font-bold text-black px-[6px]">
-              {t("Guidelines")}
-            </span>{" "}
-            {t("OnElectricity")}
-          </p>
+        <div className="w-[2px] bg-black border-b-[4px] border opacity-[1]" />
+        <div className="w-[50%]">
+          <div className="flex flex-col h-[50%]">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+              <img
+                className="w-[16%] mr-[8px]"
+                src="../../../static/images/hub.svg"
+                alt="hub"
+              />
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+                {t("TheRightPolicies")}
+                <span className="font-bold text-[#000000b3] pl-[6px]">
+                  {t("AffordableAndClean")}
+                </span>
+                {t("TheKnowledgeHub")}
+              </p>
+            </div>
+            <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
+          </div>
+          <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
+            <img
+              className="w-[16%] mr-[8px]"
+              src="../../../static/images/guide.svg"
+              alt="hub"
+            />
+            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+              {t("Find")}{" "}
+              <span className="font-bold text-[#000000b3] px-[6px]">
+                {t("Guidelines")}
+              </span>{" "}
+              {t("OnElectricity")}
+            </p>
+          </div>
         </div>
       </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
