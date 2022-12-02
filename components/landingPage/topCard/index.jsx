@@ -124,8 +124,8 @@ const TopCard = ({ HandleOpen }) => {
         </h5>
       </div>
       {/* <div className="my-3 border-b-[4px] border-primary opacity-20" /> */}
-      <div className="flex my-[1rem] h-[40vh]">
-        <div className="w-[50%]">
+      <div id="container-main" className="flex my-[1rem] h-[40vh]">
+        <div className="container-box w-[50%]">
           <div className="flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
@@ -143,22 +143,25 @@ const TopCard = ({ HandleOpen }) => {
             </div>
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="bg-white-900 mobile-card-width card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
-            <img
-              className="w-[16%] mr-[8px]"
-              src="../../../static/images/journey.svg"
-              alt="hub"
-            />
-            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-              {t("CurrentlyOffers")}{" "}
-              <span className="font-bold text-[#000000b3]">{t("Electricity")}</span>
-              {""} {t("ResourcesOnAccess")}
-            </p>
+          <div className="flex flex-col h-[50%]">
+            <div className="second-container bg-white-900 mobile-card-width card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
+              <img
+                className="w-[16%] mr-[8px]"
+                src="../../../static/images/journey.svg"
+                alt="hub"
+              />
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+                {t("CurrentlyOffers")}{" "}
+                <span className="font-bold text-[#000000b3]">{t("Electricity")}</span>
+                {""} {t("ResourcesOnAccess")}
+              </p>
+            </div>
+            <div className="divider-hide mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
         </div>
-        <div className="w-[2px] bg-black border-b-[4px] border opacity-[1]" />
-        <div className="w-[50%]">
-          <div className="flex flex-col h-[50%]">
+        <div className="divider w-[2px] bg-black border-b-[4px] border opacity-[1]" />
+        <div className="container-box w-[50%]">
+          <div className="third-container flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[16%] mr-[8px]"
@@ -175,7 +178,7 @@ const TopCard = ({ HandleOpen }) => {
             </div>
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
+          <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
             <img
               className="w-[16%] mr-[8px]"
               src="../../../static/images/guide.svg"
