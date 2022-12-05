@@ -244,8 +244,8 @@ const DetailModal = ({firstHit}) => {
                 <button
                   data-modal-toggle="defaultModal"
                   type="submit"
-                    disabled={buttonDisable}
-                    style={{opacity: buttonDisable && 0.7}}
+                  disabled={buttonDisable}
+                  style={{opacity: buttonDisable && 0.7}}
                   className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                 >
                   Submit
