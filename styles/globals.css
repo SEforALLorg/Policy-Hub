@@ -2551,6 +2551,7 @@ a {
     max-width: 96%;
   }
 }
+
 @media only screen and (max-width: 768px) {
   .container-box {
     margin-top: 3rem;
