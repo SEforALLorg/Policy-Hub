@@ -26,14 +26,15 @@ export const getReportQuery = (
   publicationReports,
   page,
   debouncedSearch,
-  showAllReports
+  showAllReports, 
+  pageSize
 ) => {
   if (!nonPublicationReports?.length && !publicationReports?.length && !showAllReports)
     return null;
   const query = qs.stringify({
     pagination: {
       page: page,
-      pageSize: 20,
+      pageSize: pageSize || 20,
     },
     filters: {
       id: {
