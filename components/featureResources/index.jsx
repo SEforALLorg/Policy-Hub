@@ -55,17 +55,17 @@ const Feature = () => {
               Other useful platforms
             </h6>
             <OtherToolsCard
-              image="/static/images/electrifying-economies-ImResizer.jpg"
-              title="Electrifying Economies"
-              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
+              image="/static/images/nigeria-ImResizer.jpg"
+              title="Nigeria Integrated Energy Planning Tool"
+              link="http://nigeria-iep.sdg7energyplanning.org/"
               description={
                 <>
-                  Electrifying Economies is an information platform
-                  demonstrating the role distributed energy will play in ending
-                  energy poverty and catalyzing a green and equitable recovery
-                  from the Covid-19 crisis. It has been jointly developed by
-                  Rockefeller Foundation, Rocky Mountain Institute, and
-                  Sustainable Energy for All.
+                  The Nigeria Integrated Energy Planning Tool is a GIS-based
+                  interactive data visualization platform to support Nigerian
+                  policy makers and practitioners in their decision-making
+                  process. It was developed by SEforALL, in collaboration with
+                  the Federal Government of Nigeria, with support from The
+                  Rockefeller Foundation.
                 </>
               }
             />
@@ -99,17 +99,17 @@ const Feature = () => {
               }
             />
             <OtherToolsCard
-              image="/static/images/nigeria-ImResizer.jpg"
-              title="Nigeria Integrated Energy Planning Tool"
-              link="http://nigeria-iep.sdg7energyplanning.org/"
+              image="/static/images/electrifying-economies-ImResizer.jpg"
+              title="Electrifying Economies"
+              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
               description={
                 <>
-                  The Nigeria Integrated Energy Planning Tool is a GIS-based
-                  interactive data visualization platform to support Nigerian
-                  policy makers and practitioners in their decision-making
-                  process. It was developed by SEforALL, in collaboration with
-                  the Federal Government of Nigeria, with support from The
-                  Rockefeller Foundation.
+                  Electrifying Economies is an information platform
+                  demonstrating the role distributed energy will play in ending
+                  energy poverty and catalyzing a green and equitable recovery
+                  from the Covid-19 crisis. It has been jointly developed by
+                  Rockefeller Foundation, Rocky Mountain Institute, and
+                  Sustainable Energy for All.
                 </>
               }
             />
@@ -142,6 +142,16 @@ const Feature = () => {
                   Institute (WRI).
                   financial models. It is implemented by AfDB, Sustainable
                   Energy for All Africa Hub, SEFA, Energy4Impact, and Inensus.
+                </>
+              }
+            />
+            <OtherToolsCard
+              image="/static/images/malawi.png"
+              title="Malawi Integrated Energy Planning Tool"
+              link="https://malawi-iep.sdg7energyplanning.org/"
+              description={
+                <>
+                  The Malawi Integrated Energy Planning Tool is an online, publicly available, interactive, and user-friendly data visualization platform that equips Malawian policy makers and energy practitioners with data and insights to make informed decisions on strategies and operations to advance energy access in the country.
                 </>
               }
             />
