@@ -5,7 +5,7 @@ const checkStatus = (status) => status >= 200 && status < 300;
 
  
 const instance = axios.create({
-  baseURL: "https://vkh-dev.herokuapp.com/api",
+  baseURL: "https://vkh-dev.onrender.com/api/",
   headers: {
     Accept: '*/*',
     'Content-Type': 'application/json',
