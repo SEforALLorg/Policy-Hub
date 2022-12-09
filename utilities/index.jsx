@@ -213,6 +213,7 @@ export const postJourneyStep = async (payload) => {
       UserInfoId: localStorage.getItem("UserId") ?? "",
       UID: localStorage.getItem("uuid"),
       Journey: [payload],
+      user_info: Number(localStorage.getItem("UserId"))
     },
   };
   const response = await postJourney(data);

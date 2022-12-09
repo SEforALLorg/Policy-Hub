@@ -8,12 +8,9 @@ import greenTheme from "../../theme/green";
 import yellowTheme from "../../theme/yellow";
 import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
+import Loader from "../loader";
 
-const Resources = ({
-  onYes,
-  resourcesData,
-  onNextQuestionId
-}) => {
+const Resources = ({ onYes, resourcesData, onNextQuestionId }) => {
   const { t } = useTranslation();
   localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
@@ -27,13 +24,13 @@ const Resources = ({
         applyTheme(baseTheme);
         break;
       case "CLEAN COOKING":
-        applyTheme(greenTheme); 
+        applyTheme(greenTheme);
         break;
       case "SUSTAINABLE COOLING":
         applyTheme(darkTheme);
         break;
       case "ENERGY EFFICIENCY":
-        applyTheme(yellowTheme);//blueTheme
+        applyTheme(yellowTheme); //blueTheme
         break;
 
       default:
@@ -57,22 +54,32 @@ const Resources = ({
         </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
-      <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
-        {t("AreaWantToInvestigate")}
-      </div>
-      <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-        {resourcesData && Object?.values(resourcesData)?.map((resource, index) => (
-          <BlueButton
-            title={resource?.attributes.Name}
-            onClick={(e) => {
-              onAnswerClick(resource);
-              changeColor(e);
-            }}
-            key={index}
-            className="mb-[20px] h-[95px] text-[23px]"
-          />
-        ))}
-      </div>
+
+      {resourcesData ? (
+        <div>
+          <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
+            {t("AreaWantToInvestigate")}
+          </div>
+          <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
+            {resourcesData &&
+              Object?.values(resourcesData)?.map((resource, index) => (
+                <BlueButton
+                  title={resource?.attributes.Name}
+                  onClick={(e) => {
+                    onAnswerClick(resource);
+                    changeColor(e);
+                  }}
+                  key={index}
+                  className="mb-[20px] h-[95px] text-[23px]"
+                />
+              ))}
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center flex-col h-full justify-center">
+          <Loader height={80} width={80} />{" "}
+        </div>
+      )}
     </div>
   );
 };
