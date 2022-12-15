@@ -85,10 +85,10 @@ a {
   z-index: 9999;
   top: 0px;
   left: 50% !important;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   margin-right: 0px;
-  width: 80% !important;
-  position: fixed;
+  width: 100% !important;
+  /* position: fixed; */
   max-width: 1320px;
 }
 
@@ -209,10 +209,14 @@ a {
   border-radius: 10px;
 }
 
-.dropdown-item:focus,
-.dropdown-item:hover {
+.dropdown-item:focus{
   color: #fff !important;
   background-color: #fcb600 !important;
+}
+
+.dropdown-item:hover {
+  color: #fff !important;
+  background-color: #00a4ba !important;
 }
 
 .videoPlayer .video-react .video-react-poster {
