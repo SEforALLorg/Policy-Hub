@@ -141,10 +141,10 @@ const Footer = () => {
                                        desktoplg:text-small  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
                                        hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button button-animation cursor-p">
-            <DropdownToggle className="DropdownToggle" tag="a" caret>
-              <p>{title}</p>
+            <DropdownToggle style={{color: "white"}} className="DropdownToggle" tag="a" caret>
+              <p style={{marginBottom: "0"}}>{title}</p>
             </DropdownToggle>
-            <DropdownMenu className="dropdownMenu">
+            <DropdownMenu>
               {resource.map((resources, index) => {
                 return (
                   <DropdownItem>

@@ -210,10 +210,9 @@ export const validation = (event, name, val) => {
 export const postJourneyStep = async (payload) => {
   let data = {
     data: {
-      UserInfoId: localStorage.getItem("UserId") ?? "",
+      UserInfoId: Number(localStorage.getItem("UserId")) ?? "",
       UID: localStorage.getItem("uuid"),
       Journey: [payload],
-      user_info: Number(localStorage.getItem("UserId"))
     },
   };
   const response = await postJourney(data);
