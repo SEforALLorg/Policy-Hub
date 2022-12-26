@@ -80,16 +80,18 @@ const Dashboard = ({
   }, [firstQuestionId])
 
   useEffect(() => { 
-    if (newJourneyData.length) {
-      let data = [];
-      if (!payload?.length) {
-        data = oldJourney.concat(newJourneyData);
-        setPayload(data);
-      } else if (payload?.length) {
-        data = payload.concat(newJourneyData);
-        setPayload(data);
+    if (localStorage.getItem("UserId")) {
+      if (newJourneyData.length) {
+        let data = [];
+        if (!payload?.length) {
+          data = oldJourney.concat(newJourneyData);
+          setPayload(data);
+        } else if (payload?.length) {
+          data = payload.concat(newJourneyData);
+          setPayload(data);
+        }
+        putJourneyStep(data);
       }
-      putJourneyStep(data);
     }
   }, [newJourneyData]);
 
