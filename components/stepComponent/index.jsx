@@ -26,7 +26,7 @@ const StepComponent = ({
   useEffect(() => {
     if (multiAnswer) {
       setOptionData(multiAnswer[0] || []);
-      // setOptionReport(multiAnswer[0]);
+      setOptionReport(multiAnswer[0]);
     }
   }, [multiAnswer]);
 
