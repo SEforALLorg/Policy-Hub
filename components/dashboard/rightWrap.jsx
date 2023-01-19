@@ -277,8 +277,8 @@ const RightWrapPage = ({
               <img
                 src="static/images/greenFile.svg"
                 alt="card"
-                width="90"
-                height="90"
+                width="70px"
+                height="70px"
               />
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text">

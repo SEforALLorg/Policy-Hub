@@ -146,7 +146,7 @@ const LeftWrapPage = ({
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
           <img
-            className="w-[90px] h-[90px] left-header-image"
+            className="w-[70px] h-[70px] left-header-image"
             src="static/images/yellowfile.svg"
             alt="card"
           />
