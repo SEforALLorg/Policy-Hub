@@ -96,9 +96,9 @@ const Dashboard = ({
     }
   }, [newJourneyData]);
 
-  const postFirst = () => {
-    postJourneyStep(oldJourney[0]);
-  }
+  // const postFirst = () => {
+  //   postJourneyStep(oldJourney[0]);
+  // }
 
   return (
     <Wrapper isExpand={isExpand}>
@@ -118,7 +118,7 @@ const Dashboard = ({
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}
-              firstHit={()=> postFirst()}
+              firstHit={oldJourney[0]}
             />
             <RightWrapPage
               publicationReports={publicationReports}

@@ -12,7 +12,7 @@ import Loader from "../loader";
 
 const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   const { t } = useTranslation();
-  localStorage.setItem("uuid", uuid());
+  // localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);

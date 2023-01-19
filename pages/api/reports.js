@@ -27,11 +27,11 @@ export const sendReports = (payload) => {
 
 //  Post Journey step
 export const postJourney = (payload) => {
-    return instance.post(`/user-journeys/`, payload);
+    return instance.post(`/user-infos`, payload);
 }
 
 //  Put Journey step
 export const putJourney = (payload) => {
-    let postId = localStorage.getItem("postId");
-    return instance.put(`/user-journeys/${postId}`, payload);
+    let UserId = localStorage.getItem("UserId");
+    return instance.put(`/user-infos/${UserId}`, payload);
 }

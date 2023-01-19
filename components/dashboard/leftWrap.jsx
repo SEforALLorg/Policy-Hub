@@ -105,9 +105,9 @@ const LeftWrapPage = ({
     resetFilters();
     setIsResetPage(!isResetPage);
     const data = {
-      qid: item.id,
+      // qid: item.id,
       qtext: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      aid: i.id,
+      // aid: i.id,
       atext: i.Answer
     }
     newJourney(data);

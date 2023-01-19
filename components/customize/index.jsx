@@ -4,7 +4,7 @@ import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
-import { postJourneyStep } from "../../utilities";
+import { postJourneyStep, putJourneyStep } from "../../utilities";
 
 const Customize = ({
   onYes,
@@ -25,14 +25,14 @@ const Customize = ({
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
     let payload = {
-      qid: firstQuestion.id,
+      // qid: firstQuestion.id,
       qtext: title,
-      aid: i.id,
+      // aid: i.id,
       atext: i.Answer
     }
     setJourney(payload);
     if (localStorage.getItem("UserId")) {
-      postJourneyStep(payload);
+      putJourneyStep(payload);
     }
   };
 
