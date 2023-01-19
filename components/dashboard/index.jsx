@@ -27,6 +27,7 @@ const Dashboard = ({
   const [oldJourney, setOldJourney] = useState([]);
   const [newJourneyData, setNewJourneyData] = useState([]);
   const [payload, setPayload] = useState([]);
+  const [selectedResource, setSelectedResource] = useState();
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -105,6 +106,7 @@ const Dashboard = ({
         <>
           <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
             <LeftWrapPage
+              selectedResource={selectedResource}
               questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
               setPublicationReports={(e) => setPublicationReports(e)}
               setNonPublicationReports={(e) => setNonPublicationReports(e)}
@@ -148,6 +150,7 @@ const Dashboard = ({
         <>
             <Resources
               resourcesData={resources}
+              selected={(e)=>setSelectedResource(e)}
               onYes={() => setIsResource(false)}
               onNextQuestionId={onNextQuestionId}
             />

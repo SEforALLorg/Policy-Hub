@@ -22,7 +22,8 @@ const LeftWrapPage = ({
   isResetPage,
   setIsResetPage,
   newJourney,
-  firstHit
+  firstHit,
+  selectedResource
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
@@ -152,7 +153,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-          {t("Assessthesituation")}
+          {selectedResource}
         </div>
       </div>
       {nextQuestionId &&

@@ -10,7 +10,7 @@ import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
 import Loader from "../loader";
 
-const Resources = ({ onYes, resourcesData, onNextQuestionId }) => {
+const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   const { t } = useTranslation();
   localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
@@ -19,8 +19,9 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId }) => {
   };
 
   const changeColor = (e) => {
+    selected(e.target.innerText)
     switch (e.target.innerText) {
-      case "ELECTRIFICATION":
+      case "Electricity Access":
         applyTheme(baseTheme);
         break;
       case "CLEAN COOKING":
