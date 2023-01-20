@@ -27,6 +27,7 @@ const Dashboard = ({
   const [oldJourney, setOldJourney] = useState([]);
   const [newJourneyData, setNewJourneyData] = useState([]);
   const [payload, setPayload] = useState([]);
+  const [selectedResource, setSelectedResource] = useState();
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -95,9 +96,9 @@ const Dashboard = ({
     }
   }, [newJourneyData]);
 
-  const postFirst = () => {
-    postJourneyStep(oldJourney[0]);
-  }
+  // const postFirst = () => {
+  //   postJourneyStep(oldJourney[0]);
+  // }
 
   return (
     <Wrapper isExpand={isExpand}>
@@ -105,6 +106,7 @@ const Dashboard = ({
         <>
           <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
             <LeftWrapPage
+              selectedResource={selectedResource}
               questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
               setPublicationReports={(e) => setPublicationReports(e)}
               setNonPublicationReports={(e) => setNonPublicationReports(e)}
@@ -116,7 +118,7 @@ const Dashboard = ({
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}
-              firstHit={()=> postFirst()}
+              firstHit={oldJourney[0]}
             />
             <RightWrapPage
               publicationReports={publicationReports}
@@ -148,6 +150,7 @@ const Dashboard = ({
         <>
             <Resources
               resourcesData={resources}
+              selected={(e)=>setSelectedResource(e)}
               onYes={() => setIsResource(false)}
               onNextQuestionId={onNextQuestionId}
             />

@@ -2,8 +2,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import languageDetector from "i18next-browser-languagedetector";
 import HttpApi from "i18next-http-backend";
-import en from "./temp/en/common.json";
-import fr from "./temp/fr/common.json";
+import en from "./local/en.json";
+import fr from "./local/fr.json";
 i18n
   .use(initReactI18next)
   .use(languageDetector)

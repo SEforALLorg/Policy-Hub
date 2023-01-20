@@ -33,12 +33,17 @@ const DetailModal = ({firstHit}) => {
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
-      let uuid = localStorage.getItem("uuid");
+      // let uuid = localStorage.getItem("uuid");
+      let data = {
+        ...formInput,
+        IPAddress: ip ? ip : "",
+        // UID: uuid,
+      }
+      localStorage.setItem("userInfo",JSON.stringify(data))
       let payload = {
         "data": {
-          ...formInput,
-          IPAddress: ip ? ip : "",
-          UID: uuid
+          ...data,
+          Journey: [firstHit]
         }
       }
       const response = await postUserDetails(payload);
@@ -47,7 +52,7 @@ const DetailModal = ({firstHit}) => {
         localStorage.setItem("UserId", response?.data?.data?.id);
         setIsOpen(false);
         localStorage.setItem("UserModal", false);
-        firstHit();
+        // firstHit();
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });
       }
