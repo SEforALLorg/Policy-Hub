@@ -29,7 +29,6 @@ const DetailModal = ({firstHit}) => {
   }, []);
 
   const onSubmitHandler = async (event) => {
-    console.log(event);
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
@@ -50,6 +49,7 @@ const DetailModal = ({firstHit}) => {
       if(response.status === 200) {
         toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
         localStorage.setItem("UserId", response?.data?.data?.id);
+        localStorage.setItem("count", Number(response?.data?.data?.VisitCount));
         setIsOpen(false);
         localStorage.setItem("UserModal", false);
         // firstHit();

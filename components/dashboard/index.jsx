@@ -7,7 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { postJourneyStep, putJourneyStep } from "../../utilities";
+import { putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -95,10 +95,6 @@ const Dashboard = ({
       }
     }
   }, [newJourneyData]);
-
-  // const postFirst = () => {
-  //   postJourneyStep(oldJourney[0]);
-  // }
 
   return (
     <Wrapper isExpand={isExpand}>

@@ -5,7 +5,7 @@ import { getQuestions } from "pages/api/questions";
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses, postJourneyStep } from "../../utilities/index.jsx";
+import { getResourses, landingPage } from "../../utilities/index.jsx";
 
 const LandingPage = ({ setIsDashboardOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const LandingPage = ({ setIsDashboardOpen }) => {
   useEffect(()=>{
     if (localStorage.getItem("userInfo")) {
       let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-      postJourneyStep(userInfo);
+      landingPage(userInfo);
     }
   },[])
 

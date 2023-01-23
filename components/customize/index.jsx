@@ -4,7 +4,7 @@ import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
-import { postJourneyStep, putJourneyStep } from "../../utilities";
+import { putJourneyStep } from "../../utilities";
 
 const Customize = ({
   onYes,
