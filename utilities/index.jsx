@@ -220,7 +220,7 @@ export const landingPage = async () => {
   localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };
 
-export const putJourneyStep = async (payload) => {
+export const putJourneyStep = async (payload) => {console.log("put")
   let userId = localStorage.getItem("UserId");
   let userInfo = JSON.parse(localStorage.getItem("userInfo"));
   let data = {
@@ -236,5 +236,4 @@ export const userRepeated = async (data,userId) => {
   const response = await repeatUser(data,userId);
   localStorage.setItem("UserId", response?.data?.data?.id);
   localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
-  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };

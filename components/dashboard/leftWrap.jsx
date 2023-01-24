@@ -106,9 +106,9 @@ const LeftWrapPage = ({
     setIsResetPage(!isResetPage);
     const data = {
       // qid: item.id,
-      qtext: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      question: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
       // aid: i.id,
-      atext: i.Answer
+      answer: i.Answer
     }
     newJourney(data);
   };

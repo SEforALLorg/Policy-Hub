@@ -6,7 +6,7 @@ import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
 
-const DetailModal = ({firstHit}) => {
+const DetailModal = ({firstHit}) => {console.log(firstHit)
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({
     FirstName: "",
@@ -32,7 +32,10 @@ const DetailModal = ({firstHit}) => {
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
-      let count = localStorage.getItem("count");
+      let date = new Date();
+      let journey = {
+        [date]: [firstHit]
+      } 
       let data = {
         ...formInput,
         IPAddress: ip ? ip : "",
@@ -40,7 +43,7 @@ const DetailModal = ({firstHit}) => {
       let payload = {
         "data": {
           ...data,
-          Journey: [firstHit],
+          Journey: journey,
         }
       }
       const response = await postUserDetails(payload);
@@ -53,12 +56,15 @@ const DetailModal = ({firstHit}) => {
         localStorage.setItem("UserModal", false);
         toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
         setIsOpen(false);
-        let data = {
-          data: {
-            VisitCount: count && ++count || 1,
-          },
-        };
-        userRepeated(data,userId);
+        console.log(response,"response");
+        if (response?.data?.data?.userExist) {
+          let data = {
+            data: {
+              VisitCount: count && ++count || 1,
+            },
+          };
+          userRepeated(data,userId);
+        }
         // firstHit();
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });

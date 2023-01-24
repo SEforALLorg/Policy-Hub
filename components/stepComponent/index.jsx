@@ -53,9 +53,9 @@ const StepComponent = ({
     setStepCount(stepCount + 1);
     const data = {
       // qid: questionId,
-      qtext: title,
+      question: title,
       // aid: optionData.id ?? "" ,
-      atext: optionData.Answer ?? ""
+      answer: optionData.Answer ?? ""
     }
     sendData(data);
   };

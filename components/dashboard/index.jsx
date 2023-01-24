@@ -81,6 +81,7 @@ const Dashboard = ({
   }, [firstQuestionId])
 
   useEffect(() => { 
+    let count = localStorage.getItem("count");
     if (localStorage.getItem("UserId")) {
       if (newJourneyData.length) {
         let data = [];
@@ -91,7 +92,20 @@ const Dashboard = ({
           data = payload.concat(newJourneyData);
           setPayload(data);
         }
-        putJourneyStep(data);
+        if (count && count > 1) {
+          let existing = JSON.parse(localStorage.getItem("userInfo"));
+          let existingJourney = existing.Journey;
+          let journey = {
+            ...existingJourney,
+            [new Date()]: [payload],
+          }
+          putJourneyStep(journey);
+        } else {
+          let journey = {
+            [new Date()]: [payload],
+          }
+          putJourneyStep(journey);
+        }
       }
     }
   }, [newJourneyData]);

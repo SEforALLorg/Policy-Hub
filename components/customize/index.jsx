@@ -19,6 +19,7 @@ const Customize = ({
   const title =firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+  let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
     onYes();
@@ -26,13 +27,24 @@ const Customize = ({
     onReportsFind(i);
     let payload = {
       // qid: firstQuestion.id,
-      qtext: title,
+      question: title,
       // aid: i.id,
-      atext: i.Answer
+      answer: i.Answer
     }
     setJourney(payload);
-    if (localStorage.getItem("UserId")) {
-      putJourneyStep(payload);
+    if (count && count > 1) {
+      let existing = JSON.parse(localStorage.getItem("userInfo"));
+      let existingJourney = existing.Journey;
+      let journey = {
+        ...existingJourney,
+        [new Date()]: [payload],
+      }
+      putJourneyStep(journey);
+    } else if (count && count === 1) {
+      let journey = {
+        [new Date()]: [payload],
+      }
+      putJourneyStep(journey);
     }
   };
 
