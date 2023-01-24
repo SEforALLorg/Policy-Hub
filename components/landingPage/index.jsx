@@ -18,9 +18,9 @@ const LandingPage = ({ setIsDashboardOpen }) => {
   };
 
   useEffect(()=>{
-    if (localStorage.getItem("userInfo")) {
-      let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-      landingPage(userInfo);
+    if (localStorage.getItem("UserId")) {
+      // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      landingPage();
     }
   },[])
 

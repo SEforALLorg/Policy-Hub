@@ -26,9 +26,9 @@ export const sendReports = (payload) => {
 };
 
 //  Repeated User
-export const repeatUser = (payload) => {
+export const repeatUser = (payload,userId) => {
     let UserId = localStorage.getItem("UserId");
-    return instance.put(`user-journeys/${UserId}`, payload);
+    return instance.put(`user-journeys/${UserId && UserId || userId}`, payload);
 }
 
 //  Put Journey step

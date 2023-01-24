@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
-import { validation } from "../../utilities";
+import { userRepeated, validation } from "../../utilities";
 
 const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -32,26 +32,33 @@ const DetailModal = ({firstHit}) => {
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
-      // let uuid = localStorage.getItem("uuid");
+      let count = localStorage.getItem("count");
       let data = {
         ...formInput,
         IPAddress: ip ? ip : "",
-        // UID: uuid,
       }
-      localStorage.setItem("userInfo",JSON.stringify(data))
       let payload = {
         "data": {
           ...data,
-          Journey: [firstHit]
+          Journey: [firstHit],
         }
       }
       const response = await postUserDetails(payload);
       if(response.status === 200) {
-        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
-        localStorage.setItem("UserId", response?.data?.data?.id);
-        localStorage.setItem("count", Number(response?.data?.data?.VisitCount));
-        setIsOpen(false);
+        let count = response?.data?.data?.VisitCount;
+        let userId = response?.data?.data?.id;
+        localStorage.setItem("UserId", userId);
+        localStorage.setItem("count", count);
+        localStorage.setItem("userInfo",JSON.stringify(response?.data?.data));
         localStorage.setItem("UserModal", false);
+        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
+        setIsOpen(false);
+        let data = {
+          data: {
+            VisitCount: count && ++count || 1,
+          },
+        };
+        userRepeated(data,userId);
         // firstHit();
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });

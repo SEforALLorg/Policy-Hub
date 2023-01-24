@@ -207,20 +207,17 @@ export const validation = (event, name, val) => {
   return formError;
 };
 
-export const landingPage = async (payload) => {
+export const landingPage = async () => {
   let count = localStorage.getItem("count");
-  let addCount = ++count;
   let data = {
     data: {
-      ...payload,
-      UserInfoId: Number(localStorage.getItem("UserId")) ?? "",
-      Journey: [],
-      VisitCount: count && String(addCount),
+      VisitCount: count && ++count || 1,
     },
   };
   const response = await repeatUser(data);
   localStorage.setItem("UserId", response?.data?.data?.id);
-  localStorage.setItem("count",Number(response?.data?.data?.VisitCount))
+  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };
 
 export const putJourneyStep = async (payload) => {
@@ -229,10 +226,15 @@ export const putJourneyStep = async (payload) => {
   let data = {
     data: {
       ...userInfo,
-      UserInfoId: userId ? userId : "",
-      // UID: localStorage.getItem("uuid"),
       Journey: payload,
     },
   };
   await putJourney(data);
+};
+
+export const userRepeated = async (data,userId) => {
+  const response = await repeatUser(data,userId);
+  localStorage.setItem("UserId", response?.data?.data?.id);
+  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };
