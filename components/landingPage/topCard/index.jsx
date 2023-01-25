@@ -118,13 +118,14 @@ const TopCard = ({ HandleOpen }) => {
         <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}
           <span className="text-Secondary px-[6px]"> {t("Energy")} </span>
-          {t("forAll")} <br />
+          {t("forAll")} 
+           <br className="brHome" />
           <span className="text-Primary pl-[6px]"> {t("Knowledge")}</span>{" "}
           {t("Hub")}
         </h5>
       </div>
       {/* <div className="my-3 border-b-[4px] border-primary opacity-20" /> */}
-      <div id="container-main" className="flex my-[1rem] h-[40vh]">
+      <div id="container-main" className="flex my-[1rem] h-[42vh]">
         <div className="container-box w-[50%]">
           <div className="flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">

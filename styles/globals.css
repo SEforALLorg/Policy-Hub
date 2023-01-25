@@ -1197,12 +1197,14 @@ a {
 
 @media only screen and (min-width:1900px) {
   .mobile-card-width p {
+    font-size: 15px;
     /* margin-top: 32rem !important; */
   }
 }
 
 @media only screen and (min-width: 1680px) {
   .mobile-card-width p {
+    font-size: 15px;
     line-height: 25px;
   }
   
@@ -1357,7 +1359,7 @@ a {
     height: calc(85vh - 100px);
   }
   .reportRightWrap {
-    height: calc(86vh - 100px);
+    /* height: calc(86vh - 100px); */
     overflow: hidden auto;
   }
 
@@ -1577,7 +1579,7 @@ a {
   .mobile-card-width p {
     /* margin-top: 1rem !important;
     width: 90% !important; */
-    font-size: 11px !important;
+    font-size: 13px !important;
     line-height: 16px !important;
   }
 
@@ -1873,6 +1875,14 @@ a {
 
 @media only screen and (max-width: 767px) {
 
+  ..customize-header h5{
+    line-height: 30px;
+  }
+
+  .brHome{
+    display: none;
+  }
+
   .SustainableBox{
     margin: 10px  auto !important;
     height: unset !important;
@@ -2109,7 +2119,7 @@ a {
   }
 
   .customize-card button {
-    height: 37px;
+    height: 42px;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
@@ -2135,6 +2145,7 @@ a {
     border-radius: 20px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    height: unset;
   }
 
   .left-header-image {
@@ -2662,7 +2673,7 @@ a {
 
 @media only screen and (max-width: 460px) {
   .customize-header h5 {
-    line-height: 22px;
+    line-height: 30px;
     font-size: 20px;
   }
 
@@ -2682,11 +2693,11 @@ a {
     width: 65px;
   }
   .card-inner-small-wrap p {
-    font-size: 11px !important;
+    font-size: 13px !important;
     line-height: 18px !important;
   }
   .customize-card button {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 13px;
   }
 }
