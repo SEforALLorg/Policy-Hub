@@ -26,9 +26,7 @@ const Customize = ({
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
     let payload = {
-      // qid: firstQuestion.id,
       question: title,
-      // aid: i.id,
       answer: i.Answer
     }
     setJourney(payload);

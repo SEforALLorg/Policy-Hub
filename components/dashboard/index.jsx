@@ -97,12 +97,12 @@ const Dashboard = ({
           let existingJourney = existing.Journey;
           let journey = {
             ...existingJourney,
-            [new Date()]: [payload],
+            [new Date()]: [data],
           }
           putJourneyStep(journey);
         } else {
           let journey = {
-            [new Date()]: [payload],
+            [new Date()]: [data],
           }
           putJourneyStep(journey);
         }

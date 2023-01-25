@@ -6,7 +6,7 @@ import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
 
-const DetailModal = ({firstHit}) => {console.log(firstHit)
+const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({
     FirstName: "",
@@ -56,14 +56,13 @@ const DetailModal = ({firstHit}) => {console.log(firstHit)
         localStorage.setItem("UserModal", false);
         toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
         setIsOpen(false);
-        console.log(response,"response");
         if (response?.data?.data?.userExist) {
           let data = {
             data: {
               VisitCount: count && ++count || 1,
             },
           };
-          userRepeated(data,userId);
+          userRepeated(data);
         }
         // firstHit();
       } else {
