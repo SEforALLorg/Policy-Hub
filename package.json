@@ -2,11 +2,11 @@
   "name": "vkh",
   "private": true,
   "scripts": {
+    "refresh:locales": "node refresh-locales.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "refresh:locales": "node refresh-locales.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",

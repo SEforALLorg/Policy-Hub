@@ -9,6 +9,7 @@ import yellowTheme from "../../theme/yellow";
 import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
 import Loader from "../loader";
+import { useEffect } from "react";
 
 const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   const { t } = useTranslation();

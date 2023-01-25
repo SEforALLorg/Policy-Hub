@@ -1,7 +1,7 @@
 import qs from "qs";
 import groupBy from "lodash/groupBy";
 import { omit } from "lodash";
-import { postJourney, putJourney } from "../pages/api/reports";
+import { repeatUser, putJourney } from "../pages/api/reports";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -207,29 +207,30 @@ export const validation = (event, name, val) => {
   return formError;
 };
 
-export const postJourneyStep = async (payload) => {
+export const landingPage = async () => {
+  let count = localStorage.getItem("count");
   let data = {
     data: {
-      ...payload,
-      UserInfoId: Number(localStorage.getItem("UserId")) ?? "",
-      // UID: localStorage.getItem("uuid"),
-      Journey: [],
+      VisitCount: count && ++count || 1,
     },
   };
-  const response = await postJourney(data);
+  const response = await repeatUser(data);
   localStorage.setItem("UserId", response?.data?.data?.id);
+  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };
 
 export const putJourneyStep = async (payload) => {
-  let userId = localStorage.getItem("UserId");
-  let userInfo = JSON.parse(localStorage.getItem("userInfo"));
   let data = {
     data: {
-      ...userInfo,
-      UserInfoId: userId ? userId : "",
-      // UID: localStorage.getItem("uuid"),
       Journey: payload,
     },
   };
   await putJourney(data);
+};
+
+export const userRepeated = async (data) => {
+  const response = await repeatUser(data);
+  localStorage.setItem("UserId", response?.data?.data?.id);
+  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
 };

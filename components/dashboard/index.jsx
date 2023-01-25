@@ -7,7 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { postJourneyStep, putJourneyStep } from "../../utilities";
+import { putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -81,6 +81,7 @@ const Dashboard = ({
   }, [firstQuestionId])
 
   useEffect(() => { 
+    let count = localStorage.getItem("count");
     if (localStorage.getItem("UserId")) {
       if (newJourneyData.length) {
         let data = [];
@@ -91,14 +92,23 @@ const Dashboard = ({
           data = payload.concat(newJourneyData);
           setPayload(data);
         }
-        putJourneyStep(data);
+        if (count && count > 1) {
+          let existing = JSON.parse(localStorage.getItem("userInfo"));
+          let existingJourney = existing.Journey;
+          let journey = {
+            ...existingJourney,
+            [new Date()]: [data],
+          }
+          putJourneyStep(journey);
+        } else {
+          let journey = {
+            [new Date()]: [data],
+          }
+          putJourneyStep(journey);
+        }
       }
     }
   }, [newJourneyData]);
-
-  // const postFirst = () => {
-  //   postJourneyStep(oldJourney[0]);
-  // }
 
   return (
     <Wrapper isExpand={isExpand}>
