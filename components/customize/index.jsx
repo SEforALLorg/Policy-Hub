@@ -27,7 +27,7 @@ const Customize = ({
     onReportsFind(i);
     let payload = {
       question: title,
-      answer: i.Answer
+      answer: i?.Answer
     }
     setJourney(payload);
     if (count && count > 1) {

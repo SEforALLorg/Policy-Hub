@@ -105,8 +105,8 @@ const LeftWrapPage = ({
     resetFilters();
     setIsResetPage(!isResetPage);
     const data = {
-      question: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      answer: i.Answer
+      question: item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      answer: i?.Answer
     }
     newJourney(data);
   };

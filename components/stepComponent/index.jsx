@@ -53,7 +53,7 @@ const StepComponent = ({
     setStepCount(stepCount + 1);
     const data = {
       question: title,
-      answer: optionData.Answer ?? ""
+      answer: optionData?.Answer ?? ""
     }
     sendData(data);
   };
