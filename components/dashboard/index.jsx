@@ -61,6 +61,13 @@ const Dashboard = ({
     setIsBigCard(false);
     setClearAll(!isClearAll);
     setIsResource(true)
+    let existing = JSON.parse(localStorage.getItem("userInfo"));
+    let existingJourney = existing?.Journey;
+      let journey = {
+        ...existingJourney,
+      [new Date()]: [{}],
+    }
+    putJourneyStep(journey);
   };
 
   const onReportFind = (e) => {
