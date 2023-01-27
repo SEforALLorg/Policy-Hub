@@ -12,7 +12,8 @@ const Customize = ({
   isFetchingQuestions,
   onNextQuestion,
   onReportsFind,
-  setJourney
+  setJourney,
+  setCurrentDate
 }) => {
   const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
@@ -21,8 +22,10 @@ const Customize = ({
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
   let count = localStorage.getItem("count");
   let userExist = localStorage.getItem("existingUser")
+  const currentDate = new Date();
 
   const onAnswerClick = (i) => {
+    setCurrentDate(currentDate)
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
@@ -31,15 +34,29 @@ const Customize = ({
       answer: i?.Answer
     }
     setJourney(payload);
-    let existing = JSON.parse(localStorage.getItem("userInfo"));
-    let existingJourney = existing?.Journey;
-    if ((existingJourney && Object.values(existingJourney)?.length) || (count && count > 1)) {
+    // let existing = JSON.parse(localStorage.getItem("userInfo"));
+    // let existingJourney = existing?.Journey;
+    // if ((existingJourney && Object.values(existingJourney)?.length) || (count && count > 1)) {
+    //   let journey = {
+    //     ...existingJourney,
+    //     [currentDate]: [payload],
+    //   }
+    //   putJourneyStep(journey);
+    // } else if (count === 1) {
+    //   let journey = {
+    //     [currentDate]: [payload],
+    //   }
+    //   putJourneyStep(journey);
+    // }
+    if (count && count > 1) {
+      let existing = JSON.parse(localStorage.getItem("userInfo"));
+      let existingJourney = existing.Journey;
       let journey = {
         ...existingJourney,
         [new Date()]: [payload],
       }
       putJourneyStep(journey);
-    } else if (count === 1) {
+    } else if (count && count === 1) {
       let journey = {
         [new Date()]: [payload],
       }
