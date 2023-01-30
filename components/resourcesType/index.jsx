@@ -44,15 +44,16 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
       <div className="flex items-center customize-header">
-        <div className="flex items-center relative select-none mr-5">
+
           <img
-            className="w-[230px] mx-full"
+            className="w-[230px] h-[157px] object-contain	mr-5"
             src="static/images/cards.svg"
             alt="card"
           />
-        </div>
+
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-          {t("AssessYourCountry")} <br /> {t("Customize")}
+          {t("AssessYourCountry")} 
+  {/* {t("Customize")} */}
         </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />

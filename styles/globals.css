@@ -1197,12 +1197,14 @@ a {
 
 @media only screen and (min-width:1900px) {
   .mobile-card-width p {
+    font-size: 15px;
     /* margin-top: 32rem !important; */
   }
 }
 
 @media only screen and (min-width: 1680px) {
   .mobile-card-width p {
+    font-size: 15px;
     line-height: 25px;
   }
   
@@ -1269,7 +1271,7 @@ a {
   }
 
   .customize-heading {
-    font-size: 34px !important;
+    font-size: 40px !important;
     line-height: 50px !important;
     margin: 0px !important;
   }
@@ -1351,6 +1353,26 @@ a {
   .header-title-wrap {
     max-width: 1140px !important;
   }
+
+  .SustainableBox{
+    margin: 10px  auto !important;
+    height: calc(85vh - 100px);
+  }
+  .reportRightWrap {
+    /* height: calc(86vh - 100px); */
+    overflow: hidden auto;
+  }
+
+  .leftQBox{
+    height: calc(86vh - 100px);
+    overflow: hidden auto;
+  }
+
+  .OptionsWrap{
+    height: 131px;
+    margin-top: 10px;
+  }
+
 }
 
 @media only screen and (min-width: 1480px) and (max-width: 1680px) {
@@ -1384,6 +1406,7 @@ a {
   .divider-hide {
     display: none;
   }
+  
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1100px) {
@@ -1553,7 +1576,7 @@ a {
   .mobile-card-width p {
     /* margin-top: 1rem !important;
     width: 90% !important; */
-    font-size: 11px !important;
+    font-size: 13px !important;
     line-height: 16px !important;
   }
 
@@ -1643,10 +1666,6 @@ a {
 
   .customize-buttons {
     max-width: 70% !important;
-  }
-
-  .customize-buttons button {
-    height: 70px !important;
   }
 
   .complete-buttons-wrap {
@@ -1847,7 +1866,27 @@ a {
   }
 }
 
+@media only screen and (max-width: 850px) {
+  .brHome{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 767px) {
+
+  ..customize-header h5{
+    line-height: 30px;
+  }
+
+  .brHome{
+    display: none;
+  }
+
+  .SustainableBox{
+    margin: 10px  auto !important;
+    height: unset !important;
+    width: 100% !important;
+  }
   #wrapper {
     display: none !important;
   }
@@ -2079,7 +2118,7 @@ a {
   }
 
   .customize-card button {
-    height: 37px;
+    height: 42px;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
@@ -2105,6 +2144,7 @@ a {
     border-radius: 20px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+    height: unset;
   }
 
   .left-header-image {
@@ -2588,7 +2628,7 @@ a {
   }
 
   #container-main {
-    height: 160vh !important;
+    height: 100% !important;
     display: flex;
     flex-direction: column !important;
   }
@@ -2596,8 +2636,8 @@ a {
     width: 100% !important;
   }
   .customize-card{
-    margin-top: -6rem !important;
-    margin-bottom: 10rem !important;
+    margin-top: 0rem !important;
+    margin-bottom: 1rem !important;
   }
   .customize-card img {
     width: 65px;
@@ -2632,12 +2672,12 @@ a {
 
 @media only screen and (max-width: 460px) {
   .customize-header h5 {
-    line-height: 22px;
+    line-height: 30px;
     font-size: 20px;
   }
 
   #container-main {
-    height: 170vh !important;
+    height: 100% !important;
     display: flex;
     flex-direction: column !important;
   }
@@ -2645,18 +2685,18 @@ a {
     width: 100% !important;
   }
   .customize-card{
-    margin-top: -6rem !important;
-    margin-bottom: 10rem !important;
+    margin-top: 0rem !important;
+    margin-bottom: 1rem !important;
   }
   .customize-card img {
     width: 65px;
   }
   .card-inner-small-wrap p {
-    font-size: 11px !important;
+    font-size: 13px !important;
     line-height: 18px !important;
   }
   .customize-card button {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 13px;
   }
 }
