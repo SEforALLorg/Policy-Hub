@@ -7,7 +7,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { postJourneyStep, putJourneyStep } from "../../utilities";
+import { putJourneyStep } from "../../utilities";
 
 const Dashboard = ({
   questions,
@@ -27,6 +27,7 @@ const Dashboard = ({
   const [oldJourney, setOldJourney] = useState([]);
   const [newJourneyData, setNewJourneyData] = useState([]);
   const [payload, setPayload] = useState([]);
+  const [selectedResource, setSelectedResource] = useState();
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -80,6 +81,7 @@ const Dashboard = ({
   }, [firstQuestionId])
 
   useEffect(() => { 
+    let count = localStorage.getItem("count");
     if (localStorage.getItem("UserId")) {
       if (newJourneyData.length) {
         let data = [];
@@ -90,14 +92,23 @@ const Dashboard = ({
           data = payload.concat(newJourneyData);
           setPayload(data);
         }
-        putJourneyStep(data);
+        if (count && count > 1) {
+          let existing = JSON.parse(localStorage.getItem("userInfo"));
+          let existingJourney = existing.Journey;
+          let journey = {
+            ...existingJourney,
+            [new Date()]: [data],
+          }
+          putJourneyStep(journey);
+        } else {
+          let journey = {
+            [new Date()]: [data],
+          }
+          putJourneyStep(journey);
+        }
       }
     }
   }, [newJourneyData]);
-
-  const postFirst = () => {
-    postJourneyStep(oldJourney[0]);
-  }
 
   return (
     <Wrapper isExpand={isExpand}>
@@ -105,6 +116,7 @@ const Dashboard = ({
         <>
           <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
             <LeftWrapPage
+              selectedResource={selectedResource}
               questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
               setPublicationReports={(e) => setPublicationReports(e)}
               setNonPublicationReports={(e) => setNonPublicationReports(e)}
@@ -116,7 +128,7 @@ const Dashboard = ({
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}
-              firstHit={()=> postFirst()}
+              firstHit={oldJourney[0]}
             />
             <RightWrapPage
               publicationReports={publicationReports}
@@ -148,6 +160,7 @@ const Dashboard = ({
         <>
             <Resources
               resourcesData={resources}
+              selected={(e)=>setSelectedResource(e)}
               onYes={() => setIsResource(false)}
               onNextQuestionId={onNextQuestionId}
             />

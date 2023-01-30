@@ -1,5 +1,5 @@
 export const resource = [
-    "Electrification",
+    "Electricity Access",
     "Clean Cooking",
     "Sustainable Cooling",
     "Energy Efficency",

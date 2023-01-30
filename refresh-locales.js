@@ -3,10 +3,10 @@ const fs = require('fs');
 
 function DownloadLocale(language) {
   var data = "";
-  var url = `https://api.locize.app/79f906de-91a2-487d-ac55-0c79133b5676/latest/${language}/VKH`;
+  var url = `https://api.locize.app/ea44f842-2da0-4c31-a835-9b0fb1a66695/latest/${language}/VKH`;
   
-  var dir1 = `./temp`;
-  var dir2 = `./temp/${language}`;
+  var dir1 = `./local`;
+  var dir2 = `./local/${language}`;
 
   if(!fs.existsSync(dir1)) fs.mkdirSync(dir1);
   if(!fs.existsSync(dir2)) fs.mkdirSync(dir2);
@@ -18,7 +18,7 @@ function DownloadLocale(language) {
         try {
             let json = JSON.parse(data);
             let content = JSON.stringify(json);
-            fs.writeFileSync(`./temp/${language}/common.json`, content);
+            fs.writeFileSync(`./local/${language}.json`, content);
         } catch (error) {
             console.error(error.message);
         };

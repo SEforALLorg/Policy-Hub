@@ -9,18 +9,20 @@ import yellowTheme from "../../theme/yellow";
 import baseTheme from "../../theme/base";
 import blueTheme from "../../theme/blue";
 import Loader from "../loader";
+import { useEffect } from "react";
 
-const Resources = ({ onYes, resourcesData, onNextQuestionId }) => {
+const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   const { t } = useTranslation();
-  localStorage.setItem("uuid", uuid());
+  // localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
   };
 
   const changeColor = (e) => {
+    selected(e.target.innerText)
     switch (e.target.innerText) {
-      case "ELECTRIFICATION":
+      case "Electricity Access":
         applyTheme(baseTheme);
         break;
       case "CLEAN COOKING":

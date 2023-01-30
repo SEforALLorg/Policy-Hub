@@ -22,7 +22,8 @@ const LeftWrapPage = ({
   isResetPage,
   setIsResetPage,
   newJourney,
-  firstHit
+  firstHit,
+  selectedResource
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
@@ -104,10 +105,8 @@ const LeftWrapPage = ({
     resetFilters();
     setIsResetPage(!isResetPage);
     const data = {
-      qid: item.id,
-      qtext: item.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      aid: i.id,
-      atext: i.Answer
+      question: item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      answer: i?.Answer
     }
     newJourney(data);
   };
@@ -152,7 +151,7 @@ const LeftWrapPage = ({
           />
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-          {t("Assessthesituation")}
+          {selectedResource}
         </div>
       </div>
       {nextQuestionId &&

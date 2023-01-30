@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
-import { validation } from "../../utilities";
+import { userRepeated, validation } from "../../utilities";
 
 const DetailModal = ({firstHit}) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -29,25 +29,42 @@ const DetailModal = ({firstHit}) => {
   }, []);
 
   const onSubmitHandler = async (event) => {
-    console.log(event);
     if (event) event.preventDefault();
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
-      let uuid = localStorage.getItem("uuid");
+      let date = new Date();
+      let journey = {
+        [date]: [firstHit]
+      } 
+      let data = {
+        ...formInput,
+        IPAddress: ip ? ip : "",
+      }
       let payload = {
         "data": {
-          ...formInput,
-          IPAddress: ip ? ip : "",
-          UID: uuid
+          ...data,
+          Journey: journey,
         }
       }
       const response = await postUserDetails(payload);
       if(response.status === 200) {
-        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
-        localStorage.setItem("UserId", response?.data?.data?.id);
-        setIsOpen(false);
+        let count = response?.data?.data?.VisitCount;
+        let userId = response?.data?.data?.id;
+        localStorage.setItem("UserId", userId);
+        localStorage.setItem("count", count);
+        localStorage.setItem("userInfo",JSON.stringify(response?.data?.data));
         localStorage.setItem("UserModal", false);
-        firstHit();
+        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
+        setIsOpen(false);
+        if (response?.data?.data?.userExist) {
+          let data = {
+            data: {
+              VisitCount: count && ++count || 1,
+            },
+          };
+          userRepeated(data);
+        }
+        // firstHit();
       } else {
         toast.error("Error", { position: toast.POSITION.TOP_CENTER });
       }

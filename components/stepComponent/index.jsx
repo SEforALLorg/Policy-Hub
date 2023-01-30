@@ -52,10 +52,8 @@ const StepComponent = ({
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
     const data = {
-      qid: questionId,
-      qtext: title,
-      aid: optionData.id ?? "" ,
-      atext: optionData.Answer ?? ""
+      question: title,
+      answer: optionData?.Answer ?? ""
     }
     sendData(data);
   };

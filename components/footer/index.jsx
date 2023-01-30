@@ -21,9 +21,9 @@ const Footer = () => {
   const [title, setTitle] = useState("Download Decision Tree");
   const onClickHandler = (resource) => {
     switch (resource) {
-      case "Electrification":
+      case "Electricity Access":
         window.open("static/pdf/Electrification.pdf");
-        setTitle("Electrification");
+        setTitle("Electricity Access");
         break;
       case "Clean Cooking":
         window.open("static/pdf/Cleancooking.pdf");

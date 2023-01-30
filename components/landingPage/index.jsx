@@ -5,7 +5,7 @@ import { getQuestions } from "pages/api/questions";
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses } from "../../utilities/index.jsx";
+import { getResourses, landingPage } from "../../utilities/index.jsx";
 
 const LandingPage = ({ setIsDashboardOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,13 @@ const LandingPage = ({ setIsDashboardOpen }) => {
     setIsOpen(true);
     setGoBottom(true);
   };
+
+  useEffect(()=>{
+    if (localStorage.getItem("UserId")) {
+      // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      landingPage();
+    }
+  },[])
 
   useEffect(() => {
     if (isOpen) {

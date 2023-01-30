@@ -139,7 +139,7 @@ const About = () => {
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] center-content xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             <b>{t("HadleyTaylor")}</b>
-            {t("and")} {t("ledthecontent")}
+            {t("ledthecontent")}
             <span
               className="text-Primary hover:underline cursor-pointer"
               onClick={() => window.open("https://www.seforall.org/")}
