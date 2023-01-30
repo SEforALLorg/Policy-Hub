@@ -445,7 +445,7 @@ a {
 
 .OptionsWrap {
   padding: 0px 10px;
-  height: 212px;
+  height: calc(30vh - 30px);
   overflow: auto;
   margin-bottom: 20px;
 }
@@ -598,7 +598,7 @@ a {
   color: #13a2bc;
   font-size: 14px;
   position: relative;
-  z-index: 999999;
+  z-index: 99;
 }
 
 .report-no-data p {
@@ -1210,7 +1210,7 @@ a {
   
   .OptionsWrap {
     padding: 0px 10px;
-    height: 212px;
+    height: calc(30vh - 30px);
     overflow: auto;
     margin-bottom: 20px;
   }
@@ -1369,7 +1369,7 @@ a {
   }
 
   .OptionsWrap{
-    height: 131px;
+    /* height: 131px; */
     margin-top: 10px;
   }
 
@@ -1874,7 +1874,11 @@ a {
 
 @media only screen and (max-width: 767px) {
 
-  ..customize-header h5{
+
+  .OptionsWrap{
+    height: 150px;
+  }
+  .customize-header h5{
     line-height: 30px;
   }
 
@@ -2129,7 +2133,7 @@ a {
   }
 
   .left-wrap-buttons button {
-    height: 38px;
+    height: unset;
     font-size: 14px;
     margin-bottom: 10px !important;
   }
@@ -2690,6 +2694,7 @@ a {
   }
   .customize-card img {
     width: 65px;
+    height: unset;
   }
   .card-inner-small-wrap p {
     font-size: 13px !important;
