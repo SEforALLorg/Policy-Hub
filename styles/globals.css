@@ -1373,9 +1373,6 @@ a {
     margin-top: 10px;
   }
 
-  .optionsButtonWrap{
-    position: unset;
-  }
 }
 
 @media only screen and (min-width: 1480px) and (max-width: 1680px) {
@@ -1671,10 +1668,6 @@ a {
     max-width: 70% !important;
   }
 
-  .customize-buttons button {
-    height: 70px !important;
-  }
-
   .complete-buttons-wrap {
     flex-wrap: wrap;
     justify-content: space-around !important;
@@ -1870,6 +1863,12 @@ a {
   .about-logo-card img {
     height: 100%;
     max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .brHome{
+    display: none;
   }
 }
 
