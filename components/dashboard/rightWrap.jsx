@@ -332,7 +332,7 @@ const RightWrapPage = ({
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
-                  {t("Clear filters")}
+                  {t("Clear Filters")}
                 </button>
               ) : null}
               <IoClose
