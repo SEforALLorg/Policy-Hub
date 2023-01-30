@@ -234,4 +234,5 @@ export const userRepeated = async (data) => {
   const response = await repeatUser(data);
   localStorage.setItem("UserId", response?.data?.data?.id);
   localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
 };

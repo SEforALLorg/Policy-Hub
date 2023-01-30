@@ -38,7 +38,7 @@ const Dashboard = ({
     co_authors: [],
     publishing_organizations: [],
   });
-  const [latestDate, setLatestDate] = useState();
+  // const [latestDate, setLatestDate] = useState();
   const [latestJourney, setLatestJourney] = useState();
 
   const onResetFilter = () => {
@@ -70,7 +70,7 @@ const Dashboard = ({
     //   [new Date()]: [],
     // }
     // putJourneyStep(journey);
-    // setPayload([])
+    setPayload([])
   };
 
   const onReportFind = (e) => {
@@ -93,6 +93,7 @@ const Dashboard = ({
   useEffect(() => { 
     let count = localStorage.getItem("count");
     let existing = JSON.parse(localStorage.getItem("userInfo"));
+    let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
     let userOldJourney;
     if (existing){
@@ -106,43 +107,35 @@ const Dashboard = ({
         if (!payload?.length) {
           data = oldJourney.concat(newJourneyData);
           setPayload(data);
-        } else if (payload?.length) {console.log(payload);
+        } else if (payload?.length) {
           data = payload.concat(newJourneyData);
           setPayload(data);
         }
-        // if (count && count > 1) {
-        //   let journey = {
-        //     ...existingJourney,
-        //     [new Date()]: [data],
-        //   }
-        //   putJourneyStep(journey);
-        // } else {  
-        //   // if (existing && Object.keys(existingJourney)?.length >= 2) {
-        //   //   let userNewJourney = [...existingJourney?.[latestDate], ...data]
-        //   //   let newdata = {...existingJourney, [existingJourney?.[latestDate]]: [userNewJourney]}
-        //   //   setLatestJourney(newdata)
-        //   //   console.log(userNewJourney,newdata,"existingJourneyexistingJourney")
-        //   // } else {        
-        //     let journey = {
-        //       [new Date()]: [data],
-        //     }
-        //     putJourneyStep(journey);
-        //   // }
-        // }
         if (count && count > 1) {
-          let existing = JSON.parse(localStorage.getItem("userInfo"));
-          let existingJourney = existing.Journey;
-          let journey = {
-            ...existingJourney,
-            [new Date()]: [data],
+          let existingDate = new Date(latestDate);
+          let prev = {...existingJourney}
+          if (existing && Object.keys(existingJourney)?.length >= 1) {
+            Object.entries(existingJourney).map((key)=>{
+              if (key[0] === String(existingDate)) {
+                return prev[String(existingDate)] = data;
+              }
+            })
+            console.log(prev,'prev122');
+            putJourneyStep(prev);
           }
-          putJourneyStep(journey);
-        } else {
-          let journey = {
-            [new Date()]: [data],
+        } else {  
+          let existingDate = new Date(latestDate);
+          let prev = {...existingJourney}
+          if (existing && Object.keys(existingJourney)?.length >= 1) {
+            Object.entries(existingJourney).map((key)=>{
+              if (key[0] === String(existingDate)) {
+                return prev[String(existingDate)] = data;
+              }
+            })
+            console.log(prev,data,existingDate,'prev134');
+            putJourneyStep(prev);
           }
-          putJourneyStep(journey);
-        }
+         }
       }
     }
   }, [newJourneyData]);
@@ -185,7 +178,7 @@ const Dashboard = ({
                 setIsExpand(!isExpand);
                 setIsBigCard(true);
               }}
-              setCurrentDate={(e)=>setLatestDate(e)}
+              // setCurrentDate={(e)=>setLatestDate(e)}
               setJourney={(e) => setOldJourney([e])}
               questions={[firstQuestion]}
               isFetchingQuestions={isFetchingQuestions}

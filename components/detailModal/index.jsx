@@ -33,6 +33,7 @@ const DetailModal = ({firstHit}) => {
     if (!buttonDisable) {
       let ip = localStorage.getItem("ip")
       let date = new Date();
+      localStorage.setItem("currentDate",date);
       let journey = {
         [date]: [firstHit]
       } 
@@ -56,9 +57,11 @@ const DetailModal = ({firstHit}) => {
         localStorage.setItem("UserModal", false);
         toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
         setIsOpen(false);
+        let existingJourney = response?.data?.data?.Journey
         if (response?.data?.data?.userExist) {
           let data = {
             data: {
+              Journey: {...existingJourney, ...journey},
               VisitCount: count && ++count || 1,
             },
           };
