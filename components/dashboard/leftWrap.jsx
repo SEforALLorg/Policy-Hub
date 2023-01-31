@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
 import { putJourneyStep, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
+import { changingLeftWrapLogo } from '../../constant/changinglogo';
 
 const LeftWrapPage = ({
   questions,
@@ -144,11 +145,17 @@ const LeftWrapPage = ({
     <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
-          <img
-            className="w-[70px] h-[70px] left-header-image"
-            src="static/images/yellowfile.svg"
-            alt="card"
-          />
+        {changingLeftWrapLogo.map((key)=>{
+            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
+               return (
+                <img
+                className="w-[70px] h-[70px] left-header-image"
+                src = {Object.values(key)?.[0]}
+                alt="card"
+              />
+               )
+         }
+          })}
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
           {selectedResource}

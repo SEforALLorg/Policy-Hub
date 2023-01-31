@@ -19,8 +19,9 @@ import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
+import { changingHeaderLogo } from '../../constant/changinglogo';
 const cookies = new Cookies();
-const Header = () => {
+const Header = ({selectedRes}) => {
   const router = useRouter();
   const location = router.pathname;
   const [isOpen, setIsOpen] = useState(false);
@@ -37,12 +38,36 @@ const Header = () => {
     <div className="header">
       <Navbar expand="md" light>
         <NavbarBrand>
-          <img
+          {selectedRes === "ELECTRICITY ACCESS" && <img
+            src="static/images/electricity_access.svg"
+            alt="logo"
+            className=" cursor-pointer updatedLogo"
+            onClick={() => window.open("https://www.seforall.org/")}
+          />}
+          {selectedRes === "CLEAN COOKING" && <img
+            src="static/images/clean_cooking.svg"
+            alt="logo"
+            className=" cursor-pointer"
+            onClick={() => window.open("https://www.seforall.org/")}
+          />}
+          {selectedRes === "SUSTAINABLE COOLING" && <img
+            src={"/static/images/sustainable_cooling.svg"}
+            alt="logo"
+            className=" cursor-pointer"
+            onClick={() => window.open("https://www.seforall.org/")}
+          />}
+          {selectedRes === "ENERGY EFFICIENCY" && <img
+            src={"/static/images/energy_efficiency.svg"}
+            alt="logo"
+            className=" cursor-pointer"
+            onClick={() => window.open("https://www.seforall.org/")}
+          />}
+          {!selectedRes && <img
             src={"/static/images/SEforALL_Logo_White.png"}
             alt="logo"
             className="logo cursor-pointer"
             onClick={() => window.open("https://www.seforall.org/")}
-          />
+          />}
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (

@@ -5,6 +5,7 @@ import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
 import { putJourneyStep } from "../../utilities";
+import { changingCardLogo } from '../../constant/changinglogo';
 
 const Customize = ({
   onYes,
@@ -73,12 +74,17 @@ const Customize = ({
       ) : (
         <>
           <div className="flex items-center customize-header">
-
-              <img
+           {changingCardLogo.map((key)=>{
+            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
+               return (
+                <img
                 className="w-[230px] h-[157px] object-contain  mr-5"
-                src="static/images/cards.svg"
+                src = {Object.values(key)?.[0]}
                 alt="card"
               />
+               )
+         }
+          })}
 
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
               {t("AssessYourCountry")} 

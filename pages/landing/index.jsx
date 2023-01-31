@@ -22,6 +22,7 @@ const Landing = () => {
       () => console.log()
     );
   };
+  const[res ,setRes] =useState();
 
   useEffect(() => {
     if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
@@ -37,13 +38,13 @@ const Landing = () => {
               !isDashboardOpen ? "header-title-wrap" : ""
             }`}
           >
-            <Header />
+            <Header selectedRes={res}/>
           </div>
           <div>
-            <LandingPage setIsDashboardOpen={setIsDashboardOpen} />
+            <LandingPage setIsDashboardOpen={setIsDashboardOpen} selectedRes={(e) => setRes(e)} />
           </div>
           <div className="pt-[40px]">
-            <Footer />
+            <Footer footerRes={res} />
           </div>
         </div>
       </div>

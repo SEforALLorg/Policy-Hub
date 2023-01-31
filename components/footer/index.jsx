@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -15,8 +15,10 @@ import {
 } from "reactstrap";
 import Link from "next/link";
 import { resource } from "../../constant/resource";
+import { changingFooterLogo } from '../../constant/changinglogo';
 
-const Footer = () => {
+
+const Footer = ({footerRes}) => {
   const { t, i18n } = useTranslation();
   const [title, setTitle] = useState("Download Decision Tree");
   const onClickHandler = (resource) => {
@@ -176,14 +178,46 @@ const Footer = () => {
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
-          <img
+          {footerRes === "ELECTRICITY ACCESS" && <img
+            src="static/images/footer_electricity_access.svg"
+            alt="founder"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            onClick={() =>
+              window.open("https://www.rockefellerfoundation.org/")
+            }
+          />}
+          {footerRes === "CLEAN COOKING" && <img
+            src="static/images/footer_electricity_access.svg"
+            alt="founder"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            onClick={() =>
+              window.open("https://www.rockefellerfoundation.org/")
+            }
+          />}
+          {footerRes === "SUSTAINABLE COOLING" && <img
+            src={"/static/images/footer_sustainable_cooking.svg"}
+            alt="founder"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            onClick={() =>
+              window.open("https://www.rockefellerfoundation.org/")
+            }
+          />}
+          {footerRes === "ENERGY EFFICIENCY" && <img
+            src={"static/images/footer_electricity_access.svg"}
+            alt="founder"
+            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+            onClick={() =>
+              window.open("https://www.rockefellerfoundation.org/")
+            }
+          />}
+          {!footerRes && <img
             src={"/static/images/rf_negative.png"}
             alt="founder"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() =>
               window.open("https://www.rockefellerfoundation.org/")
             }
-          />
+          />}
           <img
             src={"/static/images/dgcs_rettangolare_eng_neg.png"}
             alt="founder"

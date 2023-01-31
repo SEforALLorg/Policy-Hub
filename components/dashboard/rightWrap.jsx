@@ -21,6 +21,7 @@ import BlueButton from "../buttons/blueButton";
 import { RiSearch2Line } from "react-icons/ri";
 import MobileFilters from "../mobileFilters";
 import { useTranslation } from "react-i18next";
+import { changingRightWrapLogo } from '../../constant/changinglogo';
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -274,12 +275,18 @@ const RightWrapPage = ({
         {!showAllReports && (
           <div className="flex items-center pb-[10px]">
             <div className="flex items-center mr-[20px]">
-              <img
-                src="static/images/greenFile.svg"
+            {changingRightWrapLogo.map((key)=>{
+            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
+               return (
+                <img
+                src = {Object.values(key)?.[0]}
                 alt="card"
                 width="70px"
                 height="70px"
               />
+               )
+         }
+          })}
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text">
               {t("ResourcesInput")}

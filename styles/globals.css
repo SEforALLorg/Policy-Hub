@@ -151,6 +151,9 @@ a {
 .header .navbar-nav li {
   text-align: center;
 }
+.header .updatedLogo{
+  width: 180px;
+}
 
 .header .logo {
   width: 100px;
@@ -1246,6 +1249,9 @@ a {
   .header .logo {
     width: 70px;
   }
+  .header .updatedLogo{
+    width: 180px;
+  }
 
   .cardBigHeading {
     font-size: 45px !important;
@@ -1435,6 +1441,10 @@ a {
 
   .header .container-fluid {
     padding: 0px 10px;
+  }
+
+  .header .updatedLogo{
+    width: 180px;
   }
 
   .header .logo {
