@@ -39,14 +39,14 @@ const Report = ({
             />
           )}
 
-          <p className="title font-normal text-[14px] m-0 text-text">{title}</p>
+          <p className="title font-normal text-[14px] m-0 text-text textColor">{title}</p>
         </div>
         {star && (
           <TooltipComponent
             content="Key Publication - Click for more information"
             hideInfo={true}
           >
-            <div>
+            <div className="starIcon">
               <AiFillStar size={26} color={"#FCB600"} />
             </div>
           </TooltipComponent>
@@ -54,7 +54,7 @@ const Report = ({
       </div>
       {description && (
         <p
-          className={`report-description hideDescription ${
+          className={`report-description hideDescription textColor ${
             isActive ? "showDescription" : ""
           }`}
         >
@@ -68,7 +68,7 @@ const Report = ({
             <div className="report-bottom-box">
               <img src={file} alt="flag" />
               <p
-                className={`font-normal text-[14px] m-0 text-text ${
+                className={`font-normal text-[14px] m-0 text-text textColor ${
                   !bigCard && isActive && "innerText"
                 }`}
               >
@@ -81,7 +81,7 @@ const Report = ({
         <>
           <div className="report-bottom-box">
             <p
-              className={`font-normal text-[14px] m-0 text-text ${
+              className={`font-normal text-[14px] m-0 text-text textColor ${
                 !bigCard && isActive && "innerText"
               }`}
               style={{ width: !bigCard && !isActive && "100px" }}
@@ -106,7 +106,7 @@ const Report = ({
         </>
         <div className="report-bottom-box" style={{ width: "50px" }}>
           <p
-            className={`font-normal text-[14px] m-0 text-text ${
+            className={`font-normal text-[14px] m-0 text-text textColor ${
               !bigCard && isActive && "innerText"
             }`}
           >
@@ -122,7 +122,7 @@ const Report = ({
           style={{ width: "38px", justifyContent: "flex-end", flex: "unset" }}
         >
           <p
-            className={`font-normal text-[14px] m-0 text-text ${
+            className={`font-normal text-[14px] m-0 text-text textColor ${
               !bigCard && isActive && "innerText"
             }`}
           >

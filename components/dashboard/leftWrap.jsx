@@ -150,7 +150,7 @@ const LeftWrapPage = ({
             alt="card"
           />
         </div>
-        <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
+        <div className="font-bold text-medium leading-[26px] select-none text-text m-0 textColor">
           {selectedResource}
         </div>
       </div>
@@ -169,7 +169,7 @@ const LeftWrapPage = ({
           >
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
-              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
+              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor">
                 {item?.questionName ||
                   item?.attributes?.MainQuestion?.Question?.data?.attributes
                     ?.Question}
@@ -182,12 +182,12 @@ const LeftWrapPage = ({
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (
         <div
-          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end"
+          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
           onClick={() => onRestart()}
         >
           <VscDebugRestart color={"#065a89"} />
           <p
-            className="text-[14px] ml-[2px] mt-[2px]"
+            className="text-[14px] ml-[2px] mt-[2px] textColor"
             style={{ color: "#065a89" }}
           >
             {t("Restart")}
@@ -240,7 +240,7 @@ const LeftWrapPage = ({
                 <div className={"QuestionWrap"} key={index}>
                   {questionType === "Questionnaire" ? (
                     <>
-                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
+                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
                           <TooltipComponent content={ToolTipText} />
