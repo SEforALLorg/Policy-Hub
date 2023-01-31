@@ -86,13 +86,13 @@ const Customize = ({
          }
           })}
 
-            <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
+            <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0 textColor">
               {t("AssessYourCountry")} 
               {/* {t("Customize")} */}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
-          <div className="customize-title font-bold text-[45px] leading-[54px] select-none text-text px-2.5 mb-[40px] mt-7 pr-20">
+          <div className="customize-title font-bold text-[45px] leading-[54px] select-none text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
             {title}
             {ToolTipText && <TooltipComponent content={ToolTipText} />}
           </div>
@@ -102,7 +102,7 @@ const Customize = ({
                 title={i?.Answer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
-                className="mb-[20px] h-[80px] text-[23px]"
+                className="mb-[20px] h-[80px] text-[23px] "
               />
             ))}
           </div>

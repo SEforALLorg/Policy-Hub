@@ -288,7 +288,7 @@ const RightWrapPage = ({
          }
           })}
             </div>
-            <h5 className="font-bold text-[22px] m-0 text-text">
+            <h5 className="font-bold text-[22px] m-0 text-text textColor">
               {t("ResourcesInput")}
             </h5>
           </div>
@@ -325,13 +325,12 @@ const RightWrapPage = ({
             />
           )}
           <div
-            className={`${
-              isFilter
+            className={`${isFilter
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
-            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
+              } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
               {t("Filters")}
               {optionSelected ? (
                 <button
@@ -462,14 +461,13 @@ const RightWrapPage = ({
             className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons textColor">
               <p>{t("Resources")}</p>
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${
-          disableButtons ? "" : "button-animation"
-        }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+                    }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -487,9 +485,8 @@ const RightWrapPage = ({
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${
-          disableButtons ? "" : "button-animation"
-        }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+                    }`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -585,14 +582,16 @@ const RightWrapPage = ({
                       finalPublicationReports[0]?.attributes?.ReportName
                     ) ? (
                       <>
-                        <div
+                        <div 
+                        className="LineColor"
                           style={{
                             borderBottom:
                               "2.45084px solid rgba(134, 164, 176, 0.25)",
                           }}
                         />
                         <div
-                          style={{
+                        className="LineColor"
+                        style={{
                             marginBottom: 18,
                             marginTop: 3,
                             borderBottom:

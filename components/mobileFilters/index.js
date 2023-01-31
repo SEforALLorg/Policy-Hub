@@ -188,7 +188,7 @@ const MobileFilters = ({
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
             style={{ display: "block" }}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
               Filters
               {optionSelected ? (
                 <button
