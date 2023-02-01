@@ -45,9 +45,6 @@ const LeftWrapPage = ({
 
   useEffect(() => {
     const val = Object.values(userJourney);
-    // if (val?.length === 3) {
-    //   setSubscription(true);
-    // }
     if (val?.length === 1) {
       return setDetailModal(true);
     }
@@ -111,7 +108,7 @@ const LeftWrapPage = ({
     newJourney(data);
   };
 
-  const completeQuestion = questions?.find((item) => item?.id === 11);
+  // const completeQuestion = questions?.find((item) => item?.id === 11);
 
   const onStandaloneClick = () => {
     setNextQuestionId(24);
@@ -126,13 +123,14 @@ const LeftWrapPage = ({
     setIsResetPage(!isResetPage);
   };
 
-  const onMiniClick = () => {
-    setNextQuestionId(18);
+  const onMiniClick = (e) => {
+    const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
+    setNextQuestionId(e?.[0]);
     setUserJourney([
       ...userJourney.splice(0, 2),
       {
         ...completeQuestion,
-        answer: "Mini-grid",
+        answer: e?.[2],
       },
     ]);
     setStepQuestion([]);
@@ -205,7 +203,7 @@ const LeftWrapPage = ({
         <CompletedSteps
           onRestart={() => onRestart()}
           onStandaloneClick={() => onStandaloneClick()}
-          onMiniClick={() => onMiniClick()}
+          onMiniClick={(e) => onMiniClick(e)}
           subcription={subcription}
         />
       )}
