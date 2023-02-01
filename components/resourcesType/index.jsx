@@ -20,25 +20,24 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   };
 
   const changeColor = (e) => {
-    selected(e.target.innerText)
-    switch (e.target.innerText) {
+    selected(e?.target?.innerText)
+    switch (e?.target?.innerText) {
       case "ELECTRICITY ACCESS":
-        localStorage.setItem("ResourceType", "ELECTRICITY ACCESS")
+        localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(baseTheme);
         break;
       case "CLEAN COOKING":
-        localStorage.setItem("ResourceType", "CLEAN COOKING")
+        localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(greenTheme);
         break;
       case "SUSTAINABLE COOLING":
-        localStorage.setItem("ResourceType", "SUSTAINABLE COOLING")
+        localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(darkTheme);
         break;
       case "ENERGY EFFICIENCY":
-        localStorage.setItem("ResourceType", "ENERGY EFFICIENCY")
+        localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(yellowTheme); //blueTheme
         break;
-
       default:
         applyTheme(baseTheme);
         break;

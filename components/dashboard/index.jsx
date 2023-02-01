@@ -65,15 +65,8 @@ const Dashboard = ({
     setIsBigCard(false);
     setClearAll(!isClearAll);
     setIsResource(true)
-    localStorage.removeItem("ResourceType")
-    // let existing = JSON.parse(localStorage.getItem("userInfo"));
-    // let existingJourney = existing?.Journey;
-    //   let journey = {
-    //     ...existingJourney,
-    //   [new Date()]: [],
-    // }
-    // putJourneyStep(journey);
-    setPayload([])
+    setPayload([]);
+    localStorage.removeItem("ResourceType");
     selectedRes(null);
   };
 
