@@ -112,11 +112,15 @@ main {
 }
 
 .resourcesButtonColor{
-  background: var(--theme-yes-button-color) !important;
+  background: var(--theme-star-icon-color) !important;
 }
 
 .borderColor{
  border-color: var(--theme-yes-button-color) !important;
+}
+
+.SlideButtonNo{
+  color: var(--theme-button-text-color) !important;
 }
 
 
@@ -595,12 +599,11 @@ a {
 .SlideButton {
   display: flex;
   align-items: center;
-  background-color: transparent;
   border: none;
-  color: #065A89;
+  color: var(--theme-button-text-color) !important;
   font-weight: 600;
   font-size: 14px;
-  background-color: rgba(19, 166, 191, 0.2);
+  background: var(--theme-button-color) !important;
   padding: 5px 15px;
   border-radius: 20px;
 }
@@ -933,13 +936,13 @@ a {
 }
 
 .go-report-btn {
-  background: rgba(19, 166, 191, 0.2);
+  background: var(--theme-button-color) !important;
   border-radius: 84.554px;
   padding: 5px 10px;
   width: 100px;
   border: none;
   font-size: 10px;
-  color: #13a6bf;
+  color: var(--theme-button-text-color) !important;
   margin-left: 10px;
 }
 
