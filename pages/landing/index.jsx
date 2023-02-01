@@ -3,6 +3,7 @@ import createScrollSnap from "scroll-snap";
 import Footer from "components/footer";
 import Header from "components/header";
 import LandingPage from "components/landingPage";
+import { changingHeaderLogo } from "../../constant/changinglogo";
 
 const Landing = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
@@ -22,6 +23,23 @@ const Landing = () => {
       () => console.log()
     );
   };
+  const [res, setRes] = useState();
+  const [dynamicClass, setDynamicClass] = useState();
+
+  useEffect(() => {
+    switch (res) {
+      case "ELECTRICITY ACCESS":
+        return setDynamicClass("electricity_access");
+      case "CLEAN COOKING":
+        return setDynamicClass("clean_cooking");
+      case "SUSTAINABLE COOLING":
+        return setDynamicClass("Sustainable_cooling");
+      case "ENERGY EFFICIENCY":
+        return setDynamicClass("energy_efficiency");
+      default:setDynamicClass("")
+        break;
+    }
+  }, [res])
 
   useEffect(() => {
     if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
@@ -29,21 +47,20 @@ const Landing = () => {
   }, []);
 
   return (
-    <main id="fullWrap" ref={ref}>
+    <main id="fullWrap" ref={ref} className={dynamicClass} >
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
           <div
-            className={`px-[1rem] py-2 ${
-              !isDashboardOpen ? "header-title-wrap" : ""
-            }`}
+            className={`px-[1rem] py-2 ${!isDashboardOpen ? "header-title-wrap" : ""
+              }`}
           >
-            <Header />
+            <Header selectedRes={res} />
           </div>
           <div>
-            <LandingPage setIsDashboardOpen={setIsDashboardOpen} />
+            <LandingPage setIsDashboardOpen={setIsDashboardOpen} selectedRes={(e) => setRes(e)} />
           </div>
           <div className="pt-[40px]">
-            <Footer />
+            <Footer footerRes={res} />
           </div>
         </div>
       </div>

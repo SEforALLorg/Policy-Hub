@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import SubscribeComponent from "../subscribeComponent";
 import { putJourneyStep, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
+import { changingLeftWrapLogo } from '../../constant/changinglogo';
 
 const LeftWrapPage = ({
   questions,
@@ -142,13 +143,19 @@ const LeftWrapPage = ({
     <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
-          <img
-            className="w-[70px] h-[70px] left-header-image"
-            src="static/images/yellowfile.svg"
-            alt="card"
-          />
+        {changingLeftWrapLogo.map((key)=>{
+            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
+               return (
+                <img
+                className="w-[70px] h-[70px] left-header-image"
+                src = {Object.values(key)?.[0]}
+                alt="card"
+              />
+               )
+         }
+          })}
         </div>
-        <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
+        <div className="font-bold text-medium leading-[26px] select-none text-text m-0 textColor">
           {selectedResource}
         </div>
       </div>
@@ -167,7 +174,7 @@ const LeftWrapPage = ({
           >
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
-              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
+              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor">
                 {item?.questionName ||
                   item?.attributes?.MainQuestion?.Question?.data?.attributes
                     ?.Question}
@@ -180,12 +187,12 @@ const LeftWrapPage = ({
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (
         <div
-          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end"
+          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
           onClick={() => onRestart()}
         >
           <VscDebugRestart color={"#065a89"} />
           <p
-            className="text-[14px] ml-[2px] mt-[2px]"
+            className="text-[14px] ml-[2px] mt-[2px] textColor"
             style={{ color: "#065a89" }}
           >
             {t("Restart")}
@@ -238,7 +245,7 @@ const LeftWrapPage = ({
                 <div className={"QuestionWrap"} key={index}>
                   {questionType === "Questionnaire" ? (
                     <>
-                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
+                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
                           <TooltipComponent content={ToolTipText} />

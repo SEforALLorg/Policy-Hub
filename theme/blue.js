@@ -6,6 +6,6 @@ const blueTheme = createTheme({
     primaryActveButton: "#004c66",
     primary: "#13A2BC",
     secondary: "#FCB600",
-    textBase: "white"
+    textBase: "white",
    });
    export default blueTheme;

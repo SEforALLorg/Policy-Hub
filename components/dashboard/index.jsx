@@ -14,6 +14,8 @@ const Dashboard = ({
   isFetchingQuestions,
   setIsBigCard,
   resources,
+  selectedRes,
+  
 }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [isResource, setIsResource] = useState(true);
@@ -65,6 +67,7 @@ const Dashboard = ({
     setIsResource(true)
     setPayload([]);
     localStorage.removeItem("ResourceType");
+    selectedRes(null);
   };
 
   const onReportFind = (e) => {
@@ -133,7 +136,6 @@ const Dashboard = ({
       }
     }
   }, [newJourneyData]);
-
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -185,7 +187,10 @@ const Dashboard = ({
         <>
             <Resources
               resourcesData={resources}
-              selected={(e)=>setSelectedResource(e)}
+              selected={(e)=>{
+                setSelectedResource(e);
+                selectedRes(e);
+              }}
               onYes={() => setIsResource(false)}
               onNextQuestionId={onNextQuestionId}
             />

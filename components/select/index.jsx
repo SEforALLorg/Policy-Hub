@@ -56,8 +56,7 @@ const Select = ({
   const active = isOpen === title || selectedOption?.length;
   return (
     <div
-      className="selectWrap"
-      style={{ border: active ? "2px solid #13A2BC" : "2px solid #fff" }}
+      className={`${"selectWrap"} ${active ? "borderColor" : "selectWrap"}`}
     >
       <div
         onClick={toggling}

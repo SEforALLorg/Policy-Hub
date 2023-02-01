@@ -7,7 +7,7 @@ import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
 import { getResourses, landingPage } from "../../utilities/index.jsx";
 
-const LandingPage = ({ setIsDashboardOpen }) => {
+const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
   const [goBottom, setGoBottom] = useState(false);
@@ -84,6 +84,8 @@ const LandingPage = ({ setIsDashboardOpen }) => {
               isFetchingQuestions={isFetchingQuestions}
               setIsBigCard={setIsBigCard}
               resources={resources}
+              selectedRes={selectedRes}
+              footerRes={footerRes}
             />
           </div>
         ) : null}
