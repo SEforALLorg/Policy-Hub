@@ -32,6 +32,7 @@ const MobileFilters = ({
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
+  const [resourceType, setResourceType] = useState();
   const debouncedSearch = useDebounce(search, 500);
 
   typeof window !== "undefined" &&
@@ -115,6 +116,7 @@ const MobileFilters = ({
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
+    setResourceType(localStorage.getItem("ResourceType"));
   }, [allReports, typeof window !== "undefined" && window]);
 
   const onSearch = (e) => {
@@ -273,7 +275,7 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              <Select
+              {resourceType && resourceType === "ELECTRICITY ACCESS" &&  <Select
                 title={t("GenerationSource")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -285,8 +287,33 @@ const MobileFilters = ({
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
-              />
-
+              />} 
+              {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
+                title={t("Sector")}
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+                options={getFormattedData(filters?.sector)}
+                onChange={(e) => onChange(e)}
+                selected={selectInputs?.sector}
+                name={"sector"}
+                top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
+              />}
+              {resourceType === "CLEAN COOKING" && <Select
+                title={t("Fuel")}
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+                options={getFormattedData(filters?.fuel)}
+                onChange={(e) => onChange(e)}
+                selected={selectInputs?.fuel}
+                name={"fuel"}
+                top={true}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+                isClearAll={isClearAll}
+              />}
               <div className="apply-wrap">
                 <button
                   type="button"
