@@ -19,7 +19,7 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
         {buttonOptions.map((key)=>{
           if(resourceType && resourceType === Object.keys(key)?.[0]){
             return Object.values(key).map((items)=>{
-              return Object.entries(items).map((item)=>{console.log(item,"item")
+              return Object.entries(items).map((item)=>{
                 return (
                   <div className="restartWrap" onClick={() => onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0]])}>
                     <img
