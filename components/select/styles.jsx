@@ -42,9 +42,9 @@ export const DropDownList = styled.ul`
 `;
 
 export const Span = styled.span`
-  background: ${prop => prop.selectedOption ? '#2e9fc7' : 'white'};
+  background: ${prop => prop.selectedOption ? "var(--theme-yes-button-color)": 'white'};
   margin-right: 10px;
-  border:  ${prop => prop.selectedOption ? '1px solid #2e9fc7' : '1px solid'} ;
+  border:  ${prop => prop.selectedOption ? "var(--theme-yes-button-color)" : '1px solid'} ;
   display: inline-block;
   height: 13px;
   width: 13px;

@@ -466,7 +466,7 @@ const RightWrapPage = ({
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor  resources-button ${disableButtons ? "" : "button-animation"
                     }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
@@ -485,7 +485,7 @@ const RightWrapPage = ({
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resources-button ${disableButtons ? "" : "button-animation"
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button ${disableButtons ? "" : "button-animation"
                     }`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}

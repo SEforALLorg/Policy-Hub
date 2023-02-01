@@ -111,6 +111,14 @@ main {
   color: var(--theme-yes-button-color) !important;
 }
 
+.resourcesButtonColor{
+  background: var(--theme-yes-button-color) !important;
+}
+
+.borderColor{
+ border-color: var(--theme-yes-button-color) !important;
+}
+
 
 
 @font-face {
@@ -739,6 +747,7 @@ a {
   cursor: pointer;
   position: relative;
   box-sizing: border-box;
+  border: 2px solid #fff;
 }
 
 .selectListItem {
@@ -764,12 +773,12 @@ a {
 }
 
 .selectListItem:hover {
-  background: #2596be;
+  background: var(--theme-yes-button-color);
   color: #fff;
 }
 
 .selectListItem:hover span {
-  border: 1px solid white;
+  border: 1px solid var(--theme-yes-button-color);
 }
 
 .selectListItem input {
@@ -807,11 +816,11 @@ a {
 }
 
 .report-card:hover {
-  border: 3.67626px solid #065a89;
+  border: 3.67626px solid var(--theme-yes-button-color);
 }
 
 .report-card.active {
-  border: 3.67626px solid #065a89;
+  border: 3.67626px solid var(--theme-yes-button-color);
 }
 
 .videoCard {
@@ -895,7 +904,7 @@ a {
   left: 50%;
   top: 30px;
   transform: translateX(-50%);
-  background: #065a89;
+  background: var(--theme-yes-button-color);
   border-radius: 3.83823px;
   z-index: 999;
   padding: 9px;
@@ -914,7 +923,7 @@ a {
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent #065a89 transparent;
+  border-color: transparent transparent var(--theme-yes-button-color) transparent;
 }
 
 .report-bottom-box:hover .content {
@@ -1053,7 +1062,7 @@ a {
   left: 50%;
   top: 30px;
   transform: translateX(-50%);
-  background: #065a89;
+  background: var(--theme-yes-button-color);
   border-radius: 3.83823px;
   z-index: 999;
   padding: 9px;
@@ -1070,7 +1079,7 @@ a {
 }
 
 .tooltipWrap .content.top::after {
-  border-color: #065a89 transparent transparent transparent;
+  border-color: var(--theme-yes-button-color) transparent transparent transparent;
   top: unset;
   bottom: -16px;
 }
@@ -1083,7 +1092,7 @@ a {
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent #065a89 transparent;
+  border-color: transparent transparent var(--theme-yes-button-color) transparent;
 }
 
 .customize-header {
@@ -1253,6 +1262,7 @@ a {
 .clear-filter-button {
   z-index: 999999999;
   position: relative;
+  background: var(--theme-yes-button-color) !important;
 }
 
 .cookies-wrap {
