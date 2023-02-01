@@ -23,7 +23,23 @@ const Landing = () => {
       () => console.log()
     );
   };
-  const[res ,setRes] =useState();
+  const [res, setRes] = useState();
+  const [dynamicClass, setDynamicClass] = useState();
+
+  useEffect(() => {
+    switch (res) {
+      case "ELECTRICITY ACCESS":
+        return setDynamicClass("electricity_access");
+      case "CLEAN COOKING":
+        return setDynamicClass("clean_cooking");
+      case "SUSTAINABLE COOLING":
+        return setDynamicClass("Sustainable_cooling");
+      case "ENERGY EFFICIENCY":
+        return setDynamicClass("energy_efficiency");
+      default:setDynamicClass("")
+        break;
+    }
+  }, [res])
 
   useEffect(() => {
     if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
@@ -31,15 +47,14 @@ const Landing = () => {
   }, []);
 
   return (
-    <main id="fullWrap" ref={ref} className={`${res === "ELECTRICITY ACCESS" && "electricity_access"} ${res === "CLEAN COOKING" && "clean_cooking"} ${res === "SUSTAINABLE COOLING" && "Sustainable_cooling"} ${res === "ENERGY EFFICIENCY" && "energy_efficiency"}`} >
+    <main id="fullWrap" ref={ref} className={dynamicClass} >
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
           <div
-            className={`px-[1rem] py-2 ${
-              !isDashboardOpen ? "header-title-wrap" : ""
-            }`}
+            className={`px-[1rem] py-2 ${!isDashboardOpen ? "header-title-wrap" : ""
+              }`}
           >
-            <Header selectedRes={res}/>
+            <Header selectedRes={res} />
           </div>
           <div>
             <LandingPage setIsDashboardOpen={setIsDashboardOpen} selectedRes={(e) => setRes(e)} />
