@@ -66,3 +66,28 @@ export const videosCard = [
       "Solar-Powered Mini-Grids Bring Security and New Economic Opportunities in Ghana",
   },
 ];
+
+export const buttonOptions = [
+  {"ELECTRICITY ACCESS": {
+    "MiniGrid" : [18,"static/images/mini-grid.png",11],
+    "StandaloneSystems": [24,"static/images/solaroutline.png",11]
+  }},
+  {"CLEAN COOKING": {
+    "Policy and institutional framework" : [51,"static/images/mini-grid.png",35],
+    "Regulations and Standards" : [58,"static/images/mini-grid.png",35],
+    "Market development and financing": [63,"static/images/mini-grid.png",35],
+    "Awareness raising": [68,"static/images/mini-grid.png",35]
+  }},
+  {"SUSTAINABLE COOLING" : {
+    "Thermal comfort and safety": [76,"static/images/mini-grid.png",54],
+    "Food & agricultural cold chains": [85,"static/images/mini-grid.png",54],
+    "Healthcare and medical cold chains":[93,"static/images/mini-grid.png",54]
+  }},
+  {"ENERGY EFFICIENCY": {
+    "Buildings":[108,"static/images/mini-grid.png",82],
+    "Industry":[116,"static/images/mini-grid.png",82],
+    "Transport/ Mobility":[126,"static/images/mini-grid.png",82],
+    "Products / Appliances":[136,"static/images/mini-grid.png",82],
+    "Utilities":[146,"static/images/mini-grid.png",82],
+    "Energy efficiency services":[155,"static/images/mini-grid.png",82]}},
+]

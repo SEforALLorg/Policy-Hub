@@ -48,20 +48,6 @@ const Customize = ({
       }
       putJourneyStep(journey);
     }
-    // if (count && count > 1) {
-    //   let existing = JSON.parse(localStorage.getItem("userInfo"));
-    //   let existingJourney = existing.Journey;
-    //   let journey = {
-    //     ...existingJourney,
-    //     [new Date()]: [payload],
-    //   }
-    //   putJourneyStep(journey);
-    // } else if (count && count === 1) {
-    //   let journey = {
-    //     [new Date()]: [payload],
-    //   }
-    //   putJourneyStep(journey);
-    // }
   };
 
   return (
