@@ -13,17 +13,38 @@ body {
 }
 
 body {
-  background-image: url("/static/images/BG.png");
-  background-color: var(--theme-back-ground) !important;
-  background-attachment: fixed;
-  background-size: 100%;
-  overflow: hidden;
+  background: var(--theme-back-ground) !important;
   /* backdrop-filter: brightness(0.5); */
 }
 
 main {
+  background-image: url("/static/images/BG.png");
+  background-attachment: fixed;
+  background-size: 100%;
+  overflow: hidden;
   overflow: auto !important;
   height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.electricity_access{
+  background-image: url("/static/images/BG.png");
+  background-size: cover; 
+}
+
+.clean_cooking{
+  background-image: url("/static/images/clean_cooking_bg.png");
+  background-size: cover; 
+}
+
+.Sustainable_cooling{
+  background-image: url("/static/images/Sustainable_bg.png");
+  background-size: cover; 
+}
+
+.energy_efficiency{
+  background-image: url("/static/images/energy_efficiency_bg.png");
+  background-size: cover; 
 }
 
 
@@ -54,7 +75,7 @@ main {
 }
 
 .footer .mediaIconBorderColor{
-  border: 1px solid var(--theme-media-icon-color) !important;
+  border-color: var(--theme-media-icon-color) !important;
   color: var(--theme-media-icon-color) !important;
 }
 
@@ -88,7 +109,6 @@ main {
 
 .restartIconColor p{
   color: var(--theme-yes-button-color) !important;
-
 }
 
 
@@ -1781,6 +1801,7 @@ a {
   main {
     height: 100%;
     overflow-x: hidden !important;
+    background-size: cover;
   }
 
   body {
@@ -2278,7 +2299,8 @@ a {
   }
 
   .header .container-fluid {
-    padding: 0px 15px !important;
+    padding: 0px 0px !important;
+    flex-wrap: unset !important;
   }
 
   .header .navbar-toggler {
@@ -2594,6 +2616,7 @@ a {
 
   main {
     height: 100% !important;
+    background-size: cover;
   }
 
   .inner-section-content {

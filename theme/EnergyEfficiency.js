@@ -1,7 +1,7 @@
 import { createTheme } from "./utils";
 
 const yellowTheme = createTheme({
-    backGround: "#ffb433",
+    backGround: "#2808A7",
     primaryButton: "#fff",
     primaryActveButton: "#fff",
     primary: "#13A2BC",

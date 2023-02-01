@@ -3,6 +3,7 @@ import createScrollSnap from "scroll-snap";
 import Footer from "components/footer";
 import Header from "components/header";
 import LandingPage from "components/landingPage";
+import { changingHeaderLogo } from "../../constant/changinglogo";
 
 const Landing = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
@@ -30,7 +31,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <main id="fullWrap" ref={ref}>
+    <main id="fullWrap" ref={ref} className={`${res === "ELECTRICITY ACCESS" && "electricity_access"} ${res === "CLEAN COOKING" && "clean_cooking"} ${res === "SUSTAINABLE COOLING" && "Sustainable_cooling"} ${res === "ENERGY EFFICIENCY" && "energy_efficiency"}`} >
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
           <div

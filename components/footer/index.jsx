@@ -166,7 +166,7 @@ const Footer = ({footerRes}) => {
           </UncontrolledDropdown>
         </div>
       </div>
-      <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
+      <div className="border-b-[1.6px] border-white w-full my-[15px] mediaIconBorderColor"></div>
       <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[12px] pb-[12px] footer-center-wrap">
         <div
           className="flex w-full items-center small:flex  xsm:mt-6 xsm:block
@@ -226,7 +226,7 @@ const Footer = ({footerRes}) => {
           />
         </div>
       </div>
-      <div className="border-b-[1.6px] border-white w-full my-[15px]"></div>
+      <div className="border-b-[1.6px] border-white w-full my-[15px] mediaIconBorderColor"></div>
       <div className="flex w-full items-center justify-between xsm:flex-wrap laptop:flex-nowrap pt-[20px] pb-[20px] mt-[10px] footer-bottom-wrap footerText">
         <p className="font-medium xsm:text-xx extrasmall:text-xsmall text-white leading-4 w-full  xsm:text-center laptop:text-left m-[0px]">
           {t("WebDevelopmentby")}{" "}

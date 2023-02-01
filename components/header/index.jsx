@@ -47,25 +47,25 @@ const Header = ({selectedRes}) => {
           {selectedRes === "CLEAN COOKING" && <img
             src="static/images/clean_cooking.svg"
             alt="logo"
-            className=" cursor-pointer"
+            className=" cursor-pointer updatedLogo"
             onClick={() => window.open("https://www.seforall.org/")}
           />}
           {selectedRes === "SUSTAINABLE COOLING" && <img
             src={"/static/images/sustainable_cooling.svg"}
             alt="logo"
-            className=" cursor-pointer"
+            className=" cursor-pointer updatedLogo"
             onClick={() => window.open("https://www.seforall.org/")}
           />}
           {selectedRes === "ENERGY EFFICIENCY" && <img
             src={"/static/images/energy_efficiency.svg"}
             alt="logo"
-            className=" cursor-pointer"
+            className=" cursor-pointer updatedLogo"
             onClick={() => window.open("https://www.seforall.org/")}
           />}
           {!selectedRes && <img
             src={"/static/images/SEforALL_Logo_White.png"}
             alt="logo"
-            className="logo cursor-pointer"
+            className="logo cursor-pointer "
             onClick={() => window.open("https://www.seforall.org/")}
           />}
         </NavbarBrand>
