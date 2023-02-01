@@ -36,7 +36,7 @@ export const DropDownList = styled.ul`
   }
    
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(19,166,191,0.2);
+    background: var(--theme-button-color);
     border-radius: 10px;
   }
 `;
