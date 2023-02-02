@@ -123,6 +123,10 @@ main {
   color: var(--theme-button-text-color) !important;
 }
 
+.ButtonBox .buttonStyle{
+  padding: 15px !important;
+}
+
 
 
 @font-face {
