@@ -120,6 +120,8 @@ const RightWrapPage = ({
     document_types: selectInputs?.document_types,
     years: selectInputs?.years,
     generation_sources: selectInputs?.generation_sources,
+    sector: selectInputs?.sector,
+    fuel: selectInputs?.fuel,
   };
   const onDownload = () => {
     setCsvData("");
