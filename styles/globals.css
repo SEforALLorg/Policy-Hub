@@ -67,7 +67,7 @@ main {
 }
 
 .starIcon svg{
-  color: var(--theme-star-icon-color) !important;
+  fill: var(--theme-star-icon-color) !important;
 }
 
 .mediaIconColor{
@@ -121,6 +121,10 @@ main {
 
 .SlideButtonNo{
   color: var(--theme-button-text-color) !important;
+}
+
+.ButtonBox .buttonStyle{
+  padding: 15px !important;
 }
 
 
