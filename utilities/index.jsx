@@ -82,6 +82,16 @@ export const getReportQuery = (
             $in: selectInputs?.generation_sources,
           },
         },
+        sectors: {
+          id: {
+            $in: selectInputs?.sector,
+          },
+        },
+        fuels: {
+          id: {
+            $in: selectInputs?.fuel,
+          },
+        },
       },
     },
   });
@@ -94,7 +104,9 @@ export const isSelectedInput = (selectInputs) => {
     selectInputs?.countries?.length ||
     selectInputs?.segments?.length ||
     selectInputs?.document_types?.length ||
-    selectInputs?.years?.length ||
+    selectInputs?.years?.length || 
+    selectInputs?.sector?.length || 
+    selectInputs?.fuel?.length ||
     selectInputs?.generation_sources?.length;
   return optionSelected;
 };

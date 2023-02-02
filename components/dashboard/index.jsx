@@ -39,6 +39,8 @@ const Dashboard = ({
     generation_sources: [],
     co_authors: [],
     publishing_organizations: [],
+    sector: [],
+    fuel: [],
   });
   // const [latestDate, setLatestDate] = useState();
   const [latestJourney, setLatestJourney] = useState();
@@ -53,6 +55,8 @@ const Dashboard = ({
       generation_sources: [],
       co_authors: [],
       publishing_organizations: [],
+      sector: [],
+      fuel: [],
     });
     setClearAll(!isClearAll);
   };
