@@ -67,7 +67,7 @@ main {
 }
 
 .starIcon svg{
-  color: var(--theme-star-icon-color) !important;
+  fill: var(--theme-star-icon-color) !important;
 }
 
 .mediaIconColor{
