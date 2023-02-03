@@ -23,8 +23,6 @@ const Report = ({
 }) => {
   const { t, i18n } = useTranslation();
   const countTooltip = bigCard ? 30 : 10;
-  
-  {console.log(selectedRes, "ENERGY EFFICIENCY")}
   return (
     <div
       key={key}

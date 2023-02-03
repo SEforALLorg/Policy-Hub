@@ -118,9 +118,8 @@ const TopCard = ({ HandleOpen }) => {
         <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}
           <span className="text-Secondary px-[6px]"> {t("Energy")} </span>
-          {t("forAll")} 
-           <br className="brHome" />
-          <span className="text-Primary pl-[6px]"> {t("Knowledge")}</span>{" "}
+          {/* {t("forAll")}  */}
+          <span className="text-Primary pl-[6px]"> {t("Policy")}</span>{" "}
           {t("Hub")}
         </h5>
       </div>
