@@ -605,6 +605,7 @@ const RightWrapPage = ({
                               onClick={() => onReportClick(i?.id)}
                               isActive={activeCard === i?.id}
                               description={description}
+                              selectedRes={resourceType}
                             />
                           );
                         })}
@@ -666,7 +667,8 @@ const RightWrapPage = ({
                             isActive={activeCard === i?.id}
                             bigCard={showAllReports}
                             description={description}
-                          />
+                            selectedRes={resourceType}
+                            />
                         );
                       })}
                   </>
