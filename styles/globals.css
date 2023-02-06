@@ -940,6 +940,44 @@ a {
   transition: all 0.2s;
 }
 
+
+.report-bottom-box .contentNew {
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  box-shadow: 0px 0px 8px -4px #000;
+  position: absolute;
+  left: 69%;
+  top: 30px;
+  transform: translateX(-50%);
+  background: var(--theme-yes-button-color);
+  border-radius: 3.83823px;
+  z-index: 999;
+  padding: 9px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 20px;
+  filter: drop-shadow(5px 5px 12px rgba(31, 99, 148, 0.25));
+}
+
+.report-bottom-box .contentNew::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 30%;
+  margin-left: -5px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--theme-yes-button-color) transparent;
+}
+
+.report-bottom-box:hover .contentNew {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
 .go-report-btn {
   background: var(--theme-button-color) !important;
   border-radius: 84.554px;

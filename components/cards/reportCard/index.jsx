@@ -109,7 +109,7 @@ const Report = ({
                 : "--"}
             </p>
             {area?.length > 2 || !bigCard ? (
-              <div className={"content"}>
+              <div className={countryName ? "content" : "contentNew"}>
                 {area?.map(
                   (i, index) =>
                     (index === 0 ? "" : ", ") + i?.attributes?.DocumentType
