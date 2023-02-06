@@ -483,9 +483,10 @@ a {
 }
 
 .restartWrap {
-  width: 120px;
-  height: 120px;
+  width: 30%;
+  height: 140px;
   margin: 5px 6px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -502,8 +503,8 @@ a {
 
 .restartWrap p {
   font-weight: normal;
-  font-size: 13px;
-  line-height: 22px;
+  font-size: 12px;
+  /* line-height: 22px; */
   text-align: center;
   text-transform: uppercase;
   color: var(--theme-yes-button-color);
@@ -1470,7 +1471,7 @@ a {
   }
   .reportRightWrap {
     /* height: calc(86vh - 100px); */
-    overflow: hidden auto;
+    /* overflow: hidden auto; */
   }
 
   .leftQBox{
@@ -1784,12 +1785,12 @@ a {
 
   .complete-buttons-wrap {
     flex-wrap: wrap;
-    justify-content: space-around !important;
+    /* justify-content: space-around !important; */
   }
 
   .restartWrap {
-    width: 100px;
-    height: 100px;
+    width: 31%;
+    height: 140px;
     margin-bottom: 20px !important;
   }
 
@@ -3148,4 +3149,12 @@ a {
   background: #232323;
   transition: all 0.1s ease;
   color: #f0f0f0;
+}
+
+
+@media screen and (max-width: 992px) {
+  .restartWrap{
+    width: 40%;
+  }
+  
 }

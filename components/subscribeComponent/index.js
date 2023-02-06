@@ -45,7 +45,7 @@ const SubscribeComponent = ({subcription}) => {
   };
   return (
     <>
-      {!subcription && <div className="w-full">
+      {!subcription && <div className="w-full flex flex-col items-center">
       <div className="flex items-center justify-center mt-[10px] SubscribeIconColor">
         <FaEnvelopeOpenText size={50} className={"text-Primary"} />
       </div>
@@ -54,7 +54,7 @@ const SubscribeComponent = ({subcription}) => {
           {t("SubscribeNewsletter")}
         </p>
       </div>
-      <div className="text-white flex items-center justify-center">
+      <div className="text-white flex items-center justify-center w-full">
         <PrimaryButton
           title={t("Subscribe")}
           className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-70 laptop:w-70 rounded-full h-[45px] text-center font-bold  text-small leading-5 uppercase  outline-none no-underline no-underline
