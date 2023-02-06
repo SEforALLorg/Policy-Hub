@@ -12,8 +12,8 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
       <h5 className="font-bold text-[30px] text-center capitalize text-text process-text textColor">
         {t("Processcompleted")}
       </h5>
-      <div className="flex flex-wrap items-center justify-center	 complete-buttons-wrap">
-        <div className="restartWrap" onClick={onRestart}>
+      <div className="flex flex-wrap justify-center	complete-buttons-wrap">
+        <div className="restartWrap" onClick={onRestart} style={{display: changingRestartLogo === length ? "" : "flex"}}>
         {changingRestartLogo.map((key)=>{
             if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
                return (
@@ -24,7 +24,7 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
                )
          }
           })}
-          <p>{t("Restart")}</p>
+          <p style={{fontSize: 16}}>{t("Restart")}</p>
         </div>
         {buttonOptions.map((key)=>{
           if(resourceType && resourceType === Object.keys(key)?.[0]){
