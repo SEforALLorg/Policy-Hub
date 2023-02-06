@@ -30,6 +30,7 @@ const Dashboard = ({
   const [newJourneyData, setNewJourneyData] = useState([]);
   const [payload, setPayload] = useState([]);
   const [selectedResource, setSelectedResource] = useState();
+  console.log(selectedResource, "====>>")
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
