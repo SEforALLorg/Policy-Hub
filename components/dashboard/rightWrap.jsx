@@ -192,6 +192,7 @@ const RightWrapPage = ({
       setPreviousReports([]);
     }
     setResourceType(localStorage.getItem("ResourceType"));
+    document.getElementById("rightWrap").scrollTo(0,0);
   }, [allReports, typeof window !== "undefined" && window]);
 
   const reports = showAllReports ? previousReports : finalNonPublicationReports;
@@ -544,7 +545,7 @@ const RightWrapPage = ({
                 />
               ) : null}
             </h5>
-            <div className="rightInnerWrap" onScroll={(e) => onScroll(e)}>
+            <div id = "rightWrap" className="rightInnerWrap" onScroll={(e) => onScroll(e)}>
               <div className="relative mr-[0px] w-[100%] inline-block">
                 {isFetchingReports && !isScrollLoader ? (
                   <div className="flex items-center justify-center h-[100%]">

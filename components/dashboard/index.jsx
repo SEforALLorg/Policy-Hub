@@ -121,7 +121,7 @@ const Dashboard = ({
                 return prev[String(existingDate)] = data;
               }
             })
-            console.log(prev,'prev122');
+            // console.log(prev,'prev122');
             putJourneyStep(prev);
           }
         } else {  
