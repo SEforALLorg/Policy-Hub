@@ -149,19 +149,6 @@ const About = () => {
             .
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px] center-content">
-            {t("Developers")}
-          </p>
-          <p className="not-italic font-normal center-content  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
-            {t("DevelopedBy")}{" "}
-            <span
-              className="text-Primary hover:underline cursor-pointer"
-              onClick={() => window.open("https://www.keymouseit.com/")}
-            >
-               KeyMouse IT Services Pvt. Ltd 
-            </span>
-            {t("BasedInIndia")}
-          </p>
-          <p className="font-bold text-text mb-[3px] text-[20px] center-content">
             {t("Contributors")}
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
@@ -176,6 +163,19 @@ const About = () => {
             <b> Dr. Moeketsi Mpholo</b>,{t("NationalUniversity")}
             <b> Jessica Stephens</b>,{t("AMDA")}
             <b> Nasir Ibrahim</b>,{t("Electrification")}
+          </p>
+          <p className="font-bold text-text mb-[3px] text-[20px] center-content">
+            {t("Developers")}
+          </p>
+          <p className="not-italic font-normal center-content  xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+            {t("DevelopedBy")}{" "}
+            <span
+              className="text-Primary hover:underline cursor-pointer"
+              onClick={() => window.open("https://www.keymouseit.com/")}
+            >
+               KeyMouse IT Services Pvt. Ltd 
+            </span>
+            {t("BasedInIndia")}
           </p>
           <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 text-justify xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-4">
             {t("OrganizationsHighlighted")}
