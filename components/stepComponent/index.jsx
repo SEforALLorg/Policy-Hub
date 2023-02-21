@@ -15,6 +15,7 @@ const StepComponent = ({
 }) => { 
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
+  const [overFlow, setOverFlow] = useState(false);
 
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
@@ -76,7 +77,7 @@ const StepComponent = ({
         {/* <span>{stepCount}.</span> */}
         {title} {ToolTipText && <TooltipComponent content={ToolTipText} />}
       </p>
-      <div className="OptionsWrap">
+      <div className="OptionsWrap" style={{overflow: overFlow && 'unset'}}>
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
           return (
@@ -87,7 +88,7 @@ const StepComponent = ({
             >
               <RadioButton checked={optionData?.id === i?.id} />
               <p>{i?.Answer}</p>
-              {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer}/>}
+              {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
             </div>
           );
         })}
