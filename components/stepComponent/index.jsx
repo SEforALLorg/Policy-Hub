@@ -87,6 +87,7 @@ const StepComponent = ({
             >
               <RadioButton checked={optionData?.id === i?.id} />
               <p>{i?.Answer}</p>
+              {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer}/>}
             </div>
           );
         })}
