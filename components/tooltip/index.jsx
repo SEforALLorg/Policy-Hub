@@ -1,13 +1,14 @@
-import React, { useRef } from "react";
+import React from "react";
 import { FiInfo } from "react-icons/fi";
+import { Tooltip } from "react-tooltip";
 
-const TooltipComponent = ({ content, children, hideInfo , top, hideContent, answer, onHoverStart, onHoverEnd}) => {
-  const hoverRef = useRef();
+const TooltipComponent = ({ content, children, hideInfo , top, hideContent, customizeStyle, id}) => {
   return (
-    <div ref={hoverRef} onMouseEnter={()=>{answer ? onHoverStart() : console.log(hoverRef.current)}} onMouseLeave={()=>{answer && onHoverEnd()}} className="tooltipWrap" style={{ cursor: hideContent ? "" : "pointer"  }}>
+    <div className={`my-anchor-element-${id} tooltipWrap`} style={{ cursor: hideContent ? "" : "pointer"  }}>
       {hideInfo ? null : <div className="tooltipIcon"><FiInfo /></div>}
       {children}
-      {hideContent ? '' : <div className={`content ${top ? 'top' : ''} ${answer?.length < 25 && "customizeTooltip"}`}>{content}</div>}
+      {/* {hideContent ? '' : <div className={`content ${top ? 'top' : ''} ${answer?.length < 25 && "customizeTooltip"}`}>{content}</div>} */}
+      {hideContent ? '' : <Tooltip className={ customizeStyle ? customizeStyle : "tooltip_content" } anchorSelect={`.my-anchor-element-${id}`} clickable={false} place="left">{content}</Tooltip>}
     </div>
   );
 };
