@@ -903,6 +903,31 @@ a {
   margin-right: 8px;
 }
 
+.report-bottom-box .tooltip_content{
+  background: var(--theme-yes-button-color);
+  width: 170px;
+  z-index: 999;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 20px;
+  box-shadow: 0px 0px 8px -4px #000;
+  opacity: 1;
+}
+
+.customize-title .tooltipWrap  .customizeStyle{
+  background: var(--theme-yes-button-color);
+  width: 500px;
+  z-index: 999;
+  font-size: 25px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 25px;
+  box-shadow: 0px 0px 8px -4px #000;
+  opacity: 1;
+}
+
+
 .report-bottom-box .content {
   visibility: hidden;
   opacity: 0;
@@ -1099,13 +1124,25 @@ a {
   font-size: 17px;
 }
 
+.tooltipWrap .tooltip_content{
+  background: var(--theme-yes-button-color);
+  width: 250px;
+  z-index: 999;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 20px;
+  box-shadow: 0px 0px 8px -4px #000;
+  opacity: 1;
+}
+
 .tooltipWrap .content {
   visibility: hidden;
   opacity: 0;
   width: 250px;
   box-shadow: 0px 0px 8px -4px #000;
   position: absolute;
-  left: -7rem;
+  left: 5rem;
   top: 30px;
   transform: translateX(-50%);
   background: var(--theme-yes-button-color);
@@ -1134,7 +1171,7 @@ a {
   content: "";
   position: absolute;
   top: -16px;
-  left: 14rem;
+  left: 3rem;
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
@@ -1295,6 +1332,7 @@ a {
   line-height: 35px;
   top: 41px;
   padding: 15px;
+  left: 13rem;
 }
 
 .landingButton button {

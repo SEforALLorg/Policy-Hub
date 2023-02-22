@@ -508,6 +508,7 @@ const RightWrapPage = ({
                     hideInfo={true}
                     top={true}
                     hideContent={disableButtons}
+                    id={'download'}
                   >
                     <div className="flex download-button-inner">
                       {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
@@ -527,6 +528,7 @@ const RightWrapPage = ({
                     hideInfo={true}
                     top={true}
                     hideContent={disableButtons}
+                    id={'email'}
                   >
                     <div className="flex">
                       {" "}

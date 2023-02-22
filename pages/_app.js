@@ -5,6 +5,7 @@ import Head from "next/head";
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
+import 'react-tooltip/dist/react-tooltip.css'
 import "../I18n";
 import { useTranslation } from "react-i18next";
 import { Cookies } from "react-cookie";
