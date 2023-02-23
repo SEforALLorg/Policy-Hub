@@ -58,7 +58,7 @@ main {
 }
 
 .tooltipIcon svg {
-  color: var(--theme-tooltip-icon-color) !important;
+  color: var(--theme-yes-button-color) !important;
 }
 
 .LineColor{

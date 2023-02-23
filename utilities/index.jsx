@@ -98,6 +98,23 @@ export const getReportQuery = (
   return query;
 };
 
+export const getResourcesQuery = (
+  id,
+) => {
+  if (!id) return null;
+  const query = qs.stringify({
+    filters: {
+      resources: {
+        id: {
+          $in: id,
+        },
+      },
+      
+    },
+  });
+  return query;
+};
+
 export const isSelectedInput = (selectInputs) => {
   const optionSelected =
     selectInputs?.regions?.length ||

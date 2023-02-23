@@ -1,16 +1,56 @@
 import React, { useEffect, useState } from "react";
-
+import { useQuery } from "react-query";
 import { videosCard } from "constant";
 import StartButton from "components/buttons/startButton";
 
 import VideoCard from "./components/video";
 import OtherToolsCard from "./components/otherTools";
 import { useTranslation } from "react-i18next";
+import { filterResources, getAllResources } from "../../pages/api/resources";
+import { ErrorNotify } from "components/notification";
+import { getResourcesQuery } from "../../utilities";
 
 const Feature = () => {
   const [isVideoCard, setIsVideoCard] = useState("");
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
+  const [query, setQuery] = useState();
+  const [allResources, setAllResources] = useState();
+
+  const { data: data} = useQuery(
+    ["getAllResources"],
+    getAllResources,
+    {
+      onError: (error) => {
+        ErrorNotify(error?.response?.data?.error?.message);
+      },
+    }
+  );
+
+  useEffect(()=>setAllResources(data?.data?.data),[data])
+
+  const { data: filteredCards, refetch} = useQuery(
+    ["filterResources", query],
+    () => filterResources(query),
+    {
+      onError: (error) => {
+        ErrorNotify(error?.response?.data?.error?.message);
+      },
+    }
+  );
+
+  useEffect(()=>setAllResources(filteredCards?.data?.data),[filteredCards]);
+
+  useEffect(() => {
+    if(query) {
+      refetch();
+    }
+  },[query])
+
+  const filterData = (type) =>{
+    const query = getResourcesQuery(type?.id)
+    setQuery(query)
+  }
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -57,42 +97,19 @@ const Feature = () => {
             >
               {t("OtherUsefulPlatforms")}
             </h6>
-            <OtherToolsCard
-              image="/static/images/nigeria-ImResizer.jpg"
-              title={t("NigeriaIntegratedEnergy")}
-              link="http://nigeria-iep.sdg7energyplanning.org/"
-              description={<>{t("TheNigeriaIntegrated")}</>}
-            />
-            <OtherToolsCard
-              image="/static/images/sas-ImResizer.png"
-              title={t("SASKnowledgehub")}
-              link="https://www.ace-taf.org/sas-knowledge-hub/"
-              description={<>{t("SASKnowledgeHubDescription")}</>}
-            />
-            <OtherToolsCard
-              image="/static/images/policy-ImResizer.png"
-              title={t("PolicyKnowledgeHub")}
-              link="https://www.gogla.org/policy-knowledge-hub"
-              description={<>{t("PolicyKnowledgeHubDescription")}</>}
-            />
-            <OtherToolsCard
-              image="/static/images/electrifying-economies-ImResizer.jpg"
-              title={t("Electrifyingeconomies")}
-              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
-              description={<>{t("ElectrifyingEconomiesDescription")}</>}
-            />
-            <OtherToolsCard
-              image="/static/images/green-mini.png"
-              title={t("TheGreenMini-GridsHelpDesk")}
-              link="https://greenminigrid.afdb.org/"
-              description={<>{t("TheGreenMini")}</>}
-            />
-            <OtherToolsCard
-              image="/static/images/energy-ImResizer.png"
-              title={t("EnergyAccessExplorer")}
-              link="https://www.energyaccessexplorer.org/"
-              description={<>{t("EnergyAccessExplorerDescription")}</>}
-            />
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+              {allResources?.map((resource)=>{
+                return(
+                <OtherToolsCard
+                  filterData = {(e)=>filterData(e)}
+                  resourceType={resource?.attributes?.resources?.data}
+                  title={resource?.attributes?.Title}
+                  link={resource?.attributes?.Link}
+                  description={resource?.attributes?.Description}
+                />
+                )
+              })}
+            </div>
             <h6
               className="font-bold leading-10 text-large text-darktext 
                             uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
