@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { filterResources, getAllResources } from "../../pages/api/resources";
 import { ErrorNotify } from "components/notification";
 import { getResourcesQuery } from "../../utilities";
+import Loader from "../loader";
 
 const Feature = () => {
   const [isVideoCard, setIsVideoCard] = useState("");
@@ -17,19 +18,15 @@ const Feature = () => {
   const [query, setQuery] = useState();
   const [allResources, setAllResources] = useState();
 
-  const { data: data} = useQuery(
-    ["getAllResources"],
-    getAllResources,
-    {
-      onError: (error) => {
-        ErrorNotify(error?.response?.data?.error?.message);
-      },
-    }
-  );
+  const { data: data } = useQuery(["getAllResources"], getAllResources, {
+    onError: (error) => {
+      ErrorNotify(error?.response?.data?.error?.message);
+    },
+  });
 
-  useEffect(()=>setAllResources(data?.data?.data),[data])
+  useEffect(() => setAllResources(data?.data?.data), [data]);
 
-  const { data: filteredCards, refetch} = useQuery(
+  const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
     () => filterResources(query),
     {
@@ -39,18 +36,18 @@ const Feature = () => {
     }
   );
 
-  useEffect(()=>setAllResources(filteredCards?.data?.data),[filteredCards]);
+  useEffect(() => setAllResources(filteredCards?.data?.data), [filteredCards]);
 
   useEffect(() => {
-    if(query) {
+    if (query) {
       refetch();
     }
-  },[query])
+  }, [query]);
 
-  const filterData = (type) =>{
-    const query = getResourcesQuery(type?.id)
-    setQuery(query)
-  }
+  const filterData = (type) => {
+    const query = getResourcesQuery(type?.id);
+    setQuery(query);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -91,24 +88,40 @@ const Feature = () => {
       <div className="pt-[35px] pb-[60px] bg-white tools-wrap">
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
-            <h6
-              className="font-bold leading-10 text-large text-darktext 
+            <div className="flex items-center justify-between">
+              <h6
+                className="font-bold leading-10 text-large text-darktext 
               uppercase xsm:text-medium small:text-medium large:text-large mt-[0px] video-title center-content"
-            >
-              {t("OtherUsefulPlatforms")}
-            </h6>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
-              {allResources?.map((resource)=>{
-                return(
-                <OtherToolsCard
-                  filterData = {(e)=>filterData(e)}
-                  resourceType={resource?.attributes?.resources?.data}
-                  title={resource?.attributes?.Title}
-                  link={resource?.attributes?.Link}
-                  description={resource?.attributes?.Description}
-                />
-                )
-              })}
+              >
+                {t("OtherUsefulPlatforms")}
+              </h6>
+              <button
+                onClick={() => setAllResources(data?.data?.data)}
+                className="bg-lightBlue rounded-[60px] w-full  text-normal text-center
+                                      border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
+                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
+              >
+                {t("All")}
+              </button>
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {allResources ? (
+                allResources?.map((resource) => {
+                  return (
+                    <OtherToolsCard
+                      filterData={(e) => filterData(e)}
+                      resourceType={resource?.attributes?.resources?.data}
+                      title={resource?.attributes?.Title}
+                      link={resource?.attributes?.Link}
+                      description={resource?.attributes?.Description}
+                    />
+                  );
+                })
+              ) : (
+                <div className="flex items-center flex-col h-full w-full justify-center">
+                  <Loader height={80} width={80} />
+                </div>
+              )}
             </div>
             <h6
               className="font-bold leading-10 text-large text-darktext 
