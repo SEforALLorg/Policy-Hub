@@ -453,7 +453,7 @@ const RightWrapPage = ({
                 isClearAll={isClearAll}
               />}
               {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
-                title={t("Sector")}
+                title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(sectorOption)}
