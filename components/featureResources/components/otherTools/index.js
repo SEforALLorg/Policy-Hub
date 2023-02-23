@@ -39,7 +39,7 @@ const OtherToolsCard = ({
                   onClick={() => filterData({ id: type?.id })}
                   className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall mr-[10px]"
                 >
-                  {`#${type?.attributes?.Name}`}
+                  {`${type?.attributes?.Name}`}
                 </button>
               );
             })}
