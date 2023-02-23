@@ -44,6 +44,7 @@ const RightWrapPage = ({
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [page, setPage] = useState(1);
   const [csvData, setCsvData] = useState("");
+  const [sectorOption, setSectorOption] = useState([]);
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
   const debouncedSearch = useDebounce(search, 500);
@@ -250,6 +251,24 @@ const RightWrapPage = ({
     setPage(1);
   }, [isResetPage]);
 
+  useEffect(()=>{
+    if(localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
+      const sectorSustainable = filters?.sector?.filter((key)=>{
+        if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
+          return key;
+        }
+      })
+      setSectorOption(sectorSustainable);
+    }else if(localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
+      const sectorEnergy = filters?.sector?.filter((key)=>{
+        if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
+          return key;
+        }
+      })
+      setSectorOption(sectorEnergy);
+    }
+  },[filters])
+  
   const finalReports = !showAllReports && [
     ...reports,
     ...finalPublicationReports,
@@ -437,7 +456,7 @@ const RightWrapPage = ({
                 title={t("Sector")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
-                options={getFormattedData(filters?.sector)}
+                options={getFormattedData(sectorOption)}
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.sector}
                 name={"sector"}

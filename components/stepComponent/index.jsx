@@ -87,8 +87,10 @@ const StepComponent = ({
               onClick={() => onAnswerClick(i)}
             >
               <RadioButton checked={optionData?.id === i?.id} />
-              <p>{i?.Answer}</p>
+              <p>
+                {i?.Answer}
               {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
+              </p>
             </div>
           );
         })}
