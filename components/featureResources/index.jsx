@@ -99,7 +99,7 @@ const Feature = () => {
                 onClick={() => setAllResources(data?.data?.data)}
                 className="bg-lightBlue rounded-[60px] w-full  text-normal text-center
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
+                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[110px] button-animation card-tool-button"
               >
                 {t("AllResources")}
               </button>
