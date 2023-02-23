@@ -101,7 +101,7 @@ const Feature = () => {
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
                                       hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
               >
-                {t("All")}
+                {t("AllResources")}
               </button>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
