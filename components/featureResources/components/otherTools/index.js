@@ -13,9 +13,8 @@ const OtherToolsCard = ({
   return (
     <div
       className={
-        "bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex mt-[20px] card-animation"
+        "bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex mt-[20px] card-animation resourceCard"
       }
-      style={{ width: "32%", margin: "8px 5px" }}
     >
       {/* <div className="videoPlayer w-[30%] ">
         <img
