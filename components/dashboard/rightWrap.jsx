@@ -22,6 +22,7 @@ import { RiSearch2Line } from "react-icons/ri";
 import MobileFilters from "../mobileFilters";
 import { useTranslation } from "react-i18next";
 import { changingRightWrapLogo } from '../../constant/changinglogo';
+import { Tooltip } from "react-tooltip";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -452,20 +453,31 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />}
-              {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
-                title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
-                resourceType={localStorage.getItem("ResourceType")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(sectorOption)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.sector}
-                name={"sector"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
+              {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <div className="filterTooltipWrap">
+                <Select
+                  title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
+                  resourceType={localStorage.getItem("ResourceType")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(sectorOption)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.sector}
+                  name={"sector"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+                {resourceType && resourceType === 'ENERGY EFFICIENCY' && 
+                  <Tooltip 
+                    className="energyToolTip" 
+                    anchorSelect={`.abc`} 
+                    clickable={false} 
+                    place="top">
+                      {t("EnergyEfficiencySector")}
+                  </Tooltip>
+                }
+              </div>}
               {resourceType === "CLEAN COOKING" && <Select
                 title={t("Fuel")}
                 setIsOpen={setIsOpen}
