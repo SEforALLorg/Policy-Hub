@@ -3253,3 +3253,31 @@ a {
   box-shadow: 0px 0px 8px -4px #000;
   opacity: 1;
 }
+
+.cardWrap{
+  display: flex; 
+  flex-wrap: wrap;
+  padding-bottom: 70px;
+}
+
+.resourceCard {
+  width: 32%;
+  margin: 8px 5px;
+}
+
+@media screen and (max-width: 992px) {
+  .resourceCard {
+    width: 49%;
+    margin: 8px 0;
+  }
+  .cardWrap{
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .resourceCard {
+    width: 100%;
+    margin: 8px auto;
+  }
+}

@@ -104,7 +104,7 @@ const Feature = () => {
                 {t("AllResources")}
               </button>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", paddingBottom: '70px' }}>
+            <div className="cardWrap">
               {allResources ? (
                 allResources?.map((resource) => {
                   return (
