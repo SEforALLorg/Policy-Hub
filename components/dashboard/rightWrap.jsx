@@ -454,6 +454,7 @@ const RightWrapPage = ({
               />}
               {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
                 title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
+                resourceType={localStorage.getItem("ResourceType")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 options={getFormattedData(sectorOption)}

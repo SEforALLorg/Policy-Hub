@@ -104,7 +104,7 @@ const Feature = () => {
                 {t("AllResources")}
               </button>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", paddingBottom: '70px' }}>
               {allResources ? (
                 allResources?.map((resource) => {
                   return (
@@ -123,7 +123,7 @@ const Feature = () => {
                 </div>
               )}
             </div>
-            <h6
+            {/* <h6
               className="font-bold leading-10 text-large text-darktext 
                             uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
             >
@@ -140,7 +140,7 @@ const Feature = () => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
