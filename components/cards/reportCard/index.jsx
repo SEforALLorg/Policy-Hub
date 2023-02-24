@@ -44,6 +44,7 @@ const Report = ({
         </div>
         {star && (
           <TooltipComponent
+            id={'KeyPublication'}
             content="Key Publication - Click for more information"
             hideInfo={true}
           >

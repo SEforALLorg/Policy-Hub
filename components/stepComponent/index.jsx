@@ -75,7 +75,7 @@ const StepComponent = ({
         // style={{ height: "45px" }}
       >
         {/* <span>{stepCount}.</span> */}
-        {title} {ToolTipText && <TooltipComponent content={ToolTipText} />}
+        {title} {ToolTipText && <TooltipComponent id={"stepComponent"} content={ToolTipText} />}
       </p>
       <div className="OptionsWrap" >
         {multiAnswer?.map((i, index) => {

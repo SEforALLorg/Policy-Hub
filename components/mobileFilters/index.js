@@ -34,6 +34,7 @@ const MobileFilters = ({
   const [page, setPage] = useState(1);
   const [resourceType, setResourceType] = useState();
   const debouncedSearch = useDebounce(search, 500);
+  const [sectorOption, setSectorOption] = useState([]);
 
   typeof window !== "undefined" &&
     window.addEventListener(
@@ -143,6 +144,24 @@ const MobileFilters = ({
   useEffect(() => {
     setPage(1);
   }, [isResetPage]);
+
+  useEffect(()=>{
+    if(localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
+      const sectorSustainable = filters?.sector?.filter((key)=>{
+        if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
+          return key;
+        }
+      })
+      setSectorOption(sectorSustainable);
+    }else if(localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
+      const sectorEnergy = filters?.sector?.filter((key)=>{
+        if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
+          return key;
+        }
+      })
+      setSectorOption(sectorEnergy);
+    }
+  },[filters])
 
   useEffect(() => {
     onReset();
@@ -289,10 +308,10 @@ const MobileFilters = ({
                 isClearAll={isClearAll}
               />} 
               {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
-                title={t("Sector")}
+                title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
-                options={getFormattedData(filters?.sector)}
+                options={getFormattedData(sectorOption)}
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.sector}
                 name={"sector"}

@@ -3241,3 +3241,15 @@ a {
 .customizeTooltip {
   left: 34px !important;
 }
+
+.selectWrapEnergyEfficiency .energyToolTip{
+  background: var(--theme-yes-button-color);
+  color: white;
+  z-index: 999;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 20px;
+  box-shadow: 0px 0px 8px -4px #000;
+  opacity: 1;
+}

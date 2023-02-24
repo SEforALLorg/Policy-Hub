@@ -248,7 +248,7 @@ const LeftWrapPage = ({
                       <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
-                          <TooltipComponent content={ToolTipText} />
+                          <TooltipComponent id={"leftWrap"} content={ToolTipText} />
                         )}
                       </div>
                       <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
