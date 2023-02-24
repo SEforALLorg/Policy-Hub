@@ -3238,7 +3238,7 @@ a {
   left: 34px !important;
 }
 
-.selectWrapEnergyEfficiency .energyToolTip{
+.filterTooltipWrap .energyToolTip{
   background: var(--theme-yes-button-color);
   color: white;
   z-index: 999;

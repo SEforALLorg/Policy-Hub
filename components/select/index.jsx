@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { DropDownList, Span } from "./styles";
-import { Tooltip } from "react-tooltip";
 
 const Select = ({
   title,
@@ -58,7 +57,7 @@ const Select = ({
   const active = isOpen === title || selectedOption?.length;
   return (
     <div
-      className={`${resourceType && resourceType === 'ENERGY EFFICIENCY' ? "selectWrapEnergyEfficiency" : "selectWrap"} ${active ? "borderColor" : "selectWrap"}`}
+      className={`${"selectWrap"} ${active ? "borderColor" : "selectWrap"}`}
     >
       <div
         onClick={toggling}
@@ -85,15 +84,6 @@ const Select = ({
         >
           <BiChevronDown size={26} />
         </div>
-        {resourceType && resourceType === 'ENERGY EFFICIENCY' && 
-        <Tooltip 
-          className="energyToolTip" 
-          anchorSelect={`.selectWrapEnergyEfficiency`} 
-          clickable={false} 
-          place="top">
-            {title}
-        </Tooltip>
-        }
       </div>
       {isOpen === title && (
         <div>
