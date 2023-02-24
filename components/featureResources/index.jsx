@@ -10,6 +10,7 @@ import { filterResources, getAllResources } from "../../pages/api/resources";
 import { ErrorNotify } from "components/notification";
 import { getResourcesQuery } from "../../utilities";
 import Loader from "../loader";
+import { BsSliders } from "react-icons/bs";
 
 const Feature = () => {
   const [isVideoCard, setIsVideoCard] = useState("");
@@ -88,18 +89,18 @@ const Feature = () => {
       <div className="pt-[35px] pb-[60px] bg-white tools-wrap">
         <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
           <div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">
               <h6
                 className="font-bold leading-10 text-large text-darktext 
-              uppercase xsm:text-medium small:text-medium large:text-large mt-[0px] video-title center-content"
+              uppercase xsm:text-medium small:text-medium large:text-large m-[0px] video-title center-content"
               >
                 {t("OtherUsefulPlatforms")}
               </h6>
               <button
                 onClick={() => setAllResources(data?.data?.data)}
-                className="bg-lightBlue rounded-[60px] w-full  text-normal text-center
+                className="bg-lightBlue rounded-[60px] w-full text-normal
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[110px] button-animation card-tool-button"
+                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[110px] button-animation card-tool-button allBtn"
               >
                 {t("AllResources")}
               </button>

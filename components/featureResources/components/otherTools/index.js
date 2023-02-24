@@ -30,7 +30,7 @@ const OtherToolsCard = ({
         <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content">
           {description}
         </p>
-        <div className="h-[50px]">
+        <div className="h-[50px] toolBtn">
           {resourceType &&
             resourceType?.map((type) => {
               return (
@@ -46,7 +46,7 @@ const OtherToolsCard = ({
         <div className="w-full">
           <button
             onClick={() => window.open(link)}
-            className="bg-lightBlue rounded-[60px] w-full  text-normal text-center
+            className="bg-lightBlue rounded-[60px] w-full  text-normal
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
                                       hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] mt-[10px] button-animation card-tool-button"
           >
