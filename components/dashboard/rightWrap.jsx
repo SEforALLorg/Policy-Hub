@@ -468,10 +468,10 @@ const RightWrapPage = ({
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
                 />
-                {resourceType && resourceType === 'ENERGY EFFICIENCY' && 
+                {localStorage.getItem("ResourceType") === 'ENERGY EFFICIENCY' && 
                   <Tooltip 
                     className="energyToolTip" 
-                    anchorSelect={`.abc`} 
+                    anchorSelect={`.filterTooltipWrap`} 
                     clickable={false} 
                     place="top">
                       {t("EnergyEfficiencySector")}
