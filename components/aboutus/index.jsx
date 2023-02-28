@@ -163,6 +163,55 @@ const About = () => {
             <b> Dr. Moeketsi Mpholo</b>,{t("NationalUniversity")}
             <b> Jessica Stephens</b>,{t("AMDA")}
             <b> Nasir Ibrahim</b>,{t("Electrification")}
+            <b> Jem Porcaro</b>,{t("SEfor")}
+            <b>Nishant Narayan</b>,{t("SEfor")}
+            <b>Nicolina Lindblad</b>,{t("SEfor")}
+            <b>Cristina Dominguez</b>,{t("SEfor")}
+            <b>Tom Rwahama</b>,{t("SEfor")}
+            <b>Michael Abrokwaa</b>,{t("SEfor")}
+            <b>Thokozani Malunga</b>,{t("MinistryofEnergyMalawi")}
+            <b>James Namalima</b>,{t("MinistryofEnergyMalawi")}
+            <b>Mikael Melin</b>,{t("SEfor")}
+            <b>Tamojit Chaterjee</b>,{t("SEfor")}
+            <b>Annette Aharonian</b>,{t("SEfor")}
+            <b>Grace Busingye</b>,{t("SEfor")}
+            <b>Louise Mathu</b>,{t("AfricanSchoolofRegulation")}
+            <b>Carol Ofafa</b>,{t("EUInitiative/TAF")}
+            <b>Patricia Masupayi</b>,{t("DepartmentofForestryMalawi")}
+            <b>Ed Brown</b>,{t("ModernEnergyCookingServices")}
+            <b>Shveta Sarin</b>,{t("ShellFoundation")}
+            <b>Ignacio Perez-Arriaga</b>,{t("AfricanSchoolofRegulation")}
+            <b>Eduardo Sanchez Jacob</b>,{t("UniversidadPolitécnicadeMadrid")}
+            <b>Fernando de Cuadra</b>,{t("UniversidadPontificiaComillas")}
+            <b>Heather Adair-Rohani</b>,{t("WHO")}
+            <b>Jossy Thomas</b>,{t("UNIDO")}
+            <b>Athena Koulouris</b>,{t("EuropeanCommission")}
+            <b>Marc Jeuland</b>,{t("DukeEnergyAccessProject")}
+            <b>Faith Chege</b>,{t("EEPAfrica")}
+            <b>Brian Dean</b>,{t("SEfor")}
+            <b>Ben Hartley</b>,{t("SEfor")}
+            <b>Rosa Garcia</b>,{t("SEfor")}
+            <b>Giorgia Pasqualetto</b>,{t("SEfor")}
+            <b>Elizabeth Wangechi Chege</b>,{t("SEfor")}
+            <b>Alvin Jose</b>,{t("SEfor")}
+            <b>George Njer</b>,{t("HEVACKenya")}
+            <b>Anne Mwangi</b>,{t("WebLimited")}
+            <b>Francis  Kimani</b>,{t("KenyaGreenBuildingSoceity")}
+            <b>Dr. Eng. Fenwicks S Musonye</b>,{t("TheEnergyandPetroleumRegulatoryAuthorityKenya")}
+            <b>Michael Maina</b>,{t("CLASP")}
+            <b>Dr. Anshu Kumar</b>,{t("UNICEF")}
+            <b>Yash Shukla</b>,{t("CEPTUniversity")}
+            <b>Celina Schelle</b>,{t("BASE")}
+            <b>Roberta Evangelista</b>,{t("BASE")}
+            <b>Andrew Amadi</b>,{t("KenyaRenewableEnergyAssociation")}
+            <b>Lina Kelpsaite</b>,{t("CLASP")}
+            <b>Søren Lutken</b>,{t("UNEPCopenhagenClimateCentre")}
+            <b>Gabriela Prata Dias</b>,{t("UNEPCopenhagenClimateCentre")}
+            <b>Steven Kukoda</b>,{t("InternationalCopperAssociation")}
+            <b>Moira Mathers</b>,{t("UNEPU4E")}
+            <b>Ana Maria Carreño</b>,{t("CLASP")}
+            <b>Leo Jospeh Blyth</b>,{t("ESMAP")}
+            <b>Narendra N. Ampeldenta</b>,{t("CLASDarmstadtBusinessSchoolP")}
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px] center-content">
             {t("Developers")}

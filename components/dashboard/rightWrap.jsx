@@ -269,6 +269,11 @@ const RightWrapPage = ({
       setSectorOption(sectorEnergy);
     }
   },[filters])
+
+  const sortedYear = filters?.year?.map((year)=>{
+    let yearObj = {...year, label: year?.Year}
+    return yearObj
+  }).sort((a,b)=>{return b.Year-a.Year})
   
   const finalReports = !showAllReports && [
     ...reports,
@@ -431,7 +436,7 @@ const RightWrapPage = ({
                 title={t("Year")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
-                options={getFormattedData(filters?.year)}
+                options={sortedYear}
                 onChange={(e) => onChange(e)}
                 selected={selectInputs?.years}
                 name={"years"}

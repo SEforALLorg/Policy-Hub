@@ -104,9 +104,9 @@ const StepComponent = ({
         >
           <img src="static/images/leftArrow.svg" alt="" /> {t("Previous")}
         </button>
-        <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo" >
+        {nextCount > 1 && <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo" >
           {stepCount}/{nextCount}
-        </p>
+        </p>}
         <button onClick={() => onNextClick()} className="SlideButton">
           {t("Next")} <img src="static/images/rightArrow.svg" alt="" />
         </button>
