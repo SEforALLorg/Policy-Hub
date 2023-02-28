@@ -134,10 +134,10 @@ const TopCard = ({ HandleOpen }) => {
                 alt="hub"
               />
               <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-justify">
-                {t("TheSEforALL")}{" "}
+                {/* {t("TheSEforALL")}{" "}
                 <span className="font-bold text-[#000000b3] px-[6px]">
                   {t("KnowledgeHub")}
-                </span>{" "}
+                </span>{" "} */}
                 {t("PlatformThatSupports")}
               </p>
             </div>
@@ -151,9 +151,9 @@ const TopCard = ({ HandleOpen }) => {
                 alt="hub"
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-                {t("CurrentlyOffers")}{" "}
-                <span className="font-bold text-[#000000b3]">{t("Electricity")}</span>
-                {""} {t("ResourcesOnAccess")}
+                {/* {t("CurrentlyOffers")}{" "}
+                <span className="font-bold text-[#000000b3]">{t("Electricity")}</span>{""}  */}
+                {t("ResourcesOnAccess")}
               </p>
             </div>
             <div className="divider-hide mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
@@ -169,10 +169,10 @@ const TopCard = ({ HandleOpen }) => {
                 alt="hub"
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-                {t("TheRightPolicies")}
+                {/* {t("TheRightPolicies")}
                 <span className="font-bold text-[#000000b3] pl-[6px]">
                   {t("AffordableAndClean")}
-                </span>
+                </span> */}
                 {t("TheKnowledgeHub")}
               </p>
             </div>
@@ -185,10 +185,10 @@ const TopCard = ({ HandleOpen }) => {
               alt="hub"
             />
             <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
-              {t("Find")}{" "}
+              {/* {t("Find")}{" "}
               <span className="font-bold text-[#000000b3] px-[6px]">
                 {t("Guidelines")}
-              </span>{" "}
+              </span>{" "} */}
               {t("OnElectricity")}
             </p>
           </div>
