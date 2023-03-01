@@ -24,19 +24,19 @@ const OtherToolsCard = ({
         />
       </div> */}
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex-1">
-        <h6 className="font-bold leading-6  text-darktext mb-1 text-medium h-[50px] otherTitle center-content">
+        <h6 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
           {title}
         </h6>
         <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content">
           {description}
         </p>
-        <div className="h-[50px] toolBtn">
+        <div className="toolBtn">
           {resourceType &&
             resourceType?.map((type) => {
               return (
                 <button
                   onClick={() => filterData({ id: type?.id })}
-                  className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall mr-[10px]"
+                  className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] button-animation card-tool-button"
                 >
                   {`${type?.attributes?.Name}`}
                 </button>
