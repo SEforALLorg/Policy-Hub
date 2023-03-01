@@ -138,7 +138,7 @@ const Report = ({
           style={{ width: "38px", justifyContent: "flex-end", flex: "unset" }}
         >
           <p
-            className={`font-normal text-[14px] m-0 text-text textColor ${
+            className={`font-normal text-[14px] m-0 text-text textColor w-[34px] ${
               !bigCard && isActive && "innerText"
             }`}
           >
