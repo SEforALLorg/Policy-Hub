@@ -23,11 +23,11 @@ const OtherToolsCard = ({
           className="w-[100%] h-[230px] object-cover object-left-top"
         />
       </div> */}
-      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex-1">
+      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]  flex flex-col">
         <h6 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
           {title}
         </h6>
-        <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content">
+        <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content flex-1">
           {description}
         </p>
         <div className="toolBtn">
@@ -48,7 +48,7 @@ const OtherToolsCard = ({
             onClick={() => window.open(link)}
             className="bg-lightBlue rounded-[60px] w-full  text-normal
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] mt-[10px] button-animation card-tool-button"
+                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
           >
             {t("gototool")}
           </button>
