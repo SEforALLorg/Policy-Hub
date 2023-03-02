@@ -30,7 +30,7 @@ const OtherToolsCard = ({
         <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content flex-1">
           {description}
         </p>
-        <div className="toolBtn">
+        <div className="toolBtn flex flex-wrap">
           {resourceType &&
             resourceType?.map((type) => {
               return (
