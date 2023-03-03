@@ -36,6 +36,9 @@ const About = () => {
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("AdditionalPillars")}
             </p>
+            <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
+              {t("WatchOurHowToVideo")}
+            </p>
           </div>
           <div className="xsm:mr-0 xsm:mb-4 med:mb-0 w-[300px] about-logo">
             <img
@@ -151,7 +154,7 @@ const About = () => {
           <p className="font-bold text-text mb-[3px] text-[20px] center-content">
             {t("Contributors")}
           </p>
-          <p className="not-italic font-normal  xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
+          <p className="not-italic font-normal text-justify xsm:text-xsmall center-content small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4">
             {t("WeAlsoThank")} <br />
             <b>Freda Akyeabea Opoku</b>,{t("AfricanDevelopment")}
             <b>Catoer Wibowo</b>,{t("Deutsche")}
@@ -196,7 +199,7 @@ const About = () => {
             <b>Alvin Jose</b>,{t("SEfor")}
             <b>George Njer</b>,{t("HEVACKenya")}
             <b>Anne Mwangi</b>,{t("WebLimited")}
-            <b>Francis  Kimani</b>,{t("KenyaGreenBuildingSoceity")}
+            <b>Francis Kimani</b>,{t("KenyaGreenBuildingSoceity")}
             <b>Dr. Eng. Fenwicks S Musonye</b>,{t("TheEnergyandPetroleumRegulatoryAuthorityKenya")}
             <b>Michael Maina</b>,{t("CLASP")}
             <b>Dr. Anshu Kumar</b>,{t("UNICEF")}
