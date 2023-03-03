@@ -99,7 +99,7 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={`${location === "/resources" ? "active" : ""}`}
-                href={`/${lang}/resources`}
+                href={`/${lang || 'en'}/resources`}
               >
                 {t("Resources")}
               </NavLink>
@@ -107,7 +107,7 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={location === "/about" ? "active" : ""}
-                href={`/${lang}/about`}
+                href={`/${lang || 'en'}/about`}
               >
                 {t("About")}
               </NavLink>
@@ -115,7 +115,7 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={`${location === "/contact" ? "active" : ""}`}
-                href={`/${lang}/contact`}
+                href={`/${lang || 'en'}/contact`}
               >
                 {t("Contactus")}
               </NavLink>
