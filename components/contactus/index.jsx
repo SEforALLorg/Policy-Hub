@@ -132,7 +132,7 @@ const Contact = () => {
               className="text-darktext font-bold underline cursor-pointer text-Primary"
               onClick={() => window.open("mailto:KnowledgeHub@SEforALL.org")}
             >
-              KnowledgeHub@SEforALL.org
+            PolicyHub@seforall.org
             </span>
             .
           </p>
