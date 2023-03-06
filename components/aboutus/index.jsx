@@ -57,7 +57,7 @@ const About = () => {
             <div className="med:w-[49%] xsm:w-full ">
               <ImgCard
                 className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
-                img={"../../static/images/rockfound.svg"}
+                img={"../../static/images/logo_rockefeller_foundation.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
               />
