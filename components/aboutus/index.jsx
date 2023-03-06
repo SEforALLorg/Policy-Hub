@@ -54,10 +54,10 @@ const About = () => {
             {t("SustainableEnergyFinanced")}{" "}
           </p>
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
-            <div className="med:w-[49%]  xsm:w-full ">
+            <div className="med:w-[49%] xsm:w-full ">
               <ImgCard
                 className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
-                img={"../../static/images/rockfound.svg"}
+                img={"../../static/images/logo_rockefeller_foundation.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
               />
@@ -90,7 +90,7 @@ const About = () => {
             {t("SustainableEnergy")}{" "}
           </p>
           <div className="w-100 flex xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap flex-wrap">
-            <div className="med:w-[19%] xsm:w-100  xsm:w-full mt-[15px] mr-[1%] ">
+            <div className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
                 img={"../../static/images/african-development.jpg"}
@@ -98,7 +98,7 @@ const About = () => {
                 link={"https://www.afdb.org/en"}
               />
             </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mt-[15px] mr-[1%] ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"../../static/images/duke.png"}
@@ -106,7 +106,7 @@ const About = () => {
                 link={"https://energyaccess.duke.edu/"}
               />
             </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mt-[15px] mr-[1%]">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%]">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"../../static/images/WRI_logo_4c.png"}
@@ -114,7 +114,7 @@ const About = () => {
                 link={"https://www.wri.org/"}
               />
             </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mt-[15px] mr-[1%] ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
                 img={"../../static/images/ARE_LOGO_2014_cmyk.png"}
@@ -122,7 +122,7 @@ const About = () => {
                 link={"https://www.ruralelec.org/"}
               />
             </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mt-[15px] mr-[1%] ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
                 img={"../../static/images/energypedia_Logo.png"}
