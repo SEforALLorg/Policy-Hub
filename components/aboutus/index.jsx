@@ -7,23 +7,23 @@ const About = () => {
   const { t, i18n } = useTranslation();
 
   const logoData = [
-    {img: "../../static/images/african-development.jpg", title: "African Development Bank Group", link: "https://www.afdb.org/en" },
-    {img: "../../static/images/ASR_Logo.png", title: "African School of Regulation", link: "https://africanschoolregulation.org/" },
-    {img: "../../static/images/ARE_LOGO_2014_cmyk.png", title: "Alliance for Rural Electrification", link: "https://www.ruralelec.org/" },
-    {img: "../../static/images/BASE_Logo_blue_claim.png", title: "BASE", link: "https://energy-base.org/" },
-    {img: "../../static/images/CRDF_CARBSE_Logo.jpg", title: "CEPT Research and Development Foundation", link: "https://crdf.org.in/" },
-    {img: "../../static/images/DUKE EAP_blue_square_line.png", title: "Duke Energy Access Project", link: "https://energyaccess.duke.edu/" },
-    {img: "../../static/images/EEPAfrica_Logo_4Color_CMYK.jpg", title: "EEP Africa", link: "https://eepafrica.org/" },
-    {img: "../../static/images/energypedia_Logo.png", title: "Energypedia", link: "https://energypedia.info/wiki/Main_Page" },
-    {img: "../../static/images/HEVAC_Kenya_logo.png", title: "HEVAC Kenya", link: "https://hevac.co.ke/" },
-    {img: "../../static/images/iit_comillas.png", title: "IIT Comillas", link: "https://www.iit.comillas.edu/" },
-    {img: "../../static/images/Kenya_Green_Building_Society_Green_Logo.png", title: "Kenya Green Building Society", link: "https://kgbs.co.ke/" },
-    {img: "../../static/images/Kerea_logo.png", title: "Kenya Renewable Energy Association", link: "http://kerea.org/" },
-    {img: "../../static/images/ERC_logo_High_Resolution.jpg", title: "NUL Energy Research Centre", link: "https://erc.nul.ls/" },
-    {img: "../../static/images/WRI_logo_4c.png", title: "World Resources Institute", link: "https://www.wri.org/" },
-    {img: "../../static/images/U4E_Colour-Green-Icons.svg", title: "United for Efficiency", link: "https://united4efficiency.org/" },
-    {img: "../../static/images/waya_energy.png", title: "Waya Energy", link: "https://waya-energy.com/" },
-    {img: "../../static/images/WEB_Limited.jpg", title: "WEB Limited, Kenya", link: "https://www.linkedin.com/in/web-limited-8b34081b8/" },
+    {img: "../../static/images/african-development.jpg", title: "African Development Bank Group", link: "https://www.afdb.org/en", width: "100%" },
+    {img: "../../static/images/ASR_Logo.png", title: "African School of Regulation", link: "https://africanschoolregulation.org/", width: "86%" },
+    {img: "../../static/images/ARE_LOGO_2014_cmyk.png", title: "Alliance for Rural Electrification", link: "https://www.ruralelec.org/", width: "100%" },
+    {img: "../../static/images/BASE_Logo_blue_claim.png", title: "BASE", link: "https://energy-base.org/", width: "80%" },
+    {img: "../../static/images/CRDF_CARBSE_Logo.jpg", title: "CEPT Research and Development Foundation", link: "https://crdf.org.in/", width: "100%" },
+    {img: "../../static/images/DUKE EAP_blue_square_line.png", title: "Duke Energy Access Project", link: "https://energyaccess.duke.edu/", width: "70%" },
+    {img: "../../static/images/EEPAfrica_Logo_4Color_CMYK.jpg", title: "EEP Africa", link: "https://eepafrica.org/", width: "82%" },
+    {img: "../../static/images/energypedia_Logo.png", title: "Energypedia", link: "https://energypedia.info/wiki/Main_Page", width: "62%" },
+    {img: "../../static/images/HEVAC_Kenya_logo.png", title: "HEVAC Kenya", link: "https://hevac.co.ke/", width: "80%" },
+    {img: "../../static/images/iit_comillas.png", title: "IIT Comillas", link: "https://www.iit.comillas.edu/", width: "100%" },
+    {img: "../../static/images/Kenya_Green_Building_Society_Green_Logo.png", title: "Kenya Green Building Society", link: "https://kgbs.co.ke/", width: "100%" },
+    {img: "../../static/images/Kerea_logo.png", title: "Kenya Renewable Energy Association", link: "http://kerea.org/", width: "94%" },
+    {img: "../../static/images/ERC_logo_High_Resolution.jpg", title: "NUL Energy Research Centre", link: "https://erc.nul.ls/", width: "62%" },
+    {img: "../../static/images/WRI_logo_4c.png", title: "World Resources Institute", link: "https://www.wri.org/", width: "100%" },
+    {img: "../../static/images/U4E_Colour-Green-Icons.svg", title: "United for Efficiency", link: "https://united4efficiency.org/", width: "86%" },
+    {img: "../../static/images/waya_energy.png", title: "Waya Energy", link: "https://waya-energy.com/", width: "100%" },
+    {img: "../../static/images/WEB_Limited.jpg", title: "WEB Limited, Kenya", link: "https://www.linkedin.com/in/web-limited-8b34081b8/", width: "90%" },
   ]
 
   
@@ -121,7 +121,7 @@ const About = () => {
                     img={item.img}
                     title={item.title}
                     link={item.link}
-                    imgStyle={{ width: "70%" }}
+                    imgStyle={{ width: item.width }}
                   />
                 </div>
               )
