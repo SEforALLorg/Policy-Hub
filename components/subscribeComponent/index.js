@@ -45,7 +45,7 @@ const SubscribeComponent = ({subcription}) => {
   };
   return (
     <>
-      {!subcription && <div className="w-full flex flex-col items-center">
+      {!subcription && <div className="w-full flex flex-col items-center w-[250px] float-right">
       <div className="flex items-center justify-center mt-[10px] SubscribeIconColor">
         <FaEnvelopeOpenText size={50} className={"text-Primary"} />
       </div>
