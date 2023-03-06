@@ -58,9 +58,9 @@ const Feature = () => {
 
   return (
     <div className="w-full rounded-lg overflow-hidden">
-      <div className="bg-white py-6 drop-shadow-dropShadow feature-wrap">
-        <div className="xsm:px-4 mobile:px-[100px] relative">
-          <div className="flex pb-[0px] my-6 w-full xsm:flex-wrap large:flex-nowrap resources-card">
+      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem]">
+        <div className="xsm:px-4 mobile:px-[0px] relative">
+          <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
               <h6
                 className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
@@ -86,8 +86,8 @@ const Feature = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[35px] pb-[60px] bg-white tools-wrap">
-        <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
+      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem]">
+        <div className="xsm:px-4 mobile:px-[0px] resources-cards-wrap">
           <div>
             <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">
               <h6

@@ -6,6 +6,28 @@ import { useTranslation } from "react-i18next";
 const About = () => {
   const { t, i18n } = useTranslation();
 
+  const logoData = [
+    {img: "../../static/images/african-development.jpg", title: "African Development Bank Group", link: "https://www.afdb.org/en", width: "100%" },
+    {img: "../../static/images/ASR_Logo.png", title: "African School of Regulation", link: "https://africanschoolregulation.org/", width: "86%" },
+    {img: "../../static/images/ARE_LOGO_2014_cmyk.png", title: "Alliance for Rural Electrification", link: "https://www.ruralelec.org/", width: "100%" },
+    {img: "../../static/images/BASE_Logo_blue_claim.png", title: "BASE", link: "https://energy-base.org/", width: "80%" },
+    {img: "../../static/images/CRDF_CARBSE_Logo.jpg", title: "CEPT Research and Development Foundation", link: "https://crdf.org.in/", width: "100%" },
+    {img: "../../static/images/DUKE EAP_blue_square_line.png", title: "Duke Energy Access Project", link: "https://energyaccess.duke.edu/", width: "70%" },
+    {img: "../../static/images/EEPAfrica_Logo_4Color_CMYK.jpg", title: "EEP Africa", link: "https://eepafrica.org/", width: "82%" },
+    {img: "../../static/images/energypedia_Logo.png", title: "Energypedia", link: "https://energypedia.info/wiki/Main_Page", width: "62%" },
+    {img: "../../static/images/HEVAC_Kenya_logo.png", title: "HEVAC Kenya", link: "https://hevac.co.ke/", width: "80%" },
+    {img: "../../static/images/iit_comillas.png", title: "IIT Comillas", link: "https://www.iit.comillas.edu/", width: "100%" },
+    {img: "../../static/images/Kenya_Green_Building_Society_Green_Logo.png", title: "Kenya Green Building Society", link: "https://kgbs.co.ke/", width: "100%" },
+    {img: "../../static/images/Kerea_logo.png", title: "Kenya Renewable Energy Association", link: "http://kerea.org/", width: "94%" },
+    {img: "../../static/images/ERC_logo_High_Resolution.jpg", title: "NUL Energy Research Centre", link: "https://erc.nul.ls/", width: "62%" },
+    {img: "../../static/images/WRI_logo_4c.png", title: "World Resources Institute", link: "https://www.wri.org/", width: "100%" },
+    {img: "../../static/images/U4E_Colour-Green-Icons.svg", title: "United for Efficiency", link: "https://united4efficiency.org/", width: "86%" },
+    {img: "../../static/images/waya_energy.png", title: "Waya Energy", link: "https://waya-energy.com/", width: "100%" },
+    {img: "../../static/images/WEB_Limited.jpg", title: "WEB Limited, Kenya", link: "https://www.linkedin.com/in/web-limited-8b34081b8/", width: "90%" },
+  ]
+
+  
+
   return (
     <>
       <Head>
@@ -60,6 +82,7 @@ const About = () => {
                 img={"../../static/images/logo_rockefeller_foundation.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
+                imgStyle={{width: "86%"}}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
@@ -90,165 +113,19 @@ const About = () => {
             {t("SustainableEnergy")}{" "}
           </p>
           <div className="w-100 flex xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap flex-wrap">
-            <div className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
-                img={"../../static/images/african-development.jpg"}
-                title={"African Development Bank Group"}
-                link={"https://www.afdb.org/en"}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%]">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"../../static/images/WRI_logo_4c.png"}
-                title={"World Resources Institute"}
-                link={"https://www.wri.org/"}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"../../static/images/ARE_LOGO_2014_cmyk.png"}
-                title={"Alliance for Rural Electrification"}
-                link={"https://www.ruralelec.org/"}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/energypedia_Logo.png"}
-                title={"Energypedia"}
-                link={"https://energypedia.info/wiki/Main_Page"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full  mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/ASR_Logo.png"}
-                title={"African School of Regulation"}
-                link={"https://africanschoolregulation.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/BASE_Logo_blue_claim.png"}
-                title={"BASE"}
-                link={"https://energy-base.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/CRDF_CARBSE_Logo.jpg"}
-                title={"CEPT Research and Development Foundation"}
-                link={"https://crdf.org.in/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/DUKE_EAP_Logo.png"}
-                title={"Duke Energy Access Project"}
-                link={"https://energyaccess.duke.edu/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/EEPAfrica_Logo_4Color_CMYK.jpg"}
-                title={"EEP Africa"}
-                link={"https://eepafrica.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/ERC_logo_High_Resolution.jpg"}
-                title={"NUL Energy Research Centre"}
-                link={"https://erc.nul.ls/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/HEVAC_Kenya_logo.png"}
-                title={"HEVAC Kenya"}
-                link={"https://hevac.co.ke/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/iit_comillas.png"}
-                title={"IIT Comillas"}
-                link={"https://www.iit.comillas.edu/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/Kenya_Green_Building_Society_Green_Logo.png"}
-                title={"Kenya Green Building Society"}
-                link={"https://kgbs.co.ke/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/Kerea_logo.png"}
-                title={"Kenya Renewable Energy Association"}
-                link={"http://kerea.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/logo_rockefeller_foundation.svg"}
-                title={"The Rockefeller Foundation"}
-                link={"https://www.rockefellerfoundation.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/U4E_Colour-Green-Icons.svg"}
-                title={"United for Efficiency"}
-                link={"https://united4efficiency.org/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/waya_energy.png"}
-                title={"Waya Energy"}
-                link={"https://waya-energy.com/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
-                img={"../../static/images/WEB_Limited.jpg"}
-                title={"WEB Limited, Kenya"}
-                link={"https://www.linkedin.com/in/web-limited-8b34081b8/"}
-                imgStyle={{ maxWidth: "70%" }}
-              />
-            </div>
+            {logoData.map((item) => {
+              return (
+                <div className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] mb-[15px]">
+                  <ImgCard
+                    className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
+                    img={item.img}
+                    title={item.title}
+                    link={item.link}
+                    imgStyle={{ width: item.width }}
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
         <div className="bg-white pt-10 pb-14 px-16 xsm:px-7 mobile:px-10 laptop:px-16 about-bottom-card">
