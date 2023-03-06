@@ -211,7 +211,7 @@ const Footer = ({footerRes}) => {
             }
           />}
           {!footerRes && <img
-            src={"/static/images/rf_negative.png"}
+            src={"/static/images/logo_rockefeller_foundation_white.svg"}
             alt="founder"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() =>
