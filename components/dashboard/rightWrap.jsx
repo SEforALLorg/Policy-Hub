@@ -186,17 +186,17 @@ const RightWrapPage = ({
   };
 
   useEffect(() => {
+    console.log(page, allReports?.data?.data, previousReports)
     if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data);
-      window !== "undefined" && window.scrollTo(0, 0);
+      window !== "undefined" && document.getElementById("rightWrap").scrollTo(0,0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...allReports?.data?.data, ...previousReports]);
-      window !== "undefined" && window.scrollTo(0, 0);
+      setPreviousReports([...previousReports, ...allReports?.data?.data]);
+      browseResource ? "" : (window !== "undefined" && document.getElementById("rightWrap").scrollTo(0,0));
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
     setResourceType(localStorage.getItem("ResourceType"));
-    document.getElementById("rightWrap").scrollTo(0,0);
   }, [allReports, typeof window !== "undefined" && window]);
 
   const reports = showAllReports ? previousReports : finalNonPublicationReports;
@@ -387,7 +387,7 @@ const RightWrapPage = ({
                   value={search}
                 />
               )}
-              <Select
+              {/* <Select
                 title={t("SelectRegion")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -398,7 +398,7 @@ const RightWrapPage = ({
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
-              />
+              /> */}
               <Select
                 title={t("SelectCountry")}
                 setIsOpen={setIsOpen}
