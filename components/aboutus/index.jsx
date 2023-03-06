@@ -98,14 +98,6 @@ const About = () => {
                 link={"https://www.afdb.org/en"}
               />
             </div>
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%] ">
-              <ImgCard
-                className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
-                img={"../../static/images/duke.png"}
-                title={"The Energy Access Project at Duke University"}
-                link={"https://energyaccess.duke.edu/"}
-              />
-            </div>
             <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full mr-[1%]">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card"
@@ -131,8 +123,7 @@ const About = () => {
                 imgStyle={{ maxWidth: "70%" }}
               />
             </div>
-
-            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-15px  xsm:w-full mt-[15px] mr-[1%] ">
+            <div className="med:w-[19%] xsm:w-100 xsm:mt-5 med:mt-0  xsm:w-full  mr-[1%] ">
               <ImgCard
                 className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card energypedia-image"
                 img={"../../static/images/ASR_Logo.png"}
