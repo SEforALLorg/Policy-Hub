@@ -48,16 +48,14 @@ const Footer = ({footerRes}) => {
     <div className="footer xsm:mt-4 medium:mt-20">
       <div className="flex items-center justify-between w-full xsm:flex-wrap laptop:flex-nowrap ">
         <div
-          className="flex items-center laptop:w-2/5 laptop:justify-start 
-                                xsm:justify-center xsm:w-full "
-        >
+          className="flex items-center laptop:w-2/5 laptop:justify-start xsm:justify-center xsm:w-full">
           <div
             onClick={() =>
               window.open("https://www.facebook.com/sustainableenergyforall")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
             cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
-            hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
+            hover:border hover:border-blue hover:text-blue ease-linear transition-all duration-500 mediaIconBorderColor"
           >
             <FaFacebookF className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
           </div>

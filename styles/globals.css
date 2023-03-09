@@ -74,6 +74,10 @@ main {
   color: var(--theme-media-icon-color);
 }
 
+.mediaIconBorderColor:hover .mediaIconColor {
+  color: rgb(6 90 137 / var(--tw-text-opacity));
+}
+
 .footer .mediaIconBorderColor{
   border-color: var(--theme-media-icon-color) !important;
   color: var(--theme-media-icon-color) !important;
