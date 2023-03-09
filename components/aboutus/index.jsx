@@ -82,7 +82,7 @@ const About = () => {
                 img={"../../static/images/logo_rockefeller_foundation.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
-                imgStyle={{width: "86%"}}
+                imgStyle={{width: "74%"}}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
