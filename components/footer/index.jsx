@@ -148,7 +148,6 @@ const Footer = ({footerRes}) => {
               {resource.map((resources, index) => {
                 return (
                   <DropdownItem>
-                    <Link href="">
                       <button
                         onClick={() => {
                           onClickHandler(resources);
@@ -156,7 +155,6 @@ const Footer = ({footerRes}) => {
                       >
                         {resources}
                       </button>
-                    </Link>
                   </DropdownItem>
                 );
               })}

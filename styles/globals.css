@@ -938,7 +938,7 @@ a {
   width: 290px;
   box-shadow: 0px 0px 8px -4px #000;
   position: absolute;
-  left: 50%;
+  left: 87%;
   top: 30px;
   transform: translateX(-50%);
   background: var(--theme-yes-button-color);
@@ -956,7 +956,7 @@ a {
   content: "";
   position: absolute;
   top: -16px;
-  left: 50%;
+  left: 38%;
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
