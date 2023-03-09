@@ -147,7 +147,9 @@ const Footer = ({footerRes}) => {
             <DropdownMenu>
               {resource.map((resources, index) => {
                 return (
-                  <DropdownItem>
+                  <DropdownItem onClick={() => {
+                    onClickHandler(resources);
+                  }}>
                       <button
                         onClick={() => {
                           onClickHandler(resources);
