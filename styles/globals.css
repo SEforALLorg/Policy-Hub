@@ -74,6 +74,10 @@ main {
   color: var(--theme-media-icon-color);
 }
 
+.mediaIconBorderColor:hover .mediaIconColor {
+  color: rgb(6 90 137 / var(--tw-text-opacity));
+}
+
 .footer .mediaIconBorderColor{
   border-color: var(--theme-media-icon-color) !important;
   color: var(--theme-media-icon-color) !important;
@@ -934,7 +938,7 @@ a {
   width: 290px;
   box-shadow: 0px 0px 8px -4px #000;
   position: absolute;
-  left: 50%;
+  left: 87%;
   top: 30px;
   transform: translateX(-50%);
   background: var(--theme-yes-button-color);
@@ -952,7 +956,7 @@ a {
   content: "";
   position: absolute;
   top: -16px;
-  left: 50%;
+  left: 38%;
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
@@ -1444,7 +1448,7 @@ a {
   }
 
   .card-inner-small-wrap p {
-    font-size: 13px !important;
+    font-size: 15px !important;
     line-height: 23px !important;
   }
 

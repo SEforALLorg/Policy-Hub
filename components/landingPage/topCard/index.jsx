@@ -113,7 +113,7 @@ const TopCard = ({ HandleOpen }) => {
   //   </div>
   // </>
   return (
-    <div className="customize-card p-10  bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
+    <div className="customize-card p-[1.8rem] py-[2.5rem]  bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
         <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}
@@ -124,7 +124,7 @@ const TopCard = ({ HandleOpen }) => {
         </h5>
       </div>
       {/* <div className="my-3 border-b-[4px] border-primary opacity-20" /> */}
-      <div id="container-main" className="flex my-[1rem] h-[42vh]">
+      <div id="container-main" className="flex my-[1.5rem] h-[42vh]">
         <div className="container-box w-[50%]">
           <div className="flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
@@ -159,7 +159,7 @@ const TopCard = ({ HandleOpen }) => {
             <div className="divider-hide mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
         </div>
-        <div className="divider w-[2px] bg-black border-b-[4px] border opacity-[1]" />
+        <div className="divider w-[1px]  border-b-[4px] border opacity-[1]" />
         <div className="container-box w-[50%]">
           <div className="third-container flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
