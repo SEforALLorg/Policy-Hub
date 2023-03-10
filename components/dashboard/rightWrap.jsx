@@ -126,7 +126,7 @@ const RightWrapPage = ({
     generation_sources: selectInputs?.generation_sources,
     sector: selectInputs?.sector,
     fuel: selectInputs?.fuel,
-  };console.log(Object.values(selectedFilters).filter(key=> {if (isEmpty(key) === true) return;}), "qwret")
+  };
   const onDownload = () => {
     setCsvData("");
     const body = {
