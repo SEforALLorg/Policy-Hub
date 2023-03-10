@@ -40,7 +40,7 @@ export const getReportQuery = (
   const query = qs.stringify({
     pagination: {
       page: page,
-      pageSize: 50,
+      pageSize: 1000,
     },
     filters: {
       id: {
