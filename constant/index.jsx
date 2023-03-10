@@ -69,8 +69,8 @@ export const videosCard = [
 
 export const buttonOptions = [
   {"ELECTRICITY ACCESS": {
-    "MiniGrid" : [18,"static/images/mini-grid.png",11],
-    "StandaloneSystems": [24,"static/images/solaroutline.png",11]
+    "Mini grid" : [18,"static/images/mini-grid.png",11],
+    "Standalone systems": [24,"static/images/solaroutline.png",11]
   }},
   {"CLEAN COOKING": {
     "Policy and institutional framework" : [51,"static/images/framework.svg",35],

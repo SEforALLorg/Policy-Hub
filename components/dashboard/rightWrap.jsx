@@ -126,12 +126,12 @@ const RightWrapPage = ({
     generation_sources: selectInputs?.generation_sources,
     sector: selectInputs?.sector,
     fuel: selectInputs?.fuel,
-  };
+  };console.log(Object.values(selectedFilters).filter(key=> {if (isEmpty(key) === true) return;}), "qwret")
   const onDownload = () => {
     setCsvData("");
     const body = {
       data: {
-        reports: downloadData?.map((i) => i?.id),
+        reports: (selectInputs?.countries.length || selectInputs?.regions?.length || selectInputs?.segments?.length || selectInputs?.document_types?.length || selectInputs?.years?.length || selectInputs?.generation_sources?.length || selectInputs?.sector?.length || selectInputs?.fuel?.length) && downloadData?.map((i) => i?.id), //|| Object.values(selectedFilters).filter(key=> {if (isEmpty(key) === true) return;}),
         searchTerm: search || "",
         filters: selectedFilters,
       },
@@ -186,7 +186,6 @@ const RightWrapPage = ({
   };
 
   useEffect(() => {
-    console.log(page, allReports?.data?.data, previousReports)
     if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data);
       window !== "undefined" && document.getElementById("rightWrap").scrollTo(0,0);
