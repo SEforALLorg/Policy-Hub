@@ -15,10 +15,9 @@ import {
 } from "reactstrap";
 import Link from "next/link";
 import { resource } from "../../constant/resource";
-import { changingFooterLogo } from '../../constant/changinglogo';
+import { changingFooterLogo } from "../../constant/changinglogo";
 
-
-const Footer = ({footerRes}) => {
+const Footer = ({ footerRes }) => {
   const { t, i18n } = useTranslation();
   const [title, setTitle] = useState("Download Decision Tree");
   const onClickHandler = (resource) => {
@@ -47,22 +46,21 @@ const Footer = ({footerRes}) => {
   return (
     <div className="footer xsm:mt-4 medium:mt-20">
       <div className="flex items-center justify-between w-full xsm:flex-wrap laptop:flex-nowrap ">
-        <div
-          className="flex items-center laptop:w-2/5 laptop:justify-start xsm:justify-center xsm:w-full">
+        <div className="flex items-center laptop:w-2/5 laptop:justify-start xsm:justify-center xsm:w-full">
           <div
             onClick={() =>
               window.open("https://www.facebook.com/sustainableenergyforall")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-            cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+            cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
             hover:border hover:border-blue hover:text-blue ease-linear transition-all duration-500 mediaIconBorderColor"
           >
-            <FaFacebookF className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
+            <FaFacebookF className="extrasmall:text-medium xsm:text-xsmall mediaIconColor" />
           </div>
           <div
             onClick={() => window.open("https://twitter.com/SEforALLorg")}
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
                                 hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
           >
             <BsTwitter className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
@@ -70,17 +68,17 @@ const Footer = ({footerRes}) => {
           <div
             onClick={() =>
               window.open("https://www.linkedin.com/company/seforal")
-            }
+            } 
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
                                  hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
           >
             <FaLinkedinIn className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
           </div>
           <div
-            onClick={() => window.open("https://www.instagram.com/seforall/")}
+            onClick={() => window.open("https://www.instagram.com/seforall/" )}
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
-                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue hover:bg-white
+                                cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
                                 hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
           >
             <FaInstagram className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
@@ -134,29 +132,39 @@ const Footer = ({footerRes}) => {
           >
             {t("DownloadDecisionTree")}
           </button> */}
-          <UncontrolledDropdown setActiveFromChild className="
+          <UncontrolledDropdown
+            setActiveFromChild
+            className="
                                       customDropdown font-medium xsm:text-xx  text-white  last:mr-0 mb-0 
                                       py-2.5 xsm:px-3 medium:px-4 
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button button-animation cursor-p mediaIconBorderColor">
-            <DropdownToggle style={{color: "white"}} className="DropdownToggle" tag="a" caret>
-              <p style={{marginBottom: "0"}}>{title}</p>
+                                       hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button button-animation cursor-p mediaIconBorderColor"
+          >
+            <DropdownToggle
+              style={{ color: "white" }}
+              className="DropdownToggle"
+              tag="a"
+              caret
+            >
+              <p style={{ marginBottom: "0" }}>{title}</p>
             </DropdownToggle>
             <DropdownMenu>
               {resource.map((resources, index) => {
                 return (
-                  <DropdownItem onClick={() => {
-                    onClickHandler(resources);
-                  }}>
-                      <button
-                        onClick={() => {
-                          onClickHandler(resources);
-                        }}
-                      >
-                        {resources}
-                      </button>
+                  <DropdownItem
+                    onClick={() => {
+                      onClickHandler(resources);
+                    }}
+                  >
+                    <button
+                      onClick={() => {
+                        onClickHandler(resources);
+                      }}
+                    >
+                      {resources}
+                    </button>
                   </DropdownItem>
                 );
               })}
@@ -171,51 +179,63 @@ const Footer = ({footerRes}) => {
                                 xsm:justify-center laptop:justify-end large:mt-0 xsm:flex-wrap laptop:flex-nowrap footer-logos"
         >
           <img
-            src={"/static/images/logo.svg"}
+            src={`/static/images/logo${
+              footerRes === "SUSTAINABLE COOLING" ? "black" : ""
+            }.svg`}
             alt="all"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
-          {footerRes === "ELECTRICITY ACCESS" && <img
-            src="static/images/footer_electricity_access.svg"
-            alt="founder"
-            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-            onClick={() =>
-              window.open("https://www.rockefellerfoundation.org/")
-            }
-          />}
-          {footerRes === "CLEAN COOKING" && <img
-            src="static/images/footer_electricity_access.svg"
-            alt="founder"
-            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-            onClick={() =>
-              window.open("https://www.rockefellerfoundation.org/")
-            }
-          />}
-          {footerRes === "SUSTAINABLE COOLING" && <img
-            src={"/static/images/footer_sustainable_cooking.svg"}
-            alt="founder"
-            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-            onClick={() =>
-              window.open("https://www.rockefellerfoundation.org/")
-            }
-          />}
-          {footerRes === "ENERGY EFFICIENCY" && <img
-            src={"static/images/footer_electricity_access.svg"}
-            alt="founder"
-            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-            onClick={() =>
-              window.open("https://www.rockefellerfoundation.org/")
-            }
-          />}
-          {!footerRes && <img
-            src={"/static/images/logo_rockefeller_foundation_white.svg"}
-            alt="founder"
-            className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
-            onClick={() =>
-              window.open("https://www.rockefellerfoundation.org/")
-            }
-          />}
+          {footerRes === "ELECTRICITY ACCESS" && (
+            <img
+              src="static/images/footer_electricity_access.svg"
+              alt="founder"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+            />
+          )}
+          {footerRes === "CLEAN COOKING" && (
+            <img
+              src="static/images/footer_electricity_access.svg"
+              alt="founder"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+            />
+          )}
+          {footerRes === "SUSTAINABLE COOLING" && (
+            <img
+              src={"/static/images/footer_sustainable_cooking.svg"}
+              alt="founder"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+            />
+          )}
+          {footerRes === "ENERGY EFFICIENCY" && (
+            <img
+              src={"static/images/footer_electricity_access.svg"}
+              alt="founder"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+            />
+          )}
+          {!footerRes && (
+            <img
+              src={"/static/images/logo_rockefeller_foundation_white.svg"}
+              alt="founder"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+            />
+          )}
           <img
             src={"/static/images/dgcs_rettangolare_eng_neg.png"}
             alt="founder"
