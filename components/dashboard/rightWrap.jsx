@@ -128,10 +128,11 @@ const RightWrapPage = ({
     fuel: selectInputs?.fuel,
   };
   const onDownload = () => {
+    const filters = Object.values(selectedFilters).filter(key=> {if (key.length > 0) return true;})
     setCsvData("");
     const body = {
       data: {
-        reports: (selectInputs?.countries.length || selectInputs?.regions?.length || selectInputs?.segments?.length || selectInputs?.document_types?.length || selectInputs?.years?.length || selectInputs?.generation_sources?.length || selectInputs?.sector?.length || selectInputs?.fuel?.length) && downloadData?.map((i) => i?.id), //|| Object.values(selectedFilters).filter(key=> {if (isEmpty(key) === true) return;}),
+        reports: filters?.length === 0 ? [] : downloadData?.map((i) => i?.id),
         searchTerm: search || "",
         filters: selectedFilters,
       },
