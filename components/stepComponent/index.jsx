@@ -80,14 +80,18 @@ const StepComponent = ({
       <div className="OptionsWrap" >
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
+          const isFood = item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains")
+          const isFoodAndEquipment = isFood && i?.Answer?.includes("Equipment / refrigeration")
+          const isFoodAndGrid = isFood && ["Grid-based","Off-grid","Mobile"]?.includes(i?.Answer)
           return (
             <div
               className="optionItem"
               key={index}
-              onClick={() => onAnswerClick(i)}
+              onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)}
+              style={{marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}`}}
             >
-              <RadioButton checked={optionData?.id === i?.id} />
-              <p>
+              {!isFoodAndEquipment && <RadioButton checked={optionData?.id === i?.id} />}
+              <p style={{marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}`}}>
                 {i?.Answer}
               {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
               </p>
