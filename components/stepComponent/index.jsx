@@ -84,10 +84,11 @@ const StepComponent = ({
             <div
               className="optionItem"
               key={index}
-              onClick={() => onAnswerClick(i)}
+              onClick={() => item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "" : onAnswerClick(i)}
+              style={{marginLeft: `${item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && (i?.Answer.includes("Grid-based") || i?.Answer.includes("Off-grid") || i?.Answer.includes("Mobile")) ? "1.8rem" : ""}`}}
             >
-              <RadioButton checked={optionData?.id === i?.id} />
-              <p>
+              {item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "" : <RadioButton checked={optionData?.id === i?.id} />}
+              <p style={{marginLeft: `${item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "1.8rem" : ""}`}}>
                 {i?.Answer}
               {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
               </p>
