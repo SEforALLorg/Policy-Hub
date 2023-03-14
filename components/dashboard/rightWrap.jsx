@@ -50,6 +50,7 @@ const RightWrapPage = ({
   const [sectorOptionCooling, setSectorOptionCooling] = useState([]);
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
+  const [isLoader , setIsLoader] = useState(false)
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
   const { t } = useTranslation();
@@ -111,6 +112,7 @@ const RightWrapPage = ({
       const csvData = e?.data?.result?.csv;
       if (csvData) {
         setCsvData(csvData);
+        setIsLoader(false);
         csvLink.current.link.click();
       }
     },
@@ -138,6 +140,7 @@ const RightWrapPage = ({
       },
     };
     mutate(body);
+    setIsLoader(true);
   };
 
   // Publication Reports
@@ -558,6 +561,7 @@ const RightWrapPage = ({
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
                 >
+                  {!isLoader ?  (
                   <TooltipComponent
                     content={t("clicktodownload")}
                     hideInfo={true}
@@ -569,6 +573,11 @@ const RightWrapPage = ({
                       {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
                     </div>
                   </TooltipComponent>
+                  ) : (
+                  <div className="flex items-center justify-center h-[100%]">
+                    <Loader />
+                  </div>
+                  )}
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
