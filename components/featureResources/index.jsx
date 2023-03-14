@@ -13,19 +13,9 @@ import Loader from "../loader";
 import { BsSliders } from "react-icons/bs";
 
 const Feature = () => {
-  const [isVideoCard, setIsVideoCard] = useState("");
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
-  const [allResources, setAllResources] = useState();
-
-  const { data: data } = useQuery(["getAllResources"], getAllResources, {
-    onError: (error) => {
-      ErrorNotify(error?.response?.data?.error?.message);
-    },
-  });
-
-  useEffect(() => setAllResources(data?.data?.data), [data]);
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -36,9 +26,16 @@ const Feature = () => {
       },
     }
   );
-
-  useEffect(() => setAllResources(filteredCards?.data?.data), [filteredCards]);
-
+  const setData = () => {
+    const mainData = filteredCards?.data?.data;
+    const filterData = mainData?.filter((item) => item?.id === 12 || item?.id === 11) || []
+    const finalIds = filterData?.map((item) => item?.id)
+    const finalData = mainData?.filter((item) => !finalIds?.includes(item?.id)) || []
+    return [...filterData, ...finalData]
+  };
+    
+  const allResources = setData(filteredCards);
+    
   useEffect(() => {
     if (query) {
       refetch();
@@ -98,7 +95,6 @@ const Feature = () => {
               </h6>
               <button
                 onClick={() => {
-                  setAllResources(data?.data?.data);
                   filterData("");
                 }}
                 className="bg-lightBlue rounded-[60px] w-full text-normal
@@ -109,7 +105,7 @@ const Feature = () => {
               </button>
             </div>
             <div className="cardWrap">
-              {allResources ? (
+              {allResources?.length ? (
                 allResources?.map((resource) => {
                   return (
                     <OtherToolsCard
