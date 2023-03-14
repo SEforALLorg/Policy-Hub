@@ -80,15 +80,18 @@ const StepComponent = ({
       <div className="OptionsWrap" >
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
+          const isFood = item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains")
+          const isFoodAndEquipment = isFood && i?.Answer?.includes("Equipment / refrigeration")
+          const isFoodAndGrid = isFood && ["Grid-based","Off-grid","Mobile"]?.includes(i?.Answer)
           return (
             <div
               className="optionItem"
               key={index}
-              onClick={() => item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "" : onAnswerClick(i)}
-              style={{marginLeft: `${item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && (i?.Answer.includes("Grid-based") || i?.Answer.includes("Off-grid") || i?.Answer.includes("Mobile")) ? "1.8rem" : ""}`}}
+              onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)}
+              style={{marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}`}}
             >
-              {item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "" : <RadioButton checked={optionData?.id === i?.id} />}
-              <p style={{marginLeft: `${item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains") && i?.Answer?.includes("Equipment / refrigeration") ? "1.8rem" : ""}`}}>
+              {!isFoodAndEquipment && <RadioButton checked={optionData?.id === i?.id} />}
+              <p style={{marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}`}}>
                 {i?.Answer}
               {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
               </p>
