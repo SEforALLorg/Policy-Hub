@@ -158,13 +158,7 @@ const Footer = ({ footerRes }) => {
                       onClickHandler(resources);
                     }}
                   >
-                    <button
-                      onClick={() => {
-                        onClickHandler(resources);
-                      }}
-                    >
-                      {resources}
-                    </button>
+                    {resources}
                   </DropdownItem>
                 );
               })}
