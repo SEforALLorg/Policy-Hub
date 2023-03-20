@@ -6,13 +6,12 @@ import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
 
-const DetailModal = ({firstHit}) => {
+const DetailModal = ({ firstHit }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [formInput, setFormInput] = useState({
-    FirstName: "",
-    LastName: "",
+    FullName: "",
     Email: "",
-    PhoneNumber: "",
+    // PhoneNumber: "",
     JobTitle: "",
     Organization: "",
     Country: "",
@@ -31,38 +30,40 @@ const DetailModal = ({firstHit}) => {
   const onSubmitHandler = async (event) => {
     if (event) event.preventDefault();
     if (!buttonDisable) {
-      let ip = localStorage.getItem("ip")
+      let ip = localStorage.getItem("ip");
       let date = new Date();
-      localStorage.setItem("currentDate",date);
+      localStorage.setItem("currentDate", date);
       let journey = {
-        [date]: [firstHit]
-      } 
+        [date]: [firstHit],
+      };
       let data = {
         ...formInput,
         IPAddress: ip ? ip : "",
-      }
+      };
       let payload = {
-        "data": {
+        data: {
           ...data,
           Journey: journey,
-        }
-      }
+        },
+      };
       const response = await postUserDetails(payload);
-      if(response.status === 200) {
+      if (response.status === 200) {
         let count = response?.data?.data?.VisitCount;
         let userId = response?.data?.data?.id;
         localStorage.setItem("UserId", userId);
         localStorage.setItem("count", count);
-        localStorage.setItem("userInfo",JSON.stringify(response?.data?.data));
+        localStorage.setItem("userInfo", JSON.stringify(response?.data?.data));
         localStorage.setItem("UserModal", false);
-        toast.success("Your details has been successfully submitted", { position: toast.POSITION.TOP_CENTER });
+        toast.success("Your details has been successfully submitted", {
+          position: toast.POSITION.TOP_CENTER,
+        });
         setIsOpen(false);
-        let existingJourney = response?.data?.data?.Journey
+        let existingJourney = response?.data?.data?.Journey;
         if (response?.data?.data?.userExist) {
           let data = {
             data: {
-              Journey: {...existingJourney, ...journey},
-              VisitCount: count && ++count || 1,
+              Journey: { ...existingJourney, ...journey },
+              VisitCount: (count && ++count) || 1,
             },
           };
           userRepeated(data);
@@ -83,11 +84,14 @@ const DetailModal = ({firstHit}) => {
     const formError = validation(event, name, val);
     setErrors(formError);
     setFormInput({ ...formInput, [name]: val });
-    
-  }
+  };
 
-  useEffect(() => { 
-    const result = Object.values(formInput).map((val) => {return isEmpty(val)}).every((element) => !element);
+  useEffect(() => {
+    const result = Object.values(formInput)
+      .map((val) => {
+        return isEmpty(val);
+      })
+      .every((element) => !element);
     if (result) {
       setButtonDisable(false);
     } else {
@@ -103,40 +107,40 @@ const DetailModal = ({firstHit}) => {
           id="defaultModal"
           tabindex="-1"
           aria-hidden="true"
-          style={{backgroundColor: "#00000080"}}
+          style={{ backgroundColor: "#00000080" }}
           className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-md z-50 p-4 w-full md:inset-0 h-modal md:h-full flex items-center justify-center"
         >
           <div className="relative w-full rounded-lg max-w-lg h-3/4">
             {/* <!-- Modal content --> */}
             <button
-                  type="button"
-                  onClick={() => {
-                    setIsOpen(false);
-                    localStorage.setItem("UserModal", false);
-                  }}
-                  className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-[50%] text-sm p-2 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white absolute top-[-12px] right-[-10px] bg-white z-10 "
-                  data-modal-toggle="defaultModal"
-                >
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  <span className="sr-only">Close modal</span>
-                </button>
+              type="button"
+              onClick={() => {
+                setIsOpen(false);
+                localStorage.setItem("UserModal", false);
+              }}
+              className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-[50%] text-sm p-2 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white absolute top-[-12px] right-[-10px] bg-white z-10 "
+              data-modal-toggle="defaultModal"
+            >
+              <svg
+                aria-hidden="true"
+                className="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <span className="sr-only">Close modal</span>
+            </button>
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700 h-full w-full overflow-y-auto ">
               {/* <!-- Modal header --> */}
               <div className="p-3 rounded-t bg-white w-full">
                 <h3 className="text-2xl font-semibold text-gray-700 text-cyan-800">
-                  Enter Details
+                  User Survey
                 </h3>
               </div>
               {/* <!-- Modal body --> */}
@@ -146,18 +150,24 @@ const DetailModal = ({firstHit}) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-first-name"
                   >
-                    First Name
+                    Full Name
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.FirstName ? "" : "border-red-900" : ""}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
+                      danger
+                        ? formInput?.FirstName
+                          ? ""
+                          : "border-red-900"
+                        : ""
+                    }`}
                     id="inline-first-name"
-                    name="FirstName"
+                    name="FullName"
                     type="text"
                     onChange={handleChange}
                   />
                   {/* {errors?.FirstName && <h3 className="text-red-900 p-2">{errors?.FirstName}</h3>} */}
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-last-name"
@@ -172,7 +182,7 @@ const DetailModal = ({firstHit}) => {
                     onChange={handleChange}
                   />
                   {/* {errors?.LastName && <h3 className="text-red-900 p-2">{errors?.LastName}</h3>} */}
-                </div>
+                {/* </div> */}
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
@@ -181,7 +191,9 @@ const DetailModal = ({firstHit}) => {
                     Email
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.Email ? "" : "border-red-900" : ""}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
+                      danger ? (formInput?.Email ? "" : "border-red-900") : ""
+                    }`}
                     id="inline-email"
                     type="email"
                     name="Email"
@@ -189,7 +201,7 @@ const DetailModal = ({firstHit}) => {
                   />
                   {/* {errors?.Email && <h3 className="text-red-900 p-2">{errors?.Email}</h3>} */}
                 </div>
-                <div>
+                {/* <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-phone-number"
@@ -202,9 +214,9 @@ const DetailModal = ({firstHit}) => {
                     type="number"
                     name="PhoneNumber"
                     onChange={handleChange}
-                  />
-                  {/* {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>} */}
-                </div>
+                  /> */}
+                {/* {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>} */}
+                {/* </div> */}
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
@@ -213,7 +225,13 @@ const DetailModal = ({firstHit}) => {
                     Job Title
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.JobTitle ? "" : "border-red-900" : ""}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
+                      danger
+                        ? formInput?.JobTitle
+                          ? ""
+                          : "border-red-900"
+                        : ""
+                    }`}
                     id="inline-job-title"
                     type="text"
                     name="JobTitle"
@@ -229,7 +247,13 @@ const DetailModal = ({firstHit}) => {
                     Organization
                   </label>
                   <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.Organization ? "" : "border-red-900" : ""}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
+                      danger
+                        ? formInput?.Organization
+                          ? ""
+                          : "border-red-900"
+                        : ""
+                    }`}
                     id="inline-organization"
                     type="text"
                     name="Organization"
@@ -245,39 +269,47 @@ const DetailModal = ({firstHit}) => {
                     Country
                   </label>
                   <select
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.Country ? "" : "border-red-900" : ""}`}
+                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
+                      danger ? (formInput?.Country ? "" : "border-red-900") : ""
+                    }`}
                     id="inline-country"
                     name="Country"
                     onChange={handleChange}
                   >
-                  {
-                    Flags.map((key)=>{console.log()
+                    {Flags.map((key) => {
+                      console.log();
                       return (
-                        <option value={key.code}>{key.name}{ key.emoji }</option>
-                      )
-                    })
-                  }
+                        <option value={key.code}>
+                          {key.name}
+                          {key.emoji}
+                        </option>
+                      );
+                    })}
                   </select>
                   {/* {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>} */}
                 </div>
-                {/* <!-- Modal footer --> */}              
+                <p className="w-full py-2 px-0 text-black-700 leading-tight text-sm">
+                  Please enter the following details. No fields are mandatory.<br />
+                  <b>Note:</b> Your personal data is processed as per SEforALL Privacy Policy.
+                </p>
+                {/* <!-- Modal footer --> */}
                 <div className="flex justify-center p-6 space-x-2 rounded-b">
-                <button
-                  data-modal-toggle="defaultModal"
-                  type="submit"
-                  disabled={buttonDisable}
-                  style={{opacity: buttonDisable && 0.7}}
-                  className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                >
-                  Submit
-                </button>
-              </div>
+                  <button
+                    data-modal-toggle="defaultModal"
+                    type="submit"
+                    disabled={buttonDisable}
+                    style={{ opacity: buttonDisable && 0.7 }}
+                    className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         </div>
       )}
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };
