@@ -164,8 +164,8 @@ const TopCard = ({ HandleOpen }) => {
           <div className="third-container flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
-                className="w-[16%] mr-[8px]"
-                src="../../../static/images/hub.svg"
+                className="w-[16%] mr-[8px] mt-[-10px]"
+                src="../../../static/images/sustainable_hub.png"
                 alt="hub"
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
