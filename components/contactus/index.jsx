@@ -130,7 +130,7 @@ const Contact = () => {
             {t("KeepUpToSpeed")}
             <span
               className="text-darktext font-bold underline cursor-pointer text-Primary"
-              onClick={() => window.open("mailto:KnowledgeHub@SEforALL.org")}
+              onClick={() => window.open("mailto:PolicyHub@seforall.org")}
             >
             PolicyHub@seforall.org
             </span>
