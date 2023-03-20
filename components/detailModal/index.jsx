@@ -110,7 +110,7 @@ const DetailModal = ({ firstHit }) => {
           style={{ backgroundColor: "#00000080" }}
           className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-md z-50 p-4 w-full md:inset-0 h-modal md:h-full flex items-center justify-center"
         >
-          <div className="relative w-full rounded-lg max-w-lg h-3/4">
+          <div className="relative w-full rounded-lg max-w-lg h-3/4 2xl:h-auto">
             {/* <!-- Modal content --> */}
             <button
               type="button"
