@@ -142,6 +142,10 @@ const DetailModal = ({ firstHit }) => {
                 <h3 className="text-2xl font-semibold text-gray-700 text-cyan-800">
                   User Survey
                 </h3>
+                <p className="w-full py-2 pb-0 px-0 text-black-700 leading-tight text-sm">
+                  Please enter the following details. No fields are mandatory.<br />
+                  <b>Note:</b> Your personal data is processed as per SEforALL Privacy Policy.
+                </p>
               </div>
               {/* <!-- Modal body --> */}
               <form className="w-full pl-4 pr-4" onSubmit={onSubmitHandler}>
@@ -288,10 +292,6 @@ const DetailModal = ({ firstHit }) => {
                   </select>
                   {/* {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>} */}
                 </div>
-                <p className="w-full py-2 px-0 text-black-700 leading-tight text-sm">
-                  Please enter the following details. No fields are mandatory.<br />
-                  <b>Note:</b> Your personal data is processed as per SEforALL Privacy Policy.
-                </p>
                 {/* <!-- Modal footer --> */}
                 <div className="flex justify-center p-6 space-x-2 rounded-b">
                   <button
