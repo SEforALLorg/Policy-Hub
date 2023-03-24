@@ -46,9 +46,9 @@ const OtherToolsCard = ({
         <div className="w-full">
           <button
             onClick={() => window.open(link)}
-            className="bg-lightBlue rounded-[60px] w-full  text-normal
+            className="bg-Primary rounded-[60px] w-full  text-white
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
+                                      ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
           >
             {t("gototool")}
           </button>
