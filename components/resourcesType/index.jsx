@@ -7,9 +7,8 @@ import darkTheme from "../../theme/SustainableCooling";
 import greenTheme from "../../theme/clean_cooking ";
 import yellowTheme from "../../theme/EnergyEfficiency";
 import baseTheme from "../../theme/base";
-import blueTheme from "../../theme/blue";
 import Loader from "../loader";
-import { useEffect } from "react";
+import electricityTheme from "../../theme/Electricity";
 
 const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   const { t } = useTranslation();
@@ -24,7 +23,7 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
     switch (e?.target?.innerText) {
       case "ELECTRICITY ACCESS":
         localStorage.setItem("ResourceType", e?.target?.innerText);
-        applyTheme(baseTheme);
+        applyTheme(electricityTheme);
         break;
       case "CLEAN COOKING":
         localStorage.setItem("ResourceType", e?.target?.innerText);
