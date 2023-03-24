@@ -22,7 +22,6 @@ const Customize = ({
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
   let count = localStorage.getItem("count");
-  let userExist = localStorage.getItem("existingUser")
   
   const onAnswerClick = (i) => {
     const currentDate = new Date();

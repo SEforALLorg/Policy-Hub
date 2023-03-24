@@ -42,8 +42,6 @@ const Dashboard = ({
     sector: [],
     fuel: [],
   });
-  // const [latestDate, setLatestDate] = useState();
-  const [latestJourney, setLatestJourney] = useState();
 
   const onResetFilter = () => {
     setSelectInputs({
@@ -99,7 +97,6 @@ const Dashboard = ({
     let userOldJourney;
     if (existing){
       existingJourney = existing?.Journey;
-      setLatestJourney(existingJourney);
       userOldJourney = existingJourney?.[latestDate]
     }
     if (localStorage.getItem("UserId")) {
@@ -121,7 +118,6 @@ const Dashboard = ({
                 return prev[String(existingDate)] = data;
               }
             })
-            // console.log(prev,'prev122');
             putJourneyStep(prev);
           }
         } else {  

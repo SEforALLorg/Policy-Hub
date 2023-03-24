@@ -214,7 +214,7 @@ const LeftWrapPage = ({
           subcription={subcription}
         />
       )}
-      {subcription && <SubscribeComponent subcription={subcription} />}
+      {/* {subcription && <SubscribeComponent subcription={subcription} />} */}
       {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
       {questions?.length
         ? questions

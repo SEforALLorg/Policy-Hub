@@ -82,7 +82,7 @@ const RightWrapPage = ({
 
   // Get Reports API
   const query = useMemo(() => {
-    if (typeof window !== "undefined" && window?.innerWidth < 990) return;
+    // if (typeof window !== "undefined" && window?.innerWidth < 990) return;
     return getReportQuery(
       selectInputs,
       nonPublicationReports,
