@@ -68,7 +68,7 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
           })}
           <p>{t("Viewallresources")}</p>
         </div>
-        <p className="font-normal text-[14px] text-center text-text mt-[30px] share-your-text textColor">
+        <p className="font-normal text-[14px] text-center text-text mt-[30px] share-your-text textColor w-full">
           {t("ShareYourInfo")}
         </p>
         <div className="flex items-center justify-center inputFullWrap mt-[30px]">
