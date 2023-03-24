@@ -5,7 +5,7 @@ const checkStatus = (status) => status >= 200 && status < 300;
 
  
 const instance = axios.create({
-  baseURL: "http://192.168.1.39:1337/api/", //"http://182.77.63.150:5300/api/", 
+  baseURL: "https://kmit-policyhub.herokuapp.com/api/", //"http://192.168.1.39:1337/api/", //"http://182.77.63.150:5300/api/", 
   headers: {
     Accept: '*/*',
     'Content-Type': 'application/json',
