@@ -27,6 +27,10 @@ main {
   background-repeat: no-repeat;
 }
 
+.color-b b {
+  color: rgb(73 73 73/var(--tw-text-opacity))
+}
+
 .electricity_access {
   background-image: url("/static/images/Electricity.png");
   background-size: cover;
