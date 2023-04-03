@@ -10,7 +10,7 @@ const Contact = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="h-full lg:h-[34vh]">
+    <div className="main-container">
       <div className="bg-white rounded-lg	overflow-hidden shadow-md">
         <div className="flex items-center xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
           <div className="  xsm:w-11/12 large:w-full ">
