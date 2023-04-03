@@ -14,7 +14,7 @@ const About = () => {
       </Head>
       <div className=" rounded-lg overflow-hidden shadow-md">
         <div className="bg-white xsm:p-5 small:p-10 flex justify-between items-center xsm:flex-wrap xsm:justify-center medium:flex-nowrap dropShadow">
-          <div className="w-full pr-[30px] about-inner-wrap">
+          <div className="w-full pr-[30px] about-inner-wrap color-b">
             <h5 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2 center-content">
               {t("Aboutus")}
             </h5>
