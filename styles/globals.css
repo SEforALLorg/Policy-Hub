@@ -251,7 +251,7 @@ a {
 
 .header .active.nav-link {
   font-weight: 700;
-  color: var(--theme-actve-primary-button) !important;
+  /* color: var(--theme-actve-primary-button) !important; */
 }
 
 .header .nav-link:hover {
