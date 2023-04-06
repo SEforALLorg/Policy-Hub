@@ -9,8 +9,15 @@ import yellowTheme from "../../theme/EnergyEfficiency";
 import baseTheme from "../../theme/base";
 import Loader from "../loader";
 import electricityTheme from "../../theme/Electricity";
+import { IoClose } from "react-icons/io5";
 
-const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
+const Resources = ({
+  onYes,
+  resourcesData,
+  onNextQuestionId,
+  selected,
+  setIsOpen,
+}) => {
   const { t } = useTranslation();
   // localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
@@ -19,7 +26,7 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
   };
 
   const changeColor = (e) => {
-    selected(e?.target?.innerText)
+    selected(e?.target?.innerText);
     switch (e?.target?.innerText) {
       case "ELECTRICITY ACCESS":
         localStorage.setItem("ResourceType", e?.target?.innerText);
@@ -45,17 +52,19 @@ const Resources = ({ onYes, resourcesData, onNextQuestionId, selected }) => {
 
   return (
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
-      <div className="flex items-center customize-header">
-
-          <img
-            className="w-[230px] h-[157px] object-contain	mr-5"
-            src="static/images/cards.svg"
-            alt="card"
-          />
+      <div className="flex items-center customize-header relative">
+        <img
+          className="w-[230px] h-[157px] object-contain	mr-5"
+          src="static/images/cards.svg"
+          alt="card"
+        />
 
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-          {t("AssessYourCountry")} 
-  {/* {t("Customize")} */}
+          {t("AssessYourCountry")}
+          {/* {t("Customize")} */}
+        </div>
+        <div onClick={() => setIsOpen(false)} className="close-Icon text-gray-400 hover:text-gray-900 ">
+         <IoClose className="w-full h-full"/>
         </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />

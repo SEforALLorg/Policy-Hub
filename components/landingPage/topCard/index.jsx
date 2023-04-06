@@ -113,7 +113,7 @@ const TopCard = ({ HandleOpen }) => {
   //   </div>
   // </>
   return (
-    <div className="customize-card p-[1.8rem] py-[2.5rem]  bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
+    <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
         <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}

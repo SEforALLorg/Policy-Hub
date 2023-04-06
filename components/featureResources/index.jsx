@@ -16,6 +16,7 @@ const Feature = () => {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
+  const [disable, setDisable] = useState(true);
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -96,10 +97,10 @@ const Feature = () => {
               <button
                 onClick={() => {
                   filterData("");
+                  setDisable(true);
                 }}
-                className="bg-lightBlue rounded-[60px] w-full text-normal
-                                      border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      hover:bg-Primary hover:text-white ease-linear transition-all duration-500 w-[110px] button-animation card-tool-button allBtn"
+                disabled={disable}
+                className={`bg-lightBlue rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${!disable && "hover:bg-Primary hover:text-white ease-linear transition-all duration-500 button-animation"} w-[110px] card-tool-button allBtn`}
               >
                 {t("AllPlatforms")}
               </button>
@@ -109,7 +110,10 @@ const Feature = () => {
                 allResources?.map((resource) => {
                   return (
                     <OtherToolsCard
-                      filterData={(e) => filterData(e)}
+                      filterData={(e) => {
+                        filterData(e);
+                        setDisable(false)
+                      }}
                       resourceType={resource?.attributes?.resources?.data}
                       title={resource?.attributes?.Title}
                       link={resource?.attributes?.Link}

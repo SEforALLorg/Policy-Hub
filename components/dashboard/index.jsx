@@ -15,7 +15,7 @@ const Dashboard = ({
   setIsBigCard,
   resources,
   selectedRes,
-  
+  setIsOpen
 }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [isResource, setIsResource] = useState(true);
@@ -193,6 +193,7 @@ const Dashboard = ({
               }}
               onYes={() => setIsResource(false)}
               onNextQuestionId={onNextQuestionId}
+              setIsOpen={setIsOpen}
             />
         </>
       )}

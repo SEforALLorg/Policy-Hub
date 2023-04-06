@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import RightWrapPage from "components/dashboard/rightWrap";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
+import { IoClose } from "react-icons/io5";
 
 const ALLReports = () => {
   const [selectInputs, setSelectInputs] = useState({
@@ -34,10 +36,13 @@ const ALLReports = () => {
   const { t } = useTranslation();
   return (
     <div className="all-reports">
-      <div className="all-reports-header">
+      <div className="all-reports-header relative">
         <h4 className="font-bold text-[45px] uppercase mb-[0px] text-text center-content">
           {t("BrowseResource")}
         </h4>
+        <Link href='/resources'>
+          <IoClose className="header-common-closeIcon"/>
+        </Link>
         <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] center-content">
           {t("ExploreOurDatabase")}
         </p>
