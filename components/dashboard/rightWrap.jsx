@@ -451,7 +451,7 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {resourceType === "ELECTRICITY ACCESS" || browseResource &&  <Select
+              {(resourceType === "ELECTRICITY ACCESS" || browseResource) &&  <Select
                 title={t("GenerationSource")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -551,7 +551,7 @@ const RightWrapPage = ({
             onClick={() => setIsOpen()}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between resource-buttons textColor">
-              <p>{t("Resources")}</p>
+              <p className="m-0">{t("Resources")}</p>
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
@@ -559,7 +559,7 @@ const RightWrapPage = ({
                     }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : 1 }}
+                  style={{ opacity: disableButtons ? 0.5 : 1, width:108 }}
                 >
                   {!isLoader ?  (
                   <TooltipComponent
@@ -569,7 +569,7 @@ const RightWrapPage = ({
                     hideContent={disableButtons}
                     id={'download'}
                   >
-                    <div className="flex download-button-inner">
+                    <div className="flex justify-center download-button-inner">
                       {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
                     </div>
                   </TooltipComponent>

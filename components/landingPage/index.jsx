@@ -86,6 +86,7 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
               resources={resources}
               selectedRes={selectedRes}
               footerRes={footerRes}
+              setIsOpen={setIsOpen}
             />
           </div>
         ) : null}
