@@ -63,7 +63,7 @@ const Customize = ({
             if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
                return (
                 <img
-                className="w-[230px] h-[157px] object-contain  mr-5"
+                className="w-[230px] h-[157px] object-contain object-contain-height mr-5"
                 src = {Object.values(key)?.[0]}
                 alt="card"
               />

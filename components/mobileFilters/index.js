@@ -347,15 +347,15 @@ const MobileFilters = ({
                 >
                   {t("ClearFilters")}
                 </button>
-                <BlueButton
-                  title="Apply"
+                <button
+                  type="button"
                   onClick={() => onApply()}
-                  style={{
-                    backgroundColor: "#FCB600",
-                    color: "#fff",
-                  }}
-                  // disabled={!optionSelected}
-                />
+                  className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
+                small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 text-small font-medium BtnColor
+                text-gray-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
+                >
+                  {t("Apply")}
+                </button>
               </div>
             </div>
           </div>
