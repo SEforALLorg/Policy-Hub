@@ -54,7 +54,7 @@ const Resources = ({
     <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
       <div className="flex items-center customize-header relative">
         <img
-          className="w-[230px] h-[157px] object-contain	mr-5"
+          className="w-[230px] h-[157px] object-contain object-contain-height	mr-5"
           src="static/images/cards.svg"
           alt="card"
         />
@@ -63,7 +63,7 @@ const Resources = ({
           {t("AssessYourCountry")}
           {/* {t("Customize")} */}
         </div>
-        <div onClick={() => setIsOpen(false)} className="close-Icon text-gray-400 hover:text-gray-900 ">
+        <div onClick={() => setIsOpen(false)} className="closeIcon text-gray-400 hover:text-gray-900 ">
          <IoClose className="w-full h-full"/>
         </div>
       </div>
