@@ -937,12 +937,13 @@ a {
   background: var(--theme-yes-button-color);
   width: 500px;
   z-index: 999;
-  font-size: 25px;
+  font-size: 28px;
   color: #fff;
   font-weight: 400;
-  line-height: 25px;
+  line-height: 35px;
   box-shadow: 0px 0px 8px -4px #000;
   opacity: 1;
+  padding: 16px 32px;
 }
 
 
@@ -1428,6 +1429,16 @@ a {
    margin-top: -9px;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .customize-title .tooltipWrap .customizeStyle {
+    font-size: 22px;
+    line-height: 28px;
+    padding: 10px 16px;
+    width: 450px;
+
+  }
+ 
+}
 @media only screen and (min-width:1024px) {
   .main-container{
     height: 34vh;
@@ -3392,6 +3403,12 @@ a {
 
   .resourceShadow {
     box-shadow: 0px 2px 7px 0px rgb(0 0 0 / 25%);
+  }
+  .customize-title .tooltipWrap .customizeStyle {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 8px 16px;
+
   }
 }
 .closeIcon {
