@@ -617,21 +617,11 @@ const RightWrapPage = ({
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>
-                ) : !reports?.length ||
-                  (!allReports?.data?.data?.length && !showAllReports) ||
-                  (!finalPublicationReports?.length &&
-                    !finalNonPublicationReports?.length &&
-                    !showAllReports) ? (
-                  <div className="report-no-data">
-                    <p>
-                      <RiSearch2Line />
-                      {t("NoReportsFound")}
-                    </p>
-                    <a className="cursor-pointer" onClick={() => onReset()}>
-                      Clear all filters
-                    </a>
-                  </div>
-                ) : (
+                ) : Boolean(reports?.length) ||
+                  (allReports?.data?.data?.length && showAllReports) ||
+                  (finalPublicationReports?.length &&
+                    finalNonPublicationReports?.length &&
+                    showAllReports) ? (
                   <>
                     {Boolean(finalPublicationReports.length) &&
                       finalPublicationReports
@@ -739,6 +729,16 @@ const RightWrapPage = ({
                         );
                       })}
                   </>
+                ) : (
+                  <div className="report-no-data">
+                    <p>
+                      <RiSearch2Line />
+                      {t("NoReportsFound")}
+                    </p>
+                    <a className="cursor-pointer" onClick={() => onReset()}>
+                      Clear all filters
+                    </a>
+                  </div>
                 )}
                 {isFetchingReports && isScrollLoader ? (
                   <div className="flex items-center justify-center">
