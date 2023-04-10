@@ -56,7 +56,7 @@ const Feature = () => {
 
   return (
     <div className="w-full rounded-lg overflow-hidden">
-      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem]">
+      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table">
         <div className="xsm:px-4 mobile:px-[0px] relative">
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
@@ -84,7 +84,7 @@ const Feature = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem]">
+      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem] all_platform_table">
         <div className="xsm:px-4 mobile:px-[0px] resources-cards-wrap">
           <div>
             <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">

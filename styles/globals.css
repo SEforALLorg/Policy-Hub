@@ -2146,6 +2146,11 @@ a {
 
 @media only screen and (max-width: 767px) {
 
+  .all_platform_table {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
   .closeIcon {
      width: 35px !important;
      height: 35px !important;
