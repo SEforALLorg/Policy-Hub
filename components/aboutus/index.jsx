@@ -3,6 +3,7 @@ import ImgCard from "components/cards/imgCard";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { logoData } from "../../constant";
+import ReactPlayer from "react-player";
 
 const About = () => {
   const { t, i18n } = useTranslation();
@@ -37,16 +38,18 @@ const About = () => {
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("AdditionalPillars")}
             </p>
+            <a  onClick={() => window.open("https://www.youtube.com/watch?v=ylnnUCezSoY")} className="text-Primary hover:[#13A2BC] cursor-pointer	">https://www.youtube.com/watch?v=ylnnUCezSoY</a>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("WatchOurHowToVideo")}
             </p>
           </div>
-          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 w-[300px] about-logo">
+          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 about-logo flex flex-col items-center">
             <img
-              className="max-w-full"
+              className="max-w-full w-[150px] mb-[20px] "
               src={"../../static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
+            <ReactPlayer url='https://www.youtube.com/watch?v=ylnnUCezSoY' width="500px" height="280px"  />
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
