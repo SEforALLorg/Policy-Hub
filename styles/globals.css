@@ -2592,7 +2592,6 @@ a {
 
   .about-logo img {
     width: 38% !important;
-    margin: 0 auto;
   }
 
   .about-logo {
@@ -2874,7 +2873,7 @@ a {
 
 @media only screen and (max-width: 768px) {
   .container-box {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .divider {
@@ -2886,7 +2885,7 @@ a {
   }
 
   .third-container {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -2967,6 +2966,7 @@ a {
     height: 100% !important;
     display: flex;
     flex-direction: column !important;
+    margin-top: 1rem;
   }
 
   .container-box {
@@ -3382,6 +3382,11 @@ a {
 }
 
 @media screen and (max-width: 767px) {
+
+  #container-main {
+    margin-top: 1rem;
+  }
+
   .headerContainer {
     flex-direction: column;
     justify-content: unset;
