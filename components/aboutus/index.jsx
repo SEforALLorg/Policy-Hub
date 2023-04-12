@@ -38,10 +38,10 @@ const About = () => {
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("AdditionalPillars")}
             </p>
-            <a  onClick={() => window.open("https://www.youtube.com/watch?v=ylnnUCezSoY")} className="text-Primary hover:[#13A2BC] cursor-pointer	">https://www.youtube.com/watch?v=ylnnUCezSoY</a>
+            {/* <a  onClick={() => window.open("https://www.youtube.com/watch?v=ylnnUCezSoY")} className="text-Primary hover:[#13A2BC] cursor-pointer	">https://www.youtube.com/watch?v=ylnnUCezSoY</a>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               {t("WatchOurHowToVideo")}
-            </p>
+            </p> */}
           </div>
           <div className="xsm:mr-0 xsm:mb-4 med:mb-0 about-logo flex flex-col items-center">
             <img

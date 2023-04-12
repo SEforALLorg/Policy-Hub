@@ -886,7 +886,7 @@ a {
 }
 
 .report-description.showDescription {
-  max-height: 500px;
+  max-height: 640px;
   transition: max-height 0.7s ease-in;
   padding: 0px 12px;
 }

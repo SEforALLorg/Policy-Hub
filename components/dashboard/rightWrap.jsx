@@ -34,7 +34,6 @@ const RightWrapPage = ({
   setClearAll,
   isClearAll,
   isResetPage,
-  browseResource,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -48,6 +47,7 @@ const RightWrapPage = ({
   const [csvData, setCsvData] = useState("");
   const [sectorOptionEnerygy, setSectorOptionEnergy] = useState([]);
   const [sectorOptionCooling, setSectorOptionCooling] = useState([]);
+  const [browseResource, setBrowseResource] = useState(false);
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
   const [isLoader , setIsLoader] = useState(false)
@@ -200,6 +200,9 @@ const RightWrapPage = ({
       setPreviousReports([]);
     }
     setResourceType(localStorage.getItem("ResourceType"));
+    if (window.location.pathname.includes("allresources")) {
+      setBrowseResource(true)
+    }
   }, [allReports, typeof window !== "undefined" && window]);
 
   const reports = showAllReports ? previousReports : finalNonPublicationReports;
@@ -349,6 +352,7 @@ const RightWrapPage = ({
               isClearAll={isClearAll}
               isResetPage={isResetPage}
               isClear={isClear}
+              browseResource
             />
           </div>
           {isFilter && (
@@ -366,7 +370,7 @@ const RightWrapPage = ({
                 : "transform-filter-animation-hide"
               } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
+            <h5 className="font-bold text-[16px] text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]">
               {t("Filters")}
               {optionSelected ? (
                 <button

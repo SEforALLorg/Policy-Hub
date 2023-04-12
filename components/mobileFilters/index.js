@@ -31,6 +31,9 @@ const MobileFilters = ({
   const [isFilter, setIsFilter] = useState(false);
   const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
+  const [sectorOptionEnerygy, setSectorOptionEnergy] = useState([]);
+  const [sectorOptionCooling, setSectorOptionCooling] = useState([]);
+  const [browseResource, setBrowseResource] = useState(false);
   const [page, setPage] = useState(1);
   const [resourceType, setResourceType] = useState();
   const debouncedSearch = useDebounce(search, 500);
@@ -118,6 +121,9 @@ const MobileFilters = ({
       setPreviousReports([]);
     }
     setResourceType(localStorage.getItem("ResourceType"));
+    if (window.location.pathname.includes("allresources")) {
+      setBrowseResource(true)
+    }
   }, [allReports, typeof window !== "undefined" && window]);
 
   const onSearch = (e) => {
@@ -146,22 +152,23 @@ const MobileFilters = ({
   }, [isResetPage]);
 
   useEffect(()=>{
-    if(localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
+    if(browseResource || localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
       const sectorSustainable = filters?.sector?.filter((key)=>{
         if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
           return key;
         }
       })
-      setSectorOption(sectorSustainable);
-    }else if(localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
+      setSectorOptionCooling(sectorSustainable);
+    }
+    if(browseResource || localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
       const sectorEnergy = filters?.sector?.filter((key)=>{
         if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
           return key;
         }
       })
-      setSectorOption(sectorEnergy);
+      setSectorOptionEnergy(sectorEnergy);
     }
-  },[filters])
+  },[filters,browseResource])
 
   useEffect(() => {
     onReset();
@@ -233,7 +240,7 @@ const MobileFilters = ({
                   value={search}
                 />
               )}
-              <Select
+              {/* <Select
                 title={t("SelectRegion")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -244,7 +251,7 @@ const MobileFilters = ({
                 selectedOptions={selectedOptions}
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
-              />
+              /> */}
               <Select
                 title={t("SelectCountry")}
                 setIsOpen={setIsOpen}
@@ -294,7 +301,7 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {resourceType && resourceType === "ELECTRICITY ACCESS" &&  <Select
+              {(resourceType === "ELECTRICITY ACCESS" || browseResource) && <Select
                 title={t("GenerationSource")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -307,20 +314,36 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />} 
-              {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
-                title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(sectorOption)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.sector}
-                name={"sector"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
+              {(resourceType === 'ENERGY EFFICIENCY' || browseResource) && <Select
+                  title={t("EnergyEfficiencySector")}
+                  resourceType={'ENERGY EFFICIENCY'}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(sectorOptionEnerygy)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.sector}
+                  name={"sector"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />}
+              {(resourceType === "SUSTAINABLE COOLING" || browseResource) &&
+                <Select
+                  title={t("CoolingSector")}
+                  resourceType={"SUSTAINABLE COOLING"}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(sectorOptionCooling)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.sector}
+                  name={"sector"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
               />}
-              {resourceType === "CLEAN COOKING" && <Select
+              {(resourceType === "CLEAN COOKING" || browseResource) && <Select
                 title={t("Fuel")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
