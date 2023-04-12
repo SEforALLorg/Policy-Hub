@@ -48,7 +48,6 @@ const ALLReports = () => {
         </p>
       </div>
       <RightWrapPage
-        browseResource = {true}
         showAllReports
         selectInputs={selectInputs}
         setSelectInputs={setSelectInputs}
