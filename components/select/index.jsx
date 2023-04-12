@@ -14,7 +14,7 @@ const Select = ({
   selectedOptions,
   setSelectedOptions,
   isClearAll,
-  resourceType
+  resourceType,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -56,9 +56,7 @@ const Select = ({
 
   const active = isOpen === title || selectedOption?.length;
   return (
-    <div
-      className={`${"selectWrap"} ${active ? "borderColor" : "selectWrap"}`}
-    >
+    <div className={`${"selectWrap"} ${active ? "borderColor" : "selectWrap"}`}>
       <div
         onClick={toggling}
         className="flex items-center justify-between pl-[12px] pr-[12px] pt-[10px] pb-[10px]"

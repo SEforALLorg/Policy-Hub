@@ -5,7 +5,7 @@ import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
 import { putJourneyStep } from "../../utilities";
-import { changingCardLogo } from '../../constant/changinglogo';
+import { changingCardLogo } from "../../constant/changinglogo";
 
 const Customize = ({
   onYes,
@@ -18,34 +18,39 @@ const Customize = ({
 }) => {
   const { t } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
-  const title =firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
+  const title =
+    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
+      ?.Question;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
   const ToolTipText = firstQuestion?.attributes?.ToolTipText;
   let count = localStorage.getItem("count");
-  
+
   const onAnswerClick = (i) => {
     const currentDate = new Date();
-    localStorage.setItem("currentDate",currentDate)
+    localStorage.setItem("currentDate", currentDate);
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
     let payload = {
       question: title,
-      answer: i?.Answer
-    }
+      answer: i?.Answer,
+    };
     setJourney(payload);
     let existing = JSON.parse(localStorage.getItem("userInfo"));
     let existingJourney = existing?.Journey;
-    if ((existingJourney && Object.values(existingJourney)?.length) || (count && count > 1)) {
+    if (
+      (existingJourney && Object.values(existingJourney)?.length) ||
+      (count && count > 1)
+    ) {
       let journey = {
         ...existingJourney,
         [currentDate]: [payload],
-      }
+      };
       putJourneyStep(journey);
     } else if (count === 1) {
       let journey = {
         [currentDate]: [payload],
-      }
+      };
       putJourneyStep(journey);
     }
   };
@@ -59,27 +64,35 @@ const Customize = ({
       ) : (
         <>
           <div className="flex items-center customize-header">
-           {changingCardLogo.map((key)=>{
-            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
-               return (
-                <img
-                className="w-[230px] h-[157px] object-contain object-contain-height mr-5"
-                src = {Object.values(key)?.[0]}
-                alt="card"
-              />
-               )
-         }
-          })}
+            {changingCardLogo.map((key) => {
+              if (
+                localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+              ) {
+                return (
+                  <img
+                    className="w-[230px] h-[157px] object-contain object-contain-height mr-5"
+                    src={Object.values(key)?.[0]}
+                    alt="card"
+                  />
+                );
+              }
+            })}
 
             <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0 textColor">
-              {t("AssessYourCountry")} 
+              {t("AssessYourCountry")}
               {/* {t("Customize")} */}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
           <div className="customize-title font-bold text-[45px] leading-[54px] select-none text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
             {title}
-            {ToolTipText && <TooltipComponent id={"customize"} content={ToolTipText} customizeStyle = {'customizeStyle'}/>}
+            {ToolTipText && (
+              <TooltipComponent
+                id={"customize"}
+                content={ToolTipText}
+                customizeStyle={"customizeStyle"}
+              />
+            )}
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i, index) => (

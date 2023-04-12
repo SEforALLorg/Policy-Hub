@@ -12,17 +12,15 @@ const StepComponent = ({
   stepQuestion,
   totalSteps,
   sendData,
-}) => { 
+}) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
-  const [overFlow, setOverFlow] = useState(false);
 
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
-  const questionId = item?.id
   const multiAnswer = item?.attributes?.AddAnswer;
-
   const nextCount = totalSteps?.length || 1;
+  const ToolTipText = item?.attributes?.ToolTipText;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -30,8 +28,6 @@ const StepComponent = ({
       setOptionReport(multiAnswer[0]);
     }
   }, [multiAnswer]);
-
-  const ToolTipText = item?.attributes?.ToolTipText;
 
   const onAnswerClick = (i) => {
     setOptionData(i);
@@ -54,46 +50,56 @@ const StepComponent = ({
     setStepCount(stepCount + 1);
     const data = {
       question: title,
-      answer: optionData?.Answer ?? ""
-    }
+      answer: optionData?.Answer ?? "",
+    };
     sendData(data);
   };
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
         <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
           {item?.attributes?.QuestionTitle}
-          {/* {ToolTipText && (
-            <TooltipComponent content={ToolTipText} />
-          )} */}
         </h5>
       )}
-      <p
-        className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content"
-        // style={{ height: "45px" }}
-      >
-        {/* <span>{stepCount}.</span> */}
-        {title} {ToolTipText && <TooltipComponent id={"stepComponent"} content={ToolTipText} />}
+      <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
+        {title}{" "}
+        {ToolTipText && (
+          <TooltipComponent id={"stepComponent"} content={ToolTipText} />
+        )}
       </p>
-      <div className="OptionsWrap" >
+      <div className="OptionsWrap">
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
-          const isFood = item?.attributes?.QuestionTitle.includes("Food & agricultural cold chains")
-          const isFoodAndEquipment = isFood && i?.Answer?.includes("Equipment / refrigeration")
-          const isFoodAndGrid = isFood && ["Grid-based","Off-grid","Mobile"]?.includes(i?.Answer)
+          const isFood = item?.attributes?.QuestionTitle.includes(
+            "Food & agricultural cold chains"
+          );
+          const isFoodAndEquipment =
+            isFood && i?.Answer?.includes("Equipment / refrigeration");
+          const isFoodAndGrid =
+            isFood && ["Grid-based", "Off-grid", "Mobile"]?.includes(i?.Answer);
           return (
             <div
               className="optionItem"
               key={index}
-              onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)}
-              style={{marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}`}}
+              onClick={() => (isFoodAndEquipment ? "" : onAnswerClick(i))}
+              style={{ marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}` }}
             >
-              {!isFoodAndEquipment && <RadioButton checked={optionData?.id === i?.id} />}
-              <p style={{marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}`}}>
+              {!isFoodAndEquipment && (
+                <RadioButton checked={optionData?.id === i?.id} />
+              )}
+              <p
+                style={{ marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}` }}
+              >
                 {i?.Answer}
-              {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
+                {i?.AnswerToolTip && (
+                  <TooltipComponent
+                    content={i?.AnswerToolTip}
+                    answer={i?.Answer}
+                    id={index}
+                  />
+                )}
               </p>
             </div>
           );
@@ -108,9 +114,11 @@ const StepComponent = ({
         >
           <img src="static/images/leftArrow.svg" alt="" /> {t("Previous")}
         </button>
-        {nextCount > 1 && <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo" >
-          {stepCount}/{nextCount}
-        </p>}
+        {nextCount > 1 && (
+          <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo">
+            {stepCount}/{nextCount}
+          </p>
+        )}
         <button onClick={() => onNextClick()} className="SlideButton">
           {t("Next")} <img src="static/images/rightArrow.svg" alt="" />
         </button>

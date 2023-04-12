@@ -1,4 +1,4 @@
-import { filter, isEmpty } from "lodash";
+import { isEmpty } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
@@ -143,8 +143,10 @@ const DetailModal = ({ firstHit }) => {
                   User Survey
                 </h3>
                 <p className="w-full py-2 pb-0 px-0 text-black-700 leading-tight text-sm">
-                  Please enter the following details. No fields are mandatory.<br />
-                  <b>Note:</b> Your personal data is processed as per SEforALL Privacy Policy.
+                  Please enter the following details. No fields are mandatory.
+                  <br />
+                  <b>Note:</b> Your personal data is processed as per SEforALL
+                  Privacy Policy.
                 </p>
               </div>
               {/* <!-- Modal body --> */}
@@ -169,24 +171,7 @@ const DetailModal = ({ firstHit }) => {
                     type="text"
                     onChange={handleChange}
                   />
-                  {/* {errors?.FirstName && <h3 className="text-red-900 p-2">{errors?.FirstName}</h3>} */}
                 </div>
-                {/* <div>
-                  <label
-                    className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    htmlFor="inline-last-name"
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.LastName ? "" : "border-red-900" : ""}`}
-                    id="inline-last-name"
-                    name="LastName"
-                    type="text"
-                    onChange={handleChange}
-                  />
-                  {/* {errors?.LastName && <h3 className="text-red-900 p-2">{errors?.LastName}</h3>} */}
-                {/* </div> */}
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
@@ -203,24 +188,7 @@ const DetailModal = ({ firstHit }) => {
                     name="Email"
                     onChange={handleChange}
                   />
-                  {/* {errors?.Email && <h3 className="text-red-900 p-2">{errors?.Email}</h3>} */}
                 </div>
-                {/* <div>
-                  <label
-                    className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
-                    htmlFor="inline-phone-number"
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${danger ? formInput?.PhoneNumber ? "" : "border-red-900" : ""}`}
-                    id="inline-phone-number"
-                    type="number"
-                    name="PhoneNumber"
-                    onChange={handleChange}
-                  /> */}
-                {/* {errors?.PhoneNumber && <h3 className="text-red-900 p-2">{errors?.PhoneNumber}</h3>} */}
-                {/* </div> */}
                 <div>
                   <label
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
@@ -241,7 +209,6 @@ const DetailModal = ({ firstHit }) => {
                     name="JobTitle"
                     onChange={handleChange}
                   />
-                  {/* {errors?.JobTitle && <h3 className="text-red-900 p-2">{errors?.JobTitle}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -263,7 +230,6 @@ const DetailModal = ({ firstHit }) => {
                     name="Organization"
                     onChange={handleChange}
                   />
-                  {/* {errors?.Organization && <h3 className="text-red-900 p-2">{errors?.Organization}</h3>} */}
                 </div>
                 <div>
                   <label
@@ -290,7 +256,6 @@ const DetailModal = ({ firstHit }) => {
                       );
                     })}
                   </select>
-                  {/* {errors?.Country && <h3 className="text-red-900 p-2">{errors?.Country}</h3>} */}
                 </div>
                 {/* <!-- Modal footer --> */}
                 <div className="flex justify-center p-6 space-x-2 rounded-b">

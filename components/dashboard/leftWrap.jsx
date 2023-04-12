@@ -6,10 +6,9 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
-import SubscribeComponent from "../subscribeComponent";
-import { putJourneyStep, shortName } from "../../utilities";
+import { shortName } from "../../utilities";
 import DetailModal from "../detailModal";
-import { changingLeftWrapLogo } from '../../constant/changinglogo';
+import { changingLeftWrapLogo } from "../../constant/changinglogo";
 
 const LeftWrapPage = ({
   questions,
@@ -24,19 +23,18 @@ const LeftWrapPage = ({
   setIsResetPage,
   newJourney,
   firstHit,
-  selectedResource
+  selectedResource,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
-  const [subcription, setSubscription] = useState(false);
   const [detailModal, setDetailModal] = useState(false);
 
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);
       const question = questions.filter((key) => {
-        if (key.id === Number(perviousId)) {
+        if (key?.id === Number(perviousId)) {
           return key;
         }
       });
@@ -69,15 +67,15 @@ const LeftWrapPage = ({
     setNextQuestionId(
       revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id
     );
-    revisedArray.splice(0, 1);
+    revisedArray?.splice(0, 1);
     setStepQuestion(revisedArray);
     setIsResetPage(!isResetPage);
   };
 
   const onStepChange = (e) => {
     let revisedArray = [...userJourney];
-    const targetObject = revisedArray.find((i) => i.id === e?.id);
-    const targetIndex = revisedArray.indexOf(targetObject);
+    const targetObject = revisedArray?.find((i) => i?.id === e?.id);
+    const targetIndex = revisedArray?.indexOf(targetObject);
     onNextQuestion(e?.attributes?.MainQuestion?.Question?.data?.id);
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
@@ -103,25 +101,11 @@ const LeftWrapPage = ({
     resetFilters();
     setIsResetPage(!isResetPage);
     const data = {
-      question: item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      answer: i?.Answer
-    }
+      question:
+        item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      answer: i?.Answer,
+    };
     newJourney(data);
-  };
-
-  // const completeQuestion = questions?.find((item) => item?.id === 11);
-
-  const onStandaloneClick = () => {
-    setNextQuestionId(24);
-    setUserJourney([
-      ...userJourney.splice(0, 2),
-      {
-        ...completeQuestion,
-        answer: "Standalone systems",
-      },
-    ]);
-    setStepQuestion([]);
-    setIsResetPage(!isResetPage);
   };
 
   const onMiniClick = (e) => {
@@ -137,22 +121,24 @@ const LeftWrapPage = ({
     setStepQuestion([]);
     setIsResetPage(!isResetPage);
   };
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]">
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
-        {changingLeftWrapLogo.map((key)=>{
-            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
-               return (
+          {changingLeftWrapLogo.map((key) => {
+            if (
+              localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+            ) {
+              return (
                 <img
-                className="w-[70px] h-[70px] left-header-image"
-                src = {Object.values(key)?.[0]}
-                alt="card"
-              />
-               )
-         }
+                  className="w-[70px] h-[70px] left-header-image"
+                  src={Object.values(key)?.[0]}
+                  alt="card"
+                />
+              );
+            }
           })}
         </div>
         <div className="font-bold text-medium leading-[26px] select-none text-text m-0 textColor">
@@ -180,9 +166,7 @@ const LeftWrapPage = ({
                     ?.Question}
               </p>
             </p>
-            <button className="yesButton">
-              {shortName(item?.answer)}
-            </button>
+            <button className="yesButton">{shortName(item?.answer)}</button>
           </div>
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (
@@ -209,12 +193,9 @@ const LeftWrapPage = ({
       {!nextQuestionId && (
         <CompletedSteps
           onRestart={() => onRestart()}
-          onStandaloneClick={() => onStandaloneClick()}
           onMiniClick={(e) => onMiniClick(e)}
-          subcription={subcription}
         />
       )}
-      {/* {subcription && <SubscribeComponent subcription={subcription} />} */}
       {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
       {questions?.length
         ? questions
@@ -248,7 +229,10 @@ const LeftWrapPage = ({
                       <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
-                          <TooltipComponent id={"leftWrap"} content={ToolTipText} />
+                          <TooltipComponent
+                            id={"leftWrap"}
+                            content={ToolTipText}
+                          />
                         )}
                       </div>
                       <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
@@ -277,7 +261,7 @@ const LeftWrapPage = ({
                       onPrevious={onPreviousQuestion}
                       stepQuestion={stepQuestion}
                       totalSteps={findSteps}
-                      sendData={data => newJourney(data)}
+                      sendData={(data) => newJourney(data)}
                     />
                   )}
                 </div>

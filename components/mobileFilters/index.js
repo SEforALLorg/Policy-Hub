@@ -145,23 +145,31 @@ const MobileFilters = ({
     setPage(1);
   }, [isResetPage]);
 
-  useEffect(()=>{
-    if(localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
-      const sectorSustainable = filters?.sector?.filter((key)=>{
-        if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
+  useEffect(() => {
+    if (localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING") {
+      const sectorSustainable = filters?.sector?.filter((key) => {
+        if (
+          key?.Sector === "Agricultural cold chains" ||
+          key?.Sector === "Healthcare and medical cold chains" ||
+          key?.Sector === "Thermal comfort and safety"
+        ) {
           return key;
         }
-      })
+      });
       setSectorOption(sectorSustainable);
-    }else if(localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
-      const sectorEnergy = filters?.sector?.filter((key)=>{
-        if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
+    } else if (localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY") {
+      const sectorEnergy = filters?.sector?.filter((key) => {
+        if (
+          key?.Sector !== "Agricultural cold chains" &&
+          key?.Sector !== "Healthcare and medical cold chains" &&
+          key?.Sector !== "Thermal comfort and safety"
+        ) {
           return key;
         }
-      })
+      });
       setSectorOption(sectorEnergy);
     }
-  },[filters])
+  }, [filters]);
 
   useEffect(() => {
     onReset();
@@ -294,45 +302,56 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {resourceType && resourceType === "ELECTRICITY ACCESS" &&  <Select
-                title={t("GenerationSource")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.generationSources)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.generation_sources}
-                name={"generation_sources"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />} 
-              {(resourceType === "SUSTAINABLE COOLING" || resourceType === "ENERGY EFFICIENCY") && <Select
-                title={`${resourceType === "SUSTAINABLE COOLING" ? t("CoolingSector") : t("EnergyEfficiencySector")}`}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(sectorOption)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.sector}
-                name={"sector"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
-              {resourceType === "CLEAN COOKING" && <Select
-                title={t("Fuel")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.fuel)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.fuel}
-                name={"fuel"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
+              {resourceType && resourceType === "ELECTRICITY ACCESS" && (
+                <Select
+                  title={t("GenerationSource")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.generationSources)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.generation_sources}
+                  name={"generation_sources"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
+              {(resourceType === "SUSTAINABLE COOLING" ||
+                resourceType === "ENERGY EFFICIENCY") && (
+                <Select
+                  title={`${
+                    resourceType === "SUSTAINABLE COOLING"
+                      ? t("CoolingSector")
+                      : t("EnergyEfficiencySector")
+                  }`}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(sectorOption)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.sector}
+                  name={"sector"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
+              {resourceType === "CLEAN COOKING" && (
+                <Select
+                  title={t("Fuel")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.fuel)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.fuel}
+                  name={"fuel"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
               <div className="apply-wrap">
                 <button
                   type="button"

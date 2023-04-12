@@ -19,9 +19,9 @@ const Report = ({
   isActive,
   bigCard,
   description,
-  selectedRes
+  selectedRes,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const countTooltip = bigCard ? 30 : 10;
   return (
     <div
@@ -40,30 +40,63 @@ const Report = ({
             />
           )}
 
-          <p className="title font-normal text-[14px] m-0 text-text textColor">{title}</p>
+          <p className="title font-normal text-[14px] m-0 text-text textColor">
+            {title}
+          </p>
         </div>
         {star && (
           <TooltipComponent
-            id={'KeyPublication'}
+            id={"KeyPublication"}
             content="Key Publication - Click for more information"
             hideInfo={true}
           >
             <div className="starIcon">
-             {selectedRes === "ENERGY EFFICIENCY" ? 
-              <svg width="23" height="21" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0741 6.68068L12.9154 1.26172L9.75666 6.68068C9.53351 7.07667 9.21052 7.4199 8.81366 7.68276C8.41486 7.94697 7.95339 8.12379 7.46578 8.19922L0.957031 9.35084L5.5012 14.2549C6.12264 14.8695 6.41588 15.6983 6.30411 16.5242L5.4397 22.8451L11.4325 20.2242C11.8948 20.0222 12.4017 19.9168 12.9154 19.9159C13.3973 19.9172 13.8719 20.023 14.2991 20.2242L20.432 22.6832L19.5676 16.4379C19.4584 15.6138 19.7521 14.7876 20.3722 14.1747L24.8737 9.35084L18.365 8.19922C17.8767 8.12402 17.4147 7.94719 17.0154 7.68276C16.6191 7.41972 16.2967 7.07651 16.0741 6.68068Z" fill="url(#paint0_linear_3084_1199)" stroke="url(#paint1_linear_3084_1199)" stroke-width="1.83813" stroke-linecap="round" stroke-linejoin="round" />
-                <defs>
-                  <linearGradient id="paint0_linear_3084_1199" x1="12.9154" y1="1.26172" x2="12.9154" y2="22.8451" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#37A7F0" />
-                    <stop offset="1" stop-color="#42DAC1" />
-                  </linearGradient>
-                  <linearGradient id="paint1_linear_3084_1199" x1="12.9154" y1="1.26172" x2="12.9154" y2="22.8451" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#37A7F0" />
-                    <stop offset="1" stop-color="#42DAC1" />
-                  </linearGradient>
-                </defs>
-              </svg>:
-              <AiFillStar size={26} />}
+              {selectedRes === "ENERGY EFFICIENCY" ? (
+                <svg
+                  width="23"
+                  height="21"
+                  viewBox="0 0 26 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M16.0741 6.68068L12.9154 1.26172L9.75666 6.68068C9.53351 7.07667 9.21052 7.4199 8.81366 7.68276C8.41486 7.94697 7.95339 8.12379 7.46578 8.19922L0.957031 9.35084L5.5012 14.2549C6.12264 14.8695 6.41588 15.6983 6.30411 16.5242L5.4397 22.8451L11.4325 20.2242C11.8948 20.0222 12.4017 19.9168 12.9154 19.9159C13.3973 19.9172 13.8719 20.023 14.2991 20.2242L20.432 22.6832L19.5676 16.4379C19.4584 15.6138 19.7521 14.7876 20.3722 14.1747L24.8737 9.35084L18.365 8.19922C17.8767 8.12402 17.4147 7.94719 17.0154 7.68276C16.6191 7.41972 16.2967 7.07651 16.0741 6.68068Z"
+                    fill="url(#paint0_linear_3084_1199)"
+                    stroke="url(#paint1_linear_3084_1199)"
+                    stroke-width="1.83813"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_3084_1199"
+                      x1="12.9154"
+                      y1="1.26172"
+                      x2="12.9154"
+                      y2="22.8451"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#37A7F0" />
+                      <stop offset="1" stop-color="#42DAC1" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint1_linear_3084_1199"
+                      x1="12.9154"
+                      y1="1.26172"
+                      x2="12.9154"
+                      y2="22.8451"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="#37A7F0" />
+                      <stop offset="1" stop-color="#42DAC1" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              ) : (
+                <AiFillStar size={26} />
+              )}
             </div>
           </TooltipComponent>
         )}
