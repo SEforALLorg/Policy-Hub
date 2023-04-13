@@ -43,13 +43,13 @@ const About = () => {
               {t("WatchOurHowToVideo")}
             </p> */}
           </div>
-          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 about-logo flex flex-col items-center">
+          <div className="xsm:mr-0 xsm:mb-4 med:mb-0 about-logo flex flex-col items-center w-[63rem]">
             <img
               className="max-w-full w-[150px] mb-[20px] "
               src={"../../static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
-            <ReactPlayer url='https://www.youtube.com/watch?v=ylnnUCezSoY' width="500px" height="280px"  />
+            <ReactPlayer url='https://www.youtube.com/watch?v=ylnnUCezSoY' width="100%" height="280px"  />
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
