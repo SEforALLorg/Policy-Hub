@@ -1,8 +1,8 @@
 import React from "react";
 
-const RadioButton = ({ onChange, checked }) => {
+const RadioButton = ({ onChange, checked, onClick }) => {
   return (
-    <div className="radio-button-wrap">
+    <div className="radio-button-wrap" onClick={onClick}>
       <label className="container-wrap">
         <input
           type="radio"

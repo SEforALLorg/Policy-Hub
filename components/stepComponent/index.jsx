@@ -86,12 +86,11 @@ const StepComponent = ({
           return (
             <div
               className="optionItem"
-              key={index}
-              onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)}
+              key={index}              
               style={{marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}`}}
             >
-              {!isFoodAndEquipment && <RadioButton checked={optionData?.id === i?.id} />}
-              <p style={{marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}`}}>
+              {!isFoodAndEquipment && <RadioButton checked={optionData?.id === i?.id} onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)} />}
+              <p style={{marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}`}} onClick={() => isFoodAndEquipment ? "" : onAnswerClick(i)}>
                 {i?.Answer}
               {i?.AnswerToolTip && <TooltipComponent content={i?.AnswerToolTip} answer={i?.Answer} id ={index} onHoverStart={()=>setOverFlow(true)} onHoverEnd={()=>setOverFlow(false)}/>}
               </p>
