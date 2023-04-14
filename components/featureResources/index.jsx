@@ -83,7 +83,7 @@ const Feature = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem] all_platform_table">
+      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem] all_platform_table mt-[-1px]">
         <div className="xsm:px-4 mobile:px-[0px] resources-cards-wrap">
           <div>
             <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">

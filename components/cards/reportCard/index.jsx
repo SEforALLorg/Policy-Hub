@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillStar } from "react-icons/ai";
 import TooltipComponent from "../../tooltip";
@@ -22,6 +22,7 @@ const Report = ({
   selectedRes,
 }) => {
   const { t } = useTranslation();
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const countTooltip = bigCard ? 30 : 10;
   return (
     <div
@@ -49,8 +50,9 @@ const Report = ({
             id={"KeyPublication"}
             content="Key Publication - Click for more information"
             hideInfo={true}
+            hideContent={isTooltipOpen}
           >
-            <div className="starIcon">
+            <div className="starIcon" onClick={() => setIsTooltipOpen(true)}>
               {selectedRes === "ENERGY EFFICIENCY" ? (
                 <svg
                   width="23"
@@ -142,7 +144,7 @@ const Report = ({
                   )
                 : "--"}
             </p>
-            {area?.length > 2 || !bigCard ? (
+            {area?.length >= 2 ? (
               <div className={countryName ? "content" : "contentNew"}>
                 {area?.map(
                   (i, index) =>
