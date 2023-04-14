@@ -1887,7 +1887,7 @@ a {
 
   .about-logo img {
     width: 50% !important;
-    margin: 0 auto;
+    margin: 30px auto;
   }
 
   .about-bottom-card {
@@ -2224,6 +2224,8 @@ a {
   .header .customDropdown {
     background-color: #fcb600 !important;
     margin-right: 45%;
+    margin-top: 10px;
+    padding: 9px 17px !important;
   }
 
   .powered-text {

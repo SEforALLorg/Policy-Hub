@@ -16,7 +16,7 @@ const Customize = ({
   setJourney,
   // setCurrentDate
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
   const title =
     firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
@@ -56,7 +56,7 @@ const Customize = ({
   };
 
   return (
-    <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
+    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${i18n.language !== "fr" ? "h-full" : ""}`}>
       {isFetchingQuestions ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
