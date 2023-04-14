@@ -3,7 +3,7 @@ import StartButton from "components/buttons/startButton";
 import { useTranslation } from "react-i18next";
 
 const TopCard = ({ HandleOpen }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
@@ -13,9 +13,9 @@ const TopCard = ({ HandleOpen }) => {
           <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
         </h5>
       </div>
-      <div id="container-main" className="flex my-[1.5rem] h-[42vh]">
+      <div id="container-main" className={`flex my-[1.5rem] `}>
         <div className="container-box w-[50%]">
-          <div className="flex flex-col h-[50%]">
+          <div className="flex flex-col h-[50%] ">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[16%] mr-[8px]"
