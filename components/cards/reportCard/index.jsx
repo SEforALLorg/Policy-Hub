@@ -25,6 +25,7 @@ const Report = ({
   const { t } = useTranslation();
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const countTooltip = bigCard ? 30 : 10;
+  const isSmallDevice = typeof window !== "undefined" && window?.innerWidth < 1024;
   return (
     <div
       key={key}
@@ -51,9 +52,9 @@ const Report = ({
             id={"KeyPublication"}
             content="Key Publication - Click for more information"
             hideInfo={true}
-            hideContent={isTooltipOpen}
+            hideContent={isSmallDevice}
           >
-            <div className="starIcon" onClick={() => setIsTooltipOpen(true)}>
+            <div className="starIcon">
               {selectedRes === ENERGYEFFICIENCY ? (
                 <svg
                   width="23"
