@@ -199,11 +199,11 @@ const RightWrapPage = ({
 
   useEffect(() => {
     if (optionSelected && page === 1) {
-      setPreviousReports(allReports?.data?.data);
+      setPreviousReports(allReports?.data?.data || []);
       window !== "undefined" &&
         document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...previousReports, ...allReports?.data?.data]);
+      setPreviousReports([...(previousReports || []), ...allReports?.data?.data] || []);
       browseResource
         ? ""
         : window !== "undefined" &&

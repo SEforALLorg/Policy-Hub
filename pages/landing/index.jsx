@@ -3,7 +3,6 @@ import createScrollSnap from "scroll-snap";
 import Footer from "components/footer";
 import Header from "components/header";
 import LandingPage from "components/landingPage";
-import { changingHeaderLogo } from "../../constant/changinglogo";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
