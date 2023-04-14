@@ -22,6 +22,10 @@ export const fontSizes = [12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 192];
 export const space = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 export const halfWidth = "50%";
 export const fullWidth = "100%";
+export const ELECTRICITYACCESS = "ELECTRICITY ACCESS";
+export const CLEANCOOKING = "CLEAN COOKING";
+export const SUSTAINABLECOOLING = "SUSTAINABLE COOLING";
+export const ENERGYEFFICIENCY = "ENERGY EFFICIENCY";
 
 export const media = {
   smallMobile: "480px",

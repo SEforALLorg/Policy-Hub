@@ -9,6 +9,12 @@ import baseTheme from "../../theme/base";
 import Loader from "../loader";
 import electricityTheme from "../../theme/Electricity";
 import { IoClose } from "react-icons/io5";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 
 const Resources = ({
   onYes,
@@ -26,19 +32,19 @@ const Resources = ({
   const changeColor = (e) => {
     selected(e?.target?.innerText);
     switch (e?.target?.innerText) {
-      case "ELECTRICITY ACCESS":
+      case ELECTRICITYACCESS:
         localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(electricityTheme);
         break;
-      case "CLEAN COOKING":
+      case CLEANCOOKING:
         localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(greenTheme);
         break;
-      case "SUSTAINABLE COOLING":
+      case SUSTAINABLECOOLING:
         localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(darkTheme);
         break;
-      case "ENERGY EFFICIENCY":
+      case ENERGYEFFICIENCY:
         localStorage.setItem("ResourceType", e?.target?.innerText);
         applyTheme(yellowTheme); //blueTheme
         break;

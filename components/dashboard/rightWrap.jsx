@@ -23,6 +23,12 @@ import MobileFilters from "../mobileFilters";
 import { useTranslation } from "react-i18next";
 import { changingRightWrapLogo } from "../../constant/changinglogo";
 import { Tooltip } from "react-tooltip";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -157,14 +163,14 @@ const RightWrapPage = ({
   });
 
   // on Publication Reports
-  const finalNonPublicationReports = nonPublicationReports?.map(
-    (nonPublishedReport) => {
+  const finalNonPublicationReports = nonPublicationReports
+    ?.map((nonPublishedReport) => {
       const report = allReports?.data?.data?.find(
         (i) => i.id === nonPublishedReport.id
       );
       return report;
-    }
-  )?.filter(item => item !== undefined);
+    })
+    ?.filter((item) => item !== undefined);
 
   // Share email modal
   const toggleShareModal = () => {
@@ -207,7 +213,7 @@ const RightWrapPage = ({
     }
     setResourceType(localStorage.getItem("ResourceType"));
     if (window.location.pathname.includes("allresources")) {
-      setBrowseResource(true)
+      setBrowseResource(true);
     }
   }, [allReports, typeof window !== "undefined" && window]);
 
@@ -273,7 +279,7 @@ const RightWrapPage = ({
     ];
     if (
       browseResource ||
-      localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"
+      localStorage.getItem("ResourceType") === SUSTAINABLECOOLING
     ) {
       const sectorSustainable = filters?.sector?.filter((key) => {
         if (filtersArray?.includes(key?.Sector)) {
@@ -284,7 +290,7 @@ const RightWrapPage = ({
     }
     if (
       browseResource ||
-      localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"
+      localStorage.getItem("ResourceType") === ENERGYEFFICIENCY
     ) {
       const sectorEnergy = filters?.sector?.filter((key) => {
         if (!filtersArray?.includes(key?.Sector)) {
@@ -386,7 +392,10 @@ const RightWrapPage = ({
                 : "transform-filter-animation-hide"
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
-            <h5 className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]" style={{paddingBottom: optionSelected ? "3px" : "15px" }}>
+            <h5
+              className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
+              style={{ paddingBottom: optionSelected ? "3px" : "15px" }}
+            >
               {t("Filters")}
               {optionSelected ? (
                 <button
@@ -459,7 +468,7 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {(resourceType === "ELECTRICITY ACCESS" || browseResource) && (
+              {(resourceType === ELECTRICITYACCESS || browseResource) && (
                 <Select
                   title={t("GenerationSource")}
                   setIsOpen={setIsOpen}
@@ -474,11 +483,11 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
-              {(resourceType === "ENERGY EFFICIENCY" || browseResource) && (
+              {(resourceType === ENERGYEFFICIENCY || browseResource) && (
                 <div className="filterTooltipWrap">
                   <Select
                     title={t("EnergyEfficiencySector")}
-                    resourceType={"ENERGY EFFICIENCY"}
+                    resourceType={ENERGYEFFICIENCY}
                     setIsOpen={setIsOpen}
                     isOpen={isOpen}
                     options={getFormattedData(sectorOptionEnerygy)}
@@ -490,7 +499,7 @@ const RightWrapPage = ({
                     setSelectedOptions={setSelectedOptions}
                     isClearAll={isClearAll}
                   />
-                  {resourceType === "ENERGY EFFICIENCY" && (
+                  {resourceType === ENERGYEFFICIENCY && (
                     <Tooltip
                       className="energyToolTip"
                       anchorSelect={`.filterTooltipWrap`}
@@ -502,10 +511,10 @@ const RightWrapPage = ({
                   )}
                 </div>
               )}
-              {(resourceType === "SUSTAINABLE COOLING" || browseResource) && (
+              {(resourceType === SUSTAINABLECOOLING || browseResource) && (
                 <Select
                   title={t("CoolingSector")}
-                  resourceType={"SUSTAINABLE COOLING"}
+                  resourceType={SUSTAINABLECOOLING}
                   setIsOpen={setIsOpen}
                   isOpen={isOpen}
                   options={getFormattedData(sectorOptionCooling)}
@@ -518,7 +527,7 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
-              {(resourceType === "CLEAN COOKING" || browseResource) && (
+              {(resourceType === CLEANCOOKING || browseResource) && (
                 <Select
                   title={t("Fuel")}
                   setIsOpen={setIsOpen}

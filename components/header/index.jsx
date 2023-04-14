@@ -19,8 +19,14 @@ import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 const cookies = new Cookies();
-const Header = ({selectedRes}) => {
+const Header = ({ selectedRes }) => {
   const router = useRouter();
   const location = router.pathname;
   const [isOpen, setIsOpen] = useState(false);
@@ -37,36 +43,46 @@ const Header = ({selectedRes}) => {
     <div className="header">
       <Navbar expand="md" light>
         <NavbarBrand>
-          {selectedRes === "ELECTRICITY ACCESS" && <img
-            src="static/images/electricity_access.svg"
-            alt="logo"
-            className=" cursor-pointer updatedLogo"
-            onClick={() => window.location.reload()}
-          />}
-          {selectedRes === "CLEAN COOKING" && <img
-            src="static/images/clean_cooking.svg"
-            alt="logo"
-            className=" cursor-pointer updatedLogo"
-            onClick={() => window.location.reload()}
-          />}
-          {selectedRes === "SUSTAINABLE COOLING" && <img
-            src={"/static/images/sustainable_cooling.svg"}
-            alt="logo"
-            className=" cursor-pointer updatedLogo"
-            onClick={() =>  window.location.reload()}
-          />}
-          {selectedRes === "ENERGY EFFICIENCY" && <img
-            src={"/static/images/energy_efficiency.svg"}
-            alt="logo"
-            className=" cursor-pointer updatedLogo"
-            onClick={() =>  window.location.reload()}
-          />}
-          {!selectedRes && <img
-            src={"/static/images/SEforALL_Logo_White.png"}
-            alt="logo"
-            className="logo cursor-pointer "
-            onClick={() => window.open("https://www.seforall.org/")}
-          />}
+          {selectedRes === ELECTRICITYACCESS && (
+            <img
+              src="static/images/electricity_access.svg"
+              alt="logo"
+              className=" cursor-pointer updatedLogo"
+              onClick={() => window.location.reload()}
+            />
+          )}
+          {selectedRes === CLEANCOOKING && (
+            <img
+              src="static/images/clean_cooking.svg"
+              alt="logo"
+              className=" cursor-pointer updatedLogo"
+              onClick={() => window.location.reload()}
+            />
+          )}
+          {selectedRes === SUSTAINABLECOOLING && (
+            <img
+              src={"/static/images/sustainable_cooling.svg"}
+              alt="logo"
+              className=" cursor-pointer updatedLogo"
+              onClick={() => window.location.reload()}
+            />
+          )}
+          {selectedRes === ENERGYEFFICIENCY && (
+            <img
+              src={"/static/images/energy_efficiency.svg"}
+              alt="logo"
+              className=" cursor-pointer updatedLogo"
+              onClick={() => window.location.reload()}
+            />
+          )}
+          {!selectedRes && (
+            <img
+              src={"/static/images/SEforALL_Logo_White.png"}
+              alt="logo"
+              className="logo cursor-pointer "
+              onClick={() => window.open("https://www.seforall.org/")}
+            />
+          )}
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         {isOpen && (
@@ -98,7 +114,7 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={`${location === "/resources" ? "active" : ""}`}
-                href={`/${lang || 'en'}/resources`}
+                href={`/${lang || "en"}/resources`}
               >
                 {t("Resources")}
               </NavLink>
@@ -106,7 +122,7 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={location === "/about" ? "active" : ""}
-                href={`/${lang || 'en'}/about`}
+                href={`/${lang || "en"}/about`}
               >
                 {t("About")}
               </NavLink>
@@ -114,14 +130,14 @@ const Header = ({selectedRes}) => {
             <NavItem>
               <NavLink
                 className={`${location === "/contact" ? "active" : ""}`}
-                href={`/${lang || 'en'}/contact`}
+                href={`/${lang || "en"}/contact`}
               >
                 {t("Contactus")}
               </NavLink>
             </NavItem>
             <UncontrolledDropdown setActiveFromChild className="customDropdown">
               <DropdownToggle className="DropdownToggle" tag="a" caret>
-                <p>{ i18n.language !== 'fr' ? "EN" : "FR" }</p>
+                <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
               </DropdownToggle>
               <DropdownMenu className="dropdownMenu">
                 {["en", "fr"].map((lang, index) => {
@@ -150,9 +166,7 @@ const Header = ({selectedRes}) => {
                       }}
                     >
                       <Link href="" locale={lang}>
-                        <button>
-                          {lang.toUpperCase()}
-                        </button>
+                        <button>{lang.toUpperCase()}</button>
                       </Link>
                     </DropdownItem>
                   );
