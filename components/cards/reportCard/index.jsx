@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillStar } from "react-icons/ai";
+import { ENERGYEFFICIENCY } from "../../../constant";
 import TooltipComponent from "../../tooltip";
 
 const Report = ({
@@ -53,7 +54,7 @@ const Report = ({
             hideContent={isTooltipOpen}
           >
             <div className="starIcon" onClick={() => setIsTooltipOpen(true)}>
-              {selectedRes === "ENERGY EFFICIENCY" ? (
+              {selectedRes === ENERGYEFFICIENCY ? (
                 <svg
                   width="23"
                   height="21"

@@ -12,6 +12,12 @@ import { getFilters } from "pages/api/filter";
 import { isSelectedInput } from "../../utilities";
 import BlueButton from "../buttons/blueButton";
 import { useTranslation } from "react-i18next";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 
 const MobileFilters = ({
   publicationReports = [],
@@ -122,7 +128,7 @@ const MobileFilters = ({
     }
     setResourceType(localStorage.getItem("ResourceType"));
     if (window.location.pathname.includes("allresources")) {
-      setBrowseResource(true)
+      setBrowseResource(true);
     }
   }, [allReports, typeof window !== "undefined" && window]);
 
@@ -152,7 +158,10 @@ const MobileFilters = ({
   }, [isResetPage]);
 
   useEffect(() => {
-    if (browseResource || localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING") {
+    if (
+      browseResource ||
+      localStorage.getItem("ResourceType") === SUSTAINABLECOOLING
+    ) {
       const sectorSustainable = filters?.sector?.filter((key) => {
         if (
           key?.Sector === "Agricultural cold chains" ||
@@ -161,18 +170,25 @@ const MobileFilters = ({
         ) {
           return key;
         }
-      })
+      });
       setSectorOptionCooling(sectorSustainable);
     }
-    if(browseResource || localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
-      const sectorEnergy = filters?.sector?.filter((key)=>{
-        if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
+    if (
+      browseResource ||
+      localStorage.getItem("ResourceType") === ENERGYEFFICIENCY
+    ) {
+      const sectorEnergy = filters?.sector?.filter((key) => {
+        if (
+          key?.Sector !== "Agricultural cold chains" &&
+          key?.Sector !== "Healthcare and medical cold chains" &&
+          key?.Sector !== "Thermal comfort and safety"
+        ) {
           return key;
         }
-      })
+      });
       setSectorOptionEnergy(sectorEnergy);
     }
-  },[filters,browseResource])
+  }, [filters, browseResource]);
 
   useEffect(() => {
     onReset();
@@ -305,22 +321,25 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {(resourceType === "ELECTRICITY ACCESS" || browseResource) && <Select
-                title={t("GenerationSource")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.generationSources)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.generation_sources}
-                name={"generation_sources"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />} 
-              {(resourceType === 'ENERGY EFFICIENCY' || browseResource) && <Select
+              {(resourceType === ELECTRICITYACCESS || browseResource) && (
+                <Select
+                  title={t("GenerationSource")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.generationSources)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.generation_sources}
+                  name={"generation_sources"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
+              {(resourceType === ENERGYEFFICIENCY || browseResource) && (
+                <Select
                   title={t("EnergyEfficiencySector")}
-                  resourceType={'ENERGY EFFICIENCY'}
+                  resourceType={ENERGYEFFICIENCY}
                   setIsOpen={setIsOpen}
                   isOpen={isOpen}
                   options={getFormattedData(sectorOptionEnerygy)}
@@ -331,11 +350,12 @@ const MobileFilters = ({
                   selectedOptions={selectedOptions}
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
-                />}
-              {(resourceType === "SUSTAINABLE COOLING" || browseResource) &&
+                />
+              )}
+              {(resourceType === SUSTAINABLECOOLING || browseResource) && (
                 <Select
                   title={t("CoolingSector")}
-                  resourceType={"SUSTAINABLE COOLING"}
+                  resourceType={SUSTAINABLECOOLING}
                   setIsOpen={setIsOpen}
                   isOpen={isOpen}
                   options={getFormattedData(sectorOptionCooling)}
@@ -346,20 +366,23 @@ const MobileFilters = ({
                   selectedOptions={selectedOptions}
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
-              />}
-              {(resourceType === "CLEAN COOKING" || browseResource) && <Select
-                title={t("Fuel")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.fuel)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.fuel}
-                name={"fuel"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
+                />
+              )}
+              {(resourceType === CLEANCOOKING || browseResource) && (
+                <Select
+                  title={t("Fuel")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.fuel)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.fuel}
+                  name={"fuel"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
               <div className="apply-wrap">
                 <button
                   type="button"

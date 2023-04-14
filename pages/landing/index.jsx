@@ -3,7 +3,12 @@ import createScrollSnap from "scroll-snap";
 import Footer from "components/footer";
 import Header from "components/header";
 import LandingPage from "components/landingPage";
-import { changingHeaderLogo } from "../../constant/changinglogo";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 
 const Landing = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
@@ -28,13 +33,13 @@ const Landing = () => {
 
   useEffect(() => {
     switch (res) {
-      case "ELECTRICITY ACCESS":
+      case ELECTRICITYACCESS:
         return setDynamicClass("electricity_access");
-      case "CLEAN COOKING":
+      case CLEANCOOKING:
         return setDynamicClass("clean_cooking");
-      case "SUSTAINABLE COOLING":
+      case SUSTAINABLECOOLING:
         return setDynamicClass("Sustainable_cooling");
-      case "ENERGY EFFICIENCY":
+      case ENERGYEFFICIENCY:
         return setDynamicClass("energy_efficiency");
       default:
         setDynamicClass("");

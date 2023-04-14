@@ -14,6 +14,12 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { resource } from "../../constant/resource";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../../constant";
 
 const Footer = ({ footerRes }) => {
   const { t } = useTranslation();
@@ -162,13 +168,13 @@ const Footer = ({ footerRes }) => {
         >
           <img
             src={`/static/images/logo${
-              footerRes === "SUSTAINABLE COOLING" ? "black" : ""
+              footerRes === SUSTAINABLECOOLING ? "black" : ""
             }.svg`}
             alt="all"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
-          {footerRes === "ELECTRICITY ACCESS" && (
+          {footerRes === ELECTRICITYACCESS && (
             <img
               src="static/images/footer_electricity_access.svg"
               alt="founder"
@@ -178,7 +184,7 @@ const Footer = ({ footerRes }) => {
               }
             />
           )}
-          {footerRes === "CLEAN COOKING" && (
+          {footerRes === CLEANCOOKING && (
             <img
               src="static/images/footer_electricity_access.svg"
               alt="founder"
@@ -188,7 +194,7 @@ const Footer = ({ footerRes }) => {
               }
             />
           )}
-          {footerRes === "SUSTAINABLE COOLING" && (
+          {footerRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/footer_sustainable_cooking.svg"}
               alt="founder"
@@ -198,7 +204,7 @@ const Footer = ({ footerRes }) => {
               }
             />
           )}
-          {footerRes === "ENERGY EFFICIENCY" && (
+          {footerRes === ENERGYEFFICIENCY && (
             <img
               src={"static/images/footer_electricity_access.svg"}
               alt="founder"
