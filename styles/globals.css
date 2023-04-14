@@ -2529,7 +2529,7 @@ a {
     position: fixed !important;
     left: 0px;
     top: 0;
-    z-index: 9;
+    z-index: 999;
     background-color: rgba(0, 0, 0, 0.4);
     height: 100%;
     width: 100% !important;
