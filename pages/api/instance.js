@@ -1,25 +1,24 @@
-import axios from 'axios';
+import axios from "axios";
 
 const checkStatus = (status) => status >= 200 && status < 300;
 // const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
- 
 const instance = axios.create({
-  baseURL: "https://kmit-policyhub.herokuapp.com/api/", //"http://192.168.1.39:1337/api/", //"http://182.77.63.150:5300/api/", 
+  baseURL: "https://kmit-policyhub.herokuapp.com/api/", //"http://192.168.1.39:1337/api/", //"http://182.77.63.150:5300/api/",
   headers: {
-    Accept: '*/*',
-    'Content-Type': 'application/json',
+    Accept: "*/*",
+    "Content-Type": "application/json",
   },
   validateStatus: checkStatus,
 });
 
-
-instance.interceptors.request.use(config => {
+instance.interceptors.request.use(
+  (config) => {
     return config;
-  },  (error) => {
+  },
+  (error) => {
     return Promise.reject(error);
-  });
-
-
+  }
+);
 
 export { instance };

@@ -6,8 +6,7 @@ import { logoData } from "../../constant";
 import ReactPlayer from "react-player";
 
 const About = () => {
-  const { t, i18n } = useTranslation();
-
+  const { t } = useTranslation();
   return (
     <>
       <Head>
@@ -49,7 +48,11 @@ const About = () => {
               src={"../../static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
-            <ReactPlayer url='https://www.youtube.com/watch?v=ylnnUCezSoY' width="100%" height="280px"  />
+            <ReactPlayer
+              url="https://www.youtube.com/watch?v=ylnnUCezSoY"
+              width="100%"
+              height="280px"
+            />
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
@@ -64,7 +67,7 @@ const About = () => {
                 img={"../../static/images/logo_rockefeller_foundation.svg"}
                 title={"The Rockefeller Foundation"}
                 link={"https://www.rockefellerfoundation.org/"}
-                imgStyle={{width: "74%"}}
+                imgStyle={{ width: "74%" }}
               />
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
@@ -103,10 +106,9 @@ const About = () => {
                     img={item.img}
                     title={item.title}
                     link={item.link}
-                    // imgStyle={{ width: item.width }}
                   />
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -177,7 +179,8 @@ const About = () => {
             <b>George Njer</b>,{t("HEVACKenya")}
             <b>Anne Mwangi</b>,{t("WebLimited")}
             <b>Francis Kimani</b>,{t("KenyaGreenBuildingSoceity")}
-            <b>Dr. Eng. Fenwicks S Musonye</b>,{t("TheEnergyandPetroleumRegulatoryAuthorityKenya")}
+            <b>Dr. Eng. Fenwicks S Musonye</b>,
+            {t("TheEnergyandPetroleumRegulatoryAuthorityKenya")}
             <b>Michael Maina</b>,{t("CLASP")}
             <b>Dr. Anshu Kumar</b>,{t("UNICEF")}
             <b>Yash Shukla</b>,{t("CEPTUniversity")}

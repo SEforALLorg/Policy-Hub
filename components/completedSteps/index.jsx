@@ -2,9 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { buttonOptions } from "../../constant";
 import SubscribeComponent from "../subscribeComponent";
-import { changingRestartLogo,changingFileLogo } from '../../constant/changinglogo';
+import {
+  changingRestartLogo,
+  changingFileLogo,
+} from "../../constant/changinglogo";
 
-const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
+const CompletedSteps = ({ onRestart, onMiniClick }) => {
   const { t } = useTranslation();
   const resourceType = localStorage.getItem("ResourceType");
   return (
@@ -13,25 +16,31 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
         {t("Processcompleted")}
       </h5>
       <div className="flex flex-wrap justify-center	complete-buttons-wrap">
-        <div className="restartWrap" onClick={onRestart} style={{display: changingRestartLogo === length ? "" : "flex"}}>
-        {changingRestartLogo.map((key)=>{
-            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
-               return (
-                <img
-                src = {Object.values(key)?.[0]}
-                alt=""
-              />
-               )
-         }
+        <div
+          className="restartWrap"
+          onClick={onRestart}
+          style={{ display: changingRestartLogo === length ? "" : "flex" }}
+        >
+          {changingRestartLogo.map((key) => {
+            if (
+              localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+            ) {
+              return <img src={Object.values(key)?.[0]} alt="" />;
+            }
           })}
-          <p style={{fontSize: 16}}>{t("Restart")}</p>
+          <p style={{ fontSize: 16 }}>{t("Restart")}</p>
         </div>
-        {buttonOptions.map((key)=>{
-          if(resourceType && resourceType === Object.keys(key)?.[0]){
-            return Object.values(key).map((items)=>{
-              return Object.entries(items).map((item)=>{
+        {buttonOptions.map((key) => {
+          if (resourceType && resourceType === Object.keys(key)?.[0]) {
+            return Object.values(key).map((items) => {
+              return Object.entries(items).map((item) => {
                 return (
-                  <div className="restartWrap" onClick={() => onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0]])}>
+                  <div
+                    className="restartWrap"
+                    onClick={() =>
+                      onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0]])
+                    }
+                  >
                     <img
                       src={item[1]?.[1]}
                       alt=""
@@ -39,32 +48,21 @@ const CompletedSteps = ({ onRestart, onStandaloneClick, onMiniClick }) => {
                     />
                     <p>{t(item?.[0])}</p>
                   </div>
-                )
-              })
+                );
+              });
             });
           }
         })}
-        {/* <div className="restartWrap" onClick={() => onStandaloneClick()}>
-          <img
-            src="static/images/solaroutline.png"
-            alt=""
-            style={{ width: 60 }}
-          />
-          <p>{t("StandaloneSystems")}</p>
-        </div> */}
         <div
           className="restartWrap"
           onClick={() => window.open("/allresources", "_self")}
         >
-           {changingFileLogo.map((key)=>{
-            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
-               return (
-                <img
-                src = {Object.values(key)?.[0]}
-                alt=""
-              />
-               )
-         }
+          {changingFileLogo.map((key) => {
+            if (
+              localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+            ) {
+              return <img src={Object.values(key)?.[0]} alt="" />;
+            }
           })}
           <p>{t("Viewallresources")}</p>
         </div>

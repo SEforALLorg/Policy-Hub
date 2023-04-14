@@ -17,12 +17,11 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     setGoBottom(true);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (localStorage.getItem("UserId")) {
-      // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
       landingPage();
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -68,10 +67,7 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   return (
     <>
       <div>
-        {/* <div className="w-[90%] mx-auto mt-[48px] mb-[64px] h-[75vh] landing-card"> */}
         {!isOpen && <TopCard HandleOpen={HandleOpen} />}
-
-        {/* </div> */}
         {isOpen ? (
           <div
             className={`${

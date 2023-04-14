@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -13,12 +13,10 @@ import {
   DropdownToggle,
   UncontrolledDropdown,
 } from "reactstrap";
-import Link from "next/link";
 import { resource } from "../../constant/resource";
-import { changingFooterLogo } from "../../constant/changinglogo";
 
 const Footer = ({ footerRes }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [title, setTitle] = useState("Download Decision Tree");
   const onClickHandler = (resource) => {
     switch (resource) {
@@ -68,7 +66,7 @@ const Footer = ({ footerRes }) => {
           <div
             onClick={() =>
               window.open("https://www.linkedin.com/company/seforal")
-            } 
+            }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
                                 cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
                                  hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
@@ -76,7 +74,7 @@ const Footer = ({ footerRes }) => {
             <FaLinkedinIn className="extrasmall:text-medium xsm:text-xsmall hover:text-blue mediaIconColor" />
           </div>
           <div
-            onClick={() => window.open("https://www.instagram.com/seforall/" )}
+            onClick={() => window.open("https://www.instagram.com/seforall/")}
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
                                 cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
                                 hover:border hover:border-blue ease-linear transition-all duration-500 mediaIconBorderColor"
@@ -122,16 +120,6 @@ const Footer = ({ footerRes }) => {
           >
             {t("BrowseResource")}
           </button>
-          {/* <button
-            onClick={() => window.open("static/pdf/decision-tree.pdf")}
-            className="font-medium xsm:text-xx  text-white  last:mr-0 mb-0 py-2.5 xsm:px-3 medium:px-4 
-                                       border leading-5 border-white rounded-[42px] bg-transparent 
-                                       desktoplg:text-small flex items-center justify-center  mobile:text-xsmall
-                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:text-blue hover:bg-white hover:border hover:border-blue ease-linear transition-all duration-500 footer-button button-animation"
-          >
-            {t("DownloadDecisionTree")}
-          </button> */}
           <UncontrolledDropdown
             setActiveFromChild
             className="

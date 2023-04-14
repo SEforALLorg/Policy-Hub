@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CSVLink } from "react-csv";
 import { useMutation, useQuery } from "react-query";
-import { BsDownload, BsSliders } from "react-icons/bs";
+import { BsDownload } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
-import { AiOutlineInfoCircle, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
 import { getFormattedData, getReportQuery } from "utilities";
 import useDebounce from "utilities/useDebounce";
 import { Flags } from "constant/flags";
@@ -21,7 +21,7 @@ import BlueButton from "../buttons/blueButton";
 import { RiSearch2Line } from "react-icons/ri";
 import MobileFilters from "../mobileFilters";
 import { useTranslation } from "react-i18next";
-import { changingRightWrapLogo } from '../../constant/changinglogo';
+import { changingRightWrapLogo } from "../../constant/changinglogo";
 import { Tooltip } from "react-tooltip";
 
 const RightWrapPage = ({
@@ -50,7 +50,7 @@ const RightWrapPage = ({
   const [browseResource, setBrowseResource] = useState(false);
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
-  const [isLoader , setIsLoader] = useState(false)
+  const [isLoader, setIsLoader] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
   const { t } = useTranslation();
@@ -130,7 +130,9 @@ const RightWrapPage = ({
     fuel: selectInputs?.fuel,
   };
   const onDownload = () => {
-    const filters = Object.values(selectedFilters).filter(key=> {if (key.length > 0) return true;})
+    const filters = Object.values(selectedFilters).filter((key) => {
+      if (key.length > 0) return true;
+    });
     setCsvData("");
     const body = {
       data: {
@@ -192,10 +194,14 @@ const RightWrapPage = ({
   useEffect(() => {
     if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data);
-      window !== "undefined" && document.getElementById("rightWrap").scrollTo(0,0);
+      window !== "undefined" &&
+        document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
       setPreviousReports([...previousReports, ...allReports?.data?.data]);
-      browseResource ? "" : (window !== "undefined" && document.getElementById("rightWrap").scrollTo(0,0));
+      browseResource
+        ? ""
+        : window !== "undefined" &&
+          document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
@@ -238,7 +244,6 @@ const RightWrapPage = ({
       showAllReports
     ) {
       setPage(page + 1);
-      // setPreviousReports([...reports]);
       setIsScrollLoader(true);
     }
   };
@@ -260,30 +265,45 @@ const RightWrapPage = ({
     setPage(1);
   }, [isResetPage]);
 
-  useEffect(()=>{
-    if(browseResource || localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
-      const sectorSustainable = filters?.sector?.filter((key)=>{
-        if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
+  useEffect(() => {
+    const filtersArray = [
+      "Agricultural cold chains",
+      "Healthcare and medical cold chains",
+      "Thermal comfort and safety",
+    ];
+    if (
+      browseResource ||
+      localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"
+    ) {
+      const sectorSustainable = filters?.sector?.filter((key) => {
+        if (filtersArray?.includes(key?.Sector)) {
           return key;
         }
-      })
+      });
       setSectorOptionCooling(sectorSustainable);
     }
-    if(browseResource || localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"){
-      const sectorEnergy = filters?.sector?.filter((key)=>{
-        if (key?.Sector !== "Agricultural cold chains" && key?.Sector !== "Healthcare and medical cold chains" && key?.Sector !== "Thermal comfort and safety") {
+    if (
+      browseResource ||
+      localStorage.getItem("ResourceType") === "ENERGY EFFICIENCY"
+    ) {
+      const sectorEnergy = filters?.sector?.filter((key) => {
+        if (!filtersArray?.includes(key?.Sector)) {
           return key;
         }
-      })
+      });
       setSectorOptionEnergy(sectorEnergy);
     }
-  },[filters,browseResource])
+  }, [filters, browseResource]);
 
-  const sortedYear = filters?.year?.map((year)=>{
-    let yearObj = {...year, label: year?.Year}
-    return yearObj
-  }).sort((a,b)=>{return b.Year-a.Year})
-  
+  const sortedYear = filters?.year
+    ?.map((year) => {
+      let yearObj = { ...year, label: year?.Year };
+      return yearObj;
+    })
+    .sort((a, b) => {
+      return b.Year - a.Year;
+    });
+
   const finalReports = !showAllReports && [
     ...reports,
     ...finalPublicationReports,
@@ -314,18 +334,20 @@ const RightWrapPage = ({
         {!showAllReports && (
           <div className="flex items-center pb-[10px]">
             <div className="flex items-center mr-[20px]">
-            {changingRightWrapLogo.map((key)=>{
-            if (localStorage.getItem("ResourceType") === Object.keys(key)?.[0]) {
-               return (
-                <img
-                src = {Object.values(key)?.[0]}
-                alt="card"
-                width="70px"
-                height="70px"
-              />
-               )
-         }
-          })}
+              {changingRightWrapLogo.map((key) => {
+                if (
+                  localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+                ) {
+                  return (
+                    <img
+                      src={Object.values(key)?.[0]}
+                      alt="card"
+                      width="70px"
+                      height="70px"
+                    />
+                  );
+                }
+              })}
             </div>
             <h5 className="font-bold text-[22px] m-0 text-text textColor">
               {t("ResourcesInput")}
@@ -333,13 +355,6 @@ const RightWrapPage = ({
           </div>
         )}
         <div className="flex mt-[30px] reports-inner-section">
-          {/* <div
-            className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
-            onClick={() => setIsFilter(!isFilter)}
-          >
-            <BsSliders className="text-text mr-[5px]" />
-            Filter
-          </div> */}
           <div className="mobile-show">
             <MobileFilters
               publicationReports={publicationReports}
@@ -365,10 +380,11 @@ const RightWrapPage = ({
             />
           )}
           <div
-            className={`${isFilter
+            className={`${
+              isFilter
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
-              } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
+            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
           >
             <h5 className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]" style={{paddingBottom: optionSelected ? "3px" : "15px" }}>
               {t("Filters")}
@@ -394,18 +410,6 @@ const RightWrapPage = ({
                   value={search}
                 />
               )}
-              {/* <Select
-                title={t("SelectRegion")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.region)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.regions}
-                name={"regions"}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              /> */}
               <Select
                 title={t("SelectCountry")}
                 setIsOpen={setIsOpen}
@@ -455,45 +459,50 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {(resourceType === "ELECTRICITY ACCESS" || browseResource) &&  <Select
-                title={t("GenerationSource")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.generationSources)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.generation_sources}
-                name={"generation_sources"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
-              {(resourceType === 'ENERGY EFFICIENCY' || browseResource) && <div className="filterTooltipWrap">
+              {(resourceType === "ELECTRICITY ACCESS" || browseResource) && (
                 <Select
-                  title={t("EnergyEfficiencySector")}
-                  resourceType={'ENERGY EFFICIENCY'}
+                  title={t("GenerationSource")}
                   setIsOpen={setIsOpen}
                   isOpen={isOpen}
-                  options={getFormattedData(sectorOptionEnerygy)}
+                  options={getFormattedData(filters?.generationSources)}
                   onChange={(e) => onChange(e)}
-                  selected={selectInputs?.sector}
-                  name={"sector"}
+                  selected={selectInputs?.generation_sources}
+                  name={"generation_sources"}
                   top={true}
                   selectedOptions={selectedOptions}
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
                 />
-                {resourceType === 'ENERGY EFFICIENCY' && 
-                  <Tooltip 
-                    className="energyToolTip" 
-                    anchorSelect={`.filterTooltipWrap`} 
-                    clickable={false} 
-                    place="top">
+              )}
+              {(resourceType === "ENERGY EFFICIENCY" || browseResource) && (
+                <div className="filterTooltipWrap">
+                  <Select
+                    title={t("EnergyEfficiencySector")}
+                    resourceType={"ENERGY EFFICIENCY"}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(sectorOptionEnerygy)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.sector}
+                    name={"sector"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                  {resourceType === "ENERGY EFFICIENCY" && (
+                    <Tooltip
+                      className="energyToolTip"
+                      anchorSelect={`.filterTooltipWrap`}
+                      clickable={false}
+                      place="top"
+                    >
                       {t("EnergyEfficiencySector")}
-                  </Tooltip>
-                }
-              </div>}
-              {(resourceType === "SUSTAINABLE COOLING" || browseResource) &&
+                    </Tooltip>
+                  )}
+                </div>
+              )}
+              {(resourceType === "SUSTAINABLE COOLING" || browseResource) && (
                 <Select
                   title={t("CoolingSector")}
                   resourceType={"SUSTAINABLE COOLING"}
@@ -507,20 +516,23 @@ const RightWrapPage = ({
                   selectedOptions={selectedOptions}
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
-              />}
-              {(resourceType === "CLEAN COOKING" || browseResource) && <Select
-                title={t("Fuel")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.fuel)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.fuel}
-                name={"fuel"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />}
+                />
+              )}
+              {(resourceType === "CLEAN COOKING" || browseResource) && (
+                <Select
+                  title={t("Fuel")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.fuel)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.fuel}
+                  name={"fuel"}
+                  top={true}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+              )}
 
               <div className="apply-wrap">
                 <button
@@ -559,34 +571,36 @@ const RightWrapPage = ({
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor  resources-button ${disableButtons ? "" : "button-animation"
-                    }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor  resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : 1, width:108 }}
+                  style={{ opacity: disableButtons ? 0.5 : 1, width: 108 }}
                 >
-                  {!isLoader ?  (
-                  <TooltipComponent
-                    content={t("clicktodownload")}
-                    hideInfo={true}
-                    top={true}
-                    hideContent={disableButtons}
-                    id={'download'}
-                  >
-                    <div className="flex justify-center download-button-inner">
-                      {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
-                    </div>
-                  </TooltipComponent>
+                  {!isLoader ? (
+                    <TooltipComponent
+                      content={t("clicktodownload")}
+                      hideInfo={true}
+                      top={true}
+                      hideContent={disableButtons}
+                      id={"download"}
+                    >
+                      <div className="flex justify-center download-button-inner">
+                        {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
+                      </div>
+                    </TooltipComponent>
                   ) : (
-                  <div className="flex items-center justify-center h-[100%]">
-                    <Loader />
-                  </div>
+                    <div className="flex items-center justify-center h-[100%]">
+                      <Loader />
+                    </div>
                   )}
                 </button>
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button ${disableButtons ? "" : "button-animation"
-                    }`}
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button ${
+          disableButtons ? "" : "button-animation"
+        }`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
                   style={{ opacity: disableButtons ? 0.5 : 1 }}
@@ -596,7 +610,7 @@ const RightWrapPage = ({
                     hideInfo={true}
                     top={true}
                     hideContent={disableButtons}
-                    id={'email'}
+                    id={"email"}
                   >
                     <div className="flex">
                       {" "}
@@ -615,7 +629,11 @@ const RightWrapPage = ({
                 />
               ) : null}
             </h5>
-            <div id = "rightWrap" className="rightInnerWrap" onScroll={(e) => onScroll(e)}>
+            <div
+              id="rightWrap"
+              className="rightInnerWrap"
+              onScroll={(e) => onScroll(e)}
+            >
               <div className="relative mr-[0px] w-[100%] inline-block">
                 {isFetchingReports && !isScrollLoader ? (
                   <div className="flex items-center justify-center h-[100%]">
@@ -674,16 +692,16 @@ const RightWrapPage = ({
                       finalPublicationReports[0]?.attributes?.ReportName
                     ) ? (
                       <>
-                        <div 
-                        className="LineColor"
+                        <div
+                          className="LineColor"
                           style={{
                             borderBottom:
                               "2.45084px solid rgba(134, 164, 176, 0.25)",
                           }}
                         />
                         <div
-                        className="LineColor"
-                        style={{
+                          className="LineColor"
+                          style={{
                             marginBottom: 18,
                             marginTop: 3,
                             borderBottom:
@@ -729,7 +747,7 @@ const RightWrapPage = ({
                             bigCard={showAllReports}
                             description={description}
                             selectedRes={resourceType}
-                            />
+                          />
                         );
                       })}
                   </>

@@ -151,10 +151,14 @@ const MobileFilters = ({
     setPage(1);
   }, [isResetPage]);
 
-  useEffect(()=>{
-    if(browseResource || localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING"){
-      const sectorSustainable = filters?.sector?.filter((key)=>{
-        if (key?.Sector === "Agricultural cold chains" || key?.Sector === "Healthcare and medical cold chains" || key?.Sector === "Thermal comfort and safety") {
+  useEffect(() => {
+    if (browseResource || localStorage.getItem("ResourceType") === "SUSTAINABLE COOLING") {
+      const sectorSustainable = filters?.sector?.filter((key) => {
+        if (
+          key?.Sector === "Agricultural cold chains" ||
+          key?.Sector === "Healthcare and medical cold chains" ||
+          key?.Sector === "Thermal comfort and safety"
+        ) {
           return key;
         }
       })

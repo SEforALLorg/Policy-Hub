@@ -19,7 +19,6 @@ import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useEffect } from "react";
-import { changingHeaderLogo } from '../../constant/changinglogo';
 const cookies = new Cookies();
 const Header = ({selectedRes}) => {
   const router = useRouter();

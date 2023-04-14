@@ -16,13 +16,6 @@ const OtherToolsCard = ({
         "bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex mt-[20px] card-animation resourceCard"
       }
     >
-      {/* <div className="videoPlayer w-[30%] ">
-        <img
-          src={image}
-          alt=""
-          className="w-[100%] h-[230px] object-cover object-left-top"
-        />
-      </div> */}
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]  flex flex-col">
         <h6 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
           {title}

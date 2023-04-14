@@ -4,17 +4,17 @@ import { FaEnvelopeOpenText } from "react-icons/fa";
 import PrimaryButton from "components/buttons/primarybutton";
 import { useTranslation } from "react-i18next";
 
-const SubscribeComponent = ({subcription}) => {
+const SubscribeComponent = ({ subcription }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalClick, setModalClick] = useState(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (subcription) {
-      setShowModal(true)
+      setShowModal(true);
     }
-  }, [subcription])
-  
+  }, [subcription]);
+
   useEffect(() => {
     if (showModal) {
       <Script id="mcjs">
@@ -45,24 +45,26 @@ const SubscribeComponent = ({subcription}) => {
   };
   return (
     <>
-      {!subcription && <div className="w-full flex flex-col items-center w-[250px] float-right">
-      <div className="flex items-center justify-center mt-[10px] SubscribeIconColor">
-        <FaEnvelopeOpenText size={50} className={"text-Primary"} />
-      </div>
-      <div className="flex items-center justify-center mt-[10px]">
-        <p className="mt-[0px] m-[4px] mb-0 text-lighttext text-[16px] font-medium tracking-[0px] textColor">
-          {t("SubscribeNewsletter")}
-        </p>
-      </div>
-      <div className="text-white flex items-center justify-center w-full">
-        <PrimaryButton
-          title={t("Subscribe")}
-          className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-70 laptop:w-70 rounded-full h-[45px] text-center font-bold  text-small leading-5 uppercase  outline-none no-underline no-underline
+      {!subcription && (
+        <div className="w-full flex flex-col items-center w-[250px] float-right">
+          <div className="flex items-center justify-center mt-[10px] SubscribeIconColor">
+            <FaEnvelopeOpenText size={50} className={"text-Primary"} />
+          </div>
+          <div className="flex items-center justify-center mt-[10px]">
+            <p className="mt-[0px] m-[4px] mb-0 text-lighttext text-[16px] font-medium tracking-[0px] textColor">
+              {t("SubscribeNewsletter")}
+            </p>
+          </div>
+          <div className="text-white flex items-center justify-center w-full">
+            <PrimaryButton
+              title={t("Subscribe")}
+              className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-70 laptop:w-70 rounded-full h-[45px] text-center font-bold  text-small leading-5 uppercase  outline-none no-underline no-underline
                     border-2 border-transparent duration-500  ease-linear transition-all mt-[20px] button-animation pt-[4px] SubscribeButton`}
-          onClick={() => onSubscribe()}
-        />
-      </div>
-      </div>}
+              onClick={() => onSubscribe()}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

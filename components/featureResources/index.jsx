@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { videosCard } from "constant";
 import StartButton from "components/buttons/startButton";
 
-import VideoCard from "./components/video";
 import OtherToolsCard from "./components/otherTools";
 import { useTranslation } from "react-i18next";
-import { filterResources, getAllResources } from "../../pages/api/resources";
+import { filterResources } from "../../pages/api/resources";
 import { ErrorNotify } from "components/notification";
 import { getResourcesQuery } from "../../utilities";
 import Loader from "../loader";
-import { BsSliders } from "react-icons/bs";
 
 const Feature = () => {
   const { t, i18n } = useTranslation();
@@ -29,14 +26,16 @@ const Feature = () => {
   );
   const setData = () => {
     const mainData = filteredCards?.data?.data;
-    const filterData = mainData?.filter((item) => item?.id === 12 || item?.id === 11) || []
-    const finalIds = filterData?.map((item) => item?.id)
-    const finalData = mainData?.filter((item) => !finalIds?.includes(item?.id)) || []
-    return [...filterData, ...finalData]
+    const filterData =
+      mainData?.filter((item) => item?.id === 12 || item?.id === 11) || [];
+    const finalIds = filterData?.map((item) => item?.id);
+    const finalData =
+      mainData?.filter((item) => !finalIds?.includes(item?.id)) || [];
+    return [...filterData, ...finalData];
   };
-    
+
   const allResources = setData(filteredCards);
-    
+
   useEffect(() => {
     if (query) {
       refetch();
@@ -100,7 +99,10 @@ const Feature = () => {
                   setDisable(true);
                 }}
                 disabled={disable}
-                className={`bg-lightBlue rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${!disable && "hover:bg-Primary hover:text-white ease-linear transition-all duration-500 button-animation"} w-[110px] card-tool-button allBtn`}
+                className={`bg-lightBlue rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${
+                  !disable &&
+                  "hover:bg-Primary hover:text-white ease-linear transition-all duration-500 button-animation"
+                } w-[110px] card-tool-button allBtn`}
               >
                 {t("AllPlatforms")}
               </button>
@@ -112,7 +114,7 @@ const Feature = () => {
                     <OtherToolsCard
                       filterData={(e) => {
                         filterData(e);
-                        setDisable(false)
+                        setDisable(false);
                       }}
                       resourceType={resource?.attributes?.resources?.data}
                       title={resource?.attributes?.Title}
@@ -127,24 +129,6 @@ const Feature = () => {
                 </div>
               )}
             </div>
-            {/* <h6
-              className="font-bold leading-10 text-large text-darktext 
-                            uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
-            >
-              {t("VIDEOS")}
-            </h6>
-            <div className="flex items-stretch pt-0 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
-              {videosCard?.map((item, index) => (
-                <div className="w-[33.3%] mb-[0px] p-[10px]" key={index}>
-                  <VideoCard
-                    link={item?.link}
-                    title={item?.title}
-                    setIsVideoCard={setIsVideoCard}
-                    isVideoCard={isVideoCard}
-                  />
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
       </div>

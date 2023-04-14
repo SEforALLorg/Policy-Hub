@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { uuid } from "uuidv4";
 import BlueButton from "components/buttons/blueButton";
 import { applyTheme } from "../../theme/utils";
 import darkTheme from "../../theme/SustainableCooling";
@@ -19,7 +18,6 @@ const Resources = ({
   setIsOpen,
 }) => {
   const { t } = useTranslation();
-  // localStorage.setItem("uuid", uuid());
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
@@ -61,10 +59,12 @@ const Resources = ({
 
         <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
           {t("AssessYourCountry")}
-          {/* {t("Customize")} */}
         </div>
-        <div onClick={() => setIsOpen(false)} className="closeIcon text-gray-400 hover:text-gray-900 ">
-         <IoClose className="w-full h-full"/>
+        <div
+          onClick={() => setIsOpen(false)}
+          className="closeIcon text-gray-400 hover:text-gray-900 "
+        >
+          <IoClose className="w-full h-full" />
         </div>
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />

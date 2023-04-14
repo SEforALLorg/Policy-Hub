@@ -19,9 +19,9 @@ const Report = ({
   isActive,
   bigCard,
   description,
-  selectedRes
+  selectedRes,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const countTooltip = bigCard ? 30 : 10;
   return (

@@ -1,6 +1,4 @@
 import qs from "qs";
-import groupBy from "lodash/groupBy";
-import { omit } from "lodash";
 import { repeatUser, putJourney } from "../pages/api/reports";
 
 export const getFormattedData = (unFormattedData) => {
@@ -98,9 +96,7 @@ export const getReportQuery = (
   return query;
 };
 
-export const getResourcesQuery = (
-  id,
-) => {
+export const getResourcesQuery = (id) => {
   if (!id) return null;
   const query = qs.stringify({
     filters: {
@@ -109,7 +105,6 @@ export const getResourcesQuery = (
           $in: id,
         },
       },
-      
     },
   });
   return query;
@@ -121,8 +116,8 @@ export const isSelectedInput = (selectInputs) => {
     selectInputs?.countries?.length ||
     selectInputs?.segments?.length ||
     selectInputs?.document_types?.length ||
-    selectInputs?.years?.length || 
-    selectInputs?.sector?.length || 
+    selectInputs?.years?.length ||
+    selectInputs?.sector?.length ||
     selectInputs?.fuel?.length ||
     selectInputs?.generation_sources?.length;
   return optionSelected;
@@ -177,7 +172,7 @@ export const validation = (event, name, val) => {
           FirstName: "First Name atleast have  letters",
         };
       } else {
-        formError = {  };
+        formError = {};
       }
       break;
     case "LastName":
@@ -186,7 +181,7 @@ export const validation = (event, name, val) => {
           LastName: "Last Name atleast have 5 letters",
         };
       } else {
-        formError = { };
+        formError = {};
       }
       break;
     case "Email":
@@ -199,7 +194,7 @@ export const validation = (event, name, val) => {
           Email: "Enter a valid Email Address",
         };
       } else {
-        formError = {  };
+        formError = {};
       }
       break;
     case "PhoneNumber":
@@ -208,7 +203,7 @@ export const validation = (event, name, val) => {
           PhoneNumber: "Phone Number is required",
         };
       } else {
-        formError = {  };
+        formError = {};
       }
       break;
     case "JobTitle":
@@ -217,7 +212,7 @@ export const validation = (event, name, val) => {
           JobTitle: "Job Title is required",
         };
       } else {
-        formError = {  };
+        formError = {};
       }
       break;
     case "Organization":
@@ -226,7 +221,7 @@ export const validation = (event, name, val) => {
           Organization: "Organization is required",
         };
       } else {
-        formError = { };
+        formError = {};
       }
       break;
     default:
@@ -240,13 +235,16 @@ export const landingPage = async () => {
   let count = localStorage.getItem("count");
   let data = {
     data: {
-      VisitCount: count && ++count || 1,
+      VisitCount: (count && ++count) || 1,
     },
   };
   const response = await repeatUser(data);
   localStorage.setItem("UserId", response?.data?.data?.id);
-  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
-  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
+  localStorage.setItem("count", response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem(
+    "userInfo",
+    JSON.stringify(response?.data?.data?.attributes)
+  );
 };
 
 export const putJourneyStep = async (payload) => {
@@ -256,12 +254,18 @@ export const putJourneyStep = async (payload) => {
     },
   };
   const response = await putJourney(data);
-  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
+  localStorage.setItem(
+    "userInfo",
+    JSON.stringify(response?.data?.data?.attributes)
+  );
 };
 
 export const userRepeated = async (data) => {
   const response = await repeatUser(data);
   localStorage.setItem("UserId", response?.data?.data?.id);
-  localStorage.setItem("count",response?.data?.data?.attributes?.VisitCount);
-  localStorage.setItem("userInfo",JSON.stringify(response?.data?.data?.attributes));
+  localStorage.setItem("count", response?.data?.data?.attributes?.VisitCount);
+  localStorage.setItem(
+    "userInfo",
+    JSON.stringify(response?.data?.data?.attributes)
+  );
 };

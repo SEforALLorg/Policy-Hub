@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Customize from "components/customize";
 
 import { Wrapper } from "./styles";
@@ -15,7 +15,7 @@ const Dashboard = ({
   setIsBigCard,
   resources,
   selectedRes,
-  setIsOpen
+  setIsOpen,
 }) => {
   const [isExpand, setIsExpand] = useState(false);
   const [isResource, setIsResource] = useState(true);
@@ -66,7 +66,7 @@ const Dashboard = ({
     setStepAnswer(undefined);
     setIsBigCard(false);
     setClearAll(!isClearAll);
-    setIsResource(true)
+    setIsResource(true);
     setPayload([]);
     localStorage.removeItem("ResourceType");
     selectedRes(null);
@@ -77,64 +77,64 @@ const Dashboard = ({
     setNonPublicationReports(e?.NonKeyPublication?.data);
     setStepAnswer(e?.Answer);
   };
-  
+
   const onNextQuestionId = (e) => {
-    setFirstQuestionId(e)
-    const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
+    setFirstQuestionId(e);
+    const question = questions?.data?.data?.find(
+      (q) => q?.id === Number(firstQuestionId)
+    );
     setFirstQuestion(question);
-  }
+  };
 
   useEffect(() => {
-    const question = questions?.data?.data?.find((q) => q?.id === Number(firstQuestionId))
+    const question = questions?.data?.data?.find(
+      (q) => q?.id === Number(firstQuestionId)
+    );
     setFirstQuestion(question);
-  }, [firstQuestionId])
+  }, [firstQuestionId]);
 
-  useEffect(() => { 
+  const addJourney = (latestDate, existingJourney, isExistingUser, data) => {
+    let existingDate = new Date(latestDate);
+    let prevJourney = { ...existingJourney };
+    if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
+      Object.entries(existingJourney)?.map((key) => {
+        if (key?.[0] === String(existingDate)) {
+          return (prevJourney[String(existingDate)] = data);
+        }
+      });
+      putJourneyStep(prevJourney);
+    }
+  }
+  const setUserJourney = () => {
     let count = localStorage.getItem("count");
-    let existing = JSON.parse(localStorage.getItem("userInfo"));
+    let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
     let userOldJourney;
-    if (existing){
-      existingJourney = existing?.Journey;
-      userOldJourney = existingJourney?.[latestDate]
+    if (isExistingUser) {
+      existingJourney = isExistingUser?.Journey;
+      userOldJourney = existingJourney?.[latestDate];
     }
     if (localStorage.getItem("UserId")) {
-      if (newJourneyData.length) {
+      if (newJourneyData?.length) {
         let data = [];
         if (!payload?.length) {
-          data = oldJourney.concat(newJourneyData);
+          data = oldJourney?.concat(newJourneyData);
           setPayload(data);
         } else if (payload?.length) {
-          data = payload.concat(newJourneyData);
+          data = payload?.concat(newJourneyData);
           setPayload(data);
         }
         if (count && count > 1) {
-          let existingDate = new Date(latestDate);
-          let prev = {...existingJourney}
-          if (existing && Object.keys(existingJourney)?.length >= 1) {
-            Object.entries(existingJourney).map((key)=>{
-              if (key[0] === String(existingDate)) {
-                return prev[String(existingDate)] = data;
-              }
-            })
-            putJourneyStep(prev);
-          }
-        } else {  
-          let existingDate = new Date(latestDate);
-          let prev = {...existingJourney}
-          if (existing && Object.keys(existingJourney)?.length >= 1) {
-            Object.entries(existingJourney).map((key)=>{
-              if (key[0] === String(existingDate)) {
-                return prev[String(existingDate)] = data;
-              }
-            })
-            console.log(prev,data,existingDate,'prev134');
-            putJourneyStep(prev);
-          }
-         }
+          addJourney(latestDate, existingJourney, isExistingUser, data)
+        } else {
+          addJourney(latestDate, existingJourney, isExistingUser, data)
+        }
       }
     }
+  };
+  useEffect(() => {
+    setUserJourney();
   }, [newJourneyData]);
   return (
     <Wrapper isExpand={isExpand}>
@@ -185,16 +185,16 @@ const Dashboard = ({
         </>
       ) : (
         <>
-            <Resources
-              resourcesData={resources}
-              selected={(e)=>{
-                setSelectedResource(e);
-                selectedRes(e);
-              }}
-              onYes={() => setIsResource(false)}
-              onNextQuestionId={onNextQuestionId}
-              setIsOpen={setIsOpen}
-            />
+          <Resources
+            resourcesData={resources}
+            selected={(e) => {
+              setSelectedResource(e);
+              selectedRes(e);
+            }}
+            onYes={() => setIsResource(false)}
+            onNextQuestionId={onNextQuestionId}
+            setIsOpen={setIsOpen}
+          />
         </>
       )}
     </Wrapper>

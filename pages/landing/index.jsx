@@ -36,10 +36,11 @@ const Landing = () => {
         return setDynamicClass("Sustainable_cooling");
       case "ENERGY EFFICIENCY":
         return setDynamicClass("energy_efficiency");
-      default:setDynamicClass("")
+      default:
+        setDynamicClass("");
         break;
     }
-  }, [res])
+  }, [res]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
@@ -47,17 +48,21 @@ const Landing = () => {
   }, []);
 
   return (
-    <main id="fullWrap" ref={ref} className={dynamicClass} >
+    <main id="fullWrap" ref={ref} className={dynamicClass}>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
           <div
-            className={`px-[1rem] py-2 ${!isDashboardOpen ? "header-title-wrap" : ""
-              }`}
+            className={`px-[1rem] py-2 ${
+              !isDashboardOpen ? "header-title-wrap" : ""
+            }`}
           >
             <Header selectedRes={res} />
           </div>
           <div>
-            <LandingPage setIsDashboardOpen={setIsDashboardOpen} selectedRes={(e) => setRes(e)} />
+            <LandingPage
+              setIsDashboardOpen={setIsDashboardOpen}
+              selectedRes={(e) => setRes(e)}
+            />
           </div>
           <div className="pt-[40px]">
             <Footer footerRes={res} />
