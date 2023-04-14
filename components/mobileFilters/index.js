@@ -118,10 +118,10 @@ const MobileFilters = ({
 
   useEffect(() => {
     if (optionSelected && page === 1) {
-      setPreviousReports(allReports?.data?.data);
+      setPreviousReports(allReports?.data?.data || []);
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...allReports?.data?.data, ...previousReports]);
+      setPreviousReports([...allReports?.data?.data, ...(previousReports || [])] || []);
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
