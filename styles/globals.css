@@ -2031,7 +2031,7 @@ a {
 
   .transform-filter-animation-hide {
     transform: translateX(-300px);
-    opacity: 0;
+    opacity: 1;
     transition: unset;
   }
 
