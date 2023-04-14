@@ -250,7 +250,7 @@ const DetailModal = ({ firstHit }) => {
                       console.log();
                       return (
                         <option value={key.code}>
-                          {key.name}
+                          {key.name}{' '}
                           {key.emoji}
                         </option>
                       );

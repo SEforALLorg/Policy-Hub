@@ -106,6 +106,7 @@ const About = () => {
                     img={item.img}
                     title={item.title}
                     link={item.link}
+                    imgStyle={{ width: item.width }}
                   />
                 </div>
               );
