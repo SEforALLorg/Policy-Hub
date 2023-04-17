@@ -7,7 +7,7 @@ import Feature from "components/featureResources";
 import { useTranslation } from "react-i18next";
 
 const Resources = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <main>
       <Head>

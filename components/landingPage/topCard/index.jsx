@@ -3,7 +3,7 @@ import StartButton from "components/buttons/startButton";
 import { useTranslation } from "react-i18next";
 
 const TopCard = ({ HandleOpen }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">

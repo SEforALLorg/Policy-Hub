@@ -7,7 +7,7 @@ import Contact from "components/contactus";
 import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <main>
       <Head>
