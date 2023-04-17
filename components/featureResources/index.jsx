@@ -109,7 +109,7 @@ const Feature = () => {
             </div>
             <div className="cardWrap">
               {allResources?.length ? (
-                allResources?.map((resource) => {
+                allResources?.map((resource, index) => {
                   return (
                     <OtherToolsCard
                       filterData={(e) => {
@@ -120,6 +120,7 @@ const Feature = () => {
                       title={resource?.attributes?.Title}
                       link={resource?.attributes?.Link}
                       description={resource?.attributes?.Description}
+                      key={index}
                     />
                   );
                 })

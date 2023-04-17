@@ -246,10 +246,9 @@ const DetailModal = ({ firstHit }) => {
                     name="Country"
                     onChange={handleChange}
                   >
-                    {Flags.map((key) => {
-                      console.log();
+                    {Flags.map((key, index) => {
                       return (
-                        <option value={key.code}>
+                        <option value={key.code} key={index}>
                           {key.name}{' '}
                           {key.emoji}
                         </option>
