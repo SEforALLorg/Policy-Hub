@@ -71,7 +71,7 @@ const Footer = ({ footerRes }) => {
           </div>
           <div
             onClick={() =>
-              window.open("https://www.linkedin.com/company/seforal")
+              window.open("https://www.linkedin.com/company/seforall/")
             }
             className="border border-white extrasmall:w-[48px] extrasmall:h-[48px] xsm:w-[34px] xsm:h-[34px] flex items-center justify-center
                                 cursor-pointer rounded-full footer-icon mr-4 hover:text-blue 
