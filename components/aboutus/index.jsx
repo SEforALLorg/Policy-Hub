@@ -78,7 +78,7 @@ const About = () => {
                 }
               >
                 <img
-                  src={"../../static/images/dgcs_rettangolare_eng.jpg"}
+                  src={"../../static/images/dgcs_rettangolare_eng_big.jpg"}
                   alt="star"
                   className="xsm:mt-4 small:mt-0 xsm:m-auto small:m-0 cursor-pointer"
                   width={500}

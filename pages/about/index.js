@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
 const AboutUs = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <main>

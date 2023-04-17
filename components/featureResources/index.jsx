@@ -10,7 +10,7 @@ import { getResourcesQuery } from "../../utilities";
 import Loader from "../loader";
 
 const Feature = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [disable, setDisable] = useState(true);
