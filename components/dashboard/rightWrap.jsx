@@ -340,7 +340,7 @@ const RightWrapPage = ({
         {!showAllReports && (
           <div className="flex items-center pb-[10px]">
             <div className="flex items-center mr-[20px]">
-              {changingRightWrapLogo.map((key) => {
+              {changingRightWrapLogo.map((key, index) => {
                 if (
                   localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
                 ) {
@@ -350,6 +350,7 @@ const RightWrapPage = ({
                       alt="card"
                       width="70px"
                       height="70px"
+                      key={index}
                     />
                   );
                 }

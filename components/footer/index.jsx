@@ -151,6 +151,7 @@ const Footer = ({ footerRes }) => {
                     onClick={() => {
                       onClickHandler(resources);
                     }}
+                    key={index}
                   >
                     {resources}
                   </DropdownItem>

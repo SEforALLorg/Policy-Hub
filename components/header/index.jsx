@@ -135,7 +135,7 @@ const Header = ({ selectedRes }) => {
                 {t("Contactus")}
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown setActiveFromChild className="customDropdown">
+            <UncontrolledDropdown setActiveFromChild className="customDropdown" >
               <DropdownToggle className="DropdownToggle" tag="a" caret>
                 <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
               </DropdownToggle>

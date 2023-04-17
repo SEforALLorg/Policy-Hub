@@ -127,7 +127,7 @@ const LeftWrapPage = ({
     <div className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]">
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative select-none mr-5">
-          {changingLeftWrapLogo.map((key) => {
+          {changingLeftWrapLogo?.map((key, index) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
@@ -136,6 +136,7 @@ const LeftWrapPage = ({
                   className="w-[70px] h-[70px] left-header-image"
                   src={Object.values(key)?.[0]}
                   alt="card"
+                  key={index}
                 />
               );
             }
@@ -146,7 +147,7 @@ const LeftWrapPage = ({
         </div>
       </div>
       {nextQuestionId &&
-        userJourney?.slice(0, 3).map((item, index) => (
+        userJourney?.slice(0, 3)?.map((item, index) => (
           <div
             key={index}
             onClick={() => {

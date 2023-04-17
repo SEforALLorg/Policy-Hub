@@ -64,7 +64,7 @@ const Customize = ({
       ) : (
         <>
           <div className="flex items-center customize-header">
-            {changingCardLogo.map((key) => {
+            {changingCardLogo.map((key, index) => {
               if (
                 localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
               ) {
@@ -73,6 +73,7 @@ const Customize = ({
                     className="w-[230px] h-[157px] object-contain object-contain-height mr-5"
                     src={Object.values(key)?.[0]}
                     alt="card"
+                    key={index}
                   />
                 );
               }

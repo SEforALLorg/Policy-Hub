@@ -21,11 +21,11 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
           onClick={onRestart}
           style={{ display: changingRestartLogo === length ? "" : "flex" }}
         >
-          {changingRestartLogo.map((key) => {
+          {changingRestartLogo.map((key, index) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="type" />;
+              return <img src={Object.values(key)?.[0]} alt="type" key={index} />;
             }
           })}
           <p style={{ fontSize: 16 }}>{t("Restart")}</p>
@@ -33,13 +33,14 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         {buttonOptions.map((key) => {
           if (resourceType && resourceType === Object.keys(key)?.[0]) {
             return Object.values(key).map((items) => {
-              return Object.entries(items).map((item) => {
+              return Object.entries(items).map((item, index) => {
                 return (
                   <div
                     className="restartWrap"
                     onClick={() =>
                       onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0]])
                     }
+                    key={index}
                   >
                     <img
                       src={item[1]?.[1]}
@@ -57,11 +58,11 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
           className="restartWrap"
           onClick={() => window.open("/allresources", "_self")}
         >
-          {changingFileLogo.map((key) => {
+          {changingFileLogo.map((key, index) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="resource_type" />;
+              return <img src={Object.values(key)?.[0]} alt="resource_type" key={index} />;
             }
           })}
           <p>{t("Viewallresources")}</p>

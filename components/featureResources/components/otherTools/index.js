@@ -6,9 +6,9 @@ const OtherToolsCard = ({
   title,
   description,
   link,
-  filterData,
+  filterData
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -25,10 +25,11 @@ const OtherToolsCard = ({
         </p>
         <div className="toolBtn flex flex-wrap">
           {resourceType &&
-            resourceType?.map((type) => {
+            resourceType?.map((type, index) => {
               return (
                 <button
                   onClick={() => filterData({ id: type?.id })}
+                  key={index}
                   className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] button-animation card-tool-button"
                 >
                   {`${type?.attributes?.Name}`}
