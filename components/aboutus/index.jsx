@@ -15,9 +15,9 @@ const About = () => {
       <div className=" rounded-lg overflow-hidden shadow-md">
         <div className="bg-white xsm:p-5 small:p-10 flex justify-between items-center xsm:flex-wrap xsm:justify-center medium:flex-nowrap dropShadow">
           <div className="w-full pr-[30px] about-inner-wrap color-b">
-            <h5 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2 center-content">
+            <h1 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2 center-content">
               {t("Aboutus")}
-            </h5>
+            </h1>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
               <b>{t("SEforALL")}</b>
               {t("international")}{" "}
@@ -56,10 +56,10 @@ const About = () => {
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">
-          <p className="not-italic font-bold text-medium  xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext center-content">
+          <h2 className="not-italic font-bold text-medium  xsm:text-small xsm:text-tiny med:text-medium leading-6 text-left text-medium text-darktext center-content">
             {" "}
             {t("SustainableEnergyFinanced")}{" "}
-          </p>
+          </h2>
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[49%] xsm:w-full ">
               <ImgCard
@@ -114,9 +114,9 @@ const About = () => {
           </div>
         </div>
         <div className="bg-white pt-10 pb-14 px-16 xsm:px-7 mobile:px-10 laptop:px-16 about-bottom-card color-b">
-          <p className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-text mb-base mb-4 center-content">
+          <h3 className="not-italic font-normal  xsm:text-xsmall text-justify small:text-tiny xsm:leading-4 small:leading-6 xsm:leading-[15.3px] xsm:leading-[20.3px] laptop:leading-[25.3px] text-text mb-base mb-4 center-content">
             <b> {t("ManyIndividuals")}</b>
-          </p>
+          </h3>
           <p className="font-bold text-text mb-[3px] text-[20px] center-content">
             {t("Curators")}
           </p>

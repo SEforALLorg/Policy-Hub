@@ -17,9 +17,9 @@ const OtherToolsCard = ({
       }
     >
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]  flex flex-col">
-        <h6 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
+        <h3 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
           {title}
-        </h6>
+        </h3>
         <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content flex-1">
           {description}
         </p>

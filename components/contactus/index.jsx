@@ -10,9 +10,9 @@ const Contact = () => {
       <div className="bg-white rounded-lg	overflow-hidden shadow-md">
         <div className="flex items-center xsm:justify-center small:justify-center laptop:justify-between xsm:px-2 small:px-5 mobile:px-[60] laptop:px-[60px] py-4 xsm:flex-wrap laptop:flex-nowrap">
           <div className="  xsm:w-11/12 large:w-full ">
-            <p className="laptop:pt-3 laptop:pb-10 xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify center-content">
+            <h1 className="laptop:pt-3 laptop:pb-10 xsm:pt-3 xsm:pb-6 text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify center-content">
               {t("CollaborativeWork")}
-            </p>
+            </h1>
             <p className="text-lighttext font-normal xsm:text-xsmall small:text-small xsm:leading-5 small:leading-6  m-0 text-justify center-content">
               {t("pleasecontact")}
               <span

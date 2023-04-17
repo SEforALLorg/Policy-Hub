@@ -46,7 +46,7 @@ const Header = ({ selectedRes }) => {
           {selectedRes === ELECTRICITYACCESS && (
             <img
               src="static/images/electricity_access.svg"
-              alt="logo"
+              alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
             />
@@ -54,7 +54,7 @@ const Header = ({ selectedRes }) => {
           {selectedRes === CLEANCOOKING && (
             <img
               src="static/images/clean_cooking.svg"
-              alt="logo"
+              alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
             />
@@ -62,7 +62,7 @@ const Header = ({ selectedRes }) => {
           {selectedRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/sustainable_cooling.svg"}
-              alt="logo"
+              alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
             />
@@ -70,7 +70,7 @@ const Header = ({ selectedRes }) => {
           {selectedRes === ENERGYEFFICIENCY && (
             <img
               src={"/static/images/energy_efficiency.svg"}
-              alt="logo"
+              alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
             />
@@ -78,7 +78,7 @@ const Header = ({ selectedRes }) => {
           {!selectedRes && (
             <img
               src={"/static/images/SEforALL_Logo_White.png"}
-              alt="logo"
+              alt="logo_white_logo"
               className="logo cursor-pointer "
               onClick={() => window.open("https://www.seforall.org/")}
             />

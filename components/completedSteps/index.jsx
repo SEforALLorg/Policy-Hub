@@ -25,7 +25,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="" />;
+              return <img src={Object.values(key)?.[0]} alt="type" />;
             }
           })}
           <p style={{ fontSize: 16 }}>{t("Restart")}</p>
@@ -43,7 +43,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                   >
                     <img
                       src={item[1]?.[1]}
-                      alt=""
+                      alt="button_image"
                       style={{ width: 50, height: 50 }}
                     />
                     <p>{t(item?.[0])}</p>
@@ -61,7 +61,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="" />;
+              return <img src={Object.values(key)?.[0]} alt="resource_type" />;
             }
           })}
           <p>{t("Viewallresources")}</p>

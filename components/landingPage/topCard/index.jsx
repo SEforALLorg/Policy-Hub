@@ -7,11 +7,11 @@ const TopCard = ({ HandleOpen }) => {
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
-        <h5 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
+        <h1 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
           {t("Sustainable")}
           <span className="text-Secondary"> {t("Energy")} </span>
           <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
-        </h5>
+        </h1>
       </div>
       <div id="container-main" className={`flex my-[1.5rem] `}>
         <div className="container-box w-[50%]">
@@ -20,7 +20,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[16%] mr-[8px]"
                 src="../../../static/images/hub.svg"
-                alt="hub"
+                alt="hub_logo"
               />
               <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-justify">
                 {t("PlatformThatSupports")}
@@ -33,7 +33,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[16%] mr-[8px]"
                 src="../../../static/images/journey.svg"
-                alt="hub"
+                alt="journey_logo"
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
                 {t("ResourcesOnAccess")}
@@ -49,7 +49,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[16%] mr-[8px] mt-[-10px]"
                 src="../../../static/images/sustainable_hub.png"
-                alt="hub"
+                alt="sustainable_hub_logo"
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
                 {t("TheKnowledgeHub")}
@@ -61,7 +61,7 @@ const TopCard = ({ HandleOpen }) => {
             <img
               className="w-[16%] mr-[8px]"
               src="../../../static/images/guide.svg"
-              alt="hub"
+              alt="guide_logo"
             />
             <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
               {t("OnElectricity")}

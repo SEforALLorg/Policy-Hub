@@ -59,12 +59,12 @@ const Feature = () => {
         <div className="xsm:px-4 mobile:px-[0px] relative">
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
-              <h6
+              <h1
                 className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
                             uppercase small:text-medium large:text-large center-content resources-heading"
               >
                 {t("Resources")}
-              </h6>
+              </h1>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
                 {t("AllOfTheKnowledge")} <b>{t("Downloadthefiltered")}</b>
                 {t("Havethem")}
@@ -87,12 +87,12 @@ const Feature = () => {
         <div className="xsm:px-4 mobile:px-[0px] resources-cards-wrap">
           <div>
             <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">
-              <h6
+              <h2
                 className="font-bold leading-10 text-large text-darktext 
               uppercase xsm:text-medium small:text-medium large:text-large m-[0px] video-title center-content"
               >
                 {t("OtherUsefulPlatforms")}
-              </h6>
+              </h2>
               <button
                 onClick={() => {
                   filterData("");

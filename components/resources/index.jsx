@@ -37,9 +37,9 @@ const ALLReports = () => {
   return (
     <div className="all-reports">
       <div className="all-reports-header relative">
-        <h4 className="font-bold text-[45px] uppercase mb-[0px] text-text center-content">
+        <h1 className="font-bold text-[45px] uppercase mb-[0px] text-text center-content">
           {t("BrowseResource")}
-        </h4>
+        </h1>
         <Link href="/resources">
           <IoClose className="header-common-closeIcon" />
         </Link>

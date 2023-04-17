@@ -37,7 +37,7 @@ const Report = ({
           {mainImg && (
             <img
               src={mainImg}
-              alt="img"
+              alt={mainImg || "card_image"}
               style={style}
               className="w-[100%] mr-[18px]"
             />
