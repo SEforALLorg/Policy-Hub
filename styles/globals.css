@@ -1968,6 +1968,7 @@ a {
     height: 100%;
     overflow-x: hidden !important;
     background-size: cover;
+    background-position: center;
   }
 
   body {
