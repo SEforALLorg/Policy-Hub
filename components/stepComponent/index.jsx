@@ -72,7 +72,7 @@ const StepComponent = ({
       <div className="OptionsWrap">
         {multiAnswer?.map((i, index) => {
           if (!i?.Answer) return null;
-          const isFood = item?.attributes?.QuestionTitle.includes(
+          const isFood = item?.attributes?.QuestionTitle?.includes(
             "Food & agricultural cold chains"
           );
           const isFoodAndEquipment =
