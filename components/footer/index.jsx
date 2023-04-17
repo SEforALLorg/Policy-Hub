@@ -170,14 +170,14 @@ const Footer = ({ footerRes }) => {
             src={`/static/images/logo${
               footerRes === SUSTAINABLECOOLING ? "black" : ""
             }.svg`}
-            alt="all"
+            alt="logo"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
               src="static/images/footer_electricity_access.svg"
-              alt="founder"
+              alt="founder_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
@@ -187,7 +187,7 @@ const Footer = ({ footerRes }) => {
           {footerRes === CLEANCOOKING && (
             <img
               src="static/images/footer_electricity_access.svg"
-              alt="founder"
+              alt="electricity_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
@@ -197,7 +197,7 @@ const Footer = ({ footerRes }) => {
           {footerRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/footer_sustainable_cooking.svg"}
-              alt="founder"
+              alt="sustainable_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
@@ -207,7 +207,7 @@ const Footer = ({ footerRes }) => {
           {footerRes === ENERGYEFFICIENCY && (
             <img
               src={"static/images/footer_electricity_access.svg"}
-              alt="founder"
+              alt="footer_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
@@ -217,7 +217,7 @@ const Footer = ({ footerRes }) => {
           {!footerRes && (
             <img
               src={"/static/images/logo_rockefeller_foundation_white.svg"}
-              alt="founder"
+              alt="rockefeller_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
@@ -226,7 +226,7 @@ const Footer = ({ footerRes }) => {
           )}
           <img
             src={"/static/images/dgcs_rettangolare_eng_neg.png"}
-            alt="founder"
+            alt="rettangolare_logo"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}
           />

@@ -112,7 +112,7 @@ const StepComponent = ({
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
         >
-          <img src="static/images/leftArrow.svg" alt="" /> {t("Previous")}
+          <img src="static/images/leftArrow.svg" alt="left_arrow" /> {t("Previous")}
         </button>
         {nextCount > 1 && (
           <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo">
@@ -120,7 +120,7 @@ const StepComponent = ({
           </p>
         )}
         <button onClick={() => onNextClick()} className="SlideButton">
-          {t("Next")} <img src="static/images/rightArrow.svg" alt="" />
+          {t("Next")} <img src="static/images/rightArrow.svg" alt="right_arrow" />
         </button>
       </div>
     </div>
