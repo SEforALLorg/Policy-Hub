@@ -63,7 +63,7 @@ const Resources = ({
           alt="card"
         />
 
-        <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
+        <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
           {t("AssessYourCountry")}
         </div>
         <div
@@ -77,7 +77,7 @@ const Resources = ({
 
       {resourcesData ? (
         <div>
-          <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text mb-3">
+          <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mb-3">
             {t("AreaWantToInvestigate")}
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
