@@ -408,7 +408,7 @@ const RightWrapPage = ({
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
                   {t("Clear Filters")}
