@@ -48,7 +48,7 @@ export const Span = styled.span`
   display: inline-block;
   height: 13px;
   width: 13px;
-  margin-top: 4px;
+  margin-top: 3px;
   @media only screen and (max-width: 1680px){
     margin-right: 8px;
   }

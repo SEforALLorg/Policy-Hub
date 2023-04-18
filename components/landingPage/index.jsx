@@ -29,16 +29,16 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    if (goBottom) {
-      document.getElementById("bottom-view").scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "center",
-      });
-      setGoBottom(false);
-    }
-  }, [goBottom]);
+  // useEffect(() => {
+  //   if (goBottom) {
+  //     document.getElementById("bottom-view").scrollIntoView({
+  //       behavior: "smooth",
+  //       inline: "center",
+  //       block: "center",
+  //     });
+  //     setGoBottom(false);
+  //   }
+  // }, [goBottom]);
 
   const { data: questions, isFetching: isFetchingQuestions } = useQuery(
     ["getQuestions"],

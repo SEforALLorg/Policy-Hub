@@ -203,7 +203,9 @@ const RightWrapPage = ({
       window !== "undefined" &&
         document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...(previousReports || []), ...allReports?.data?.data] || []);
+      setPreviousReports(
+        [...(previousReports || []), ...allReports?.data?.data] || []
+      );
       browseResource
         ? ""
         : window !== "undefined" &&
@@ -316,13 +318,16 @@ const RightWrapPage = ({
   ];
 
   const downloadData = showAllReports ? allReports?.data?.data : finalReports;
-
-  const disableButtons =
-    !reports?.length ||
-    (!allReports?.data?.data?.length && !showAllReports) ||
-    (!finalPublicationReports?.length &&
-      !finalNonPublicationReports?.length &&
-      !showAllReports);
+  const isFinalPublicationReports = finalPublicationReports
+    ?.map((item) => item?.id)
+    ?.filter((item) => item !== undefined)?.length;
+  const disableButtons = isFinalPublicationReports
+    ? false
+    : !reports?.length ||
+      (!allReports?.data?.data?.length && !showAllReports) ||
+      (!finalPublicationReports?.length &&
+        !finalNonPublicationReports?.length &&
+        !showAllReports);
 
   return (
     <>
@@ -391,11 +396,13 @@ const RightWrapPage = ({
               isFilter
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
-            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
+            } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px] ${
+              !optionSelected && `mt-[6px]`
+            }`}
           >
             <h5
               className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
-              style={{ paddingBottom: optionSelected ? "3px" : "15px" }}
+              style={{ paddingBottom: optionSelected ? "5px" : "9px" }}
             >
               {t("Filters")}
               {optionSelected ? (
@@ -649,13 +656,13 @@ const RightWrapPage = ({
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>
-                ) : Boolean(reports?.length) ||
+                ) : isFinalPublicationReports || Boolean(reports?.length) ||
                   (allReports?.data?.data?.length && showAllReports) ||
                   (finalPublicationReports?.length &&
                     finalNonPublicationReports?.length &&
                     showAllReports) ? (
                   <>
-                    {Boolean(finalPublicationReports.length) &&
+                    {Boolean(finalPublicationReports?.length) &&
                       finalPublicationReports
                         ?.sort((a, b) => b?.publishing - a?.publishing)
                         .map((i, index) => {
@@ -767,7 +774,7 @@ const RightWrapPage = ({
                       <RiSearch2Line />
                       {t("NoReportsFound")}
                     </p>
-                    <a className="cursor-pointer" onClick={() => onReset()}>
+                    <a className="cursor-pointer hover:underline" onClick={() => onReset()}>
                       Clear all filters
                     </a>
                   </div>

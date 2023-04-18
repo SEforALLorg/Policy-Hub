@@ -8,12 +8,19 @@ import { filterResources } from "../../pages/api/resources";
 import { ErrorNotify } from "components/notification";
 import { getResourcesQuery } from "../../utilities";
 import Loader from "../loader";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+} from "reactstrap";
 
 const Feature = () => {
   const { t } = useTranslation();
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [disable, setDisable] = useState(true);
+  const [filterType, setFilterType] = useState(t("AllPlatforms"));
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -53,6 +60,28 @@ const Feature = () => {
     }
   }, []);
 
+  const dropDownData = [
+    {
+      label: t("AllPlatforms"),
+      id: "",
+    },
+    {
+      label: "Electricity Access",
+      id: 1,
+    },
+    {
+      label: "Clean Cooking",
+      id: 2,
+    },
+    {
+      label: "Sustainable Cooling",
+      id: 4,
+    },
+    {
+      label: "Energy Efficency",
+      id: 3,
+    },
+  ];
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table">
@@ -60,8 +89,8 @@ const Feature = () => {
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
               <h1
-                className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
-                            uppercase small:text-medium large:text-large center-content resources-heading"
+                className="font-bold text-[35px] leading-10 text-large mb-[20px] text-darktext 
+                            uppercase center-content resources-heading"
               >
                 {t("Resources")}
               </h1>
@@ -88,24 +117,46 @@ const Feature = () => {
           <div>
             <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">
               <h2
-                className="font-bold leading-10 text-large text-darktext 
-              uppercase xsm:text-medium small:text-medium large:text-large m-[0px] video-title center-content"
+                className="font-bold leading-10 text-[35px] text-darktext 
+              uppercase m-[0px] video-title center-content"
               >
                 {t("OtherUsefulPlatforms")}
               </h2>
-              <button
-                onClick={() => {
-                  filterData("");
-                  setDisable(true);
-                }}
-                disabled={disable}
-                className={`bg-lightBlue rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${
-                  !disable &&
-                  "hover:bg-Primary hover:text-white ease-linear transition-all duration-500 button-animation"
-                } w-[110px] card-tool-button allBtn`}
+              <UncontrolledDropdown
+                setActiveFromChild
+                className={`bg-Primary cursor-pointer rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} w-[170px] card-tool-button allBtn`}
               >
-                {t("AllPlatforms")}
-              </button>
+                <DropdownToggle
+                  style={{ color: "white" }}
+                  className="DropdownToggle flex justify-between items-center no-underline"
+                  tag="a"
+                  caret
+                >
+                  <p
+                    style={{ marginBottom: "0" }}
+                    className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
+                  >
+                    {filterType}
+                  </p>
+                </DropdownToggle>
+                <DropdownMenu>
+                  {dropDownData?.map((resource, index) => {
+                    return (
+                      <DropdownItem
+                        onClick={() => {
+                          filterData({
+                            id: resource?.id,
+                          });
+                          setFilterType(resource?.label);
+                        }}
+                        key={index}
+                      >
+                        {resource?.label}
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </div>
             <div className="cardWrap">
               {allResources?.length ? (
@@ -113,6 +164,10 @@ const Feature = () => {
                   return (
                     <OtherToolsCard
                       filterData={(e) => {
+                        setFilterType(
+                          dropDownData?.find((item) => item?.id === e?.id)
+                            ?.label
+                        );
                         filterData(e);
                         setDisable(false);
                       }}
