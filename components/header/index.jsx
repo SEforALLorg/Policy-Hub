@@ -105,36 +105,44 @@ const Header = ({ selectedRes }) => {
           />
           <Nav className="m-auto items-center" navbar>
             <NavItem>
-              <NavLink
-                className={`${location === "/" ? "active" : ""}`}
-                href={`/${lang === null ? "" : lang}`}
-              >
-                {t("Home")}
-              </NavLink>
+              <div>
+                <NavLink
+                  className={`${location === "/" ? "active" : ""}`}
+                  href={`/${lang === null ? "" : lang}`}
+                >
+                  {t("Home")}
+                </NavLink>
+              </div>
             </NavItem>
             <NavItem>
-              <NavLink
-                className={`${location === "/resources" ? "active" : ""}`}
-                href={`/${lang || "en"}/resources`}
-              >
-                {t("Resources")}
-              </NavLink>
+              <div>
+                <NavLink
+                  className={`${location === "/resources" ? "active" : ""}`}
+                  href={`/${lang || "en"}/resources`}
+                >
+                  {t("Resources")}
+                </NavLink>
+              </div>
             </NavItem>
             <NavItem>
-              <NavLink
-                className={location === "/about" ? "active" : ""}
-                href={`/${lang || "en"}/about`}
-              >
-                {t("About")}
-              </NavLink>
+              <div>
+                <NavLink
+                  className={location === "/about" ? "active" : ""}
+                  href={`/${lang || "en"}/about`}
+                >
+                  {t("About")}
+                </NavLink>
+              </div>
             </NavItem>
             <NavItem>
-              <NavLink
-                className={`${location === "/contact" ? "active" : ""}`}
-                href={`/${lang || "en"}/contact`}
-              >
-                {t("Contactus")}
-              </NavLink>
+              <div>
+                <NavLink
+                  className={`${location === "/contact" ? "active" : ""}`}
+                  href={`/${lang || "en"}/contact`}
+                >
+                  {t("Contactus")}
+                </NavLink>
+              </div>
             </NavItem>
             <UncontrolledDropdown setActiveFromChild className="customDropdown">
               <DropdownToggle className="DropdownToggle" tag="a" caret>

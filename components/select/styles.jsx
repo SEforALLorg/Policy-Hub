@@ -45,6 +45,7 @@ export const Span = styled.span`
   background: ${prop => prop.selectedOption ? "var(--theme-yes-button-color)": 'white'};
   margin-right: 10px;
   border:  ${prop => prop.selectedOption ? "var(--theme-yes-button-color)" : '1px solid'} ;
+  border-color: ${prop => prop.selectedOption ? "#fff !important" : '#808080'};
   display: inline-block;
   height: 13px;
   width: 13px;

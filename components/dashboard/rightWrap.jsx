@@ -602,6 +602,7 @@ const RightWrapPage = ({
                       top={true}
                       hideContent={disableButtons}
                       id={"download"}
+                      style={{marginTop: -7}}
                     >
                       <div className="flex justify-center download-button-inner">
                         {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
@@ -628,6 +629,7 @@ const RightWrapPage = ({
                     top={true}
                     hideContent={disableButtons}
                     id={"email"}
+                    style={{marginTop: -7}}
                   >
                     <div className="flex">
                       {" "}
@@ -656,7 +658,8 @@ const RightWrapPage = ({
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>
-                ) : isFinalPublicationReports || Boolean(reports?.length) ||
+                ) : isFinalPublicationReports ||
+                  Boolean(reports?.length) ||
                   (allReports?.data?.data?.length && showAllReports) ||
                   (finalPublicationReports?.length &&
                     finalNonPublicationReports?.length &&
@@ -774,7 +777,10 @@ const RightWrapPage = ({
                       <RiSearch2Line />
                       {t("NoReportsFound")}
                     </p>
-                    <a className="cursor-pointer hover:underline" onClick={() => onReset()}>
+                    <a
+                      className="cursor-pointer hover:underline"
+                      onClick={() => onReset()}
+                    >
                       Clear all filters
                     </a>
                   </div>

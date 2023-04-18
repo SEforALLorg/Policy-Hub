@@ -10,6 +10,7 @@ const TooltipComponent = ({
   hideContent,
   customizeStyle,
   id,
+  style
 }) => {
   return (
     <div
@@ -31,6 +32,7 @@ const TooltipComponent = ({
           anchorSelect={`.my-anchor-element-${id}`}
           clickable={false}
           place="top"
+          style={style}
         >
           {content}
         </Tooltip>
