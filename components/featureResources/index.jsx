@@ -161,25 +161,29 @@ const Feature = () => {
             </div>
             <div className="cardWrap">
               {allResources?.length ? (
-                allResources?.map((resource, index) => {
-                  return (
-                    <OtherToolsCard
-                      filterData={(e) => {
-                        setFilterType(
-                          dropDownData?.find((item) => item?.id === e?.id)
-                            ?.label
-                        );
-                        filterData(e);
-                        setDisable(false);
-                      }}
-                      resourceType={resource?.attributes?.resources?.data}
-                      title={resource?.attributes?.Title}
-                      link={resource?.attributes?.Link}
-                      description={resource?.attributes?.Description}
-                      key={index}
-                    />
-                  );
-                })
+                allResources
+                  ?.sort((a, b) =>
+                    a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
+                  )
+                  ?.map((resource, index) => {
+                    return (
+                      <OtherToolsCard
+                        filterData={(e) => {
+                          setFilterType(
+                            dropDownData?.find((item) => item?.id === e?.id)
+                              ?.label
+                          );
+                          filterData(e);
+                          setDisable(false);
+                        }}
+                        resourceType={resource?.attributes?.resources?.data}
+                        title={resource?.attributes?.Title}
+                        link={resource?.attributes?.Link}
+                        description={resource?.attributes?.Description}
+                        key={index}
+                      />
+                    );
+                  })
               ) : (
                 <div className="flex items-center flex-col h-full w-full justify-center">
                   <Loader height={80} width={80} />

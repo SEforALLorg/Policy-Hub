@@ -246,8 +246,13 @@ a {
   line-height: 24px;
   text-transform: uppercase;
   color: var(--theme-primary-button) !important;
-  width: 185px;
+  /* width: 185px; */
   transition: all 0.5s;
+  display: inline-block;
+}
+
+.nav-item div  {
+  width: 185px;
 }
 
 .header .active.nav-link {
@@ -1672,7 +1677,11 @@ a {
   }
 
   .header .nav-link {
-    width: 130px;
+    /* width: 130px; */
+  }
+
+  .nav-item div {
+    width: 120px;
   }
 
   .header-title-wrap {
@@ -2568,6 +2577,7 @@ a {
   .header .nav-link {
     color: #494949 !important;
     text-align: left;
+    display: block;
   }
 
   .tools-card {
