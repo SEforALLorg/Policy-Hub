@@ -33,7 +33,7 @@ const OtherToolsCard = ({
                 <button
                   onClick={() => filterData({ id: type?.id })}
                   key={index}
-                  className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] button-animation card-tool-button"
+                  className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                 >
                   {`${type?.attributes?.Name}`}
                 </button>
@@ -45,7 +45,7 @@ const OtherToolsCard = ({
             onClick={() => window.open(link)}
             className="bg-Primary rounded-[60px] w-full  text-white
                                       border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall 
-                                      ease-linear transition-all duration-500 w-[100px] button-animation card-tool-button"
+                                      ease-linear transition-all duration-500 w-[100px] hover:opacity-[0.8] card-tool-button"
           >
             {t("gototool")}
           </button>

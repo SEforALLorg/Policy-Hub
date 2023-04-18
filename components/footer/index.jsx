@@ -122,7 +122,7 @@ const Footer = ({ footerRes }) => {
                                       desktoplg:text-small flex items-center justify-center 
                                       screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full  mobile:text-xsmall
                                       mobile:w-max xsm:mr-0 laptop:mr-2 large:mr-8 hover:text-blue hover:bg-white mobile:mr-2
-                                      hover:border hover:border-blue ease-linear transition-all duration-500 button-animation footer-button mediaIconBorderColor"
+                                      hover:border hover:border-blue ease-linear transition-all duration-500 footer-button mediaIconBorderColor"
           >
             {t("BrowseResource")}
           </button>
@@ -134,7 +134,7 @@ const Footer = ({ footerRes }) => {
                                        border leading-5 border-white rounded-[42px] bg-transparent 
                                        desktoplg:text-small  mobile:text-xsmall
                                        screen:text-xsmall xsm:mt-3 laptop:mt-0 xsm:w-full mobile:w-max
-                                       hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button button-animation cursor-p mediaIconBorderColor"
+                                       hover:bg-white hover:border hover:text-white ease-linear transition-all duration-500 footer-button cursor-p mediaIconBorderColor"
           >
             <DropdownToggle
               style={{ color: "white" }}
