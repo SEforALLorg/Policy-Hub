@@ -47,10 +47,10 @@ const Landing = () => {
     }
   }, [res]);
 
-  useEffect(() => {
-    if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
-    bindScrollSnap();
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
+  //   bindScrollSnap();
+  // }, []);
 
   return (
     <main id="fullWrap" ref={ref} className={dynamicClass}>

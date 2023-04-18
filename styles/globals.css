@@ -142,6 +142,7 @@ main {
 
 .ButtonBox .buttonStyle {
   padding: 15px !important;
+  padding-top: 18px !important;
 }
 
 
@@ -1311,12 +1312,13 @@ a {
 }
 
 .radio-button-wrap .container-wrap .checkmark:after {
-  top: 3px;
-  left: 3px;
+  top: 50%;
+  left: 50%;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--theme-radio-active-color);
+  transform: translate(-50%, -50%);
 }
 
 .inputFullWrap .newsletter-input-fields>div {

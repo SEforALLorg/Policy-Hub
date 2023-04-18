@@ -19,6 +19,7 @@ const DetailModal = ({ firstHit }) => {
   const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
@@ -29,7 +30,8 @@ const DetailModal = ({ firstHit }) => {
 
   const onSubmitHandler = async (event) => {
     if (event) event.preventDefault();
-    if (!buttonDisable) {
+    if (!buttonDisable && !loading) {
+      setLoading(true)
       let ip = localStorage.getItem("ip");
       let date = new Date();
       localStorage.setItem("currentDate", date);
@@ -58,6 +60,7 @@ const DetailModal = ({ firstHit }) => {
           position: toast.POSITION.TOP_CENTER,
         });
         setIsOpen(false);
+        setLoading(false)
         let existingJourney = response?.data?.data?.Journey;
         if (response?.data?.data?.userExist) {
           let data = {

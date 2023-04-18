@@ -7,7 +7,7 @@ const TopCard = ({ HandleOpen }) => {
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
-        <h1 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center	select-none	uppercase">
+        <h1 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center uppercase">
           {t("Sustainable")}
           <span className="text-Secondary"> {t("Energy")} </span>
           <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
@@ -18,7 +18,7 @@ const TopCard = ({ HandleOpen }) => {
           <div className="flex flex-col h-[50%] ">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
-                className="w-[16%] mr-[8px]"
+                className="w-[16%] mr-[8px] mt-[5px]"
                 src="../../../static/images/hub.svg"
                 alt="hub_logo"
               />
@@ -31,7 +31,7 @@ const TopCard = ({ HandleOpen }) => {
           <div className="flex flex-col h-[50%]">
             <div className="second-container bg-white-900 mobile-card-width card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
               <img
-                className="w-[16%] mr-[8px]"
+                className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
                 alt="journey_logo"
               />
@@ -47,7 +47,7 @@ const TopCard = ({ HandleOpen }) => {
           <div className="third-container flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
-                className="w-[16%] mr-[8px] mt-[-10px]"
+                className="w-[14%] mr-[8px] mt-[-8px]"
                 src="../../../static/images/sustainable_hub.png"
                 alt="sustainable_hub_logo"
               />
@@ -59,7 +59,7 @@ const TopCard = ({ HandleOpen }) => {
           </div>
           <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
             <img
-              className="w-[16%] mr-[8px]"
+              className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
               alt="guide_logo"
             />
@@ -74,7 +74,7 @@ const TopCard = ({ HandleOpen }) => {
           className="w-[49%] absolute bottom-[-30px] left-[26%]"
           onClick={HandleOpen}
         >
-          <StartButton title={t("ClickHereToStart")} className="w-full" />
+          <StartButton title={t("ClickHereToStart")} className="w-full pt-[18px] pb-[12px]" />
         </div>
       </div>
     </div>

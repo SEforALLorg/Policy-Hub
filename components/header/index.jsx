@@ -76,12 +76,13 @@ const Header = ({ selectedRes }) => {
             />
           )}
           {!selectedRes && (
-            <img
-              src={"/static/images/SEforALL_Logo_White.png"}
-              alt="logo_white_logo"
-              className="logo cursor-pointer "
-              onClick={() => window.open("https://www.seforall.org/")}
-            />
+            <a href="https://www.seforall.org/" target={"_blank"}>
+              <img
+                src={"/static/images/SEforALL_Logo_White.png"}
+                alt="logo_white_logo"
+                className="logo cursor-pointer "
+              />
+            </a>
           )}
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
@@ -135,7 +136,7 @@ const Header = ({ selectedRes }) => {
                 {t("Contactus")}
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown setActiveFromChild className="customDropdown" >
+            <UncontrolledDropdown setActiveFromChild className="customDropdown">
               <DropdownToggle className="DropdownToggle" tag="a" caret>
                 <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
               </DropdownToggle>

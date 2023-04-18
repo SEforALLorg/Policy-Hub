@@ -15,7 +15,7 @@ const About = () => {
       <div className=" rounded-lg overflow-hidden shadow-md">
         <div className="bg-white xsm:p-5 small:p-10 flex justify-between items-center xsm:flex-wrap xsm:justify-center medium:flex-nowrap dropShadow">
           <div className="w-full pr-[30px] about-inner-wrap color-b">
-            <h1 className="font-bold text-large xsm:text-medium mobile:text-xmd laptop:text-large leading-[46px] uppercase text-darktext mb-2 center-content">
+            <h1 className="font-bold text-[35px] leading-[46px] uppercase text-darktext mb-2 center-content">
               {t("Aboutus")}
             </h1>
             <p className="not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-4 text-justify center-content">
@@ -62,13 +62,19 @@ const About = () => {
           </h2>
           <div className="w-100 flex justify-between xsm:mt-2 xsm:pb-6 small:my-10 xsm:flex-wrap med:flex-nowrap">
             <div className="med:w-[49%] xsm:w-full ">
-              <ImgCard
-                className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
-                img={"../../static/images/logo_rockefeller_foundation.svg"}
-                title={"The Rockefeller Foundation"}
-                link={"https://www.rockefellerfoundation.org/"}
-                imgStyle={{ width: "74%" }}
-              />
+              <div
+                onClick={() =>
+                  window.open("https://www.rockefellerfoundation.org/")
+                }
+              >
+                <ImgCard
+                  className="h-[236px] bg-white shadow-md rounded-2xl p-[3rem] mb-4 flex justify-center imgbox items-center w-full cursor-pointer about-logo-card"
+                  img={"../../static/images/logo_rockefeller_foundation.svg"}
+                  title={"The Rockefeller Foundation"}
+                  link={"https://www.rockefellerfoundation.org/"}
+                  imgStyle={{ width: "74%" }}
+                />
+              </div>
             </div>
             <div className="med:w-[49%] xsm:w-full  xsm:mt-5 med:mt-0">
               <div
@@ -100,7 +106,10 @@ const About = () => {
           <div className="w-100 flex xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap flex-wrap">
             {logoData.map((item, index) => {
               return (
-                <div className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] mb-[15px]" key={index}>
+                <div
+                  className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] mb-[15px]"
+                  key={index}
+                >
                   <ImgCard
                     className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"
                     img={item.img}

@@ -6,7 +6,7 @@ const OtherToolsCard = ({
   title,
   description,
   link,
-  filterData
+  filterData,
 }) => {
   const { t } = useTranslation();
 
@@ -17,7 +17,10 @@ const OtherToolsCard = ({
       }
     >
       <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]  flex flex-col">
-        <h3 className="font-bold leading-6  text-darktext mb-1 text-medium otherTitle center-content">
+        <h3
+          onClick={() => window.open(link)}
+          className="font-[600] leading-6  text-darktext mb-1 text-medium otherTitle center-content cursor-pointer transition-all duration-1000 hover:underline"
+        >
           {title}
         </h3>
         <p className="font-normal leading-[22px] text-darktext mb-2 text-xsmall otherDescription center-content flex-1">
