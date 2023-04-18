@@ -70,7 +70,7 @@ const Customize = ({
               ) {
                 return (
                   <img
-                    className="w-[230px] h-[157px] object-contain object-contain-height mr-5"
+                    className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height mr-5"
                     src={Object.values(key)?.[0]}
                     alt="card"
                     key={index}
