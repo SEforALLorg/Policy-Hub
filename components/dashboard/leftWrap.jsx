@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { shortName } from "../../utilities";
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
+import { CLEANCOOKING } from "../../constant";
 
 const LeftWrapPage = ({
   questions,
@@ -24,6 +25,7 @@ const LeftWrapPage = ({
   newJourney,
   firstHit,
   selectedResource,
+  isExpand,
 }) => {
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
@@ -124,9 +126,14 @@ const LeftWrapPage = ({
   const { t } = useTranslation();
 
   return (
-    <div className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]">
+    <div
+      className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
+      style={{
+        height: !isExpand && selectedResource !== CLEANCOOKING ? 400 : "",
+      }}
+    >
       <div className="flex items-center pb-2.5">
-        <div className="flex items-center relative select-none mr-5">
+        <div className="flex items-center relative mr-5">
           {changingLeftWrapLogo?.map((key, index) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
@@ -142,7 +149,7 @@ const LeftWrapPage = ({
             }
           })}
         </div>
-        <div className="font-bold text-medium leading-[26px] select-none text-text m-0 textColor">
+        <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
           {selectedResource}
         </div>
       </div>
@@ -227,7 +234,7 @@ const LeftWrapPage = ({
                 <div className={"QuestionWrap"} key={index}>
                   {questionType === "Questionnaire" ? (
                     <>
-                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5 textColor">
+                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
                           <TooltipComponent

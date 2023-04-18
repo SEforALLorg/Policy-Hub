@@ -155,6 +155,7 @@ const Dashboard = ({
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}
               firstHit={oldJourney[0]}
+              isExpand={isExpand}
             />
             <RightWrapPage
               publicationReports={publicationReports}

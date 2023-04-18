@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     screens: {
       mobileMax: {min: '340px', max: '767px'},
+      tabMax: {min: '768px', max: '1024px'},
       xsm: "319px",
       extrasmall: "480px",
       small: "520px",

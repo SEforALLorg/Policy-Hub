@@ -59,7 +59,7 @@ const SubscribeComponent = ({ subcription }) => {
             <PrimaryButton
               title={t("Subscribe")}
               className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-70 laptop:w-70 rounded-full h-[45px] text-center font-bold  text-small leading-5 uppercase  outline-none no-underline no-underline
-                    border-2 border-transparent duration-500  ease-linear transition-all mt-[20px] button-animation pt-[4px] SubscribeButton`}
+                    border-2 border-transparent duration-500  ease-linear transition-all mt-[20px] hover:opacity-[0.8] pt-[4px] SubscribeButton`}
               onClick={() => onSubscribe()}
             />
           </div>
