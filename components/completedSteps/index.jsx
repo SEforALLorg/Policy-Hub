@@ -28,7 +28,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
               return <img src={Object.values(key)?.[0]} alt="type" key={index} />;
             }
           })}
-          <p style={{ fontSize: 16 }}>{t("Restart")}</p>
+          <p>{t("Restart")}</p>
         </div>
         {buttonOptions.map((key) => {
           if (resourceType && resourceType === Object.keys(key)?.[0]) {

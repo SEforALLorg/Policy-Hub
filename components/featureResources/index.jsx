@@ -84,12 +84,12 @@ const Feature = () => {
   ];
   return (
     <div className="w-full rounded-lg overflow-hidden">
-      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table">
+      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table pb-[0px]">
         <div className="xsm:px-4 mobile:px-[0px] relative">
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
               <h1
-                className="font-bold text-[35px] leading-10 text-large mb-[20px] text-darktext 
+                className="font-bold text-[35px] leading-10 mb-[20px] text-darktext 
                             uppercase center-content resources-heading"
               >
                 {t("Resources")}
@@ -108,6 +108,7 @@ const Feature = () => {
             <StartButton
               title={t("BrowseResource")}
               onClick={() => window.open(`/${lang}/allresources`, "_self")}
+              className={`medium:pt-[20px] mt-[20px]`}
             />
           </div>
         </div>

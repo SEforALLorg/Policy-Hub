@@ -21,7 +21,7 @@ const SharePublicationModal = ({
     >
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
         <div
-          className="fixed inset-0 bg-gray bg-opacity-60 transition-opacity z-[-1]"
+          className="fixed inset-0 bg-black/[0.6] bg-opacity-60 transition-opacity z-[-1]"
           aria-hidden="true"
           onClick={toggle}
         ></div>
