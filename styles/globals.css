@@ -2819,6 +2819,7 @@ a {
   main {
     height: 100% !important;
     background-size: cover;
+    background-position: center;
   }
 
   .inner-section-content {
