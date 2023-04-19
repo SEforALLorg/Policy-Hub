@@ -74,7 +74,7 @@ export const videosCard = [
 export const buttonOptions = [
   {
     "ELECTRICITY ACCESS": {
-      "Mini grid": [18, "static/images/mini-grid.png", 11],
+      "Mini grids": [18, "static/images/mini-grid.png", 11],
       "Standalone systems": [24, "static/images/solaroutline.png", 11],
     },
   },

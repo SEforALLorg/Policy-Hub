@@ -408,7 +408,7 @@ const RightWrapPage = ({
                   : optionSelected
                   ? "5px"
                   : "9px",
-                marginTop: optionSelected && showAllReports ? 0 : "",
+                marginTop: optionSelected && showAllReports ? 0 : optionSelected ? 0 : "",
               }}
             >
               {t("Filters")}
@@ -656,6 +656,7 @@ const RightWrapPage = ({
               id="rightWrap"
               className="rightInnerWrap"
               onScroll={(e) => onScroll(e)}
+              style={{height: resourceType === CLEANCOOKING ? 'calc(80vh - 100px)' : ''}}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
                 {isFetchingReports && !isScrollLoader ? (
