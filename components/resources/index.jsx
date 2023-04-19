@@ -37,7 +37,7 @@ const ALLReports = () => {
   return (
     <div className="all-reports">
       <div className="all-reports-header relative">
-        <h1 className="font-bold text-[45px] uppercase mb-[0px] text-text center-content">
+        <h1 className="font-bold text-[35px] uppercase mb-[0px] text-text center-content">
           {t("BrowseResource")}
         </h1>
         <Link href="/resources">
