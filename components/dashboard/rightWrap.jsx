@@ -405,6 +405,7 @@ const RightWrapPage = ({
               style={{ paddingBottom: optionSelected ? "5px" : "9px" }}
             >
               {t("Filters")}
+              
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
