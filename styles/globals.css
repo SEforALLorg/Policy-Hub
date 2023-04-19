@@ -1436,6 +1436,7 @@ a {
 }
 .filterButton{
   margin-top: -9px !important;
+  padding-top: 2px !important;
 }
 .resource-buttons .tooltipWrap{
   margin-top: 2px !important;
