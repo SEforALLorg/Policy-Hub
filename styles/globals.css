@@ -136,6 +136,10 @@ main {
   border-color: var(--theme-yes-button-color) !important;
 }
 
+.bg-black.border {
+  background-color: transparent !important;
+}
+
 .SlideButtonNo {
   color: var(--theme-button-text-color) !important;
 }
@@ -471,6 +475,7 @@ a {
   white-space: nowrap;
   transition: all 0.5s;
   border: 1px solid var(--theme-yes-button-color);
+  text-transform: uppercase;
 }
 
 .yesButton:hover {
@@ -582,6 +587,7 @@ a {
 
 .OptionsWrap::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 .OptionsWrap::-webkit-scrollbar-track {
@@ -1417,6 +1423,7 @@ a {
 .main-container{
   height: 100%;
 }
+
 .resources-button {
   margin: 0px !important;
   margin-top: 0px !important;
@@ -1427,6 +1434,9 @@ a {
   justify-content: center;
   min-width: 72px;
   height: 30px !important;
+}
+.filterButton{
+  margin-top: -9px !important;
 }
 .resource-buttons .tooltipWrap{
   margin-top: 2px !important;
@@ -1734,8 +1744,8 @@ a {
   }
 
   .customize-heading {
-    font-size: 37px !important;
-    line-height: 46px !important;
+    font-size: 35px !important;
+    line-height: 42px !important;
   }
 
   .customize-header {
@@ -1744,7 +1754,7 @@ a {
   }
 
   .customize-title {
-    font-size: 35px !important;
+    font-size: 34px !important;
     line-height: 46px !important;
     padding: 0px 0rem 4rem 10px !important;
   }
@@ -2898,10 +2908,6 @@ a {
     margin-top: 1rem;
   }
 
-  .divider {
-    display: none;
-  }
-
   .second-container {
     margin: 0;
   }
@@ -3404,7 +3410,9 @@ a {
 }
 
 @media screen and (max-width: 767px) {
-
+  .divider {
+    display: none;
+  }
   #container-main {
     margin-top: 1rem;
   }

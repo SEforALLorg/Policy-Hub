@@ -20,7 +20,7 @@ const Feature = () => {
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [disable, setDisable] = useState(true);
-  const [filterType, setFilterType] = useState(t("AllPlatforms"));
+  const [filterType, setFilterType] = useState('');
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -137,11 +137,12 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {filterType}
+                    {t(filterType) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu style={{marginLeft: -10, marginTop: 7}}>
                   {dropDownData?.map((resource, index) => {
+                    const isActive = resource?.label === filterType
                     return (
                       <DropdownItem
                         onClick={() => {
@@ -151,6 +152,7 @@ const Feature = () => {
                           setFilterType(resource?.label);
                         }}
                         key={index}
+                        style={{backgroundColor: isActive ? 'var(--theme-secondary)' : '', color: isActive ? '#fff' : ''}}
                       >
                         {resource?.label}
                       </DropdownItem>
