@@ -22,7 +22,7 @@ const TopCard = ({ HandleOpen }) => {
                 src="../../../static/images/hub.svg"
                 alt="hub_logo"
               />
-              <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-justify">
+              <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("PlatformThatSupports")}
               </p>
             </div>
@@ -35,7 +35,7 @@ const TopCard = ({ HandleOpen }) => {
                 src="../../../static/images/journey.svg"
                 alt="journey_logo"
               />
-              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("ResourcesOnAccess")}
               </p>
             </div>
@@ -51,7 +51,7 @@ const TopCard = ({ HandleOpen }) => {
                 src="../../../static/images/sustainable_hub.png"
                 alt="sustainable_hub_logo"
               />
-              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("TheKnowledgeHub")}
               </p>
             </div>
@@ -63,7 +63,7 @@ const TopCard = ({ HandleOpen }) => {
               src="../../../static/images/guide.svg"
               alt="guide_logo"
             />
-            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-justify">
+            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
               {t("OnElectricity")}
             </p>
           </div>
@@ -74,7 +74,7 @@ const TopCard = ({ HandleOpen }) => {
           className="w-[49%] absolute bottom-[-30px] left-[26%]"
           onClick={HandleOpen}
         >
-          <StartButton title={t("ClickHereToStart")} className="w-full pt-[18px] pb-[12px]" />
+          <StartButton title={t("ClickHereToStart")} className="w-full pt-[18px] pb-[12px] " />
         </div>
       </div>
     </div>

@@ -91,7 +91,7 @@ const About = () => {
                 />
               </div>
               <a
-                className="text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
+                className="hover:underline text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
                 href={"https://www.esteri.it/en/ministero/"}
                 target={"_blank"}
               >
