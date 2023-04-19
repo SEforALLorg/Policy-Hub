@@ -16,7 +16,7 @@ const TopCard = ({ HandleOpen }) => {
       <div id="container-main" className={`flex my-[1.5rem] `}>
         <div className="container-box w-[50%]">
           <div className="flex flex-col h-[50%] ">
-            <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[16%] mr-[8px] mt-[5px]"
                 src="../../../static/images/hub.svg"
@@ -29,7 +29,7 @@ const TopCard = ({ HandleOpen }) => {
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
           <div className="flex flex-col h-[50%]">
-            <div className="second-container bg-white-900 mobile-card-width card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
+            <div className="second-container bg-white-900 mobile-card-width card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
               <img
                 className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
@@ -45,7 +45,7 @@ const TopCard = ({ HandleOpen }) => {
         <div className="divider w-[1px]  border-b-[4px] border opacity-[1]" />
         <div className="container-box w-[50%]">
           <div className="third-container flex flex-col h-[50%]">
-            <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[14%] mr-[8px] mt-[-8px]"
                 src="../../../static/images/sustainable_hub.png"
@@ -57,7 +57,7 @@ const TopCard = ({ HandleOpen }) => {
             </div>
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
+          <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
             <img
               className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
