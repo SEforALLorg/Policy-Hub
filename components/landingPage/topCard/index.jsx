@@ -42,7 +42,7 @@ const TopCard = ({ HandleOpen }) => {
             <div className="divider-hide mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
         </div>
-        <div className="divider w-[1px]  border-b-[4px] border opacity-[1]" />
+        <div className="divider w-[1px] bg-black border-b-[4px] border opacity-[1]" />
         <div className="container-box w-[50%]">
           <div className="third-container flex flex-col h-[50%]">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
