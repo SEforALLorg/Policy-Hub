@@ -121,7 +121,9 @@ const MobileFilters = ({
       setPreviousReports(allReports?.data?.data || []);
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...allReports?.data?.data, ...(previousReports || [])] || []);
+      setPreviousReports(
+        [...allReports?.data?.data, ...(previousReports || [])] || []
+      );
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
@@ -384,6 +386,15 @@ const MobileFilters = ({
                 />
               )}
               <div className="apply-wrap">
+                {
+                  isOpen && <div
+                  className={"mobile-overlay mobile-show"}
+                  style={{opacity: 0}}
+                  onClick={() => {
+                    setIsOpen("");
+                  }}
+                />
+                }
                 <button
                   type="button"
                   onClick={() => {

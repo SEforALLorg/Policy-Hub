@@ -30,10 +30,10 @@ const Report = ({
     <div
       key={key}
       className={`report-card cursor-pointer ${isActive ? "active" : ""}`}
-      onClick={() => onClick()}
+      
     >
       <div className="flex items-start justify-between p-[12px] w-[100%]">
-        <div className="flex items-center mr-[18px]">
+        <div className="flex items-center mr-[18px] flex-1" onClick={() => onClick()}>
           {mainImg && (
             <img
               src={mainImg}
@@ -52,7 +52,7 @@ const Report = ({
             id={"KeyPublication"}
             content="Key Publication - Click for more information"
             hideInfo={true}
-            hideContent={isSmallDevice}
+            // hideContent={isSmallDevice}
           >
             <div className="starIcon">
               {selectedRes === ENERGYEFFICIENCY ? (
@@ -110,12 +110,13 @@ const Report = ({
           className={`report-description hideDescription textColor ${
             isActive ? "showDescription" : ""
           }`}
+          onClick={() => onClick()}
         >
           {description}
         </p>
       )}
       <div style={{ borderBottom: "2.4px solid rgba(134, 164, 176, 0.15)" }} />
-      <div className="flex items-center p-[12px] card-bottom-wrap">
+      <div className="flex items-center p-[12px] card-bottom-wrap" onClick={() => onClick()}>
         {countryName && (
           <>
             <div className="report-bottom-box">

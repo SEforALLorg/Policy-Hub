@@ -582,6 +582,7 @@ a {
 
 .OptionsWrap::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 .OptionsWrap::-webkit-scrollbar-track {
@@ -1417,6 +1418,7 @@ a {
 .main-container{
   height: 100%;
 }
+
 .resources-button {
   margin: 0px !important;
   margin-top: 0px !important;
@@ -1427,6 +1429,9 @@ a {
   justify-content: center;
   min-width: 72px;
   height: 30px !important;
+}
+.filterButton{
+  margin-top: -9px !important;
 }
 .resource-buttons .tooltipWrap{
   margin-top: 2px !important;

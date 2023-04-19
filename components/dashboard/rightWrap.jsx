@@ -402,13 +402,20 @@ const RightWrapPage = ({
           >
             <h5
               className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
-              style={{ paddingBottom: optionSelected ? "5px" : "9px" }}
+              style={{
+                paddingBottom: showAllReports
+                  ? 0
+                  : optionSelected
+                  ? "5px"
+                  : "9px",
+                marginTop: optionSelected && showAllReports ? 0 : "",
+              }}
             >
               {t("Filters")}
-              
+
               {optionSelected ? (
                 <button
-                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+                  className={`filterButton bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
@@ -592,7 +599,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor hover:opacity-[0.8] resources-button`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : '', width: 108 }}
+                  style={{ opacity: disableButtons ? 0.5 : "", width: 108 }}
                 >
                   {!isLoader ? (
                     <TooltipComponent
@@ -601,7 +608,7 @@ const RightWrapPage = ({
                       top={true}
                       hideContent={disableButtons}
                       id={"download"}
-                      style={{marginTop: -7}}
+                      style={{ marginTop: -7 }}
                     >
                       <div className="flex justify-center download-button-inner">
                         {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
@@ -618,7 +625,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : '' }}
+                  style={{ opacity: disableButtons ? 0.5 : "" }}
                 >
                   <TooltipComponent
                     content={t("clicktoreceive")}
@@ -626,7 +633,7 @@ const RightWrapPage = ({
                     top={true}
                     hideContent={disableButtons}
                     id={"email"}
-                    style={{marginTop: -7}}
+                    style={{ marginTop: -7 }}
                   >
                     <div className="flex">
                       {" "}
