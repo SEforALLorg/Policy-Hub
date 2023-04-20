@@ -20,7 +20,7 @@ const Feature = () => {
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [disable, setDisable] = useState(true);
-  const [filterType, setFilterType] = useState('');
+  const [filterType, setFilterType] = useState("");
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -37,7 +37,11 @@ const Feature = () => {
       mainData?.filter((item) => item?.id === 12 || item?.id === 11) || [];
     const finalIds = filterData?.map((item) => item?.id);
     const finalData =
-      mainData?.filter((item) => !finalIds?.includes(item?.id)) || [];
+      mainData
+        ?.filter((item) => !finalIds?.includes(item?.id))
+        .sort((a, b) =>
+          a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
+        ) || [];
     return [...filterData, ...finalData];
   };
 
@@ -140,9 +144,9 @@ const Feature = () => {
                     {t(filterType) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
-                <DropdownMenu style={{marginRight: -8, marginTop: 7}}>
+                <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
                   {dropDownData?.map((resource, index) => {
-                    const isActive = resource?.label === filterType
+                    const isActive = resource?.label === filterType;
                     return (
                       <DropdownItem
                         onClick={() => {
@@ -152,7 +156,12 @@ const Feature = () => {
                           setFilterType(resource?.label);
                         }}
                         key={index}
-                        style={{backgroundColor: isActive ? 'var(--theme-secondary)' : '', color: isActive ? '#fff' : ''}}
+                        style={{
+                          backgroundColor: isActive
+                            ? "var(--theme-secondary)"
+                            : "",
+                          color: isActive ? "#fff" : "",
+                        }}
                       >
                         {resource?.label}
                       </DropdownItem>
@@ -163,29 +172,25 @@ const Feature = () => {
             </div>
             <div className="cardWrap">
               {allResources?.length ? (
-                allResources
-                  ?.sort((a, b) =>
-                    a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
-                  )
-                  ?.map((resource, index) => {
-                    return (
-                      <OtherToolsCard
-                        filterData={(e) => {
-                          setFilterType(
-                            dropDownData?.find((item) => item?.id === e?.id)
-                              ?.label
-                          );
-                          filterData(e);
-                          setDisable(false);
-                        }}
-                        resourceType={resource?.attributes?.resources?.data}
-                        title={resource?.attributes?.Title}
-                        link={resource?.attributes?.Link}
-                        description={resource?.attributes?.Description}
-                        key={index}
-                      />
-                    );
-                  })
+                allResources?.map((resource, index) => {
+                  return (
+                    <OtherToolsCard
+                      filterData={(e) => {
+                        setFilterType(
+                          dropDownData?.find((item) => item?.id === e?.id)
+                            ?.label
+                        );
+                        filterData(e);
+                        setDisable(false);
+                      }}
+                      resourceType={resource?.attributes?.resources?.data}
+                      title={resource?.attributes?.Title}
+                      link={resource?.attributes?.Link}
+                      description={resource?.attributes?.Description}
+                      key={index}
+                    />
+                  );
+                })
               ) : (
                 <div className="flex items-center flex-col h-full w-full justify-center">
                   <Loader height={80} width={80} />
