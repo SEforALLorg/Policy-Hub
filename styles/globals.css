@@ -707,6 +707,14 @@ a {
   overflow-x: hidden;
 }
 
+@media only screen and (min-width: 1300px) and (max-width: 1400px) {
+  .rightInnerWrap.cleanCooking{
+    height: calc(100vh - 100px) !important;
+  }
+  .rightInnerWrap.energy{
+    height: calc(100vh + 20px) !important;
+  }
+}
 .rightInnerWrap::-webkit-scrollbar {
   width: 7px;
 }
@@ -1457,6 +1465,10 @@ a {
 }
 .resource-buttons-wrap{
    margin-top: -9px;
+}
+
+.country-drop-down .dropdown-toggle::after{
+  border-top-color: #000;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {

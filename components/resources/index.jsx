@@ -55,6 +55,7 @@ const ALLReports = () => {
         onResetFilter={onResetFilter}
         setClearAll={setClearAll}
         isClearAll={isClearAll}
+        isExpand={false}
       />
     </div>
   );

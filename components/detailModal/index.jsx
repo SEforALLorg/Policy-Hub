@@ -2,6 +2,12 @@ import { isEmpty } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+} from "reactstrap";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
@@ -14,16 +20,16 @@ const DetailModal = ({ firstHit }) => {
     // PhoneNumber: "",
     JobTitle: "",
     Organization: "",
-    Country: "",
   });
   const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [country, setCountry] = useState();
 
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
-    if(UserModal === null) {
+    if (UserModal === null) {
       setIsOpen(true);
     } else if (UserModal) {
       setIsOpen(false);
@@ -33,7 +39,7 @@ const DetailModal = ({ firstHit }) => {
   const onSubmitHandler = async (event) => {
     if (event) event.preventDefault();
     if (!buttonDisable && !loading) {
-      setLoading(true)
+      setLoading(true);
       let ip = localStorage.getItem("ip");
       let date = new Date();
       localStorage.setItem("currentDate", date);
@@ -42,6 +48,7 @@ const DetailModal = ({ firstHit }) => {
       };
       let data = {
         ...formInput,
+        Country: country?.name,
         IPAddress: ip ? ip : "",
       };
       let payload = {
@@ -62,7 +69,7 @@ const DetailModal = ({ firstHit }) => {
           position: toast.POSITION.TOP_CENTER,
         });
         setIsOpen(false);
-        setLoading(false)
+        setLoading(false);
         let existingJourney = response?.data?.data?.Journey;
         if (response?.data?.data?.userExist) {
           let data = {
@@ -243,7 +250,7 @@ const DetailModal = ({ firstHit }) => {
                   >
                     Country
                   </label>
-                  <select
+                  {/* <select
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
                       danger ? (formInput?.Country ? "" : "border-red-900") : ""
                     }`}
@@ -254,12 +261,76 @@ const DetailModal = ({ firstHit }) => {
                     {Flags.map((key, index) => {
                       return (
                         <option value={key.code} key={index}>
-                          {key.name}{' '}
-                          {key.emoji}
+                          {key.name} {key.emoji}
                         </option>
                       );
                     })}
-                  </select>
+                  </select> */}
+                  <UncontrolledDropdown
+                    setActiveFromChild
+                    className={`country-drop-down cursor-pointer bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500`}
+                  >
+                    <DropdownToggle
+                      style={{ color: "white" }}
+                      className="flex justify-between items-center no-underline"
+                      tag="a"
+                      caret
+                    >
+                      <p
+                        style={{ marginBottom: "0" }}
+                        className="flex align-center text-normal text-black xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
+                      >
+                        {country?.name || "Select Country"}
+                        {country?.image ? (
+                          <img
+                            src={country?.image}
+                            alt="flag"
+                            width={20}
+                            height={20}
+                            className="pl-[2px]"
+                          />
+                        ) : (
+                          ""
+                        )}
+                      </p>
+                    </DropdownToggle>
+                    <DropdownMenu
+                      style={{
+                        marginLeft: -8,
+                        marginBottom: 13,
+                        width: "100%",
+                        height: 300,
+                        overflow: "auto",
+                        left: 0,
+                      }}
+                    >
+                      {Flags.map((key, index) => {
+                        if (!key?.name || !key?.image) return;
+                        return (
+                          <DropdownItem
+                            onClick={() => {
+                              setCountry(key);
+                            }}
+                            key={index}
+                            className="flex align-center"
+                          >
+                            {key?.name}
+                            {key?.image ? (
+                              <img
+                                src={key?.image}
+                                alt="flag"
+                                width={20}
+                                height={20}
+                                className="pl-[2px]"
+                              />
+                            ) : (
+                              ""
+                            )}
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
                 </div>
                 {/* <!-- Modal footer --> */}
                 <div className="flex justify-center p-6 space-x-2 rounded-b">
