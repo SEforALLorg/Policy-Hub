@@ -38,6 +38,7 @@ const MobileFilters = ({
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFilter, setIsFilter] = useState(false);
+  const [isBlock, setIsBlock] = useState(false);
   // const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [sectorOptionEnerygy, setSectorOptionEnergy] = useState([]);
@@ -48,6 +49,11 @@ const MobileFilters = ({
   const debouncedSearch = useDebounce(search, 500);
   const [sectorOption, setSectorOption] = useState([]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsBlock(true);
+    }, 3500)
+  }, [])
   typeof window !== "undefined" &&
     window.addEventListener(
       "orientationchange",
@@ -245,7 +251,7 @@ const MobileFilters = ({
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
-            style={{ display: "block" }}
+            style={{ display: isBlock ? "block" : '' }}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
               Filters
