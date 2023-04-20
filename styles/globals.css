@@ -17,6 +17,10 @@ body {
   /* backdrop-filter: brightness(0.5); */
 }
 
+.Toastify__toast-theme--light{
+  display: none !important;
+}
+
 main {
   background-image: url("/static/images/BG.png");
   background-attachment: fixed;

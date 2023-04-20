@@ -15,7 +15,7 @@ const StepComponent = ({
 }) => {
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
-
+  const [localJourney, setLocalJourney] = useState([]);
   const title =
     item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
   const multiAnswer = item?.attributes?.AddAnswer;
@@ -34,6 +34,19 @@ const StepComponent = ({
     setOptionReport(i);
   };
 
+  const onSubmitJourney = (i, title) => {
+    if (localJourney?.find((item) => item?.title === title)) {
+      const findIndex = localJourney?.findIndex(
+        (item) => item?.title === title
+      );
+      if (findIndex > -1) {
+        localJourney?.splice(findIndex, 1, { ...i, title });
+        setLocalJourney(localJourney);
+      }
+    } else {
+      setLocalJourney([...localJourney, { ...i, title }]);
+    }
+  };
   const onPreviousClick = () => {
     onPrevious();
     if (stepCount <= 1) {
@@ -83,11 +96,19 @@ const StepComponent = ({
             <div
               className="optionItem"
               key={index}
-              onClick={() => (isFoodAndEquipment ? "" : onAnswerClick(i))}
+              onClick={() => {
+                isFoodAndEquipment ? "" : onAnswerClick(i);
+                onSubmitJourney(i, title);
+              }}
               style={{ marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}` }}
             >
               {!isFoodAndEquipment && (
-                <RadioButton checked={optionData?.id === i?.id} />
+                <RadioButton
+                  checked={
+                    optionData?.id === i?.id ||
+                    localJourney?.find((item) => item?.id === i?.id)
+                  }
+                />
               )}
               <p
                 style={{ marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}` }}
@@ -112,7 +133,8 @@ const StepComponent = ({
           style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
           disabled={!stepQuestion?.length}
         >
-          <img src="static/images/leftArrow.svg" alt="left_arrow" /> {t("Previous")}
+          <img src="static/images/leftArrow.svg" alt="left_arrow" />{" "}
+          {t("Previous")}
         </button>
         {nextCount > 1 && (
           <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo">
@@ -120,7 +142,8 @@ const StepComponent = ({
           </p>
         )}
         <button onClick={() => onNextClick()} className="SlideButton">
-          {t("Next")} <img src="static/images/rightArrow.svg" alt="right_arrow" />
+          {t("Next")}{" "}
+          <img src="static/images/rightArrow.svg" alt="right_arrow" />
         </button>
       </div>
     </div>

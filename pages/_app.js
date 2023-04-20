@@ -5,7 +5,7 @@ import Head from "next/head";
 import "../styles/toastify.css";
 import "../styles/globals.css";
 import "../styles/modal-video.css";
-import 'react-tooltip/dist/react-tooltip.css'
+import "react-tooltip/dist/react-tooltip.css";
 import "../I18n";
 import { useTranslation } from "react-i18next";
 import { Cookies } from "react-cookie";
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
     try {
       fetch("https://geolocation-db.com/json/")
         .then((response) => response.json())
-        .then((data) => localStorage.setItem("ip", data.IPv4))
+        .then((data) => localStorage.setItem("ip", data.IPv4));
     } catch (error) {
       console.log(error);
     }
