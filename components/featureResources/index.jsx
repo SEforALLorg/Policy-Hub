@@ -125,7 +125,7 @@ const Feature = () => {
               </h2>
               <UncontrolledDropdown
                 setActiveFromChild
-                className={`bg-Primary cursor-pointer rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} w-[170px] card-tool-button allBtn`}
+                className={`bg-Primary cursor-pointer rounded-[60px] text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} card-tool-button allBtn`}
               >
                 <DropdownToggle
                   style={{ color: "white" }}

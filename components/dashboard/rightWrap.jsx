@@ -57,6 +57,7 @@ const RightWrapPage = ({
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
   const [isLoader, setIsLoader] = useState(false);
+  const [reportsLoader, setReportsLoader] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
   const { t } = useTranslation();
@@ -262,7 +263,6 @@ const RightWrapPage = ({
   };
 
   const optionSelected = isSelectedInput(selectInputs);
-
   useEffect(() => {
     if (debouncedSearch?.length) {
       setPage(1);
@@ -380,6 +380,9 @@ const RightWrapPage = ({
               isResetPage={isResetPage}
               isClear={isClear}
               browseResource
+              setPreviousReports={setPreviousReports}
+              previousReports={previousReports}
+              setReportsLoader={setReportsLoader}
             />
           </div>
           {isFilter && (
@@ -408,7 +411,12 @@ const RightWrapPage = ({
                   : optionSelected
                   ? "5px"
                   : "9px",
-                marginTop: optionSelected && showAllReports ? 0 : optionSelected ? 0 : "",
+                marginTop:
+                  optionSelected && showAllReports
+                    ? 0
+                    : optionSelected
+                    ? 0
+                    : "",
               }}
             >
               {t("Filters")}
@@ -655,11 +663,18 @@ const RightWrapPage = ({
             <div
               id="rightWrap"
               className="rightInnerWrap"
-              onScroll={(e) => onScroll(e)}
-              style={{height: resourceType === CLEANCOOKING ? 'calc(80vh - 100px)' : ''}}
+              onScroll={(e) => {
+                if (!optionSelected) {
+                  onScroll(e);
+                }
+              }}
+              style={{
+                height:
+                  resourceType === CLEANCOOKING ? "calc(80vh - 100px)" : "",
+              }}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
-                {isFetchingReports && !isScrollLoader ? (
+                {(reportsLoader || isFetchingReports) && !isScrollLoader ? (
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>

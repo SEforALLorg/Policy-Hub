@@ -25,15 +25,18 @@ const Report = ({
   const { t } = useTranslation();
   const [isTooltipOpen, setIsTooltipOpen] = useState(false);
   const countTooltip = bigCard ? 30 : 10;
-  const isSmallDevice = typeof window !== "undefined" && window?.innerWidth < 1024;
+  const isSmallDevice =
+    typeof window !== "undefined" && window?.innerWidth < 767;
   return (
     <div
       key={key}
       className={`report-card cursor-pointer ${isActive ? "active" : ""}`}
-      
     >
       <div className="flex items-start justify-between p-[12px] w-[100%]">
-        <div className="flex items-center mr-[18px] flex-1" onClick={() => onClick()}>
+        <div
+          className="flex items-center mr-[18px] flex-1"
+          onClick={() => onClick()}
+        >
           {mainImg && (
             <img
               src={mainImg}
@@ -116,7 +119,10 @@ const Report = ({
         </p>
       )}
       <div style={{ borderBottom: "2.4px solid rgba(134, 164, 176, 0.15)" }} />
-      <div className="flex items-center p-[12px] card-bottom-wrap" onClick={() => onClick()}>
+      <div
+        className="flex items-center p-[12px] card-bottom-wrap"
+        onClick={() => onClick()}
+      >
         {countryName && (
           <>
             <div className="report-bottom-box">
@@ -128,6 +134,9 @@ const Report = ({
               >
                 {countryName}
               </p>
+              {isSmallDevice ? (
+                <div className={"contentNew"}>{countryName}</div>
+              ) : null}
             </div>
             <span />
           </>
@@ -147,7 +156,7 @@ const Report = ({
                   )
                 : "--"}
             </p>
-            {area?.length >= 2 ? (
+            {isSmallDevice || area?.length >= 2 ? (
               <div className={countryName ? "content" : "contentNew"}>
                 {area?.map(
                   (i, index) =>
@@ -166,7 +175,7 @@ const Report = ({
           >
             {item}
           </p>
-          {item?.length > countTooltip ? (
+          {isSmallDevice || item?.length > countTooltip ? (
             <div className={"content"}>{item}</div>
           ) : null}
         </div>
