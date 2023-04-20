@@ -28,19 +28,19 @@ const Footer = ({ footerRes }) => {
     switch (resource) {
       case "Electricity Access":
         window.open("static/pdf/Electrification.pdf");
-        setTitle("Electricity Access");
+        // setTitle("Electricity Access");
         break;
       case "Clean Cooking":
         window.open("static/pdf/Cleancooking.pdf");
-        setTitle("Clean Cooking");
+        // setTitle("Clean Cooking");
         break;
       case "Sustainable Cooling":
         window.open("static/pdf/Sustainablecooling.pdf");
-        setTitle("Sustainable Cooling");
+        // setTitle("Sustainable Cooling");
         break;
       case "Energy Efficency":
         window.open("static/pdf/Energyefficiency.pdf");
-        setTitle("Energy Efficency");
+        // setTitle("Energy Efficency");
         break;
       default:
         break;
@@ -144,7 +144,7 @@ const Footer = ({ footerRes }) => {
             >
               <p style={{ marginBottom: "0" }}>{title}</p>
             </DropdownToggle>
-            <DropdownMenu>
+            <DropdownMenu style={{ marginLeft: 8, marginTop: 15 }}>
               {resource.map((resources, index) => {
                 return (
                   <DropdownItem
