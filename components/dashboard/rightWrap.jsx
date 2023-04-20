@@ -662,7 +662,7 @@ const RightWrapPage = ({
             </h5>
             <div
               id="rightWrap"
-              className="rightInnerWrap"
+              className={`rightInnerWrap`}
               onScroll={(e) => {
                 if (!optionSelected) {
                   onScroll(e);
@@ -670,7 +670,11 @@ const RightWrapPage = ({
               }}
               style={{
                 height:
-                  resourceType === CLEANCOOKING ? "calc(80vh - 100px)" : "",
+                  resourceType === CLEANCOOKING
+                    ? "calc(80vh - 100px)"
+                    : resourceType === ENERGYEFFICIENCY
+                    ? "calc(90vh - 100px)"
+                    : "",
               }}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
@@ -803,7 +807,7 @@ const RightWrapPage = ({
                         if (optionSelected) {
                           onReset();
                         } else {
-                          window.open("/en/allresources", '_self')
+                          window.open("/en/allresources", "_self");
                         }
                       }}
                     >

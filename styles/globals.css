@@ -1467,7 +1467,9 @@ a {
     width: 450px;
 
   }
- 
+  .rightInnerWrap{
+    height: 450px !important;
+  }
 }
 @media only screen and (min-width:1024px) {
   .main-container{
@@ -2063,7 +2065,7 @@ a {
     width: 100% !important;
     max-width: 300px;
     padding: 20px !important;
-    display: block;
+    display: none;
     transition: 1s;
   }
 
@@ -2458,7 +2460,11 @@ a {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
-    padding-top: 15px;
+    padding-top: 12px;
+  }
+
+  .ButtonBox .buttonStyle{
+    padding-top: 13px !important;
   }
 
   .customize-buttons {
