@@ -479,6 +479,7 @@ a {
   white-space: nowrap;
   transition: all 0.5s;
   border: 1px solid var(--theme-yes-button-color);
+  padding: 0px 3px;
 }
 
 .yesButton:hover {
@@ -1629,6 +1630,9 @@ a {
 }
 
 @media only screen and (max-width: 1400px) {
+  .DropdownMenu{
+    margin-left: -4px !important;
+  }
   .custom-container {
     max-width: 1140px;
   }

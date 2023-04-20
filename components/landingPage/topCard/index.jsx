@@ -74,7 +74,7 @@ const TopCard = ({ HandleOpen }) => {
           className="w-[49%] absolute bottom-[-28px] left-[26%]"
           onClick={HandleOpen}
         >
-          <StartButton title={t("ClickHereToStart")} className="w-full pt-[18px] pb-[12px] " />
+          <StartButton title={t("ClickHereToStart")} className="w-full pt-[16px] pb-[12px] " />
         </div>
       </div>
     </div>

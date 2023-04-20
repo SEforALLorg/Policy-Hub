@@ -45,10 +45,12 @@ const LeftWrapPage = ({
   }, [questions?.length, firstQuestion, stepAnswer]);
 
   useEffect(() => {
-    const val = Object.values(userJourney);
-    if (val?.length === 1) {
-      return setDetailModal(true);
-    }
+    setTimeout(() => {
+      const val = Object.values(userJourney);
+      if (val?.length === 1) {
+        return setDetailModal(true);
+      }
+    }, 2000);
   }, [userJourney]);
 
   const onNextQuestion = (e) => {

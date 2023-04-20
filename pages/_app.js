@@ -18,7 +18,7 @@ const cookies = new Cookies();
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const { i18n, t } = useTranslation();
-  const [showConsent, setShowConsent] = useState(false);
+  const [showConsent, setShowConsent] = useState(true);
 
   const changeLanguage = (language) => {
     if (languages.includes(language)) {

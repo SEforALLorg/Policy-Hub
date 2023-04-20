@@ -144,7 +144,7 @@ const Footer = ({ footerRes }) => {
             >
               <p style={{ marginBottom: "0" }}>{title}</p>
             </DropdownToggle>
-            <DropdownMenu style={{ marginLeft: 8, marginTop: 15 }}>
+            <DropdownMenu style={{ marginLeft: 8, marginTop: 15 }} className="DropdownMenu">
               {resource.map((resources, index) => {
                 return (
                   <DropdownItem
