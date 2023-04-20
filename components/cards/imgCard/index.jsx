@@ -7,7 +7,7 @@ const ImgCard = ({ img, title, className, link, imgStyle }) => {
         <img src={img} alt={img || 'card_image'} className="max-w-full" style={imgStyle} />
       </div>
       <a
-        className="text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
+        className="hover:underline text-anqrtext no-underline not-italic	font-normal	xsm:text-xsmall small:text-tiny leading-5 text-center block"
         href={link}
         target={"_blank"}
       >

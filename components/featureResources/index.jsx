@@ -20,7 +20,7 @@ const Feature = () => {
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [disable, setDisable] = useState(true);
-  const [filterType, setFilterType] = useState(t("AllPlatforms"));
+  const [filterType, setFilterType] = useState('');
 
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
@@ -125,7 +125,7 @@ const Feature = () => {
               </h2>
               <UncontrolledDropdown
                 setActiveFromChild
-                className={`bg-Primary cursor-pointer rounded-[60px] w-full text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} w-[170px] card-tool-button allBtn`}
+                className={`bg-Primary cursor-pointer rounded-[60px] text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} card-tool-button allBtn`}
               >
                 <DropdownToggle
                   style={{ color: "white" }}
@@ -137,11 +137,12 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {filterType}
+                    {t(filterType) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu style={{marginRight: -8, marginTop: 7}}>
                   {dropDownData?.map((resource, index) => {
+                    const isActive = resource?.label === filterType
                     return (
                       <DropdownItem
                         onClick={() => {
@@ -151,6 +152,7 @@ const Feature = () => {
                           setFilterType(resource?.label);
                         }}
                         key={index}
+                        style={{backgroundColor: isActive ? 'var(--theme-secondary)' : '', color: isActive ? '#fff' : ''}}
                       >
                         {resource?.label}
                       </DropdownItem>

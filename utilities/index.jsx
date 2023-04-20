@@ -153,11 +153,11 @@ export const shortName = (str) => {
   } else if (str?.includes("-")) {
     const matches = str?.replace("-", " ")?.match(/\b(\w)/g);
     const acronym = matches?.join("");
-    string = acronym;
+    string = acronym?.toUpperCase();
   } else if (str?.indexOf(" ") >= 0) {
-    string = acronym;
+    string = acronym?.toUpperCase();
   } else {
-    string = str?.substring(0, 2);
+    string = str?.substring(0, 2)?.toUpperCase();
   }
   return string || str;
 };

@@ -57,6 +57,7 @@ const RightWrapPage = ({
   const [isClear, setIsClear] = useState(false);
   const [resourceType, setResourceType] = useState();
   const [isLoader, setIsLoader] = useState(false);
+  const [reportsLoader, setReportsLoader] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
   const { t } = useTranslation();
@@ -262,7 +263,6 @@ const RightWrapPage = ({
   };
 
   const optionSelected = isSelectedInput(selectInputs);
-
   useEffect(() => {
     if (debouncedSearch?.length) {
       setPage(1);
@@ -380,6 +380,9 @@ const RightWrapPage = ({
               isResetPage={isResetPage}
               isClear={isClear}
               browseResource
+              setPreviousReports={setPreviousReports}
+              previousReports={previousReports}
+              setReportsLoader={setReportsLoader}
             />
           </div>
           {isFilter && (
@@ -402,14 +405,26 @@ const RightWrapPage = ({
           >
             <h5
               className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
-              style={{ paddingBottom: optionSelected ? "5px" : "9px" }}
+              style={{
+                paddingBottom: showAllReports
+                  ? 0
+                  : optionSelected
+                  ? "5px"
+                  : "9px",
+                marginTop:
+                  optionSelected && showAllReports
+                    ? 0
+                    : optionSelected
+                    ? 0
+                    : "",
+              }}
             >
               {t("Filters")}
-              
+
               {optionSelected ? (
                 <button
-                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[0px] resources-button button-animation mobile-hidden clear-filter-button`}
+                  className={`filterButton bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[2px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
                   {t("Clear Filters")}
@@ -592,7 +607,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor hover:opacity-[0.8] resources-button`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : '', width: 108 }}
+                  style={{ opacity: disableButtons ? 0.5 : "", width: 108 }}
                 >
                   {!isLoader ? (
                     <TooltipComponent
@@ -601,7 +616,7 @@ const RightWrapPage = ({
                       top={true}
                       hideContent={disableButtons}
                       id={"download"}
-                      style={{marginTop: -7}}
+                      style={{ marginTop: -7 }}
                     >
                       <div className="flex justify-center download-button-inner">
                         {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
@@ -618,7 +633,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button`}
                   onClick={toggleShareModal}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : '' }}
+                  style={{ opacity: disableButtons ? 0.5 : "" }}
                 >
                   <TooltipComponent
                     content={t("clicktoreceive")}
@@ -626,7 +641,7 @@ const RightWrapPage = ({
                     top={true}
                     hideContent={disableButtons}
                     id={"email"}
-                    style={{marginTop: -7}}
+                    style={{ marginTop: -7 }}
                   >
                     <div className="flex">
                       {" "}
@@ -648,10 +663,18 @@ const RightWrapPage = ({
             <div
               id="rightWrap"
               className="rightInnerWrap"
-              onScroll={(e) => onScroll(e)}
+              onScroll={(e) => {
+                if (!optionSelected) {
+                  onScroll(e);
+                }
+              }}
+              style={{
+                height:
+                  resourceType === CLEANCOOKING ? "calc(80vh - 100px)" : "",
+              }}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
-                {isFetchingReports && !isScrollLoader ? (
+                {(reportsLoader || isFetchingReports) && !isScrollLoader ? (
                   <div className="flex items-center justify-center h-[100%]">
                     <Loader />
                   </div>
@@ -776,9 +799,17 @@ const RightWrapPage = ({
                     </p>
                     <a
                       className="cursor-pointer hover:underline"
-                      onClick={() => onReset()}
+                      onClick={() => {
+                        if (optionSelected) {
+                          onReset();
+                        } else {
+                          window.open("/en/allresources", '_self')
+                        }
+                      }}
                     >
-                      Clear all filters
+                      {optionSelected
+                        ? "Clear all filters"
+                        : "Browse all resources"}
                     </a>
                   </div>
                 )}

@@ -7,7 +7,7 @@ import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [formInput, setFormInput] = useState({
     FullName: "",
     Email: "",
@@ -23,7 +23,9 @@ const DetailModal = ({ firstHit }) => {
 
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
-    if (UserModal) {
+    if(UserModal === null) {
+      setIsOpen(true);
+    } else if (UserModal) {
       setIsOpen(false);
     }
   }, []);

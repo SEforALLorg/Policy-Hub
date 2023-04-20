@@ -30,12 +30,15 @@ const MobileFilters = ({
   isClearAll,
   isResetPage,
   isClear,
+  setPreviousReports,
+  previousReports,
+  setReportsLoader
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFilter, setIsFilter] = useState(false);
-  const [previousReports, setPreviousReports] = useState([]);
+  // const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [sectorOptionEnerygy, setSectorOptionEnergy] = useState([]);
   const [sectorOptionCooling, setSectorOptionCooling] = useState([]);
@@ -72,7 +75,9 @@ const MobileFilters = ({
 
   let query;
   // Get Reports API
-  const onApply = () => {
+  const onApply = (e) => {
+    e?.preventDefault();
+    setReportsLoader(true);
     setIsFilter(!isFilter);
     setIsOpen("");
     query = getReportQuery(
@@ -117,11 +122,13 @@ const MobileFilters = ({
   };
 
   useEffect(() => {
-    if (optionSelected && page === 1) {
+    if ((optionSelected || search?.length) && page === 1) {
       setPreviousReports(allReports?.data?.data || []);
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
-      setPreviousReports([...allReports?.data?.data, ...(previousReports || [])] || []);
+      setPreviousReports(
+        [...allReports?.data?.data, ...(previousReports || [])] || []
+      );
       typeof window !== "undefined" && window.scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
@@ -130,6 +137,7 @@ const MobileFilters = ({
     if (window.location.pathname.includes("allresources")) {
       setBrowseResource(true);
     }
+    setReportsLoader(false);
   }, [allReports, typeof window !== "undefined" && window]);
 
   const onSearch = (e) => {
@@ -138,11 +146,14 @@ const MobileFilters = ({
   };
 
   const onReset = () => {
+    setReportsLoader(true);
+    refetch();
     setClearAll(!isClearAll);
     onResetFilter();
     setPreviousReports([]);
     setIsOpen("");
     setSearch("");
+    // setIsFilter(!isFilter);
   };
 
   const optionSelected = isSelectedInput(selectInputs);
@@ -253,14 +264,15 @@ const MobileFilters = ({
                 style={{ top: 14 }}
               />
             </h5>
-            <div className="innerFilter">
-              {showAllReports && (
-                <SearchBar
-                  onChange={(e) => onSearch(e?.target?.value)}
-                  value={search}
-                />
-              )}
-              {/* <Select
+            <form>
+              <div className="innerFilter">
+                {showAllReports && (
+                  <SearchBar
+                    onChange={(e) => onSearch(e?.target?.value)}
+                    value={search}
+                  />
+                )}
+                {/* <Select
                 title={t("SelectRegion")}
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
@@ -272,142 +284,152 @@ const MobileFilters = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               /> */}
-              <Select
-                title={t("SelectCountry")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.countries)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.countries}
-                name={"countries"}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />
-              <Select
-                title={t("Segment")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.segment)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.segments}
-                name={"segments"}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />
-              <Select
-                title={t("ResourceType")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.documentType)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.document_types}
-                name={"document_types"}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />
-              <Select
-                title={t("Year")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.year)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.years}
-                name={"years"}
-                top={true}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              />
-              {(resourceType === ELECTRICITYACCESS || browseResource) && (
                 <Select
-                  title={t("GenerationSource")}
+                  title={t("SelectCountry")}
                   setIsOpen={setIsOpen}
                   isOpen={isOpen}
-                  options={getFormattedData(filters?.generationSources)}
+                  options={getFormattedData(filters?.countries)}
                   onChange={(e) => onChange(e)}
-                  selected={selectInputs?.generation_sources}
-                  name={"generation_sources"}
+                  selected={selectInputs?.countries}
+                  name={"countries"}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+                <Select
+                  title={t("Segment")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.segment)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.segments}
+                  name={"segments"}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+                <Select
+                  title={t("ResourceType")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.documentType)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.document_types}
+                  name={"document_types"}
+                  selectedOptions={selectedOptions}
+                  setSelectedOptions={setSelectedOptions}
+                  isClearAll={isClearAll}
+                />
+                <Select
+                  title={t("Year")}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                  options={getFormattedData(filters?.year)}
+                  onChange={(e) => onChange(e)}
+                  selected={selectInputs?.years}
+                  name={"years"}
                   top={true}
                   selectedOptions={selectedOptions}
                   setSelectedOptions={setSelectedOptions}
                   isClearAll={isClearAll}
                 />
-              )}
-              {(resourceType === ENERGYEFFICIENCY || browseResource) && (
-                <Select
-                  title={t("EnergyEfficiencySector")}
-                  resourceType={ENERGYEFFICIENCY}
-                  setIsOpen={setIsOpen}
-                  isOpen={isOpen}
-                  options={getFormattedData(sectorOptionEnerygy)}
-                  onChange={(e) => onChange(e)}
-                  selected={selectInputs?.sector}
-                  name={"sector"}
-                  top={true}
-                  selectedOptions={selectedOptions}
-                  setSelectedOptions={setSelectedOptions}
-                  isClearAll={isClearAll}
-                />
-              )}
-              {(resourceType === SUSTAINABLECOOLING || browseResource) && (
-                <Select
-                  title={t("CoolingSector")}
-                  resourceType={SUSTAINABLECOOLING}
-                  setIsOpen={setIsOpen}
-                  isOpen={isOpen}
-                  options={getFormattedData(sectorOptionCooling)}
-                  onChange={(e) => onChange(e)}
-                  selected={selectInputs?.sector}
-                  name={"sector"}
-                  top={true}
-                  selectedOptions={selectedOptions}
-                  setSelectedOptions={setSelectedOptions}
-                  isClearAll={isClearAll}
-                />
-              )}
-              {(resourceType === CLEANCOOKING || browseResource) && (
-                <Select
-                  title={t("Fuel")}
-                  setIsOpen={setIsOpen}
-                  isOpen={isOpen}
-                  options={getFormattedData(filters?.fuel)}
-                  onChange={(e) => onChange(e)}
-                  selected={selectInputs?.fuel}
-                  name={"fuel"}
-                  top={true}
-                  selectedOptions={selectedOptions}
-                  setSelectedOptions={setSelectedOptions}
-                  isClearAll={isClearAll}
-                />
-              )}
-              <div className="apply-wrap">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (optionSelected) {
-                      onReset();
-                    }
-                  }}
-                  className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
+                {(resourceType === ELECTRICITYACCESS || browseResource) && (
+                  <Select
+                    title={t("GenerationSource")}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(filters?.generationSources)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.generation_sources}
+                    name={"generation_sources"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                )}
+                {(resourceType === ENERGYEFFICIENCY || browseResource) && (
+                  <Select
+                    title={t("EnergyEfficiencySector")}
+                    resourceType={ENERGYEFFICIENCY}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(sectorOptionEnerygy)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.sector}
+                    name={"sector"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                )}
+                {(resourceType === SUSTAINABLECOOLING || browseResource) && (
+                  <Select
+                    title={t("CoolingSector")}
+                    resourceType={SUSTAINABLECOOLING}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(sectorOptionCooling)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.sector}
+                    name={"sector"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                )}
+                {(resourceType === CLEANCOOKING || browseResource) && (
+                  <Select
+                    title={t("Fuel")}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(filters?.fuel)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.fuel}
+                    name={"fuel"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                )}
+                <div className="apply-wrap">
+                  {isOpen && (
+                    <div
+                      className={"mobile-overlay mobile-show"}
+                      style={{ opacity: 0 }}
+                      onClick={() => {
+                        setIsOpen("");
+                      }}
+                    />
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (optionSelected || search?.length) {
+                        onReset();
+                      }
+                    }}
+                    className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
                 small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
                 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
-                >
-                  {t("ClearFilters")}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onApply()}
-                  className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
+                  >
+                    {t("ClearFilters")}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={(e) => onApply(e)}
+                    className="mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
                 small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 text-small font-medium BtnColor
                 text-gray-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
-                >
-                  {t("Apply")}
-                </button>
+                  >
+                    {t("Apply")}
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
