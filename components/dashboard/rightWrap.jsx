@@ -667,7 +667,8 @@ const RightWrapPage = ({
                 resourceType === CLEANCOOKING && isExpand
                   ? "cleanCooking"
                   : resourceType === ENERGYEFFICIENCY && isExpand
-                  ? "energy"
+                  ? "energy" : resourceType === SUSTAINABLECOOLING && isExpand
+                  ? "sustain"
                   : ""
               }`}
               onScroll={(e) => {
