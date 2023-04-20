@@ -167,6 +167,7 @@ const Dashboard = ({
               setClearAll={setClearAll}
               isClearAll={isClearAll}
               isResetPage={isResetPage}
+              isExpand={isExpand}
             />
           </div>
           <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
