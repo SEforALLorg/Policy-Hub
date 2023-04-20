@@ -799,9 +799,17 @@ const RightWrapPage = ({
                     </p>
                     <a
                       className="cursor-pointer hover:underline"
-                      onClick={() => onReset()}
+                      onClick={() => {
+                        if (optionSelected) {
+                          onReset();
+                        } else {
+                          window.open("/en/allresources", '_self')
+                        }
+                      }}
                     >
-                      Clear all filters
+                      {optionSelected
+                        ? "Clear all filters"
+                        : "Browse all resources"}
                     </a>
                   </div>
                 )}

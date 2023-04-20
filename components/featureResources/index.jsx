@@ -140,7 +140,7 @@ const Feature = () => {
                     {t(filterType) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
-                <DropdownMenu style={{marginLeft: -10, marginTop: 7}}>
+                <DropdownMenu style={{marginRight: -8, marginTop: 7}}>
                   {dropDownData?.map((resource, index) => {
                     const isActive = resource?.label === filterType
                     return (
