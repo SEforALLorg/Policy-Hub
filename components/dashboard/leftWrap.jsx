@@ -67,6 +67,7 @@ const LeftWrapPage = ({
   };
 
   const onPreviousQuestion = () => {
+    resetFilters();
     let revisedArray = [...stepQuestion];
     setNextQuestionId(
       revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id
