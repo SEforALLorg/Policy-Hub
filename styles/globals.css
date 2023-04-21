@@ -707,6 +707,20 @@ a {
   overflow-x: hidden;
 }
 
+@media only screen and (min-width: 1300px) and (max-width: 1600px) {
+  .rightInnerWrap.cleanCooking{
+    height: calc(100vh - 100px) !important;
+  }
+  .rightInnerWrap.energy{
+    /* height: calc(100vh + 20px) !important; */
+    height: calc(100vh - 100px) !important;
+  }
+  .rightInnerWrap.sustain{
+    /* height: calc(100vh + 20px) !important; */
+    height: calc(85vh - 100px) !important;
+  }
+  
+}
 .rightInnerWrap::-webkit-scrollbar {
   width: 7px;
 }
@@ -1459,6 +1473,10 @@ a {
    margin-top: -9px;
 }
 
+.country-drop-down .dropdown-toggle::after{
+  border-top-color: #000;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .customize-title .tooltipWrap .customizeStyle {
     font-size: 22px;
@@ -1467,7 +1485,9 @@ a {
     width: 450px;
 
   }
- 
+  .rightInnerWrap{
+    height: 450px !important;
+  }
 }
 @media only screen and (min-width:1024px) {
   .main-container{
@@ -2063,7 +2083,7 @@ a {
     width: 100% !important;
     max-width: 300px;
     padding: 20px !important;
-    display: block;
+    display: none;
     transition: 1s;
   }
 
@@ -2460,7 +2480,11 @@ a {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
-    padding-top: 15px;
+    padding-top: 12px;
+  }
+
+  .ButtonBox .buttonStyle{
+    padding-top: 13px !important;
   }
 
   .customize-buttons {

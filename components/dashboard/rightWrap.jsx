@@ -40,6 +40,7 @@ const RightWrapPage = ({
   setClearAll,
   isClearAll,
   isResetPage,
+  isExpand,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -662,7 +663,14 @@ const RightWrapPage = ({
             </h5>
             <div
               id="rightWrap"
-              className="rightInnerWrap"
+              className={`rightInnerWrap ${
+                resourceType === CLEANCOOKING && isExpand
+                  ? "cleanCooking"
+                  : resourceType === ENERGYEFFICIENCY && isExpand
+                  ? "energy" : resourceType === SUSTAINABLECOOLING && isExpand
+                  ? "sustain"
+                  : ""
+              }`}
               onScroll={(e) => {
                 if (!optionSelected) {
                   onScroll(e);
@@ -670,7 +678,11 @@ const RightWrapPage = ({
               }}
               style={{
                 height:
-                  resourceType === CLEANCOOKING ? "calc(80vh - 100px)" : "",
+                  resourceType === CLEANCOOKING && isExpand
+                    ? "calc(80vh - 100px)"
+                    : resourceType === ENERGYEFFICIENCY && isExpand
+                    ? "calc(90vh - 100px)"
+                    : "",
               }}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
@@ -803,7 +815,7 @@ const RightWrapPage = ({
                         if (optionSelected) {
                           onReset();
                         } else {
-                          window.open("/en/allresources", '_self')
+                          window.open("/en/allresources", "_self");
                         }
                       }}
                     >
