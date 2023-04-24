@@ -13,14 +13,14 @@ const StepComponent = ({
   totalSteps,
   sendData,
 }) => {
+  const { t, i18n } = useTranslation();
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
   const [localJourney, setLocalJourney] = useState([]);
-  const title =
-    item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question;
+  const title = i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const multiAnswer = item?.attributes?.AddAnswer;
   const nextCount = totalSteps?.length || 1;
-  const ToolTipText = item?.attributes?.ToolTipText;
+  const ToolTipText = i18n.language === 'en' ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -67,13 +67,12 @@ const StepComponent = ({
     };
     sendData(data);
   };
-  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
         <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
-          {item?.attributes?.QuestionTitle}
+          {i18n.language === 'en' ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
         </h5>
       )}
       <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
@@ -113,11 +112,11 @@ const StepComponent = ({
               <p
                 style={{ marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}` }}
               >
-                {i?.Answer}
+                {i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
                 {i?.AnswerToolTip && (
                   <TooltipComponent
-                    content={i?.AnswerToolTip}
-                    answer={i?.Answer}
+                    content={i18n.language === 'en' ? i?.AnswerToolTip : i?.FrenchAnswerToolTip}
+                    answer={i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
                     id={index}
                   />
                 )}

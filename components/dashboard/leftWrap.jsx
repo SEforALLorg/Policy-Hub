@@ -27,6 +27,7 @@ const LeftWrapPage = ({
   selectedResource,
   isExpand,
 }) => {
+  const { t, i18n } = useTranslation();
   const [nextQuestionId, setNextQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
@@ -105,9 +106,8 @@ const LeftWrapPage = ({
     resetFilters();
     setIsResetPage(!isResetPage);
     const data = {
-      question:
-        item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      answer: i?.Answer,
+      question: i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion,
+      answer: i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer,
     };
     newJourney(data);
   };
@@ -125,7 +125,6 @@ const LeftWrapPage = ({
     setStepQuestion([]);
     setIsResetPage(!isResetPage);
   };
-  const { t } = useTranslation();
 
   return (
     <div
@@ -171,9 +170,7 @@ const LeftWrapPage = ({
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
               <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor">
-                {item?.questionName ||
-                  item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question}
+                {item?.questionName || (i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion)}
               </p>
             </p>
             <button className="yesButton">{shortName(item?.answer)}</button>
@@ -215,12 +212,10 @@ const LeftWrapPage = ({
                 nextQuestionId
             )
             .map((item, index) => {
-              const questionTitle =
-                item?.attributes?.MainQuestion?.Question?.data?.attributes
-                  ?.Question;
+              const questionTitle = i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
               const singleAnswer = item?.attributes?.AddAnswer;
               const questionType = item?.attributes?.QuestionType;
-              const ToolTipText = item?.attributes?.ToolTipText;
+              const ToolTipText = i18n.language === 'en' ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
               const QuestionKeyType =
                 item?.attributes?.MainQuestion?.QuestionKeyType?.data
                   ?.attributes?.QuestionKeyType;
@@ -252,7 +247,7 @@ const LeftWrapPage = ({
                           return (
                             <BlueButton
                               className="mb-3 p-2"
-                              title={i?.Answer}
+                              title={i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
                               onClick={() => onSubmitAnswer(i, item)}
                               key={index}
                             />

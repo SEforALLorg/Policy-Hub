@@ -23,30 +23,30 @@ const Resources = ({
   selected,
   setIsOpen,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
   };
 
-  const changeColor = (e) => {
-    selected(e?.target?.innerText);
-    switch (e?.target?.innerText) {
+  const changeColor = (resourceType) => {
+    selected(resourceType);
+    switch (resourceType) {
       case ELECTRICITYACCESS:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", resourceType);
         applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", resourceType);
         applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", resourceType);
         applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
-        applyTheme(yellowTheme); //blueTheme
+        localStorage.setItem("ResourceType", resourceType);
+        applyTheme(yellowTheme);
         break;
       default:
         applyTheme(baseTheme);
@@ -84,10 +84,10 @@ const Resources = ({
             {resourcesData &&
               Object?.values(resourcesData)?.map((resource, index) => (
                 <BlueButton
-                  title={resource?.attributes.Name}
-                  onClick={(e) => {
+                  title={i18n.language === 'en' ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
+                  onClick={() => {
                     onAnswerClick(resource);
-                    changeColor(e);
+                    changeColor(resource?.attributes?.Name);
                   }}
                   key={index}
                   className="mb-[20px] h-[95px] text-[23px]"

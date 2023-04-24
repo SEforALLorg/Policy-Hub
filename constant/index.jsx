@@ -22,10 +22,10 @@ export const fontSizes = [12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 192];
 export const space = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 export const halfWidth = "50%";
 export const fullWidth = "100%";
-export const ELECTRICITYACCESS = "ELECTRICITY ACCESS";
-export const CLEANCOOKING = "CLEAN COOKING";
-export const SUSTAINABLECOOLING = "SUSTAINABLE COOLING";
-export const ENERGYEFFICIENCY = "ENERGY EFFICIENCY";
+export const ELECTRICITYACCESS = "Electricity Access";
+export const CLEANCOOKING = "Clean Cooking";
+export const SUSTAINABLECOOLING = "Sustainable Cooling";
+export const ENERGYEFFICIENCY = "Energy Efficiency";
 
 export const media = {
   smallMobile: "480px",
@@ -73,57 +73,63 @@ export const videosCard = [
 
 export const buttonOptions = [
   {
-    "ELECTRICITY ACCESS": {
-      "Mini grids": [18, "static/images/mini-grid.png", 11],
-      "Standalone systems": [24, "static/images/solaroutline.png", 11],
+    "Electricity Access": {
+      "Mini grids": [18, "static/images/mini-grid.png", 11, "MINI-RÉSEAUX"],
+      "Standalone systems": [24, "static/images/solaroutline.png", 11, "SYSTÈMES AUTONOMES"],
     },
   },
   {
-    "CLEAN COOKING": {
+    "Clean Cooking": {
       "Policy and institutional framework": [
         51,
         "static/images/framework.svg",
         35,
+        "CADRE POLITIQUE ET LÉGAL"
       ],
-      "Regulations and Standards": [58, "static/images/Standards.svg", 35],
+      "Regulations and Standards": [58, "static/images/Standards.svg", 35, "RÈGLEMENTS ET NORMES"],
       "Market development and financing": [
         63,
         "static/images/market_development.svg",
         35,
+        "DÉVELOPPEMENT DU MARCHÉ ET FINANCEMENT"
       ],
-      "Awareness raising": [68, "static/images/awareness_raising.svg", 35],
+      "Awareness raising": [68, "static/images/awareness_raising.svg", 35, "SENSIBILISATION"],
     },
   },
   {
-    "SUSTAINABLE COOLING": {
-      "Thermal comfort and safety": [76, "static/images/safety.svg", 54],
+    "Sustainable Cooling": {
+      "Thermal comfort and safety": [76, "static/images/safety.svg", 54, "CONFORT THERMIQUE ET SÉCURITÉ"],
       "Food & agricultural cold chains": [
         85,
         "static/images/cold_chains.svg",
         54,
+        "CHAÎNE DU FROID ALIMENTAIRE ET AGRICOLE"
       ],
       "Healthcare and medical cold chains": [
         93,
         "static/images/healthcare.svg",
         54,
+        "CHAÎNES DE FROID MÉDICALES ET DE SOINS DE SANTÉ"
       ],
     },
   },
   {
-    "ENERGY EFFICIENCY": {
-      Buildings: [108, "static/images/BUILDINGS.svg", 82],
-      Industry: [116, "static/images/INDUSTRY.svg", 82],
-      "Transport/ Mobility": [126, "static/images/TRANSPORT_MOBILITY.svg", 82],
+    "Energy Efficiency": {
+      "Buildings": [108, "static/images/BUILDINGS.svg", 82, "BÂTIMENTS"],
+      "Industry": [116, "static/images/INDUSTRY.svg", 82, "L'INDUSTRIE"],
+      "Transport/ Mobility": [126, "static/images/TRANSPORT_MOBILITY.svg", 82, "TRANSPORT/ MOBILITÉ"],
       "Products / Appliances": [
         136,
         "static/images/PRODUCT_APPLIANCES.svg",
         82,
+        "PRODUITS / APPAREILS"
       ],
-      Utilities: [146, "static/images/UTILITIES.svg", 82],
+      "Utilities": [146, "static/images/UTILITIES.svg", 82, "SERVICES PUBLICS ET EFFICACITÉ ÉNERGÉTIQUE"],
       "Energy efficiency services": [
         155,
         "static/images/ENERGY_EFFICIENCY_SERVICES.svg",
         82,
+        "SERVICES D'EFFICACITÉ ÉNERGÉTIQUE"
       ],
     },
   },

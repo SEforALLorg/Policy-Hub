@@ -18,11 +18,10 @@ const Customize = ({
 }) => {
   const { t, i18n } = useTranslation();
   const firstQuestion = questions?.length && questions[0];
-  const title =
-    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
-      ?.Question;
+  const title = i18n.language === 'en' ? 
+    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-  const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+  const ToolTipText = i18n.language === 'en' ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
   let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
@@ -98,7 +97,7 @@ const Customize = ({
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i, index) => (
               <BlueButton
-                title={i?.Answer}
+                title={i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
                 className="mb-[20px] h-[80px] text-[23px] "

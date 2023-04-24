@@ -2214,9 +2214,7 @@ a {
     padding-left: 0.5rem !important;
     padding-right: 0.5rem !important;
   }
-  .divider {
-    display: none;
-  }
+
   .closeIcon {
      width: 35px !important;
      height: 35px !important;
