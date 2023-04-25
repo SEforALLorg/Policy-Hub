@@ -38,7 +38,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                   <div
                     className="restartWrap"
                     onClick={() =>
-                      onMiniClick([item[1]?.[0], item[1]?.[2], i18n.language === 'en' ? item?.[0] : item[1]?.[3]])
+                      onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0], item[1]?.[3]])
                     }
                     key={index}
                   >
@@ -56,7 +56,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         })}
         <div
           className="restartWrap"
-          onClick={() => window.open("/allresources", "_self")}
+          onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
         >
           {changingFileLogo.map((key, index) => {
             if (

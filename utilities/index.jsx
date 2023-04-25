@@ -148,7 +148,7 @@ export const shortName = (str) => {
   const matches = str?.match(/\b(\w)/g);
   const acronym = matches?.join("");
   let string;
-  if (str === "Yes" || str === "No") {
+  if (str === "Yes" || str === "No" || str === "Oui" || str === "Non") {
     return str;
   } else if (str?.includes("-")) {
     const matches = str?.replace("-", " ")?.match(/\b(\w)/g);

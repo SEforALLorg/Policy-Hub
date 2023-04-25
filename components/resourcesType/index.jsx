@@ -30,22 +30,23 @@ const Resources = ({
   };
 
   const changeColor = (resourceType) => {
+    const res = resourceType?.attributes?.Name;
     selected(resourceType);
-    switch (resourceType) {
+    switch (res) {
       case ELECTRICITYACCESS:
-        localStorage.setItem("ResourceType", resourceType);
+        localStorage.setItem("ResourceType", res);
         applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
-        localStorage.setItem("ResourceType", resourceType);
+        localStorage.setItem("ResourceType", res);
         applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
-        localStorage.setItem("ResourceType", resourceType);
+        localStorage.setItem("ResourceType", res);
         applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
-        localStorage.setItem("ResourceType", resourceType);
+        localStorage.setItem("ResourceType", res);
         applyTheme(yellowTheme);
         break;
       default:
@@ -87,7 +88,7 @@ const Resources = ({
                   title={i18n.language === 'en' ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
                   onClick={() => {
                     onAnswerClick(resource);
-                    changeColor(resource?.attributes?.Name);
+                    changeColor(resource);
                   }}
                   key={index}
                   className="mb-[20px] h-[95px] text-[23px]"

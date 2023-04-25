@@ -41,7 +41,7 @@ const LeftWrapPage = ({
           return key;
         }
       });
-      setUserJourney([...userJourney, { ...question[0], answer: stepAnswer }]);
+      setUserJourney([...userJourney, { ...question[0], answer: stepAnswer?.Answer, frenchAnswer: stepAnswer?.FrenchAnswer }]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
 
@@ -102,7 +102,7 @@ const LeftWrapPage = ({
   const onSubmitAnswer = (i, item) => {
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
-    setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
+    setUserJourney([...userJourney, { ...item, answer: i?.Answer, frenchAnswer: i?.FrenchAnswer }]);
     setStepQuestion([]);
     resetFilters();
     setIsResetPage(!isResetPage);
@@ -121,6 +121,7 @@ const LeftWrapPage = ({
       {
         ...completeQuestion,
         answer: e?.[2],
+        frenchAnswer: e?.[3]
       },
     ]);
     setStepQuestion([]);
@@ -131,7 +132,7 @@ const LeftWrapPage = ({
     <div
       className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
       style={{
-        height: !isExpand && selectedResource !== CLEANCOOKING ? 400 : "",
+        height: !isExpand && selectedResource?.attributes?.Name !== CLEANCOOKING ? 400 : "",
       }}
     >
       <div className="flex items-center pb-2.5">
@@ -152,7 +153,7 @@ const LeftWrapPage = ({
           })}
         </div>
         <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
-          {selectedResource}
+          {i18n.language === 'en' ? selectedResource?.attributes?.Name : selectedResource?.attributes?.FrenchName}
         </div>
       </div>
       {nextQuestionId &&
@@ -174,7 +175,7 @@ const LeftWrapPage = ({
                 {item?.questionName || (i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion)}
               </p>
             </p>
-            <button className="yesButton">{shortName(item?.answer)}</button>
+            <button className="yesButton">{shortName(i18n.language === 'en' ? item?.answer : item?.frenchAnswer)}</button>
           </div>
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (

@@ -32,7 +32,7 @@ const Customize = ({
     onReportsFind(i);
     let payload = {
       question: title,
-      answer: i?.Answer,
+      answer: i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer,
     };
     setJourney(payload);
     let existing = JSON.parse(localStorage.getItem("userInfo"));
