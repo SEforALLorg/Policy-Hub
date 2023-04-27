@@ -9,7 +9,7 @@ import {
 
 const CompletedSteps = ({ onRestart, onMiniClick }) => {
   const { t, i18n } = useTranslation();
-  const language = i18n.language === 'en';
+  const isEnglish = i18n.language === 'en';
   const resourceType = localStorage.getItem("ResourceType");
   return (
     <div className="completeWrap">
@@ -48,7 +48,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                       alt="button_image"
                       style={{ width: 50, height: 50 }}
                     />
-                    <p>{language ? item?.[0] : item[1]?.[3]}</p>
+                    <p>{isEnglish ? item?.[0] : item[1]?.[3]}</p>
                   </div>
                 );
               });
@@ -57,7 +57,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         })}
         <div
           className="restartWrap"
-          onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
+          onClick={() => window.open(`/${i18n.isEnglish}/allresources`, "_self")}
         >
           {changingFileLogo.map((key, index) => {
             if (
