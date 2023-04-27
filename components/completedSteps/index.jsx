@@ -57,7 +57,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         })}
         <div
           className="restartWrap"
-          onClick={() => window.open(`/${i18n.isEnglish}/allresources`, "_self")}
+          onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
         >
           {changingFileLogo.map((key, index) => {
             if (
