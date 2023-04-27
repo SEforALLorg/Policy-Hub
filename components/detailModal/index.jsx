@@ -84,7 +84,7 @@ const DetailModal = ({ firstHit }) => {
         }
         // firstHit();
       } else {
-        toast.error("Error", { position: toast.POSITION.TOP_CENTER });
+        toast.error(t("Error"), { position: toast.POSITION.TOP_CENTER });
       }
     } else {
       setDanger(true);
