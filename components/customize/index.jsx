@@ -17,11 +17,12 @@ const Customize = ({
   // setCurrentDate
 }) => {
   const { t, i18n } = useTranslation();
+  const language = i18n.language === 'en';
   const firstQuestion = questions?.length && questions[0];
-  const title = i18n.language === 'en' ? 
+  const title = language ? 
     firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-  const ToolTipText = i18n.language === 'en' ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
+  const ToolTipText = language ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
   let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
@@ -32,7 +33,7 @@ const Customize = ({
     onReportsFind(i);
     let payload = {
       question: title,
-      answer: i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer,
+      answer: language ? i?.Answer : i?.FrenchAnswer,
     };
     setJourney(payload);
     let existing = JSON.parse(localStorage.getItem("userInfo"));
@@ -55,7 +56,7 @@ const Customize = ({
   };
 
   return (
-    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${i18n.language !== "fr" ? "h-full" : ""}`}>
+    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${language ? "h-full" : ""}`}>
       {isFetchingQuestions ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
@@ -97,7 +98,7 @@ const Customize = ({
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i, index) => (
               <BlueButton
-                title={i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
+                title={language ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
                 className="mb-[20px] h-[80px] text-[23px] "

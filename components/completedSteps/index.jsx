@@ -9,6 +9,7 @@ import {
 
 const CompletedSteps = ({ onRestart, onMiniClick }) => {
   const { t, i18n } = useTranslation();
+  const language = i18n.language === 'en';
   const resourceType = localStorage.getItem("ResourceType");
   return (
     <div className="completeWrap">
@@ -47,7 +48,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                       alt="button_image"
                       style={{ width: 50, height: 50 }}
                     />
-                    <p>{i18n.language === 'en' ? item?.[0] : item[1]?.[3]}</p>
+                    <p>{language ? item?.[0] : item[1]?.[3]}</p>
                   </div>
                 );
               });

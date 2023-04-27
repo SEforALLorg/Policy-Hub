@@ -14,13 +14,14 @@ const StepComponent = ({
   sendData,
 }) => {
   const { t, i18n } = useTranslation();
+  const language = i18n.language === 'en';
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
   const [localJourney, setLocalJourney] = useState([]);
-  const title = i18n.language === 'en' ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
+  const title = language ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const multiAnswer = item?.attributes?.AddAnswer;
   const nextCount = totalSteps?.length || 1;
-  const ToolTipText = i18n.language === 'en' ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
+  const ToolTipText = language ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -72,7 +73,7 @@ const StepComponent = ({
     <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
         <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
-          {i18n.language === 'en' ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
+          {language ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
         </h5>
       )}
       <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
@@ -112,11 +113,11 @@ const StepComponent = ({
               <p
                 style={{ marginLeft: `${isFoodAndEquipment ? "1.8rem" : ""}` }}
               >
-                {i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
+                {language ? i?.Answer : i?.FrenchAnswer}
                 {i?.AnswerToolTip && (
                   <TooltipComponent
-                    content={i18n.language === 'en' ? i?.AnswerToolTip : i?.FrenchAnswerToolTip}
-                    answer={i18n.language === 'en' ? i?.Answer : i?.FrenchAnswer}
+                    content={language ? i?.AnswerToolTip : i?.FrenchAnswerToolTip}
+                    answer={language ? i?.Answer : i?.FrenchAnswer}
                     id={index}
                   />
                 )}

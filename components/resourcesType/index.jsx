@@ -24,6 +24,7 @@ const Resources = ({
   setIsOpen,
 }) => {
   const { t, i18n } = useTranslation();
+  const language = i18n.language === 'en';
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
@@ -85,7 +86,7 @@ const Resources = ({
             {resourcesData &&
               Object?.values(resourcesData)?.map((resource, index) => (
                 <BlueButton
-                  title={i18n.language === 'en' ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
+                  title={language ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
                   onClick={() => {
                     onAnswerClick(resource);
                     changeColor(resource);
