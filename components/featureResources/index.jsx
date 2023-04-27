@@ -86,6 +86,7 @@ const Feature = () => {
       id: 3,
     },
   ];
+  console.log(filterType,"qwerty")
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table pb-[0px]">
@@ -141,12 +142,12 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {t(filterType) || t("AllPlatforms")}
+                    {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
                 <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
                   {dropDownData?.map((resource, index) => {
-                    const isActive = resource?.label === filterType;
+                    const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
                         onClick={() => {
@@ -163,7 +164,7 @@ const Feature = () => {
                           color: isActive ? "#fff" : "",
                         }}
                       >
-                        {resource?.label}
+                        {t(resource?.label?.replace(' ', ''))}
                       </DropdownItem>
                     );
                   })}

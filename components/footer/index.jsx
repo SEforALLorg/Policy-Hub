@@ -22,22 +22,22 @@ import {
 } from "../../constant";
 
 const Footer = ({ footerRes }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const onClickHandler = (resource) => {
     switch (resource) {
-      case "Electricity Access":
+      case "ElectricityAccess":
         window.open("static/pdf/Electrification.pdf");
         // setTitle("Electricity Access");
         break;
-      case "Clean Cooking":
+      case "CleanCooking":
         window.open("static/pdf/Cleancooking.pdf");
         // setTitle("Clean Cooking");
         break;
-      case "Sustainable Cooling":
+      case "SustainableCooling":
         window.open("static/pdf/Sustainablecooling.pdf");
         // setTitle("Sustainable Cooling");
         break;
-      case "Energy Efficency":
+      case "EnergyEfficency":
         window.open("static/pdf/Energyefficiency.pdf");
         // setTitle("Energy Efficency");
         break;
@@ -115,7 +115,7 @@ const Footer = ({ footerRes }) => {
             </span>
           </p>
           <button
-            onClick={() => window.open("/allresources", "_self")}
+            onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
                                       border leading-5 border-white rounded-[42px] bg-transparent 
                                       desktoplg:text-small flex items-center justify-center 
@@ -152,7 +152,7 @@ const Footer = ({ footerRes }) => {
                     }}
                     key={index}
                   >
-                    {resources}
+                    {t(resources)}
                   </DropdownItem>
                 );
               })}

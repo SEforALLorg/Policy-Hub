@@ -174,5 +174,10 @@
     "Organization": "Organization",
     "Country":"Country",
     "Submit":"Submit",
-    "SuccessfullySubmitted":"Your details has been successfully submitted"
+    "SuccessfullySubmitted":"Your details has been successfully submitted",
+
+    "ElectricityAccess":"Electricity Access",
+    "CleanCooking":"Clean Cooking",
+    "SustainableCooling":"Sustainable Cooling",
+    "EnergyEfficency":"Energy Efficency"
 }
