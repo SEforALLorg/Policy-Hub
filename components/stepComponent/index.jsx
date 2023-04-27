@@ -14,7 +14,7 @@ const StepComponent = ({
   sendData,
 }) => {
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.isEnglish === 'en';
+  const isEnglish = i18n.language === 'en';
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
   const [localJourney, setLocalJourney] = useState([]);
