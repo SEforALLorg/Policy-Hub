@@ -86,7 +86,6 @@ const Feature = () => {
       id: 3,
     },
   ];
-  console.log(filterType,"qwerty")
   return (
     <div className="w-full rounded-lg overflow-hidden">
       <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table pb-[0px]">
