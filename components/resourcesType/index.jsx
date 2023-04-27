@@ -23,30 +23,32 @@ const Resources = ({
   selected,
   setIsOpen,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const onAnswerClick = (i) => {
     onYes();
     onNextQuestionId(i?.attributes?.QuestionId);
   };
 
-  const changeColor = (e) => {
-    selected(e?.target?.innerText);
-    switch (e?.target?.innerText) {
+  const changeColor = (resourceType) => {
+    const res = resourceType?.attributes?.Name;
+    selected(resourceType);
+    switch (res) {
       case ELECTRICITYACCESS:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", res);
         applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", res);
         applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
+        localStorage.setItem("ResourceType", res);
         applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
-        localStorage.setItem("ResourceType", e?.target?.innerText);
-        applyTheme(yellowTheme); //blueTheme
+        localStorage.setItem("ResourceType", res);
+        applyTheme(yellowTheme);
         break;
       default:
         applyTheme(baseTheme);
@@ -84,10 +86,10 @@ const Resources = ({
             {resourcesData &&
               Object?.values(resourcesData)?.map((resource, index) => (
                 <BlueButton
-                  title={resource?.attributes.Name}
-                  onClick={(e) => {
+                  title={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
+                  onClick={() => {
                     onAnswerClick(resource);
-                    changeColor(e);
+                    changeColor(resource);
                   }}
                   key={index}
                   className="mb-[20px] h-[95px] text-[23px]"

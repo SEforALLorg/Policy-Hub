@@ -75,7 +75,7 @@ const Dashboard = ({
   const onReportFind = (e) => {
     setPublicationReports(e?.KeyPublication?.data);
     setNonPublicationReports(e?.NonKeyPublication?.data);
-    setStepAnswer(e?.Answer);
+    setStepAnswer(e);
   };
 
   const onNextQuestionId = (e) => {
@@ -191,7 +191,7 @@ const Dashboard = ({
             resourcesData={resources}
             selected={(e) => {
               setSelectedResource(e);
-              selectedRes(e);
+              selectedRes(e?.attributes?.Name);
             }}
             onYes={() => setIsResource(false)}
             onNextQuestionId={onNextQuestionId}

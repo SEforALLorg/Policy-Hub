@@ -8,7 +8,8 @@ import {
 } from "../../constant/changinglogo";
 
 const CompletedSteps = ({ onRestart, onMiniClick }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const resourceType = localStorage.getItem("ResourceType");
   return (
     <div className="completeWrap">
@@ -38,7 +39,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                   <div
                     className="restartWrap"
                     onClick={() =>
-                      onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0]])
+                      onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0], item[1]?.[3]])
                     }
                     key={index}
                   >
@@ -47,7 +48,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                       alt="button_image"
                       style={{ width: 50, height: 50 }}
                     />
-                    <p>{t(item?.[0])}</p>
+                    <p>{isEnglish ? item?.[0] : item[1]?.[3]}</p>
                   </div>
                 );
               });
@@ -56,7 +57,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         })}
         <div
           className="restartWrap"
-          onClick={() => window.open("/allresources", "_self")}
+          onClick={() => window.open(`/${i18n.isEnglish}/allresources`, "_self")}
         >
           {changingFileLogo.map((key, index) => {
             if (

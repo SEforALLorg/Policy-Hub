@@ -17,12 +17,12 @@ const Customize = ({
   // setCurrentDate
 }) => {
   const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const firstQuestion = questions?.length && questions[0];
-  const title =
-    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
-      ?.Question;
+  const title = isEnglish ? 
+    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-  const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+  const ToolTipText = isEnglish ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
   let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
@@ -33,7 +33,7 @@ const Customize = ({
     onReportsFind(i);
     let payload = {
       question: title,
-      answer: i?.Answer,
+      answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
     };
     setJourney(payload);
     let existing = JSON.parse(localStorage.getItem("userInfo"));
@@ -56,7 +56,7 @@ const Customize = ({
   };
 
   return (
-    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${i18n.language !== "fr" ? "h-full" : ""}`}>
+    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${isEnglish ? "h-full" : ""}`}>
       {isFetchingQuestions ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
@@ -98,7 +98,7 @@ const Customize = ({
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i, index) => (
               <BlueButton
-                title={i?.Answer}
+                title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
                 key={index}
                 className="mb-[20px] h-[80px] text-[23px] "
