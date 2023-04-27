@@ -1,6 +1,7 @@
 import { isEmpty } from "lodash";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import {
   DropdownItem,
@@ -13,6 +14,7 @@ import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated, validation } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
+  const {t} = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formInput, setFormInput] = useState({
     FullName: "",
@@ -65,7 +67,7 @@ const DetailModal = ({ firstHit }) => {
         localStorage.setItem("count", count);
         localStorage.setItem("userInfo", JSON.stringify(response?.data?.data));
         localStorage.setItem("UserModal", false);
-        toast.success("Your details has been successfully submitted", {
+        toast.success(t("SuccessfullySubmitted"), {
           position: toast.POSITION.TOP_CENTER,
         });
         setIsOpen(false);
@@ -152,13 +154,12 @@ const DetailModal = ({ firstHit }) => {
               {/* <!-- Modal header --> */}
               <div className="p-3 rounded-t bg-white w-full">
                 <h3 className="text-2xl font-semibold text-gray-700 text-cyan-800">
-                  User Survey
+                  {t("UserSurvey")}
                 </h3>
                 <p className="w-full py-2 pb-0 px-0 text-black-700 leading-tight text-sm">
-                  Please enter the following details. No fields are mandatory.
+                  {t("PleaseEnterFollowingDetails")}
                   <br />
-                  <b>Note:</b> Your personal data is processed as per SEforALL
-                  Privacy Policy.
+                  <b>{t("Note")}:</b> {t("YourPersonalData")}
                 </p>
               </div>
               {/* <!-- Modal body --> */}
@@ -168,7 +169,7 @@ const DetailModal = ({ firstHit }) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-first-name"
                   >
-                    Full Name
+                    {t("FullName")}
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
@@ -189,7 +190,7 @@ const DetailModal = ({ firstHit }) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-email"
                   >
-                    Email
+                    {t("Email")}
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
@@ -206,7 +207,7 @@ const DetailModal = ({ firstHit }) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-job-title"
                   >
-                    Job Title
+                    {t("JobTitle")}
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
@@ -227,7 +228,7 @@ const DetailModal = ({ firstHit }) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-organization"
                   >
-                    Organization
+                    {t("Organization")}
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
@@ -248,7 +249,7 @@ const DetailModal = ({ firstHit }) => {
                     className="block text-cyan-800 font-medium md:text-left mb-1 md:mb-0 pr-4"
                     htmlFor="inline-country"
                   >
-                    Country
+                    {t("Country")}
                   </label>
                   {/* <select
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
@@ -280,7 +281,7 @@ const DetailModal = ({ firstHit }) => {
                         style={{ marginBottom: "0" }}
                         className="flex align-center text-normal text-black xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                       >
-                        {country?.name || "Select Country"}
+                        {country?.name || t("SelectCountry")}
                         {country?.image ? (
                           <img
                             src={country?.image}
@@ -341,7 +342,7 @@ const DetailModal = ({ firstHit }) => {
                     style={{ opacity: buttonDisable && 0.7 }}
                     className="bg-Secondary text-white bg-[#f7b602] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                   >
-                    Submit
+                    {t("Submit")}
                   </button>
                 </div>
               </form>

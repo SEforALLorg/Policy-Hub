@@ -23,7 +23,6 @@ import {
 
 const Footer = ({ footerRes }) => {
   const { t } = useTranslation();
-  const [title, setTitle] = useState("Download Decision Tree");
   const onClickHandler = (resource) => {
     switch (resource) {
       case "Electricity Access":
@@ -142,7 +141,7 @@ const Footer = ({ footerRes }) => {
               tag="a"
               caret
             >
-              <p style={{ marginBottom: "0" }}>{title}</p>
+              <p style={{ marginBottom: "0" }}>{t("DownloadDecisionTree")}</p>
             </DropdownToggle>
             <DropdownMenu style={{ marginLeft: 8, marginTop: 15 }} className="DropdownMenu">
               {resource.map((resources, index) => {
