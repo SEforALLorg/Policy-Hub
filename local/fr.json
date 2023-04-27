@@ -131,8 +131,8 @@
     "ledthecontent": " oont dirigé la création et la révision du contenu pour le compte de Sustainable Energy for All. ",
     "pleasecontact": "Pour toute demande des médias, veuillez contacter: ",
     "AllPlatforms": "Toutes les plateformes",
-    "CoolingSector": "Cooling Sector",
-    "EnergyEfficiencySector": "Energy Efficiency Sector",
+    "CoolingSector": "Secteur Froid",
+    "EnergyEfficiencySector": "Secteur de l'efficacité énergétique",
     "CollaborativeWork":"Le Sustainable Energy Policy Hub (Centre politique pour l’énergie durable) est un travail collaboratif de SEforALL et de ses partenaires et il est géré par SEforALL.",
     
     "UserSurvey": "Enquête auprès des utilisateurs",
@@ -144,5 +144,10 @@
     "Organization": "Organisation",
     "Country":"Pays",
     "Submit":"Soumettre",
-    "SuccessfullySubmitted":"Vos coordonnées ont été soumises avec succès"
+    "SuccessfullySubmitted":"Vos coordonnées ont été soumises avec succès",
+
+    "ElectricityAccess":"Accès à l’électricité",
+    "CleanCooking":"Cuisson propre",
+    "SustainableCooling":"Refroidissement durable",
+    "EnergyEfficency":"Efficacité énergétique"
 }

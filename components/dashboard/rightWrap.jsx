@@ -608,7 +608,7 @@ const RightWrapPage = ({
         text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor hover:opacity-[0.8] resources-button`}
                   onClick={() => onDownload()}
                   disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : "", width: 108 }}
+                  style={{ opacity: disableButtons ? 0.5 : "", width: 120 }}
                 >
                   {!isLoader ? (
                     <TooltipComponent
