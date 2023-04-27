@@ -133,5 +133,16 @@
     "AllPlatforms": "Toutes les plateformes",
     "CoolingSector": "Cooling Sector",
     "EnergyEfficiencySector": "Energy Efficiency Sector",
-    "CollaborativeWork":"Le Sustainable Energy Policy Hub (Centre politique pour l’énergie durable) est un travail collaboratif de SEforALL et de ses partenaires et il est géré par SEforALL."
+    "CollaborativeWork":"Le Sustainable Energy Policy Hub (Centre politique pour l’énergie durable) est un travail collaboratif de SEforALL et de ses partenaires et il est géré par SEforALL.",
+    
+    "UserSurvey": "Enquête auprès des utilisateurs",
+    "PleaseEnterFollowingDetails" : "Veuillez entrer les détails suivants. Aucun champ n'est obligatoire.",
+    "Note" : "Remarque",
+    "YourPersonalData" : "Vos données personnelles sont traitées conformément à la politique de confidentialité de SEforALL.",
+    "FullName" : "Nom et prénom",
+    "JobTitle":"Titre d'emploi",
+    "Organization": "Organisation",
+    "Country":"Pays",
+    "Submit":"Soumettre",
+    "SuccessfullySubmitted":"Vos coordonnées ont été soumises avec succès"
 }

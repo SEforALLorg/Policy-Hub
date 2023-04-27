@@ -163,5 +163,16 @@
     "UNEPU4E":" UNEP U4E; ",
     "ESMAP":" ESMAP; ",
     "DarmstadtBusinessSchool":" Darmstadt Business School.",
-    "CollaborativeWork":"The Sustainable Energy Policy Hub is a collaborative work of SEforALL and its partners and it managed by SEforALL."
+    "CollaborativeWork":"The Sustainable Energy Policy Hub is a collaborative work of SEforALL and its partners and it managed by SEforALL.",
+    
+    "UserSurvey" : "User Survey",
+    "PleaseEnterFollowingDetails" : "Please enter the following details. No fields are mandatory.",
+    "Note" : "Note",
+    "YourPersonalData" : "Your personal data is processed as per SEforALL Privacy Policy.",
+    "FullName": "Full Name",
+    "JobTitle":"Job Title",
+    "Organization": "Organization",
+    "Country":"Country",
+    "Submit":"Submit",
+    "SuccessfullySubmitted":"Your details has been successfully submitted"
 }
