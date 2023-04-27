@@ -78,12 +78,12 @@ const Feature = () => {
       id: 2,
     },
     {
-      label: "Sustainable Cooling",
-      id: 4,
-    },
-    {
       label: "Energy Efficency",
       id: 3,
+    },
+    {
+      label: "Sustainable Cooling",
+      id: 4,
     },
   ];
   return (

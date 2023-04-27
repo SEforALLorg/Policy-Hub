@@ -1478,6 +1478,9 @@ a {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .cookies-wrap{
+    font-size: 14px;
+  }
   .customize-title .tooltipWrap .customizeStyle {
     font-size: 22px;
     line-height: 28px;
@@ -1816,6 +1819,7 @@ a {
   .OptionsWrap {
     padding: 0px;
     padding-left: 5px;
+    height: calc(30vh - 76px);
   }
 
   .optionItem {
@@ -2019,6 +2023,7 @@ a {
     width: 180px !important;
     padding-left: 5px !important;
     padding-right: 5px !important;
+    font-size: 12px !important;
   }
 
   main {
@@ -2059,6 +2064,11 @@ a {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 990px) {
+
+  .footer-button {
+    width: unset !important;
+    padding: 10px 8px !important;
+  }
   .resource-buttons-wrap {
     margin-right: 10px;
     overflow: hidden;
@@ -2203,6 +2213,12 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
+  .footer .DropdownToggle{
+    justify-content: center;
+  }
+  .footer .dropdown-toggle::after{
+    margin-left: 8px !important;
+  }
   .report-bottom-box .content{
     left: 50% !important;
     transform: translateX(-42%) !important;
@@ -2750,7 +2766,7 @@ a {
   }
 
   .footer-button {
-    width: 48% !important;
+    width: 100% !important;
     margin: 0px 5px;
     padding: 9px 0px !important;
   }

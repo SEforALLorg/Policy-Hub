@@ -234,7 +234,7 @@ const MobileFilters = ({
             onClick={() => setIsFilter(!isFilter)}
           >
             <BsSliders className="text-text mr-[5px]" />
-            Filter
+            {t("Filter")}
           </div>
           {isFilter && (
             <div

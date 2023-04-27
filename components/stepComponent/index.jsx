@@ -137,7 +137,7 @@ const StepComponent = ({
           {t("Previous")}
         </button>
         {nextCount > 1 && (
-          <p className="text-[14px] text-center mb-[5px] font-medium SlideButtonNo">
+          <p className="text-[14px] text-center font-medium SlideButtonNo">
             {stepCount}/{nextCount}
           </p>
         )}
