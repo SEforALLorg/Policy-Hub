@@ -130,7 +130,6 @@ const LeftWrapPage = ({
   const onMiniClick = (e) => {
     const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
     setNextQuestionId(e?.[0]);
-    console.log(userJourney, "userJourney120");
     setUserJourney([
       ...userJourney
         .splice(0, 2)
