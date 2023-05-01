@@ -8,8 +8,7 @@ const OtherToolsCard = ({
   link,
   filterData,
 }) => {
-  const { t } = useTranslation();
-
+  const { t, i18n } = useTranslation();
   return (
     <div
       className={
@@ -35,7 +34,7 @@ const OtherToolsCard = ({
                   key={index}
                   className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                 >
-                  {`${type?.attributes?.Name}`}
+                  {`${i18n.language === 'en' ? type?.attributes?.Name : type?.attributes?.FrenchName}`}
                 </button>
               );
             })}
