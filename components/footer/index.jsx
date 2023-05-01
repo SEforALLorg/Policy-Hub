@@ -143,7 +143,7 @@ const Footer = ({ footerRes }) => {
             >
               <p style={{ marginBottom: "0" }}>{t("DownloadDecisionTree")}</p>
             </DropdownToggle>
-            <DropdownMenu style={{ marginLeft: 8, marginTop: 15 }} className="DropdownMenu">
+            <DropdownMenu className="dropdown-menu-box" style={{ marginLeft: 8, marginTop: 15 }}>
               {resource.map((resources, index) => {
                 return (
                   <DropdownItem

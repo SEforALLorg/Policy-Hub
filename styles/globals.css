@@ -2213,6 +2213,9 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
+  .dropdown-menu-box{
+    width: 97% !important;
+  }
   .footer .DropdownToggle{
     justify-content: center;
   }
