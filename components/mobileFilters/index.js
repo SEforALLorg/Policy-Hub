@@ -234,7 +234,7 @@ const MobileFilters = ({
             onClick={() => setIsFilter(!isFilter)}
           >
             <BsSliders className="text-text mr-[5px]" />
-            {t("Filter")}
+            {t("Filters")}
           </div>
           {isFilter && (
             <div
@@ -254,14 +254,14 @@ const MobileFilters = ({
             style={{ display: isBlock ? "block" : '' }}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
-              Filters
+              {t("Filters")}
               {optionSelected ? (
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button hover:opacity-[0.8] mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
-                  Clear filters
+                  {t("ClearFilters")}
                 </button>
               ) : null}
               <IoClose
@@ -270,7 +270,7 @@ const MobileFilters = ({
                 style={{ top: 14 }}
               />
             </h5>
-            <form>
+            <form className="filterForm">
               <div className="innerFilter">
                 {showAllReports && (
                   <SearchBar
