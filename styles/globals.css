@@ -35,6 +35,17 @@ main {
   color: rgb(73 73 73/var(--tw-text-opacity))
 }
 
+.headerContainer .dropdown{
+  width: 200px;
+}
+.headerContainer .dropdown-menu {
+  left: -8px !important;
+  width: 100% !important
+} 
+.dropdown-menu-box{
+  left: -8px !important;
+}
+
 .electricity_access {
   background-image: url("/static/images/Electricity.png");
   background-size: cover;
@@ -2214,6 +2225,7 @@ a {
 
 @media only screen and (max-width: 767px) {
   .dropdown-menu-box{
+    left: 0px !important;
     width: 97% !important;
   }
   .footer .DropdownToggle{
