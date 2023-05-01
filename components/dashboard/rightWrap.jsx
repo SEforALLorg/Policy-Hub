@@ -428,7 +428,7 @@ const RightWrapPage = ({
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[2px] resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
-                  {t("Clear Filters")}
+                  {t("ClearFilters")}
                 </button>
               ) : null}
               <IoClose
@@ -580,7 +580,7 @@ const RightWrapPage = ({
                 small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
                 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
                 >
-                  Clear Filters
+                  {t("ClearFilters")}
                 </button>
                 <BlueButton
                   title="Apply"
