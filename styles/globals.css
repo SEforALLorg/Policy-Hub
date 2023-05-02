@@ -40,12 +40,21 @@ main {
 }
 .headerContainer .dropdown-menu {
   left: -8px !important;
-  width: 100% !important
+  width: 100% !important;
+  margin-bottom: 8px !important;
 } 
 .dropdown-menu-box{
-  left: -8px !important;
+  left: -25px !important;
+  margin-bottom: 15px !important;
+  width: 100% !important;
 }
 
+.en-dropdown{
+  min-width: 11rem !important;
+}
+.fr-dropdown{
+  min-width: 13rem !important;
+}
 .electricity_access {
   background-image: url("/static/images/Electricity.png");
   background-size: cover;
@@ -2977,8 +2986,23 @@ a {
 }
 @media only screen and (max-width: 360px) {
   .innerFilter{
-    height: 446px !important;
+    height: calc(81vh - 50px)  !important;
   }
+  
+  .innerFilter::-webkit-scrollbar {
+    width: 7px !important;
+  }
+  
+  .innerFilter::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3) !important;
+    margin-top: 5px !important;
+  }
+  
+  .innerFilter::-webkit-scrollbar-thumb {
+    background: var(--theme-button-color) !important;
+    border-radius: 10px !important;
+  }
+  
   .filterForm{
     height: 100% !important;
     overflow: auto !important;
@@ -2988,13 +3012,13 @@ a {
     display: block;
     /* justify-content: space-between !important; */
     margin-top: 17px !important;
-    /* position: absolute;
-    bottom: 14px;
-    left: 0px; */
+    /* position: unset; */
+    background-color: #ecf3f6;
     width: 100%;
     /* padding: 0px 20px; */
     border-top: 2.4px solid rgba(134, 164, 176, 0.15);
-    padding: 10px 0px;
+    padding: 10px 20px;
+    margin-bottom: -17px;
   }
 
   .apply-wrap button {
