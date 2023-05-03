@@ -144,12 +144,11 @@ const Feature = () => {
                     {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
-                <DropdownMenu className="platform-drop-down" style={{ marginRight: -8, marginTop: 7 }}>
+                <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
                   {dropDownData?.map((resource, index) => {
                     const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
-                      className="platform-drop-down-item"
                         onClick={() => {
                           filterData({
                             id: resource?.id,

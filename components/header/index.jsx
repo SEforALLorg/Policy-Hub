@@ -38,6 +38,13 @@ const Header = ({ selectedRes }) => {
       setLang(localStorage.getItem("lang"));
     }
   }, []);
+  useEffect(()=>{
+    if (isOpen) {
+      document.getElementsByTagName("body")[0].classList.add("hide-scroll");
+    } else {
+      document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
+    }
+  },[isOpen])
 
   return (
     <div className="header">
