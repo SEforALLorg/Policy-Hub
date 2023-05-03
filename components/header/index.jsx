@@ -39,7 +39,7 @@ const Header = ({ selectedRes }) => {
     }
   }, []);
   useEffect(()=>{
-    if (isOpen === true) {
+    if (isOpen) {
       document.getElementsByTagName("body")[0].classList.add("hide-scroll");
     } else {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
