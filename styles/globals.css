@@ -16,6 +16,9 @@ body {
   background: var(--theme-back-ground) !important;
   /* backdrop-filter: brightness(0.5); */
 }
+.hide-scroll{
+  overflow: hidden !important;
+}
 
 .Toastify__toast-theme--light{
   display: none !important;
@@ -2986,7 +2989,7 @@ a {
 }
 @media only screen and (max-width: 360px) {
   .innerFilter{
-    height: calc(81vh - 50px)  !important;
+    height: calc(81vh - 80px)  !important;
   }
   
   .innerFilter::-webkit-scrollbar {
