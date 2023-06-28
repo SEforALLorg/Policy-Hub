@@ -186,6 +186,8 @@ const Footer = ({ footerRes }) => {
             alt="logo"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
+            width={isMobile() ? "181px" : "90px"}
+            height={isMobile() ? "46px" : "70px"}
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
@@ -235,6 +237,8 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "200px"}
+              height={isMobile() ? "46px" : "66px"}
             />
           )}
           <img
@@ -246,6 +250,8 @@ const Footer = ({ footerRes }) => {
             alt="rettangolare_logo"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}
+            width={isMobile() ? "181px" : "250px"}
+            height={isMobile() ? "46px" : "52px"}
           />
         </div>
       </div>

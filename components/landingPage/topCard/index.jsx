@@ -22,8 +22,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[16%] mr-[8px] mt-[5px]"
                 src="../../../static/images/hub.svg"
                 alt="hub_logo"
-                width={isMobile() ? "65px" : ""}
-                height={isMobile() ? "65px" : ""}
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("PlatformThatSupports")}
@@ -37,8 +37,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
                 alt="journey_logo"
-                width={isMobile() ? "65px" : ""}
-                height={isMobile() ? "65px" : ""}
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("ResourcesOnAccess")}
@@ -55,8 +55,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[14%] mr-[8px] mt-[-8px]"
                 src="../../../static/images/sustainable_hub.png"
                 alt="sustainable_hub_logo"
-                width={isMobile() ? "65px" : ""}
-                height={isMobile() ? "65px" : ""}
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("TheKnowledgeHub")}
@@ -69,8 +69,8 @@ const TopCard = ({ HandleOpen }) => {
               className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
               alt="guide_logo"
-              width={isMobile() ? "65px" : ""}
-              height={isMobile() ? "65px" : ""}
+              width={isMobile() ? "65px" : "70px"}
+              height={isMobile() ? "65px" : "70px"}
             />
             <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
               {t("OnElectricity")}

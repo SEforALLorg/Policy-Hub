@@ -2211,6 +2211,9 @@ a {
     left: 0px !important;
     width: 97% !important;
   }
+  main {
+    background-image: url("/static/images/BG_mobile.jpg");
+  }
   .footer .DropdownToggle {
     justify-content: center;
   }

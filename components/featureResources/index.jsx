@@ -20,7 +20,11 @@ const Feature = () => {
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
   const [filterType, setFilterType] = useState("");
+  const [expanded, setExpanded] = useState(false);
 
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
   const { data: filteredCards, refetch } = useQuery(
     ["filterResources", query],
     () => filterResources(query),
@@ -134,7 +138,10 @@ const Feature = () => {
                   style={{ color: "white" }}
                   className="DropdownToggle flex justify-between items-center no-underline"
                   tag="a"
+                  role="button"
                   caret
+                  aria-expanded={expanded}
+                  onClick={toggleDropdown}
                 >
                   <p
                     style={{ marginBottom: "0" }}

@@ -25,7 +25,11 @@ const DetailModal = ({ firstHit }) => {
   const [buttonDisable, setButtonDisable] = useState(true);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState();
+  const [expanded, setExpanded] = useState(false);
 
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
     if (UserModal === null) {
@@ -241,7 +245,10 @@ const DetailModal = ({ firstHit }) => {
                       style={{ color: "white" }}
                       className="flex justify-between items-center no-underline"
                       tag="a"
+                      role="button"
                       caret
+                      aria-expanded={expanded}
+                      onClick={toggleDropdown}
                     >
                       <p
                         style={{ marginBottom: "0" }}

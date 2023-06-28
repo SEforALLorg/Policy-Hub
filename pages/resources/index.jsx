@@ -12,6 +12,7 @@ const Resources = () => {
     <main>
       <Head>
         <title>{t("ResourcesTitle")}</title>
+        <meta name="description" content="VKH Resources" />
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
