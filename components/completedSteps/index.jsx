@@ -20,7 +20,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         <div
           className="restartWrap"
           onClick={onRestart}
-          style={{ display: changingRestartLogo === length ? "" : "flex" }}
+          style={{ display: changingRestartLogo?.length ? "" : "flex" }}
         >
           {changingRestartLogo?.map((key) => {
             if (

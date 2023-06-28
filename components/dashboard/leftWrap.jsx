@@ -263,36 +263,34 @@ const LeftWrapPage = ({
                       ?.attributes?.QuestionKeyType === QuestionKeyType
                 );
               }
-
-              const renderQuestionnaire = () => (
-                <>
-                  <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
-                    {questionTitle}
-                    {ToolTipText && (
-                      <TooltipComponent id={"leftWrap"} content={ToolTipText} />
-                    )}
-                  </div>
-                  <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
-                    {singleAnswer?.map((i) => {
-                      if (!i?.Answer) return null;
-
-                      return (
-                        <BlueButton
-                          className="mb-3 p-2"
-                          title={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                          onClick={() => onSubmitAnswer(i, item)}
-                          key={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                        />
-                      );
-                    })}
-                  </div>
-                </>
-              );
-
               return (
-                <div className={"QuestionWrap"} key={questionTitle}>
+                <div className={"QuestionWrap"} key={'QuestionWrap'}>
                   {questionType === "Questionnaire" ? (
-                    renderQuestionnaire()
+                    <>
+                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
+                        {questionTitle}
+                        {ToolTipText && (
+                          <TooltipComponent
+                            id={"leftWrap"}
+                            content={ToolTipText}
+                          />
+                        )}
+                      </div>
+                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
+                        {singleAnswer?.map((i) => {
+                          if (!i?.Answer) return null;
+
+                          return (
+                            <BlueButton
+                              className="mb-3 p-2"
+                              title={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                              onClick={() => onSubmitAnswer(i, item)}
+                              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                            />
+                          );
+                        })}
+                      </div>
+                    </>
                   ) : (
                     <StepComponent
                       onNext={onNextQuestion}

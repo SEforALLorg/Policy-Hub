@@ -8,7 +8,7 @@ body {
   margin: 0;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-  font-family: "AvenirFont" !important;
+  font-family: "AvenirFont", sans-serif !important;
   scroll-behavior: smooth;
 }
 
@@ -16,11 +16,11 @@ body {
   background: var(--theme-back-ground) !important;
   /* backdrop-filter: brightness(0.5); */
 }
-.hide-scroll{
+.hide-scroll {
   overflow: hidden !important;
 }
 
-.Toastify__toast-theme--light{
+.Toastify__toast-theme--light {
   display: none !important;
 }
 
@@ -35,27 +35,27 @@ main {
 }
 
 .color-b b {
-  color: rgb(73 73 73/var(--tw-text-opacity))
+  color: rgb(73 73 73 / var(--tw-text-opacity));
 }
 
-.headerContainer .dropdown{
+.headerContainer .dropdown {
   width: 200px;
 }
 .headerContainer .dropdown-menu {
   left: -8px !important;
   width: 100% !important;
   margin-bottom: 8px !important;
-} 
-.dropdown-menu-box{
+}
+.dropdown-menu-box {
   left: -25px !important;
   margin-bottom: 15px !important;
   width: 100% !important;
 }
 
-.en-dropdown{
+.en-dropdown {
   min-width: 11rem !important;
 }
-.fr-dropdown{
+.fr-dropdown {
   min-width: 13rem !important;
 }
 .electricity_access {
@@ -77,7 +77,6 @@ main {
   background-image: url("/static/images/energy_efficiency_bg.png");
   background-size: cover;
 }
-
 
 .BtnColor {
   background: var(--theme-button-color) !important;
@@ -144,7 +143,7 @@ main {
 }
 
 .optionsButtonWrap p {
-  color: #065A89 !important;
+  color: #065a89 !important;
 }
 
 .restartIconColor svg {
@@ -175,8 +174,6 @@ main {
   padding: 15px !important;
   padding-top: 18px !important;
 }
-
-
 
 @font-face {
   font-family: "AvenirFont";
@@ -278,7 +275,7 @@ a {
   display: inline-block;
 }
 
-.nav-item div  {
+.nav-item div {
   width: 185px;
 }
 
@@ -347,7 +344,7 @@ a {
 }
 
 .footer .DropdownToggle:hover {
-  color: #fff
+  color: #fff;
 }
 
 .header .DropdownToggle p {
@@ -492,7 +489,6 @@ a {
   line-height: 24px;
   color: #fff;
   border-radius: 84px;
-  border: none;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -630,7 +626,7 @@ a {
   cursor: pointer;
 }
 
-.optionItem>div {
+.optionItem > div {
   margin-top: 1px;
 }
 
@@ -727,18 +723,17 @@ a {
 }
 
 @media only screen and (min-width: 1300px) and (max-width: 1600px) {
-  .rightInnerWrap.cleanCooking{
+  .rightInnerWrap.cleanCooking {
     height: calc(100vh - 100px) !important;
   }
-  .rightInnerWrap.energy{
+  .rightInnerWrap.energy {
     /* height: calc(100vh + 20px) !important; */
     height: calc(100vh - 100px) !important;
   }
-  .rightInnerWrap.sustain{
+  .rightInnerWrap.sustain {
     /* height: calc(100vh + 20px) !important; */
     height: calc(85vh - 100px) !important;
   }
-  
 }
 .rightInnerWrap::-webkit-scrollbar {
   width: 7px;
@@ -995,7 +990,6 @@ a {
   padding: 16px 32px;
 }
 
-
 .report-bottom-box .content {
   visibility: hidden;
   opacity: 0;
@@ -1026,7 +1020,8 @@ a {
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent var(--theme-yes-button-color) transparent;
+  border-color: transparent transparent var(--theme-yes-button-color)
+    transparent;
 }
 
 .report-bottom-box:hover .content {
@@ -1034,7 +1029,6 @@ a {
   opacity: 1;
   transition: all 0.2s;
 }
-
 
 .report-bottom-box .contentNew {
   visibility: hidden;
@@ -1059,7 +1053,7 @@ a {
 }
 
 .footer-button:hover {
-  background-color: rgba(0,0,0,0.2) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .report-bottom-box .contentNew::after {
@@ -1070,7 +1064,8 @@ a {
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent var(--theme-yes-button-color) transparent;
+  border-color: transparent transparent var(--theme-yes-button-color)
+    transparent;
 }
 
 .report-bottom-box:hover .contentNew {
@@ -1124,11 +1119,11 @@ a {
   border: 1px solid #ddd;
 }
 
-.checkWrap .container:hover input~.checkmark {
+.checkWrap .container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.checkWrap .container input:checked~.checkmark {
+.checkWrap .container input:checked ~ .checkmark {
   background-color: #144a68;
 }
 
@@ -1138,7 +1133,7 @@ a {
   display: none;
 }
 
-.checkWrap .container input:checked~.checkmark:after {
+.checkWrap .container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1238,7 +1233,8 @@ a {
 }
 
 .tooltipWrap .content.top::after {
-  border-color: var(--theme-yes-button-color) transparent transparent transparent;
+  border-color: var(--theme-yes-button-color) transparent transparent
+    transparent;
   top: unset;
   bottom: -16px;
 }
@@ -1251,7 +1247,8 @@ a {
   margin-left: -5px;
   border-width: 8px;
   border-style: solid;
-  border-color: transparent transparent var(--theme-yes-button-color) transparent;
+  border-color: transparent transparent var(--theme-yes-button-color)
+    transparent;
 }
 
 .customize-header {
@@ -1349,11 +1346,11 @@ a {
   border-radius: 50%;
 }
 
-.radio-button-wrap .container-wrap:hover input~.checkmark {
+.radio-button-wrap .container-wrap:hover input ~ .checkmark {
   background-color: #fff;
 }
 
-.radio-button-wrap .container-wrap input:checked~.checkmark {
+.radio-button-wrap .container-wrap input:checked ~ .checkmark {
   background-color: #fff;
 }
 
@@ -1363,7 +1360,7 @@ a {
   display: none;
 }
 
-.radio-button-wrap .container-wrap input:checked~.checkmark:after {
+.radio-button-wrap .container-wrap input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -1377,7 +1374,7 @@ a {
   transform: translate(-50%, -50%);
 }
 
-.inputFullWrap .newsletter-input-fields>div {
+.inputFullWrap .newsletter-input-fields > div {
   justify-content: center !important;
   margin-left: unset !important;
 }
@@ -1434,7 +1431,7 @@ a {
 .cookies-wrap {
   width: 100%;
   height: 70px;
-  background-color: #FCB600;
+  background-color: #fcb600;
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -1451,24 +1448,23 @@ a {
 
 .cookies-accept-button {
   background-color: #fff;
-  color: #13A2BC;
+  color: #13a2bc;
   padding: 7px 20px;
   border-radius: 20px;
-  margin-left: 10px;
   font-size: 15px;
   margin-top: -2px;
   padding-top: 10px;
   margin-left: 17px;
 }
 
-.main-container{
+.main-container {
   height: 100%;
 }
 
 .resources-button {
   margin: 0px !important;
   margin-top: 0px !important;
-  padding:0 8px !important;
+  padding: 0 8px !important;
   margin-left: 5px !important;
   display: flex;
   align-items: center;
@@ -1476,11 +1472,11 @@ a {
   min-width: 72px;
   height: 30px !important;
 }
-.filterButton{
+.filterButton {
   margin-top: -9px !important;
   padding-top: 2px !important;
 }
-.resource-buttons .tooltipWrap{
+.resource-buttons .tooltipWrap {
   margin-top: 2px !important;
 }
 .resource-buttons .spinner-border {
@@ -1488,16 +1484,16 @@ a {
   height: 1.5rem !important;
   vertical-align: -0.5em !important;
 }
-.resource-buttons-wrap{
-   margin-top: -9px;
+.resource-buttons-wrap {
+  margin-top: -9px;
 }
 
-.country-drop-down .dropdown-toggle::after{
+.country-drop-down .dropdown-toggle::after {
   border-top-color: #000;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .cookies-wrap{
+  .cookies-wrap {
     font-size: 14px;
   }
   .customize-title .tooltipWrap .customizeStyle {
@@ -1505,19 +1501,18 @@ a {
     line-height: 28px;
     padding: 10px 16px;
     width: 450px;
-
   }
-  .rightInnerWrap{
+  .rightInnerWrap {
     height: 450px !important;
   }
 }
-@media only screen and (min-width:1024px) {
-  .main-container{
+@media only screen and (min-width: 1024px) {
+  .main-container {
     height: 34vh;
   }
 }
 
-@media only screen and (min-width:1900px) {
+@media only screen and (min-width: 1900px) {
   .mobile-card-width p {
     font-size: 15px;
     /* margin-top: 32rem !important; */
@@ -1591,7 +1586,7 @@ a {
   }
 
   .landing-card {
-    margin-top: 1rem !important;
+    /* margin-top: 1rem !important; */
     margin: 10px auto 4rem !important;
     height: 70vh !important;
   }
@@ -1672,7 +1667,7 @@ a {
 }
 
 @media only screen and (max-width: 1400px) {
-  .DropdownMenu{
+  .DropdownMenu {
     margin-left: -4px !important;
   }
   .custom-container {
@@ -1702,7 +1697,6 @@ a {
     /* height: 131px; */
     margin-top: 10px;
   }
-
 }
 
 @media only screen and (min-width: 1480px) and (max-width: 1680px) {
@@ -1736,7 +1730,6 @@ a {
   .divider-hide {
     display: none;
   }
-
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1100px) {
@@ -1848,7 +1841,7 @@ a {
     line-height: 22px;
   }
 
-  .optionItem>div {
+  .optionItem > div {
     margin-top: 0px;
   }
 
@@ -1943,7 +1936,7 @@ a {
     margin-bottom: 10px !important;
   }
 
-  .feature-wrap>div {
+  .feature-wrap > div {
     padding: 0px 30px;
   }
 
@@ -2044,19 +2037,18 @@ a {
     padding: 0px !important;
   }
 
-  .public-share-modal>div {
+  .public-share-modal > div {
     padding-bottom: 40px !important;
   }
 }
 
-@media only screen and (max-width: 990px){
-  .resourcesButtonColor .tooltipWrap .tooltip_content{
+@media only screen and (max-width: 990px) {
+  .resourcesButtonColor .tooltipWrap .tooltip_content {
     display: none;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 990px) {
-
   .footer-button {
     width: unset !important;
     padding: 10px 8px !important;
@@ -2205,21 +2197,21 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
-  .dropdown-menu-box{
+  .dropdown-menu-box {
     left: 0px !important;
     width: 97% !important;
   }
-  .footer .DropdownToggle{
+  .footer .DropdownToggle {
     justify-content: center;
   }
-  .footer .dropdown-toggle::after{
+  .footer .dropdown-toggle::after {
     margin-left: 8px !important;
   }
-  .report-bottom-box .content{
+  .report-bottom-box .content {
     left: 50% !important;
     transform: translateX(-42%) !important;
   }
-  .tooltipWrap .tooltip_content{
+  .tooltipWrap .tooltip_content {
     max-width: 250px !important;
   }
   .all_platform_table {
@@ -2228,10 +2220,10 @@ a {
   }
 
   .closeIcon {
-     width: 35px !important;
-     height: 35px !important;
-     right: -17px !important;
-     top: -15px !important;
+    width: 35px !important;
+    height: 35px !important;
+    right: -17px !important;
+    top: -15px !important;
   }
   .OptionsWrap {
     height: 150px;
@@ -2495,7 +2487,7 @@ a {
     padding-top: 12px;
   }
 
-  .ButtonBox .buttonStyle{
+  .ButtonBox .buttonStyle {
     padding-top: 13px !important;
   }
 
@@ -2651,7 +2643,7 @@ a {
     padding-bottom: 10px !important;
   }
 
-  .tools-card>div {
+  .tools-card > div {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -2682,10 +2674,10 @@ a {
   }
 
   .about-logo-card img {
-      max-width: 100% !important;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    max-width: 100% !important;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   body {
@@ -2751,7 +2743,6 @@ a {
     margin-bottom: 10px !important;
   }
 
-
   .tools-wrap {
     padding-top: 20px !important;
     padding-bottom: 0px !important;
@@ -2766,7 +2757,6 @@ a {
   }
 
   .video-title {
-    line-height: unset;
     line-height: unset;
     margin: 0;
   }
@@ -2909,25 +2899,25 @@ a {
   }
 }
 @media only screen and (max-width: 360px) {
-  .innerFilter{
-    height: calc(81vh - 80px)  !important;
+  .innerFilter {
+    height: calc(81vh - 80px) !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar {
     width: 7px !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3) !important;
     margin-top: 5px !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar-thumb {
     background: var(--theme-button-color) !important;
     border-radius: 10px !important;
   }
-  
-  .filterForm{
+
+  .filterForm {
     height: 100% !important;
     overflow: auto !important;
   }
@@ -2969,7 +2959,7 @@ a {
   }
 }
 
-@media only screen and (min-width:460px) and (max-width:767px) {
+@media only screen and (min-width: 460px) and (max-width: 767px) {
   .footer-logos {
     flex-direction: row;
   }
@@ -3018,7 +3008,9 @@ a {
 }
 
 @media only screen and (max-width: 400px) {
-  .videoPlayer .video-react .video-react-big-play-button.video-react-big-play-button-center {
+  .videoPlayer
+    .video-react
+    .video-react-big-play-button.video-react-big-play-button-center {
     top: 34%;
     background-size: 40% 40%;
     width: 80px;
@@ -3138,7 +3130,7 @@ a {
   display: block;
   text-transform: uppercase;
   color: #fcb600;
-  font-family: Helvetica Neue, Helvetica, Arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.1em;
@@ -3386,12 +3378,10 @@ a {
 #paschka {
   display: block;
   color: white;
-  font-family: helvetica neue, helvetica, arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 32px;
   text-decoration: none;
   position: fixed;
-  bottom: 0px;
-  right: 0px;
   padding: 0px;
   transition: all 0.1s ease;
   background: #000;
@@ -3411,12 +3401,10 @@ a {
   color: #f0f0f0;
 }
 
-
 @media screen and (max-width: 992px) {
   .restartWrap {
     width: 45%;
   }
-
 }
 
 .customizeTooltip::after {
@@ -3429,7 +3417,6 @@ a {
 
 .filterTooltipWrap .energyToolTip {
   background: var(--theme-yes-button-color);
-  color: white;
   z-index: 999;
   font-size: 14px;
   color: #fff;
@@ -3518,7 +3505,7 @@ a {
   right: 10px;
   top: 10px;
   cursor: pointer;
-  color:#adb4bd;
+  color: #adb4bd;
 }
 .header-common-closeIcon:hover {
   color: #454545;

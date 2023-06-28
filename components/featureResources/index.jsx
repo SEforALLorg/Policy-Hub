@@ -44,7 +44,7 @@ const Feature = () => {
     return [...filterData, ...finalData];
   };
 
-  const allResources = setData(filteredCards);
+  const allResources = setData();
 
   useEffect(() => {
     if (query) {

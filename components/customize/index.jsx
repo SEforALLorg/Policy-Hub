@@ -47,7 +47,7 @@ const Customize = ({
         [currentDate]: [payload],
       };
       putJourneyStep(journey);
-    } else if (count === 1) {
+    } else if (count == 1) {
       let journey = {
         [currentDate]: [payload],
       };

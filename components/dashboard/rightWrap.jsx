@@ -201,15 +201,13 @@ const RightWrapPage = ({
   useEffect(() => {
     if (optionSelected && page === 1) {
       setPreviousReports(allReports?.data?.data || []);
-      window !== "undefined" &&
+      window != "undefined" &&
         document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (allReports?.data?.data?.length) {
       setPreviousReports(
         [...(previousReports || []), ...allReports?.data?.data] || []
       );
-      browseResource
-        ? ""
-        : window !== "undefined" &&
+      !browseResource && window != "undefined" &&
           document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
@@ -358,10 +356,6 @@ const RightWrapPage = ({
     height = "";
   }
 
-  const sortedReports = finalPublicationReports
-    ?.slice()
-    .sort((a, b) => b?.publishing - a?.publishing);
-
   return (
     <>
       <CSVLink
@@ -388,7 +382,7 @@ const RightWrapPage = ({
                       alt="card"
                       width="70px"
                       height="70px"
-                      key={"card-image"}
+                      key={'card'}
                     />
                   );
                 }
@@ -709,7 +703,10 @@ const RightWrapPage = ({
                     finalNonPublicationReports?.length &&
                     showAllReports) ? (
                   <>
-                    {Boolean(sortedReports?.length) && sortedReports?.map((i) => {
+                    {Boolean(finalPublicationReports?.length) &&
+                      finalPublicationReports
+                        ?.sort((a, b) => b?.publishing - a?.publishing)
+                        .map((i) => {
                           const name = i?.attributes?.ReportName;
                           if (!name) return null;
                           const year =

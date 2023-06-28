@@ -135,12 +135,6 @@ export const getResourses = (allQuestions) => {
       return ac[0];
     });
 
-  // const groupedResources = groupBy(resourceGroup, "id");
-  // const allArray = Object.values(groupedResources);
-  // const allResources = [].concat
-  //   .apply([], allArray)
-  //   ?.map((item) => item?.resource?.data);
-
   return resourceGroup;
 };
 

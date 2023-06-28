@@ -107,7 +107,6 @@ const Dashboard = ({
     }
   }
   const setUserJourney = () => {
-    let count = localStorage.getItem("count");
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
@@ -124,11 +123,7 @@ const Dashboard = ({
           data = payload?.concat(newJourneyData);
           setPayload(data);
         }
-        if (count && count > 1) {
-          addJourney(latestDate, existingJourney, isExistingUser, data)
-        } else {
-          addJourney(latestDate, existingJourney, isExistingUser, data)
-        }
+        addJourney(latestDate, existingJourney, isExistingUser, data)
       }
     }
   };
