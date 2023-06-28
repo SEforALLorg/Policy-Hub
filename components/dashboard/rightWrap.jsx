@@ -68,7 +68,7 @@ const RightWrapPage = ({
       "orientationchange",
       function () {
         // Announce the new orientation number
-        if (window?.orientation === 90) {
+        if (window?.matchMedia("(orientation: landscape)").matches) {
           setIsFilter(false);
         }
       },
@@ -90,7 +90,6 @@ const RightWrapPage = ({
 
   // Get Reports API
   const query = useMemo(() => {
-    // if (typeof window !== "undefined" && window?.innerWidth < 990) return;
     return getReportQuery(
       selectInputs,
       nonPublicationReports,
@@ -330,6 +329,39 @@ const RightWrapPage = ({
         !finalNonPublicationReports?.length &&
         !showAllReports);
 
+  let resourceClassName = "";
+  if (resourceType === CLEANCOOKING && isExpand) {
+    resourceClassName = "cleanCooking";
+  } else if (resourceType === ENERGYEFFICIENCY && isExpand) {
+    resourceClassName = "energy";
+  } else if (resourceType === SUSTAINABLECOOLING && isExpand) {
+    resourceClassName = "sustain";
+  }
+
+  let paddingBottom;
+  if (showAllReports) {
+    paddingBottom = 0;
+  } else {
+    if (optionSelected) {
+      paddingBottom = "5px";
+    } else {
+      paddingBottom = "9px";
+    }
+  }
+
+  let height;
+  if (resourceType === CLEANCOOKING && isExpand) {
+    height = "calc(80vh - 100px)";
+  } else if (resourceType === ENERGYEFFICIENCY && isExpand) {
+    height = "calc(90vh - 100px)";
+  } else {
+    height = "";
+  }
+
+  const sortedReports = finalPublicationReports
+    ?.slice()
+    .sort((a, b) => b?.publishing - a?.publishing);
+
   return (
     <>
       <CSVLink
@@ -346,7 +378,7 @@ const RightWrapPage = ({
         {!showAllReports && (
           <div className="flex items-center pb-[10px]">
             <div className="flex items-center mr-[20px]">
-              {changingRightWrapLogo.map((key, index) => {
+              {changingRightWrapLogo?.map((key) => {
                 if (
                   localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
                 ) {
@@ -356,7 +388,7 @@ const RightWrapPage = ({
                       alt="card"
                       width="70px"
                       height="70px"
-                      key={index}
+                      key={"card-image"}
                     />
                   );
                 }
@@ -407,17 +439,9 @@ const RightWrapPage = ({
             <h5
               className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
               style={{
-                paddingBottom: showAllReports
-                  ? 0
-                  : optionSelected
-                  ? "5px"
-                  : "9px",
+                paddingBottom: paddingBottom,
                 marginTop:
-                  optionSelected && showAllReports
-                    ? 0
-                    : optionSelected
-                    ? 0
-                    : "",
+                  (optionSelected && showAllReports) || optionSelected ? 0 : "",
               }}
             >
               {t("Filters")}
@@ -663,26 +687,14 @@ const RightWrapPage = ({
             </h5>
             <div
               id="rightWrap"
-              className={`rightInnerWrap ${
-                resourceType === CLEANCOOKING && isExpand
-                  ? "cleanCooking"
-                  : resourceType === ENERGYEFFICIENCY && isExpand
-                  ? "energy" : resourceType === SUSTAINABLECOOLING && isExpand
-                  ? "sustain"
-                  : ""
-              }`}
+              className={`rightInnerWrap ${resourceClassName}`}
               onScroll={(e) => {
                 if (!optionSelected) {
                   onScroll(e);
                 }
               }}
               style={{
-                height:
-                  resourceType === CLEANCOOKING && isExpand
-                    ? "calc(80vh - 100px)"
-                    : resourceType === ENERGYEFFICIENCY && isExpand
-                    ? "calc(90vh - 100px)"
-                    : "",
+                height: height,
               }}
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
@@ -697,10 +709,7 @@ const RightWrapPage = ({
                     finalNonPublicationReports?.length &&
                     showAllReports) ? (
                   <>
-                    {Boolean(finalPublicationReports?.length) &&
-                      finalPublicationReports
-                        ?.sort((a, b) => b?.publishing - a?.publishing)
-                        .map((i, index) => {
+                    {Boolean(sortedReports?.length) && sortedReports?.map((i) => {
                           const name = i?.attributes?.ReportName;
                           if (!name) return null;
                           const year =
@@ -730,7 +739,7 @@ const RightWrapPage = ({
                                   : "../../static/images/globe.png"
                               }
                               title={name}
-                              key={index}
+                              key={name}
                               star={true}
                               url={url}
                               onClick={() => onReportClick(i?.id)}
@@ -763,7 +772,7 @@ const RightWrapPage = ({
                       </>
                     ) : null}
                     {Boolean(reports?.length) &&
-                      reports?.map((i, index) => {
+                      reports?.map((i) => {
                         const name = i?.attributes?.ReportName;
                         if (!name) return null;
                         const year =
@@ -792,7 +801,7 @@ const RightWrapPage = ({
                                 : "../../static/images/globe.png"
                             }
                             title={name}
-                            key={index}
+                            key={name}
                             url={url}
                             onClick={() => onReportClick(i?.id)}
                             isActive={activeCard === i?.id}

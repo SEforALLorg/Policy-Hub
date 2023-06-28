@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -27,19 +27,15 @@ const Footer = ({ footerRes }) => {
     switch (resource) {
       case "ElectricityAccess":
         window.open("static/pdf/Electrification.pdf");
-        // setTitle("Electricity Access");
         break;
       case "CleanCooking":
         window.open("static/pdf/Cleancooking.pdf");
-        // setTitle("Clean Cooking");
         break;
       case "SustainableCooling":
         window.open("static/pdf/Sustainablecooling.pdf");
-        // setTitle("Sustainable Cooling");
         break;
       case "EnergyEfficency":
         window.open("static/pdf/Energyefficiency.pdf");
-        // setTitle("Energy Efficency");
         break;
       default:
         break;
@@ -115,7 +111,9 @@ const Footer = ({ footerRes }) => {
             </span>
           </p>
           <button
-            onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
+            onClick={() =>
+              window.open(`/${i18n.language}/allresources`, "_self")
+            }
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
                                       border leading-5 border-white rounded-[42px] bg-transparent 
                                       desktoplg:text-small flex items-center justify-center 
@@ -143,14 +141,19 @@ const Footer = ({ footerRes }) => {
             >
               <p style={{ marginBottom: "0" }}>{t("DownloadDecisionTree")}</p>
             </DropdownToggle>
-            <DropdownMenu className={`dropdown-menu-box ${i18n.language === 'en' ? "en-dropdown" : "fr-dropdown"}`} style={{ marginLeft: 8, marginTop: 15 }}>
-              {resource.map((resources, index) => {
+            <DropdownMenu
+              className={`dropdown-menu-box ${
+                i18n.language === "en" ? "en-dropdown" : "fr-dropdown"
+              }`}
+              style={{ marginLeft: 8, marginTop: 15 }}
+            >
+              {resource.map((resources) => {
                 return (
                   <DropdownItem
                     onClick={() => {
                       onClickHandler(resources);
                     }}
-                    key={index}
+                    key={resources}
                   >
                     {t(resources)}
                   </DropdownItem>

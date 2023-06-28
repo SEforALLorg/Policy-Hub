@@ -27,11 +27,11 @@ const OtherToolsCard = ({
         </p>
         <div className="toolBtn flex flex-wrap">
           {resourceType &&
-            resourceType?.map((type, index) => {
+            resourceType?.map((type) => {
               return (
                 <button
                   onClick={() => filterData({ id: type?.id })}
-                  key={index}
+                  key={type?.attributes?.Name || "name"}
                   className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall bg-lightBlue rounded-[60px] text-normal border-2 border-transparent outline-0 py-[2px] px-[10px] hover:bg-Primary hover:text-white ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                 >
                   {`${i18n.language === 'en' ? type?.attributes?.Name : type?.attributes?.FrenchName}`}

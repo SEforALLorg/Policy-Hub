@@ -84,14 +84,14 @@ const Resources = ({
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {resourcesData &&
-              Object?.values(resourcesData)?.map((resource, index) => (
+              Object?.values(resourcesData)?.map((resource) => (
                 <BlueButton
                   title={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
                   onClick={() => {
                     onAnswerClick(resource);
                     changeColor(resource);
                   }}
-                  key={index}
+                  key={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
                   className="mb-[20px] h-[95px] text-[23px]"
                 />
               ))}

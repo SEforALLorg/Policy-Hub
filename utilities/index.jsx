@@ -164,7 +164,6 @@ export const shortName = (str) => {
 
 export const validation = (event, name, val) => {
   let formError;
-  let arr = [];
   switch (name) {
     case "FirstName":
       if (val?.length <= 3) {

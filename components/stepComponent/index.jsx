@@ -95,7 +95,7 @@ const StepComponent = ({
           return (
             <div
               className="optionItem"
-              key={index}
+              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
               onClick={() => {
                 isFoodAndEquipment ? "" : onAnswerClick(i);
                 onSubmitJourney(i, title);

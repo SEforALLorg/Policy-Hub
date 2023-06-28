@@ -248,10 +248,6 @@ a {
   visibility: unset !important;
 }
 
-.collapse {
-  visibility: unset !important;
-}
-
 .cardBigHeading {
   background-image: url(/static/images/BG.png);
   background-color: #144a68 !important;
@@ -1748,10 +1744,6 @@ a {
     max-width: 100%;
   }
 
-  .header .nav-link {
-    /* width: 130px; */
-  }
-
   .nav-item div {
     width: 120px;
   }
@@ -1761,6 +1753,7 @@ a {
     background-size: 100% !important;
     background-attachment: unset !important;
     background-position: top right !important;
+    width: 100% !important;
   }
 
   .inner-section-content {
@@ -1815,6 +1808,7 @@ a {
     font-size: 34px !important;
     line-height: 46px !important;
     padding: 0px 0rem 4rem 10px !important;
+    padding-bottom: 0px !important;
   }
 
   .dashboard-left-wrap {
@@ -1823,6 +1817,7 @@ a {
 
   .reportRightWrap {
     padding: 28px 15px;
+    padding-right: 8px;
   }
 
   .report-left-wrap {
@@ -1863,6 +1858,7 @@ a {
 
   .restartWrap {
     margin: 2px 4px;
+    width: 31%;
   }
 
   .restartWrap img {
@@ -1871,7 +1867,8 @@ a {
   }
 
   .share-your-text {
-    margin-top: 13px;
+    /* margin-top: 13px; */
+    margin-top: 10px !important;
   }
 
   .newsletter-input-fields {
@@ -1898,6 +1895,7 @@ a {
   .tools-card {
     margin-left: 0px !important;
     margin-right: 0px !important;
+    padding: 0px !important;
   }
 
   .cardBigHeading br {
@@ -1905,10 +1903,12 @@ a {
   }
 
   .cardBigHeading {
-    font-size: 50px !important;
+    /* font-size: 50px !important; */
     line-height: 65px !important;
     padding-top: 6rem !important;
     top: 2rem !important;
+    background-size: cover !important;
+    font-size: 44px !important;
   }
 
   .card-section-wrap {
@@ -1921,10 +1921,6 @@ a {
     width: 90% !important; */
     font-size: 13px !important;
     line-height: 16px !important;
-  }
-
-  .header-title-wrap {
-    width: 100% !important;
   }
 
   .landingButton {
@@ -1965,10 +1961,6 @@ a {
     margin-top: 40px !important;
   } */
 
-  .tools-card {
-    padding: 0px !important;
-  }
-
   .about-logo img {
     width: 50% !important;
     margin: 30px auto;
@@ -2003,14 +1995,6 @@ a {
     object-fit: contain;
   }
 
-  .reportRightWrap {
-    padding-right: 8px;
-  }
-
-  .customize-title {
-    padding-bottom: 0px !important;
-  }
-
   .customize-buttons {
     max-width: 70% !important;
   }
@@ -2018,16 +2002,6 @@ a {
   .complete-buttons-wrap {
     flex-wrap: wrap;
     /* justify-content: space-around !important; */
-  }
-
-  .restartWrap {
-    width: 31%;
-    /* height: 140px; */
-    /* margin-bottom: 20px !important; */
-  }
-
-  .share-your-text {
-    margin-top: 10px !important;
   }
 
   .inputFullWrap {
@@ -2059,11 +2033,6 @@ a {
   body {
     overflow: auto !important;
     background-size: cover !important;
-  }
-
-  .cardBigHeading {
-    background-size: cover !important;
-    font-size: 44px !important;
   }
 
   .public-share-modal .inputFullWrap {
@@ -2266,6 +2235,7 @@ a {
   }
   .OptionsWrap {
     height: 150px;
+    margin-bottom: 40px;
   }
 
   .customize-header h5 {
@@ -2389,6 +2359,8 @@ a {
     max-width: 100% !important;
     overflow: auto !important;
     height: 100%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 
   .resource-buttons {
@@ -2399,12 +2371,14 @@ a {
   .resource-buttons-wrap {
     justify-content: flex-end;
     overflow: hidden;
-  }
-  .resource-buttons-wrap{
     margin-top: -4px;
- }
+  }
+
   .landing-card {
     height: 100% !important;
+    padding: 20px !important;
+    width: 100% !important;
+    padding-top: 0px !important;
   }
 
   .divider-right {
@@ -2422,6 +2396,8 @@ a {
     padding-top: 2rem !important;
     /* margin-bottom: 10rem !important; */
     top: 5rem !important;
+    background-image: unset !important;
+    background-color: transparent !important;
   }
 
   .mobile-card-width {
@@ -2431,12 +2407,6 @@ a {
 
   .cardBigHeading br {
     content: "";
-  }
-
-  .landing-card {
-    padding: 20px !important;
-    width: 100% !important;
-    padding-top: 0px !important;
   }
 
   .landing-card-inner {
@@ -2503,8 +2473,9 @@ a {
     font-size: 16px !important;
     line-height: 24px !important;
     padding: 0px !important;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-bottom: 20px !important;
+    margin-top: 20px;
   }
 
   .customize-card {
@@ -2550,6 +2521,7 @@ a {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     height: unset;
+    padding-right: 10px !important;
   }
 
   .left-header-image {
@@ -2570,10 +2542,6 @@ a {
     margin: 2rem auto !important;
   }
 
-  .OptionsWrap {
-    margin-bottom: 40px;
-  }
-
   .inputWrap {
     width: 100%;
     margin-top: 20px;
@@ -2585,20 +2553,34 @@ a {
 
   .inputFullWrap {
     display: block !important;
+    width: 67%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px !important;
   }
 
   .reports-inner-section {
     display: block !important;
+    margin-top: 0px !important;
   }
 
   .report-left-wrap {
-    width: 100% !important;
     transition: 1s;
+    position: fixed !important;
+    left: 0px;
+    top: 0;
+    z-index: 9999;
+    background-color: #ecf3f6;
+    height: 100%;
+    width: 100% !important;
+    max-width: 300px;
+    padding: 20px !important;
+    display: none;
   }
 
   .report-right-wrap {
     width: 100% !important;
-    margin-top: 20px !important;
+    margin-top: 10px !important;
   }
 
   .header .container-fluid {
@@ -2619,23 +2601,7 @@ a {
   .footer-logos {
     display: flex !important;
     margin-top: 0px !important;
-  }
-
-  .customize-title {
-    margin-top: 20px;
-  }
-
-  .report-left-wrap {
-    position: fixed !important;
-    left: 0px;
-    top: 0;
-    z-index: 9999;
-    background-color: #ecf3f6;
-    height: 100%;
-    width: 100% !important;
-    max-width: 300px;
-    padding: 20px !important;
-    display: none;
+    flex-direction: column;
   }
 
   .mobile-overlay {
@@ -2702,10 +2668,6 @@ a {
     font-size: 15px;
   }
 
-  .reports-inner-section {
-    margin-top: 0px !important;
-  }
-
   .about-logo img {
     width: 38% !important;
   }
@@ -2726,13 +2688,9 @@ a {
       object-fit: contain;
   }
 
-  .cardBigHeading {
-    background-image: unset !important;
-    background-color: transparent !important;
-  }
-
   body {
     background-size: 100% 100% !important;
+    overflow: auto !important;
   }
 
   .about-bottom-card {
@@ -2757,9 +2715,9 @@ a {
 
   .footer-button {
     width: 100% !important;
+    margin: 0px 5px;
+    padding: 9px 0px !important;
   }
-
-  
 
   .complete-buttons-wrap {
     flex-wrap: wrap;
@@ -2782,20 +2740,6 @@ a {
   .complete-buttonWrap {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-
-  /* main {
-    overflow-x: hidden !important;
-  } */
-  .header-title-wrap {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-
-  .footer-button {
-    width: 100% !important;
-    margin: 0px 5px;
-    padding: 9px 0px !important;
   }
 
   .resources-card {
@@ -2876,10 +2820,6 @@ a {
     margin: 0px !important;
   }
 
-  .reportRightWrap {
-    padding-right: 10px !important;
-  }
-
   .customize-title .tooltipWrap svg {
     font-size: 17px;
   }
@@ -2891,14 +2831,6 @@ a {
     line-height: 20px;
     top: 30px;
     left: 6px;
-  }
-
-  .report-right-wrap {
-    margin-top: 10px !important;
-  }
-
-  body {
-    overflow: auto !important;
   }
 
   main {
@@ -2951,10 +2883,6 @@ a {
     margin-top: 5px !important;
   }
 
-  .footer-logos {
-    flex-direction: column;
-  }
-
   .footer-logos img {
     margin: 4px !important;
     width: 181px;
@@ -2963,13 +2891,6 @@ a {
 
   .landingButton button {
     padding-top: 11px !important;
-  }
-
-  .inputFullWrap {
-    width: 67%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    margin-top: 10px !important;
   }
 
   .public-share-modal .inputFullWrap {

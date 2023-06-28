@@ -10,11 +10,9 @@ import { getResourses, landingPage } from "../../utilities/index.jsx";
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
-  const [goBottom, setGoBottom] = useState(false);
   const [resources, setResources] = useState();
   const HandleOpen = () => {
     setIsOpen(true);
-    setGoBottom(true);
   };
 
   useEffect(() => {
@@ -28,17 +26,6 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
       setIsDashboardOpen(true);
     }
   }, [isOpen]);
-
-  // useEffect(() => {
-  //   if (goBottom) {
-  //     document.getElementById("bottom-view").scrollIntoView({
-  //       behavior: "smooth",
-  //       inline: "center",
-  //       block: "center",
-  //     });
-  //     setGoBottom(false);
-  //   }
-  // }, [goBottom]);
 
   const { data: questions, isFetching: isFetchingQuestions } = useQuery(
     ["getQuestions"],

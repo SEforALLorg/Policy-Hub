@@ -14,7 +14,6 @@ const Select = ({
   selectedOptions,
   setSelectedOptions,
   isClearAll,
-  resourceType,
 }) => {
   const [selectedOption, setSelectedOption] = useState([]);
 
@@ -86,7 +85,7 @@ const Select = ({
       {isOpen === title && (
         <div>
           <DropDownList top={top}>
-            {options?.map((option, index) => {
+            {options?.map((option) => {
               return (
                 <div
                   className="selectListItem cursor-pointer"
@@ -94,7 +93,7 @@ const Select = ({
                     onOptionClicked(option?.label);
                     onOptionSelectClicked(option?.label);
                   }}
-                  key={index}
+                  key={option?.label}
                 >
                   <Span
                     selectedOption={selected?.includes(option?.id.toString())}

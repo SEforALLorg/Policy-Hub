@@ -19,7 +19,6 @@ const Feature = () => {
   const { t } = useTranslation();
   const [lang, setLang] = useState();
   const [query, setQuery] = useState();
-  const [disable, setDisable] = useState(true);
   const [filterType, setFilterType] = useState("");
 
   const { data: filteredCards, refetch } = useQuery(
@@ -141,11 +140,11 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
+                    {t(filterType?.replace(" ", "")) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
                 <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
-                  {dropDownData?.map((resource, index) => {
+                  {dropDownData?.map((resource) => {
                     const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
@@ -155,7 +154,7 @@ const Feature = () => {
                           });
                           setFilterType(resource?.label);
                         }}
-                        key={index}
+                        key={resource?.label}
                         style={{
                           backgroundColor: isActive
                             ? "var(--theme-secondary)"
@@ -163,7 +162,7 @@ const Feature = () => {
                           color: isActive ? "#fff" : "",
                         }}
                       >
-                        {t(resource?.label?.replace(' ', ''))}
+                        {t(resource?.label?.replace(" ", ""))}
                       </DropdownItem>
                     );
                   })}
@@ -172,7 +171,7 @@ const Feature = () => {
             </div>
             <div className="cardWrap">
               {allResources?.length ? (
-                allResources?.map((resource, index) => {
+                allResources?.map((resource) => {
                   return (
                     <OtherToolsCard
                       filterData={(e) => {
@@ -181,13 +180,12 @@ const Feature = () => {
                             ?.label
                         );
                         filterData(e);
-                        setDisable(false);
                       }}
                       resourceType={resource?.attributes?.resources?.data}
                       title={resource?.attributes?.Title}
                       link={resource?.attributes?.Link}
                       description={resource?.attributes?.Description}
-                      key={index}
+                      key={resource?.attributes?.Title}
                     />
                   );
                 })

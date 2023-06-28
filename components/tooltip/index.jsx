@@ -23,7 +23,6 @@ const TooltipComponent = ({
         </div>
       )}
       {children}
-      {/* {hideContent ? '' : <div className={`content ${top ? 'top' : ''} ${answer?.length < 25 && "customizeTooltip"}`}>{content}</div>} */}
       {hideContent ? (
         ""
       ) : (

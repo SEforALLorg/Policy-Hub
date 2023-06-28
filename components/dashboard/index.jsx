@@ -99,7 +99,8 @@ const Dashboard = ({
     if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
       Object.entries(existingJourney)?.map((key) => {
         if (key?.[0] === String(existingDate)) {
-          return (prevJourney[String(existingDate)] = data);
+          prevJourney[String(existingDate)] = data;
+          return prevJourney;
         }
       });
       putJourneyStep(prevJourney);
@@ -110,10 +111,8 @@ const Dashboard = ({
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
-    let userOldJourney;
     if (isExistingUser) {
       existingJourney = isExistingUser?.Journey;
-      userOldJourney = existingJourney?.[latestDate];
     }
     if (localStorage.getItem("UserId")) {
       if (newJourneyData?.length) {

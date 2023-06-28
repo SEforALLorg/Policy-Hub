@@ -156,7 +156,7 @@ const LeftWrapPage = ({
     >
       <div className="flex items-center pb-2.5">
         <div className="flex items-center relative mr-5">
-          {changingLeftWrapLogo?.map((key, index) => {
+          {changingLeftWrapLogo?.map((key) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
@@ -165,7 +165,7 @@ const LeftWrapPage = ({
                   className="w-[70px] h-[70px] left-header-image"
                   src={Object.values(key)?.[0]}
                   alt="card"
-                  key={index}
+                  key={"card-image"}
                 />
               );
             }
@@ -180,7 +180,7 @@ const LeftWrapPage = ({
       {nextQuestionId &&
         userJourney?.slice(0, 3)?.map((item, index) => (
           <div
-            key={index}
+            key={item?.questionName}
             onClick={() => {
               if (nextQuestionId) {
                 onStepChange(item);
@@ -241,7 +241,7 @@ const LeftWrapPage = ({
                 q?.attributes?.MainQuestion?.Question?.data?.id ===
                 nextQuestionId
             )
-            .map((item, index) => {
+            .map((item) => {
               const questionTitle = isEnglish
                 ? item?.attributes?.MainQuestion?.Question?.data?.attributes
                     ?.Question
@@ -263,46 +263,48 @@ const LeftWrapPage = ({
                       ?.attributes?.QuestionKeyType === QuestionKeyType
                 );
               }
-              return (
-                <div className={"QuestionWrap"} key={index}>
-                  {questionType === "Questionnaire" ? (
-                    <>
-                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
-                        {questionTitle}
-                        {ToolTipText && (
-                          <TooltipComponent
-                            id={"leftWrap"}
-                            content={ToolTipText}
-                          />
-                        )}
-                      </div>
-                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
-                        {singleAnswer?.map((i, index) => {
-                          if (!i?.Answer) return null;
 
-                          return (
-                            <BlueButton
-                              className="mb-3 p-2"
-                              title={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                              onClick={() => onSubmitAnswer(i, item)}
-                              key={index}
-                            />
-                          );
-                        })}
-                      </div>
-                    </>
+              const renderQuestionnaire = () => (
+                <>
+                  <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
+                    {questionTitle}
+                    {ToolTipText && (
+                      <TooltipComponent id={"leftWrap"} content={ToolTipText} />
+                    )}
+                  </div>
+                  <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
+                    {singleAnswer?.map((i) => {
+                      if (!i?.Answer) return null;
+
+                      return (
+                        <BlueButton
+                          className="mb-3 p-2"
+                          title={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                          onClick={() => onSubmitAnswer(i, item)}
+                          key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                        />
+                      );
+                    })}
+                  </div>
+                </>
+              );
+
+              return (
+                <div className={"QuestionWrap"} key={questionTitle}>
+                  {questionType === "Questionnaire" ? (
+                    renderQuestionnaire()
                   ) : (
                     <StepComponent
-                      onNext={(e) => onNextQuestion(e)}
+                      onNext={onNextQuestion}
                       setStepQuestion={(e) =>
                         setStepQuestion([e, ...stepQuestion])
                       }
                       item={item}
-                      setOptionReport={(i) => onReportsFind(i)}
+                      setOptionReport={onReportsFind}
                       onPrevious={onPreviousQuestion}
                       stepQuestion={stepQuestion}
                       totalSteps={findSteps}
-                      sendData={(data) => newJourney(data)}
+                      sendData={newJourney}
                     />
                   )}
                 </div>

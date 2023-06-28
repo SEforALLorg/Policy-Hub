@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import {
   Navbar,
@@ -18,7 +18,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import { useEffect } from "react";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
@@ -156,10 +155,10 @@ const Header = ({ selectedRes }) => {
                 <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
               </DropdownToggle>
               <DropdownMenu className="dropdownMenu">
-                {["en", "fr"].map((lang, index) => {
+                {["en", "fr"].map((lang) => {
                   return (
                     <DropdownItem
-                      key={index}
+                      key={lang}
                       onClick={() => {
                         const expires = new Date();
                         expires.setFullYear(expires.getFullYear() + 100);
