@@ -262,3 +262,7 @@ export const userRepeated = async (data) => {
     JSON.stringify(response?.data?.data?.attributes)
   );
 };
+
+export const isMobile = () => {
+  return window.innerWidth < 767;
+};

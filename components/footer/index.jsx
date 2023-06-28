@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -20,9 +20,16 @@ import {
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
 } from "../../constant";
+import { isMobile } from "../../utilities";
 
 const Footer = ({ footerRes }) => {
   const { t, i18n } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
+
   const onClickHandler = (resource) => {
     switch (resource) {
       case "ElectricityAccess":
@@ -137,7 +144,10 @@ const Footer = ({ footerRes }) => {
               style={{ color: "white" }}
               className="DropdownToggle"
               tag="a"
+              role="button"
               caret
+              aria-expanded={expanded}
+              onClick={toggleDropdown}
             >
               <p style={{ marginBottom: "0" }}>{t("DownloadDecisionTree")}</p>
             </DropdownToggle>
@@ -228,7 +238,11 @@ const Footer = ({ footerRes }) => {
             />
           )}
           <img
-            src={"/static/images/dgcs_rettangolare_eng_neg.png"}
+            src={
+              isMobile()
+                ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
+                : "/static/images/dgcs_rettangolare_eng_neg.png"
+            }
             alt="rettangolare_logo"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}

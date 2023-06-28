@@ -179,36 +179,42 @@ main {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProBook.otf");
   font-weight: 300;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProLight.otf");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProMedium.otf");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProRoman.otf");
   font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProBlack.otf");
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "AvenirFont";
   src: url("/static/fonts/AvenirLTProHeavy.otf");
   font-weight: 800;
+  font-display: swap;
 }
 
 a {
@@ -371,6 +377,10 @@ a {
 .dropdown-item:hover {
   color: #fff !important;
   background-color: #00a4ba !important;
+}
+
+.dropdown-item:hover a {
+  color: #fff !important;
 }
 
 .videoPlayer .video-react .video-react-poster {

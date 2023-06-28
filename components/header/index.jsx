@@ -24,6 +24,7 @@ import {
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
 } from "../../constant";
+import { isMobile } from "../../utilities";
 const cookies = new Cookies();
 const Header = ({ selectedRes }) => {
   const router = useRouter();
@@ -31,24 +32,28 @@ const Header = ({ selectedRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setLang(localStorage.getItem("lang"));
     }
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     if (isOpen) {
       document.getElementsByTagName("body")[0].classList.add("hide-scroll");
     } else {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
     }
-  },[isOpen])
-
+  }, [isOpen]);
   return (
     <div className="header">
       <Navbar expand="md" light>
-        <NavbarBrand>
+        <NavbarBrand href="https://www.seforall.org/">
           {selectedRes === ELECTRICITYACCESS && (
             <img
               src="static/images/electricity_access.svg"
@@ -82,13 +87,15 @@ const Header = ({ selectedRes }) => {
             />
           )}
           {!selectedRes && (
-            <a href="https://www.seforall.org/" target={"_blank"}>
+            <div onClick={() => window.open("https://www.seforall.org/")} target={"_blank"}>
               <img
                 src={"/static/images/SEforALL_Logo_White.png"}
                 alt="logo_white_logo"
                 className="logo cursor-pointer "
+                width={isMobile() ? "70px" : "70px"}
+                height={isMobile() ? "70px" : "70px"}
               />
-            </a>
+            </div>
           )}
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
@@ -151,7 +158,14 @@ const Header = ({ selectedRes }) => {
               </div>
             </NavItem>
             <UncontrolledDropdown setActiveFromChild className="customDropdown">
-              <DropdownToggle className="DropdownToggle" tag="a" caret>
+              <DropdownToggle
+                className="DropdownToggle"
+                tag="a"
+                role="button"
+                caret
+                aria-expanded={expanded}
+                onClick={toggleDropdown}
+              >
                 <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
               </DropdownToggle>
               <DropdownMenu className="dropdownMenu">
@@ -181,7 +195,7 @@ const Header = ({ selectedRes }) => {
                       }}
                     >
                       <Link href="" locale={lang}>
-                        <button>{lang.toUpperCase()}</button>
+                        {lang.toUpperCase()}
                       </Link>
                     </DropdownItem>
                   );
