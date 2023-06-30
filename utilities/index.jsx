@@ -135,12 +135,6 @@ export const getResourses = (allQuestions) => {
       return ac[0];
     });
 
-  // const groupedResources = groupBy(resourceGroup, "id");
-  // const allArray = Object.values(groupedResources);
-  // const allResources = [].concat
-  //   .apply([], allArray)
-  //   ?.map((item) => item?.resource?.data);
-
   return resourceGroup;
 };
 
@@ -164,7 +158,6 @@ export const shortName = (str) => {
 
 export const validation = (event, name, val) => {
   let formError;
-  let arr = [];
   switch (name) {
     case "FirstName":
       if (val?.length <= 3) {
@@ -268,4 +261,8 @@ export const userRepeated = async (data) => {
     "userInfo",
     JSON.stringify(response?.data?.data?.attributes)
   );
+};
+
+export const isMobile = () => {
+  return window.innerWidth < 767;
 };

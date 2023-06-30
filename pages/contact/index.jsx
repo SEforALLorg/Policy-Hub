@@ -12,6 +12,7 @@ const ContactUs = () => {
     <main>
       <Head>
         <title>{t("ContactTitle")}</title>
+        <meta name="description" content="VKH Contact Us" />
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">

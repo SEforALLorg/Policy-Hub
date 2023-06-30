@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import createScrollSnap from "scroll-snap";
 import Footer from "components/footer";
 import Header from "components/header";
 import LandingPage from "components/landingPage";
@@ -14,20 +13,6 @@ const Landing = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   const ref = useRef();
-  const bindScrollSnap = () => {
-    const element = ref.current;
-    createScrollSnap(
-      element,
-      {
-        snapDestinationX: "0%",
-        snapDestinationY: "100%",
-        timeout: 100,
-        duration: 800,
-        threshold: 0.1,
-      },
-      () => console.log()
-    );
-  };
   const [res, setRes] = useState();
   const [dynamicClass, setDynamicClass] = useState();
 
@@ -46,11 +31,6 @@ const Landing = () => {
         break;
     }
   }, [res]);
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined" && window?.innerWidth < 1024) return null;
-  //   bindScrollSnap();
-  // }, []);
 
   return (
     <main id="fullWrap" ref={ref} className={dynamicClass}>

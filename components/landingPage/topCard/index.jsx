@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useCallback } from "react";
 import StartButton from "components/buttons/startButton";
 import { useTranslation } from "react-i18next";
+import { isMobile } from "../../../utilities";
 
 const TopCard = ({ HandleOpen }) => {
   const { t } = useTranslation();
+
+  const handleButtonClick = useCallback(() => {
+    HandleOpen();
+  }, [HandleOpen]);
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
@@ -21,6 +26,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[16%] mr-[8px] mt-[5px]"
                 src="../../../static/images/hub.svg"
                 alt="hub_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("PlatformThatSupports")}
@@ -34,6 +41,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
                 alt="journey_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("ResourcesOnAccess")}
@@ -50,6 +59,8 @@ const TopCard = ({ HandleOpen }) => {
                 className="w-[14%] mr-[8px] mt-[-8px]"
                 src="../../../static/images/sustainable_hub.png"
                 alt="sustainable_hub_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
               />
               <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
                 {t("TheKnowledgeHub")}
@@ -62,6 +73,8 @@ const TopCard = ({ HandleOpen }) => {
               className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
               alt="guide_logo"
+              width={isMobile() ? "65px" : "70px"}
+              height={isMobile() ? "65px" : "70px"}
             />
             <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
               {t("OnElectricity")}
@@ -72,9 +85,12 @@ const TopCard = ({ HandleOpen }) => {
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         <div
           className="w-[49%] absolute bottom-[-28px] left-[26%]"
-          onClick={HandleOpen}
+          onClick={handleButtonClick}
         >
-          <StartButton title={t("ClickHereToStart")} className="w-full pt-[16px] pb-[12px] " />
+          <StartButton
+            title={t("ClickHereToStart")}
+            className="w-full pt-[16px] pb-[12px] "
+          />
         </div>
       </div>
     </div>

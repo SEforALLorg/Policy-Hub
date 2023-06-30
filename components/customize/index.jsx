@@ -47,7 +47,7 @@ const Customize = ({
         [currentDate]: [payload],
       };
       putJourneyStep(journey);
-    } else if (count === 1) {
+    } else if (count == 1) {
       let journey = {
         [currentDate]: [payload],
       };
@@ -64,7 +64,7 @@ const Customize = ({
       ) : (
         <>
           <div className="flex items-center customize-header">
-            {changingCardLogo.map((key, index) => {
+            {changingCardLogo?.map((key) => {
               if (
                 localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
               ) {
@@ -73,7 +73,7 @@ const Customize = ({
                     className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height mr-5"
                     src={Object.values(key)?.[0]}
                     alt="card"
-                    key={index}
+                    key={"card-image"}
                   />
                 );
               }
@@ -81,7 +81,6 @@ const Customize = ({
 
             <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0 textColor">
               {t("AssessYourCountry")}
-              {/* {t("Customize")} */}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
@@ -96,11 +95,11 @@ const Customize = ({
             )}
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-            {singleAnswer?.map((i, index) => (
+            {singleAnswer?.map((i) => (
               <BlueButton
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
-                key={index}
+                key={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 className="mb-[20px] h-[80px] text-[23px] "
               />
             ))}

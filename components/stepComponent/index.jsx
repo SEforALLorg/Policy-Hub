@@ -14,14 +14,19 @@ const StepComponent = ({
   sendData,
 }) => {
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const isEnglish = i18n.language === "en";
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
   const [localJourney, setLocalJourney] = useState([]);
-  const title = isEnglish ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
+  const title = isEnglish
+    ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question
+    : item?.attributes?.MainQuestion?.Question?.data?.attributes
+        ?.FrenchQuestion;
   const multiAnswer = item?.attributes?.AddAnswer;
   const nextCount = totalSteps?.length || 1;
-  const ToolTipText = isEnglish ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
+  const ToolTipText = isEnglish
+    ? item?.attributes?.ToolTipText
+    : item?.attributes?.FrenchToolTipText;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -41,8 +46,8 @@ const StepComponent = ({
         (item) => item?.title === title
       );
       if (findIndex > -1) {
-        localJourney?.splice(findIndex, 1, { ...i, title });
-        setLocalJourney(localJourney);
+        const updatedJourney = localJourney?.splice(findIndex, 1, { ...i, title });
+        setLocalJourney(updatedJourney);
       }
     } else {
       setLocalJourney([...localJourney, { ...i, title }]);
@@ -73,7 +78,9 @@ const StepComponent = ({
     <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
         <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
-          {isEnglish ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
+          {isEnglish
+            ? item?.attributes?.QuestionTitle
+            : item?.attributes?.frenchQuestionTitle}
         </h5>
       )}
       <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
@@ -95,9 +102,9 @@ const StepComponent = ({
           return (
             <div
               className="optionItem"
-              key={index}
+              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
               onClick={() => {
-                isFoodAndEquipment ? "" : onAnswerClick(i);
+                !isFoodAndEquipment && onAnswerClick(i);
                 onSubmitJourney(i, title);
               }}
               style={{ marginLeft: `${isFoodAndGrid ? "1.8rem" : ""}` }}
@@ -116,7 +123,9 @@ const StepComponent = ({
                 {isEnglish ? i?.Answer : i?.FrenchAnswer}
                 {i?.AnswerToolTip && (
                   <TooltipComponent
-                    content={isEnglish ? i?.AnswerToolTip : i?.FrenchAnswerToolTip}
+                    content={
+                      isEnglish ? i?.AnswerToolTip : i?.FrenchAnswerToolTip
+                    }
                     answer={isEnglish ? i?.Answer : i?.FrenchAnswer}
                     id={index}
                   />

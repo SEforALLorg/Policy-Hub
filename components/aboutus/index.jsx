@@ -104,11 +104,11 @@ const About = () => {
             {t("SustainableEnergy")}{" "}
           </p>
           <div className="w-100 flex xsm:mt-2 small:my-10 xsm:flex-wrap med:flex-nowrap flex-wrap">
-            {logoData.map((item, index) => {
+            {logoData.map((item) => {
               return (
                 <div
                   className="med:w-[19%] xsm:w-100  xsm:w-full mr-[1%] mb-[15px]"
-                  key={index}
+                  key={item?.title}
                 >
                   <ImgCard
                     className="h-[165px] bg-white shadow-md rounded-2xl p-[30px] mb-4 flex justify-center	items-center w-full about-logo-card african-development"

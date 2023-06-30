@@ -20,13 +20,13 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         <div
           className="restartWrap"
           onClick={onRestart}
-          style={{ display: changingRestartLogo === length ? "" : "flex" }}
+          style={{ display: changingRestartLogo?.length ? "" : "flex" }}
         >
-          {changingRestartLogo.map((key, index) => {
+          {changingRestartLogo?.map((key) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="type" key={index} />;
+              return <img src={Object.values(key)?.[0]} alt="type" key={'image'} />;
             }
           })}
           <p>{t("Restart")}</p>
@@ -34,14 +34,14 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
         {buttonOptions.map((key) => {
           if (resourceType && resourceType === Object.keys(key)?.[0]) {
             return Object.values(key).map((items) => {
-              return Object.entries(items).map((item, index) => {
+              return Object.entries(items).map((item) => {
                 return (
                   <div
                     className="restartWrap"
                     onClick={() =>
                       onMiniClick([item[1]?.[0], item[1]?.[2], item?.[0], item[1]?.[3]])
                     }
-                    key={index}
+                    key={item?.[0]}
                   >
                     <img
                       src={item[1]?.[1]}
@@ -59,11 +59,11 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
           className="restartWrap"
           onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
         >
-          {changingFileLogo.map((key, index) => {
+          {changingFileLogo?.map((key) => {
             if (
               localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
             ) {
-              return <img src={Object.values(key)?.[0]} alt="resource_type" key={index} />;
+              return <img src={Object.values(key)?.[0]} alt="resource_type" key={"resource_type"} />;
             }
           })}
           <p>{t("Viewallresources")}</p>

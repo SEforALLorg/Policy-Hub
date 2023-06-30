@@ -20,26 +20,29 @@ import {
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
 } from "../../constant";
+import { isMobile } from "../../utilities";
 
 const Footer = ({ footerRes }) => {
   const { t, i18n } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
+
   const onClickHandler = (resource) => {
     switch (resource) {
       case "ElectricityAccess":
         window.open("static/pdf/Electrification.pdf");
-        // setTitle("Electricity Access");
         break;
       case "CleanCooking":
         window.open("static/pdf/Cleancooking.pdf");
-        // setTitle("Clean Cooking");
         break;
       case "SustainableCooling":
         window.open("static/pdf/Sustainablecooling.pdf");
-        // setTitle("Sustainable Cooling");
         break;
       case "EnergyEfficency":
         window.open("static/pdf/Energyefficiency.pdf");
-        // setTitle("Energy Efficency");
         break;
       default:
         break;
@@ -115,7 +118,9 @@ const Footer = ({ footerRes }) => {
             </span>
           </p>
           <button
-            onClick={() => window.open(`/${i18n.language}/allresources`, "_self")}
+            onClick={() =>
+              window.open(`/${i18n.language}/allresources`, "_self")
+            }
             className="font-medium xsm:text-xx text-white mb-0 xsm:px-3 medium:px-4 py-2.5 
                                       border leading-5 border-white rounded-[42px] bg-transparent 
                                       desktoplg:text-small flex items-center justify-center 
@@ -139,18 +144,26 @@ const Footer = ({ footerRes }) => {
               style={{ color: "white" }}
               className="DropdownToggle"
               tag="a"
+              role="button"
               caret
+              aria-expanded={expanded}
+              onClick={toggleDropdown}
             >
               <p style={{ marginBottom: "0" }}>{t("DownloadDecisionTree")}</p>
             </DropdownToggle>
-            <DropdownMenu className={`dropdown-menu-box ${i18n.language === 'en' ? "en-dropdown" : "fr-dropdown"}`} style={{ marginLeft: 8, marginTop: 15 }}>
-              {resource.map((resources, index) => {
+            <DropdownMenu
+              className={`dropdown-menu-box ${
+                i18n.language === "en" ? "en-dropdown" : "fr-dropdown"
+              }`}
+              style={{ marginLeft: 8, marginTop: 15 }}
+            >
+              {resource.map((resources) => {
                 return (
                   <DropdownItem
                     onClick={() => {
                       onClickHandler(resources);
                     }}
-                    key={index}
+                    key={resources}
                   >
                     {t(resources)}
                   </DropdownItem>
@@ -173,6 +186,8 @@ const Footer = ({ footerRes }) => {
             alt="logo"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
+            width={isMobile() ? "181px" : "90px"}
+            height={isMobile() ? "46px" : "70px"}
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
@@ -222,13 +237,21 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "200px"}
+              height={isMobile() ? "46px" : "66px"}
             />
           )}
           <img
-            src={"/static/images/dgcs_rettangolare_eng_neg.png"}
+            src={
+              isMobile()
+                ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
+                : "/static/images/dgcs_rettangolare_eng_neg.png"
+            }
             alt="rettangolare_logo"
             className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
             onClick={() => window.open("https://www.esteri.it/en/ministero/")}
+            width={isMobile() ? "181px" : "250px"}
+            height={isMobile() ? "46px" : "52px"}
           />
         </div>
       </div>

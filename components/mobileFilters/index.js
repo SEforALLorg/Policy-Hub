@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { BsSliders } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 import { getFormattedData, getReportQuery } from "utilities";
 import useDebounce from "utilities/useDebounce";
 import { ErrorNotify } from "components/notification";
@@ -10,8 +11,6 @@ import SearchBar from "components/searchBar/search";
 import { getReports } from "pages/api/reports";
 import { getFilters } from "pages/api/filter";
 import { isSelectedInput } from "../../utilities";
-import BlueButton from "../buttons/blueButton";
-import { useTranslation } from "react-i18next";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
@@ -32,14 +31,13 @@ const MobileFilters = ({
   isClear,
   setPreviousReports,
   previousReports,
-  setReportsLoader
+  setReportsLoader,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [search, setSearch] = useState(undefined);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isFilter, setIsFilter] = useState(false);
   const [isBlock, setIsBlock] = useState(false);
-  // const [previousReports, setPreviousReports] = useState([]);
   const [isScrollLoader, setIsScrollLoader] = useState(false);
   const [sectorOptionEnerygy, setSectorOptionEnergy] = useState([]);
   const [sectorOptionCooling, setSectorOptionCooling] = useState([]);
@@ -47,19 +45,18 @@ const MobileFilters = ({
   const [page, setPage] = useState(1);
   const [resourceType, setResourceType] = useState();
   const debouncedSearch = useDebounce(search, 500);
-  const [sectorOption, setSectorOption] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
       setIsBlock(true);
-    }, 3500)
-  }, [])
+    }, 3500);
+  }, []);
   typeof window !== "undefined" &&
     window.addEventListener(
       "orientationchange",
       function () {
         // Announce the new orientation number
-        if (window?.orientation === 90) {
+        if (window?.matchMedia("(orientation: landscape)").matches) {
           setIsFilter(false);
         }
       },
@@ -99,7 +96,6 @@ const MobileFilters = ({
 
   const {
     data: allReports,
-    isFetching: isFetchingReports,
     refetch,
   } = useQuery(["getReports", query], () => getReports(query), {
     onError: (error) => {
@@ -159,7 +155,6 @@ const MobileFilters = ({
     setPreviousReports([]);
     setIsOpen("");
     setSearch("");
-    // setIsFilter(!isFilter);
   };
 
   const optionSelected = isSelectedInput(selectInputs);
@@ -220,13 +215,13 @@ const MobileFilters = ({
     refetch();
     setSearch("");
   }, [isClear]);
-  useEffect(()=>{
+  useEffect(() => {
     if (isFilter) {
       document.getElementsByTagName("body")[0].classList.add("hide-scroll");
     } else {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
     }
-  },[isFilter])
+  }, [isFilter]);
   const { t } = useTranslation();
 
   return (
@@ -258,7 +253,7 @@ const MobileFilters = ({
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
-            style={{ display: isBlock ? "block" : '' }}
+            style={{ display: isBlock ? "block" : "" }}
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
               {t("Filters")}
@@ -285,18 +280,6 @@ const MobileFilters = ({
                     value={search}
                   />
                 )}
-                {/* <Select
-                title={t("SelectRegion")}
-                setIsOpen={setIsOpen}
-                isOpen={isOpen}
-                options={getFormattedData(filters?.region)}
-                onChange={(e) => onChange(e)}
-                selected={selectInputs?.regions}
-                name={"regions"}
-                selectedOptions={selectedOptions}
-                setSelectedOptions={setSelectedOptions}
-                isClearAll={isClearAll}
-              /> */}
                 <Select
                   title={t("SelectCountry")}
                   setIsOpen={setIsOpen}

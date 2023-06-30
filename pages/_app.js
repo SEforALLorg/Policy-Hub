@@ -75,6 +75,11 @@ function MyApp({ Component, pageProps }) {
     },
   });
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+      setMounted(true)
+  }, [])
+
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
@@ -82,18 +87,20 @@ function MyApp({ Component, pageProps }) {
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         ></script>
-        <script>
-          {`
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
           gtag('config', 'G-QZE40XCZJQ');
-        `}
-        </script>
+          `,
+          }}
+        />
       </Head>
       <ToastContainer theme={"colored"} />
-      <Component {...pageProps} />
+      {mounted && <Component {...pageProps} />}
       {!showConsent && (
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           {t("cookiesText")}{" "}

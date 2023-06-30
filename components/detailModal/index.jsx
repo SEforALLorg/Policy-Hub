@@ -1,6 +1,5 @@
 import { isEmpty } from "lodash";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
 import {
@@ -11,24 +10,26 @@ import {
 } from "reactstrap";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
-import { userRepeated, validation } from "../../utilities";
+import { userRepeated } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formInput, setFormInput] = useState({
     FullName: "",
     Email: "",
-    // PhoneNumber: "",
     JobTitle: "",
     Organization: "",
   });
-  const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState();
+  const [expanded, setExpanded] = useState(false);
 
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
     if (UserModal === null) {
@@ -82,7 +83,6 @@ const DetailModal = ({ firstHit }) => {
           };
           userRepeated(data);
         }
-        // firstHit();
       } else {
         toast.error(t("Error"), { position: toast.POSITION.TOP_CENTER });
       }
@@ -95,8 +95,6 @@ const DetailModal = ({ firstHit }) => {
     event.preventDefault();
     let name = event.target.name;
     let val = event.target.value;
-    const formError = validation(event, name, val);
-    setErrors(formError);
     setFormInput({ ...formInput, [name]: val });
   };
 
@@ -173,11 +171,7 @@ const DetailModal = ({ firstHit }) => {
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
-                      danger
-                        ? formInput?.FirstName
-                          ? ""
-                          : "border-red-900"
-                        : ""
+                      danger && !formInput?.FirstName && "border-red-900"
                     }`}
                     id="inline-first-name"
                     name="FullName"
@@ -194,7 +188,7 @@ const DetailModal = ({ firstHit }) => {
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
-                      danger ? (formInput?.Email ? "" : "border-red-900") : ""
+                      danger && !formInput?.Email && "border-red-900"
                     }`}
                     id="inline-email"
                     type="email"
@@ -211,11 +205,7 @@ const DetailModal = ({ firstHit }) => {
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
-                      danger
-                        ? formInput?.JobTitle
-                          ? ""
-                          : "border-red-900"
-                        : ""
+                      danger && !formInput?.JobTitle && "border-red-900"
                     }`}
                     id="inline-job-title"
                     type="text"
@@ -232,11 +222,7 @@ const DetailModal = ({ firstHit }) => {
                   </label>
                   <input
                     className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
-                      danger
-                        ? formInput?.Organization
-                          ? ""
-                          : "border-red-900"
-                        : ""
+                      danger && !formInput?.Organization && "border-red-900"
                     }`}
                     id="inline-organization"
                     type="text"
@@ -251,22 +237,6 @@ const DetailModal = ({ firstHit }) => {
                   >
                     {t("Country")}
                   </label>
-                  {/* <select
-                    className={`bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500 ${
-                      danger ? (formInput?.Country ? "" : "border-red-900") : ""
-                    }`}
-                    id="inline-country"
-                    name="Country"
-                    onChange={handleChange}
-                  >
-                    {Flags.map((key, index) => {
-                      return (
-                        <option value={key.code} key={index}>
-                          {key.name} {key.emoji}
-                        </option>
-                      );
-                    })}
-                  </select> */}
                   <UncontrolledDropdown
                     setActiveFromChild
                     className={`country-drop-down cursor-pointer bg-white-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-black-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-200 mb-2 hover:border-gray-500`}
@@ -275,7 +245,10 @@ const DetailModal = ({ firstHit }) => {
                       style={{ color: "white" }}
                       className="flex justify-between items-center no-underline"
                       tag="a"
+                      role="button"
                       caret
+                      aria-expanded={expanded}
+                      onClick={toggleDropdown}
                     >
                       <p
                         style={{ marginBottom: "0" }}
@@ -305,14 +278,14 @@ const DetailModal = ({ firstHit }) => {
                         left: 0,
                       }}
                     >
-                      {Flags.map((key, index) => {
+                      {Flags.map((key) => {
                         if (!key?.name || !key?.image) return;
                         return (
                           <DropdownItem
                             onClick={() => {
                               setCountry(key);
                             }}
-                            key={index}
+                            key={key?.name}
                             className="flex align-center"
                           >
                             {key?.name}
