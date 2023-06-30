@@ -11,9 +11,6 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
   const [resources, setResources] = useState();
-  const handleOpen = useCallback(() => {
-    setIsOpen(true);
-  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("UserId")) {
@@ -27,15 +24,23 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  const { data: questions, isFetching: isFetchingQuestions } = useQuery(
+  const { data: questions, isFetching: isFetchingQuestions, refetch } = useQuery(
     ["getQuestions"],
     getQuestions,
     {
+      enabled: window.innerWidth > 767,
       onError: (error) => {
         ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );
+
+  const handleOpen = useCallback(() => {
+    if (window.innerWidth < 767) {
+      refetch();
+    }
+    setIsOpen(true);
+  }, []);
 
   const allQuestions = questions?.data?.data;
 
