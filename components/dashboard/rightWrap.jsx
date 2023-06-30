@@ -96,7 +96,8 @@ const RightWrapPage = ({
       publicationReports,
       page,
       debouncedSearch,
-      showAllReports
+      showAllReports,
+      40
     );
   }, [selectInputs, nonPublicationReports, publicationReports]);
 
