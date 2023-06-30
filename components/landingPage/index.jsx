@@ -5,7 +5,7 @@ import { getQuestions } from "pages/api/questions";
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses, landingPage } from "../../utilities/index.jsx";
+import { getResourses, isMobile, landingPage } from "../../utilities/index.jsx";
 
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     ["getQuestions"],
     getQuestions,
     {
-      enabled: window.innerWidth > 767,
+      enabled: !isMobile(),
       onError: (error) => {
         ErrorNotify(error?.response?.data?.error?.message);
       },
@@ -36,7 +36,7 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   );
 
   const handleOpen = useCallback(() => {
-    if (window.innerWidth < 767) {
+    if (isMobile()) {
       refetch();
     }
     setIsOpen(true);
