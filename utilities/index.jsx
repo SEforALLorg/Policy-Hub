@@ -27,7 +27,8 @@ export const getReportQuery = (
   publicationReports,
   page,
   debouncedSearch,
-  showAllReports
+  showAllReports, 
+  pageSize
 ) => {
   if (
     !nonPublicationReports?.length &&
