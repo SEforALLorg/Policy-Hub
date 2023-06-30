@@ -1,177 +1,206 @@
-import React, { useState } from "react";
-
-import { videosCard } from "constant";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import StartButton from "components/buttons/startButton";
 
-import VideoCard from "./components/video";
 import OtherToolsCard from "./components/otherTools";
+import { useTranslation } from "react-i18next";
+import { filterResources } from "../../pages/api/resources";
+import { ErrorNotify } from "components/notification";
+import { getResourcesQuery } from "../../utilities";
+import Loader from "../loader";
+import {
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  UncontrolledDropdown,
+} from "reactstrap";
 
 const Feature = () => {
-  const [isVideoCard, setIsVideoCard] = useState("");
+  const { t } = useTranslation();
+  const [lang, setLang] = useState();
+  const [query, setQuery] = useState();
+  const [filterType, setFilterType] = useState("");
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleDropdown = () => {
+    setExpanded(!expanded);
+  };
+  const { data: filteredCards, refetch } = useQuery(
+    ["filterResources", query],
+    () => filterResources(query),
+    {
+      onError: (error) => {
+        ErrorNotify(error?.response?.data?.error?.message);
+      },
+    }
+  );
+  const setData = () => {
+    const mainData = filteredCards?.data?.data;
+    const filterData =
+      mainData?.filter((item) => item?.id === 12 || item?.id === 11) || [];
+    const finalIds = filterData?.map((item) => item?.id);
+    const finalData =
+      mainData
+        ?.filter((item) => !finalIds?.includes(item?.id))
+        .sort((a, b) =>
+          a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
+        ) || [];
+    return [...filterData, ...finalData];
+  };
+
+  const allResources = setData();
+
+  useEffect(() => {
+    if (query) {
+      refetch();
+    }
+  }, [query]);
+
+  const filterData = (type) => {
+    const query = getResourcesQuery(type?.id);
+    setQuery(query);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setLang(localStorage.getItem("lang"));
+    }
+  }, []);
+
+  const dropDownData = [
+    {
+      label: t("AllPlatforms"),
+      id: "",
+    },
+    {
+      label: "Electricity Access",
+      id: 1,
+    },
+    {
+      label: "Clean Cooking",
+      id: 2,
+    },
+    {
+      label: "Energy Efficency",
+      id: 3,
+    },
+    {
+      label: "Sustainable Cooling",
+      id: 4,
+    },
+  ];
   return (
     <div className="w-full rounded-lg overflow-hidden">
-      <div className="bg-white py-6 drop-shadow-dropShadow feature-wrap">
-        <div className="xsm:px-4 mobile:px-[100px] relative">
-          <div className="flex pb-[0px] my-6 w-full xsm:flex-wrap large:flex-nowrap resources-card">
+      <div className="bg-white drop-shadow-dropShadow feature-wrap p-[2.5rem] all_platform_table pb-[0px]">
+        <div className="xsm:px-4 mobile:px-[0px] relative">
+          <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
-              <h6
-                className="font-bold leading-10 text-large mb-[20px] xsm:text-medium text-darktext 
-                            uppercase small:text-medium large:text-large center-content resources-heading"
+              <h1
+                className="font-bold text-[35px] leading-10 mb-[20px] text-darktext 
+                            uppercase center-content resources-heading"
               >
-                Resources
-              </h6>
+                {t("Resources")}
+              </h1>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
-                All of the Knowledge Hub’s resources are available here for you
-                to explore. Simply click on the button below to view all the
-                resources and apply filters to narrow your results. You can also{" "}
-                <b>download the filtered resources</b> or you can have them{" "}
-                <b>sent to you via Email</b>.
+                {t("AllOfTheKnowledge")} <b>{t("Downloadthefiltered")}</b>
+                {t("Havethem")}
+                <b>{t("ViaEmail")}</b>
               </p>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-2 mt-[10px] text-justify">
-                Explore our database for tools and knowledge that will support
-                you in developing policy and regulatory frameworks for
-                sustainable energy. These resources are recommended by
-                stakeholders across the energy sector. Additional resources
-                related to clean cooking, sustainable cooling and energy
-                efficiency are coming soon.
+                {t("ExploreOurDatabase")}
               </p>
             </div>
           </div>
           <div className="text-center mt-4 resources-button">
             <StartButton
-              title={"Browse all resources"}
-              onClick={() => window.open("/allresources", "_self")}
+              title={t("BrowseResource")}
+              onClick={() => window.open(`/${lang}/allresources`, "_self")}
+              className={`medium:pt-[20px] mt-[20px]`}
             />
           </div>
         </div>
       </div>
-      <div className="pt-[35px] pb-[60px] bg-white tools-wrap">
-        <div className="xsm:px-4 mobile:px-[100px] resources-cards-wrap">
+      <div className="pt-[35px] pb-[60px] bg-white tools-wrap px-[2.5rem] all_platform_table mt-[-1px]">
+        <div className="xsm:px-4 mobile:px-[0px] resources-cards-wrap">
           <div>
-            <h6
-              className="font-bold leading-10 text-large text-darktext 
-              uppercase xsm:text-medium small:text-medium large:text-large mt-[0px] video-title center-content"
-            >
-              Other useful platforms
-            </h6>
-            <OtherToolsCard
-              image="/static/images/nigeria-ImResizer.jpg"
-              title="Nigeria Integrated Energy Planning Tool"
-              link="http://nigeria-iep.sdg7energyplanning.org/"
-              description={
-                <>
-                  The Nigeria Integrated Energy Planning Tool is a GIS-based
-                  interactive data visualization platform to support Nigerian
-                  policy makers and practitioners in their decision-making
-                  process. It was developed by SEforALL, in collaboration with
-                  the Federal Government of Nigeria, with support from The
-                  Rockefeller Foundation.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/sas-ImResizer.png"
-              title="SAS Knowledge Hub"
-              link="https://www.ace-taf.org/sas-knowledge-hub/"
-              description={
-                <>
-                  SAS Knowledge Hub is a digital repository by ACE TAF gathering
-                  resources on stand-alone solar (SAS) systems, ranging from
-                  e-waste and recycling, martket date to productive use. ACE TAF
-                  is a programme funded by the UK Government Foreign,
-                  Commonwealth and Development Office (FCDO) between 2018-2022.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/policy-ImResizer.png"
-              title="Policy Knowledge Hub"
-              link="https://www.gogla.org/policy-knowledge-hub"
-              description={
-                <>
-                  GOGLA’s policy knowledge hub includes a digital repository for
-                  off-grid solar energy laws, policies, and regulations and an
-                  off-Grid VAT and duty tracker for solar companies, as well as
-                  Country Briefs that review the status of sub-Saharan African
-                  countries’ off-grid solar markets. The hub was developed by
-                  GOGLA with input from Power Africa.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/electrifying-economies-ImResizer.jpg"
-              title="Electrifying Economies"
-              link="https://www.rockefellerfoundation.org/rf-microsites/electrifying-economies/"
-              description={
-                <>
-                  Electrifying Economies is an information platform
-                  demonstrating the role distributed energy will play in ending
-                  energy poverty and catalyzing a green and equitable recovery
-                  from the Covid-19 crisis. It has been jointly developed by
-                  Rockefeller Foundation, Rocky Mountain Institute, and
-                  Sustainable Energy for All.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/green-mini.png"
-              title="The Green Mini-Grids Help Desk"
-              link="https://greenminigrid.afdb.org/"
-              description={
-                <>
-                  The Green Mini-Grids Help Desk provides mini-grid developers
-                  and policymakers with practical information on mini-grids,
-                  including market reports, links to industry stakeholders,
-                  instruction guides, business forms and templates, and
-                  financial models. It is implemented by AfDB, Sustainable
-                  Energy for All Africa Hub, SEFA, Energy4Impact, and Inensus.
-                </>
-              }
-            />
-             <OtherToolsCard
-              image="/static/images/energy-ImResizer.png"
-              title="Energy Access Explorer"
-              link="https://www.energyaccessexplorer.org/"
-              description={
-                <>
-                  Energy Access Explorer is an online, open-source, interactive
-                  platform that uses mapping to visualize the state of energy
-                  access in unserved and underserved areas. It analyzes credible
-                  and public data to make the connection between the demand and
-                  supply of energy. The platform is led by World Resources
-                  Institute (WRI).
-                  financial models. It is implemented by AfDB, Sustainable
-                  Energy for All Africa Hub, SEFA, Energy4Impact, and Inensus.
-                </>
-              }
-            />
-            <OtherToolsCard
-              image="/static/images/malawi.png"
-              title="Malawi Integrated Energy Planning Tool"
-              link="https://malawi-iep.sdg7energyplanning.org/"
-              description={
-                <>
-                  The Malawi Integrated Energy Planning Tool is an online, publicly available, interactive, and user-friendly data visualization platform that equips Malawian policy makers and energy practitioners with data and insights to make informed decisions on strategies and operations to advance energy access in the country.
-                </>
-              }
-            />
-            <h6
-              className="font-bold leading-10 text-large text-darktext 
-                            uppercase xsm:text-medium small:text-medium large:text-large mt-[80px] video-title center-content"
-            >
-              VIDEOS
-            </h6>
-            <div className="flex items-stretch pt-0 pb-10 xsm:flex-wrap medium:flex-nowrap flex-wrap mr-[-10px] ml-[-10px] tools-card">
-              {videosCard?.map((item, index) => (
-                <div className="w-[33.3%] mb-[0px] p-[10px]" key={index}>
-                  <VideoCard
-                    link={item?.link}
-                    title={item?.title}
-                    setIsVideoCard={setIsVideoCard}
-                    isVideoCard={isVideoCard}
-                  />
+            <div className="flex items-center justify-between mt-[28px] mb-[20px] headerContainer">
+              <h2
+                className="font-bold leading-10 text-[35px] text-darktext 
+              uppercase m-[0px] video-title center-content"
+              >
+                {t("OtherUsefulPlatforms")}
+              </h2>
+              <UncontrolledDropdown
+                setActiveFromChild
+                className={`bg-Primary cursor-pointer rounded-[60px] text-normal border-2 border-transparent outline-0 text-Primary py-[3px] px-2 xsm:text-xsmall laptop:text-xsmall ${"hover:bg-Primary hover:text-white ease-linear"} card-tool-button allBtn`}
+              >
+                <DropdownToggle
+                  style={{ color: "white" }}
+                  className="DropdownToggle flex justify-between items-center no-underline"
+                  tag="a"
+                  role="button"
+                  caret
+                  aria-expanded={expanded}
+                  onClick={toggleDropdown}
+                >
+                  <p
+                    style={{ marginBottom: "0" }}
+                    className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
+                  >
+                    {t(filterType?.replace(" ", "")) || t("AllPlatforms")}
+                  </p>
+                </DropdownToggle>
+                <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
+                  {dropDownData?.map((resource) => {
+                    const isActive = resource?.label === t(filterType);
+                    return (
+                      <DropdownItem
+                        onClick={() => {
+                          filterData({
+                            id: resource?.id,
+                          });
+                          setFilterType(resource?.label);
+                        }}
+                        key={resource?.label}
+                        style={{
+                          backgroundColor: isActive
+                            ? "var(--theme-secondary)"
+                            : "",
+                          color: isActive ? "#fff" : "",
+                        }}
+                      >
+                        {t(resource?.label?.replace(" ", ""))}
+                      </DropdownItem>
+                    );
+                  })}
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </div>
+            <div className="cardWrap">
+              {allResources?.length ? (
+                allResources?.map((resource) => {
+                  return (
+                    <OtherToolsCard
+                      filterData={(e) => {
+                        setFilterType(
+                          dropDownData?.find((item) => item?.id === e?.id)
+                            ?.label
+                        );
+                        filterData(e);
+                      }}
+                      resourceType={resource?.attributes?.resources?.data}
+                      title={resource?.attributes?.Title}
+                      link={resource?.attributes?.Link}
+                      description={resource?.attributes?.Description}
+                      key={resource?.attributes?.Title}
+                    />
+                  );
+                })
+              ) : (
+                <div className="flex items-center flex-col h-full w-full justify-center">
+                  <Loader height={80} width={80} />
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>

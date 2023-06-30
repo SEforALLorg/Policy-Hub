@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { MdClose } from "react-icons/md";
 import ShareAttachment from "../shareAttachment";
 
-const SharePublicationModal = ({ toggle, allReports, selectedFilters, showAllReports, searchTerm }) => {
+const SharePublicationModal = ({
+  toggle,
+  allReports,
+  selectedFilters,
+  showAllReports,
+  searchTerm,
+}) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -12,7 +21,7 @@ const SharePublicationModal = ({ toggle, allReports, selectedFilters, showAllRep
     >
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
         <div
-          className="fixed inset-0 bg-gray bg-opacity-60 transition-opacity z-[-1]"
+          className="fixed inset-0 bg-black/[0.6] bg-opacity-60 transition-opacity z-[-1]"
           aria-hidden="true"
           onClick={toggle}
         ></div>
@@ -47,7 +56,7 @@ const SharePublicationModal = ({ toggle, allReports, selectedFilters, showAllRep
                 small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
                 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
               >
-                Cancel
+                {t("Cancel")}
               </button>
             </div>
           </div>

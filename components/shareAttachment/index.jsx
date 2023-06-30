@@ -17,7 +17,7 @@ const ShareAttachment = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  let regex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+  let regex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   const { mutate, isLoading } = useMutation(["sendReports"], sendReports, {
     onError: (error) => {
@@ -44,7 +44,8 @@ const ShareAttachment = ({
       },
     };
     if (!regex.test(email)) {
-      return ErrorNotify("Invalid email address");
+      ErrorNotify("Invalid email address");
+      return;
     }
     mutate(body);
   };

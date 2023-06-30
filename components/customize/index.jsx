@@ -3,6 +3,9 @@ import React from "react";
 import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
+import { useTranslation } from "react-i18next";
+import { putJourneyStep } from "../../utilities";
+import { changingCardLogo } from "../../constant/changinglogo";
 
 const Customize = ({
   onYes,
@@ -10,23 +13,50 @@ const Customize = ({
   isFetchingQuestions,
   onNextQuestion,
   onReportsFind,
+  setJourney,
+  // setCurrentDate
 }) => {
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const firstQuestion = questions?.length && questions[0];
-
-  const title =
-    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
-      ?.Question;
+  const title = isEnglish ? 
+    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-  const ToolTipText = firstQuestion?.attributes?.ToolTipText;
+  const ToolTipText = isEnglish ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
+  let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
+    const currentDate = new Date();
+    localStorage.setItem("currentDate", currentDate);
     onYes();
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
+    let payload = {
+      question: title,
+      answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
+    };
+    setJourney(payload);
+    let existing = JSON.parse(localStorage.getItem("userInfo"));
+    let existingJourney = existing?.Journey;
+    if (
+      (existingJourney && Object.values(existingJourney)?.length) ||
+      (count && count > 1)
+    ) {
+      let journey = {
+        ...existingJourney,
+        [currentDate]: [payload],
+      };
+      putJourneyStep(journey);
+    } else if (count == 1) {
+      let journey = {
+        [currentDate]: [payload],
+      };
+      putJourneyStep(journey);
+    }
   };
 
   return (
-    <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
+    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${isEnglish ? "h-full" : ""}`}>
       {isFetchingQuestions ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
@@ -34,30 +64,43 @@ const Customize = ({
       ) : (
         <>
           <div className="flex items-center customize-header">
-            <div className="flex items-center relative select-none mr-5">
-              <img
-                className="w-[230px] mx-full"
-                src="static/images/cards.svg"
-                alt="card"
-              />
-            </div>
-            <div className="customize-heading font-bold text-[51px] leading-[60px] select-none text-text m-0">
-              Assess your country’s situation and
-              <br /> customize the decision-making process.
+            {changingCardLogo?.map((key) => {
+              if (
+                localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+              ) {
+                return (
+                  <img
+                    className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height mr-5"
+                    src={Object.values(key)?.[0]}
+                    alt="card"
+                    key={"card-image"}
+                  />
+                );
+              }
+            })}
+
+            <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0 textColor">
+              {t("AssessYourCountry")}
             </div>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
-          <div className="customize-title font-bold text-[45px] leading-[54px] select-none text-text px-2.5 mb-[40px] mt-7 pr-20">
+          <div className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
             {title}
-            {ToolTipText && <TooltipComponent content={ToolTipText} />}
+            {ToolTipText && (
+              <TooltipComponent
+                id={"customize"}
+                content={ToolTipText}
+                customizeStyle={"customizeStyle"}
+              />
+            )}
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-            {singleAnswer?.map((i, index) => (
+            {singleAnswer?.map((i) => (
               <BlueButton
-                title={i?.Answer}
+                title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
-                key={index}
-                className="mb-[20px] h-[95px] text-[23px]"
+                key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                className="mb-[20px] h-[80px] text-[23px] "
               />
             ))}
           </div>

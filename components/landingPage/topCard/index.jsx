@@ -1,119 +1,99 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback } from "react";
 import StartButton from "components/buttons/startButton";
-import useOnScreen from "../../../hooks/useVisible";
+import { useTranslation } from "react-i18next";
+import { isMobile } from "../../../utilities";
 
 const TopCard = ({ HandleOpen }) => {
-  const ref = useRef();
-  const isVisible = useOnScreen(ref);
+  const { t } = useTranslation();
 
-  const cardRef = useRef();
-  const isVisibleCard = useOnScreen(cardRef);
-
-  const [showButton, setShowButton] = useState(false);
-  const [showCard, setShowCard] = useState(true);
-
-  useEffect(() => {
-    if (isVisible) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (isVisibleCard) {
-      setShowCard(false);
-    } else {
-      setShowCard(true);
-    }
-  }, [isVisibleCard]);
-
+  const handleButtonClick = useCallback(() => {
+    HandleOpen();
+  }, [HandleOpen]);
   return (
-    <>
-      <div className="flex items-center relative h-[100%] flex-col subCardFull">
-        <h5 className="cardBigHeading font-bold	text-[65px] leading-[70px] text-center	select-none	uppercase text-white	pb-[15px] mt-[2rem] pt-[25rem] sticky top-[-15rem] left-[0px]">
-          Sustainable
-          <span className="text-Secondary px-[6px]"> Energy </span>
-          for All <br />
-          <span className="text-Primary pl-[6px]"> Knowledge</span> Hub
-        </h5>
-        {showCard && (
-          <div id="wrapper">
-            <div id="wrapper-inner">
-              <div id="scroll-down">
-                <span className="arrow-down">
-                  {/* <!-- css generated icon --> */}
-                </span>
-                <span id="scroll-title">Scroll down</span>
-              </div>
-            </div>
-          </div>
-        )}
-        <div className={"mt-[25rem] w-[80%] mobile-card-width"} ref={cardRef}>
-          <div className="h-[100vh] pt-[10rem] flex items-center card-section-wrap">
-            <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
-                The SEforALL{" "}
-                <span className="font-bold text-Secondary px-[6px]">
-                  Knowledge Hub
-                </span>{" "}
-                is an interactive platform that supports policymakers in
-                developing policy and regulatory frameworks for sustainable
-                energy.
+    <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
+      <div className="items-center customize-header">
+        <h1 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center uppercase">
+          {t("Sustainable")}
+          <span className="text-Secondary"> {t("Energy")} </span>
+          <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
+        </h1>
+      </div>
+      <div id="container-main" className={`flex my-[1.5rem] `}>
+        <div className="container-box w-[50%]">
+          <div className="flex flex-col h-[50%] ">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+              <img
+                className="w-[16%] mr-[8px] mt-[5px]"
+                src="../../../static/images/hub.svg"
+                alt="hub_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
+              />
+              <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left">
+                {t("PlatformThatSupports")}
               </p>
             </div>
+            <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="h-[100vh] pt-[8rem] flex items-center card-section-wrap">
-            <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
-                With the right policies and regulations,
-                <span className="font-bold text-Secondary pl-[6px]">
-                  affordable and clean energy for all is possible
-                </span>
-                . The Knowledge Hub contains leading resources, which have been
-                identified by stakeholders from across the energy sector.
+          <div className="flex flex-col h-[50%]">
+            <div className="second-container bg-white-900 mobile-card-width card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
+              <img
+                className="w-[14%] mr-[8px] mt-[4px]"
+                src="../../../static/images/journey.svg"
+                alt="journey_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
+              />
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+                {t("ResourcesOnAccess")}
               </p>
             </div>
+            <div className="divider-hide mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="h-[100vh] pt-[8rem] flex items-center card-section-wrap">
-            <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-              <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
-                It currently offers{" "}
-                <span className="font-bold text-Secondary">
-                  resources on electricity access
-                </span>{""}
-                . Resources on access to clean cooking, sustainable cooling and
-                energy efficiency will be added soon.
+        </div>
+        <div className="divider w-[1px] border-b-[4px] border opacity-[1]" />
+        <div className="container-box w-[50%]">
+          <div className="third-container flex flex-col h-[50%]">
+            <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
+              <img
+                className="w-[14%] mr-[8px] mt-[-8px]"
+                src="../../../static/images/sustainable_hub.png"
+                alt="sustainable_hub_logo"
+                width={isMobile() ? "65px" : "70px"}
+                height={isMobile() ? "65px" : "70px"}
+              />
+              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+                {t("TheKnowledgeHub")}
               </p>
             </div>
+            <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div
-            className="h-[100vh] pt-[8rem] inline-flex flex-wrap items-center card-section-wrap "
-            ref={ref}
-          >
-            <div className="sticky top-[22rem] left-[0px] last-card-fixed">
-              <div className="mb-[10px] flex items-center cursor-pointer hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap ">
-                <p className="font-bold text-[42px] leading-[55px] text-white m-0 flex-1 text-justify">
-                  Find{' '}
-                  <span className="font-bold text-Secondary px-[6px]">
-                    guidelines, tools and templates
-                  </span>{' '}
-                  on electricity access relevant to your country and matched to
-                  your needs.
-                </p>
-              </div>
-              <div
-                className="w-[38%] absolute bottom-[-100px] left-[30%] landingButton"
-                onClick={HandleOpen}
-                style={{ opacity: showButton ? 1 : 0 }}
-              >
-                <StartButton title={"Click here to start"} className="w-full" />
-              </div>
-            </div>
+          <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
+            <img
+              className="w-[16%] mr-[8px] mt-[4px]"
+              src="../../../static/images/guide.svg"
+              alt="guide_logo"
+              width={isMobile() ? "65px" : "70px"}
+              height={isMobile() ? "65px" : "70px"}
+            />
+            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+              {t("OnElectricity")}
+            </p>
           </div>
         </div>
       </div>
-    </>
+      <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
+        <div
+          className="w-[49%] absolute bottom-[-28px] left-[26%]"
+          onClick={handleButtonClick}
+        >
+          <StartButton
+            title={t("ClickHereToStart")}
+            className="w-full pt-[16px] pb-[12px] "
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 export default TopCard;

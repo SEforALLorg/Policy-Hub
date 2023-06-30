@@ -55,10 +55,7 @@ const Select = ({
 
   const active = isOpen === title || selectedOption?.length;
   return (
-    <div
-      className="selectWrap"
-      style={{ border: active ? "2px solid #13A2BC" : "2px solid #fff" }}
-    >
+    <div className={`${"selectWrap"} ${active ? "borderColor" : "selectWrap"}`}>
       <div
         onClick={toggling}
         className="flex items-center justify-between pl-[12px] pr-[12px] pt-[10px] pb-[10px]"
@@ -88,7 +85,7 @@ const Select = ({
       {isOpen === title && (
         <div>
           <DropDownList top={top}>
-            {options?.map((option, index) => {
+            {options?.map((option) => {
               return (
                 <div
                   className="selectListItem cursor-pointer"
@@ -96,7 +93,7 @@ const Select = ({
                     onOptionClicked(option?.label);
                     onOptionSelectClicked(option?.label);
                   }}
-                  key={index}
+                  key={option?.label}
                 >
                   <Span
                     selectedOption={selected?.includes(option?.id.toString())}

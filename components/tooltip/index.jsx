@@ -1,12 +1,41 @@
 import React from "react";
 import { FiInfo } from "react-icons/fi";
+import { Tooltip } from "react-tooltip";
 
-const TooltipComponent = ({ content, children, hideInfo , top, hideContent}) => {
+const TooltipComponent = ({
+  content,
+  children,
+  hideInfo,
+  top,
+  hideContent,
+  customizeStyle,
+  id,
+  style
+}) => {
   return (
-    <div className="tooltipWrap">
-      {hideInfo ? null : <FiInfo />}
+    <div
+      className={`my-anchor-element-${id} tooltipWrap`}
+      style={{ cursor: hideContent ? "" : "pointer" }}
+    >
+      {hideInfo ? null : (
+        <div className="tooltipIcon">
+          <FiInfo />
+        </div>
+      )}
       {children}
-      {hideContent ? '' : <div className={`content ${top ? 'top' : ''}`}>{content}</div>}
+      {hideContent ? (
+        ""
+      ) : (
+        <Tooltip
+          className={customizeStyle ? customizeStyle : "tooltip_content"}
+          anchorSelect={`.my-anchor-element-${id}`}
+          clickable={false}
+          place="top"
+          style={style}
+        >
+          {content}
+        </Tooltip>
+      )}
     </div>
   );
 };

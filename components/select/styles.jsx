@@ -19,7 +19,7 @@ export const DropDownList = styled.ul`
   overflow-y: scroll;
   left: 0px;
   top: 52px;
-  height: 221px;
+  height: 160px;
   z-index: 9999999999;
   box-shadow: 0px 4.90168px 17.1559px rgb(0 0 0 / 10%);
   @media only screen and (max-width: 1680px){
@@ -36,19 +36,20 @@ export const DropDownList = styled.ul`
   }
    
   &::-webkit-scrollbar-thumb {
-    background-color: rgba(19,166,191,0.2);
+    background: var(--theme-button-color);
     border-radius: 10px;
   }
 `;
 
 export const Span = styled.span`
-  background: ${prop => prop.selectedOption ? '#2e9fc7' : 'white'};
+  background: ${prop => prop.selectedOption ? "var(--theme-yes-button-color)": 'white'};
   margin-right: 10px;
-  border:  ${prop => prop.selectedOption ? '1px solid #2e9fc7' : '1px solid'} ;
+  border:  ${prop => prop.selectedOption ? "var(--theme-yes-button-color)" : '1px solid'} ;
+  border-color: ${prop => prop.selectedOption ? "#fff !important" : '#808080'};
   display: inline-block;
   height: 13px;
   width: 13px;
-  margin-top: 4px;
+  margin-top: 3px;
   @media only screen and (max-width: 1680px){
     margin-right: 8px;
   }

@@ -1,6 +1,6 @@
-import { instance } from './instance';
+import { instance } from "./instance";
 
 // Questions Lists
 export const getQuestions = () => {
-    return instance.get(`/question-lists`)
+  return instance.get(`/question-lists?locale=${"en"}`);
 };

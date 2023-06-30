@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     screens: {
       mobileMax: {min: '340px', max: '767px'},
+      tabMax: {min: '768px', max: '1024px'},
       xsm: "319px",
       extrasmall: "480px",
       small: "520px",
@@ -21,11 +22,11 @@ module.exports = {
       "7xl": "2200px",
     },
     colors: {
-      Primary: "#13A2BC",
+      Primary: "var(--theme-primary)",
       iconColor: '#13A2BC',
-      Secondary: "#FCB600",
+      Secondary: "var(--theme-secondary)",
       text: "#494949",
-      background: "#144A68",
+      background: "var(--theme-back-ground)",
       white: "#ffffff",
       black: "#000000",
       gray: "#6c6c6c",

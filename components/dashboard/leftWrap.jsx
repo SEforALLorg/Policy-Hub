@@ -5,30 +5,62 @@ import BlueButton from "components/buttons/blueButton";
 import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
+import { useTranslation } from "react-i18next";
+import { shortName } from "../../utilities";
+import DetailModal from "../detailModal";
+import { changingLeftWrapLogo } from "../../constant/changinglogo";
+import { CLEANCOOKING } from "../../constant";
 
 const LeftWrapPage = ({
   questions,
   setPublicationReports,
   setNonPublicationReports,
   firstQuestion,
+  perviousId,
   restart,
   stepAnswer,
   resetFilters,
   isResetPage,
-  setIsResetPage
+  setIsResetPage,
+  newJourney,
+  firstHit,
+  selectedResource,
+  isExpand,
 }) => {
+  const { t, i18n } = useTranslation();
   const [nextQuestionId, setNextQuestionId] = useState();
-  const [firstQuestionId, setFirstQuestionId] = useState();
   const [userJourney, setUserJourney] = useState([]);
   const [stepQuestion, setStepQuestion] = useState([]);
+  const [detailModal, setDetailModal] = useState(false);
+  const isEnglish = i18n.language === "en";
 
   useEffect(() => {
     if (questions?.length && firstQuestion && stepAnswer) {
       setNextQuestionId(firstQuestion);
-      setFirstQuestionId(firstQuestion);
-      setUserJourney([...userJourney, { ...questions[0], answer: stepAnswer }]);
+      const question = questions.filter((key) => {
+        if (key?.id === Number(perviousId)) {
+          return key;
+        }
+      });
+      setUserJourney([
+        ...userJourney,
+        {
+          ...question[0],
+          answer: stepAnswer?.Answer,
+          frenchAnswer: stepAnswer?.FrenchAnswer,
+        },
+      ]);
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const val = Object.values(userJourney);
+      if (val?.length === 1) {
+        return setDetailModal(true);
+      }
+    }, 2000);
+  }, [userJourney]);
 
   const onNextQuestion = (e) => {
     if (!nextQuestionId) return null;
@@ -44,19 +76,20 @@ const LeftWrapPage = ({
   };
 
   const onPreviousQuestion = () => {
+    resetFilters();
     let revisedArray = [...stepQuestion];
     setNextQuestionId(
       revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id
     );
-    revisedArray.splice(0, 1);
+    revisedArray?.splice(0, 1);
     setStepQuestion(revisedArray);
     setIsResetPage(!isResetPage);
   };
 
   const onStepChange = (e) => {
     let revisedArray = [...userJourney];
-    const targetObject = revisedArray.find((i) => i.id === e?.id);
-    const targetIndex = revisedArray.indexOf(targetObject);
+    const targetObject = revisedArray?.find((i) => i?.id === e?.id);
+    const targetIndex = revisedArray?.indexOf(targetObject);
     onNextQuestion(e?.attributes?.MainQuestion?.Question?.data?.id);
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
@@ -67,7 +100,7 @@ const LeftWrapPage = ({
   };
 
   const onRestart = () => {
-    setNextQuestionId(firstQuestionId);
+    setNextQuestionId(Number(perviousId));
     setUserJourney([]);
     setStepQuestion([]);
     restart();
@@ -77,34 +110,34 @@ const LeftWrapPage = ({
   const onSubmitAnswer = (i, item) => {
     onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
-    setUserJourney([...userJourney, { ...item, answer: i?.Answer }]);
+    setUserJourney([
+      ...userJourney,
+      { ...item, answer: i?.Answer, frenchAnswer: i?.FrenchAnswer },
+    ]);
     setStepQuestion([]);
     resetFilters();
     setIsResetPage(!isResetPage);
+    const data = {
+      question: isEnglish
+        ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question
+        : item?.attributes?.MainQuestion?.Question?.data?.attributes
+            ?.FrenchQuestion,
+      answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
+    };
+    newJourney(data);
   };
 
-  const completeQuestion = questions?.find((item) => item?.id === 11);
-
-  const onStandaloneClick = () => {
-    setNextQuestionId(24);
+  const onMiniClick = (e) => {
+    const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
+    setNextQuestionId(e?.[0]);
     setUserJourney([
-      ...userJourney.splice(0, 2),
+      ...userJourney
+        .splice(0, 2)
+        ?.filter((item) => item?.id !== completeQuestion?.id),
       {
         ...completeQuestion,
-        answer: "Standalone systems",
-      },
-    ]);
-    setStepQuestion([]);
-    setIsResetPage(!isResetPage);
-  };
-
-  const onMiniClick = () => {
-    setNextQuestionId(18);
-    setUserJourney([
-      ...userJourney.splice(0, 2),
-      {
-        ...completeQuestion,
-        answer: "Mini-grid",
+        answer: e?.[2],
+        frenchAnswer: e?.[3],
       },
     ]);
     setStepQuestion([]);
@@ -112,23 +145,42 @@ const LeftWrapPage = ({
   };
 
   return (
-    <div className="w-[40%] p-7 shadow-lg z-50	 relative dashboard-left-wrap z-[1]">
+    <div
+      className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
+      style={{
+        height:
+          !isExpand && selectedResource?.attributes?.Name !== CLEANCOOKING
+            ? 400
+            : "",
+      }}
+    >
       <div className="flex items-center pb-2.5">
-        <div className="flex items-center relative select-none mr-5">
-          <img
-            className="w-[90px] h-[90px] left-header-image"
-            src="static/images/yellowfile.svg"
-            alt="card"
-          />
+        <div className="flex items-center relative mr-5">
+          {changingLeftWrapLogo?.map((key) => {
+            if (
+              localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+            ) {
+              return (
+                <img
+                  className="w-[70px] h-[70px] left-header-image"
+                  src={Object.values(key)?.[0]}
+                  alt="card"
+                  key={"card-image"}
+                />
+              );
+            }
+          })}
         </div>
-        <div className="font-bold text-medium leading-[26px] select-none text-text m-0">
-          Assess the situation
+        <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
+          {isEnglish
+            ? selectedResource?.attributes?.Name
+            : selectedResource?.attributes?.FrenchName}
         </div>
       </div>
       {nextQuestionId &&
-        userJourney?.slice(0, 3).map((item, index) => (
+        userJourney?.slice(0, 3)?.map((item, index) => (
           <div
-            key={index}
+            key={item?.questionName}
             onClick={() => {
               if (nextQuestionId) {
                 onStepChange(item);
@@ -140,32 +192,31 @@ const LeftWrapPage = ({
           >
             <p className="flex items-center flex-1 pr-[5px]">
               <div className={`stepDot ${index === 0 && "hideDot"}`} />
-              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1">
+              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor">
                 {item?.questionName ||
-                  item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question}
+                  (isEnglish
+                    ? item?.attributes?.MainQuestion?.Question?.data?.attributes
+                        ?.Question
+                    : item?.attributes?.MainQuestion?.Question?.data?.attributes
+                        ?.FrenchQuestion)}
               </p>
             </p>
             <button className="yesButton">
-              {item?.answer === "Mini-grid"
-                ? "MG"
-                : item?.answer?.includes("Standalone systems")
-                ? "SHS"
-                : item?.answer}
+              {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
             </button>
           </div>
         ))}
       {Boolean(userJourney?.length) && nextQuestionId && (
         <div
-          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end"
+          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
           onClick={() => onRestart()}
         >
           <VscDebugRestart color={"#065a89"} />
           <p
-            className="text-[14px] ml-[2px] mt-[2px]"
+            className="text-[14px] ml-[2px] mt-[2px] textColor"
             style={{ color: "#065a89" }}
           >
-            Restart
+            {t("Restart")}
           </p>
         </div>
       )}
@@ -179,10 +230,10 @@ const LeftWrapPage = ({
       {!nextQuestionId && (
         <CompletedSteps
           onRestart={() => onRestart()}
-          onStandaloneClick={() => onStandaloneClick()}
-          onMiniClick={() => onMiniClick()}
+          onMiniClick={(e) => onMiniClick(e)}
         />
       )}
+      {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
       {questions?.length
         ? questions
             .filter(
@@ -190,13 +241,17 @@ const LeftWrapPage = ({
                 q?.attributes?.MainQuestion?.Question?.data?.id ===
                 nextQuestionId
             )
-            .map((item, index) => {
-              const questionTitle =
-                item?.attributes?.MainQuestion?.Question?.data?.attributes
-                  ?.Question;
+            .map((item) => {
+              const questionTitle = isEnglish
+                ? item?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.Question
+                : item?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.FrenchQuestion;
               const singleAnswer = item?.attributes?.AddAnswer;
               const questionType = item?.attributes?.QuestionType;
-              const ToolTipText = item?.attributes?.ToolTipText;
+              const ToolTipText = isEnglish
+                ? item?.attributes?.ToolTipText
+                : item?.attributes?.FrenchToolTipText;
               const QuestionKeyType =
                 item?.attributes?.MainQuestion?.QuestionKeyType?.data
                   ?.attributes?.QuestionKeyType;
@@ -209,25 +264,28 @@ const LeftWrapPage = ({
                 );
               }
               return (
-                <div className={"QuestionWrap"} key={index}>
+                <div className={"QuestionWrap"} key={'QuestionWrap'}>
                   {questionType === "Questionnaire" ? (
                     <>
-                      <div className="font-bold text-[17px] leading-6 select-none text-text mb-10 pr-5">
+                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
                         {questionTitle}
                         {ToolTipText && (
-                          <TooltipComponent content={ToolTipText} />
+                          <TooltipComponent
+                            id={"leftWrap"}
+                            content={ToolTipText}
+                          />
                         )}
                       </div>
-                      <div className="flex items-center flex-col w-[50%] my-[8rem] mx-auto left-wrap-buttons">
-                        {singleAnswer?.map((i, index) => {
+                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
+                        {singleAnswer?.map((i) => {
                           if (!i?.Answer) return null;
 
                           return (
                             <BlueButton
-                              className="mb-3"
-                              title={i?.Answer}
+                              className="mb-3 p-2"
+                              title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                               onClick={() => onSubmitAnswer(i, item)}
-                              key={index}
+                              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
                             />
                           );
                         })}
@@ -235,15 +293,16 @@ const LeftWrapPage = ({
                     </>
                   ) : (
                     <StepComponent
-                      onNext={(e) => onNextQuestion(e)}
+                      onNext={onNextQuestion}
                       setStepQuestion={(e) =>
                         setStepQuestion([e, ...stepQuestion])
                       }
                       item={item}
-                      setOptionReport={(i) => onReportsFind(i)}
+                      setOptionReport={onReportsFind}
                       onPrevious={onPreviousQuestion}
                       stepQuestion={stepQuestion}
                       totalSteps={findSteps}
+                      sendData={newJourney}
                     />
                   )}
                 </div>
