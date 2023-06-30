@@ -88,7 +88,7 @@ function MyApp({ Component, pageProps }) {
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         ></script>
-        <script defer src="/gtm.js"></script>
+        <script defer async src="/gtm.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}
