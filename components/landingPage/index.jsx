@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useQuery } from "react-query";
 import { getQuestions } from "pages/api/questions";
 
@@ -11,9 +11,9 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
   const [resources, setResources] = useState();
-  const HandleOpen = () => {
+  const handleOpen = useCallback(() => {
     setIsOpen(true);
-  };
+  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("UserId")) {
@@ -39,23 +39,26 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
 
   const allQuestions = questions?.data?.data;
 
-  useEffect(async () => {
-    const dataObject = {};
-    if (allQuestions?.length) {
-      const resources = await getResourses(allQuestions);
-      const flatArray = resources.flat();
-      flatArray.map((element) => {
-        dataObject[element.id] = element;
-      });
-      setResources(dataObject);
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      if (allQuestions?.length) {
+        const resources = await getResourses(allQuestions);
+        const dataObject = {};
+        resources.flat().forEach((element) => {
+          dataObject[element.id] = element;
+        });
+        setResources(dataObject);
+      }
+    };
+
+    fetchData();
   }, [allQuestions]);
 
   return (
     <>
       <div>
-        {!isOpen && <TopCard HandleOpen={HandleOpen} />}
-        {isOpen ? (
+        {!isOpen && <TopCard HandleOpen={handleOpen} />}
+        {isOpen && (
           <div
             className={`${
               !isBigCard ? "h-[80vh]" : ""
@@ -72,9 +75,10 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
               setIsOpen={setIsOpen}
             />
           </div>
-        ) : null}
+        )}
       </div>
     </>
   );
 };
+
 export default LandingPage;

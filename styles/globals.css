@@ -226,11 +226,6 @@ a {
   box-sizing: border-box;
 }
 
-.mc-modal-bg {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  opacity: 1 !important;
-}
-
 .header-title-wrap {
   /* background-image: url(/static/images/BG.png);
   background-color: #144a68 !important;
@@ -249,20 +244,6 @@ a {
 
 .collapse {
   visibility: unset !important;
-}
-
-.cardBigHeading {
-  background-image: url(/static/images/BG.png);
-  background-color: #144a68 !important;
-  background-attachment: fixed;
-  background-size: 100%;
-  overflow: hidden;
-  width: 100%;
-  z-index: 99;
-}
-
-.landingButton {
-  transition: all 5s ease-in-out !important;
 }
 
 .report-right-wrap {
@@ -314,10 +295,6 @@ a {
 
 .header .logo {
   width: 100px;
-}
-
-.topStep {
-  padding-bottom: 8rem;
 }
 
 .apply-wrap {
@@ -377,6 +354,10 @@ a {
 .dropdown-item:hover {
   color: #fff !important;
   background-color: #00a4ba !important;
+}
+.dropdown-item a {
+  color: #333;
+  text-decoration: unset;
 }
 
 .dropdown-item:hover a {
@@ -457,10 +438,6 @@ a {
 
 .white-text {
   color: #fff;
-}
-
-.addressCard:hover {
-  background-color: #e9e9e9 !important;
 }
 
 .stepText {
@@ -567,36 +544,6 @@ a {
   color: var(--theme-yes-button-color);
   margin: 0px;
   margin-top: 10px;
-}
-
-.inputWrap {
-  margin: 0px 5px;
-}
-
-.inputWrap p {
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 22px;
-  text-align: left;
-  color: #494949;
-  margin: 0px;
-  margin-top: 5px;
-  margin-left: 11px;
-}
-
-.inputWrap input {
-  background: #fff;
-  box-shadow: 0px 4.59958px 16.0985px rgba(0, 0, 0, 0.1);
-  border-radius: 9.19916px;
-  border: 1px solid #fff;
-  padding: 10px 10px;
-  outline: none !important;
-  font-size: 16px;
-}
-
-.inputWrap input:focus {
-  box-shadow: 0px 4.59958px 16.0985px rgba(0, 0, 0, 0.1) !important;
-  border: 1px solid #13a2bc !important;
 }
 
 .complete-buttonWrap button {
@@ -1266,22 +1213,6 @@ a {
   padding-top: 1.5rem;
 }
 
-.divider-right {
-  border-right: 1px solid #ccc;
-  position: absolute;
-  height: 60%;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.divider-bottom {
-  border-bottom: 1px solid #ccc;
-  margin: 0 auto;
-  margin-bottom: 35px;
-  width: 90%;
-}
-
 .otherDescription {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1303,10 +1234,6 @@ a {
 
 .other-card {
   /* border: 3.67626px solid #fff; */
-}
-
-.socialMediaIcon svg:hover {
-  color: var(--theme-yes-button-color);
 }
 
 .other-card.active {
@@ -1422,10 +1349,6 @@ a {
   top: 41px;
   padding: 15px;
   left: 13rem;
-}
-
-.landingButton button {
-  padding-top: 19px !important;
 }
 
 .tools-wrap {
@@ -1578,14 +1501,6 @@ a {
     width: 180px;
   }
 
-  .cardBigHeading {
-    font-size: 45px !important;
-    line-height: 50px !important;
-    padding-bottom: 15px !important;
-    padding-top: 14rem !important;
-    top: -6rem !important;
-  }
-
   .card-inner-small-wrap p {
     font-size: 15px !important;
     line-height: 23px !important;
@@ -1623,10 +1538,6 @@ a {
     margin-bottom: 4rem !important;
   }
 
-  .divider-bottom {
-    margin-bottom: 30px !important;
-  }
-
   .landing-card-text {
     font-size: 14px !important;
     line-height: 22px !important;
@@ -1635,11 +1546,6 @@ a {
   .landing-card-image {
     width: 70px !important;
     height: 70px !important;
-  }
-
-  .divider-right {
-    height: 58%;
-    top: 62%;
   }
 
   .landing-cards-wrap {
@@ -1668,11 +1574,6 @@ a {
   .landing-card-text {
     font-size: 18px !important;
     line-height: 28px !important;
-  }
-
-  .divider-right {
-    height: 63%;
-    top: 59%;
   }
 }
 
@@ -1710,13 +1611,6 @@ a {
 }
 
 @media only screen and (min-width: 1480px) and (max-width: 1680px) {
-  .cardBigHeading {
-    padding-top: 18rem !important;
-    font-size: 62px !important;
-    line-height: 70px !important;
-    top: -9rem !important;
-  }
-
   .card-section-wrap {
     /* padding-top: 4rem !important; */
   }
@@ -1790,11 +1684,6 @@ a {
 
   .landing-card {
     height: 85% !important;
-  }
-
-  .divider-right {
-    height: 65%;
-    top: 60%;
   }
 
   .customize-heading {
@@ -1901,19 +1790,6 @@ a {
     padding: 0px !important;
   }
 
-  .cardBigHeading br {
-    content: "";
-  }
-
-  .cardBigHeading {
-    /* font-size: 50px !important; */
-    line-height: 65px !important;
-    padding-top: 6rem !important;
-    top: 2rem !important;
-    background-size: cover !important;
-    font-size: 44px !important;
-  }
-
   .card-section-wrap {
     /* height: unset !important;
     margin-bottom: 50px; */
@@ -1924,18 +1800,6 @@ a {
     width: 90% !important; */
     font-size: 13px !important;
     line-height: 16px !important;
-  }
-
-  .landingButton {
-    position: unset !important;
-    opacity: 1 !important;
-    margin: 0 auto !important;
-    margin-top: 40px !important;
-    width: 50% !important;
-  }
-
-  .landingButton button {
-    padding-top: 14px !important;
   }
 
   .footer-logos {
@@ -2287,7 +2151,6 @@ a {
     object-position: center !important;
   }
 
-  .cardBigHeading,
   .header-title-wrap,
   body {
     background-size: cover !important;
@@ -2386,32 +2249,9 @@ a {
     padding-top: 0px !important;
   }
 
-  .divider-right {
-    border: none;
-  }
-
-  .divider-bottom {
-    display: none;
-  }
-
-  .cardBigHeading {
-    font-size: 36px !important;
-    line-height: 49px !important;
-    margin-top: 0px !important;
-    padding-top: 2rem !important;
-    /* margin-bottom: 10rem !important; */
-    top: 5rem !important;
-    background-image: unset !important;
-    background-color: transparent !important;
-  }
-
   .mobile-card-width {
     /* width: 90% !important;
     margin-top: 0rem !important; */
-  }
-
-  .cardBigHeading br {
-    content: "";
   }
 
   .landing-card-inner {
@@ -2447,13 +2287,6 @@ a {
     font-size: 20px !important;
     line-height: 35px !important;
     margin-bottom: 1rem !important;
-  }
-
-  .landingButton {
-    position: unset !important;
-    width: 70% !important;
-    margin: 0 auto !important;
-    opacity: 1 !important;
   }
 
   .last-card {
@@ -2890,10 +2723,6 @@ a {
     margin: 4px !important;
     width: 181px;
     height: 46px;
-  }
-
-  .landingButton button {
-    padding-top: 11px !important;
   }
 
   .public-share-modal .inputFullWrap {
@@ -3520,6 +3349,7 @@ a {
   cursor: pointer;
   color: #adb4bd;
 }
+
 .header-common-closeIcon:hover {
   color: #454545;
 }

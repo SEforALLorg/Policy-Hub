@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Customize from "components/customize";
 
 import { Wrapper } from "./styles";
@@ -43,7 +43,7 @@ const Dashboard = ({
     fuel: [],
   });
 
-  const onResetFilter = () => {
+  const onResetFilter = useCallback(() => {
     setSelectInputs({
       countries: [],
       regions: [],
@@ -57,9 +57,9 @@ const Dashboard = ({
       fuel: [],
     });
     setClearAll(!isClearAll);
-  };
+  }, [isClearAll]);
 
-  const onRestart = () => {
+  const onRestart = useCallback(() => {
     applyTheme(baseTheme);
     setIsExpand(false);
     onResetFilter();
@@ -70,43 +70,41 @@ const Dashboard = ({
     setPayload([]);
     localStorage.removeItem("ResourceType");
     selectedRes(null);
-  };
+  }, [isClearAll, onResetFilter]);
 
-  const onReportFind = (e) => {
+  const onReportFind = useCallback((e) => {
     setPublicationReports(e?.KeyPublication?.data);
     setNonPublicationReports(e?.NonKeyPublication?.data);
     setStepAnswer(e);
-  };
+  }, []);
 
-  const onNextQuestionId = (e) => {
-    setFirstQuestionId(e);
-    const question = questions?.data?.data?.find(
-      (q) => q?.id === Number(firstQuestionId)
-    );
-    setFirstQuestion(question);
-  };
+  const onNextQuestionId = useCallback(
+    (e) => {
+      setFirstQuestionId(e);
+      const question = questions?.data?.data?.find((q) => q?.id === Number(e));
+      setFirstQuestion(question);
+    },
+    [questions]
+  );
 
-  useEffect(() => {
-    const question = questions?.data?.data?.find(
-      (q) => q?.id === Number(firstQuestionId)
-    );
-    setFirstQuestion(question);
-  }, [firstQuestionId]);
+  const addJourney = useCallback(
+    (latestDate, existingJourney, isExistingUser, data) => {
+      let existingDate = new Date(latestDate);
+      let prevJourney = { ...existingJourney };
+      if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
+        Object.entries(existingJourney)?.map((key) => {
+          if (key?.[0] === String(existingDate)) {
+            prevJourney[String(existingDate)] = data;
+            return prevJourney;
+          }
+        });
+        putJourneyStep(prevJourney);
+      }
+    },
+    []
+  );
 
-  const addJourney = (latestDate, existingJourney, isExistingUser, data) => {
-    let existingDate = new Date(latestDate);
-    let prevJourney = { ...existingJourney };
-    if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
-      Object.entries(existingJourney)?.map((key) => {
-        if (key?.[0] === String(existingDate)) {
-          prevJourney[String(existingDate)] = data;
-          return prevJourney;
-        }
-      });
-      putJourneyStep(prevJourney);
-    }
-  }
-  const setUserJourney = () => {
+  const setUserJourney = useCallback(() => {
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
@@ -123,13 +121,22 @@ const Dashboard = ({
           data = payload?.concat(newJourneyData);
           setPayload(data);
         }
-        addJourney(latestDate, existingJourney, isExistingUser, data)
+        addJourney(latestDate, existingJourney, isExistingUser, data);
       }
     }
-  };
+  }, [addJourney, newJourneyData, oldJourney, payload]);
+
   useEffect(() => {
     setUserJourney();
   }, [newJourneyData]);
+
+  useEffect(() => {
+    const question = questions?.data?.data?.find(
+      (q) => q?.id === Number(firstQuestionId)
+    );
+    setFirstQuestion(question);
+  }, [firstQuestionId]);
+
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -138,13 +145,13 @@ const Dashboard = ({
             <LeftWrapPage
               selectedResource={selectedResource}
               questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
-              setPublicationReports={(e) => setPublicationReports(e)}
-              setNonPublicationReports={(e) => setNonPublicationReports(e)}
+              setPublicationReports={setPublicationReports}
+              setNonPublicationReports={setNonPublicationReports}
               firstQuestion={firstQuestion}
               perviousId={firstQuestionId}
-              restart={() => onRestart()}
+              restart={onRestart}
               stepAnswer={stepAnswer}
-              resetFilters={() => onResetFilter()}
+              resetFilters={onResetFilter}
               isResetPage={isResetPage}
               setIsResetPage={setIsResetPage}
               newJourney={(e) => setNewJourneyData([e])}

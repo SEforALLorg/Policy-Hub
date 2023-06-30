@@ -157,6 +157,7 @@ const Header = ({ selectedRes }) => {
                 </NavLink>
               </div>
             </NavItem>
+          </Nav>
             <UncontrolledDropdown setActiveFromChild className="customDropdown">
               <DropdownToggle
                 className="DropdownToggle"
@@ -202,7 +203,6 @@ const Header = ({ selectedRes }) => {
                 })}
               </DropdownMenu>
             </UncontrolledDropdown>
-          </Nav>
         </Collapse>
       </Navbar>
     </div>
