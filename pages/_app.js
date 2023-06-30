@@ -12,6 +12,7 @@ import { Cookies } from "react-cookie";
 import { useRouter } from "next/router";
 import { applyTheme } from "../theme/utils";
 import baseTheme from "../theme/base";
+import Script from "next/script";
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 
@@ -83,11 +84,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
-        <script
-          defer
-          async
+        <Script
+          strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
-        ></script>
+        />
         <script defer async src="/gtm.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
