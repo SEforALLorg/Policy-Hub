@@ -1,4 +1,3 @@
-import { isEmpty } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
@@ -99,11 +98,11 @@ const DetailModal = ({ firstHit }) => {
   };
 
   useEffect(() => {
-    const result = Object.values(formInput)
-      .map((val) => {
-        return isEmpty(val);
-      })
-      .every((element) => !element);
+    const result =
+      formInput?.Email &&
+      formInput?.FullName &&
+      formInput?.JobTitle &&
+      formInput?.Organization;
     if (result) {
       setButtonDisable(false);
     } else {

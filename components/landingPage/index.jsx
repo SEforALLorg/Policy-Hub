@@ -5,15 +5,12 @@ import { getQuestions } from "pages/api/questions";
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses, landingPage } from "../../utilities/index.jsx";
+import { getResourses, isMobile, landingPage } from "../../utilities/index.jsx";
 
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
   const [resources, setResources] = useState();
-  const handleOpen = useCallback(() => {
-    setIsOpen(true);
-  }, []);
 
   useEffect(() => {
     if (localStorage.getItem("UserId")) {
@@ -27,15 +24,23 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  const { data: questions, isFetching: isFetchingQuestions } = useQuery(
+  const { data: questions, isFetching: isFetchingQuestions, refetch } = useQuery(
     ["getQuestions"],
     getQuestions,
     {
+      enabled: !isMobile(),
       onError: (error) => {
         ErrorNotify(error?.response?.data?.error?.message);
       },
     }
   );
+
+  const handleOpen = useCallback(() => {
+    if (isMobile()) {
+      refetch();
+    }
+    setIsOpen(true);
+  }, []);
 
   const allQuestions = questions?.data?.data;
 

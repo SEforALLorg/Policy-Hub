@@ -77,27 +77,18 @@ function MyApp({ Component, pageProps }) {
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
-      setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
         <script
+          defer
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-QZE40XCZJQ');
-          `,
-          }}
-        />
+        <script defer src="/gtm.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}
