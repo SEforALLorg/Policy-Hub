@@ -1,5 +1,17 @@
 import qs from "qs";
+import {
+  CLEANCOOKING,
+  ELECTRICITYACCESS,
+  ENERGYEFFICIENCY,
+  SUSTAINABLECOOLING,
+} from "../constant";
 import { repeatUser, putJourney } from "../pages/api/reports";
+import baseTheme from "../theme/base";
+import greenTheme from "../theme/clean_cooking ";
+import electricityTheme from "../theme/Electricity";
+import yellowTheme from "../theme/EnergyEfficiency";
+import darkTheme from "../theme/SustainableCooling";
+import { applyTheme } from "../theme/utils";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -263,7 +275,42 @@ export const userRepeated = async (data) => {
     JSON.stringify(response?.data?.data?.attributes)
   );
 };
-
 export const isMobile = () => {
   return window.innerWidth < 767;
+};
+
+// Change theme function
+export const changeTheme = (e) => {
+  switch (e) {
+    case ELECTRICITYACCESS:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(electricityTheme);
+      break;
+    case CLEANCOOKING:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(greenTheme);
+      break;
+    case SUSTAINABLECOOLING:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(darkTheme);
+      break;
+    case ENERGYEFFICIENCY:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(yellowTheme); //blueTheme
+      break;
+    default:
+      applyTheme(baseTheme);
+      break;
+  }
+};
+
+export const capitalizedString = (string) => {
+  const lowerString = string?.toLocaleLowerCase()?.split(" ");
+  const capitalized =
+    lowerString?.[0].charAt(0).toUpperCase() +
+    lowerString?.[0].slice(1) +
+    " " +
+    lowerString?.[1].charAt(0).toUpperCase() +
+    lowerString?.[1].slice(1);
+  return capitalized;
 };

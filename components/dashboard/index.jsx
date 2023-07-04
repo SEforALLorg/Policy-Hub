@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/router";
 import Customize from "components/customize";
 
 import { Wrapper } from "./styles";
@@ -7,7 +8,13 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { putJourneyStep } from "../../utilities";
+import { changeTheme, putJourneyStep } from "../../utilities";
+import { useTranslation } from "react-i18next";
+import { CLEANCOOKING, ELECTRICITYACCESS, ENERGYEFFICIENCY, SUSTAINABLECOOLING } from "../../constant";
+import electricityTheme from "../../theme/Electricity";
+import greenTheme from "../../theme/clean_cooking ";
+import darkTheme from "../../theme/SustainableCooling";
+import yellowTheme from "../../theme/EnergyEfficiency";
 
 const Dashboard = ({
   questions,
@@ -16,8 +23,11 @@ const Dashboard = ({
   resources,
   selectedRes,
   setIsOpen,
+  isPage,
 }) => {
+  const router = useRouter();
   const [isExpand, setIsExpand] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [isResource, setIsResource] = useState(true);
   const [publicationReports, setPublicationReports] = useState([]);
   const [nonPublicationReports, setNonPublicationReports] = useState([]);
@@ -42,8 +52,49 @@ const Dashboard = ({
     sector: [],
     fuel: [],
   });
+  const [ t,i18n ] = useTranslation();
 
-  const onResetFilter = useCallback(() => {
+  useEffect(() => {
+    if (isPage) {
+      const query = router?.query;
+      const nextQuestionId = query?.question;
+      const resource = query?.resource;
+      const currentResource = Object.entries(resources || "{}")
+        ?.map((item) => item?.[1])
+        ?.find(
+          (item) => item?.attributes?.Name?.toLocaleLowerCase() === resource?.toLocaleLowerCase()
+        );
+      setIsResource(false);
+      setSelectedResource(currentResource);
+      selectedRes(resource);
+      changeTheme(localStorage.getItem("ResourceType"));
+      setFirstQuestionId(nextQuestionId);
+    }
+  }, [isPage, questions, resources]);
+
+  useEffect(() => {
+    const query = router?.query;
+    if (query?.bigCard === "true" && !stepAnswer) {
+      setIsResource(false);
+      setIsExpand(true);
+      const journey = JSON.parse(localStorage.getItem("userOldJourney"));
+      if (journey?.length) {
+        const answer = journey?.filter(
+          (item) =>
+            item?.attributes?.MainQuestion?.Question?.data?.id ===
+            Number(query?.question)
+        )?.[0];
+        setPublicationReports(
+          journey?.[0]?.attributes?.AddAnswer?.[0]?.KeyPublication?.data
+        );
+        setNonPublicationReports(
+          journey?.[0]?.attributes?.AddAnswer?.[0]?.NonKeyPublication?.data
+        );
+      }
+    }
+  }, [router]);
+
+  const onResetFilter = () => {
     setSelectInputs({
       countries: [],
       regions: [],
@@ -57,16 +108,16 @@ const Dashboard = ({
       fuel: [],
     });
     setClearAll(!isClearAll);
-  }, [isClearAll]);
+  };
 
   const onRestart = useCallback(() => {
     applyTheme(baseTheme);
-    setIsExpand(false);
+    // setIsExpand(false);
     onResetFilter();
-    setStepAnswer(undefined);
-    setIsBigCard(false);
-    setClearAll(!isClearAll);
-    setIsResource(true);
+    // setStepAnswer(undefined);
+    // setIsBigCard(false);
+    // setClearAll(!isClearAll);
+    // setIsResource(true);
     setPayload([]);
     localStorage.removeItem("ResourceType");
     selectedRes(null);
@@ -78,33 +129,48 @@ const Dashboard = ({
     setStepAnswer(e);
   }, []);
 
-  const onNextQuestionId = useCallback(
-    (e) => {
-      setFirstQuestionId(e);
-      const question = questions?.data?.data?.find((q) => q?.id === Number(e));
-      setFirstQuestion(question);
-    },
-    [questions]
-  );
+  const onNextQuestionId = (e, resource) => {
+    setLoader(true);
+    router.push(
+      { pathname: `/${i18n.language}/electricity`, query: { resource, question: e } },
+      undefined,
+      { shallow: true }
+    );
+    // console.log(e, "onNextQuestionId", resource);
+    // setFirstQuestionId(e);
+    // const question = questions?.data?.data?.find(
+    //   (q) => q?.id === Number(firstQuestionId)
+    // );
+    // setFirstQuestion(question);
+  };
 
-  const addJourney = useCallback(
-    (latestDate, existingJourney, isExistingUser, data) => {
-      let existingDate = new Date(latestDate);
-      let prevJourney = { ...existingJourney };
-      if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
-        Object.entries(existingJourney)?.map((key) => {
-          if (key?.[0] === String(existingDate)) {
-            prevJourney[String(existingDate)] = data;
-            return prevJourney;
-          }
-        });
-        putJourneyStep(prevJourney);
-      }
-    },
-    []
-  );
+  useEffect(() => {
+    const question = questions?.data?.data?.find(
+      (q) => q?.id === Number(firstQuestionId)
+    );
+    const firstQuestion = questions?.data?.data?.filter((item) => {
+      return (
+        item?.attributes?.MainQuestion?.Question?.data?.id ===
+        Number(firstQuestionId)
+      );
+    })?.[0]?.attributes?.MainQuestion?.Question?.data;
+    setFirstQuestion(question || firstQuestion);
+  }, [firstQuestionId]);
 
-  const setUserJourney = useCallback(() => {
+  const addJourney = (latestDate, existingJourney, isExistingUser, data) => {
+    let existingDate = new Date(latestDate);
+    let prevJourney = { ...existingJourney };
+    if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
+      Object.entries(existingJourney)?.map((key) => {
+        if (key?.[0] === String(existingDate)) {
+          return (prevJourney[String(existingDate)] = data);
+        }
+      });
+      putJourneyStep(prevJourney);
+    }
+  };
+  const setUserJourney = () => {
+    let count = localStorage.getItem("count");
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
     let existingJourney;
@@ -121,22 +187,17 @@ const Dashboard = ({
           data = payload?.concat(newJourneyData);
           setPayload(data);
         }
-        addJourney(latestDate, existingJourney, isExistingUser, data);
+        if (count && count > 1) {
+          addJourney(latestDate, existingJourney, isExistingUser, data);
+        } else {
+          addJourney(latestDate, existingJourney, isExistingUser, data);
+        }
       }
     }
-  }, [addJourney, newJourneyData, oldJourney, payload]);
-
+  };
   useEffect(() => {
     setUserJourney();
   }, [newJourneyData]);
-
-  useEffect(() => {
-    const question = questions?.data?.data?.find(
-      (q) => q?.id === Number(firstQuestionId)
-    );
-    setFirstQuestion(question);
-  }, [firstQuestionId]);
-
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
@@ -157,6 +218,7 @@ const Dashboard = ({
               newJourney={(e) => setNewJourneyData([e])}
               firstHit={oldJourney[0]}
               isExpand={isExpand}
+              resourcesData={resources}
             />
             <RightWrapPage
               publicationReports={publicationReports}
@@ -183,6 +245,7 @@ const Dashboard = ({
               isFetchingQuestions={isFetchingQuestions}
               onNextQuestion={(e) => setFirstQuestion(e)}
               onReportsFind={(e) => onReportFind(e)}
+              loader={loader}
             />
           </div>
         </>
@@ -197,6 +260,7 @@ const Dashboard = ({
             onYes={() => setIsResource(false)}
             onNextQuestionId={onNextQuestionId}
             setIsOpen={setIsOpen}
+            loader={loader}
           />
         </>
       )}

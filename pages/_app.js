@@ -65,8 +65,10 @@ function MyApp({ Component, pageProps }) {
   }, [showConsent]);
 
   useEffect(() => {
-    applyTheme(baseTheme);
-  }, []);
+    if (!Object.keys(router?.query)?.length) {
+      applyTheme(baseTheme);
+    }
+  }, [router]);
 
   const queryClient = new QueryClient({
     defaultOptions: {

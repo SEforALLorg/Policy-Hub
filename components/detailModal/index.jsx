@@ -12,7 +12,7 @@ import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formInput, setFormInput] = useState({
     FullName: "",
@@ -20,6 +20,7 @@ const DetailModal = ({ firstHit }) => {
     JobTitle: "",
     Organization: "",
   });
+  const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -94,6 +95,8 @@ const DetailModal = ({ firstHit }) => {
     event.preventDefault();
     let name = event.target.name;
     let val = event.target.value;
+    const formError = validation(event, name, val);
+    setErrors(formError);
     setFormInput({ ...formInput, [name]: val });
   };
 

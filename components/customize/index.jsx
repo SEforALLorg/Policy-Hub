@@ -6,6 +6,7 @@ import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
 import { putJourneyStep } from "../../utilities";
 import { changingCardLogo } from "../../constant/changinglogo";
+import { useRouter } from "next/router";
 
 const Customize = ({
   onYes,
@@ -14,8 +15,10 @@ const Customize = ({
   onNextQuestion,
   onReportsFind,
   setJourney,
+  loader
   // setCurrentDate
 }) => {
+  const router = useRouter();
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
   const firstQuestion = questions?.length && questions[0];
@@ -35,7 +38,13 @@ const Customize = ({
       question: title,
       answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
     };
-    setJourney(payload);
+    setJourney({
+      // question: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
+      // frenchQuestion: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion,
+      ...firstQuestion,
+      answer: i?.Answer, 
+      frenchAnswer: i?.FrenchAnswer
+    });
     let existing = JSON.parse(localStorage.getItem("userInfo"));
     let existingJourney = existing?.Journey;
     if (
@@ -53,11 +62,27 @@ const Customize = ({
       };
       putJourneyStep(journey);
     }
+    router.push(
+      {
+        pathname: `/${i18n.language}/electricity`,
+        query: {
+          ...router.query,
+          question: i?.NextQuestion?.data?.id,
+          bigCard: true,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
-    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${isEnglish ? "h-full" : ""}`}>
-      {isFetchingQuestions ? (
+    <div
+      className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${
+        i18n.language !== "fr" ? "h-full" : ""
+      }`}
+    >
+      {isFetchingQuestions || loader ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
         </div>

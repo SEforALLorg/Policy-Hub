@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import RadioButton from "../radioButton";
@@ -14,19 +15,15 @@ const StepComponent = ({
   sendData,
 }) => {
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === "en";
+  const isEnglish = i18n.language === 'en';
+  const router = useRouter();
   const [optionData, setOptionData] = useState();
   const [stepCount, setStepCount] = useState(1);
   const [localJourney, setLocalJourney] = useState([]);
-  const title = isEnglish
-    ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question
-    : item?.attributes?.MainQuestion?.Question?.data?.attributes
-        ?.FrenchQuestion;
+  const title = isEnglish ? item?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : item?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
   const multiAnswer = item?.attributes?.AddAnswer;
   const nextCount = totalSteps?.length || 1;
-  const ToolTipText = isEnglish
-    ? item?.attributes?.ToolTipText
-    : item?.attributes?.FrenchToolTipText;
+  const ToolTipText = isEnglish ? item?.attributes?.ToolTipText : item?.attributes?.FrenchToolTipText;
 
   useEffect(() => {
     if (multiAnswer) {
@@ -34,6 +31,12 @@ const StepComponent = ({
       setOptionReport(multiAnswer[0]);
     }
   }, [multiAnswer]);
+
+  useEffect(() => {
+    if (router?.query?.step) {
+      setStepCount(Number(router?.query?.step));
+    }
+  }, [router])
 
   const onAnswerClick = (i) => {
     setOptionData(i);
@@ -62,7 +65,7 @@ const StepComponent = ({
     }
   };
 
-  const onNextClick = () => {
+  const onNextClick = (stepCount) => {
     onNext(optionData?.NextQuestion?.data?.id);
     setStepQuestion(item);
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
@@ -72,15 +75,25 @@ const StepComponent = ({
       answer: optionData?.Answer ?? "",
     };
     sendData(data);
+    router.push(
+      {
+        pathname: `/${i18n.language}/electricity`,
+        query: {
+          ...router.query,
+          question: optionData?.NextQuestion?.data?.id,
+          step: stepCount + 1,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
     <div className="flex flex-col">
       {item?.attributes?.QuestionTitle && (
         <h5 className="font-bold text-[18px] text-left text-text mb-[5px]">
-          {isEnglish
-            ? item?.attributes?.QuestionTitle
-            : item?.attributes?.frenchQuestionTitle}
+          {isEnglish ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
         </h5>
       )}
       <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
@@ -123,9 +136,7 @@ const StepComponent = ({
                 {isEnglish ? i?.Answer : i?.FrenchAnswer}
                 {i?.AnswerToolTip && (
                   <TooltipComponent
-                    content={
-                      isEnglish ? i?.AnswerToolTip : i?.FrenchAnswerToolTip
-                    }
+                    content={isEnglish ? i?.AnswerToolTip : i?.FrenchAnswerToolTip}
                     answer={isEnglish ? i?.Answer : i?.FrenchAnswer}
                     id={index}
                   />
@@ -139,10 +150,10 @@ const StepComponent = ({
         <button
           onClick={() => onPreviousClick()}
           className="SlideButton previous"
-          style={{ opacity: !stepQuestion?.length ? 0.5 : 1 }}
-          disabled={!stepQuestion?.length}
+          style={{ opacity: !stepQuestion?.length || stepCount === 1 ? 0.5 : 1 }}
+          disabled={!stepQuestion?.length || stepCount === 1}
         >
-          <img src="static/images/leftArrow.svg" alt="left_arrow" />{" "}
+          <img src="../static/images/leftArrow.svg" alt="left_arrow" />{" "}
           {t("Previous")}
         </button>
         {nextCount > 1 && (
@@ -150,9 +161,9 @@ const StepComponent = ({
             {stepCount}/{nextCount}
           </p>
         )}
-        <button onClick={() => onNextClick()} className="SlideButton">
+        <button onClick={() => onNextClick(stepCount)} className="SlideButton">
           {t("Next")}{" "}
-          <img src="static/images/rightArrow.svg" alt="right_arrow" />
+          <img src={"../static/images/rightArrow.svg"} alt="right_arrow" />
         </button>
       </div>
     </div>
