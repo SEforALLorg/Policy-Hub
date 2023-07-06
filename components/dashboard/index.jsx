@@ -8,13 +8,8 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { changeTheme, getResourceRoute, putJourneyStep } from "../../utilities";
+import { changeTheme, getResourceRoute, getRoute, putJourneyStep } from "../../utilities";
 import { useTranslation } from "react-i18next";
-import { CLEANCOOKING, ELECTRICITYACCESS, ENERGYEFFICIENCY, SUSTAINABLECOOLING } from "../../constant";
-import electricityTheme from "../../theme/Electricity";
-import greenTheme from "../../theme/clean_cooking ";
-import darkTheme from "../../theme/SustainableCooling";
-import yellowTheme from "../../theme/EnergyEfficiency";
 
 const Dashboard = ({
   questions,
@@ -62,7 +57,7 @@ const Dashboard = ({
       setIsResource(false);
       setSelectedResource(resource);
       selectedRes(resource);
-      changeTheme(resource);
+      changeTheme(getRoute());
       setIsResource(false)
     }
   }, [router]);
@@ -132,7 +127,8 @@ const Dashboard = ({
     // setClearAll(!isClearAll);
     // setIsResource(true);
     setPayload([]);
-    localStorage.removeItem("ResourceType");
+    // localStorage.removeItem("ResourceType");
+    // localStorage.removeItem("resourceObj");
     selectedRes(null);
   }, [isClearAll, onResetFilter]);
 

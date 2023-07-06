@@ -22,6 +22,10 @@ export const fontSizes = [12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 192];
 export const space = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
 export const halfWidth = "50%";
 export const fullWidth = "100%";
+export const ELECTRICITY_ACCESS = "electricity";
+export const CLEAN_COOKING = "cleancooking";
+export const SUSTAINABLE_COOLING = "sustainablecooling";
+export const ENERGY_EFFICIENCY = "energyefficiency";
 export const ELECTRICITYACCESS = "Electricity Access";
 export const CLEANCOOKING = "Clean Cooking";
 export const SUSTAINABLECOOLING = "Sustainable Cooling";
@@ -73,13 +77,13 @@ export const videosCard = [
 
 export const buttonOptions = [
   {
-    "Electricity Access": {
+    [ELECTRICITY_ACCESS]: {
       "Mini grids": [18, "../../static/images/mini-grid.png", 11, "MINI-RÉSEAUX"],
       "Standalone systems": [24, "../../static/images/solaroutline.png", 11, "SYSTÈMES AUTONOMES"],
     },
   },
   {
-    "Clean Cooking": {
+    [CLEAN_COOKING]: {
       "Policy and institutional framework": [
         51,
         "../../static/images/framework.svg",
@@ -97,7 +101,7 @@ export const buttonOptions = [
     },
   },
   {
-    "Sustainable Cooling": {
+    [SUSTAINABLE_COOLING]: {
       "Thermal comfort and safety": [76, "../../static/images/safety.svg", 54, "CONFORT THERMIQUE ET SÉCURITÉ"],
       "Food & agricultural cold chains": [
         85,
@@ -114,7 +118,7 @@ export const buttonOptions = [
     },
   },
   {
-    "Energy Efficiency": {
+    [ENERGY_EFFICIENCY]: {
       "Buildings": [108, "../../static/images/BUILDINGS.svg", 82, "BÂTIMENTS"],
       "Industry": [116, "../../static/images/INDUSTRY.svg", 82, "L'INDUSTRIE"],
       "Transport/ Mobility": [126, "../../static/images/TRANSPORT_MOBILITY.svg", 82, "TRANSPORT/ MOBILITÉ"],

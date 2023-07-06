@@ -7,7 +7,7 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
-import { getRoute, shortName } from "../../utilities";
+import { getResourceFirstQuestion, getRoute, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
@@ -166,7 +166,7 @@ const LeftWrapPage = ({
     // });
     router.push(
       {
-        pathname: `/${i18n.language}/${getRoute()}/${9}`,
+        pathname: `/${i18n.language}/${getRoute()}/${getResourceFirstQuestion()}`,
       },
       undefined,
       { shallow: true }

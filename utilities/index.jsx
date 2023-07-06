@@ -1,9 +1,13 @@
 import qs from "qs";
 import {
   CLEANCOOKING,
+  CLEAN_COOKING,
   ELECTRICITYACCESS,
+  ELECTRICITY_ACCESS,
   ENERGYEFFICIENCY,
+  ENERGY_EFFICIENCY,
   SUSTAINABLECOOLING,
+  SUSTAINABLE_COOLING,
 } from "../constant";
 import { repeatUser, putJourney } from "../pages/api/reports";
 import baseTheme from "../theme/base";
@@ -267,19 +271,19 @@ export const isMobile = () => {
 // Change theme function
 export const changeTheme = (e) => {
   switch (e) {
-    case ELECTRICITYACCESS:
+    case ELECTRICITY_ACCESS:
       localStorage.setItem("ResourceType", e);
       applyTheme(electricityTheme);
       break;
-    case CLEANCOOKING:
+    case CLEAN_COOKING:
       localStorage.setItem("ResourceType", e);
       applyTheme(greenTheme);
       break;
-    case SUSTAINABLECOOLING:
+    case SUSTAINABLE_COOLING:
       localStorage.setItem("ResourceType", e);
       applyTheme(darkTheme);
       break;
-    case ENERGYEFFICIENCY:
+    case ENERGY_EFFICIENCY:
       localStorage.setItem("ResourceType", e);
       applyTheme(yellowTheme); //blueTheme
       break;
@@ -338,4 +342,24 @@ export const getResourceRoute = (resource) => {
 
 export const getRoute = () => {
   return window?.location?.pathname?.split('/')?.[2]
+}
+
+export const getResourceFirstQuestion = () => {
+  switch (getRoute()) {
+    case ELECTRICITY_ACCESS:
+      return "9";
+      break;
+    case CLEAN_COOKING:
+      return "32";
+      break;
+    case ENERGY_EFFICIENCY:
+      return "80";
+      break;
+    case SUSTAINABLE_COOLING:
+      return "52";
+      break;
+    default:
+      return "9";
+      break;
+  }
 }
