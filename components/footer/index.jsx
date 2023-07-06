@@ -191,7 +191,7 @@ const Footer = ({ footerRes }) => {
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
-              src="static/images/footer_electricity_access.svg"
+              src="/static/images/footer_electricity_access.svg"
               alt="founder_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -201,7 +201,7 @@ const Footer = ({ footerRes }) => {
           )}
           {footerRes === CLEANCOOKING && (
             <img
-              src="static/images/footer_electricity_access.svg"
+              src="/static/images/footer_electricity_access.svg"
               alt="electricity_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -221,7 +221,7 @@ const Footer = ({ footerRes }) => {
           )}
           {footerRes === ENERGYEFFICIENCY && (
             <img
-              src={"static/images/footer_electricity_access.svg"}
+              src={"/static/images/footer_electricity_access.svg"}
               alt="footer_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>

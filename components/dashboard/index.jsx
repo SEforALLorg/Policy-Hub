@@ -8,7 +8,7 @@ import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { changeTheme, putJourneyStep } from "../../utilities";
+import { changeTheme, getResourceRoute, putJourneyStep } from "../../utilities";
 import { useTranslation } from "react-i18next";
 import { CLEANCOOKING, ELECTRICITYACCESS, ENERGYEFFICIENCY, SUSTAINABLECOOLING } from "../../constant";
 import electricityTheme from "../../theme/Electricity";
@@ -55,22 +55,35 @@ const Dashboard = ({
   const [ t,i18n ] = useTranslation();
 
   useEffect(() => {
-    if (isPage) {
-      const query = router?.query;
-      const nextQuestionId = query?.question;
-      const resource = query?.resource;
-      const currentResource = Object.entries(resources || "{}")
-        ?.map((item) => item?.[1])
-        ?.find(
-          (item) => item?.attributes?.Name?.toLocaleLowerCase() === resource?.toLocaleLowerCase()
-        );
+    const { id } = router?.query;
+    const resource = localStorage.getItem("ResourceType")
+    if (id) {
+      setFirstQuestionId(Number(id));
       setIsResource(false);
-      setSelectedResource(currentResource);
+      setSelectedResource(resource);
       selectedRes(resource);
-      changeTheme(localStorage.getItem("ResourceType"));
-      setFirstQuestionId(nextQuestionId);
+      changeTheme(resource);
+      setIsResource(false)
     }
-  }, [isPage, questions, resources]);
+  }, [router]);
+
+  // useEffect(() => {
+  //   if (isPage) {
+  //     const query = router?.query;
+  //     const nextQuestionId = query?.question;
+  //     const resource = query?.resource;
+  //     const currentResource = Object.entries(resources || "{}")
+  //       ?.map((item) => item?.[1])
+  //       ?.find(
+  //         (item) => item?.attributes?.Name?.toLocaleLowerCase() === resource?.toLocaleLowerCase()
+  //       );
+  //     setIsResource(false);
+  //     setSelectedResource(currentResource);
+  //     selectedRes(resource);
+  //     changeTheme(localStorage.getItem("ResourceType"));
+  //     setFirstQuestionId(nextQuestionId);
+  //   }
+  // }, [isPage, questions, resources]);
 
   useEffect(() => {
     const query = router?.query;
@@ -112,10 +125,10 @@ const Dashboard = ({
 
   const onRestart = useCallback(() => {
     applyTheme(baseTheme);
-    // setIsExpand(false);
+    setIsExpand(false);
     onResetFilter();
     // setStepAnswer(undefined);
-    // setIsBigCard(false);
+    setIsBigCard(false);
     // setClearAll(!isClearAll);
     // setIsResource(true);
     setPayload([]);
@@ -130,18 +143,10 @@ const Dashboard = ({
   }, []);
 
   const onNextQuestionId = (e, resource) => {
+    const resourceRoute = getResourceRoute(resource?.Name)
     setLoader(true);
-    router.push(
-      { pathname: `/${i18n.language}/electricity`, query: { resource, question: e } },
-      undefined,
-      { shallow: true }
-    );
-    // console.log(e, "onNextQuestionId", resource);
-    // setFirstQuestionId(e);
-    // const question = questions?.data?.data?.find(
-    //   (q) => q?.id === Number(firstQuestionId)
-    // );
-    // setFirstQuestion(question);
+    router.push({ pathname: `/${i18n.language}/${resourceRoute}/${e}` });
+    setFirstQuestionId(e);
   };
 
   useEffect(() => {
@@ -155,7 +160,7 @@ const Dashboard = ({
       );
     })?.[0]?.attributes?.MainQuestion?.Question?.data;
     setFirstQuestion(question || firstQuestion);
-  }, [firstQuestionId]);
+  }, [firstQuestionId, questions]);
 
   const addJourney = (latestDate, existingJourney, isExistingUser, data) => {
     let existingDate = new Date(latestDate);

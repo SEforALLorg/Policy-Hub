@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { getRoute } from "../../utilities";
 import RadioButton from "../radioButton";
 import TooltipComponent from "../tooltip";
 
@@ -66,7 +67,8 @@ const StepComponent = ({
   };
 
   const onNextClick = (stepCount) => {
-    onNext(optionData?.NextQuestion?.data?.id);
+    const questionId = optionData?.NextQuestion?.data?.id;
+    onNext(questionId);
     setStepQuestion(item);
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
     setStepCount(stepCount + 1);
@@ -77,10 +79,9 @@ const StepComponent = ({
     sendData(data);
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
+        pathname: `/${i18n.language}/${getRoute()}/${questionId}`,
         query: {
-          ...router.query,
-          question: optionData?.NextQuestion?.data?.id,
+          bigCard: true,
           step: stepCount + 1,
         },
       },
@@ -153,7 +154,7 @@ const StepComponent = ({
           style={{ opacity: !stepQuestion?.length || stepCount === 1 ? 0.5 : 1 }}
           disabled={!stepQuestion?.length || stepCount === 1}
         >
-          <img src="../static/images/leftArrow.svg" alt="left_arrow" />{" "}
+          <img src="/static/images/leftArrow.svg" alt="left_arrow" />{" "}
           {t("Previous")}
         </button>
         {nextCount > 1 && (
@@ -163,7 +164,7 @@ const StepComponent = ({
         )}
         <button onClick={() => onNextClick(stepCount)} className="SlideButton">
           {t("Next")}{" "}
-          <img src={"../static/images/rightArrow.svg"} alt="right_arrow" />
+          <img src={"/static/images/rightArrow.svg"} alt="right_arrow" />
         </button>
       </div>
     </div>

@@ -7,7 +7,7 @@ import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
 import { useTranslation } from "react-i18next";
-import { shortName } from "../../utilities";
+import { getRoute, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
@@ -36,6 +36,7 @@ const LeftWrapPage = ({
   const [stepQuestion, setStepQuestion] = useState([]);
   const [detailModal, setDetailModal] = useState(false);
   const isEnglish = i18n.language === "en";
+  const localResource = JSON.parse(localStorage.getItem('resourceObj') || '[]');
   const localStepQuestion = JSON.parse(localStorage.getItem("stepQuestions") || "[]");
   useEffect(() => {
     if (localStepQuestion?.length) {
@@ -82,7 +83,6 @@ const LeftWrapPage = ({
           },
         ])
       );
-      console.log("QWERT",firstHit)
     }
   }, [firstHit]);
 
@@ -111,16 +111,13 @@ const LeftWrapPage = ({
   const onPreviousQuestion = () => {
     resetFilters();
     let revisedArray = [...stepQuestion];
-    setNextQuestionId(
-      revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id
-    );
+    const questionId = revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id;
+    setNextQuestionId(questionId);
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
+        pathname: `/${i18n.language}/${getRoute()}/${questionId}`,
         query: {
-          ...router.query,
-          question:
-            revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id,
+          bigCard: true,
           step: Number(router?.query?.step) - 1,
         },
       },
@@ -137,7 +134,8 @@ const LeftWrapPage = ({
     let revisedArray = [...userJourney];
     const targetObject = revisedArray?.find((i) => i?.id === e?.id);
     const targetIndex = revisedArray?.indexOf(targetObject);
-    onNextQuestion(e?.attributes?.MainQuestion?.Question?.data?.id || e?.id);
+    const questionId = e?.attributes?.MainQuestion?.Question?.data?.id || e?.id
+    onNextQuestion(questionId);
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
     localStorage.setItem(
@@ -151,10 +149,8 @@ const LeftWrapPage = ({
     setIsResetPage(!isResetPage);
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
+        pathname: `/${i18n.language}/${getRoute()}/${questionId}`,
         query: {
-          ...router.query,
-          question: e?.attributes?.MainQuestion?.Question?.data?.id || e?.id,
           bigCard: true,
           step: ""
         },
@@ -165,17 +161,25 @@ const LeftWrapPage = ({
   };
 
   const onRestart = () => {
-    router.push({ pathname: i18n.language, query: { restart: true } }, undefined, {
-      shallow: true,
-    });
+    // router.push({ pathname: i18n.language, query: { restart: true } }, undefined, {
+    //   shallow: true,
+    // });
+    router.push(
+      {
+        pathname: `/${i18n.language}/${getRoute()}/${9}`,
+      },
+      undefined,
+      { shallow: true }
+    );
     // setNextQuestionId(Number(perviousId));
-    // setUserJourney([]);
+    setUserJourney([]);
+    localStorage.removeItem("userOldJourney")
     // setStepQuestion([]);
     restart();
     // setIsResetPage(!isResetPage);
   };
 
-  const onSubmitAnswer = (i, item) => {console.log(i,"item", item)
+  const onSubmitAnswer = (i, item) => {
     // onNextQuestion(i?.NextQuestion?.data?.id);
     onReportsFind(i);
     setUserJourney([...userJourney, { ...item, answer: i?.Answer, frenchAnswer: i?.FrenchAnswer }]);
@@ -198,8 +202,8 @@ const LeftWrapPage = ({
     newJourney(data);
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
-        query: { ...router.query, question: i?.NextQuestion?.data?.id, step: 1 },
+        pathname: `/${i18n.language}/${getRoute()}/${i?.NextQuestion?.data?.id}`,
+        query: { bigCard: true, step: 1 },
       },
       undefined,
       { shallow: true }
@@ -208,7 +212,8 @@ const LeftWrapPage = ({
 
   const onMiniClick = (e) => {
     const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
-    setNextQuestionId(e?.[0]);
+    const questionId = e?.[0];
+    setNextQuestionId(questionId);
     const oldJourney = [
       ...userJourney.splice(0, 2),
       {
@@ -224,8 +229,8 @@ const LeftWrapPage = ({
     setIsResetPage(!isResetPage);
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
-        query: { ...router.query, question: e?.[0], step: 1 },
+        pathname: `/${i18n.language}/${getRoute()}/${questionId}`,
+        query: { bigCard: true, step: 1 },
       },
       undefined,
       { shallow: true }
@@ -237,7 +242,7 @@ const LeftWrapPage = ({
       className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
       style={{
         height:
-          !isExpand && selectedResource?.attributes?.Name !== CLEANCOOKING
+          !isExpand && localResource?.attributes?.Name !== CLEANCOOKING
             ? 400
             : "",
       }}
@@ -261,8 +266,8 @@ const LeftWrapPage = ({
         </div>
         <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
           {isEnglish
-            ? selectedResource?.attributes?.Name
-            : selectedResource?.attributes?.FrenchName}
+            ? localResource?.attributes?.Name
+            : localResource?.attributes?.FrenchName}
         </div>
       </div>
       {nextQuestionId &&
@@ -289,7 +294,7 @@ const LeftWrapPage = ({
                         ?.FrenchQuestion)}
               </p>
             </p>
-            <button className="yesButton">{console.log(item,"itemyesbutton")}
+            <button className="yesButton">
               {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
             </button>
           </div>

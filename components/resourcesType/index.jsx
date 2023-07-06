@@ -27,13 +27,13 @@ const Resources = ({
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
   const onAnswerClick = (i) => {
+    localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
-    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes?.Name.toUpperCase());
+    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes);
   };
 
   const changeColor = (resourceType) => {
     const res = resourceType?.attributes?.Name;
-    console.log(resourceType)
     selected(resourceType);
     switch (res) {
       case ELECTRICITYACCESS:

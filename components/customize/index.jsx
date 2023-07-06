@@ -4,7 +4,7 @@ import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
-import { putJourneyStep } from "../../utilities";
+import { getRoute, putJourneyStep } from "../../utilities";
 import { changingCardLogo } from "../../constant/changinglogo";
 import { useRouter } from "next/router";
 
@@ -64,10 +64,8 @@ const Customize = ({
     }
     router.push(
       {
-        pathname: `/${i18n.language}/electricity`,
+        pathname: `/${i18n.language}/${getRoute()}/${i?.NextQuestion?.data?.id}`,
         query: {
-          ...router.query,
-          question: i?.NextQuestion?.data?.id,
           bigCard: true,
         },
       },

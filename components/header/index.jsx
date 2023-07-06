@@ -70,7 +70,7 @@ const Header = ({ selectedRes }) => {
         <NavbarBrand href="https://www.seforall.org/">
           {selectedRes === ELECTRICITYACCESS && (
             <img
-              src="../static/images/electricity_access.svg"
+              src="/static/images/electricity_access.svg"
               alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
@@ -78,7 +78,7 @@ const Header = ({ selectedRes }) => {
           )}
           {selectedRes === CLEANCOOKING && (
             <img
-              src="../static/images/clean_cooking.svg"
+              src="/static/images/clean_cooking.svg"
               alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
@@ -86,7 +86,7 @@ const Header = ({ selectedRes }) => {
           )}
           {selectedRes === SUSTAINABLECOOLING && (
             <img
-              src={"../static/images/sustainable_cooling.svg"}
+              src={"/static/images/sustainable_cooling.svg"}
               alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
@@ -94,7 +94,7 @@ const Header = ({ selectedRes }) => {
           )}
           {selectedRes === ENERGYEFFICIENCY && (
             <img
-              src={"../static/images/energy_efficiency.svg"}
+              src={"/static/images/energy_efficiency.svg"}
               alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}

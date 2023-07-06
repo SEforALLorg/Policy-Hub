@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useQuery } from "react-query";
-import { getQuestions } from "pages/api/questions";
 import { useRouter } from "next/router.js";
 
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses, isMobile, landingPage } from "../../utilities/index.jsx";
+import { isMobile, landingPage } from "../../utilities/index.jsx";
+import { getResource } from "../../pages/api/resources.js";
 
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   const router = useRouter();
@@ -23,7 +23,6 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   useEffect(() => {
     if (router?.query?.restart === "true") {
       setIsOpen(true);
-      setGoBottom(true);
     }
   }, [router]);
 
@@ -33,9 +32,9 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  const { data: questions, isFetching: isFetchingQuestions, refetch } = useQuery(
-    ["getQuestions"],
-    getQuestions,
+  const { data: resource, isFetching: isFetchingResources, refetch } = useQuery(
+    ["resource"],
+    getResource,
     {
       enabled: !isMobile(),
       onError: (error) => {
@@ -51,24 +50,11 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     setIsOpen(true);
   }, []);
 
-  const allQuestions = questions?.data?.data;
+  const allResource = resource?.data?.data;
 
   useEffect(() => {
-    if (questions?.data?.data) {
-      localStorage.setItem("questions", JSON.stringify(questions));
-    }
-  }, [questions]);
-  useEffect(async () => {
-    const dataObject = {};
-    if (allQuestions?.length) {
-      const resources = await getResourses(allQuestions);
-      const flatArray = resources.flat();
-      flatArray.map((element) => {
-        dataObject[element.id] = element;
-      });
-      setResources(dataObject);
-    }
-  }, [allQuestions]);
+    setResources(allResource);
+  }, [allResource]);
 
   return (
     <>
@@ -82,14 +68,8 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
             id="bottom-view"
           >
             <Dashboard
-              questions={
-                JSON.parse(localStorage.getItem("questions")) || questions
-              }
-              isFetchingQuestions={
-                JSON.parse(localStorage.getItem("questions"))
-                  ? false
-                  : isFetchingQuestions
-              }
+              questions={[]}
+              isFetchingQuestions={isFetchingResources}
               setIsBigCard={setIsBigCard}
               resources={resources}
               selectedRes={selectedRes}
