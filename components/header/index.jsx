@@ -74,6 +74,8 @@ const Header = ({ selectedRes }) => {
               alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === CLEANCOOKING && (
@@ -82,6 +84,8 @@ const Header = ({ selectedRes }) => {
               alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === SUSTAINABLECOOLING && (
@@ -90,6 +94,8 @@ const Header = ({ selectedRes }) => {
               alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === ENERGYEFFICIENCY && (
@@ -98,6 +104,8 @@ const Header = ({ selectedRes }) => {
               alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {!selectedRes && (

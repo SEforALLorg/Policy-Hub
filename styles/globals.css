@@ -2085,6 +2085,9 @@ a {
     left: 50% !important;
     transform: translateX(-42%) !important;
   }
+  main {
+    background-image: url("/static/images/BG_mobile.jpg");
+  }
   .tooltipWrap .tooltip_content {
     max-width: 250px !important;
   }

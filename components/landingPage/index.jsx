@@ -5,7 +5,7 @@ import { useRouter } from "next/router.js";
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { isMobile, landingPage } from "../../utilities/index.jsx";
+import { landingPage } from "../../utilities/index.jsx";
 import { getResource } from "../../pages/api/resources.js";
 
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
@@ -32,21 +32,19 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  const { data: resource, isFetching: isFetchingResources, refetch } = useQuery(
-    ["resource"],
-    getResource,
-    {
-      enabled: !isMobile(),
-      onError: (error) => {
-        ErrorNotify(error?.response?.data?.error?.message);
-      },
-    }
-  );
+  const {
+    data: resource,
+    isFetching: isFetchingResources,
+    refetch,
+  } = useQuery(["resource"], getResource, {
+    enabled: false,
+    onError: (error) => {
+      ErrorNotify(error?.response?.data?.error?.message);
+    },
+  });
 
   const handleOpen = useCallback(() => {
-    if (isMobile()) {
-      refetch();
-    }
+    refetch();
     setIsOpen(true);
   }, []);
 

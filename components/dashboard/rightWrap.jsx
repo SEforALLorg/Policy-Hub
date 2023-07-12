@@ -25,9 +25,12 @@ import { changingRightWrapLogo } from "../../constant/changinglogo";
 import { Tooltip } from "react-tooltip";
 import {
   CLEANCOOKING,
-  ELECTRICITYACCESS,
+  CLEAN_COOKING,
+  ELECTRICITY_ACCESS,
   ENERGYEFFICIENCY,
+  ENERGY_EFFICIENCY,
   SUSTAINABLECOOLING,
+  SUSTAINABLE_COOLING,
 } from "../../constant";
 
 const RightWrapPage = ({
@@ -77,6 +80,7 @@ const RightWrapPage = ({
 
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
+    enabled: isExpand,
     onError: (error) => {
       ErrorNotify(error?.response?.data?.error?.message);
     },
@@ -105,6 +109,7 @@ const RightWrapPage = ({
     ["getReports", query],
     () => getReports(query),
     {
+      enabled: isExpand,
       onError: (error) => {
         ErrorNotify(error?.response?.data?.error?.message);
       },
@@ -208,8 +213,9 @@ const RightWrapPage = ({
       setPreviousReports(
         [...(previousReports || []), ...allReports?.data?.data] || []
       );
-      !browseResource && window != "undefined" &&
-          document.getElementById("rightWrap").scrollTo(0, 0);
+      !browseResource &&
+        window != "undefined" &&
+        document.getElementById("rightWrap").scrollTo(0, 0);
     } else if (!isScrollLoader && !allReports?.data?.data?.length) {
       setPreviousReports([]);
     }
@@ -383,7 +389,7 @@ const RightWrapPage = ({
                       alt="card"
                       width="70px"
                       height="70px"
-                      key={'card'}
+                      key={"card"}
                     />
                   );
                 }
@@ -396,22 +402,24 @@ const RightWrapPage = ({
         )}
         <div className="flex mt-[30px] reports-inner-section">
           <div className="mobile-show">
-            <MobileFilters
-              publicationReports={publicationReports}
-              nonPublicationReports={nonPublicationReports}
-              setSelectInputs={setSelectInputs}
-              selectInputs={selectInputs}
-              showAllReports={showAllReports}
-              onResetFilter={onResetFilter}
-              setClearAll={setClearAll}
-              isClearAll={isClearAll}
-              isResetPage={isResetPage}
-              isClear={isClear}
-              browseResource
-              setPreviousReports={setPreviousReports}
-              previousReports={previousReports}
-              setReportsLoader={setReportsLoader}
-            />
+            {isExpand && (
+              <MobileFilters
+                publicationReports={publicationReports}
+                nonPublicationReports={nonPublicationReports}
+                setSelectInputs={setSelectInputs}
+                selectInputs={selectInputs}
+                showAllReports={showAllReports}
+                onResetFilter={onResetFilter}
+                setClearAll={setClearAll}
+                isClearAll={isClearAll}
+                isResetPage={isResetPage}
+                isClear={isClear}
+                browseResource
+                setPreviousReports={setPreviousReports}
+                previousReports={previousReports}
+                setReportsLoader={setReportsLoader}
+              />
+            )}
           </div>
           {isFilter && (
             <div
@@ -512,7 +520,7 @@ const RightWrapPage = ({
                 setSelectedOptions={setSelectedOptions}
                 isClearAll={isClearAll}
               />
-              {(resourceType === ELECTRICITYACCESS || browseResource) && (
+              {(resourceType === ELECTRICITY_ACCESS || browseResource) && (
                 <Select
                   title={t("GenerationSource")}
                   setIsOpen={setIsOpen}
@@ -527,7 +535,7 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
-              {(resourceType === ENERGYEFFICIENCY || browseResource) && (
+              {(resourceType === ENERGY_EFFICIENCY || browseResource) && (
                 <div className="filterTooltipWrap">
                   <Select
                     title={t("EnergyEfficiencySector")}
@@ -555,7 +563,7 @@ const RightWrapPage = ({
                   )}
                 </div>
               )}
-              {(resourceType === SUSTAINABLECOOLING || browseResource) && (
+              {(resourceType === SUSTAINABLE_COOLING || browseResource) && (
                 <Select
                   title={t("CoolingSector")}
                   resourceType={SUSTAINABLECOOLING}
@@ -571,7 +579,7 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
-              {(resourceType === CLEANCOOKING || browseResource) && (
+              {(resourceType === CLEAN_COOKING || browseResource) && (
                 <Select
                   title={t("Fuel")}
                   setIsOpen={setIsOpen}
@@ -816,8 +824,8 @@ const RightWrapPage = ({
                       <RiSearch2Line />
                       {t("NoReportsFound")}
                     </p>
-                    <a
-                      className="cursor-pointer hover:underline"
+                    <p
+                      className="cursor-pointer hover:underline text-[14px] text-Primary"
                       onClick={() => {
                         if (optionSelected) {
                           onReset();
@@ -829,7 +837,7 @@ const RightWrapPage = ({
                       {optionSelected
                         ? "Clear all filters"
                         : "Browse all resources"}
-                    </a>
+                    </p>
                   </div>
                 )}
                 {isFetchingReports && isScrollLoader ? (

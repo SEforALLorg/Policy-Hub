@@ -197,6 +197,8 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {footerRes === CLEANCOOKING && (
@@ -207,6 +209,8 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {footerRes === SUSTAINABLECOOLING && (
@@ -217,6 +221,8 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {footerRes === ENERGYEFFICIENCY && (
@@ -227,6 +233,8 @@ const Footer = ({ footerRes }) => {
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {!footerRes && (
