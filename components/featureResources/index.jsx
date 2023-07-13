@@ -147,11 +147,11 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {t(filterType?.replace(" ", "")) || t("AllPlatforms")}
+                    {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
                 <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
-                  {dropDownData?.map((resource) => {
+                  {dropDownData?.map((resource, index) => {
                     const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
@@ -169,7 +169,7 @@ const Feature = () => {
                           color: isActive ? "#fff" : "",
                         }}
                       >
-                        {t(resource?.label?.replace(" ", ""))}
+                        {t(resource?.label?.replace(' ', ''))}
                       </DropdownItem>
                     );
                   })}

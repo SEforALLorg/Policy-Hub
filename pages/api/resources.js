@@ -1,4 +1,9 @@
-import { instance } from './instance';
+import { instance } from "./instance";
+
+//GetResource
+export const getResource = () => {
+  return instance.get("resource");
+};
 
 // Resources
 export const getAllResources = () => {

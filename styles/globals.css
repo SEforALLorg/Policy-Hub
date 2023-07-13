@@ -38,24 +38,24 @@ main {
   color: rgb(73 73 73 / var(--tw-text-opacity));
 }
 
-.headerContainer .dropdown {
+.headerContainer .dropdown{
   width: 200px;
 }
 .headerContainer .dropdown-menu {
   left: -8px !important;
   width: 100% !important;
   margin-bottom: 8px !important;
-}
-.dropdown-menu-box {
+} 
+.dropdown-menu-box{
   left: -25px !important;
   margin-bottom: 15px !important;
   width: 100% !important;
 }
 
-.en-dropdown {
+.en-dropdown{
   min-width: 11rem !important;
 }
-.fr-dropdown {
+.fr-dropdown{
   min-width: 13rem !important;
 }
 .electricity_access {
@@ -1426,7 +1426,7 @@ a {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .cookies-wrap {
+  .cookies-wrap{
     font-size: 14px;
   }
   .customize-title .tooltipWrap .customizeStyle {
@@ -2071,22 +2071,22 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
-  .dropdown-menu-box {
+  .dropdown-menu-box{
     left: 0px !important;
     width: 97% !important;
   }
-  main {
-    background-image: url("/static/images/BG_mobile.jpg");
-  }
-  .footer .DropdownToggle {
+  .footer .DropdownToggle{
     justify-content: center;
   }
-  .footer .dropdown-toggle::after {
+  .footer .dropdown-toggle::after{
     margin-left: 8px !important;
   }
-  .report-bottom-box .content {
+  .report-bottom-box .content{
     left: 50% !important;
     transform: translateX(-42%) !important;
+  }
+  main {
+    background-image: url("/static/images/BG_mobile.jpg");
   }
   .tooltipWrap .tooltip_content {
     max-width: 250px !important;
@@ -2581,6 +2581,20 @@ a {
     padding-right: 1rem;
   }
 
+  /* main {
+    overflow-x: hidden !important;
+  } */
+  .header-title-wrap {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .footer-button {
+    width: 100% !important;
+    margin: 0px 5px;
+    padding: 9px 0px !important;
+  }
+
   .resources-card {
     margin: 0px;
     padding: 0px !important;
@@ -2742,25 +2756,25 @@ a {
   }
 }
 @media only screen and (max-width: 360px) {
-  .innerFilter {
-    height: calc(81vh - 80px) !important;
+  .innerFilter{
+    height: calc(81vh - 80px)  !important;
   }
-
+  
   .innerFilter::-webkit-scrollbar {
     width: 7px !important;
   }
-
+  
   .innerFilter::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3) !important;
     margin-top: 5px !important;
   }
-
+  
   .innerFilter::-webkit-scrollbar-thumb {
     background: var(--theme-button-color) !important;
     border-radius: 10px !important;
   }
-
-  .filterForm {
+  
+  .filterForm{
     height: 100% !important;
     overflow: auto !important;
   }

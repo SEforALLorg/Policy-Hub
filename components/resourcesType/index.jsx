@@ -22,12 +22,14 @@ const Resources = ({
   onNextQuestionId,
   selected,
   setIsOpen,
+  loader,
 }) => {
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
   const onAnswerClick = (i) => {
+    localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
-    onNextQuestionId(i?.attributes?.QuestionId);
+    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes);
   };
 
   const changeColor = (resourceType) => {
@@ -36,22 +38,22 @@ const Resources = ({
     switch (res) {
       case ELECTRICITYACCESS:
         localStorage.setItem("ResourceType", res);
-        applyTheme(electricityTheme);
+        // applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
         localStorage.setItem("ResourceType", res);
-        applyTheme(greenTheme);
+        // applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
         localStorage.setItem("ResourceType", res);
-        applyTheme(darkTheme);
+        // applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
         localStorage.setItem("ResourceType", res);
-        applyTheme(yellowTheme);
+        // applyTheme(yellowTheme);
         break;
       default:
-        applyTheme(baseTheme);
+        // applyTheme(baseTheme);
         break;
     }
   };
@@ -77,7 +79,7 @@ const Resources = ({
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
 
-      {resourcesData ? (
+      {!loader && resourcesData ? (
         <div>
           <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mb-3">
             {t("AreaWantToInvestigate")}

@@ -1,6 +1,6 @@
 import { instance } from "./instance";
 
 // Questions Lists
-export const getQuestions = () => {
-  return instance.get(`/question-lists?locale=${"en"}`);
+export const getQuestions = (query) => {
+  return instance.get(`/question-lists?locale=${"en"}&${query}`);
 };

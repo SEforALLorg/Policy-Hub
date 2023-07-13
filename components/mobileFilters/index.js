@@ -215,13 +215,13 @@ const MobileFilters = ({
     refetch();
     setSearch("");
   }, [isClear]);
-  useEffect(() => {
+  useEffect(()=>{
     if (isFilter) {
       document.getElementsByTagName("body")[0].classList.add("hide-scroll");
     } else {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
     }
-  }, [isFilter]);
+  },[isFilter])
   const { t } = useTranslation();
 
   return (

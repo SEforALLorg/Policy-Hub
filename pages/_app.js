@@ -65,8 +65,10 @@ function MyApp({ Component, pageProps }) {
   }, [showConsent]);
 
   useEffect(() => {
-    applyTheme(baseTheme);
-  }, []);
+    if (!Object.keys(router?.query)?.length) {
+      applyTheme(baseTheme);
+    }
+  }, [router]);
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -89,7 +91,7 @@ function MyApp({ Component, pageProps }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
         <script defer async src="/gtm.js"></script>
-
+        <script async defer src="/tailwindcss.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}

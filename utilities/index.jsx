@@ -1,5 +1,21 @@
 import qs from "qs";
+import {
+  CLEANCOOKING,
+  CLEAN_COOKING,
+  ELECTRICITYACCESS,
+  ELECTRICITY_ACCESS,
+  ENERGYEFFICIENCY,
+  ENERGY_EFFICIENCY,
+  SUSTAINABLECOOLING,
+  SUSTAINABLE_COOLING,
+} from "../constant";
 import { repeatUser, putJourney } from "../pages/api/reports";
+import baseTheme from "../theme/base";
+import greenTheme from "../theme/clean_cooking ";
+import electricityTheme from "../theme/Electricity";
+import yellowTheme from "../theme/EnergyEfficiency";
+import darkTheme from "../theme/SustainableCooling";
+import { applyTheme } from "../theme/utils";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -122,21 +138,6 @@ export const isSelectedInput = (selectInputs) => {
     selectInputs?.fuel?.length ||
     selectInputs?.generation_sources?.length;
   return optionSelected;
-};
-
-export const getResourses = (allQuestions) => {
-  const resourceGroup = allQuestions
-    .filter((item) => {
-      if (item.attributes.Resource?.id) {
-        return item;
-      }
-    })
-    .map((item) => {
-      const ac = Object.values(item?.attributes?.Resource?.resources);
-      return ac[0];
-    });
-
-  return resourceGroup;
 };
 
 export const shortName = (str) => {
@@ -263,7 +264,102 @@ export const userRepeated = async (data) => {
     JSON.stringify(response?.data?.data?.attributes)
   );
 };
-
 export const isMobile = () => {
   return window.innerWidth < 767;
 };
+
+// Change theme function
+export const changeTheme = (e) => {
+  switch (e) {
+    case ELECTRICITY_ACCESS:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(electricityTheme);
+      break;
+    case CLEAN_COOKING:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(greenTheme);
+      break;
+    case SUSTAINABLE_COOLING:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(darkTheme);
+      break;
+    case ENERGY_EFFICIENCY:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(yellowTheme); //blueTheme
+      break;
+    default:
+      applyTheme(baseTheme);
+      break;
+  }
+};
+
+export const capitalizedString = (string) => {
+  const lowerString = string?.toLocaleLowerCase()?.split(" ");
+  const capitalized =
+    lowerString?.[0].charAt(0).toUpperCase() +
+    lowerString?.[0].slice(1) +
+    " " +
+    lowerString?.[1].charAt(0).toUpperCase() +
+    lowerString?.[1].slice(1);
+  return capitalized;
+};
+
+export const getResources = (id) => {
+  if (!id) return null;
+  const query = qs.stringify({
+    filters: {
+      Resource: {
+        resources: {
+          id: {
+            $in: id,
+          },
+        },
+      },
+    },
+  });
+  return query;
+};
+
+export const getResourceRoute = (resource) => {
+  switch (resource) {
+    case ELECTRICITYACCESS:
+      return "electricity";
+      break;
+    case CLEANCOOKING:
+      return "cleancooking";
+      break;
+    case ENERGYEFFICIENCY:
+      return "energyefficiency";
+      break;
+    case SUSTAINABLECOOLING:
+      return "sustainablecooling";
+      break;
+    default:
+      return "electricity";
+      break;
+  }
+};
+
+export const getRoute = () => {
+  return window?.location?.pathname?.split('/')?.[2]
+}
+
+export const getResourceFirstQuestion = () => {
+  switch (getRoute()) {
+    case ELECTRICITY_ACCESS:
+      return "9";
+      break;
+    case CLEAN_COOKING:
+      return "32";
+      break;
+    case ENERGY_EFFICIENCY:
+      return "80";
+      break;
+    case SUSTAINABLE_COOLING:
+      return "52";
+      break;
+    default:
+      return "9";
+      break;
+  }
+}

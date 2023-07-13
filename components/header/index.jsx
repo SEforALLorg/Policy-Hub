@@ -32,6 +32,7 @@ const Header = ({ selectedRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
+  const [query, setQuery] = useState({});
   const [expanded, setExpanded] = useState(false);
 
   const toggleDropdown = () => {
@@ -50,24 +51,41 @@ const Header = ({ selectedRes }) => {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (Object.keys(query)?.length && router?.query) {
+      setTimeout(() => {
+        router.replace({query: {...query}}, undefined, {shallow: true});
+      }, 100)
+    }
+  }, [query])
+
+  const removeResource = () => {
+    localStorage.removeItem("ResourceType");
+  };
+
   return (
     <div className="header">
       <Navbar expand="md" light>
         <NavbarBrand href="https://www.seforall.org/">
           {selectedRes === ELECTRICITYACCESS && (
             <img
-              src="static/images/electricity_access.svg"
+              src="/static/images/electricity_access.svg"
               alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === CLEANCOOKING && (
             <img
-              src="static/images/clean_cooking.svg"
+              src="/static/images/clean_cooking.svg"
               alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === SUSTAINABLECOOLING && (
@@ -76,6 +94,8 @@ const Header = ({ selectedRes }) => {
               alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === ENERGYEFFICIENCY && (
@@ -84,6 +104,8 @@ const Header = ({ selectedRes }) => {
               alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {!selectedRes && (
@@ -122,6 +144,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/" ? "active" : ""}`}
                   href={`/${lang === null ? "" : lang}`}
+                  onClick={removeResource}
                 >
                   {t("Home")}
                 </NavLink>
@@ -132,6 +155,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/resources" ? "active" : ""}`}
                   href={`/${lang || "en"}/resources`}
+                  onClick={removeResource}
                 >
                   {t("Resources")}
                 </NavLink>
@@ -142,6 +166,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={location === "/about" ? "active" : ""}
                   href={`/${lang || "en"}/about`}
+                  onClick={removeResource}
                 >
                   {t("About")}
                 </NavLink>
@@ -152,6 +177,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/contact" ? "active" : ""}`}
                   href={`/${lang || "en"}/contact`}
+                  onClick={removeResource}
                 >
                   {t("Contactus")}
                 </NavLink>
@@ -174,8 +200,11 @@ const Header = ({ selectedRes }) => {
                   return (
                     <DropdownItem
                       key={lang}
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
                         const expires = new Date();
+                        const Query = router?.query;
+                        setQuery(Query);
                         expires.setFullYear(expires.getFullYear() + 100);
                         localStorage.setItem("lang", lang);
                         setLang(lang);

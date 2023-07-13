@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useQuery } from "react-query";
-import { getQuestions } from "pages/api/questions";
+import { useRouter } from "next/router.js";
 
 import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
 import Dashboard from "../dashboard";
-import { getResourses, isMobile, landingPage } from "../../utilities/index.jsx";
+import { landingPage } from "../../utilities/index.jsx";
+import { getResource } from "../../pages/api/resources.js";
 
 const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isBigCard, setIsBigCard] = useState(false);
   const [resources, setResources] = useState();
@@ -19,45 +21,38 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
   }, []);
 
   useEffect(() => {
+    if (router?.query?.restart === "true") {
+      setIsOpen(true);
+    }
+  }, [router]);
+
+  useEffect(() => {
     if (isOpen) {
       setIsDashboardOpen(true);
     }
   }, [isOpen]);
 
-  const { data: questions, isFetching: isFetchingQuestions, refetch } = useQuery(
-    ["getQuestions"],
-    getQuestions,
-    {
-      enabled: !isMobile(),
-      onError: (error) => {
-        ErrorNotify(error?.response?.data?.error?.message);
-      },
-    }
-  );
+  const {
+    data: resource,
+    isFetching: isFetchingResources,
+    refetch,
+  } = useQuery(["resource"], getResource, {
+    enabled: false,
+    onError: (error) => {
+      ErrorNotify(error?.response?.data?.error?.message);
+    },
+  });
 
   const handleOpen = useCallback(() => {
-    if (isMobile()) {
-      refetch();
-    }
+    refetch();
     setIsOpen(true);
   }, []);
 
-  const allQuestions = questions?.data?.data;
+  const allResource = resource?.data?.data;
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (allQuestions?.length) {
-        const resources = await getResourses(allQuestions);
-        const dataObject = {};
-        resources.flat().forEach((element) => {
-          dataObject[element.id] = element;
-        });
-        setResources(dataObject);
-      }
-    };
-
-    fetchData();
-  }, [allQuestions]);
+    setResources(allResource);
+  }, [allResource]);
 
   return (
     <>
@@ -71,8 +66,8 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
             id="bottom-view"
           >
             <Dashboard
-              questions={questions}
-              isFetchingQuestions={isFetchingQuestions}
+              questions={[]}
+              isFetchingQuestions={isFetchingResources}
               setIsBigCard={setIsBigCard}
               resources={resources}
               selectedRes={selectedRes}
