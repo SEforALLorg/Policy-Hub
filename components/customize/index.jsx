@@ -97,12 +97,14 @@ const Customize = ({
                     src={Object.values(key)?.[0]}
                     alt="card"
                     key={"card-image"}
+                    width={"65px"}
+                    height={"45px"}
                   />
                 );
               }
             })}
 
-            <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0 textColor">
+            <div className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
               {t("AssessYourCountry")}
             </div>
           </div>

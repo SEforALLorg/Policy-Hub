@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { VscDebugRestart } from "react-icons/vsc";
+import { useTranslation } from "react-i18next";
 
 import BlueButton from "components/buttons/blueButton";
 import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
-import { useTranslation } from "react-i18next";
 import { getResourceFirstQuestion, getRoute, shortName } from "../../utilities";
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
+import Loader from "../loader";
 
 const LeftWrapPage = ({
   questions,
   setPublicationReports,
   setNonPublicationReports,
   firstQuestion,
-  perviousId,
   restart,
   stepAnswer,
   resetFilters,
@@ -25,9 +25,8 @@ const LeftWrapPage = ({
   setIsResetPage,
   newJourney,
   firstHit,
-  selectedResource,
   isExpand,
-  resourcesData
+  isFetchingQuestions,
 }) => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
@@ -36,8 +35,23 @@ const LeftWrapPage = ({
   const [stepQuestion, setStepQuestion] = useState([]);
   const [detailModal, setDetailModal] = useState(false);
   const isEnglish = i18n.language === "en";
-  const localResource = JSON.parse(localStorage.getItem('resourceObj') || '[]');
-  const localStepQuestion = JSON.parse(localStorage.getItem("stepQuestions") || "[]");
+  const localResource = JSON.parse(localStorage.getItem("resourceObj") || "[]");
+  const localStepQuestion = JSON.parse(
+    localStorage.getItem("stepQuestions") || "[]"
+  );
+
+  useEffect(() => {
+    if (router?.query?.id) {
+      const questionId = Number(router?.query?.id);
+      const findIndex = userJourney?.findIndex(
+        (question) =>
+          question?.attributes?.MainQuestion?.Question?.data?.id === questionId
+      );
+      if (findIndex > -1) {
+        setUserJourney(userJourney.slice(0, findIndex));
+      }
+    }
+  }, [router?.query?.id]);
   useEffect(() => {
     if (localStepQuestion?.length) {
       setStepQuestion(localStepQuestion);
@@ -247,165 +261,177 @@ const LeftWrapPage = ({
             : "",
       }}
     >
-      <div className="flex items-center pb-2.5">
-        <div className="flex items-center relative mr-5">
-          {changingLeftWrapLogo?.map((key) => {
-            if (
-              localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
-            ) {
-              return (
-                <img
-                  className="w-[70px] h-[70px] left-header-image"
-                  src={Object.values(key)?.[0]}
-                  alt="card"
-                  key={"card-image"}
-                />
-              );
-            }
-          })}
+      {isFetchingQuestions ? (
+        <div className="flex items-center flex-col h-full justify-center">
+          <Loader height={80} width={80} />{" "}
         </div>
-        <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
-          {isEnglish
-            ? localResource?.attributes?.Name
-            : localResource?.attributes?.FrenchName}
-        </div>
-      </div>
-      {nextQuestionId &&
-        userJourney?.slice(0, 3)?.map((item, index) => (
-          <div
-            key={item?.questionName}
-            onClick={() => {
-              if (nextQuestionId) {
-                onStepChange(item);
-              }
-              resetFilters();
-            }}
-            className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
-            style={{ height: 45 }}
-          >
-            <p className="flex items-center flex-1 pr-[5px] mb-[0px]">
-              <div className={`stepDot ${index === 0 && "hideDot"}`} />
-              <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor mb-[0px]">
-                {item?.questionName ||
-                  (isEnglish
+      ) : (
+        <>
+          <div className="flex items-center pb-2.5">
+            <div className="flex items-center relative mr-5">
+              {changingLeftWrapLogo?.map((key) => {
+                if (
+                  localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+                ) {
+                  return (
+                    <img
+                      className="w-[70px] h-[70px] left-header-image"
+                      src={Object.values(key)?.[0]}
+                      alt="card"
+                      key={"card-image"}
+                    />
+                  );
+                }
+              })}
+            </div>
+            <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
+              {isEnglish
+                ? localResource?.attributes?.Name
+                : localResource?.attributes?.FrenchName}
+            </div>
+          </div>
+          {nextQuestionId &&
+            userJourney?.slice(0, 3)?.map((item, index) => (
+              <div
+                key={item?.questionName}
+                onClick={() => {
+                  if (nextQuestionId) {
+                    onStepChange(item);
+                  }
+                  resetFilters();
+                }}
+                className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
+                style={{ height: 45 }}
+              >
+                <p className="flex items-center flex-1 pr-[5px] mb-[0px]">
+                  <div className={`stepDot ${index === 0 && "hideDot"}`} />
+                  <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor mb-[0px]">
+                    {item?.questionName ||
+                      (isEnglish
+                        ? item?.attributes?.MainQuestion?.Question?.data
+                            ?.attributes?.Question
+                        : item?.attributes?.MainQuestion?.Question?.data
+                            ?.attributes?.FrenchQuestion)}
+                  </p>
+                </p>
+                <button className="yesButton">
+                  {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
+                </button>
+              </div>
+            ))}
+          {Boolean(userJourney?.length) && nextQuestionId && (
+            <div
+              className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
+              onClick={() => onRestart()}
+            >
+              <VscDebugRestart color={"#065a89"} />
+              <p
+                className="text-[14px] ml-[2px] mt-[2px] textColor mb-[0px]"
+                style={{ color: "#065a89" }}
+              >
+                {t("Restart")}
+              </p>
+            </div>
+          )}
+
+          {nextQuestionId && (
+            <div
+              className={"mt-[16px] mb-[16px]"}
+              style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
+            />
+          )}
+          {!nextQuestionId && (
+            <CompletedSteps
+              onRestart={() => onRestart()}
+              onMiniClick={(e) => onMiniClick(e)}
+            />
+          )}
+          {detailModal && (
+            <DetailModal open={detailModal} firstHit={firstHit} />
+          )}
+          {questions?.length
+            ? questions
+                .filter(
+                  (q) =>
+                    q?.attributes?.MainQuestion?.Question?.data?.id ===
+                    nextQuestionId
+                )
+                .map((item, index) => {
+                  const questionTitle = isEnglish
                     ? item?.attributes?.MainQuestion?.Question?.data?.attributes
                         ?.Question
                     : item?.attributes?.MainQuestion?.Question?.data?.attributes
-                        ?.FrenchQuestion)}
-              </p>
-            </p>
-            <button className="yesButton">
-              {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
-            </button>
-          </div>
-        ))}
-      {Boolean(userJourney?.length) && nextQuestionId && (
-        <div
-          className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
-          onClick={() => onRestart()}
-        >
-          <VscDebugRestart color={"#065a89"} />
-          <p
-            className="text-[14px] ml-[2px] mt-[2px] textColor mb-[0px]"
-            style={{ color: "#065a89" }}
-          >
-            {t("Restart")}
-          </p>
-        </div>
-      )}
+                        ?.FrenchQuestion;
+                  const singleAnswer = item?.attributes?.AddAnswer;
+                  const questionType = item?.attributes?.QuestionType;
+                  const ToolTipText = isEnglish
+                    ? item?.attributes?.ToolTipText
+                    : item?.attributes?.FrenchToolTipText;
+                  const QuestionKeyType =
+                    item?.attributes?.MainQuestion?.QuestionKeyType?.data
+                      ?.attributes?.QuestionKeyType;
+                  let findSteps;
+                  if (QuestionKeyType) {
+                    findSteps = questions?.filter(
+                      (e) =>
+                        e?.attributes?.MainQuestion?.QuestionKeyType?.data
+                          ?.attributes?.QuestionKeyType === QuestionKeyType
+                    );
+                  }
+                  return (
+                    <div className={"QuestionWrap"} key={"QuestionWrap"}>
+                      {questionType === "Questionnaire" ? (
+                        <>
+                          <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
+                            {questionTitle}
+                            {ToolTipText && (
+                              <TooltipComponent
+                                id={"leftWrap"}
+                                content={ToolTipText}
+                              />
+                            )}
+                          </div>
+                          <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
+                            {singleAnswer?.map((i) => {
+                              if (!i?.Answer) return null;
 
-      {nextQuestionId && (
-        <div
-          className={"mt-[16px] mb-[16px]"}
-          style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
-        />
+                              return (
+                                <BlueButton
+                                  className="mb-3 p-2"
+                                  title={
+                                    isEnglish ? i?.Answer : i?.FrenchAnswer
+                                  }
+                                  onClick={() => onSubmitAnswer(i, item)}
+                                  key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                                />
+                              );
+                            })}
+                          </div>
+                        </>
+                      ) : (
+                        <StepComponent
+                          onNext={(e) => onNextQuestion(e)}
+                          setStepQuestion={(e) => {
+                            localStorage.setItem(
+                              "stepQuestions",
+                              JSON.stringify([e, ...stepQuestion])
+                            );
+                            setStepQuestion([e, ...stepQuestion]);
+                          }}
+                          item={item}
+                          setOptionReport={onReportsFind}
+                          onPrevious={onPreviousQuestion}
+                          stepQuestion={stepQuestion}
+                          totalSteps={findSteps}
+                          sendData={newJourney}
+                        />
+                      )}
+                    </div>
+                  );
+                })
+            : null}
+        </>
       )}
-      {!nextQuestionId && (
-        <CompletedSteps
-          onRestart={() => onRestart()}
-          onMiniClick={(e) => onMiniClick(e)}
-        />
-      )}
-      {detailModal && <DetailModal open={detailModal} firstHit={firstHit} />}
-      {questions?.length
-        ? questions
-            .filter(
-              (q) =>
-                q?.attributes?.MainQuestion?.Question?.data?.id ===
-                nextQuestionId
-            )
-            .map((item, index) => {
-              const questionTitle = isEnglish
-                ? item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question
-                : item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.FrenchQuestion;
-              const singleAnswer = item?.attributes?.AddAnswer;
-              const questionType = item?.attributes?.QuestionType;
-              const ToolTipText = isEnglish
-                ? item?.attributes?.ToolTipText
-                : item?.attributes?.FrenchToolTipText;
-              const QuestionKeyType =
-                item?.attributes?.MainQuestion?.QuestionKeyType?.data
-                  ?.attributes?.QuestionKeyType;
-              let findSteps;
-              if (QuestionKeyType) {
-                findSteps = questions?.filter(
-                  (e) =>
-                    e?.attributes?.MainQuestion?.QuestionKeyType?.data
-                      ?.attributes?.QuestionKeyType === QuestionKeyType
-                );
-              }
-              return (
-                <div className={"QuestionWrap"} key={'QuestionWrap'}>
-                  {questionType === "Questionnaire" ? (
-                    <>
-                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
-                        {questionTitle}
-                        {ToolTipText && (
-                          <TooltipComponent
-                            id={"leftWrap"}
-                            content={ToolTipText}
-                          />
-                        )}
-                      </div>
-                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
-                        {singleAnswer?.map((i) => {
-                          if (!i?.Answer) return null;
-
-                          return (
-                            <BlueButton
-                              className="mb-3 p-2"
-                              title={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                              onClick={() => onSubmitAnswer(i, item)}
-                              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                            />
-                          );
-                        })}
-                      </div>
-                    </>
-                  ) : (
-                    <StepComponent
-                      onNext={(e) => onNextQuestion(e)}
-                      setStepQuestion={(e) => {
-                        localStorage.setItem(
-                          "stepQuestions",
-                          JSON.stringify([e, ...stepQuestion])
-                        );
-                        setStepQuestion([e, ...stepQuestion]);
-                      }}
-                      item={item}
-                      setOptionReport={onReportsFind}
-                      onPrevious={onPreviousQuestion}
-                      stepQuestion={stepQuestion}
-                      totalSteps={findSteps}
-                      sendData={newJourney}
-                    />
-                  )}
-                </div>
-              );
-            })
-        : null}
     </div>
   );
 };

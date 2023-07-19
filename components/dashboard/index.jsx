@@ -220,6 +220,7 @@ const Dashboard = ({
               firstHit={oldJourney[0]}
               isExpand={isExpand}
               resourcesData={resources}
+              isFetchingQuestions={isFetchingQuestions}
             />
             <RightWrapPage
               publicationReports={publicationReports}

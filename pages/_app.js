@@ -91,21 +91,20 @@ function MyApp({ Component, pageProps }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
         <script defer async src="/gtm.js"></script>
-        <script async defer src="/tailwindcss.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}
       {!showConsent && (
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           {t("cookiesText")}{" "}
-          <a
+          <p
             className="text-Primary hover:underline cursor-pointer pl-[3px]"
             onClick={() =>
               window.open("https://www.seforall.org/privacy-policy")
             }
           >
             {t("Readmore")}
-          </a>
+          </p>
           <button
             className="cookies-accept-button"
             onClick={() => onAcceptCookies()}

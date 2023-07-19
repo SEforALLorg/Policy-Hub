@@ -63,7 +63,7 @@ const Resources = ({
       <div className="flex items-center customize-header relative">
         <img
           className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height	mr-5"
-          src="static/images/cards.svg"
+          src="/static/images/cards.svg"
           alt="card"
         />
 

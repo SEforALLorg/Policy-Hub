@@ -183,6 +183,9 @@ const Footer = ({ footerRes }) => {
             src={`/static/images/logo${
               footerRes === SUSTAINABLECOOLING ? "black" : ""
             }.svg`}
+            data-src={`/static/images/logo${
+              footerRes === SUSTAINABLECOOLING ? "black" : ""
+            }.svg`}
             alt="logo"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
@@ -191,7 +194,8 @@ const Footer = ({ footerRes }) => {
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
-              src="/static/images/footer_electricity_access.svg"
+              src="/static/images/footer_electricity_access.png"
+              data-src="/static/images/footer_electricity_access.png"
               alt="founder_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -203,7 +207,8 @@ const Footer = ({ footerRes }) => {
           )}
           {footerRes === CLEANCOOKING && (
             <img
-              src="/static/images/footer_electricity_access.svg"
+              src="/static/images/footer_electricity_access.png"
+              data-src="/static/images/footer_electricity_access.png"
               alt="electricity_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -216,6 +221,7 @@ const Footer = ({ footerRes }) => {
           {footerRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/footer_sustainable_cooking.svg"}
+              data-src={"/static/images/footer_sustainable_cooking.svg"}
               alt="sustainable_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -227,7 +233,8 @@ const Footer = ({ footerRes }) => {
           )}
           {footerRes === ENERGYEFFICIENCY && (
             <img
-              src={"/static/images/footer_electricity_access.svg"}
+              src={"/static/images/footer_electricity_access.png"}
+              data-src={"/static/images/footer_electricity_access.png"}
               alt="footer_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
@@ -240,6 +247,7 @@ const Footer = ({ footerRes }) => {
           {!footerRes && (
             <img
               src={"/static/images/logo_rockefeller_foundation_white.svg"}
+              data-src={"/static/images/logo_rockefeller_foundation_white.svg"}
               alt="rockefeller_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
               onClick={() =>
@@ -251,6 +259,11 @@ const Footer = ({ footerRes }) => {
           )}
           <img
             src={
+              isMobile()
+                ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
+                : "/static/images/dgcs_rettangolare_eng_neg.png"
+            }
+            data-src={
               isMobile()
                 ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
                 : "/static/images/dgcs_rettangolare_eng_neg.png"

@@ -112,6 +112,7 @@ const Header = ({ selectedRes }) => {
             <div onClick={() => window.open("https://www.seforall.org/")} target={"_blank"}>
               <img
                 src={"/static/images/SEforALL_Logo_White.png"}
+                data-src={"/static/images/SEforALL_Logo_White.png"}
                 alt="logo_white_logo"
                 className="logo cursor-pointer "
                 width={isMobile() ? "70px" : "70px"}

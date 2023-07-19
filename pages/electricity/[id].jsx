@@ -53,6 +53,7 @@ const Electricity = () => {
           name="description"
           content="Sustainable Energy | Policy Hub | Electricity"
         />
+        <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
