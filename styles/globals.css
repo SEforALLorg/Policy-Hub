@@ -2694,6 +2694,11 @@ a {
     background-image: url("/static/images/Electricity-responsive.png");
   }
 
+  .clean_cooking {
+    background-image: url("/static/images/clean_cooking_bg_responsive.png");
+    background-position: center;
+  }
+
   .inner-section-content {
     height: unset !important;
   }
