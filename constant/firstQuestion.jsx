@@ -643,3 +643,461 @@ export const electricityFirstQuestion = {
     },
   },
 };
+
+export const cleanCookingFirstQuestion = {
+  id: 32,
+  attributes: {
+    QuestionType: "Questionnaire",
+    createdAt: "2022-11-02T14:14:30.962Z",
+    updatedAt: "2023-04-24T12:53:12.782Z",
+    QuestionTitle: null,
+    ToolTipText:
+      "NDCs embody efforts by each country to reduce national emissions and adapt to the impacts of climate change. ",
+    locale: "en",
+    FrenchToolTipText:
+      "Les CDN représentent les efforts déployés par chaque pays pour réduire les émissions nationales et s'adapter aux effets du changement climatique.",
+    frenchQuestionTitle: null,
+    AddAnswer: [
+      {
+        id: 66,
+        Answer: "Yes",
+        AnswerToolTip: null,
+        FrenchAnswer: "Oui",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 40,
+            attributes: {
+              Question:
+                "Is there an integrated national or regional plan or strategy to scale up access to clean cooking solutions?​",
+              createdAt: "2022-11-01T14:18:55.478Z",
+              updatedAt: "2023-04-19T11:30:45.083Z",
+              locale: "en",
+              FrenchQuestion:
+                "Existe-t-il un plan ou une stratégie national(e) ou régional(e) intégré(e) visant à élargir l'accès aux solutions de cuisson propre ?",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 451,
+              attributes: {
+                ReportName: "Ghana Country Action Plan for Clean Cooking",
+                URL: "https://cleancooking.org/binary-data/RESOURCE/file/000/000/334-1.pdf",
+                createdAt: "2022-11-25T07:52:55.540Z",
+                updatedAt: "2023-01-25T11:17:51.112Z",
+                KeyPublication: "Yes",
+                Description:
+                  "It is critical that the sector come together around one robust, comprehensive, and above all coordinated plan to work towards achieving complete sustained adoption of clean cooking solutions in Ghana. After a plan is agreed to by all relevant parties, including the public sector, private sector, civil society, and academia, the sector must then transition from planning to action. The next steps focus on execution of the plan, including the development of the key performance indicators and targets, developing an implementation plan with roles and responsibilities, a timeline for completion, and a process for evaluating progress towards the ultimate goal of total adoption of clean cookstoves and fuels throughout Ghana.",
+                locale: "en",
+              },
+            },
+            {
+              id: 452,
+              attributes: {
+                ReportName:
+                  "Haiti Action Plan For The Transformation Of The Cookstoves And Fuels Market",
+                URL: "https://cleancooking.org/reports-and-tools/haiti-action-plan/",
+                createdAt: "2022-11-25T07:54:40.892Z",
+                updatedAt: "2023-01-25T11:13:55.055Z",
+                KeyPublication: "Yes",
+                Description:
+                  "The complexity of the issue in Haiti necessitates a comprehensive approach to market development that considers the unique needs of the country. For any initiative to achieve measurable impact, it must deftly address barriers to the establishment of a thriving cookstoves and fuels market, and the central role that wood charcoal plays in the Haitian economy and rural livelihoods. \nTherefore, the Plan proposes a market-based strategy to develop a strong cookstove and fuels market. The objectives of this strategy are to: 1) increase and improve the production and availability of cleaner, affordable, and more efficient cookstoves and alternatives to wood charcoal; 2) improve the efficiency of wood charcoal production; 3) generate demand for cleaner, affordable, and more efficient cookstoves and fuels; and 4) create a strong enabling environment to support sustainable market growth.",
+                locale: "en",
+              },
+            },
+            {
+              id: 235,
+              attributes: {
+                ReportName:
+                  "Bangladesh National Action Plan for Clean Cooking, 2020-2030",
+                URL: "https://www.climate-laws.org/geographies/bangladesh/policies/national-action-plan-for-clean-cooking-2020-2030",
+                createdAt: "2022-11-24T08:44:25.913Z",
+                updatedAt: "2023-01-25T11:14:52.710Z",
+                KeyPublication: "Yes",
+                Description:
+                  "This document, the National Action Plan for Clean Cooking (2020–2030), has been developed with the vision to ensure clean cooking for all by the terminal year 2030, which coincides with the Sustainable Development Goal (SDG) achievement year. Building on the CAP 2013, a pathway for the next decade has been curved in this document, aligning strategies with the recent shifts in the sector with regards to different economic and social aspects of the country. The National Action Plan also looked beyond cookstoves and discusses different fuel options for clean cooking. In the milestones and monitoring section, the consultants mentioned names of relevant ministries. During the approval process of the National Action Plan, the ministries will assign specific agency to carry out specific duties mentioned in the action plan.",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 273,
+              attributes: {
+                ReportName: "Nigeria Integrated Energy Planning Tool",
+                URL: "https://nigeria-iep.sdg7energyplanning.org/",
+                createdAt: "2022-11-24T10:35:04.452Z",
+                updatedAt: "2022-11-25T11:00:34.572Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 251,
+              attributes: {
+                ReportName:
+                  "Igniting Change: A Strategy for Universal Adoption of Clean Cookstoves and Fuels",
+                URL: "https://cleancooking.org/reports-and-tools/igniting-change-a-strategy-for-universal-adoption-of-clean-cookstoves-and-fuels/",
+                createdAt: "2022-11-24T09:40:13.367Z",
+                updatedAt: "2023-01-25T16:08:14.837Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Country-specific efforts have been the most effective when a cross-section of ministries, private sector partners, academics, and non-governmental stakeholders have coalesced around a common strategy or campaign with the resources to sustain the advocacy, outreach, and implementation efforts. This has been borne out in the last few years where several governments, including Peru and Indonesia, launched national cookstove initiatives. These countries made clean cookstoves a national priority. More specifically, they are encouraging cookstove adoption through a wide variety of mechanisms, including:",
+                locale: "en",
+              },
+            },
+            {
+              id: 346,
+              attributes: {
+                ReportName:
+                  "Joint Optimal Planning of Electricity and Modern Energy Cooking Services Access in Nyagatare",
+                URL: "https://www.mdpi.com/1996-1073/14/14/4093",
+                createdAt: "2022-11-25T05:25:42.223Z",
+                updatedAt: "2023-01-25T16:51:03.063Z",
+                KeyPublication: "Yes",
+                Description:
+                  "This paper uses geospatially-based techniques—a computer model named REM, for Reference Electrification Model—to show the impact of integrating electric cooking into electrification planning. Three household scenarios were analyzed: one for providing basic electricity access with no electric cooking; another for cooking with electricity; and the third for cooking half of the meals with electricity and half with another fuel, with a clean stacking process. Results of the application of REM to the three scenarios were obtained for the Nyagatare District, Rwanda. The case study showed that electric cooking substantially changes the mix of technologies and the total cost of the least-cost electrification plan. It also showed that electric cooking can be cost competitive compared to LPG and charcoal in grid-connected households and can reduce greenhouse emissions. Stacking with energy-efficient electric appliances provides most of the benefits of full electric cooking at a lower cost and is a pathway worthy of further consideration. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 348,
+              attributes: {
+                ReportName:
+                  "Bangladesh - Country Action Plan for Clean Cookstoves",
+                URL: "http://cleancookstoves.org/binary-data/RESOURCE/file/000/000/235-1.pdf",
+                createdAt: "2022-11-25T05:28:46.835Z",
+                updatedAt: "2023-01-27T12:32:34.375Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Bangladesh Country Action Plan for Clean Cookstoves (CAP) defines what is needed to kick-start and develop the Bangladesh clean cookstove market. The CAP makes the case for taking immediate action towards achieving the goal of 100% clean cooking solutions by 2030. It identifies key barriers to the large scale adoption of clean cookstoves and fuels, the desired outcomes if these barriers are removed, as well as potential intervention options and mechanisms for quickly and effectively taking action. Stakeholders have incorporated their thoughts and understanding and have tailored this CAP for Bangladesh’s cookstoves and fuels market, social customs, infrastructure and for the task of combating challenges like deforestation, indoor air pollution etc.",
+                locale: "en",
+              },
+            },
+            {
+              id: 440,
+              attributes: {
+                ReportName:
+                  "Malawi CCDR - Clean Cooking Sector Background Note",
+                URL: "https://openknowledge.worldbank.org/bitstream/handle/10986/38217/Clean%20Cooking.pdf?sequence=8&isAllowed=y",
+                createdAt: "2022-11-25T07:36:41.452Z",
+                updatedAt: "2023-03-01T16:12:07.199Z",
+                KeyPublication: "Yes",
+                Description:
+                  "National Cookstove Steering Committee (NCSC). Malawi, through the Presidential Initiative on Cookstove, made a commitment in 2013 to distribute 2 million energy-efficient cookstoves by 2020. The aim of the initiative was to minimize wood fuel consumption which is a major source of cooking energy in the country. The NCSC, chaired by the Department of Energy (now Ministry of Energy), took ownership of the 2 million by 2020 target, and as such is advocating nationally for cleaner cooking. To guide its work, the NCSC drafted a ‘Cookstoves Roadmap’ which provided broad, policylevel direction to its work. The roadmap was subsequently endorsed by the GoM in 2015, with one of the key strategies to “harmonize relevant policy and regulations”. Subsequently, one of the major achievements of the NCSC has been the integration of the “Cookstoves Roadmap” into policy documents such as the NEP, MRES, Malawi SEforALL Action Agenda, NCS, as well as commitments under Malawi’s NDCs. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 261,
+              attributes: {
+                ReportName: "National Bioenergy Action Plans (NBEAPs) Template",
+                URL: "http://www.ecreee.org/procurement/development-national-bioenergy-action-plans-burkina-faso-cabo-verde-gambia-guinea-guinea",
+                createdAt: "2022-11-24T10:10:27.493Z",
+                updatedAt: "2023-01-27T14:37:36.305Z",
+                KeyPublication: "Yes",
+                Description:
+                  "ECOWAS Bioenergy Policy (EBEP) foresees the development of Bioenergy Action Plans (NBEAPs) by the end of 2020 by all fifteen ECOWAS Member States. The five-year rolling NBEAPs will contribute to the achievement of the regional EBEP targets by 2020; 2025 and 2030. The NBEAPs have been prepared by the ECOWAS Member States in accordance with a template provided by ECREEE. The NBEAPs include baseline data on the status of bioenergy development, and propose attainable bioenergy targets, incl. gender, based on national potentials and socio-economic assessments. Moreover, an overview on concrete laws, incentives and measures to be implemented by the country to achieve the targets will be included. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 274,
+              attributes: {
+                ReportName:
+                  "Tanzania - Country Action Plan for Clean Cookstoves and Fuels",
+                URL: "https://tarea-tz.org/storage/app/media/Blog/ICS%20Country%20Action%20Plan.pdf",
+                createdAt: "2022-11-24T10:40:08.272Z",
+                updatedAt: "2023-01-27T12:36:57.632Z",
+                KeyPublication: "Yes",
+                Description:
+                  "In 2012 stakeholders initiated the formation of organizations and task groups related to improved and clean cookstoves and fuels including the Clean Cookstoves and Fuels Alliance of Tanzania (CCFAT) and the ICS Taskforce with the goals of mobilizing stakeholders, securing resources and championing the sector. The ICS Taskforce will finalize accomplishment of its set tasks by development of this Country Action Plan (CAP) and the Programme Implementation Document (PID). In achieving this ICS CAP output it has collaborated with CCFAT. CCFAT was successfully registered with the government in 2013. Many of the stakeholders who participated in the formation of ICS Taskforce and CCFAT contributed to the creation of this country action plan and therefore are a reflection of their commitments to the sector.",
+                locale: "en",
+              },
+            },
+            {
+              id: 300,
+              attributes: {
+                ReportName: "Biomass Energy Sector Planning Guide",
+                URL: "https://www.biomassmurder.org/docs/2015-01-09-giz-euei-biomass-energy-sector-planning-guide-english.pdf",
+                createdAt: "2022-11-24T13:30:47.906Z",
+                updatedAt: "2022-11-24T13:30:47.906Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 305,
+              attributes: {
+                ReportName: "Clean Cooking Planning Tool",
+                URL: "https://energydata.info/cleancooking/planningtool/",
+                createdAt: "2022-11-24T13:50:03.275Z",
+                updatedAt: "2022-11-24T13:50:03.275Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 341,
+              attributes: {
+                ReportName:
+                  "Elements of a National Clean Cooking Strategy for Myanmar ",
+                URL: "https://learn.tearfund.org/en/resources/research-report/elements-of-a-national-clean-cooking-strategy-for-myanmar",
+                createdAt: "2022-11-25T05:13:21.659Z",
+                updatedAt: "2023-03-01T16:12:18.941Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 428,
+              attributes: {
+                ReportName: "Ghana Sustainable Energy For All Action Plan",
+                URL: "http://energycom.gov.gh/files/SE4ALL-GHANA%20ACTION%20PLAN.pdf",
+                createdAt: "2022-11-25T07:21:49.262Z",
+                updatedAt: "2022-11-25T07:21:49.262Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+      {
+        id: 65,
+        Answer: "No",
+        AnswerToolTip: null,
+        FrenchAnswer: "Non",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 41,
+            attributes: {
+              Question:
+                "Review National Energy Policy / Strategy or NDCs to reflect realistic targets on clean cooking",
+              createdAt: "2022-11-01T14:24:42.220Z",
+              updatedAt: "2023-04-19T11:46:20.462Z",
+              locale: "en",
+              FrenchQuestion:
+                "Réviser la politique/stratégie énergétique nationale ou les CDN afin de refléter des objectifs réalistes en matière de cuisson propre.",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 268,
+              attributes: {
+                ReportName:
+                  "Accelerating Access to Clean Cooking Will Require a Heart-Head-and-Hands Approach",
+                URL: "https://link.springer.com/article/10.1057/s41301-021-00297-x",
+                createdAt: "2022-11-24T10:23:49.295Z",
+                updatedAt: "2023-03-01T15:55:21.297Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Improving access to clean cooking can accrue large socioeconomic and environmental benefits for society. However, progress has been stymied due to a lack of prioritization at all levels, including donors, national governments, the private sector, and households.\nClean cooking is an ‘orphan’ sector. Even though it cuts across a broad array of sectors—energy, health, environment, climate, gender, social protection, finance, rural and urban development, and private-sector development, amongst others—clean cooking is not prioritized by any of these sectors for large-scale public investment.",
+                locale: "en",
+              },
+            },
+            {
+              id: 295,
+              attributes: {
+                ReportName: "Rwanda Energy Policy",
+                URL: "https://rura.rw/fileadmin/Documents/Energy/RegulationsGuidelines/Rwanda_Energy_Policy.pdf",
+                createdAt: "2022-11-24T12:11:22.044Z",
+                updatedAt: "2023-03-01T15:55:24.905Z",
+                KeyPublication: "Yes",
+                Description:
+                  "In the medium-term, the policy vision foresees extensive fuel switching among households to modern energy technologies and carriers including biogas, LPG, “green charcoal”, and biomass pyrolysis stoves. Measures to be adopted in biomass energy strategies include the following:\nSocial marketing/behavioural change models and partnerships with financial institutions\nUpdated technology standards\nSubsidy reform\nDevelop new policy and regionally-integrated market for sustainable liquid bio-fuels.",
+                locale: "en",
+              },
+            },
+            {
+              id: 413,
+              attributes: {
+                ReportName:
+                  "Nigeria's First Nationally Determined Contribution – 2021 Update",
+                URL: "https://climatechange.gov.ng/wp-content/uploads/2021/08/NDC_File-Amended-_11222.pdf",
+                createdAt: "2022-11-25T07:02:22.913Z",
+                updatedAt: "2023-03-01T15:56:58.675Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Under the updated NDC, the Federal Government of Nigeria aims to implement a programme to convert over 25 million households to using LPG. Traditional cooking with firewood is claiming lives, ravaging forests, undermining the empowerment of women and emitting millions of tons of greenhouse gases to the atmosphere. Conversely, clean cooking fuels such as LPG and low cost improvements in the efficiency of cooking energy devices provide a pathway to make the poor part of the climate solution. As an example, it is expected that under a business-as-usual situation, 97,000 lives could be lost by 2030 due to poor air quality in the home from dirty cooking fuels. ",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 266,
+              attributes: {
+                ReportName:
+                  "Electric cooking solutions: The pathway to achieving Nepal’s NDC targets through clean-cooking energy transition ",
+                URL: "https://prc.org.np/assets/uploads/resource/5c69be66bd0c2fb23c7369e9f3913b1a.pdf",
+                createdAt: "2022-11-24T10:19:07.652Z",
+                updatedAt: "2023-03-01T16:11:56.662Z",
+                KeyPublication: "Yes",
+                Description:
+                  "The Nepal Bureau of Standards and Metrology (NBSM), in 2018, developed Nepal Standards for household and similar electrical appliances. In the same year, another set of standards was developed. specifically for induction hobs. Development of national standards for infrared stove and electric pressure cookers are underway. Currently, the country does not have any mechanism to provide labeling/certification to products that meet the standards and any facility to test if they meet the safety and performance standards. However, discussion is ongoing between concerned government agencies and relevant stakeholders to upgrade domestic testing facilities so that they are able to involve in electric cooking products' standardization and certification processes.",
+                locale: "en",
+              },
+            },
+            {
+              id: 437,
+              attributes: {
+                ReportName:
+                  "Mutual Support—Modern Energy Planning Inclusive of Cooking—A Review of Research into Action in Africa and Asia since 2018",
+                URL: "https://www.mdpi.com/1996-1073/15/16/5805/pdf?version=1660214109",
+                createdAt: "2022-11-25T07:31:27.103Z",
+                updatedAt: "2023-03-01T16:12:03.160Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 440,
+              attributes: {
+                ReportName:
+                  "Malawi CCDR - Clean Cooking Sector Background Note",
+                URL: "https://openknowledge.worldbank.org/bitstream/handle/10986/38217/Clean%20Cooking.pdf?sequence=8&isAllowed=y",
+                createdAt: "2022-11-25T07:36:41.452Z",
+                updatedAt: "2023-03-01T16:12:07.199Z",
+                KeyPublication: "Yes",
+                Description:
+                  "National Cookstove Steering Committee (NCSC). Malawi, through the Presidential Initiative on Cookstove, made a commitment in 2013 to distribute 2 million energy-efficient cookstoves by 2020. The aim of the initiative was to minimize wood fuel consumption which is a major source of cooking energy in the country. The NCSC, chaired by the Department of Energy (now Ministry of Energy), took ownership of the 2 million by 2020 target, and as such is advocating nationally for cleaner cooking. To guide its work, the NCSC drafted a ‘Cookstoves Roadmap’ which provided broad, policylevel direction to its work. The roadmap was subsequently endorsed by the GoM in 2015, with one of the key strategies to “harmonize relevant policy and regulations”. Subsequently, one of the major achievements of the NCSC has been the integration of the “Cookstoves Roadmap” into policy documents such as the NEP, MRES, Malawi SEforALL Action Agenda, NCS, as well as commitments under Malawi’s NDCs. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 243,
+              attributes: {
+                ReportName: "WHO household energy policy repository ",
+                URL: "https://www.who.int/publications/i/item/9789240038110",
+                createdAt: "2022-11-24T09:10:28.387Z",
+                updatedAt: "2023-03-01T16:12:10.267Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 297,
+              attributes: {
+                ReportName: "Kenya National Energy Policy  ",
+                URL: "https://kplc.co.ke/img/full/BL4PdOqKtxFT_National%20Energy%20Policy%20October%20%202018.pdf",
+                createdAt: "2022-11-24T12:14:48.659Z",
+                updatedAt: "2023-03-01T16:12:18.102Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 341,
+              attributes: {
+                ReportName:
+                  "Elements of a National Clean Cooking Strategy for Myanmar ",
+                URL: "https://learn.tearfund.org/en/resources/research-report/elements-of-a-national-clean-cooking-strategy-for-myanmar",
+                createdAt: "2022-11-25T05:13:21.659Z",
+                updatedAt: "2023-03-01T16:12:18.941Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 342,
+              attributes: {
+                ReportName:
+                  "Clean and Modern Energy for Cooking - A Path to Food Security and Sustainable Development ",
+                URL: "https://docs.wfp.org/api/documents/WFP-0000140194/download/?_ga=2.162071548.1703440176.1655292389-642162509.1655292389",
+                createdAt: "2022-11-25T05:20:19.128Z",
+                updatedAt: "2023-03-01T16:12:26.285Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 344,
+              attributes: {
+                ReportName:
+                  "Unlock the SDGs and Net-Zero with Clean Cooking SDG7 Multi-Stakeholder Energy Compact ",
+                URL: "https://cleancooking.org/wp-content/uploads/2021/10/Clean_Cooking_Energy_Compact.pdf",
+                createdAt: "2022-11-25T05:24:55.927Z",
+                updatedAt: "2023-03-01T16:12:37.232Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 389,
+              attributes: {
+                ReportName:
+                  "Clean Cooking Critical To Achieving Cop26 Climate Goals",
+                URL: "https://cleancooking.org/wp-content/uploads/2021/11/Clean-Cooking-NDCs-Factsheet_COP26.pdf",
+                createdAt: "2022-11-25T06:23:21.277Z",
+                updatedAt: "2023-03-01T16:12:37.714Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    MainQuestion: {
+      id: 24,
+      Question: {
+        data: {
+          id: 42,
+          attributes: {
+            Question:
+              "Is Clean Cooking featured in targets/priorities of the National Energy Policy / Strategy or Nationally Determined Contributions (NDC)?",
+            createdAt: "2022-11-01T14:25:03.015Z",
+            updatedAt: "2023-04-19T11:30:13.670Z",
+            locale: "en",
+            FrenchQuestion:
+              "Les moyens de cuisson propre figurent-t-ils parmi les objectifs/priorités de la politique/stratégie énergétique nationale ou des contributions déterminées au niveau national?",
+          },
+        },
+      },
+      QuestionKeyType: {
+        data: null,
+      },
+    },
+    Resource: {
+      id: 2,
+      resources: {
+        data: [
+          {
+            id: 2,
+            attributes: {
+              Name: "Clean Cooking",
+              createdAt: "2022-11-03T12:06:36.827Z",
+              updatedAt: "2023-04-19T12:44:47.314Z",
+              publishedAt: "2022-11-03T12:06:37.839Z",
+              QuestionId: "32",
+              locale: "en",
+              FrenchName: "Cuisson propre",
+            },
+          },
+        ],
+      },
+    },
+  },
+};

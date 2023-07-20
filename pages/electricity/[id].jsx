@@ -3,7 +3,7 @@ import Head from "next/head";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
-import { getResources } from "../../utilities";
+import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
@@ -12,6 +12,9 @@ const Dashboard = lazy(() => import("components/dashboard"));
 const Footer = lazy(() => import("components/footer"));
 const Header = lazy(() => import("components/header"));
 let isReload = false;
+const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
+const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
+const pageImage = "/static/images/electricity_access.svg"
 const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -26,15 +29,16 @@ const Electricity = () => {
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
     enabled: false,
   });
+  const defaultQuestion = getResourceFirstQuestion()
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
       isReload = true;
       refetch();
     } else if (router?.query?.id && !isReload && !questions) {
       const questionId = Number(router?.query?.id);
-      if (questionId !== 9) {
+      if (questionId !== Number(defaultQuestion)) {
         isReload = true;
-        router.push("/electricity/9");
+        router.push(`/electricity/${defaultQuestion}`);
       }
     }
   }, [router]);
@@ -42,10 +46,20 @@ const Electricity = () => {
     <main id="fullWrap" ref={ref} className={"electricity_access"}>
       <Head>
         <title>Sustainable Energy | Policy Hub | Electricity</title>
+        <meta property="title" content={pageTitle} />
         <meta
+          property="description"
           name="description"
-          content="Sustainable Energy | Policy Hub | Electricity"
+          content={pageDescription}
         />
+        <meta property="image" content={pageImage} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={pageTitle} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content={pageImage} />
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
       <Suspense fallback={<div />}>
