@@ -2690,6 +2690,10 @@ a {
     background-position: center;
   }
 
+  .electricity_access {
+    background-image: url("/static/images/Electricity-responsive.png");
+  }
+
   .inner-section-content {
     height: unset !important;
   }
@@ -2736,8 +2740,8 @@ a {
 
   .footer-logos img {
     margin: 4px !important;
-    width: 181px;
-    height: 46px;
+    width: 183px;
+    height: 48px;
   }
 
   .public-share-modal .inputFullWrap {

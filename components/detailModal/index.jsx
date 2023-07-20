@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
@@ -12,7 +13,7 @@ import { postUserDetails } from "../../pages/api/reports";
 import { userRepeated } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formInput, setFormInput] = useState({
     FullName: "",
@@ -115,6 +116,9 @@ const DetailModal = ({ firstHit }) => {
 
   return (
     <>
+      <Head>
+        <script defer async src="/tailwindcss.js"></script>
+      </Head>
       {/* <!-- Main modal --> */}
       {isOpen && (
         <div

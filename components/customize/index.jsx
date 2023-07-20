@@ -16,7 +16,6 @@ const Customize = ({
   onReportsFind,
   setJourney,
   loader
-  // setCurrentDate
 }) => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
@@ -39,8 +38,6 @@ const Customize = ({
       answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
     };
     setJourney({
-      // question: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      // frenchQuestion: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion,
       ...firstQuestion,
       answer: i?.Answer, 
       frenchAnswer: i?.FrenchAnswer
@@ -97,12 +94,14 @@ const Customize = ({
                     src={Object.values(key)?.[0]}
                     alt="card"
                     key={"card-image"}
+                    width={"65px"}
+                    height={"45px"}
                   />
                 );
               }
             })}
 
-            <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0 textColor">
+            <div className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
               {t("AssessYourCountry")}
             </div>
           </div>

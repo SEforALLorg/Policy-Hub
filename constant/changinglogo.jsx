@@ -90,15 +90,15 @@ export const changingFileLogo = [
 
 export const changingFooterLogo = [
   {
-    [ELECTRICITY_ACCESS]: "static/images/footer_electricity_access.svg",
+    [ELECTRICITY_ACCESS]: "static/images/footer_electricity_access.png",
   },
   {
-    [CLEAN_COOKING]: "static/images/footer_electricity_access.svg",
+    [CLEAN_COOKING]: "static/images/footer_electricity_access.png",
   },
   {
     [SUSTAINABLE_COOLING]: "static/images/footer_sustainable_cooking.svg",
   },
   {
-    [ENERGY_EFFICIENCY]: "static/images/footer_electricity_access.svg",
+    [ENERGY_EFFICIENCY]: "static/images/footer_electricity_access.png",
   },
 ];

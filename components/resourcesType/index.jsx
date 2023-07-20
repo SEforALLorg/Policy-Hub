@@ -1,14 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
-import { applyTheme } from "../../theme/utils";
-import darkTheme from "../../theme/SustainableCooling";
-import greenTheme from "../../theme/clean_cooking ";
-import yellowTheme from "../../theme/EnergyEfficiency";
-import baseTheme from "../../theme/base";
-import Loader from "../loader";
-import electricityTheme from "../../theme/Electricity";
 import { IoClose } from "react-icons/io5";
+
+import Loader from "../loader";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
@@ -38,22 +33,17 @@ const Resources = ({
     switch (res) {
       case ELECTRICITYACCESS:
         localStorage.setItem("ResourceType", res);
-        // applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
         localStorage.setItem("ResourceType", res);
-        // applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
         localStorage.setItem("ResourceType", res);
-        // applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
         localStorage.setItem("ResourceType", res);
-        // applyTheme(yellowTheme);
         break;
       default:
-        // applyTheme(baseTheme);
         break;
     }
   };
@@ -63,7 +53,7 @@ const Resources = ({
       <div className="flex items-center customize-header relative">
         <img
           className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height	mr-5"
-          src="static/images/cards.svg"
+          src="/static/images/cards.svg"
           alt="card"
         />
 

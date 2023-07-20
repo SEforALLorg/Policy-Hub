@@ -14,7 +14,6 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Cookies } from "react-cookie";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
@@ -70,7 +69,11 @@ const Header = ({ selectedRes }) => {
         <NavbarBrand href="https://www.seforall.org/">
           {selectedRes === ELECTRICITYACCESS && (
             <img
-              src="/static/images/electricity_access.svg"
+              src={
+                isMobile()
+                  ? "/static/images/electricity_access.png"
+                  : "/static/images/electricity_access.svg"
+              }
               alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
@@ -109,9 +112,13 @@ const Header = ({ selectedRes }) => {
             />
           )}
           {!selectedRes && (
-            <div onClick={() => window.open("https://www.seforall.org/")} target={"_blank"}>
+            <div
+              onClick={() => window.open("https://www.seforall.org/")}
+              target={"_blank"}
+            >
               <img
                 src={"/static/images/SEforALL_Logo_White.png"}
+                data-src={"/static/images/SEforALL_Logo_White.png"}
                 alt="logo_white_logo"
                 className="logo cursor-pointer "
                 width={isMobile() ? "70px" : "70px"}
@@ -184,54 +191,54 @@ const Header = ({ selectedRes }) => {
               </div>
             </NavItem>
           </Nav>
-            <UncontrolledDropdown setActiveFromChild className="customDropdown">
-              <DropdownToggle
-                className="DropdownToggle"
-                tag="a"
-                role="button"
-                caret
-                aria-expanded={expanded}
-                onClick={toggleDropdown}
-              >
-                <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
-              </DropdownToggle>
-              <DropdownMenu className="dropdownMenu">
-                {["en", "fr"].map((lang) => {
-                  return (
-                    <DropdownItem
-                      key={lang}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const expires = new Date();
-                        const Query = router?.query;
-                        setQuery(Query);
-                        expires.setFullYear(expires.getFullYear() + 100);
-                        localStorage.setItem("lang", lang);
-                        setLang(lang);
-                        cookies.set("language", lang, {
-                          expires,
-                          secure: true,
-                        });
-                        i18n.changeLanguage(lang);
-                      }}
-                      style={{
-                        backgroundColor:
-                          lang === i18n.language ? "#fcb600" : "transparent",
-                        borderRadius:
-                          lang === "en"
-                            ? "10px 10px 0px 0px"
-                            : "0px 0px 10px 10px",
-                        color: lang === i18n.language ? "white" : "#000",
-                      }}
-                    >
-                      <Link href="" locale={lang}>
-                        {lang.toUpperCase()}
-                      </Link>
-                    </DropdownItem>
-                  );
-                })}
-              </DropdownMenu>
-            </UncontrolledDropdown>
+          <UncontrolledDropdown setActiveFromChild className="customDropdown">
+            <DropdownToggle
+              className="DropdownToggle"
+              tag="a"
+              role="button"
+              caret
+              aria-expanded={expanded}
+              onClick={toggleDropdown}
+            >
+              <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
+            </DropdownToggle>
+            <DropdownMenu className="dropdownMenu">
+              {["en", "fr"].map((lang) => {
+                return (
+                  <DropdownItem
+                    key={lang}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const expires = new Date();
+                      const Query = router?.query;
+                      setQuery(Query);
+                      expires.setFullYear(expires.getFullYear() + 100);
+                      localStorage.setItem("lang", lang);
+                      setLang(lang);
+                      cookies.set("language", lang, {
+                        expires,
+                        secure: true,
+                      });
+                      i18n.changeLanguage(lang);
+                    }}
+                    style={{
+                      backgroundColor:
+                        lang === i18n.language ? "#fcb600" : "transparent",
+                      borderRadius:
+                        lang === "en"
+                          ? "10px 10px 0px 0px"
+                          : "0px 0px 10px 10px",
+                      color: lang === i18n.language ? "white" : "#000",
+                    }}
+                  >
+                    <Link href="" locale={lang}>
+                      {lang.toUpperCase()}
+                    </Link>
+                  </DropdownItem>
+                );
+              })}
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </Collapse>
       </Navbar>
     </div>
