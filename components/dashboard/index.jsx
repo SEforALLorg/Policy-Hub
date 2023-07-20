@@ -1,16 +1,21 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, Suspense, lazy } from "react";
 import { useRouter } from "next/router";
 import Customize from "components/customize";
-
-import { Wrapper } from "./styles";
-import RightWrapPage from "./rightWrap";
-import LeftWrapPage from "./leftWrap";
 import Resources from "../resourcesType";
+import { Wrapper } from "./styles";
 import { applyTheme } from "../../theme/utils";
 import baseTheme from "../../theme/base";
-import { changeTheme, getResourceRoute, getRoute, putJourneyStep } from "../../utilities";
+import {
+  changeTheme,
+  getResourceRoute,
+  getRoute,
+  putJourneyStep,
+} from "../../utilities";
 import { useTranslation } from "react-i18next";
+import Loader from "../loader";
 
+const LeftWrapPage = lazy(() => import("./leftWrap"));
+const RightWrapPage = lazy(() => import("./rightWrap"));
 const Dashboard = ({
   questions,
   isFetchingQuestions,
@@ -18,7 +23,6 @@ const Dashboard = ({
   resources,
   selectedRes,
   setIsOpen,
-  isPage,
 }) => {
   const router = useRouter();
   const [isExpand, setIsExpand] = useState(false);
@@ -47,38 +51,20 @@ const Dashboard = ({
     sector: [],
     fuel: [],
   });
-  const [ t,i18n ] = useTranslation();
+  const [t, i18n] = useTranslation();
 
   useEffect(() => {
     const { id } = router?.query;
-    const resource = localStorage.getItem("ResourceType")
+    const resource = localStorage.getItem("ResourceType");
     if (id) {
       setFirstQuestionId(Number(id));
       setIsResource(false);
       setSelectedResource(resource);
       selectedRes(resource);
       changeTheme(getRoute());
-      setIsResource(false)
+      setIsResource(false);
     }
   }, [router]);
-
-  // useEffect(() => {
-  //   if (isPage) {
-  //     const query = router?.query;
-  //     const nextQuestionId = query?.question;
-  //     const resource = query?.resource;
-  //     const currentResource = Object.entries(resources || "{}")
-  //       ?.map((item) => item?.[1])
-  //       ?.find(
-  //         (item) => item?.attributes?.Name?.toLocaleLowerCase() === resource?.toLocaleLowerCase()
-  //       );
-  //     setIsResource(false);
-  //     setSelectedResource(currentResource);
-  //     selectedRes(resource);
-  //     changeTheme(localStorage.getItem("ResourceType"));
-  //     setFirstQuestionId(nextQuestionId);
-  //   }
-  // }, [isPage, questions, resources]);
 
   useEffect(() => {
     const query = router?.query;
@@ -102,7 +88,7 @@ const Dashboard = ({
     }
   }, [router]);
 
-  const onResetFilter = () => {
+  const onResetFilter = useCallback(() => {
     setSelectInputs({
       countries: [],
       regions: [],
@@ -116,19 +102,14 @@ const Dashboard = ({
       fuel: [],
     });
     setClearAll(!isClearAll);
-  };
+  }, [isClearAll]);
 
   const onRestart = useCallback(() => {
     applyTheme(baseTheme);
     setIsExpand(false);
     onResetFilter();
-    // setStepAnswer(undefined);
     setIsBigCard(false);
-    // setClearAll(!isClearAll);
-    // setIsResource(true);
     setPayload([]);
-    // localStorage.removeItem("ResourceType");
-    // localStorage.removeItem("resourceObj");
     selectedRes(null);
   }, [isClearAll, onResetFilter]);
 
@@ -138,12 +119,15 @@ const Dashboard = ({
     setStepAnswer(e);
   }, []);
 
-  const onNextQuestionId = (e, resource) => {
-    const resourceRoute = getResourceRoute(resource?.Name)
-    setLoader(true);
-    router.push({ pathname: `/${i18n.language}/${resourceRoute}/${e}` });
-    setFirstQuestionId(e);
-  };
+  const onNextQuestionId = useCallback(
+    (e, resource) => {
+      const resourceRoute = getResourceRoute(resource?.Name);
+      setLoader(true);
+      router.push({ pathname: `/${i18n.language}/${resourceRoute}/${e}` });
+      setFirstQuestionId(e);
+    },
+    [i18n.language, router]
+  );
 
   useEffect(() => {
     const question = questions?.data?.data?.find(
@@ -158,19 +142,23 @@ const Dashboard = ({
     setFirstQuestion(question || firstQuestion);
   }, [firstQuestionId, questions]);
 
-  const addJourney = (latestDate, existingJourney, isExistingUser, data) => {
-    let existingDate = new Date(latestDate);
-    let prevJourney = { ...existingJourney };
-    if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
-      Object.entries(existingJourney)?.map((key) => {
-        if (key?.[0] === String(existingDate)) {
-          return (prevJourney[String(existingDate)] = data);
-        }
-      });
-      putJourneyStep(prevJourney);
-    }
-  };
-  const setUserJourney = () => {
+  const addJourney = useCallback(
+    (latestDate, existingJourney, isExistingUser, data) => {
+      let existingDate = new Date(latestDate);
+      let prevJourney = { ...existingJourney };
+      if (isExistingUser && Object.keys(existingJourney)?.length >= 1) {
+        Object.entries(existingJourney)?.map((key) => {
+          if (key?.[0] === String(existingDate)) {
+            return (prevJourney[String(existingDate)] = data);
+          }
+        });
+        putJourneyStep(prevJourney);
+      }
+    },
+    []
+  );
+
+  const setUserJourney = useCallback(() => {
     let count = localStorage.getItem("count");
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
@@ -195,45 +183,55 @@ const Dashboard = ({
         }
       }
     }
-  };
+  }, [addJourney, newJourneyData, oldJourney, payload]);
+
   useEffect(() => {
     setUserJourney();
-  }, [newJourneyData]);
+  }, [newJourneyData, setUserJourney]);
+
   return (
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
         <>
           <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
-            <LeftWrapPage
-              selectedResource={selectedResource}
-              questions={questions?.data?.data.sort((a, b) => a?.id - b?.id)}
-              setPublicationReports={setPublicationReports}
-              setNonPublicationReports={setNonPublicationReports}
-              firstQuestion={firstQuestion}
-              perviousId={firstQuestionId}
-              restart={onRestart}
-              stepAnswer={stepAnswer}
-              resetFilters={onResetFilter}
-              isResetPage={isResetPage}
-              setIsResetPage={setIsResetPage}
-              newJourney={(e) => setNewJourneyData([e])}
-              firstHit={oldJourney[0]}
-              isExpand={isExpand}
-              resourcesData={resources}
-              isFetchingQuestions={isFetchingQuestions}
-            />
-            <RightWrapPage
-              publicationReports={publicationReports}
-              nonPublicationReports={nonPublicationReports}
-              setSelectInputs={setSelectInputs}
-              selectInputs={selectInputs}
-              onResetFilter={onResetFilter}
-              showAllReports={false}
-              setClearAll={setClearAll}
-              isClearAll={isClearAll}
-              isResetPage={isResetPage}
-              isExpand={isExpand}
-            />
+            {isExpand ? (
+              <Suspense fallback={<div className="h-[700px] w-full flex items-center justify-center" ><Loader width={80} height={80} /></div>}>
+                <LeftWrapPage
+                  selectedResource={selectedResource}
+                  questions={questions?.data?.data.sort(
+                    (a, b) => a?.id - b?.id
+                  )}
+                  setPublicationReports={setPublicationReports}
+                  setNonPublicationReports={setNonPublicationReports}
+                  firstQuestion={firstQuestion}
+                  perviousId={firstQuestionId}
+                  restart={onRestart}
+                  stepAnswer={stepAnswer}
+                  resetFilters={onResetFilter}
+                  isResetPage={isResetPage}
+                  setIsResetPage={setIsResetPage}
+                  newJourney={(e) => setNewJourneyData([e])}
+                  firstHit={oldJourney[0]}
+                  isExpand={isExpand}
+                  resourcesData={resources}
+                  isFetchingQuestions={isFetchingQuestions}
+                />
+                <RightWrapPage
+                  publicationReports={publicationReports}
+                  nonPublicationReports={nonPublicationReports}
+                  setSelectInputs={setSelectInputs}
+                  selectInputs={selectInputs}
+                  onResetFilter={onResetFilter}
+                  showAllReports={false}
+                  setClearAll={setClearAll}
+                  isClearAll={isClearAll}
+                  isResetPage={isResetPage}
+                  isExpand={isExpand}
+                />
+              </Suspense>
+            ) : (
+              <div className="h-[700px]" />
+            )}
           </div>
           <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
             <Customize
@@ -241,7 +239,6 @@ const Dashboard = ({
                 setIsExpand(!isExpand);
                 setIsBigCard(true);
               }}
-              // setCurrentDate={(e)=>setLatestDate(e)}
               setJourney={(e) => setOldJourney([e])}
               questions={[firstQuestion]}
               isFetchingQuestions={isFetchingQuestions}
@@ -252,7 +249,6 @@ const Dashboard = ({
           </div>
         </>
       ) : (
-        <>
           <Resources
             resourcesData={resources}
             selected={(e) => {
@@ -264,7 +260,6 @@ const Dashboard = ({
             setIsOpen={setIsOpen}
             loader={loader}
           />
-        </>
       )}
     </Wrapper>
   );

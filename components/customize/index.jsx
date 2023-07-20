@@ -16,7 +16,6 @@ const Customize = ({
   onReportsFind,
   setJourney,
   loader
-  // setCurrentDate
 }) => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
@@ -39,8 +38,6 @@ const Customize = ({
       answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
     };
     setJourney({
-      // question: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question,
-      // frenchQuestion: firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion,
       ...firstQuestion,
       answer: i?.Answer, 
       frenchAnswer: i?.FrenchAnswer

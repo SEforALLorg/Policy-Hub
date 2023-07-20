@@ -17,7 +17,7 @@ const Landing = () => {
   const [dynamicClass, setDynamicClass] = useState();
 
   useEffect(() => {
-    localStorage.removeItem("userOldJourney")
+    localStorage.removeItem("userOldJourney");
     switch (res) {
       case ELECTRICITYACCESS:
         return setDynamicClass("electricity_access");

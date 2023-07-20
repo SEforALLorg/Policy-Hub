@@ -13,6 +13,9 @@ import { useRouter } from "next/router";
 import { applyTheme } from "../theme/utils";
 import baseTheme from "../theme/base";
 import Script from "next/script";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { isMobile } from "../utilities";
+
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 
@@ -91,6 +94,7 @@ function MyApp({ Component, pageProps }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
         <script defer async src="/gtm.js"></script>
+        {typeof window !== "undefined" && !isMobile() && <script defer async  src="/tailwindcss.js"></script>}
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}

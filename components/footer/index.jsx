@@ -194,7 +194,11 @@ const Footer = ({ footerRes }) => {
           />
           {footerRes === ELECTRICITYACCESS && (
             <img
-              src="/static/images/footer_electricity_access.png"
+              src={
+                isMobile()
+                  ? "/static/images/footer_electricity_access-responsive.png"
+                  : "/static/images/footer_electricity_access.png"
+              }
               data-src="/static/images/footer_electricity_access.png"
               alt="founder_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
@@ -246,8 +250,16 @@ const Footer = ({ footerRes }) => {
           )}
           {!footerRes && (
             <img
-              src={"/static/images/logo_rockefeller_foundation_white.svg"}
-              data-src={"/static/images/logo_rockefeller_foundation_white.svg"}
+              src={
+                isMobile()
+                  ? "/static/images/logo_rockefeller_foundation_white_responsive.svg"
+                  : "/static/images/logo_rockefeller_foundation_white.svg"
+              }
+              data-src={
+                isMobile()
+                  ? "/static/images/logo_rockefeller_foundation_white_responsive.svg"
+                  : "/static/images/logo_rockefeller_foundation_white.svg"
+              }
               alt="rockefeller_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
               onClick={() =>
