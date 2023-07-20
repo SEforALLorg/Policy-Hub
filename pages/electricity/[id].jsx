@@ -7,7 +7,6 @@ import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
-import pageImage from '../../static/images/electricity_access.svg'
 
 const Dashboard = lazy(() => import("components/dashboard"));
 const Footer = lazy(() => import("components/footer"));
@@ -15,6 +14,7 @@ const Header = lazy(() => import("components/header"));
 let isReload = false;
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
 const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
+const pageImage = "/static/images/electricity_access.svg"
 const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
