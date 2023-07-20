@@ -7,6 +7,7 @@ import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
+import pageImage from '../../static/images/electricity_access.svg'
 
 const Dashboard = lazy(() => import("components/dashboard"));
 const Footer = lazy(() => import("components/footer"));
@@ -14,7 +15,6 @@ const Header = lazy(() => import("components/header"));
 let isReload = false;
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
 const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
-const pageImage = "/static/images/electricity_access.svg"
 const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -46,13 +46,7 @@ const Electricity = () => {
     <main id="fullWrap" ref={ref} className={"electricity_access"}>
       <Head>
         <title>Sustainable Energy | Policy Hub | Electricity</title>
-        <meta property="title" content={pageTitle} />
-        <meta
-          property="description"
-          name="description"
-          content={pageDescription}
-        />
-        <meta property="image" content={pageImage} />
+        <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={pageImage} />
@@ -60,6 +54,7 @@ const Electricity = () => {
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
         <meta property="twitter:image" content={pageImage} />
+        {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
       <Suspense fallback={<div />}>

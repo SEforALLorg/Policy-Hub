@@ -6,6 +6,7 @@ import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { CLEANCOOKING } from "../../constant";
 import { cleanCookingFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
+import pageImage from '../../static/images/electricity_access.svg'
 import Head from "next/head";
 
 const Dashboard = lazy(() => import("components/dashboard"));
@@ -14,7 +15,6 @@ const Header = lazy(() => import("components/header"));
 let isReload = false;
 const pageTitle = "Sustainable Energy | Policy Hub | Clean Cookings"
 const pageDescription = "Sustainable Energy | Policy Hub | Clean Cookings"
-const pageImage = "/static/images/electricity_access.svg"
 const Cleancooking = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -54,12 +54,7 @@ const Cleancooking = () => {
     <main id="fullWrap" ref={ref} className={"clean_cooking"}>
       <Head>
         <title>{pageTitle}</title>
-        <meta property="title" content={pageTitle} />
-        <meta
-          property="description"
-          name="description"
-          content={pageDescription}
-        />
+        <meta name="description" content={pageDescription} />
         <meta property="image" content={pageImage} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
