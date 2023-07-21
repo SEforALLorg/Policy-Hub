@@ -1,4 +1,4 @@
-import React, { useRef, lazy, Suspense, useEffect } from "react";
+import React, { useRef, lazy, Suspense, useEffect, useState } from "react";
 import Head from "next/head";
 import { getQuestions } from "pages/api/questions";
 
@@ -11,7 +11,6 @@ import { electricityFirstQuestion } from "../../constant/firstQuestion";
 const Dashboard = lazy(() => import("components/dashboard"));
 const Footer = lazy(() => import("components/footer"));
 const Header = lazy(() => import("components/header"));
-let isReload = false;
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
 const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
 const pageImage = "/static/images/electricity_access.svg"
@@ -20,7 +19,7 @@ const Electricity = () => {
   const isDashboardOpen = false;
   const ref = useRef();
   const res = ELECTRICITYACCESS;
-
+  const [isReload, setIsReload] = useState(false);
   const query = getResources(1);
   const {
     data: questions,
@@ -28,16 +27,20 @@ const Electricity = () => {
     refetch,
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
     enabled: false,
+    onError: (err) => {
+      // Handle the error (e.g., display an error message, log it, etc.)
+      console.error("Error fetching questions:", err);
+    },
   });
   const defaultQuestion = getResourceFirstQuestion()
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
-      isReload = true;
+      setIsReload(true);
       refetch();
     } else if (router?.query?.id && !isReload && !questions) {
       const questionId = Number(router?.query?.id);
       if (questionId !== Number(defaultQuestion)) {
-        isReload = true;
+        setIsReload(true);
         router.push(`/electricity/${defaultQuestion}`);
       }
     }
@@ -78,7 +81,7 @@ const Electricity = () => {
                 }
                 isFetchingQuestions={isFetchingQuestions}
                 setIsBigCard={() => {
-                  isReload = true;
+                  setIsReload(true);
                   refetch();
                 }}
                 resources={[]}
