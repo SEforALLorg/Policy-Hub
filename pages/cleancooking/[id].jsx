@@ -12,7 +12,6 @@ import Head from "next/head";
 const Dashboard = lazy(() => import("components/dashboard"));
 const Footer = lazy(() => import("components/footer"));
 const Header = lazy(() => import("components/header"));
-let isReload = false;
 const pageTitle = "Sustainable Energy | Policy Hub | Clean Cookings"
 const pageDescription = "Sustainable Energy | Policy Hub | Clean Cookings"
 const Cleancooking = () => {
@@ -21,7 +20,7 @@ const Cleancooking = () => {
   const ref = useRef();
   const res = CLEANCOOKING;
   const [loader, setLoader] = useState(true);
-
+  const [isReload, setIsReload] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
@@ -39,12 +38,12 @@ const Cleancooking = () => {
   const defaultQuestion = getResourceFirstQuestion();
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
-      isReload = true;
+      setIsReload(true);
       refetch();
     } else if (router?.query?.id && !isReload && !questions) {
       const questionId = Number(router?.query?.id);
       if (questionId !== Number(defaultQuestion)) {
-        isReload = true;
+        setIsReload(true);
         router.push(`/cleancooking/${defaultQuestion}`);
       }
     }
@@ -85,7 +84,10 @@ const Cleancooking = () => {
                   }
                 }
                 isFetchingQuestions={loader ? true : isFetchingQuestions}
-                setIsBigCard={() => {}}
+                setIsBigCard={() => {
+                  setIsReload(true);
+                  refetch();
+                }}
                 resources={[]}
                 selectedRes={() => {}}
                 footerRes={res}
