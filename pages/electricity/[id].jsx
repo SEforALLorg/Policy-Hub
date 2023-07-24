@@ -20,6 +20,26 @@ const Electricity = () => {
   const ref = useRef();
   const res = ELECTRICITYACCESS;
   const [isReload, setIsReload] = useState(false);
+  useEffect(() => {
+    const handlePopstate = () => {
+      if (channel) {
+        channel.removeEventListener("message", handleMessage);
+        channel.close();
+      }
+      setIsReload(true);
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+
+      if (channel) {
+        channel.addEventListener("message", handleMessage);
+      }
+    };
+  }, []);
+  
   const query = getResources(1);
   const {
     data: questions,
