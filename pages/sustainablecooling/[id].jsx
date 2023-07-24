@@ -1,38 +1,66 @@
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "components/footer";
 import Header from "components/header";
-import { ErrorNotify } from "components/notification";
 import { getQuestions } from "pages/api/questions";
 
 import Dashboard from "components/dashboard";
 import { useQuery } from "react-query";
-import { getResources } from "../../utilities";
+import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { SUSTAINABLECOOLING } from "../../constant";
+import Head from "next/head";
+import { sustainableCoolingFirstQuestion } from "../../constant/firstQuestion";
+import { useRouter } from "next/router";
 
+const pageTitle = "Sustainable Energy | Policy Hub | Sustainable Cooling";
+const pageDescription = "Sustainable Energy | Policy Hub | Sustainable Cooling";
+const pageImage = "/static/images/energy_efficiency.svg";
 const Sustainablecooling = () => {
+  const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
   const res = SUSTAINABLECOOLING;
-  const [loader, setLoader] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
-  }, []);
+  const [isReload, setIsReload] = useState(false);
 
   const query = getResources(4);
   const {
     data: questions,
     isFetching: isFetchingQuestions,
+    refetch,
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
-    onError: (error) => {
-      ErrorNotify(error?.response?.data?.error?.message);
+    enabled: false,
+    onError: (err) => {
+      // Handle the error (e.g., display an error message, log it, etc.)
+      console.error("Error fetching questions:", err);
     },
   });
-
+  const defaultQuestion = getResourceFirstQuestion();
+  useEffect(() => {
+    if (router?.query?.bigCard === "true" && !isReload) {
+      setIsReload(true);
+      refetch();
+    } else if (router?.query?.id && !isReload && !questions) {
+      const questionId = Number(router?.query?.id);
+      if (questionId !== Number(defaultQuestion)) {
+        setIsReload(true);
+        router.push(`/sustainablecooling/${defaultQuestion}`);
+      }
+    }
+  }, [router]);
   return (
     <main id="fullWrap" ref={ref} className={"Sustainable_cooling"}>
+       <Head>
+        <title>Sustainable Energy | Policy Hub | Sustainable Cooling</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={pageTitle} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content={pageImage} />
+        {/* Additional meta tags or links can be added here */}
+        <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
+      </Head>
     <div className="mobile:p-2.5 xsm:p-[5px]">
       <div className="custom-container mx-auto">
         <div
@@ -44,9 +72,18 @@ const Sustainablecooling = () => {
         </div>
         <div>
           <Dashboard
-            questions={questions}
-            isFetchingQuestions={loader ? true : isFetchingQuestions}
-            setIsBigCard={() => {}}
+            questions={
+              questions || {
+                data: {
+                  data: [sustainableCoolingFirstQuestion],
+                },
+              }
+            }
+            isFetchingQuestions={isFetchingQuestions}
+            setIsBigCard={() => {
+              setIsReload(true);
+              refetch();
+            }}
             resources={[]}
             selectedRes={() => {}}
             footerRes={res}

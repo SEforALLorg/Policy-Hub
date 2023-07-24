@@ -2703,6 +2703,10 @@ a {
     background-image: url("/static/images/energy_efficiency_bg_responsive.png");
     background-size: contain;
   }
+  .Sustainable_cooling {
+    background-image: url("/static/images/Sustainable_bg_responsive.png");
+    background-size: cover;
+  }
 
   .inner-section-content {
     height: unset !important;
