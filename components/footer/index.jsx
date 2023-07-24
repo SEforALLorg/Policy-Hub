@@ -192,25 +192,25 @@ const Footer = ({ footerRes }) => {
             width={isMobile() ? "181px" : "90px"}
             height={isMobile() ? "46px" : "70px"}
           />
-          {footerRes === ELECTRICITYACCESS ||
+          {(footerRes === ELECTRICITYACCESS ||
             footerRes === CLEANCOOKING ||
-            (footerRes === ENERGYEFFICIENCY && (
-              <img
-                src={
-                  isMobile()
-                    ? "/static/images/footer_electricity_access-responsive.png"
-                    : "/static/images/footer_electricity_access.png"
-                }
-                data-src="/static/images/footer_electricity_access.png"
-                alt="founder_logo"
-                className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-                onClick={() =>
-                  window.open("https://www.rockefellerfoundation.org/")
-                }
-                width={isMobile() ? "181px" : "250px"}
-                height={isMobile() ? "46px" : "52px"}
-              />
-            ))}
+            footerRes === ENERGYEFFICIENCY) && (
+            <img
+              src={
+                isMobile()
+                  ? "/static/images/footer_electricity_access-responsive.png"
+                  : "/static/images/footer_electricity_access.png"
+              }
+              data-src="/static/images/footer_electricity_access.png"
+              alt="founder_logo"
+              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
+              onClick={() =>
+                window.open("https://www.rockefellerfoundation.org/")
+              }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
+            />
+          )}
           {footerRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/footer_sustainable_cooking.svg"}
