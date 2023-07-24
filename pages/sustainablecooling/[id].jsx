@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
@@ -41,7 +41,7 @@ const Sustainablecooling = () => {
       }
     };
   }, []);
-  
+
   const query = getResources(4);
   const {
     data: questions,
