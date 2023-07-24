@@ -22,6 +22,26 @@ const Cleancooking = () => {
   const [loader, setLoader] = useState(true);
   const [isReload, setIsReload] = useState(false);
   useEffect(() => {
+    const handlePopstate = () => {
+      if (channel) {
+        channel.removeEventListener("message", handleMessage);
+        channel.close();
+      }
+      setIsReload(true);
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+
+      if (channel) {
+        channel.addEventListener("message", handleMessage);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     setTimeout(() => {
       setLoader(false);
     }, 1000);
@@ -33,9 +53,11 @@ const Cleancooking = () => {
     isFetching: isFetchingQuestions,
     refetch,
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
+    // Don't enable the query initially to prevent unnecessary fetching
     enabled: false,
   });
   const defaultQuestion = getResourceFirstQuestion();
+
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
       setIsReload(true);
@@ -47,7 +69,7 @@ const Cleancooking = () => {
         router.push(`/cleancooking/${defaultQuestion}`);
       }
     }
-  }, [router]);
+  }, [isReload, router, questions]);
 
   return (
     <main id="fullWrap" ref={ref} className={"clean_cooking"}>
