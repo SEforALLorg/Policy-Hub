@@ -1,25 +1,46 @@
-import React, { useState, useEffect, useRef } from "react";
-import Footer from "components/footer";
-import Header from "components/header";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
-import Dashboard from "components/dashboard";
 import { useQuery } from "react-query";
 import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { SUSTAINABLECOOLING } from "../../constant";
 import Head from "next/head";
 import { sustainableCoolingFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
+import pageImage from "../../static/images/sustainable_cooling.svg";
 
+const Dashboard = lazy(() => import("components/dashboard"));
+const Footer = lazy(() => import("components/footer"));
+const Header = lazy(() => import("components/header"));
 const pageTitle = "Sustainable Energy | Policy Hub | Sustainable Cooling";
 const pageDescription = "Sustainable Energy | Policy Hub | Sustainable Cooling";
-const pageImage = "/static/images/energy_efficiency.svg";
+
 const Sustainablecooling = () => {
   const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
   const res = SUSTAINABLECOOLING;
   const [isReload, setIsReload] = useState(false);
+
+  useEffect(() => {
+    const handlePopstate = () => {
+      if (channel) {
+        channel.removeEventListener("message", handleMessage);
+        channel.close();
+      }
+      setIsReload(true);
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+
+      if (channel) {
+        channel.addEventListener("message", handleMessage);
+      }
+    };
+  }, []);
 
   const query = getResources(4);
   const {
@@ -48,7 +69,7 @@ const Sustainablecooling = () => {
   }, [router]);
   return (
     <main id="fullWrap" ref={ref} className={"Sustainable_cooling"}>
-       <Head>
+      <Head>
         <title>Sustainable Energy | Policy Hub | Sustainable Cooling</title>
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
@@ -61,43 +82,45 @@ const Sustainablecooling = () => {
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-    <div className="mobile:p-2.5 xsm:p-[5px]">
-      <div className="custom-container mx-auto">
-        <div
-          className={`px-[1rem] py-2 ${
-            !isDashboardOpen ? "header-title-wrap" : ""
-          }`}
-        >
-          <Header selectedRes={res} />
+      <Suspense fallback={<div />}>
+        <div className="mobile:p-2.5 xsm:p-[5px]">
+          <div className="custom-container mx-auto">
+            <div
+              className={`px-[1rem] py-2 ${
+                !isDashboardOpen ? "header-title-wrap" : ""
+              }`}
+            >
+              <Header selectedRes={res} />
+            </div>
+            <div>
+              <Dashboard
+                questions={
+                  questions || {
+                    data: {
+                      data: [sustainableCoolingFirstQuestion],
+                    },
+                  }
+                }
+                isFetchingQuestions={isFetchingQuestions}
+                setIsBigCard={() => {
+                  setIsReload(true);
+                  refetch();
+                }}
+                resources={[]}
+                selectedRes={() => {}}
+                footerRes={res}
+                setIsOpen={() => {}}
+                isPage={true}
+              />
+            </div>
+            <div className="pt-[40px]">
+              <Footer footerRes={res} />
+            </div>
+          </div>
         </div>
-        <div>
-          <Dashboard
-            questions={
-              questions || {
-                data: {
-                  data: [sustainableCoolingFirstQuestion],
-                },
-              }
-            }
-            isFetchingQuestions={isFetchingQuestions}
-            setIsBigCard={() => {
-              setIsReload(true);
-              refetch();
-            }}
-            resources={[]}
-            selectedRes={() => {}}
-            footerRes={res}
-            setIsOpen={() => {}}
-            isPage={true}
-          />
-        </div>
-        <div className="pt-[40px]">
-          <Footer footerRes={res} />
-        </div>
-      </div>
-    </div>
-  </main>
-  )
-}
+      </Suspense>
+    </main>
+  );
+};
 
-export default Sustainablecooling
+export default Sustainablecooling;
