@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import Footer from "components/footer";
-import Header from "components/header";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
-import Dashboard from "components/dashboard";
 import { useQuery } from "react-query";
 import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { ENERGYEFFICIENCY } from "../../constant";
 import { energyEfficiencyFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import pageImage from "../../static/images/energy_efficiency.svg";
 
+const Dashboard = lazy(() => import("components/dashboard"));
+const Footer = lazy(() => import("components/footer"));
+const Header = lazy(() => import("components/header"));
 const pageTitle = "Sustainable Energy | Policy Hub | Energy Efficiency";
 const pageDescription = "Sustainable Energy | Policy Hub | Energy Efficiency";
-const pageImage = "/static/images/energy_efficiency.svg";
 const Energyefficiency = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -21,6 +21,26 @@ const Energyefficiency = () => {
   const res = ENERGYEFFICIENCY;
   const [isReload, setIsReload] = useState(false);
 
+  useEffect(() => {
+    const handlePopstate = () => {
+      if (channel) {
+        channel.removeEventListener("message", handleMessage);
+        channel.close();
+      }
+      setIsReload(true);
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+
+      if (channel) {
+        channel.addEventListener("message", handleMessage);
+      }
+    };
+  }, []);
+  
   const query = getResources(3);
   const {
     data: questions,
@@ -61,41 +81,43 @@ const Energyefficiency = () => {
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-      <div className="mobile:p-2.5 xsm:p-[5px]">
-        <div className="custom-container mx-auto">
-          <div
-            className={`px-[1rem] py-2 ${
-              !isDashboardOpen ? "header-title-wrap" : ""
-            }`}
-          >
-            <Header selectedRes={res} />
-          </div>
-          <div>
-            <Dashboard
-              questions={
-                questions || {
-                  data: {
-                    data: [energyEfficiencyFirstQuestion],
-                  },
+      <Suspense fallback={<div />}>
+        <div className="mobile:p-2.5 xsm:p-[5px]">
+          <div className="custom-container mx-auto">
+            <div
+              className={`px-[1rem] py-2 ${
+                !isDashboardOpen ? "header-title-wrap" : ""
+              }`}
+            >
+              <Header selectedRes={res} />
+            </div>
+            <div>
+              <Dashboard
+                questions={
+                  questions || {
+                    data: {
+                      data: [energyEfficiencyFirstQuestion],
+                    },
+                  }
                 }
-              }
-              isFetchingQuestions={isFetchingQuestions}
-              setIsBigCard={() => {
-                setIsReload(true);
-                refetch();
-              }}
-              resources={[]}
-              selectedRes={() => {}}
-              footerRes={res}
-              setIsOpen={() => {}}
-              isPage={true}
-            />
-          </div>
-          <div className="pt-[40px]">
-            <Footer footerRes={res} />
+                isFetchingQuestions={isFetchingQuestions}
+                setIsBigCard={() => {
+                  setIsReload(true);
+                  refetch();
+                }}
+                resources={[]}
+                selectedRes={() => {}}
+                footerRes={res}
+                setIsOpen={() => {}}
+                isPage={true}
+              />
+            </div>
+            <div className="pt-[40px]">
+              <Footer footerRes={res} />
+            </div>
           </div>
         </div>
-      </div>
+      </Suspense>
     </main>
   );
 };
