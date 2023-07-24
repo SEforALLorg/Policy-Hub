@@ -2699,6 +2699,11 @@ a {
     background-position: center;
   }
 
+  .energy_efficiency {
+    background-image: url("/static/images/energy_efficiency_bg_responsive.png");
+    background-size: contain;
+  }
+
   .inner-section-content {
     height: unset !important;
   }

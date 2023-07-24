@@ -1101,3 +1101,484 @@ export const cleanCookingFirstQuestion = {
     },
   },
 };
+
+export const energyEfficiencyFirstQuestion = {
+  id: 80,
+  attributes: {
+    QuestionType: "Questionnaire",
+    createdAt: "2022-11-02T17:35:09.258Z",
+    updatedAt: "2023-07-06T15:42:55.664Z",
+    QuestionTitle: null,
+    ToolTipText: null,
+    locale: "en",
+    FrenchToolTipText: null,
+    frenchQuestionTitle: null,
+    AddAnswer: [
+      {
+        id: 129,
+        Answer: "Yes",
+        AnswerToolTip: null,
+        FrenchAnswer: "Oui",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 102,
+            attributes: {
+              Question:
+                "Has energy efficiency been analyzed and modelled across relevant sectors (buildings, industry transport etc.)?",
+              createdAt: "2022-11-01T16:08:54.331Z",
+              updatedAt: "2023-04-19T11:52:43.354Z",
+              locale: "en",
+              FrenchQuestion:
+                "L'efficacité énergétique a-t-elle été analysée et modélisée dans les secteurs concernés (bâtiments, industrie, transports, etc.) ?",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 605,
+              attributes: {
+                ReportName: "Energy Efficiency 2021",
+                URL: "https://iea.blob.core.windows.net/assets/9c30109f-38a7-4a0b-b159-47f00d65e5be/EnergyEfficiency2021.pdf",
+                createdAt: "2023-01-10T18:00:29.853Z",
+                updatedAt: "2023-03-01T14:58:40.012Z",
+                KeyPublication: "Yes",
+                Description:
+                  "In the Net Zero Emissions by 2050 Scenario, the energy intensity of the global economy improves (that is, falls) by 35% by 2030. This is driven by energy efficiency combined with related measures such as electrification and behavioural change. The electrification of transport, space and water heating and many industrial applications results in increased efficiency and lower emissions, but contributes to electricity generation rising by 40% by 2030 in the Net Zero Emissions by 2050 Scenario. Electric equipment is much more efficient than their equivalents powered directly by fossil fuels, with electric heat pumps, for example, being three to four times more efficient than burning fossil fuels for heat. Electricity can alsobe generated from renewable sources. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 759,
+              attributes: {
+                ReportName:
+                  "Energy Efficiency Indicators: Essentials for Policy Making",
+                URL: "https://www.iea.org/reports/energy-efficiency-indicators-essentials-for-policy-making",
+                createdAt: "2023-01-17T18:18:12.350Z",
+                updatedAt: "2023-03-01T15:00:40.547Z",
+                KeyPublication: "Yes",
+                Description:
+                  "One of the most important issues to understand from an energy policy perspective is to what extent improvements in energy efficiency have been responsible for the changes in final energy intensity in different countries. To understand the impact of energy efficiency, it is necessary to separate the impact of changes in activity, economic structure and other exogenous factors that influence the demand for energy from changes in energy intensities (which are a proxy for energy efficiency). This is done using a decomposition approach that separates and quantifies the impacts of the individual factors of changes in activity, structure and energy intensities on final energy consumption in each sector and country.",
+                locale: "en",
+              },
+            },
+            {
+              id: 851,
+              attributes: {
+                ReportName: "Country Savings Assessments",
+                URL: "https://united4efficiency.org/countries/country-assessments/",
+                createdAt: "2023-02-07T11:59:43.070Z",
+                updatedAt: "2023-02-08T16:14:31.927Z",
+                KeyPublication: "Yes",
+                Description:
+                  "The U4E Global Map includes Country Savings Assessments showing the potential financial, environmental, energy, and societal benefits that are possible with a transition to energy-efficient lighting, refrigerators, room air conditioners, electric motors and distribution transformers.",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 606,
+              attributes: {
+                ReportName: "Energy Efficiency 2022",
+                URL: "https://iea.blob.core.windows.net/assets/7741739e-8e7f-4afa-a77f-49dadd51cb52/EnergyEfficiency2022.pdf",
+                createdAt: "2023-01-10T18:05:05.983Z",
+                updatedAt: "2023-03-01T15:00:18.289Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 631,
+              attributes: {
+                ReportName: "Germany’s Energy Efficiency Strategy 2050",
+                URL: "https://www.energypartnership.cn/fileadmin/user_upload/china/media_elements/Documents/200407_BMWi_Dossier_Energy_Efficiency_Strategy_2050.pdf",
+                createdAt: "2023-01-11T16:01:45.123Z",
+                updatedAt: "2023-03-01T14:50:17.207Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Germany’s Energy Efficiency Strategy 2050 sets out a long-term pathway for strengthening German energy efficiency policy. In this way, it also makes an appropriate contribution to achieving the EU energy efficiency target (of reducing primary and final energy consumption by least 32.5% by 2030). The Strategy sets a new energy efficiency target for 2030, brings together the necessary measures in a new National Energy Efficiency Action Plan (NAPE 2.0) and contains guidelines on how the dialogue process on the Energy Efficiency Roadmap 2050 should be designed.",
+                locale: "en",
+              },
+            },
+            {
+              id: 755,
+              attributes: {
+                ReportName:
+                  "Capturing the Multiple Benefits of Energy Efficiency",
+                URL: "https://iea.blob.core.windows.net/assets/28f84ed8-4101-4e95-ae51-9536b6436f14/Multiple_Benefits_of_Energy_Efficiency-148x199.pdf",
+                createdAt: "2023-01-17T17:59:54.467Z",
+                updatedAt: "2023-03-01T15:00:28.698Z",
+                KeyPublication: "Yes",
+                Description:
+                  "A persistent challenge in energy efficiency policy is that results often fall short of the full energy savings projected when technical potentials are estimated during the policy development phase. Efficiency improvements that save energy, thus resulting in lower energy costs, can stimulate increased energy consumption and general expenditures that counteract the technical potential savings. This phenomenon, referred to as a “rebound effect”, is usually perceived as a negative outcome. The multiple benefits approach has important implications for better understanding what the rebound effect represents in terms of welfare improvements for society, revealing that it can, in fact, generate additional benefits.",
+                locale: "en",
+              },
+            },
+            {
+              id: 756,
+              attributes: {
+                ReportName:
+                  "Best Policy Practices for Promoting Energy Efficiency",
+                URL: "https://unece.org/DAM/energy/se/pdfs/geee/pub/ECE_Best_Practices_in_EE_publication.pdf",
+                createdAt: "2023-01-17T18:05:52.377Z",
+                updatedAt: "2023-03-01T14:50:49.537Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Best practice policies for energy efficiency will each have: 4. Significant outcomes. An ability to contribute to a large energy demand reduction and significant multiple benefits.  5. Complementarity, synergies and integration attributes enable an easy fit with other national, regional and international efforts, ensuring ease of implementation and a supportive complementarity with other policies. 6. Political alignment, governance and accountability attributes help ensure policies are politically palatable and are likely to work and persist in multi-layer governance frameworks where national, regional and local governance influence effectiveness of policies and enable outcomes. 7. Marketability and market impact ensure polices can and will work in the global and local markets that supply energy efficient technologies, are attractive to decision-makers, and are likely to attract investment finance.",
+                locale: "en",
+              },
+            },
+            {
+              id: 757,
+              attributes: {
+                ReportName:
+                  "Policy | Energy Efficiency Toolkit - Technical Guide",
+                URL: "https://2012-2017.usaid.gov/sites/default/files/documents/1865/ee-technical-guide-policy.pdf",
+                createdAt: "2023-01-17T18:12:47.934Z",
+                updatedAt: "2023-03-21T05:00:47.451Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Government ministries can set such targets in the form of quantified energy efficiency obligations (EEOs) or directives, typically expressed as an annual percentage of total energy savings, with a calendar term included.",
+                locale: "en",
+              },
+            },
+            {
+              id: 758,
+              attributes: {
+                ReportName: "National Energy Efficiency Strategy, 2075",
+                URL: "https://www.moewri.gov.np/storage/listies/May2020/national-energy-efficiency-strategy-2075-en.pdf",
+                createdAt: "2023-01-17T18:16:10.217Z",
+                updatedAt: "2023-03-01T14:50:53.015Z",
+                KeyPublication: "Yes",
+                Description:
+                  "As there is no arrangement of a separate strategy related to promotion energy efficiency so far, it is necessary to formulate such strategy. The present need is to include energy efficiency strategy in a comprehensive and integrated energy strategy and make the development, implementation and management of energy efficiency initiatives sustainable and effective. It is extremely necessary to have the energy efficiency strategy for establishing necessary legal and institutional structure required for implementation and monitoring energy efficiency programmes as well as for interagency coordination. Likewise, energy efficiency strategy will be required to formulate and implement strategic planning of integrated sustainable development initiatives.",
+                locale: "en",
+              },
+            },
+            {
+              id: 761,
+              attributes: {
+                ReportName:
+                  "Development of post-2015 National Energy Efficiency Strategy, Targets, Measures and Implementation Plan",
+                URL: "https://www.energy.gov.za/files/policies/Annex-B-Energy-Efficiency-Measures.pdf",
+                createdAt: "2023-01-18T11:38:19.529Z",
+                updatedAt: "2023-03-01T15:00:50.657Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 765,
+              attributes: {
+                ReportName:
+                  "National Energy Efficiency Action Plan (2017-2023)",
+                URL: "https://policy.asiapacificenergy.org/node/3903",
+                createdAt: "2023-01-18T12:02:38.603Z",
+                updatedAt: "2023-03-01T15:00:57.111Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 767,
+              attributes: {
+                ReportName:
+                  "Review of Policies and Measures for Energy Efficiency in Indonesia’s Industrial Sector",
+                URL: "https://aseanenergy.org/review-of-policies-and-measures-for-energy-efficiency-in-indonesias-industrial-sector/",
+                createdAt: "2023-01-18T12:28:23.060Z",
+                updatedAt: "2023-01-18T12:28:23.060Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 805,
+              attributes: {
+                ReportName: "National Energy Efficiency Action Plan",
+                URL: "https://www.pmo.gov.my/wp-content/uploads/2019/07/National-Energy-Efficiency-Action-Plan.pdf",
+                createdAt: "2023-01-18T18:50:09.568Z",
+                updatedAt: "2023-03-01T15:00:57.847Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+      {
+        id: 130,
+        Answer: "No",
+        AnswerToolTip: null,
+        FrenchAnswer: "Non",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 101,
+            attributes: {
+              Question:
+                "Develop / review national energy efficiency policy/strategy.",
+              createdAt: "2022-11-01T16:08:43.085Z",
+              updatedAt: "2023-04-19T12:03:36.452Z",
+              locale: "en",
+              FrenchQuestion:
+                "Élaborer / réviser la politique/stratégie nationale en matière d'efficacité énergétique.",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 631,
+              attributes: {
+                ReportName: "Germany’s Energy Efficiency Strategy 2050",
+                URL: "https://www.energypartnership.cn/fileadmin/user_upload/china/media_elements/Documents/200407_BMWi_Dossier_Energy_Efficiency_Strategy_2050.pdf",
+                createdAt: "2023-01-11T16:01:45.123Z",
+                updatedAt: "2023-03-01T14:50:17.207Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Germany’s Energy Efficiency Strategy 2050 sets out a long-term pathway for strengthening German energy efficiency policy. In this way, it also makes an appropriate contribution to achieving the EU energy efficiency target (of reducing primary and final energy consumption by least 32.5% by 2030). The Strategy sets a new energy efficiency target for 2030, brings together the necessary measures in a new National Energy Efficiency Action Plan (NAPE 2.0) and contains guidelines on how the dialogue process on the Energy Efficiency Roadmap 2050 should be designed.",
+                locale: "en",
+              },
+            },
+            {
+              id: 756,
+              attributes: {
+                ReportName:
+                  "Best Policy Practices for Promoting Energy Efficiency",
+                URL: "https://unece.org/DAM/energy/se/pdfs/geee/pub/ECE_Best_Practices_in_EE_publication.pdf",
+                createdAt: "2023-01-17T18:05:52.377Z",
+                updatedAt: "2023-03-01T14:50:49.537Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Best practice policies for energy efficiency will each have: 4. Significant outcomes. An ability to contribute to a large energy demand reduction and significant multiple benefits.  5. Complementarity, synergies and integration attributes enable an easy fit with other national, regional and international efforts, ensuring ease of implementation and a supportive complementarity with other policies. 6. Political alignment, governance and accountability attributes help ensure policies are politically palatable and are likely to work and persist in multi-layer governance frameworks where national, regional and local governance influence effectiveness of policies and enable outcomes. 7. Marketability and market impact ensure polices can and will work in the global and local markets that supply energy efficient technologies, are attractive to decision-makers, and are likely to attract investment finance.",
+                locale: "en",
+              },
+            },
+            {
+              id: 758,
+              attributes: {
+                ReportName: "National Energy Efficiency Strategy, 2075",
+                URL: "https://www.moewri.gov.np/storage/listies/May2020/national-energy-efficiency-strategy-2075-en.pdf",
+                createdAt: "2023-01-17T18:16:10.217Z",
+                updatedAt: "2023-03-01T14:50:53.015Z",
+                KeyPublication: "Yes",
+                Description:
+                  "As there is no arrangement of a separate strategy related to promotion energy efficiency so far, it is necessary to formulate such strategy. The present need is to include energy efficiency strategy in a comprehensive and integrated energy strategy and make the development, implementation and management of energy efficiency initiatives sustainable and effective. It is extremely necessary to have the energy efficiency strategy for establishing necessary legal and institutional structure required for implementation and monitoring energy efficiency programmes as well as for interagency coordination. Likewise, energy efficiency strategy will be required to formulate and implement strategic planning of integrated sustainable development initiatives.",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 605,
+              attributes: {
+                ReportName: "Energy Efficiency 2021",
+                URL: "https://iea.blob.core.windows.net/assets/9c30109f-38a7-4a0b-b159-47f00d65e5be/EnergyEfficiency2021.pdf",
+                createdAt: "2023-01-10T18:00:29.853Z",
+                updatedAt: "2023-03-01T14:58:40.012Z",
+                KeyPublication: "Yes",
+                Description:
+                  "In the Net Zero Emissions by 2050 Scenario, the energy intensity of the global economy improves (that is, falls) by 35% by 2030. This is driven by energy efficiency combined with related measures such as electrification and behavioural change. The electrification of transport, space and water heating and many industrial applications results in increased efficiency and lower emissions, but contributes to electricity generation rising by 40% by 2030 in the Net Zero Emissions by 2050 Scenario. Electric equipment is much more efficient than their equivalents powered directly by fossil fuels, with electric heat pumps, for example, being three to four times more efficient than burning fossil fuels for heat. Electricity can alsobe generated from renewable sources. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 606,
+              attributes: {
+                ReportName: "Energy Efficiency 2022",
+                URL: "https://iea.blob.core.windows.net/assets/7741739e-8e7f-4afa-a77f-49dadd51cb52/EnergyEfficiency2022.pdf",
+                createdAt: "2023-01-10T18:05:05.983Z",
+                updatedAt: "2023-03-01T15:00:18.289Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 607,
+              attributes: {
+                ReportName: "Energy Efficiency 2020",
+                URL: "https://iea.blob.core.windows.net/assets/59268647-0b70-4e7b-9f78-269e5ee93f26/Energy_Efficiency_2020.pdf",
+                createdAt: "2023-01-10T18:08:24.188Z",
+                updatedAt: "2023-03-01T15:00:23.001Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Turkey published new definitions and energy use limits for near-zero energy buildings and began implementing the 2019 Presidential Decree on Energy Savings in Public Buildings, which requires public buildings over 10 000 m2 or consuming over 250 tonnes of oil equivalent per year to save 15% of final energy consumption between 2020 and 2023.",
+                locale: "en",
+              },
+            },
+            {
+              id: 754,
+              attributes: {
+                ReportName:
+                  "How to design and implement energy efficiency policies",
+                URL: "https://bigee.net/media/filer_public/2013/11/28/bigee_txt_0007_pg_how_to_design_and_implement_policies.pdf",
+                createdAt: "2023-01-17T17:55:58.911Z",
+                updatedAt: "2023-03-01T15:00:25.475Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Relevant stakeholders  should be involved and regularly consulted in the design and implementation phase of policies and measures. This will help to ensure that policies are adequate and practically feasible, and may also increase the rate of compliance. However, legislators must make clear they will take the final decision. To involve the market, political decisionmakers must have good knowledge of the relevant actors and thoroughly analyse the respective barriers and incentives faced by each of them. An\neffective policy package based on the findings of\nsuch analysis will combine strategies and mechanisms that specifically address the actor-specific\nbarriers and strengthen incentives. ",
+                locale: "en",
+              },
+            },
+            {
+              id: 755,
+              attributes: {
+                ReportName:
+                  "Capturing the Multiple Benefits of Energy Efficiency",
+                URL: "https://iea.blob.core.windows.net/assets/28f84ed8-4101-4e95-ae51-9536b6436f14/Multiple_Benefits_of_Energy_Efficiency-148x199.pdf",
+                createdAt: "2023-01-17T17:59:54.467Z",
+                updatedAt: "2023-03-01T15:00:28.698Z",
+                KeyPublication: "Yes",
+                Description:
+                  "A persistent challenge in energy efficiency policy is that results often fall short of the full energy savings projected when technical potentials are estimated during the policy development phase. Efficiency improvements that save energy, thus resulting in lower energy costs, can stimulate increased energy consumption and general expenditures that counteract the technical potential savings. This phenomenon, referred to as a “rebound effect”, is usually perceived as a negative outcome. The multiple benefits approach has important implications for better understanding what the rebound effect represents in terms of welfare improvements for society, revealing that it can, in fact, generate additional benefits.",
+                locale: "en",
+              },
+            },
+            {
+              id: 757,
+              attributes: {
+                ReportName:
+                  "Policy | Energy Efficiency Toolkit - Technical Guide",
+                URL: "https://2012-2017.usaid.gov/sites/default/files/documents/1865/ee-technical-guide-policy.pdf",
+                createdAt: "2023-01-17T18:12:47.934Z",
+                updatedAt: "2023-03-21T05:00:47.451Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Government ministries can set such targets in the form of quantified energy efficiency obligations (EEOs) or directives, typically expressed as an annual percentage of total energy savings, with a calendar term included.",
+                locale: "en",
+              },
+            },
+            {
+              id: 759,
+              attributes: {
+                ReportName:
+                  "Energy Efficiency Indicators: Essentials for Policy Making",
+                URL: "https://www.iea.org/reports/energy-efficiency-indicators-essentials-for-policy-making",
+                createdAt: "2023-01-17T18:18:12.350Z",
+                updatedAt: "2023-03-01T15:00:40.547Z",
+                KeyPublication: "Yes",
+                Description:
+                  "One of the most important issues to understand from an energy policy perspective is to what extent improvements in energy efficiency have been responsible for the changes in final energy intensity in different countries. To understand the impact of energy efficiency, it is necessary to separate the impact of changes in activity, economic structure and other exogenous factors that influence the demand for energy from changes in energy intensities (which are a proxy for energy efficiency). This is done using a decomposition approach that separates and quantifies the impacts of the individual factors of changes in activity, structure and energy intensities on final energy consumption in each sector and country.",
+                locale: "en",
+              },
+            },
+            {
+              id: 761,
+              attributes: {
+                ReportName:
+                  "Development of post-2015 National Energy Efficiency Strategy, Targets, Measures and Implementation Plan",
+                URL: "https://www.energy.gov.za/files/policies/Annex-B-Energy-Efficiency-Measures.pdf",
+                createdAt: "2023-01-18T11:38:19.529Z",
+                updatedAt: "2023-03-01T15:00:50.657Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 765,
+              attributes: {
+                ReportName:
+                  "National Energy Efficiency Action Plan (2017-2023)",
+                URL: "https://policy.asiapacificenergy.org/node/3903",
+                createdAt: "2023-01-18T12:02:38.603Z",
+                updatedAt: "2023-03-01T15:00:57.111Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 775,
+              attributes: {
+                ReportName:
+                  "Vietnam - National Energy Efficiency Program 2019-2030",
+                URL: "https://documents1.worldbank.org/curated/en/598851561961183317/pdf/Vietnam-National-Energy-Efficiency-Program-2019-2030.pdf",
+                createdAt: "2023-01-18T13:25:13.803Z",
+                updatedAt: "2023-01-18T13:25:13.803Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 802,
+              attributes: {
+                ReportName: "Energy Efficiency and Conservation Policy",
+                URL: "https://www.energycharter.org/fileadmin/DocumentsMedia/Other_Publications/EE-Eswatini2019.pdf",
+                createdAt: "2023-01-18T18:40:58.368Z",
+                updatedAt: "2023-03-01T15:00:57.036Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 805,
+              attributes: {
+                ReportName: "National Energy Efficiency Action Plan",
+                URL: "https://www.pmo.gov.my/wp-content/uploads/2019/07/National-Energy-Efficiency-Action-Plan.pdf",
+                createdAt: "2023-01-18T18:50:09.568Z",
+                updatedAt: "2023-03-01T15:00:57.847Z",
+                KeyPublication: "No",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    MainQuestion: {
+      id: 72,
+      Question: {
+        data: {
+          id: 100,
+          attributes: {
+            Question:
+              "Is there an up-to-date national energy efficiency policy or strategy? ",
+            createdAt: "2022-11-01T16:08:20.428Z",
+            updatedAt: "2023-04-19T11:51:52.143Z",
+            locale: "en",
+            FrenchQuestion:
+              "Existe-t-il une politique ou une stratégie nationale actualisée en matière d'efficacité énergétique ?",
+          },
+        },
+      },
+      QuestionKeyType: {
+        data: null,
+      },
+    },
+    Resource: {
+      id: 5,
+      resources: {
+        data: [
+          {
+            id: 3,
+            attributes: {
+              Name: "Energy Efficiency",
+              createdAt: "2022-11-03T12:07:01.176Z",
+              updatedAt: "2023-04-19T12:45:14.427Z",
+              publishedAt: "2022-11-03T12:07:01.970Z",
+              QuestionId: "80",
+              locale: "en",
+              FrenchName: "Efficacité énergétique",
+            },
+          },
+        ],
+      },
+    },
+  },
+};
