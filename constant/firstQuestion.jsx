@@ -1582,3 +1582,323 @@ export const energyEfficiencyFirstQuestion = {
     },
   },
 };
+
+export const sustainableCoolingFirstQuestion = {
+  id: 52,
+  attributes: {
+    QuestionType: "Questionnaire",
+    createdAt: "2022-11-02T16:18:47.180Z",
+    updatedAt: "2023-07-06T15:42:40.811Z",
+    QuestionTitle: null,
+    ToolTipText: null,
+    locale: "en",
+    FrenchToolTipText: null,
+    frenchQuestionTitle: null,
+    AddAnswer: [
+      {
+        id: 98,
+        Answer: "Yes",
+        AnswerToolTip: null,
+        FrenchAnswer: "Oui",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 72,
+            attributes: {
+              Question: "Is there a cooling strategy / action plan?",
+              createdAt: "2022-11-01T14:54:28.321Z",
+              updatedAt: "2023-04-19T12:27:40.356Z",
+              locale: "en",
+              FrenchQuestion:
+                "Existe-t-il une stratégie ou un plan d'action en matière de refroidissement ?",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 520,
+              attributes: {
+                ReportName:
+                  "Korea Energy Master Plan - Outlook and Policies to 2035",
+                URL: "https://policy.asiapacificenergy.org/sites/default/files/2nd%20Energy%20Master%20Plan.pdf",
+                createdAt: "2022-12-22T07:45:39.417Z",
+                updatedAt: "2023-01-04T04:38:08.596Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Measures to improve demand management sector (Building): Distribution of district cooling and gas cooling: Promote the distribution of devices using non-electric energy sources • To ease the burden of initial investment costs, provide more subsidies for district cooling and gas cooling installation and promote the distribution of desiccant cooling systems to provide district cooling for apartment buildings • Expand the installation of cooling facilities for power load management (e.g., gas cooling, ice thermal storage) to all buildings above a certain size and treat district cooling as power load management equipment",
+                locale: "en",
+              },
+            },
+            {
+              id: 527,
+              attributes: {
+                ReportName: "National Energy Policy, 2015",
+                URL: "https://www.nishati.go.tz/uploads/documents/en-1622283004-National%20Energy%20Policy%20(NEP),%202015.pdf",
+                createdAt: "2022-12-22T08:49:29.793Z",
+                updatedAt: "2023-01-04T04:35:32.336Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Energy Efficiency in Residential and Commercial Sectors: Energy used for cooling, heating and lighting is directly related to: the building orientation, design and materials; appliances; the occupants’ needs and behaviors; and 20 the surrounding micro-climate. However, most buildings in the country are characterized by low thermal efficiencies and wasteful heating and cooling systems. As a result, buildings are reliant on artificial means for indoor comfort accompanied by increasing energy use, particularly electricity consumption. To address this, energy efficiency measures need to be mainstreamed into housing policies; building codes and practices; establishing energy performance standards; creating awareness and capacity building.",
+                locale: "en",
+              },
+            },
+            {
+              id: 573,
+              attributes: {
+                ReportName:
+                  "Integrated National Energy And Climate Plan 2021-2030",
+                URL: "https://energy.ec.europa.eu/system/files/2020-06/es_final_necp_main_en_0.pdf",
+                createdAt: "2022-12-22T10:05:30.000Z",
+                updatedAt: "2023-01-04T04:38:49.446Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Measure 2.9. Energy efficiency for cooling equipment and large air-conditioning systems in the services sector and public infrastructure a) Description The objective of this measure is to reduce electricity consumption in the services sector, and it can be divided into two: 1) measures to upgrade large air-conditioning systems, cooling equipment and refrigeration and freezing compartments;",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 571,
+              attributes: {
+                ReportName:
+                  "Chilling Prospects 2022: Solutions for extreme heat resilience",
+                URL: "https://www.seforall.org/data-stories/solutions-for-extreme-heat-resilience",
+                createdAt: "2022-12-22T10:03:10.803Z",
+                updatedAt: "2023-01-04T05:56:41.879Z",
+                KeyPublication: "Yes",
+                Description:
+                  "To make heat warnings easier to understand and drive more public action in advance of a heat wave, Arsht-Rock has partnered with organizations and local governments to pilot the first-ever heat warning system based on human health outcomes. This system has been paired with a heat wave categorization process and a naming classification, similar to that used for hurricanes, to allow cities and their residents to clearly understand the risks of coming heat waves and what action to take. The first-ever heat wave warning system based on human health outcomes will be piloted in Athens, Greece and Seville, Spain in summer 2022. \nIn addition, Arsht-Rock has developed the Heat Season framework to help mayors and local leaders communicate the dangers of hot weather and to share practical tips for protecting people during chronic heat and extreme heat events. The campaign is available in six languages and has been adopted by over 12 American, European and African cities and counties.",
+                locale: "en",
+              },
+            },
+            {
+              id: 529,
+              attributes: {
+                ReportName: "Rwanda Energy Policy",
+                URL: "https://rura.rw/fileadmin/Documents/Energy/RegulationsGuidelines/Rwanda_Energy_Policy.pdf",
+                createdAt: "2022-12-22T08:51:53.661Z",
+                updatedAt: "2022-12-22T08:51:53.661Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 546,
+              attributes: {
+                ReportName: "Draft National Energy Policy India",
+                URL: "https://www.niti.gov.in/sites/default/files/2022-12/NEP-ID_27.06.2017.pdf.pdf",
+                createdAt: "2022-12-22T09:26:09.019Z",
+                updatedAt: "2022-12-22T09:26:09.019Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 505,
+              attributes: {
+                ReportName: "India Cooling Action Plan",
+                URL: "http://ozonecell.nic.in/wp-content/uploads/2019/03/INDIA-COOLING-ACTION-PLAN-e-circulation-version080319.pdf",
+                createdAt: "2022-12-22T07:19:47.456Z",
+                updatedAt: "2023-01-04T04:41:01.766Z",
+                KeyPublication: "Yes",
+                Description:
+                  "The India Cooling Action Plan (ICAP), inter alia, encompasses: (a) passively-cooled building design that deploys natural and mechanical ventilation; (b) adoption of adaptive thermal comfort standards to specify pre-setting of temperatures of air conditioning equipment for commercial built spaces; (c) promoting the use of energy-efficient refrigerant-based appliances as well as not-in-kind technologies; (d) policy interventions for market transformation, including public procurement of energy-efficient RAC appliances and equipment; (e) development of energy efficient and renewable energy based cold chain; (f) national skill development programme for training and certification for RAC service technicians to complement transition to energy efficient, low-GWP refrigerants, and (g) focused R&D efforts to foster an innovative ecosystem to support development and deployment of low-GWP refrigerant alternatives.",
+                locale: "en",
+              },
+            },
+            {
+              id: 516,
+              attributes: {
+                ReportName: "Rwanda National Cooling Strategy",
+                URL: "https://www.rema.gov.rw/fileadmin/templates/Documents/National_Cooling_System_book_-_Print__1_.pdf",
+                createdAt: "2022-12-22T07:40:33.448Z",
+                updatedAt: "2022-12-22T07:40:33.448Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+      {
+        id: 97,
+        Answer: "No",
+        AnswerToolTip: null,
+        FrenchAnswer: "Non",
+        FrenchAnswerToolTip: null,
+        NextQuestion: {
+          data: {
+            id: 71,
+            attributes: {
+              Question:
+                "Review national energy policy or strategy to include cooling as a key component.",
+              createdAt: "2022-11-01T14:54:17.864Z",
+              updatedAt: "2023-04-19T12:28:36.925Z",
+              locale: "en",
+              FrenchQuestion:
+                "Revoir la politique ou la stratégie nationale en matière d'énergie afin d'y inclure le refroidissement en tant qu'élément clé.",
+            },
+          },
+        },
+        KeyPublication: {
+          data: [
+            {
+              id: 520,
+              attributes: {
+                ReportName:
+                  "Korea Energy Master Plan - Outlook and Policies to 2035",
+                URL: "https://policy.asiapacificenergy.org/sites/default/files/2nd%20Energy%20Master%20Plan.pdf",
+                createdAt: "2022-12-22T07:45:39.417Z",
+                updatedAt: "2023-01-04T04:38:08.596Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Measures to improve demand management sector (Building): Distribution of district cooling and gas cooling: Promote the distribution of devices using non-electric energy sources • To ease the burden of initial investment costs, provide more subsidies for district cooling and gas cooling installation and promote the distribution of desiccant cooling systems to provide district cooling for apartment buildings • Expand the installation of cooling facilities for power load management (e.g., gas cooling, ice thermal storage) to all buildings above a certain size and treat district cooling as power load management equipment",
+                locale: "en",
+              },
+            },
+            {
+              id: 527,
+              attributes: {
+                ReportName: "National Energy Policy, 2015",
+                URL: "https://www.nishati.go.tz/uploads/documents/en-1622283004-National%20Energy%20Policy%20(NEP),%202015.pdf",
+                createdAt: "2022-12-22T08:49:29.793Z",
+                updatedAt: "2023-01-04T04:35:32.336Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Energy Efficiency in Residential and Commercial Sectors: Energy used for cooling, heating and lighting is directly related to: the building orientation, design and materials; appliances; the occupants’ needs and behaviors; and 20 the surrounding micro-climate. However, most buildings in the country are characterized by low thermal efficiencies and wasteful heating and cooling systems. As a result, buildings are reliant on artificial means for indoor comfort accompanied by increasing energy use, particularly electricity consumption. To address this, energy efficiency measures need to be mainstreamed into housing policies; building codes and practices; establishing energy performance standards; creating awareness and capacity building.",
+                locale: "en",
+              },
+            },
+            {
+              id: 573,
+              attributes: {
+                ReportName:
+                  "Integrated National Energy And Climate Plan 2021-2030",
+                URL: "https://energy.ec.europa.eu/system/files/2020-06/es_final_necp_main_en_0.pdf",
+                createdAt: "2022-12-22T10:05:30.000Z",
+                updatedAt: "2023-01-04T04:38:49.446Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Measure 2.9. Energy efficiency for cooling equipment and large air-conditioning systems in the services sector and public infrastructure a) Description The objective of this measure is to reduce electricity consumption in the services sector, and it can be divided into two: 1) measures to upgrade large air-conditioning systems, cooling equipment and refrigeration and freezing compartments;",
+                locale: "en",
+              },
+            },
+          ],
+        },
+        NonKeyPublication: {
+          data: [
+            {
+              id: 465,
+              attributes: {
+                ReportName:
+                  "Chilling Prospects 2022: Tracking Sustainable Cooling for All",
+                URL: "https://www.seforall.org/chilling-prospects-2022",
+                createdAt: "2022-12-22T06:24:49.358Z",
+                updatedAt: "2023-01-04T08:47:59.635Z",
+                KeyPublication: "Yes",
+                Description:
+                  "Data availability continues to be a challenge for effectively identifying vaccine cold chain gaps, however a 2014 survey among 57 Gavieligible countries provides a valuable baseline, finding that up to 90 percent of health facilities did not have access to reliable cold chain equipment that could guarantee vaccines were not exposed to excessive heat or excessive freezing, including 20 percent without any cold chain equipment at all. WHO’s Effective Vaccine Management (EVM) assessment from 2009 – 2020 reveals that no service points or local distribution in any of the 86 countries surveyed had storage facilities capable of maintaining temperatures of -20°C. Further, only 1 percent of service points stored vaccines in cold/freezer rooms or received vaccines from refrigerated vehicles (Figure 2.13). This points to challenges with access to cooling in last-mile locations in countries covered by the assessment.",
+                locale: "en",
+              },
+            },
+            {
+              id: 529,
+              attributes: {
+                ReportName: "Rwanda Energy Policy",
+                URL: "https://rura.rw/fileadmin/Documents/Energy/RegulationsGuidelines/Rwanda_Energy_Policy.pdf",
+                createdAt: "2022-12-22T08:51:53.661Z",
+                updatedAt: "2022-12-22T08:51:53.661Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 546,
+              attributes: {
+                ReportName: "Draft National Energy Policy India",
+                URL: "https://www.niti.gov.in/sites/default/files/2022-12/NEP-ID_27.06.2017.pdf.pdf",
+                createdAt: "2022-12-22T09:26:09.019Z",
+                updatedAt: "2022-12-22T09:26:09.019Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+            {
+              id: 505,
+              attributes: {
+                ReportName: "India Cooling Action Plan",
+                URL: "http://ozonecell.nic.in/wp-content/uploads/2019/03/INDIA-COOLING-ACTION-PLAN-e-circulation-version080319.pdf",
+                createdAt: "2022-12-22T07:19:47.456Z",
+                updatedAt: "2023-01-04T04:41:01.766Z",
+                KeyPublication: "Yes",
+                Description:
+                  "The India Cooling Action Plan (ICAP), inter alia, encompasses: (a) passively-cooled building design that deploys natural and mechanical ventilation; (b) adoption of adaptive thermal comfort standards to specify pre-setting of temperatures of air conditioning equipment for commercial built spaces; (c) promoting the use of energy-efficient refrigerant-based appliances as well as not-in-kind technologies; (d) policy interventions for market transformation, including public procurement of energy-efficient RAC appliances and equipment; (e) development of energy efficient and renewable energy based cold chain; (f) national skill development programme for training and certification for RAC service technicians to complement transition to energy efficient, low-GWP refrigerants, and (g) focused R&D efforts to foster an innovative ecosystem to support development and deployment of low-GWP refrigerant alternatives.",
+                locale: "en",
+              },
+            },
+            {
+              id: 516,
+              attributes: {
+                ReportName: "Rwanda National Cooling Strategy",
+                URL: "https://www.rema.gov.rw/fileadmin/templates/Documents/National_Cooling_System_book_-_Print__1_.pdf",
+                createdAt: "2022-12-22T07:40:33.448Z",
+                updatedAt: "2022-12-22T07:40:33.448Z",
+                KeyPublication: "Yes",
+                Description: null,
+                locale: "en",
+              },
+            },
+          ],
+        },
+      },
+    ],
+    MainQuestion: {
+      id: 44,
+      Question: {
+        data: {
+          id: 70,
+          attributes: {
+            Question:
+              "Is access to cooling addressed in the national energy (efficiency) policy or strategy?",
+            createdAt: "2022-11-01T14:54:03.385Z",
+            updatedAt: "2023-04-19T12:26:53.652Z",
+            locale: "en",
+            FrenchQuestion:
+              "L'accès au refroidissement est-il abordé dans la politique ou la stratégie nationale en matière d'efficacité énergétique ?",
+          },
+        },
+      },
+      QuestionKeyType: {
+        data: null,
+      },
+    },
+    Resource: {
+      id: 4,
+      resources: {
+        data: [
+          {
+            id: 4,
+            attributes: {
+              Name: "Sustainable Cooling",
+              createdAt: "2022-11-03T12:07:23.964Z",
+              updatedAt: "2023-04-24T10:22:54.789Z",
+              publishedAt: "2022-11-03T12:07:25.369Z",
+              QuestionId: "52",
+              locale: "en",
+              FrenchName: "Refroidissement durable",
+            },
+          },
+        ],
+      },
+    },
+  },
+};

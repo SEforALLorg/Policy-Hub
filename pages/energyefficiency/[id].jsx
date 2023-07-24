@@ -19,13 +19,7 @@ const Energyefficiency = () => {
   const isDashboardOpen = false;
   const ref = useRef();
   const res = ENERGYEFFICIENCY;
-  const [loader, setLoader] = useState(true);
   const [isReload, setIsReload] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
-  }, []);
 
   const query = getResources(3);
   const {
