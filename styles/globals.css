@@ -64,8 +64,12 @@ main {
 }
 
 .clean_cooking {
-  background-image: url("/static/images/clean_cooking_bg.png");
+  background-image: url("/static/images/clean_cooking_bg.png") !important;
   background-size: cover;
+}
+
+main.clean_cooking{
+  background-image: unset;
 }
 
 .Sustainable_cooling {
@@ -2695,7 +2699,7 @@ a {
   }
 
   .clean_cooking {
-    background-image: url("/static/images/clean_cooking_bg_responsive.png");
+    background-image: url("/static/images/clean_cooking_bg_responsive.png") !important;
     background-position: center;
   }
 

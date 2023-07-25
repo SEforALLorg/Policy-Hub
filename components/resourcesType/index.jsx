@@ -84,7 +84,7 @@ const Resources = ({
                     changeColor(resource);
                   }}
                   key={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
-                  className="mb-[20px] h-[95px] text-[23px]"
+                  className="mb-[20px] h-[95px] !text-[23px]"
                 />
               ))}
           </div>
