@@ -1429,6 +1429,12 @@ a {
   border-top-color: #000;
 }
 
+.customize-heading {
+  font-size: 40px !important;
+  line-height: 50px !important;
+  margin: 0px !important;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .cookies-wrap{
     font-size: 14px;
