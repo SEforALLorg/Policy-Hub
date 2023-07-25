@@ -2883,8 +2883,8 @@ a {
     line-height: 18px !important;
   }
 
-  .customize-card button {
-    font-size: 12px;
+  .customize-card .landing-button button {
+    font-size: 12px !important;
   }
   .object-contain-height {
     height: 92px !important;
