@@ -88,7 +88,7 @@ const TopCard = ({ HandleOpen }) => {
       </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         <div
-          className="w-[49%] absolute bottom-[-28px] left-[26%]"
+          className="w-[49%] absolute bottom-[-28px] left-[26%] landing-button"
           onClick={handleButtonClick}
         >
           <StartButton

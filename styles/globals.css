@@ -2332,8 +2332,8 @@ a {
 
   .customize-card button {
     height: 42px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px !important;
+    line-height: 20px !important;
     margin-bottom: 10px;
     padding-top: 12px;
   }
@@ -2343,7 +2343,12 @@ a {
   }
 
   .customize-buttons {
-    max-width: 80% !important;
+    max-width: 100%;
+  }
+
+  .customize-buttons .landing-button {
+    width: 54%;
+    left: 24%;
   }
 
   .left-wrap-buttons button {
@@ -3333,6 +3338,9 @@ a {
   }
   #container-main {
     margin-top: 1rem;
+  }
+  .second-container{
+    margin-top: 30px;
   }
 
   .headerContainer {

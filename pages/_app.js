@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <Head>
         {typeof window !== "undefined" && !isMobile() && (
-          <Script strategy="lazyOnload" src="/tailwindcss.js" />
+          <Script src="/tailwindcss.js" />
         )}
         <Script
           strategy="afterInteractive"
