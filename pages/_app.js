@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           {t("cookiesText")}{" "}
           <p
-            className="text-Primary hover:underline cursor-pointer pl-[3px]"
+            className="text-Primary hover:underline cursor-pointer pl-[3px] mt-[18px]"
             onClick={() =>
               window.open("https://www.seforall.org/privacy-policy")
             }
