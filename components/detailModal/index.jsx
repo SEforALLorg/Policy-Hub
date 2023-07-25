@@ -34,7 +34,9 @@ const DetailModal = ({ firstHit }) => {
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
     if (UserModal === null) {
-      setIsOpen(true);
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 2000);
     } else if (UserModal) {
       setIsOpen(false);
     }
