@@ -122,7 +122,7 @@ const Customize = ({
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
                 key={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                className="mb-[20px] h-[80px] text-[23px] "
+                className="mb-[20px] h-[80px] !text-[23px] "
               />
             ))}
           </div>

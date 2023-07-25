@@ -89,12 +89,14 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
+        {typeof window !== "undefined" && !isMobile() && (
+          <Script strategy="lazyOnload" src="/tailwindcss.js" />
+        )}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
         <script defer async src="/gtm.js"></script>
-        {typeof window !== "undefined" && !isMobile() && <script defer async src="/tailwindcss.js"></script>}
       </Head>
       <ToastContainer theme={"colored"} />
       {mounted && <Component {...pageProps} />}
