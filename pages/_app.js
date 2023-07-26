@@ -89,6 +89,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
+      <title>{t("HomeTitle")}</title>
+      <meta name="description" content={t("HomeTitle")} />
+      <meta property="og:title" content={t("HomeTitle")} />
+      <meta property="og:description" content={t("HomeTitle")} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:title" content={t("HomeTitle")} />
+      <meta property="twitter:description" content={t("HomeTitle")} />
         {typeof window !== "undefined" && !isMobile() && (
           <Script src="/tailwindcss.js" />
         )}
