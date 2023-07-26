@@ -265,7 +265,7 @@ export const userRepeated = async (data) => {
   );
 };
 export const isMobile = () => {
-  return window.innerWidth < 767;
+  return typeof window !== "undefined" && window.innerWidth < 767;
 };
 
 // Change theme function
