@@ -281,11 +281,11 @@ const LeftWrapPage = ({
               }
             })}
           </div>
-          <div className="font-bold text-medium leading-[26px] text-text m-0 textColor">
+          <h1 className="font-bold text-medium leading-[26px] text-text m-0 textColor">
             {isEnglish
               ? localResource?.attributes?.Name
               : localResource?.attributes?.FrenchName}
-          </div>
+          </h1>
         </div>
         {Boolean(userJourney?.length) &&
           nextQuestionId &&
