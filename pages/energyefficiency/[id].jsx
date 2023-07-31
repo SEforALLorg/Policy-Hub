@@ -14,7 +14,7 @@ import Footer from "components/footer";
 import Header from "components/header"
 
 const pageTitle = "Sustainable Energy | Policy Hub | Energy Efficiency";
-const pageDescription = "Sustainable Energy | Policy Hub | Energy Efficiency";
+const pageDescription = "Supportive policies and regulations are essential to the energy transition and achieving universal energy access. The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, and templates from countries across the globe."
 const Energyefficiency = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -50,10 +50,10 @@ const Energyefficiency = () => {
   return (
     <main id="fullWrap" ref={ref} className={"energy_efficiency"}>
       <Head>
-        <title>{t("HomeTitle")}</title>
-        <meta name="description" content={t("HomeTitle")} />
-        <meta property="og:title" content={t("PlatformThatSupports")} />
-        <meta property="og:description" content={t("PlatformThatSupports")} />
+        <title>Sustainable Energy | Policy Hub | Energy Efficiency</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={pageImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
