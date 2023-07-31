@@ -16,6 +16,9 @@ import Script from "next/script";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { isMobile } from "../utilities";
 
+const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
+const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
+
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 
@@ -89,13 +92,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
-      <title>{t("HomeTitle")}</title>
-      <meta name="description" content={t("HomeTitle")} />
-      <meta property="og:title" content={t("PlatformThatSupports")} />
-      <meta property="og:description" content={t("PlatformThatSupports")} />
+      <title>{pageTitle}</title>
+      <meta name="description" content={pageDescription} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={pageDescription} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={t("HomeTitle")} />
-      <meta property="twitter:description" content={t("HomeTitle")} />
+      <meta property="twitter:title" content={pageTitle} />
+      <meta property="twitter:description" content={pageDescription} />
         {typeof window !== "undefined" && !isMobile() && (
           <Script src="/tailwindcss.js" />
         )}
