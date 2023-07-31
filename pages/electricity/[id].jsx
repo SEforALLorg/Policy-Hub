@@ -1,4 +1,4 @@
-import React, { useRef, lazy, Suspense, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Head from "next/head";
 import { getQuestions } from "pages/api/questions";
 
@@ -8,9 +8,10 @@ import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
 
-const Dashboard = lazy(() => import("components/dashboard"));
-const Footer = lazy(() => import("components/footer"));
-const Header = lazy(() => import("components/header"));
+import Dashboard from "components/dashboard"
+import Footer from "components/footer";
+import Header from "components/header"
+
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
 const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
 const pageImage = "/static/images/electricity_access.svg"
@@ -20,25 +21,6 @@ const Electricity = () => {
   const ref = useRef();
   const res = ELECTRICITYACCESS;
   const [isReload, setIsReload] = useState(false);
-  useEffect(() => {
-    const handlePopstate = () => {
-      if (channel) {
-        channel.removeEventListener("message", handleMessage);
-        channel.close();
-      }
-      setIsReload(true);
-    };
-
-    window.addEventListener("popstate", handlePopstate);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopstate);
-
-      if (channel) {
-        channel.addEventListener("message", handleMessage);
-      }
-    };
-  }, []);
   
   const query = getResources(1);
   const {
@@ -80,7 +62,6 @@ const Electricity = () => {
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-      <Suspense fallback={<div />}>
         <div className="mobile:p-2.5 xsm:p-[5px]">
           <div className="custom-container mx-auto">
             <div
@@ -116,7 +97,6 @@ const Electricity = () => {
             </div>
           </div>
         </div>
-      </Suspense>
     </main>
   );
 };

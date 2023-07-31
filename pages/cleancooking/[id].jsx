@@ -9,9 +9,10 @@ import { useRouter } from "next/router";
 import pageImage from '../../static/images/electricity_access.svg'
 import Head from "next/head";
 
-const Dashboard = lazy(() => import("components/dashboard"));
-const Footer = lazy(() => import("components/footer"));
-const Header = lazy(() => import("components/header"));
+import Dashboard from "components/dashboard"
+import Footer from "components/footer";
+import Header from "components/header"
+
 const pageTitle = "Sustainable Energy | Policy Hub | Clean Cookings"
 const pageDescription = "Sustainable Energy | Policy Hub | Clean Cookings"
 const Cleancooking = () => {
@@ -21,25 +22,6 @@ const Cleancooking = () => {
   const res = CLEANCOOKING;
   const [loader, setLoader] = useState(true);
   const [isReload, setIsReload] = useState(false);
-  useEffect(() => {
-    const handlePopstate = () => {
-      if (channel) {
-        channel.removeEventListener("message", handleMessage);
-        channel.close();
-      }
-      setIsReload(true);
-    };
-
-    window.addEventListener("popstate", handlePopstate);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopstate);
-
-      if (channel) {
-        channel.addEventListener("message", handleMessage);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -86,7 +68,6 @@ const Cleancooking = () => {
         <meta property="twitter:image" content={pageImage} />
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-      <Suspense fallback={<div />}>
         <div className="mobile:p-2.5 xsm:p-[5px]">
           <div className="custom-container mx-auto">
             <div
@@ -122,7 +103,6 @@ const Cleancooking = () => {
             </div>
           </div>
         </div>
-      </Suspense>
     </main>
   );
 };

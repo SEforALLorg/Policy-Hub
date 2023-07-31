@@ -341,7 +341,7 @@ export const getResourceRoute = (resource) => {
 };
 
 export const getRoute = () => {
-  return window?.location?.pathname?.split('/')?.[2]
+  return typeof window !== "undefined" && window?.location?.pathname?.split('/')?.[2]
 }
 
 export const getResourceFirstQuestion = () => {

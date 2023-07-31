@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }) {
         <script defer async src="/gtm.js"></script>
       </Head>
       <ToastContainer theme={"colored"} />
-      // {mounted && <Component {...pageProps} />}
+      {/* // {mounted && <Component {...pageProps} />} */}
       <Component {...pageProps} />
       {!showConsent && (
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
