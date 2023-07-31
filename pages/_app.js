@@ -91,8 +91,8 @@ function MyApp({ Component, pageProps }) {
       <Head>
       <title>{t("HomeTitle")}</title>
       <meta name="description" content={t("HomeTitle")} />
-      <meta property="og:title" content={t("HomeTitle")} />
-      <meta property="og:description" content={t("HomeTitle")} />
+      <meta property="og:title" content={t("PlatformThatSupports")} />
+      <meta property="og:description" content={t("PlatformThatSupports")} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:title" content={t("HomeTitle")} />
       <meta property="twitter:description" content={t("HomeTitle")} />

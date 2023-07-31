@@ -13,7 +13,7 @@ import Footer from "components/footer";
 import Header from "components/header"
 
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
-const pageDescription = "Sustainable Energy | Policy Hub | Electricity"
+const pageDescription = "Supportive policies and regulations are essential to the energy transition and achieving universal energy access. The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, and templates from countries across the globe."
 const pageImage = "/static/images/electricity_access.svg"
 const Electricity = () => {
   const router = useRouter();
