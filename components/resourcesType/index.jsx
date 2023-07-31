@@ -57,9 +57,9 @@ const Resources = ({
           alt="card"
         />
 
-        <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
+        <h1 className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
           {t("AssessYourCountry")}
-        </div>
+        </h1>
         <div
           onClick={() => setIsOpen(false)}
           className="closeIcon text-gray-400 hover:text-gray-900 "

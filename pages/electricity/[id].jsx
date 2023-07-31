@@ -50,10 +50,10 @@ const Electricity = () => {
   return (
     <main id="fullWrap" ref={ref} className={"electricity_access"}>
       <Head>
-        <title>Sustainable Energy | Policy Hub | Electricity</title>
-        <meta name="description" content={pageDescription} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
+        <title>{t("HomeTitle")}</title>
+        <meta name="description" content={t("HomeTitle")} />
+        <meta property="og:title" content={t("PlatformThatSupports")} />
+        <meta property="og:description" content={t("PlatformThatSupports")} />
         <meta property="og:image" content={pageImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />

@@ -56,8 +56,10 @@ const Cleancooking = () => {
   return (
     <main id="fullWrap" ref={ref} className={"clean_cooking"}>
       <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
+        <title>{t("HomeTitle")}</title>
+        <meta name="description" content={t("HomeTitle")} />
+        <meta property="og:title" content={t("PlatformThatSupports")} />
+        <meta property="og:description" content={t("PlatformThatSupports")} />
         <meta property="image" content={pageImage} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />

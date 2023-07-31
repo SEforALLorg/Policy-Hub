@@ -101,9 +101,9 @@ const Customize = ({
               }
             })}
 
-            <div className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
+            <h1 className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
               {t("AssessYourCountry")}
-            </div>
+            </h1>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
           <div className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
