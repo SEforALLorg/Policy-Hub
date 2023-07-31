@@ -9,9 +9,10 @@ import { sustainableCoolingFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
 import pageImage from "../../static/images/sustainable_cooling.svg";
 
-const Dashboard = lazy(() => import("components/dashboard"));
-const Footer = lazy(() => import("components/footer"));
-const Header = lazy(() => import("components/header"));
+import Dashboard from "components/dashboard"
+import Footer from "components/footer";
+import Header from "components/header"
+
 const pageTitle = "Sustainable Energy | Policy Hub | Sustainable Cooling";
 const pageDescription = "Sustainable Energy | Policy Hub | Sustainable Cooling";
 
@@ -21,26 +22,6 @@ const Sustainablecooling = () => {
   const ref = useRef();
   const res = SUSTAINABLECOOLING;
   const [isReload, setIsReload] = useState(false);
-
-  useEffect(() => {
-    const handlePopstate = () => {
-      if (channel) {
-        channel.removeEventListener("message", handleMessage);
-        channel.close();
-      }
-      setIsReload(true);
-    };
-
-    window.addEventListener("popstate", handlePopstate);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopstate);
-
-      if (channel) {
-        channel.addEventListener("message", handleMessage);
-      }
-    };
-  }, []);
 
   const query = getResources(4);
   const {
@@ -82,7 +63,6 @@ const Sustainablecooling = () => {
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-      <Suspense fallback={<div />}>
         <div className="mobile:p-2.5 xsm:p-[5px]">
           <div className="custom-container mx-auto">
             <div
@@ -118,7 +98,6 @@ const Sustainablecooling = () => {
             </div>
           </div>
         </div>
-      </Suspense>
     </main>
   );
 };

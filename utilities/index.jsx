@@ -265,7 +265,7 @@ export const userRepeated = async (data) => {
   );
 };
 export const isMobile = () => {
-  return window.innerWidth < 767;
+  return typeof window !== "undefined" && window.innerWidth < 767;
 };
 
 // Change theme function
@@ -341,7 +341,7 @@ export const getResourceRoute = (resource) => {
 };
 
 export const getRoute = () => {
-  return window?.location?.pathname?.split('/')?.[2]
+  return typeof window !== "undefined" && window?.location?.pathname?.split('/')?.[2]
 }
 
 export const getResourceFirstQuestion = () => {
