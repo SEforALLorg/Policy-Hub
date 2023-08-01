@@ -231,9 +231,9 @@ const Header = ({ selectedRes }) => {
                       color: lang === i18n.language ? "white" : "#000",
                     }}
                   >
-                    <Link href="" locale={lang}>
+                    <div locale={lang}>
                       {lang.toUpperCase()}
-                    </Link>
+                    </div>
                   </DropdownItem>
                 );
               })}
