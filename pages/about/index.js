@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 
 const Footer = dynamic(() => import('components/footer'));
 const Header = dynamic(() => import('components/header'));
-const About = dynamic(() => import('../../components/aboutus'));
+const About = dynamic(() => import('components/aboutus'));
 
 const AboutUs = () => {
   const { t } = useTranslation();
