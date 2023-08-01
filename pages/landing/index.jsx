@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-// import Footer from "components/footer";
-// import Header from "components/header";
-// import LandingPage from "components/landingPage";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,

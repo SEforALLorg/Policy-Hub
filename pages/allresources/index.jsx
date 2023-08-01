@@ -1,9 +1,5 @@
 import React from "react";
 import Head from "next/head";
-
-// import Footer from "components/footer";
-// import Header from "components/header";
-// import ALLReports from "components/resources";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
 
