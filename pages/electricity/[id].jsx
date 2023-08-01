@@ -7,10 +7,15 @@ import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
+import dynamic from "next/dynamic";
 
-import Dashboard from "components/dashboard"
-import Footer from "components/footer";
-import Header from "components/header"
+const Footer = dynamic(() => import('components/footer'));
+const Header = dynamic(() => import('components/header'));
+const Dashboard = dynamic(() => import('components/dashboard'));
+
+// import Dashboard from "components/dashboard"
+// import Footer from "components/footer";
+// import Header from "components/header"
 
 const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
 const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
