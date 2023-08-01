@@ -1,7 +1,4 @@
 import React from "react";
-// import Footer from "components/footer";
-// import Header from "components/header";
-// import About from "";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
