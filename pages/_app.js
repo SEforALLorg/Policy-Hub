@@ -16,9 +16,6 @@ import Script from "next/script";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { isMobile } from "../utilities";
 
-const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
-const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
-
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 
@@ -92,6 +89,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         {typeof window !== "undefined" && !isMobile() && (
           <Script src="/tailwindcss.js" />
         )}

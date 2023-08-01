@@ -19,7 +19,6 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Landing />
     </div>
