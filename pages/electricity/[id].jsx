@@ -99,7 +99,7 @@ const Electricity = () => {
             </div>
           </div>
         </div>
-        <p className="absolute invisible">
+        <p className="fixed invisible z-0">
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
