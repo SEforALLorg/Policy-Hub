@@ -9,21 +9,22 @@ import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
 import dynamic from "next/dynamic";
 
-const Footer = dynamic(() => import('components/footer'));
-const Header = dynamic(() => import('components/header'));
-const Dashboard = dynamic(() => import('components/dashboard'));
+const Footer = dynamic(() => import("components/footer"));
+const Header = dynamic(() => import("components/header"));
+const Dashboard = dynamic(() => import("components/dashboard"));
 
-const pageTitle = "Sustainable Energy | Policy Hub | Electricity"
-const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
+const pageTitle = "Sustainable Energy | Policy Hub | Electricity";
+const pageDescription =
+  "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe.";
 
-const pageImage = "/static/images/electricity_access.svg"
+const pageImage = "/static/images/electricity_access.svg";
 const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
   const res = ELECTRICITYACCESS;
   const [isReload, setIsReload] = useState(false);
-  
+
   const query = getResources(1);
   const {
     data: questions,
@@ -36,7 +37,7 @@ const Electricity = () => {
       console.error("Error fetching questions:", err);
     },
   });
-  const defaultQuestion = getResourceFirstQuestion()
+  const defaultQuestion = getResourceFirstQuestion();
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
       setIsReload(true);
@@ -64,42 +65,42 @@ const Electricity = () => {
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-        <div className="mobile:p-2.5 xsm:p-[5px]">
-          <div className="custom-container mx-auto">
-            <div
-              className={`px-[1rem] py-2 ${
-                !isDashboardOpen ? "header-title-wrap" : ""
-              }`}
-            >
-              <Header selectedRes={res} />
-            </div>
-            <div>
-              <Dashboard
-                questions={
-                  questions || {
-                    data: {
-                      data: [electricityFirstQuestion],
-                    },
-                  }
+      <div className="mobile:p-2.5 xsm:p-[5px]">
+        <div className="custom-container mx-auto">
+          <div
+            className={`px-[1rem] py-2 ${
+              !isDashboardOpen ? "header-title-wrap" : ""
+            }`}
+          >
+            <Header selectedRes={res} />
+          </div>
+          <div>
+            <Dashboard
+              questions={
+                questions || {
+                  data: {
+                    data: [electricityFirstQuestion],
+                  },
                 }
-                isFetchingQuestions={isFetchingQuestions}
-                setIsBigCard={() => {
-                  setIsReload(true);
-                  refetch();
-                }}
-                resources={[]}
-                selectedRes={() => {}}
-                footerRes={res}
-                setIsOpen={() => {}}
-                isPage={true}
-              />
-            </div>
-            <div className="pt-[40px]">
-              <Footer footerRes={res} />
-            </div>
+              }
+              isFetchingQuestions={isFetchingQuestions}
+              setIsBigCard={() => {
+                setIsReload(true);
+                refetch();
+              }}
+              resources={[]}
+              selectedRes={() => {}}
+              footerRes={res}
+              setIsOpen={() => {}}
+              isPage={true}
+            />
+          </div>
+          <div className="pt-[40px]">
+            <Footer footerRes={res} />
           </div>
         </div>
-        <p className="fixed invisible z-0">
+      </div>
+      <p className="fixed invisible z-0">
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
@@ -128,7 +129,10 @@ const Electricity = () => {
         Email. Explore our database for tools and knowledge that will support
         you in developing policy and regulatory frameworks for sustainable
         energy. These resources are recommended by stakeholders across the
-        energy sector.Sustainable Energy for All (SEforALL) is an international organization
+        energy sector.
+      </p>
+      <p className="fixed invisible z-0">
+        Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
         philanthropies to drive faster action towards the achievement of
@@ -156,7 +160,10 @@ const Electricity = () => {
         Email. Explore our database for tools and knowledge that will support
         you in developing policy and regulatory frameworks for sustainable
         energy. These resources are recommended by stakeholders across the
-        energy sector.Sustainable Energy for All (SEforALL) is an international organization
+        energy sector.
+      </p>
+      <p className="fixed invisible z-0">
+        Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
         philanthropies to drive faster action towards the achievement of
