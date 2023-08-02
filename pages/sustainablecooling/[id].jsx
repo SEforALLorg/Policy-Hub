@@ -100,6 +100,7 @@ const Sustainablecooling = () => {
           </div>
         </div>
         <p className="fixed invisible z-0">
+        Assess your country's energy situation to identify resources matching your interest.
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
