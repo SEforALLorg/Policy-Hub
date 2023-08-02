@@ -106,7 +106,7 @@ const Customize = ({
             </h1>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
-          <div className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
+          <p className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
             {title}
             {ToolTipText && (
               <TooltipComponent
@@ -115,7 +115,7 @@ const Customize = ({
                 customizeStyle={"customizeStyle"}
               />
             )}
-          </div>
+          </p>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i) => (
               <BlueButton
