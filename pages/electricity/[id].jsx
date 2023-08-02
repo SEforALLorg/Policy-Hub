@@ -131,7 +131,7 @@ const Electricity = () => {
         energy. These resources are recommended by stakeholders across the
         energy sector.
       </p>
-      <p>
+      <p className="fixed invisible z-0">
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
@@ -162,7 +162,7 @@ const Electricity = () => {
         energy. These resources are recommended by stakeholders across the
         energy sector.
       </p>
-      <p>
+      <p className="fixed invisible z-0">
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
