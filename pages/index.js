@@ -2,7 +2,7 @@ import Head from "next/head";
 import Landing from "./landing";
 import { useTranslation } from "react-i18next";
 
-const pageTitle = "Sustainable Energy | Policy Hub | Electricity";
+const pageTitle = "Sustainable Energy | Policy Hub ";
 const pageDescription =
   "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe.";
 

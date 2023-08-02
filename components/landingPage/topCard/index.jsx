@@ -97,6 +97,11 @@ const TopCard = ({ HandleOpen }) => {
           />
         </div>
       </div>
+      <p className="absolute invisible">Sustainable Energy for All (SEforALL) is an international organization that works in partnership with the United Nations and government leaders, the private sector, financial institutions, civil society, and philanthropies to drive faster action towards the achievement of Sustainable Development Goal 7 (SDG7) – access to affordable, reliable, sustainable, and modern energy for all by 2030 – in line with the Paris Agreement on climate. To learn more about SEforALL, click here.
+
+The Sustainable Energy Policy Hub is an interactive platform providing sustainable energy policymakers and practitioners with off-the-shelf guidelines, tools, templates and cases on energy policy and regulation published by international organizations and thought leaders. In its current phase, the hub offers essential resources on electricity access, access to cleaner cooking, sustainable cooling, and energy efficiency.
+
+An additional pillar on renewable energy will be added soon.</p>
     </div>
   );
 };
