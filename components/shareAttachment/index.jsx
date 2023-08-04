@@ -6,6 +6,7 @@ import Loader from "components/loader";
 import PrimaryButton from "components/buttons/primarybutton";
 import { ErrorNotify, SuccessNotify } from "../notification";
 import { sendReports } from "../../pages/api/reports";
+import { useTranslation } from "react-i18next";
 
 const ShareAttachment = ({
   submitForm,
@@ -14,6 +15,7 @@ const ShareAttachment = ({
   showAllReports,
   searchTerm,
 }) => {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -54,16 +56,16 @@ const ShareAttachment = ({
     <>
       <div className="newsletter-input-fields w-full flex justify-center align-end flex-col m-auto xsm:px-4 xsm:py-0 extrasmall:p-6 laptop:p-0">
         <Input
-          field={"Name"}
-          placeholder={"Enter your name"}
+          field={t("Name")}
+          placeholder={t("Enteryourname")}
           className="bg-white filterShadow rounded-lg border-none 
                            outline-none xsm:p-2 small:p-3 mobile:p-3 laptop:p-4  h-[50px] xsm:text-xsmall small:text-small text-lighttext font-normal leader-5 xsm:w-full small:w-72 mobile:w-72 laptop:w-72 "
           onChange={(e) => setName(e?.target?.value)}
           value={name}
         />
         <Input
-          field={"E-mail"}
-          placeholder={"Enter your E-mail"}
+          field={t("Email")}
+          placeholder={t("EnteryourEmail")}
           className="bg-white filterShadow rounded-lg border-none 
                            outline-none xsm:p-2 small:p-3 mobile:p-3 laptop:p-4  h-[50px] xsm:text-xsmall small:text-small text-lighttext font-normal leader-5 xsm:w-full small:w-72 mobile:w-72 laptop:w-72 "
           onChange={(e) => setEmail(e?.target?.value)}
@@ -72,7 +74,7 @@ const ShareAttachment = ({
 
         <div className="mt-2.5 xsm:text-center  small:ml-auto mobile:ml-auto laptop:ml-auto text-white">
           <PrimaryButton
-            title={isLoading ? <Loader /> : "submit"}
+            title={isLoading ? <Loader /> : t("Submit")}
             className={`bg-Primary xsm:w-full extrasmall:w-52 small:w-72 laptop:w-72 rounded-full h-[50px] text-center font-bold text-small leading-5 uppercase  hover:text-Primary outline-none no-underline no-underline
                     border-2 border-transparent duration-500 hover:bg-white hover:border-2 hover:border-Primary ease-linear transition-all`}
             disabled={!name || !email}
