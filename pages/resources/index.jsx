@@ -36,7 +36,7 @@ const Resources = () => {
           </div>
         </div>
       </div>
-      <h3 className="fixed invisible z-0">RESOURCES All of the Policy Hub’s resources are available here for you to explore. Simply click on the button below to view all the resources and apply filters to narrow your results.</h3>
+      <h1 className="fixed invisible z-0">RESOURCES All of the Policy Hub’s resources are available here for you to explore. Simply click on the button below to view all the resources and apply filters to narrow your results.</h1>
       <p className="fixed invisible z-0">
       Assess your country's energy situation to identify resources matching your interest.
         Sustainable Energy for All (SEforALL) is an international organization
