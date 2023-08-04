@@ -24,11 +24,11 @@ function MyApp({ Component, pageProps }) {
   const { i18n, t } = useTranslation();
   const [showConsent, setShowConsent] = useState(true);
 
-  const changeLanguage = (language) => {
-    if (languages.includes(language)) {
-      i18n.changeLanguage(language);
-    }
-  };
+  // const changeLanguage = (language) => {
+  //   if (languages.includes(language)) {
+  //     i18n.changeLanguage(language);
+  //   }
+  // };
 
   const cookie = typeof document === "undefined" ? null : document.cookie;
   const status = cookie?.includes("cookieconsent_status=1");
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
         expires,
         secure: true,
       });
-      changeLanguage(lang);
+      // changeLanguage(lang);
       router.locale = lang;
     } else {
       localStorage.setItem("lang", "en");

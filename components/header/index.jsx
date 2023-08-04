@@ -54,10 +54,10 @@ const Header = ({ selectedRes }) => {
   useEffect(() => {
     if (Object.keys(query)?.length && router?.query) {
       setTimeout(() => {
-        router.replace({query: {...query}}, undefined, {shallow: true});
-      }, 100)
+        router.replace({ query: { ...query } }, undefined, { shallow: true });
+      }, 100);
     }
-  }, [query])
+  }, [query]);
 
   const removeResource = () => {
     localStorage.removeItem("ResourceType");
@@ -220,6 +220,14 @@ const Header = ({ selectedRes }) => {
                         secure: true,
                       });
                       i18n.changeLanguage(lang);
+                      // if (window.location.href.includes("en")) {
+                      //   window.history.pushState({}, "", window.location.href.replace("en", lang));
+                      // } else if (window.location.href.includes("fr")) {
+                      //   window.history.pushState({}, "", window.location.href.replace("fr", lang));
+                      // } else {
+                      //   // Append the language code to the end of the URL
+                      //   window.history.pushState({}, "", `${window.location.href}${lang}`);
+                      // }
                     }}
                     style={{
                       backgroundColor:
@@ -231,9 +239,7 @@ const Header = ({ selectedRes }) => {
                       color: lang === i18n.language ? "white" : "#000",
                     }}
                   >
-                    <div locale={lang}>
-                      {lang.toUpperCase()}
-                    </div>
+                    <div locale={lang}>{lang.toUpperCase()}</div>
                   </DropdownItem>
                 );
               })}

@@ -80,7 +80,7 @@ const RightWrapPage = ({
 
   // Get Filters API
   const { data: filtersData } = useQuery(["getFilters"], getFilters, {
-    enabled: isExpand,
+    enabled: showAllReports || isExpand,
     onError: (error) => {
       ErrorNotify(error?.response?.data?.error?.message);
     },
@@ -109,7 +109,7 @@ const RightWrapPage = ({
     ["getReports", query],
     () => getReports(query),
     {
-      enabled: isExpand,
+      enabled: showAllReports || isExpand,
       onError: (error) => {
         ErrorNotify(error?.response?.data?.error?.message);
       },
@@ -286,7 +286,7 @@ const RightWrapPage = ({
     ];
     if (
       browseResource ||
-      localStorage.getItem("ResourceType") === SUSTAINABLECOOLING
+      localStorage.getItem("ResourceType") === SUSTAINABLE_COOLING
     ) {
       const sectorSustainable = filters?.sector?.filter((key) => {
         if (filtersArray?.includes(key?.Sector)) {
@@ -297,7 +297,7 @@ const RightWrapPage = ({
     }
     if (
       browseResource ||
-      localStorage.getItem("ResourceType") === ENERGYEFFICIENCY
+      localStorage.getItem("ResourceType") === ENERGY_EFFICIENCY
     ) {
       const sectorEnergy = filters?.sector?.filter((key) => {
         if (!filtersArray?.includes(key?.Sector)) {
@@ -673,7 +673,7 @@ const RightWrapPage = ({
                   >
                     <div className="flex">
                       {" "}
-                      Email <AiOutlineMail style={{ marginLeft: 7 }} />
+                      {t("Email")} <AiOutlineMail style={{ marginLeft: 7 }} />
                     </div>
                   </TooltipComponent>
                 </button>

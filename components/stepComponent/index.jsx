@@ -29,6 +29,7 @@ const StepComponent = ({
   useEffect(() => {
     if (multiAnswer) {
       setOptionData(multiAnswer[0] || []);
+      setLocalJourney([multiAnswer[0]])
       setOptionReport(multiAnswer[0]);
     }
   }, [multiAnswer]);
@@ -44,7 +45,8 @@ const StepComponent = ({
     setOptionReport(i);
   };
 
-  const onSubmitJourney = (i, title) => {
+  const onSubmitJourney = (i, parentTitle) => {
+    const title = i?.Answer || parentTitle
     if (localJourney?.find((item) => item?.title === title)) {
       const findIndex = localJourney?.findIndex(
         (item) => item?.title === title
@@ -126,8 +128,9 @@ const StepComponent = ({
               {!isFoodAndEquipment && (
                 <RadioButton
                   checked={
-                    optionData?.id === i?.id ||
-                    localJourney?.find((item) => item?.id === i?.id)
+                    optionData?.id === i?.id 
+                    // ||
+                    // localJourney?.find((item) => item?.id === i?.id)
                   }
                 />
               )}
