@@ -37,7 +37,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <h1 className="fixed invisible z-0">CONTACT US The Sustainable Energy Policy Hub is a collaborative work of SEforALL and its partners and it managed by SEforALL.</h1>
+      <h3 className="fixed invisible z-0">CONTACT US The Sustainable Energy Policy Hub is a collaborative work of SEforALL and its partners and it managed by SEforALL.</h3>
       <p className="fixed invisible z-0">
       The Sustainable Energy Policy Hub is a collaborative work of SEforALL and its partners and it managed by SEforALL.
         Sustainable Energy for All (SEforALL) is an international organization
