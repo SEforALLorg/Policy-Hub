@@ -64,7 +64,7 @@ const RightWrapPage = ({
   const [reportsLoader, setReportsLoader] = useState(false);
   const debouncedSearch = useDebounce(search, 500);
   const csvLink = useRef();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   typeof window !== "undefined" &&
     window.addEventListener(
@@ -830,7 +830,7 @@ const RightWrapPage = ({
                         if (optionSelected) {
                           onReset();
                         } else {
-                          window.open("/en/allresources", "_self");
+                          window.open(`/${i18n.language}/allresources`, "_self");
                         }
                       }}
                     >
