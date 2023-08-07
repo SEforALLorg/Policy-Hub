@@ -220,14 +220,6 @@ const Header = ({ selectedRes }) => {
                         secure: true,
                       });
                       i18n.changeLanguage(lang);
-                      // if (window.location.href.includes("en")) {
-                      //   window.history.pushState({}, "", window.location.href.replace("en", lang));
-                      // } else if (window.location.href.includes("fr")) {
-                      //   window.history.pushState({}, "", window.location.href.replace("fr", lang));
-                      // } else {
-                      //   // Append the language code to the end of the URL
-                      //   window.history.pushState({}, "", `${window.location.href}${lang}`);
-                      // }
                     }}
                     style={{
                       backgroundColor:
@@ -236,10 +228,16 @@ const Header = ({ selectedRes }) => {
                         lang === "en"
                           ? "10px 10px 0px 0px"
                           : "0px 0px 10px 10px",
-                      color: lang === i18n.language ? "white" : "#000",
+                      color: lang === i18n.language ? "white" : "#000", padding: ".25rem 0rem"
                     }}
+                    className="header-dropdown"
                   >
-                    <div locale={lang}>{lang.toUpperCase()}</div>
+                    <Link
+                      href={{...router}}
+                      locale={lang}
+                    >
+                      {lang.toUpperCase()}
+                    </Link>
                   </DropdownItem>
                 );
               })}

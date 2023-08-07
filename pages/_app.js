@@ -24,11 +24,11 @@ function MyApp({ Component, pageProps }) {
   const { i18n, t } = useTranslation();
   const [showConsent, setShowConsent] = useState(true);
 
-  // const changeLanguage = (language) => {
-  //   if (languages.includes(language)) {
-  //     i18n.changeLanguage(language);
-  //   }
-  // };
+  const changeLanguage = (language) => {
+    if (languages.includes(language)) {
+      i18n.changeLanguage(language);
+    }
+  };
 
   const cookie = typeof document === "undefined" ? null : document.cookie;
   const status = cookie?.includes("cookieconsent_status=1");
@@ -45,10 +45,7 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      localStorage.getItem("lang") !== null
-    ) {
+    if ((window.location.href?.includes("en") || window.location.href?.includes("fr")) && localStorage.getItem('lang')) {
       let lang = router.locale;
       const expires = new Date();
       expires.setFullYear(expires.getFullYear() + 100);
@@ -56,10 +53,15 @@ function MyApp({ Component, pageProps }) {
         expires,
         secure: true,
       });
-      // changeLanguage(lang);
+      changeLanguage(lang);
       router.locale = lang;
+      return 
+    } else if (localStorage.getItem("lang")){
+      const local = localStorage.getItem("lang")
+      window.history.pushState({}, "", `${window.location.href}${local}`);
     } else {
       localStorage.setItem("lang", "en");
+      window.history.pushState({}, "", `${window.location.href}en`);
     }
   }, []);
 
@@ -107,7 +109,7 @@ function MyApp({ Component, pageProps }) {
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           {t("cookiesText")}{" "}
           <p
-            className="text-Primary hover:underline cursor-pointer pl-[3px] mt-[18px]"
+            className="text-Primary hover:underline cursor-pointer pl-[3px] m-[0px]"
             onClick={() =>
               window.open("https://www.seforall.org/privacy-policy")
             }
