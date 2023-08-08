@@ -627,8 +627,7 @@ const RightWrapPage = ({
             className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[8px] pl-[2px] tracking-[1px] flex justify-between resource-buttons textColor">
-              <p className="m-0">{t("Resources")}</p>
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[8px] pl-[2px] tracking-[1px] flex justify-between resource-buttons textColor">{t("Resources")}
               <div className="flex resource-buttons-wrap">
                 <button
                   className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center

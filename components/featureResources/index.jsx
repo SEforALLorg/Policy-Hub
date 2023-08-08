@@ -95,12 +95,12 @@ const Feature = () => {
         <div className="xsm:px-4 mobile:px-[0px] relative">
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
-              <h1
+              <h3
                 className="font-bold text-[35px] leading-10 mb-[20px] text-darktext 
                             uppercase center-content resources-heading"
               >
                 {t("Resources")}
-              </h1>
+              </h3>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
                 {t("AllOfTheKnowledge")} <b>{t("Downloadthefiltered")}</b>
                 {t("Havethem")}

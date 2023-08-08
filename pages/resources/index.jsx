@@ -2,12 +2,13 @@ import React from "react";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
+import pageImage from "../../static/images/sustainable_cooling.svg";
 
 const Footer = dynamic(() => import('components/footer'));
 const Header = dynamic(() => import('components/header'));
 const Feature = dynamic(() => import('components/featureResources'));
-const pageDescription = "Welcome to the KnowledgeHub Resource Page! Here, you will embark on a journey of discovery and growth, where knowledge knows no bounds."
-const pageImage = "/static/images/SEforALL_Logo_White.png";
+const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
+
 const Resources = () => {
   const { t } = useTranslation();
   return (
@@ -16,12 +17,14 @@ const Resources = () => {
         <title>{t("ResourcesTitle")}</title>
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={t("ResourcesTitle")} />
-        <meta property="og:description" content={{pageDescription}} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={pageImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={t("ResourcesTitle")} />
-        <meta property="twitter:description" content={{pageDescription}} />
+        <meta property="twitter:description" content={pageDescription} />
         <meta property="twitter:image" content={pageImage} />
+        {/* Additional meta tags or links can be added here */}
+        <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
@@ -36,9 +39,8 @@ const Resources = () => {
           </div>
         </div>
       </div>
-      <h1 className="fixed invisible z-0">RESOURCES All of the Policy Hub’s resources are available here for you to explore. Simply click on the button below to view all the resources and apply filters to narrow your results.</h1>
+      <h1 className="fixed invisible z-0">RESOURCES All of the Policy Hub’s</h1>
       <p className="fixed invisible z-0">
-      Assess your country's energy situation to identify resources matching your interest.
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government
         leaders, the private sector, financial institutions, civil society, and
