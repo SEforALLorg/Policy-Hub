@@ -203,7 +203,7 @@ const About = () => {
             <b>Steven Kukoda</b>,{t("InternationalCopperAssociation")}
             <b>Moira Mathers</b>,{t("UNEPU4E")}
             <b>Ana Maria Carreño</b>,{t("CLASP")}
-            <b>Leo Jospeh Blyth</b>,{t("ESMAP")}
+            <b>Leo Joseph Blyth</b>,{t("ESMAP")}
             <b>Narendra N. Ampeldenta</b>,{t("DarmstadtBusinessSchool")}
           </p>
           <p className="font-bold text-text mb-[3px] text-[20px] center-content">
