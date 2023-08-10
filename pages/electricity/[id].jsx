@@ -8,6 +8,7 @@ import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
 import { electricityFirstQuestion } from "../../constant/firstQuestion";
 import dynamic from "next/dynamic";
+import pageImage from "../../static/images/electricity_access.svg";
 
 const Footer = dynamic(() => import("components/footer"));
 const Header = dynamic(() => import("components/header"));
@@ -17,7 +18,6 @@ const pageTitle = "Sustainable Energy | Policy Hub | Electricity";
 const pageDescription =
   "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe.";
 
-const pageImage = "/static/images/electricity_access.svg";
 const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
@@ -62,6 +62,7 @@ const Electricity = () => {
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
         <meta property="twitter:image" content={pageImage} />
+        <meta name="twitter:image" content={pageImage} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
@@ -101,36 +102,36 @@ const Electricity = () => {
         </div>
       </div>
       <p className="fixed invisible z-0">
-      Assess your country's energy situation to identify resources matching your interest.
-        Sustainable Energy for All (SEforALL) is an international organization
-        that works in partnership with the United Nations and government
-        leaders, the private sector, financial institutions, civil society, and
-        philanthropies to drive faster action towards the achievement of
-        Sustainable Development Goal 7 (SDG7) access to affordable, reliable,
-        sustainable, and modern energy for all by 2030 in line with the Paris
-        Agreement on climate. To learn more about SEforALL, click here. The
-        Sustainable Energy Policy Hub is an interactive platform providing
-        sustainable energy policymakers and practitioners with off-the-shelf
-        guidelines, tools, templates and cases on energy policy and regulation
-        published by international organizations and thought leaders. In its
-        current phase, the hub offers essential resources on electricity access,
-        access to cleaner cooking, sustainable cooling, and energy efficiency.
-        An additional pillar on renewable energy will be added soon.The
-        Sustainable Energy Policy Hub is a collaborative work of SEforALL and
-        its partners and it managed by SEforALL. For any media requests, please
-        contact: Media@SEforALL.org Keep up-to-speed with what's happening at
-        the Sustainable Energy Policy Hub and across the sustainable energy
-        movement. We'll send you our regular updates, plus special news and
-        event invites. If you would like to recommend a publication to be
-        included in the SEforALL Policy Hub, please send us an e-mail at
-        PolicyHub@seforall.org. All of the Policy Hub’s resources are available
-        here for you to explore. Simply click on the button below to view all
-        the resources and apply filters to narrow your results. You can also
-        download the filtered resources or you can have them sent to you via
-        Email. Explore our database for tools and knowledge that will support
-        you in developing policy and regulatory frameworks for sustainable
-        energy. These resources are recommended by stakeholders across the
-        energy sector.
+        Assess your country's energy situation to identify resources matching
+        your interest. Sustainable Energy for All (SEforALL) is an international
+        organization that works in partnership with the United Nations and
+        government leaders, the private sector, financial institutions, civil
+        society, and philanthropies to drive faster action towards the
+        achievement of Sustainable Development Goal 7 (SDG7) access to
+        affordable, reliable, sustainable, and modern energy for all by 2030 in
+        line with the Paris Agreement on climate. To learn more about SEforALL,
+        click here. The Sustainable Energy Policy Hub is an interactive platform
+        providing sustainable energy policymakers and practitioners with
+        off-the-shelf guidelines, tools, templates and cases on energy policy
+        and regulation published by international organizations and thought
+        leaders. In its current phase, the hub offers essential resources on
+        electricity access, access to cleaner cooking, sustainable cooling, and
+        energy efficiency. An additional pillar on renewable energy will be
+        added soon.The Sustainable Energy Policy Hub is a collaborative work of
+        SEforALL and its partners and it managed by SEforALL. For any media
+        requests, please contact: Media@SEforALL.org Keep up-to-speed with
+        what's happening at the Sustainable Energy Policy Hub and across the
+        sustainable energy movement. We'll send you our regular updates, plus
+        special news and event invites. If you would like to recommend a
+        publication to be included in the SEforALL Policy Hub, please send us an
+        e-mail at PolicyHub@seforall.org. All of the Policy Hub’s resources are
+        available here for you to explore. Simply click on the button below to
+        view all the resources and apply filters to narrow your results. You can
+        also download the filtered resources or you can have them sent to you
+        via Email. Explore our database for tools and knowledge that will
+        support you in developing policy and regulatory frameworks for
+        sustainable energy. These resources are recommended by stakeholders
+        across the energy sector.
       </p>
       <p className="fixed invisible z-0">
         In the past two weeks, global average temperatures have reached new
