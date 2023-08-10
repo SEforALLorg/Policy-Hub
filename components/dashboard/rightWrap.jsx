@@ -335,11 +335,11 @@ const RightWrapPage = ({
         !showAllReports);
 
   let resourceClassName = "";
-  if (resourceType === CLEANCOOKING && isExpand) {
+  if (resourceType ===  "cleancooking" && isExpand) {
     resourceClassName = "cleanCooking";
-  } else if (resourceType === ENERGYEFFICIENCY && isExpand) {
+  } else if (resourceType === "energyefficiency" && isExpand) {
     resourceClassName = "energy";
-  } else if (resourceType === SUSTAINABLECOOLING && isExpand) {
+  } else if (resourceType === "sustainablecooling" && isExpand) {
     resourceClassName = "sustain";
   }
 
@@ -355,9 +355,9 @@ const RightWrapPage = ({
   }
 
   let height;
-  if (resourceType === CLEANCOOKING && isExpand) {
+  if (resourceType === "cleancooking" && isExpand) {
     height = "calc(80vh - 100px)";
-  } else if (resourceType === ENERGYEFFICIENCY && isExpand) {
+  } else if (resourceType === "energyefficiency" && isExpand) {
     height = "calc(90vh - 100px)";
   } else {
     height = "";
