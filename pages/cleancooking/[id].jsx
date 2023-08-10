@@ -6,7 +6,6 @@ import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { CLEANCOOKING } from "../../constant";
 import { cleanCookingFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
-import pageImage from '../../static/images/electricity_access.svg'
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
@@ -59,14 +58,15 @@ const Cleancooking = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta property="image" content={pageImage} />
+        <meta property="image" content={'/static/images/clean_cooking.svg'} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
+        <meta property="og:image" content={'/static/images/clean_cooking.svg'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={pageImage} />
+        <meta property="twitter:image" content={'/static/images/clean_cooking.svg'} />
+        <meta name="twitter:image" content={'/static/images/clean_cooking.svg'} />
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
         <div className="mobile:p-2.5 xsm:p-[5px]">

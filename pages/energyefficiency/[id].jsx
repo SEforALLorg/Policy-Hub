@@ -7,7 +7,6 @@ import { ENERGYEFFICIENCY } from "../../constant";
 import { energyEfficiencyFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import pageImage from "../../static/images/energy_efficiency.svg";
 import dynamic from "next/dynamic";
 
 const Footer = dynamic(() => import('components/footer'));
@@ -55,11 +54,12 @@ const Energyefficiency = () => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
+        <meta property="og:image" content={'/static/images/energy_efficiency.svg'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={pageImage} />
+        <meta property="twitter:image" content={'/static/images/energy_efficiency.svg'} />
+        <meta name="twitter:image" content={'/static/images/energy_efficiency.svg'} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
