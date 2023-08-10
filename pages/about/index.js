@@ -7,7 +7,6 @@ const Footer = dynamic(() => import('components/footer'));
 const Header = dynamic(() => import('components/header'));
 const About = dynamic(() => import('components/aboutus'));
 const pageDescription = "Welcome to the About Us page of KnowledgeHub! Here, we unveil the essence and vision that drive our platform."
-const pageImage = "/static/images/SEforALL_Logo_White.png";
 
 const AboutUs = () => {
   const { t } = useTranslation();
@@ -19,11 +18,11 @@ const AboutUs = () => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={t("AboutTitle")} />
         <meta property="og:description" content={{pageDescription}} />
-        <meta property="og:image" content={pageImage} />
+        <meta property="og:image" content={"/static/images/Black.png"} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={t("AboutTitle")} />
         <meta property="twitter:description" content={{pageDescription}} />
-        <meta property="twitter:image" content={pageImage} />
+        <meta property="twitter:image" content={"/static/images/Black.png"} />
       </Head>
       <div className="mobile:p-2.5 xsm:p-[5px]">
         <div className="custom-container mx-auto">
