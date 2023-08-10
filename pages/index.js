@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Landing from "./landing";
 import { useTranslation } from "react-i18next";
-import pageImage from "../static/images/SEforALL_Logo_White.png";
 
 
 const pageTitle = "Sustainable Energy | Policy Hub ";
@@ -18,12 +17,12 @@ export default function Home() {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={pageImage} />
+        <meta property="og:image" content={'/static/images/SEforALL_Logo_White.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={pageImage} />
-        <meta name="twitter:image" content={pageImage} />
+        <meta property="twitter:image" content={'/static/images/SEforALL_Logo_White.png'} />
+        <meta name="twitter:image" content={'/static/images/SEforALL_Logo_White.png'} />
       </Head>
       <Landing />
     </div>
