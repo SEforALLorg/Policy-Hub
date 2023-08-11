@@ -57,6 +57,7 @@ const Sustainablecooling = () => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={"/static/images/sustainable_cooling_white.png"} />
+        <meta property="image" content={"/static/images/sustainable_cooling_white.png"} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
