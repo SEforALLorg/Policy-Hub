@@ -56,13 +56,13 @@ const Electricity = () => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={`/static/images/electricity_access_Black.png`} />
-        <meta property="image" content={`/static/images/electricity_access_Black.png`} />
+        <meta property="og:image" content={'/static/images/electricity_access_Black.png'} />
+        <meta property="image" content={'/static/images/electricity_access_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={`/static/images/electricity_access_Black.png`} />
-        <meta name="twitter:image" content={`/static/images/electricity_access_Black.png`} />
+        <meta property="twitter:image" content={'/static/images/electricity_access_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/electricity_access_Black.png'} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
