@@ -16,13 +16,13 @@ export default function Home() {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={`/static/images/SEforALL_Logo_Black.png`} />
-        <meta property="image" content={`/static/images/SEforALL_Logo_Black.png`} />
+        <meta property="og:image" content={'/static/images/SEforALL_Logo_Black.png'} />
+        <meta property="image" content={'/static/images/SEforALL_Logo_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={`/static/images/SEforALL_Logo_Black.png`} />
-        <meta name="twitter:image" content={`/static/images/SEforALL_Logo_Black.png`} />
+        <meta property="twitter:image" content={'/static/images/SEforALL_Logo_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/SEforALL_Logo_Black.png'} />
       </Head>
       <Landing />
     </div>
