@@ -363,3 +363,7 @@ export const getResourceFirstQuestion = () => {
       break;
   }
 }
+
+export const host = () => {
+  return typeof window !== "undefined" && window.location.host;
+}
