@@ -58,15 +58,15 @@ const Cleancooking = () => {
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta property="image" content={'/static/images/clean_cooking.svg'} />
+        <meta property="image" content={'/static/images/clean_cooking_Black.png'} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={'/static/images/clean_cooking.svg'} />
+        <meta property="og:image" content={'/static/images/clean_cooking_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={'/static/images/clean_cooking.svg'} />
-        <meta name="twitter:image" content={'/static/images/clean_cooking.svg'} />
+        <meta property="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
         <div className="mobile:p-2.5 xsm:p-[5px]">
