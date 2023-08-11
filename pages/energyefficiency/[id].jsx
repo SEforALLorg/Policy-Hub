@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
-import { getResourceFirstQuestion, getResources } from "../../utilities";
+import { getResourceFirstQuestion, getResources, host } from "../../utilities";
 import { ENERGYEFFICIENCY } from "../../constant";
 import { energyEfficiencyFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
@@ -54,13 +54,13 @@ const Energyefficiency = () => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={'/static/images/energy_efficiency_Black.png'} />
-        <meta property="image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta property="og:image" content={`${host()}/static/images/energy_efficiency_Black.png`} />
+        <meta property="image" content={`${host()}/static/images/energy_efficiency_Black.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
-        <meta name="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta property="twitter:image" content={`${host()}/static/images/energy_efficiency_Black.png`} />
+        <meta name="twitter:image" content={`${host()}/static/images/energy_efficiency_Black.png`} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
