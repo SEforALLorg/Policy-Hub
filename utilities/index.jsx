@@ -365,5 +365,5 @@ export const getResourceFirstQuestion = () => {
 }
 
 export const host = () => {
-  return typeof window !== "undefined" && window.location.host;
+  return typeof window !== "undefined" && window.location.origin;
 }
