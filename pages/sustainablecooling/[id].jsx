@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
-import { getResourceFirstQuestion, getResources, host } from "../../utilities";
+import { getResourceFirstQuestion, getResources } from "../../utilities";
 import { SUSTAINABLECOOLING } from "../../constant";
 import Head from "next/head";
 import { sustainableCoolingFirstQuestion } from "../../constant/firstQuestion";
@@ -56,13 +56,13 @@ const Sustainablecooling = () => {
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={`${host()}/static/images/sustainable_cooling_white.png`} />
-        <meta property="image" content={`${host()}/static/images/sustainable_cooling_white.png`} />
+        <meta property="og:image" content={`/static/images/sustainable_cooling_white.png`} />
+        <meta property="image" content={`/static/images/sustainable_cooling_white.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={`${host()}/static/images/sustainable_cooling_white.png`} />
-        <meta name="twitter:image" content={`${host()}/static/images/sustainable_cooling_white.png`} />
+        <meta property="twitter:image" content={`/static/images/sustainable_cooling_white.png`} />
+        <meta name="twitter:image" content={`/static/images/sustainable_cooling_white.png`} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
