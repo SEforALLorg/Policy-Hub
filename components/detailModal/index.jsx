@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,6 +21,7 @@ const DetailModal = ({ firstHit }) => {
     JobTitle: "",
     Organization: "",
   });
+  const [errors, setErrors] = useState();
   const [danger, setDanger] = useState(false);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -32,7 +34,9 @@ const DetailModal = ({ firstHit }) => {
   useEffect(() => {
     const UserModal = localStorage.getItem("UserModal");
     if (UserModal === null) {
-      setIsOpen(true);
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 2000);
     } else if (UserModal) {
       setIsOpen(false);
     }
@@ -94,6 +98,8 @@ const DetailModal = ({ firstHit }) => {
     event.preventDefault();
     let name = event.target.name;
     let val = event.target.value;
+    const formError = validation(event, name, val);
+    setErrors(formError);
     setFormInput({ ...formInput, [name]: val });
   };
 
@@ -112,6 +118,9 @@ const DetailModal = ({ firstHit }) => {
 
   return (
     <>
+      <Head>
+        <script defer async src="/tailwindcss.js"></script>
+      </Head>
       {/* <!-- Main modal --> */}
       {isOpen && (
         <div

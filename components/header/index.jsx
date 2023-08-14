@@ -14,7 +14,6 @@ import {
   DropdownItem,
 } from "reactstrap";
 import { Cookies } from "react-cookie";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
@@ -32,6 +31,7 @@ const Header = ({ selectedRes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState();
+  const [query, setQuery] = useState({});
   const [expanded, setExpanded] = useState(false);
 
   const toggleDropdown = () => {
@@ -50,24 +50,45 @@ const Header = ({ selectedRes }) => {
       document.getElementsByTagName("body")[0].classList.remove("hide-scroll");
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (Object.keys(query)?.length && router?.query) {
+      setTimeout(() => {
+        router.replace({ query: { ...query } }, undefined, { shallow: true });
+      }, 100);
+    }
+  }, [query]);
+
+  const removeResource = () => {
+    localStorage.removeItem("ResourceType");
+  };
+
   return (
     <div className="header">
       <Navbar expand="md" light>
         <NavbarBrand href="https://www.seforall.org/">
           {selectedRes === ELECTRICITYACCESS && (
             <img
-              src="static/images/electricity_access.svg"
+              src={
+                isMobile()
+                  ? "/static/images/electricity_access.png"
+                  : "/static/images/electricity_access.svg"
+              }
               alt="electricity_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === CLEANCOOKING && (
             <img
-              src="static/images/clean_cooking.svg"
+              src="/static/images/clean_cooking.svg"
               alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === SUSTAINABLECOOLING && (
@@ -76,6 +97,8 @@ const Header = ({ selectedRes }) => {
               alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {selectedRes === ENERGYEFFICIENCY && (
@@ -84,12 +107,18 @@ const Header = ({ selectedRes }) => {
               alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
+              height={"49px"}
+              width={"180px"}
             />
           )}
           {!selectedRes && (
-            <div onClick={() => window.open("https://www.seforall.org/")} target={"_blank"}>
+            <div
+              onClick={() => window.open("https://www.seforall.org/")}
+              target={"_blank"}
+            >
               <img
                 src={"/static/images/SEforALL_Logo_White.png"}
+                data-src={"/static/images/SEforALL_Logo_White.png"}
                 alt="logo_white_logo"
                 className="logo cursor-pointer "
                 width={isMobile() ? "70px" : "70px"}
@@ -122,6 +151,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/" ? "active" : ""}`}
                   href={`/${lang === null ? "" : lang}`}
+                  onClick={removeResource}
                 >
                   {t("Home")}
                 </NavLink>
@@ -132,6 +162,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/resources" ? "active" : ""}`}
                   href={`/${lang || "en"}/resources`}
+                  onClick={removeResource}
                 >
                   {t("Resources")}
                 </NavLink>
@@ -142,6 +173,7 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={location === "/about" ? "active" : ""}
                   href={`/${lang || "en"}/about`}
+                  onClick={removeResource}
                 >
                   {t("About")}
                 </NavLink>
@@ -152,57 +184,65 @@ const Header = ({ selectedRes }) => {
                 <NavLink
                   className={`${location === "/contact" ? "active" : ""}`}
                   href={`/${lang || "en"}/contact`}
+                  onClick={removeResource}
                 >
                   {t("Contactus")}
                 </NavLink>
               </div>
             </NavItem>
           </Nav>
-            <UncontrolledDropdown setActiveFromChild className="customDropdown">
-              <DropdownToggle
-                className="DropdownToggle"
-                tag="a"
-                role="button"
-                caret
-                aria-expanded={expanded}
-                onClick={toggleDropdown}
-              >
-                <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
-              </DropdownToggle>
-              <DropdownMenu className="dropdownMenu">
-                {["en", "fr"].map((lang) => {
-                  return (
-                    <DropdownItem
-                      key={lang}
-                      onClick={() => {
-                        const expires = new Date();
-                        expires.setFullYear(expires.getFullYear() + 100);
-                        localStorage.setItem("lang", lang);
-                        setLang(lang);
-                        cookies.set("language", lang, {
-                          expires,
-                          secure: true,
-                        });
-                        i18n.changeLanguage(lang);
-                      }}
-                      style={{
-                        backgroundColor:
-                          lang === i18n.language ? "#fcb600" : "transparent",
-                        borderRadius:
-                          lang === "en"
-                            ? "10px 10px 0px 0px"
-                            : "0px 0px 10px 10px",
-                        color: lang === i18n.language ? "white" : "#000",
-                      }}
+          <UncontrolledDropdown setActiveFromChild className="customDropdown">
+            <DropdownToggle
+              className="DropdownToggle"
+              tag="a"
+              role="button"
+              caret
+              aria-expanded={expanded}
+              onClick={toggleDropdown}
+            >
+              <p>{i18n.language !== "fr" ? "EN" : "FR"}</p>
+            </DropdownToggle>
+            <DropdownMenu className="dropdownMenu">
+              {["en", "fr"].map((lang) => {
+                return (
+                  <DropdownItem
+                    key={lang}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const expires = new Date();
+                      const Query = router?.query;
+                      setQuery(Query);
+                      expires.setFullYear(expires.getFullYear() + 100);
+                      localStorage.setItem("lang", lang);
+                      setLang(lang);
+                      cookies.set("language", lang, {
+                        expires,
+                        secure: true,
+                      });
+                      i18n.changeLanguage(lang);
+                    }}
+                    style={{
+                      backgroundColor:
+                        lang === i18n.language ? "#fcb600" : "transparent",
+                      borderRadius:
+                        lang === "en"
+                          ? "10px 10px 0px 0px"
+                          : "0px 0px 10px 10px",
+                      color: lang === i18n.language ? "white" : "#000", padding: ".25rem 0rem"
+                    }}
+                    className="header-dropdown"
+                  >
+                    <Link
+                      href={{...router}}
+                      locale={lang}
                     >
-                      <Link href="" locale={lang}>
-                        {lang.toUpperCase()}
-                      </Link>
-                    </DropdownItem>
-                  );
-                })}
-              </DropdownMenu>
-            </UncontrolledDropdown>
+                      {lang.toUpperCase()}
+                    </Link>
+                  </DropdownItem>
+                );
+              })}
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </Collapse>
       </Navbar>
     </div>

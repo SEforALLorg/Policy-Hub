@@ -1,14 +1,9 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
-import { applyTheme } from "../../theme/utils";
-import darkTheme from "../../theme/SustainableCooling";
-import greenTheme from "../../theme/clean_cooking ";
-import yellowTheme from "../../theme/EnergyEfficiency";
-import baseTheme from "../../theme/base";
-import Loader from "../loader";
-import electricityTheme from "../../theme/Electricity";
 import { IoClose } from "react-icons/io5";
+
+import Loader from "../loader";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
@@ -22,12 +17,14 @@ const Resources = ({
   onNextQuestionId,
   selected,
   setIsOpen,
+  loader,
 }) => {
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
   const onAnswerClick = (i) => {
+    localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
-    onNextQuestionId(i?.attributes?.QuestionId);
+    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes);
   };
 
   const changeColor = (resourceType) => {
@@ -36,22 +33,17 @@ const Resources = ({
     switch (res) {
       case ELECTRICITYACCESS:
         localStorage.setItem("ResourceType", res);
-        applyTheme(electricityTheme);
         break;
       case CLEANCOOKING:
         localStorage.setItem("ResourceType", res);
-        applyTheme(greenTheme);
         break;
       case SUSTAINABLECOOLING:
         localStorage.setItem("ResourceType", res);
-        applyTheme(darkTheme);
         break;
       case ENERGYEFFICIENCY:
         localStorage.setItem("ResourceType", res);
-        applyTheme(yellowTheme);
         break;
       default:
-        applyTheme(baseTheme);
         break;
     }
   };
@@ -61,13 +53,13 @@ const Resources = ({
       <div className="flex items-center customize-header relative">
         <img
           className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height	mr-5"
-          src="static/images/cards.svg"
+          src="/static/images/cards.svg"
           alt="card"
         />
 
-        <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
+        <h1 className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
           {t("AssessYourCountry")}
-        </div>
+        </h1>
         <div
           onClick={() => setIsOpen(false)}
           className="closeIcon text-gray-400 hover:text-gray-900 "
@@ -77,7 +69,7 @@ const Resources = ({
       </div>
       <div className="my-3 border-b-[4px] border-primary opacity-20" />
 
-      {resourcesData ? (
+      {!loader && resourcesData ? (
         <div>
           <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mb-3">
             {t("AreaWantToInvestigate")}
@@ -92,7 +84,7 @@ const Resources = ({
                     changeColor(resource);
                   }}
                   key={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
-                  className="mb-[20px] h-[95px] text-[23px]"
+                  className="mb-[20px] h-[95px] !text-[23px]"
                 />
               ))}
           </div>

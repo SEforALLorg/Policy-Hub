@@ -12,7 +12,7 @@ const TopCard = ({ HandleOpen }) => {
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
-        <h1 className="text-[#000000b3] font-bold	text-[35px] leading-[50px] text-center uppercase">
+        <h1 className="text-[#000000b3] font-bold text-[35px] leading-[50px] text-center uppercase">
           {t("Sustainable")}
           <span className="text-Secondary"> {t("Energy")} </span>
           <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
@@ -25,6 +25,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[16%] mr-[8px] mt-[5px]"
                 src="../../../static/images/hub.svg"
+                data-src="../../../static/images/hub.svg"
                 alt="hub_logo"
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
@@ -40,6 +41,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
+                data-src="../../../static/images/journey.svg"
                 alt="journey_logo"
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
@@ -58,6 +60,7 @@ const TopCard = ({ HandleOpen }) => {
               <img
                 className="w-[14%] mr-[8px] mt-[-8px]"
                 src="../../../static/images/sustainable_hub.png"
+                data-src="../../../static/images/sustainable_hub.png"
                 alt="sustainable_hub_logo"
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
@@ -72,6 +75,7 @@ const TopCard = ({ HandleOpen }) => {
             <img
               className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
+              data-src="../../../static/images/guide.svg"
               alt="guide_logo"
               width={isMobile() ? "65px" : "70px"}
               height={isMobile() ? "65px" : "70px"}
@@ -84,7 +88,7 @@ const TopCard = ({ HandleOpen }) => {
       </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         <div
-          className="w-[49%] absolute bottom-[-28px] left-[26%]"
+          className="w-[49%] absolute bottom-[-28px] left-[26%] landing-button"
           onClick={handleButtonClick}
         >
           <StartButton

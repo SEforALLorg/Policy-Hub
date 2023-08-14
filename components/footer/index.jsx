@@ -183,55 +183,59 @@ const Footer = ({ footerRes }) => {
             src={`/static/images/logo${
               footerRes === SUSTAINABLECOOLING ? "black" : ""
             }.svg`}
+            data-src={`/static/images/logo${
+              footerRes === SUSTAINABLECOOLING ? "black" : ""
+            }.svg`}
             alt="logo"
             className="small:m-0 mr-[0px] xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[90px]"
             onClick={() => window.open("https://www.seforall.org/")}
             width={isMobile() ? "181px" : "90px"}
             height={isMobile() ? "46px" : "70px"}
           />
-          {footerRes === ELECTRICITYACCESS && (
+          {(footerRes === ELECTRICITYACCESS ||
+            footerRes === CLEANCOOKING ||
+            footerRes === ENERGYEFFICIENCY) && (
             <img
-              src="static/images/footer_electricity_access.svg"
+              src={
+                isMobile()
+                  ? "/static/images/footer_electricity_access-responsive.png"
+                  : "/static/images/footer_electricity_access.png"
+              }
+              data-src="/static/images/footer_electricity_access.png"
               alt="founder_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
-            />
-          )}
-          {footerRes === CLEANCOOKING && (
-            <img
-              src="static/images/footer_electricity_access.svg"
-              alt="electricity_logo"
-              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-              onClick={() =>
-                window.open("https://www.rockefellerfoundation.org/")
-              }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {footerRes === SUSTAINABLECOOLING && (
             <img
               src={"/static/images/footer_sustainable_cooking.svg"}
+              data-src={"/static/images/footer_sustainable_cooking.svg"}
               alt="sustainable_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
               onClick={() =>
                 window.open("https://www.rockefellerfoundation.org/")
               }
-            />
-          )}
-          {footerRes === ENERGYEFFICIENCY && (
-            <img
-              src={"static/images/footer_electricity_access.svg"}
-              alt="footer_logo"
-              className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[250px]"
-              onClick={() =>
-                window.open("https://www.rockefellerfoundation.org/")
-              }
+              width={isMobile() ? "181px" : "250px"}
+              height={isMobile() ? "46px" : "52px"}
             />
           )}
           {!footerRes && (
             <img
-              src={"/static/images/logo_rockefeller_foundation_white.svg"}
+              src={
+                isMobile()
+                  ? "/static/images/logo_rockefeller_foundation_white_responsive.svg"
+                  : "/static/images/logo_rockefeller_foundation_white.svg"
+              }
+              data-src={
+                isMobile()
+                  ? "/static/images/logo_rockefeller_foundation_white_responsive.svg"
+                  : "/static/images/logo_rockefeller_foundation_white.svg"
+              }
               alt="rockefeller_logo"
               className="small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto xsm:pr-0 small:pr-5 cursor-pointer w-[200px]"
               onClick={() =>
@@ -243,6 +247,11 @@ const Footer = ({ footerRes }) => {
           )}
           <img
             src={
+              isMobile()
+                ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
+                : "/static/images/dgcs_rettangolare_eng_neg.png"
+            }
+            data-src={
               isMobile()
                 ? "/static/images/dgcs_rettangolare_eng_neg_responsive.png"
                 : "/static/images/dgcs_rettangolare_eng_neg.png"

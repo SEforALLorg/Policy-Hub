@@ -4,8 +4,9 @@ import BlueButton from "components/buttons/blueButton";
 import Loader from "components/loader";
 import TooltipComponent from "components/tooltip";
 import { useTranslation } from "react-i18next";
-import { putJourneyStep } from "../../utilities";
+import { getRoute, putJourneyStep } from "../../utilities";
 import { changingCardLogo } from "../../constant/changinglogo";
+import { useRouter } from "next/router";
 
 const Customize = ({
   onYes,
@@ -14,8 +15,9 @@ const Customize = ({
   onNextQuestion,
   onReportsFind,
   setJourney,
-  // setCurrentDate
+  loader
 }) => {
+  const router = useRouter();
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
   const firstQuestion = questions?.length && questions[0];
@@ -35,7 +37,11 @@ const Customize = ({
       question: title,
       answer: isEnglish ? i?.Answer : i?.FrenchAnswer,
     };
-    setJourney(payload);
+    setJourney({
+      ...firstQuestion,
+      answer: i?.Answer, 
+      frenchAnswer: i?.FrenchAnswer
+    });
     let existing = JSON.parse(localStorage.getItem("userInfo"));
     let existingJourney = existing?.Journey;
     if (
@@ -53,11 +59,25 @@ const Customize = ({
       };
       putJourneyStep(journey);
     }
+    router.push(
+      {
+        pathname: `/${i18n.language}/${getRoute()}/${i?.NextQuestion?.data?.id}`,
+        query: {
+          bigCard: true,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
-    <div className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${isEnglish ? "h-full" : ""}`}>
-      {isFetchingQuestions ? (
+    <div
+      className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${
+        i18n.language !== "fr" ? "h-full" : ""
+      }`}
+    >
+      {isFetchingQuestions || loader ? (
         <div className="flex items-center flex-col h-full justify-center">
           <Loader height={80} width={80} />{" "}
         </div>
@@ -74,17 +94,19 @@ const Customize = ({
                     src={Object.values(key)?.[0]}
                     alt="card"
                     key={"card-image"}
+                    width={"65px"}
+                    height={"45px"}
                   />
                 );
               }
             })}
 
-            <div className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0 textColor">
+            <h1 className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
               {t("AssessYourCountry")}
-            </div>
+            </h1>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
-          <div className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
+          <p className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
             {title}
             {ToolTipText && (
               <TooltipComponent
@@ -93,14 +115,14 @@ const Customize = ({
                 customizeStyle={"customizeStyle"}
               />
             )}
-          </div>
+          </p>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {singleAnswer?.map((i) => (
               <BlueButton
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}
                 onClick={() => onAnswerClick(i)}
                 key={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                className="mb-[20px] h-[80px] text-[23px] "
+                className="mb-[20px] h-[80px] !text-[23px]"
               />
             ))}
           </div>

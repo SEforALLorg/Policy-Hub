@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import Footer from "components/footer";
-import Header from "components/header";
-import LandingPage from "components/landingPage";
 import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
 } from "../../constant";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import('components/footer'));
+const Header = dynamic(() => import('components/header'));
+const LandingPage = dynamic(() => import('components/landingPage'));
 
 const Landing = () => {
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
@@ -17,6 +19,7 @@ const Landing = () => {
   const [dynamicClass, setDynamicClass] = useState();
 
   useEffect(() => {
+    localStorage.removeItem("userOldJourney");
     switch (res) {
       case ELECTRICITYACCESS:
         return setDynamicClass("electricity_access");

@@ -13,6 +13,9 @@ import { useRouter } from "next/router";
 import { applyTheme } from "../theme/utils";
 import baseTheme from "../theme/base";
 import Script from "next/script";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { isMobile } from "../utilities";
+
 const languages = ["en", "fr"];
 const cookies = new Cookies();
 
@@ -42,10 +45,7 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      localStorage.getItem("lang") !== null
-    ) {
+    if ((window.location.href?.includes("en") || window.location.href?.includes("fr")) && localStorage.getItem('lang')) {
       let lang = router.locale;
       const expires = new Date();
       expires.setFullYear(expires.getFullYear() + 100);
@@ -55,8 +55,13 @@ function MyApp({ Component, pageProps }) {
       });
       changeLanguage(lang);
       router.locale = lang;
+      return 
+    } else if (localStorage.getItem("lang")){
+      const local = localStorage.getItem("lang")
+      window.history.pushState({}, "", `${window.location.href}${local}`);
     } else {
       localStorage.setItem("lang", "en");
+      window.history.pushState({}, "", `${window.location.href}en`);
     }
   }, []);
 
@@ -65,8 +70,10 @@ function MyApp({ Component, pageProps }) {
   }, [showConsent]);
 
   useEffect(() => {
-    applyTheme(baseTheme);
-  }, []);
+    if (!Object.keys(router?.query)?.length) {
+      applyTheme(baseTheme);
+    }
+  }, [router]);
 
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -84,26 +91,31 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        {typeof window !== "undefined" && !isMobile() && (
+          <Script src="/tailwindcss.js" />
+        )}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
         <script defer async src="/gtm.js"></script>
-
       </Head>
       <ToastContainer theme={"colored"} />
-      {mounted && <Component {...pageProps} />}
+      {/* // {mounted && <Component {...pageProps} />} */}
+      <Component {...pageProps} />
       {!showConsent && (
         <div className="cookies-wrap" style={{ opacity: showConsent ? 0 : 1 }}>
           {t("cookiesText")}{" "}
-          <a
-            className="text-Primary hover:underline cursor-pointer pl-[3px]"
+          <p
+            className="text-Primary hover:underline cursor-pointer pl-[3px] m-[0px]"
             onClick={() =>
               window.open("https://www.seforall.org/privacy-policy")
             }
           >
             {t("Readmore")}
-          </a>
+          </p>
           <button
             className="cookies-accept-button"
             onClick={() => onAcceptCookies()}

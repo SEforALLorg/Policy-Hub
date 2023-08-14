@@ -95,12 +95,12 @@ const Feature = () => {
         <div className="xsm:px-4 mobile:px-[0px] relative">
           <div className="flex pb-[0px] my-0 w-full xsm:flex-wrap large:flex-nowrap resources-card">
             <div className="w-full">
-              <h1
+              <h3
                 className="font-bold text-[35px] leading-10 mb-[20px] text-darktext 
                             uppercase center-content resources-heading"
               >
                 {t("Resources")}
-              </h1>
+              </h3>
               <p className="center-content not-italic font-normal xsm:text-xsmall small:text-tiny xsm:leading-4 small:leading-[25.3px] xsm:leading-[15.3px] xsm:leading-[22.3px] laptop:leading-[25.3px] text-lighttext mb-base mb-3 text-justify">
                 {t("AllOfTheKnowledge")} <b>{t("Downloadthefiltered")}</b>
                 {t("Havethem")}
@@ -147,11 +147,11 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {t(filterType?.replace(" ", "")) || t("AllPlatforms")}
+                    {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
                 <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
-                  {dropDownData?.map((resource) => {
+                  {dropDownData?.map((resource, index) => {
                     const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
@@ -169,7 +169,7 @@ const Feature = () => {
                           color: isActive ? "#fff" : "",
                         }}
                       >
-                        {t(resource?.label?.replace(" ", ""))}
+                        {t(resource?.label?.replace(' ', ''))}
                       </DropdownItem>
                     );
                   })}
