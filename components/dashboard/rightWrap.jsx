@@ -359,8 +359,10 @@ const RightWrapPage = ({
     height = "calc(80vh - 100px)";
   } else if (resourceType === "energyefficiency" && isExpand) {
     height = "calc(90vh - 100px)";
+  } else if (resourceType === "sustainablecooling" && isExpand) {
+    height = "calc(80vh - 0px)";
   } else {
-    height = "";
+      height = ""
   }
 
   return (

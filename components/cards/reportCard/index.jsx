@@ -167,7 +167,7 @@ const Report = ({
             hideInfo={true}
           >
             <div className="starIcon">
-              {selectedRes === ENERGYEFFICIENCY ? (
+              {selectedRes === "energyefficiency" ? (
                 <svg
                   width="23"
                   height="21"

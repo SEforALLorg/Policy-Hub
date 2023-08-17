@@ -682,6 +682,9 @@ a {
   display: flex;
   overflow-x: hidden;
 }
+.textWidth{
+  width: 80px !important;
+}
 
 @media only screen and (min-width: 1300px) and (max-width: 1600px) {
   .rightInnerWrap.cleanCooking {
