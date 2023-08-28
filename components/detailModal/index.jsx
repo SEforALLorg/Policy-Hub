@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import { Flags } from "../../constant/flags";
 import { postUserDetails } from "../../pages/api/reports";
-import { userRepeated } from "../../utilities";
+import { userRepeated, validation } from "../../utilities";
 
 const DetailModal = ({ firstHit }) => {
   const { t } = useTranslation();
