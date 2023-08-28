@@ -158,7 +158,7 @@ const Dashboard = ({
     []
   );
 
-  const setUserJourney = useCallback(() => {
+  const setUserJourney = () => {
     let count = localStorage.getItem("count");
     let isExistingUser = JSON.parse(localStorage.getItem("userInfo"));
     let latestDate = localStorage.getItem("currentDate");
@@ -183,11 +183,11 @@ const Dashboard = ({
         }
       }
     }
-  }, [addJourney, newJourneyData, oldJourney, payload]);
+  };
 
   useEffect(() => {
     setUserJourney();
-  }, [newJourneyData, setUserJourney]);
+  }, [newJourneyData]);
 
   return (
     <Wrapper isExpand={isExpand}>
