@@ -262,6 +262,22 @@ const Footer = ({ footerRes }) => {
             width={isMobile() ? "181px" : "250px"}
             height={isMobile() ? "46px" : "52px"}
           />
+          <div
+             className={`h-[90px] bg-white shadow-md rounded-2xl p-[20px] px-[10px] flex justify-center	items-center african-development`}
+             style={{ width: isMobile() ? "90px" : "" }}
+           >
+             <img
+               src={"/static/images/opecLogo.jpg"}
+               data-src={"/static/images/opecLogo.jpg"}
+               alt="rettangolare_logo"
+               className={`small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 cursor-pointer ${
+                 isMobile() ? "w-[80]" : "w-[90px]"
+               }`}
+               onClick={() => window.open("https://opecfund.org/")}
+               width={isMobile() ? "181px" : "104px"}
+               height={isMobile() ? "46px" : "52px"}
+             />
+           </div>
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px] mediaIconBorderColor"></div>
