@@ -271,7 +271,7 @@ const Footer = ({ footerRes }) => {
                data-src={"/static/images/opecLogo.jpg"}
                alt="rettangolare_logo"
                className={`small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 cursor-pointer ${
-                 isMobile() ? "w-[80]" : "w-[90px]"
+                 isMobile() ? "!w-[80]" : "!w-[90px]"
                }`}
                onClick={() => window.open("https://opecfund.org/")}
                width={isMobile() ? "181px" : "104px"}
