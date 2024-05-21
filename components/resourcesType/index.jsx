@@ -11,6 +11,7 @@ import {
   SUSTAINABLECOOLING,
 } from "../../constant";
 
+const visibleIds = [1, 2, 3, 4];
 const Resources = ({
   onYes,
   resourcesData,
@@ -76,17 +77,27 @@ const Resources = ({
           </div>
           <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
             {resourcesData &&
-              Object?.values(resourcesData)?.map((resource) => (
-                <BlueButton
-                  title={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
-                  onClick={() => {
-                    onAnswerClick(resource);
-                    changeColor(resource);
-                  }}
-                  key={isEnglish ? resource?.attributes?.Name : resource?.attributes?.FrenchName}
-                  className="mb-[20px] h-[95px] !text-[23px]"
-                />
-              ))}
+              Object?.values(resourcesData)
+                ?.filter((resource) => visibleIds?.includes(resource?.id))
+                ?.map((resource) => (
+                  <BlueButton
+                    title={
+                      isEnglish
+                        ? resource?.attributes?.Name
+                        : resource?.attributes?.FrenchName
+                    }
+                    onClick={() => {
+                      onAnswerClick(resource);
+                      changeColor(resource);
+                    }}
+                    key={
+                      isEnglish
+                        ? resource?.attributes?.Name
+                        : resource?.attributes?.FrenchName
+                    }
+                    className="mb-[20px] h-[95px] !text-[23px]"
+                  />
+                ))}
           </div>
         </div>
       ) : (
