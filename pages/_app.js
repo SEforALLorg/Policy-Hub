@@ -15,6 +15,7 @@ import baseTheme from "../theme/base";
 import Script from "next/script";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { isMobile } from "../utilities";
+import { pingHerokuUrl } from "../constant";
 
 const languages = ["en", "fr"];
 const cookies = new Cookies();
@@ -91,7 +92,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(()=> {
     const pingHerokuServer = async () => {
       try {
-        const response = await fetch('https://kmit-policyhub.herokuapp.com');
+        const response = await fetch(pingHerokuUrl);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
