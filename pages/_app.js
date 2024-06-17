@@ -96,7 +96,6 @@ function MyApp({ Component, pageProps }) {
           throw new Error('Network response was not ok');
         }
         const result = await response.json();
-        console.log({result})
       } catch (error) {
         console.log(error.message);
       }
