@@ -88,6 +88,23 @@ function MyApp({ Component, pageProps }) {
     setMounted(true);
   }, []);
 
+  useEffect(()=> {
+    const pingHerokuServer = async () => {
+      try {
+        const response = await fetch('https://kmit-policyhub.herokuapp.com');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        console.log({result})
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    pingHerokuServer();
+  },[])
+  
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
