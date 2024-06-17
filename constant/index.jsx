@@ -16,6 +16,7 @@ export const colors = {
   borderColor: "#C4C4C4",
   transparent: "transparent",
 };
+export const pingHerokuUrl = "https://kmit-policyhub.herokuapp.com"
 
 export const fontSizes = [12, 16, 20, 24, 32, 48, 64, 96, 128, 160, 192];
 
