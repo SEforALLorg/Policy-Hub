@@ -54,7 +54,6 @@ const Cleancooking = () => {
       setIsReload(true);
     }
   }, [isReload, router, questions]);
-
   return (
     <main id="fullWrap" ref={ref} className={"clean_cooking"}>
       <Head>
