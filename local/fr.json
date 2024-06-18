@@ -120,7 +120,7 @@
     "WRI": " World Resources Institute (WRI);",
     "WeAlsoThank": "Nous remercions également les personnes suivantes pour leur consultation et leur participation : ",
     "WebDevelopmentby": "Développement Web par",
-    "Year": "An",
+    "Year": "Année",
     "ZARENA": " Paeradigms LLC / Zambienne des énergies renouvelables (ZARENA); ",
     "and": " and",
     "clickHere": "Cliquez ici",
@@ -154,5 +154,7 @@
     "ElectricityAccess":"Accès à l’électricité",
     "CleanCooking":"Cuisson propre",
     "SustainableCooling":"Refroidissement durable",
-    "EnergyEfficency":"Efficacité énergétique"
+    "EnergyEfficency":"Efficacité énergétique",
+    "back": "Dos",
+    "shareAttachments": "partagerPièces jointes"
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillStar } from "react-icons/ai";
 import { ENERGYEFFICIENCY } from "../../../constant";
@@ -23,6 +23,12 @@ const Report = ({
   selectedRes,
 }) => {
   const { t } = useTranslation();
+  const [isClickedReport, setIsClickedReport] = useState(false);
+
+  const handleTooltipVisibility = (visible) => {
+    setTooltipVisible(visible);
+  };
+
   const countTooltip = bigCard ? 30 : 10;
   const isSmallDevice =
     typeof window !== "undefined" && window?.innerWidth < 767;
@@ -40,9 +46,29 @@ const Report = ({
     }
     return null;
   };
-
   const renderDescription = () => {
-    if (description) {
+    const des = description?.replace?.(/•/g, '→')
+    const formattedArrowText = des?.split("→");
+    if (formattedArrowText) {
+      return (
+        <div
+          className={`report-description hideDescription textColor ${
+            isActive ? "showDescription" : ""
+          }`}
+          onClick={() => onClick()}
+        >
+          <p>{formattedArrowText?.[0]}</p>
+          <ul className="pl-5">
+            {formattedArrowText?.slice(1).map((list) => {
+              return (
+                <li className="list-disc">{list}</li>
+              )
+            })}
+          </ul>
+        </div>
+      );
+    }
+    if (description && !formattedArrowText) {
       return (
         <p
           className={`report-description hideDescription textColor ${
@@ -56,7 +82,6 @@ const Report = ({
     }
     return null;
   };
-
   const renderCountryBox = () => {
     if (countryName) {
       return (
@@ -150,11 +175,14 @@ const Report = ({
       key={key}
       className={`report-card cursor-pointer ${isActive ? "active" : ""}`}
     >
-      <div className="flex items-start justify-between p-[12px] w-[100%]">
-        <div
-          className="flex items-center mr-[18px] flex-1"
-          onClick={() => onClick()}
-        >
+      <div
+        className="flex items-start justify-between p-[12px] w-[100%]"
+        onClick={() => {
+          setIsClickedReport(true);
+          onClick();
+        }}
+      >
+        <div className="flex items-center mr-[18px] flex-1">
           {renderMainImage()}
           <p className="title font-normal text-[14px] m-0 text-text textColor">
             {title}
@@ -165,6 +193,11 @@ const Report = ({
             id={"KeyPublication"}
             content="Key Publication - Click for more information"
             hideInfo={true}
+            isStartIcon={true}
+            isClickedReport={isClickedReport}
+            setIsClickedReport={setIsClickedReport}
+            onHide={handleTooltipVisibility}
+            onMouseEnter={() => setTooltipVisible(true)}
           >
             <div className="starIcon">
               {selectedRes === "energyefficiency" ? (
@@ -194,8 +227,8 @@ const Report = ({
                       y2="22.8451"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#37A7F0" />
-                      <stop offset="1" stopColor="#42DAC1" />
+                      <stop offset="14.21%" stopColor="#381dcc" />
+                      <stop offset="71.54%" stopColor="#2557d2" />
                     </linearGradient>
                     <linearGradient
                       id="paint1_linear_3084_1199"
@@ -205,8 +238,8 @@ const Report = ({
                       y2="22.8451"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#37A7F0" />
-                      <stop offset="1" stopColor="#42DAC1" />
+                      <stop stopColor="#2557D2" />
+                      <stop offset="1" stopColor="#332ACD" />
                     </linearGradient>
                   </defs>
                 </svg>

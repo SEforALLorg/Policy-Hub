@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { getRoute } from "../../utilities";
 import RadioButton from "../radioButton";
 import TooltipComponent from "../tooltip";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const StepComponent = ({
   onNext,
@@ -157,7 +158,7 @@ const StepComponent = ({
           style={{ opacity: !stepQuestion?.length || stepCount === 1 ? 0.5 : 1 }}
           disabled={!stepQuestion?.length || stepCount === 1}
         >
-          <img src="/static/images/leftArrow.svg" alt="left_arrow" />{" "}
+          <FiChevronLeft className="mr-1 mt-[-1.5px]"/>
           {t("Previous")}
         </button>
         {nextCount > 1 && (
@@ -167,7 +168,7 @@ const StepComponent = ({
         )}
         <button onClick={() => onNextClick(stepCount)} className="SlideButton">
           {t("Next")}{" "}
-          <img src={"/static/images/rightArrow.svg"} alt="right_arrow" />
+          <FiChevronRight className="ml-1 mt-[-1.5px]"/>
         </button>
       </div>
     </div>

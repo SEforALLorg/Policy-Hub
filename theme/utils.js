@@ -23,6 +23,9 @@ export function createTheme({
     radioColor,
     radioActiveColor,
     mediaIconColor,
+    borderColor,
+    hoverText,
+    stepCount
 }) {
     return {
         "--theme-back-ground-image": backGroundImage,
@@ -43,5 +46,9 @@ export function createTheme({
         "--theme-radio-color":radioColor,
         "--theme-radio-active-color":radioActiveColor,
         "--theme-media-icon-color":mediaIconColor,
+        "--theme-border": borderColor,
+        "--theme-hover-text": hoverText,
+        "--theme-step-count": stepCount,
+
     };
 }

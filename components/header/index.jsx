@@ -115,6 +115,7 @@ const Header = ({ selectedRes }) => {
             <div
               onClick={() => window.open("https://www.seforall.org/")}
               target={"_blank"}
+              className="logo-static-width"
             >
               <img
                 src={"/static/images/SEforALL_Logo_White.png"}

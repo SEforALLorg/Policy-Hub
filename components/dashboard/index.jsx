@@ -12,7 +12,7 @@ import {
   putJourneyStep,
 } from "../../utilities";
 import { useTranslation } from "react-i18next";
-import Loader from "../loader";
+import DashboardSkeleton from "../skeleton/dashboardSkeleton";
 
 const LeftWrapPage = lazy(() => import("./leftWrap"));
 const RightWrapPage = lazy(() => import("./rightWrap"));
@@ -39,6 +39,7 @@ const Dashboard = ({
   const [newJourneyData, setNewJourneyData] = useState([]);
   const [payload, setPayload] = useState([]);
   const [selectedResource, setSelectedResource] = useState();
+  const [completed, setCompleted] = useState(false);
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -85,6 +86,17 @@ const Dashboard = ({
           journey?.[0]?.attributes?.AddAnswer?.[0]?.NonKeyPublication?.data
         );
       }
+    }  else if (query?.id === "undefined") {
+      setCompleted(true);
+      setIsResource(false);
+      setIsExpand(true);
+    } else if (query?.bigCard === "true") {
+      setIsResource(false);
+      setIsExpand(true);
+    } 
+    else if (["32", "9", "80", "52"]?.includes(query?.id)) {
+      setIsExpand(false);
+      setIsBigCard(false);
     }
   }, [router]);
 
@@ -184,6 +196,11 @@ const Dashboard = ({
       }
     }
   };
+  let currentResourceType = null;
+
+  if (typeof localStorage !== "undefined") {
+    currentResourceType = localStorage.getItem("ResourceType");
+  }
 
   useEffect(() => {
     setUserJourney();
@@ -193,9 +210,33 @@ const Dashboard = ({
     <Wrapper isExpand={isExpand}>
       {!isResource ? (
         <>
-          <div className={`bigCard ${isExpand ? "bigCardAnimation" : ""}`}>
+          <div
+            className={`bigCard ${
+              isExpand ? "bigCardAnimation overflow-hidden" : ""
+            } 
+          ${
+            currentResourceType === "energyefficiency" &&
+            isExpand &&
+            "increse-efficiency-bigCardAnimation-height"
+          }
+          ${currentResourceType === "electricity" &&
+          isExpand &&
+          "increse-electricity-bigCardAnimation-height"}
+          ${
+            currentResourceType === "poweringhealthcare" &&
+            isExpand &&
+            "increse-phc-bigCardAnimation-height"
+          }
+          `}
+          >
             {isExpand ? (
-              <Suspense fallback={<div className="h-[700px] w-full flex items-center justify-center" ><Loader width={80} height={80} /></div>}>
+              <Suspense
+                fallback={
+                  <div className="h-full w-full flex items-center justify-center mobileMax:flex-col">
+                    <DashboardSkeleton />
+                  </div>
+                }
+              >
                 <LeftWrapPage
                   selectedResource={selectedResource}
                   questions={questions?.data?.data.sort(
@@ -214,6 +255,7 @@ const Dashboard = ({
                   firstHit={oldJourney[0]}
                   isExpand={isExpand}
                   resourcesData={resources}
+                  completed={completed}
                   isFetchingQuestions={isFetchingQuestions}
                 />
                 <RightWrapPage
@@ -230,7 +272,7 @@ const Dashboard = ({
                 />
               </Suspense>
             ) : (
-              <div className="h-[700px]" />
+              <div className="h-[770px]" />
             )}
           </div>
           <div className={`smallCard ${isExpand ? "smallCardAnimation" : ""}`}>
@@ -249,17 +291,17 @@ const Dashboard = ({
           </div>
         </>
       ) : (
-          <Resources
-            resourcesData={resources}
-            selected={(e) => {
-              setSelectedResource(e);
-              selectedRes(e?.attributes?.Name);
-            }}
-            onYes={() => setIsResource(false)}
-            onNextQuestionId={onNextQuestionId}
-            setIsOpen={setIsOpen}
-            loader={loader}
-          />
+        <Resources
+          resourcesData={resources}
+          selected={(e) => {
+            setSelectedResource(e);
+            selectedRes(e?.attributes?.Name);
+          }}
+          onYes={() => setIsResource(false)}
+          onNextQuestionId={onNextQuestionId}
+          setIsOpen={setIsOpen}
+          loader={loader}
+        />
       )}
     </Wrapper>
   );

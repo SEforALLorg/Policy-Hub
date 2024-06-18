@@ -4,11 +4,12 @@ import { useTranslation } from "react-i18next";
 import { isMobile } from "../../../utilities";
 
 const TopCard = ({ HandleOpen }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleButtonClick = useCallback(() => {
     HandleOpen();
   }, [HandleOpen]);
+ 
   return (
     <div className="customize-card p-[1.8rem] py-[2.5rem] h-[auto] bg-white rounded-2xl w-[80%] relative mt-[3rem] mb-[1rem] mx-[auto] SustainableBox">
       <div className="items-center customize-header">
@@ -18,7 +19,7 @@ const TopCard = ({ HandleOpen }) => {
           <span className="text-Primary"> {t("Policy")}</span> {t("Hub")}
         </h1>
       </div>
-      <div id="container-main" className={`flex my-[1.5rem] `}>
+      <div id="container-main" className="flex my-[1.5rem]">
         <div className="container-box w-[50%]">
           <div className="flex flex-col h-[50%] ">
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
@@ -37,7 +38,7 @@ const TopCard = ({ HandleOpen }) => {
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
           <div className="flex flex-col h-[50%]">
-            <div className="second-container bg-white-900 mobile-card-width card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[50%] mt-[2rem]">
+            <div className="second-container bg-white-900 mobile-card-width card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex items-start h-[100%] !mt-[1rem]">
               <img
                 className="w-[14%] mr-[8px] mt-[4px]"
                 src="../../../static/images/journey.svg"
@@ -71,7 +72,7 @@ const TopCard = ({ HandleOpen }) => {
             </div>
             <div className="mx-[auto] w-[75%] border-b-[2px] border bg-black opacity-[1]" />
           </div>
-          <div className="last-card bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[2rem]">
+          <div className={`last-card bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[50%] mt-[1rem] `}>
             <img
               className="w-[16%] mr-[8px] mt-[4px]"
               src="../../../static/images/guide.svg"
@@ -88,12 +89,12 @@ const TopCard = ({ HandleOpen }) => {
       </div>
       <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
         <div
-          className="w-[49%] absolute bottom-[-28px] left-[26%] landing-button"
+          className={`w-[49%] absolute bottom-[-28px] left-1/2 -translate-x-1/2 landing-button ${i18n.language === "fr" && "mobileMax:!w-[70%] tabMax:!w-[60%]"}`}
           onClick={handleButtonClick}
         >
           <StartButton
             title={t("ClickHereToStart")}
-            className="w-full pt-[16px] pb-[12px] "
+            className={`w-full pt-[16px] pb-[12px] ${i18n.language === "fr" && "mobileMax:!px-1"}`}
           />
         </div>
       </div>

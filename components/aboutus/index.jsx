@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { logoData } from "../../constant";
 import ReactPlayer from "react-player";
+import { IoLogoYoutube } from "react-icons/io5";
 
 const About = () => {
   const { t } = useTranslation();
@@ -48,11 +49,18 @@ const About = () => {
               src={"../../static/images/SEforALL_Logo_Colour.png"}
               alt="flag"
             />
-            <ReactPlayer
-              url="https://www.youtube.com/watch?v=ylnnUCezSoY"
-              width="100%"
-              height="280px"
-            />
+            <div className="relative h-[280px] w-full">
+              <div className="animate-pulse bg-skeleton w-full absolute h-full top-0 left-0 flex items-center justify-center">
+                <IoLogoYoutube className="text-[60px] text-[#ccc]" />
+              </div>
+              <div className="w-full h-full absolute left-0 top-0 z-10">
+                <ReactPlayer
+                  url="https://www.youtube.com/watch?v=ylnnUCezSoY"
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className="bg-lightBg xsm:p-5 small:p-10 dropShadow">

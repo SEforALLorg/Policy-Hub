@@ -45,6 +45,8 @@ const Energyefficiency = () => {
         setIsReload(true);
         router.push(`/energyefficiency/${defaultQuestion}`);
       }
+    } else if (router?.query?.bigCard === "true" ) {
+      setIsReload(true);
     }
   }, [router]);
   return (
@@ -73,7 +75,7 @@ const Energyefficiency = () => {
             >
               <Header selectedRes={res} />
             </div>
-            <div>
+            <div className="mobile:min-h-[70vh] flex relative items-center	justify-center bottom-view">
               <Dashboard
                 questions={
                   questions || {

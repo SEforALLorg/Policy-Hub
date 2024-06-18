@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiInfo } from "react-icons/fi";
 import { Tooltip } from "react-tooltip";
 
@@ -10,12 +10,30 @@ const TooltipComponent = ({
   hideContent,
   customizeStyle,
   id,
-  style
+  style,
+  isStartIcon = false,
+  isClickedReport,
+  setIsClickedReport
 }) => {
   return (
     <div
       className={`my-anchor-element-${id} tooltipWrap`}
       style={{ cursor: hideContent ? "" : "pointer" }}
+      onMouseEnter={() => {
+        if (isStartIcon) {
+          setIsClickedReport(true);
+        }
+      }}
+      onMouseLeave={() => {
+        if (isStartIcon) {
+          setIsClickedReport(false);
+        }
+      }}
+      onClick={() => {
+        if (isStartIcon) {
+          setIsClickedReport(false);
+        }
+      }}
     >
       {hideInfo ? null : (
         <div className="tooltipIcon">
@@ -27,7 +45,9 @@ const TooltipComponent = ({
         ""
       ) : (
         <Tooltip
-          className={customizeStyle ? customizeStyle : "tooltip_content"}
+          className={`${customizeStyle ? customizeStyle : "tooltip_content"} ${
+            isStartIcon && !isClickedReport && "hidden"
+          }`}
           anchorSelect={`.my-anchor-element-${id}`}
           clickable={false}
           place="top"

@@ -27,7 +27,7 @@ body {
 main {
   background-image: url("/static/images/BG.png");
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: cover;
   overflow: hidden;
   overflow: auto !important;
   height: 100vh;
@@ -39,7 +39,7 @@ main {
 }
 
 .headerContainer .dropdown{
-  width: 200px;
+  width: 215px;
 }
 .headerContainer .dropdown-menu {
   left: -8px !important;
@@ -81,10 +81,15 @@ main.clean_cooking{
   background-image: url("/static/images/energy_efficiency_bg.png");
   background-size: cover;
 }
-
 .BtnColor {
   background: var(--theme-button-color) !important;
   color: var(--theme-button-text-color) !important;
+  border: 1px solid transparent !important;
+}
+.BtnColor:hover {
+  background: transparent !important;
+  color: var(--theme-hover-text) !important;
+  border: 1px solid var(--theme-border)!important;
 }
 
 .textColor {
@@ -147,7 +152,8 @@ main.clean_cooking{
 }
 
 .optionsButtonWrap p {
-  color: #065a89 !important;
+  color: var(--theme-step-count) !important;
+  margin: 0;
 }
 
 .restartIconColor svg {
@@ -262,7 +268,7 @@ a {
   text-transform: uppercase;
   color: var(--theme-primary-button) !important;
   /* width: 185px; */
-  transition: all 0.5s;
+  transition: all 0.1s;
   display: inline-block;
 }
 
@@ -295,10 +301,12 @@ a {
 
 .header .updatedLogo {
   width: 180px;
+  height: 105px;
 }
 
 .header .logo {
   width: 100px;
+  height: 105px;
 }
 
 .apply-wrap {
@@ -357,7 +365,7 @@ a {
 
 .dropdown-item:hover {
   color: #fff !important;
-  background-color: #00a4ba !important;
+  background-color: var(--theme-hover-text)!important;
 }
 .dropdown-item a {
   color: #333;
@@ -413,11 +421,12 @@ a {
 }
 
 .resourceShadow {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  box-shadow: -1px 3px 5px 1px rgba(0, 0, 0, 0.25);
 }
 
 .resourceShadow:hover {
-  box-shadow: 0px 4px 4px lightblue;
+  box-shadow: -1px 3px 5px 1px lightblue;
 }
 
 .dropShadow {
@@ -483,9 +492,9 @@ a {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  transition: all 0.5s;
   border: 1px solid var(--theme-yes-button-color);
   padding: 0px 3px;
+  text-transform: capitalize;
 }
 
 .yesButton:hover {
@@ -548,6 +557,7 @@ a {
   color: var(--theme-yes-button-color);
   margin: 0px;
   margin-top: 10px;
+  word-break: break-word;
 }
 
 .complete-buttonWrap button {
@@ -560,7 +570,7 @@ a {
 
 .OptionsWrap {
   padding: 0px 10px;
-  height: calc(30vh - 30px);
+  height: calc(31vh - 30px);
   overflow: auto;
   margin-bottom: 20px;
 }
@@ -652,10 +662,11 @@ a {
 }
 
 .innerFilter {
-  height: 410px;
+  height: 95%;
   overflow: auto;
   overflow-x: hidden;
-  padding: 0px 7px;
+  padding-right: 7px;
+  padding-left: 1px;
 }
 
 .innerFilter::-webkit-scrollbar {
@@ -676,14 +687,11 @@ a {
   overflow: auto;
   padding-right: 5px;
   /* height: 410px; */
-  height: calc(60vh - 100px);
-  min-height: 90%;
-  max-height: 100%;
+  height: calc(60vh - 110px);
+  min-height: 95%;
+  max-height: 95%;
   display: flex;
   overflow-x: hidden;
-}
-.textWidth{
-  width: 80px !important;
 }
 
 @media only screen and (min-width: 1300px) and (max-width: 1600px) {
@@ -774,7 +782,7 @@ a {
 
 .selectWrap {
   background: #fff;
-  box-shadow: 0px 4.90168px 17.1559px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 7.90168px 16.1559px -5px rgba(0, 0, 0, 0.1);
   border-radius: 9.8px;
   width: 100%;
   margin-bottom: 10px;
@@ -846,7 +854,7 @@ a {
   width: 100%;
   margin-bottom: 20px;
   border: 3.67626px solid #fff;
-  transition: all 0.5s;
+  transition: all 0.1s;
 }
 
 .report-card:hover {
@@ -884,6 +892,9 @@ a {
   line-height: 21px;
   margin: 0px;
   color: #494949;
+}
+.report-description li::marker {
+  font-size: 21px;
 }
 
 .report-description.hideDescription {
@@ -1041,12 +1052,19 @@ a {
 .go-report-btn {
   background: var(--theme-button-color) !important;
   border-radius: 84.554px;
-  padding: 5px 10px;
+  padding: 5px 8px;
   width: 100px;
-  border: none;
   font-size: 10px;
   color: var(--theme-button-text-color) !important;
   margin-left: 10px;
+  border: 1px solid transparent;
+  transition: all 0.1s;
+}
+
+.go-report-btn:hover {
+  background: transparent !important;
+  color: var(--theme-hover-text) !important;
+  border: 1px solid var(--theme-border)!important;
 }
 
 .checkWrap .container {
@@ -1349,7 +1367,6 @@ a {
   transform: translateY(-5px);
   transition: 0.5s all cubic-bezier(0.25, 0.1, 0, 1.01);
 }
-
 .customize-title .tooltipWrap svg {
   font-size: 37px;
 }
@@ -1387,6 +1404,7 @@ a {
   font-size: 16px;
   font-weight: 600;
   right: 0px;
+  z-index: 9;
   /* transition: all .5s; */
   /* z-index: -1; */
 }
@@ -1442,7 +1460,51 @@ a {
   line-height: 50px !important;
   margin: 0px !important;
 }
-
+.loading-card {
+    animation: slide-y 2s ease-in-out;
+}
+@keyframes slide-y {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.email-modal input {
+  box-shadow: unset !important;
+  border: 1px solid rgb(204, 204, 204);
+  font-size: 16px;
+  outline: none !important;
+}
+.email-modal input:focus {
+  outline: none !important;
+  border-color: rgb(204, 204, 204) !important;
+}
+.email-modal p {
+  letter-spacing: 0 !important;
+}
+.reports-inner-section {
+  height: calc(100% - 100px);
+}
+.resource-backBtn {
+  color: var(--theme-back-ground);
+  font-size: 30px !important;
+  font-weight: 500 !important;
+}
+/* add animation duration */
+.remove-animation-fluctuation {
+  transition: ease-in-out 0.8s;
+}
+.substain-box {
+  min-height: 70vh;
+  height: 100%;
+}
+.navbar-brand {
+  margin-right: 0px !important;
+}
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .cookies-wrap{
     font-size: 14px;
@@ -1453,9 +1515,9 @@ a {
     padding: 10px 16px;
     width: 450px;
   }
-  .rightInnerWrap {
-    height: 450px !important;
-  }
+  /* .rightInnerWrap {
+    height: 450px;
+  } */
 }
 @media only screen and (min-width: 1024px) {
   .main-container {
@@ -1478,7 +1540,7 @@ a {
 
   .OptionsWrap {
     padding: 0px 10px;
-    height: calc(30vh - 30px);
+    height: calc(31vh - 30px);
     overflow: auto;
     margin-bottom: 20px;
   }
@@ -1503,7 +1565,17 @@ a {
     height: 85% !important;
   }
 }
-
+@media only screen and (min-width: 1200px) {
+  .logo-static-width {
+    width: 180px;
+  }
+  .BtnColor {
+    transition: all 0.1s;
+  }
+  .yesButton {
+    transition: all 0.1s;
+  }
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .topStep {
     padding-bottom: 0rem;
@@ -1513,10 +1585,12 @@ a {
 @media only screen and (max-width: 1680px) {
   .header .logo {
     width: 70px;
+    height: 73px;
   }
 
   .header .updatedLogo {
     width: 180px;
+    height: 73px;
   }
 
   .card-inner-small-wrap p {
@@ -1609,7 +1683,7 @@ a {
 
   .SustainableBox {
     margin: 10px auto !important;
-    height: calc(85vh - 100px);
+    height: 100%;
   }
 
   .reportRightWrap {
@@ -1652,6 +1726,9 @@ a {
   .divider-hide {
     display: none;
   }
+  .customize-row-button .ButtonBox {
+     width: 49%;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1100px) {
@@ -1685,15 +1762,13 @@ a {
 
   .header .updatedLogo {
     width: 180px;
+    height: 90px;
   }
 
   .header .logo {
     width: 87px;
     max-width: unset;
-  }
-
-  .navbar-brand {
-    margin-right: 0px !important;
+    height: 90px;
   }
 
   .landing-small-card {
@@ -1736,12 +1811,20 @@ a {
   }
 
   .innerFilter {
-    padding: 0px 7px;
+    padding-right: 7px;
     height: 450px;
   }
 
   .left-wrap-buttons {
     width: 80% !important;
+  }
+  .powering_healthcare .left-wrap-buttons {
+    width: 100% !important;
+  }
+  .powering_healthcare .left-wrap-buttons .buttonStyle {
+    font-size: 10px !important;
+    padding: 12px !important;
+    padding-top: 12px !important;
   }
 
   .OptionsWrap {
@@ -1768,7 +1851,8 @@ a {
 
   .restartWrap {
     margin: 2px 4px;
-    width: 31%;
+    /* width: 31%; */
+    width: 47%;
   }
 
   .restartWrap img {
@@ -1785,15 +1869,6 @@ a {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
-
-  .newsletter-input-fields button {
-    width: 100% !important;
-  }
-
-  .newsletter-input-fields input {
-    flex: 1;
-  }
-
   .resources-cards-wrap {
     padding: 0px 30px !important;
   }
@@ -1883,6 +1958,9 @@ a {
   .customize-buttons {
     max-width: 70% !important;
   }
+  .customize-row-button {
+    max-width: 100% !important;
+  }
 
   .complete-buttons-wrap {
     flex-wrap: wrap;
@@ -1921,7 +1999,7 @@ a {
   }
 
   .public-share-modal .inputFullWrap {
-    width: 18rem;
+    width: 25rem;
     margin: 0 auto;
   }
 
@@ -1931,6 +2009,14 @@ a {
 
   .public-share-modal > div {
     padding-bottom: 40px !important;
+  }
+  .nav-fr-link {
+    font-size: 12px !important;
+    min-width: 125px;
+  }
+
+  .header .container-fluid {
+    padding: 0px 0px !important;
   }
 }
 
@@ -2022,6 +2108,7 @@ a {
 
   .report-right-wrap {
     width: 100% !important;
+    height: 92%;
   }
 
   .resources-button {
@@ -2080,6 +2167,10 @@ a {
     height: 100%;
     max-width: 50%;
   }
+  .nav-fr-link {
+    font-size: 11px !important;
+    min-width: 100px;
+  }
 }
 
 @media only screen and (max-width: 850px) {
@@ -2137,6 +2228,9 @@ a {
     margin: 10px auto !important;
     height: unset !important;
     width: 100% !important;
+  }
+  .substain-box {
+    min-height: auto;
   }
 
   #wrapper {
@@ -2205,7 +2299,7 @@ a {
 
   .close-icon {
     position: absolute;
-    right: 20px;
+    right: 5px;
     width: 28px !important;
     height: 28px !important;
     margin: 0px !important;
@@ -2229,7 +2323,8 @@ a {
 
   .header .nav-link:hover {
     font-weight: 700 !important;
-    color: #494949 !important;
+    /* color: #494949 !important; */
+    color: var(--theme-primary-button) !important;
     text-decoration: unset !important;
   }
 
@@ -2332,7 +2427,7 @@ a {
     padding: 0px !important;
     /* margin-top: 10px; */
     margin-bottom: 20px !important;
-    margin-top: 20px;
+    /* margin-top: 20px; */
   }
 
   .customize-card {
@@ -2362,13 +2457,21 @@ a {
 
   .customize-buttons .landing-button {
     width: 54%;
-    left: 24%;
   }
 
   .left-wrap-buttons button {
     height: unset;
     font-size: 14px;
     margin-bottom: 10px !important;
+  }
+
+  .powering_healthcare .left-wrap-buttons {
+    width: 100% !important;
+  }
+  .powering_healthcare .left-wrap-buttons .buttonStyle{
+    font-size: 13px!important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important; 
   }
 
   .dashboard-left-wrap {
@@ -2506,6 +2609,9 @@ a {
     text-align: left;
     display: block;
   }
+  .header .nav-link:hover {
+    color: #494949 !important;
+  }
 
   .tools-card {
     display: block !important;
@@ -2591,7 +2697,7 @@ a {
 
   .go-report-btn {
     padding: 5px 3px;
-    width: 70px;
+    width: 78px;
     margin: 0px;
   }
 
@@ -2683,6 +2789,7 @@ a {
     padding-bottom: 2px !important;
     font-size: 14px;
     width: 86px;
+    cursor: pointer;
   }
 
   .filter-button svg {
@@ -2776,7 +2883,7 @@ a {
   }
 
   .footer-logos img {
-    margin: 4px !important;
+    margin: 8px !important;
     width: 183px;
     height: 48px;
   }
@@ -2794,6 +2901,15 @@ a {
 
   .african-development img {
     max-width: 96%;
+  }
+
+  .newsletter-input-fields button {
+    width: 100% !important;
+  }
+
+  .newsletter-input-fields input {
+    flex: 1;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 360px) {
@@ -2850,10 +2966,6 @@ a {
 
   .second-container {
     margin: 0;
-  }
-
-  .third-container {
-    margin-bottom: 2rem;
   }
 }
 
@@ -2920,7 +3032,7 @@ a {
   }
 
   .footer-logos img {
-    margin: 4px !important;
+    margin: 8px !important;
     width: 181px;
     height: 46px;
   }
@@ -2949,7 +3061,7 @@ a {
   }
 
   .customize-card img {
-    width: 65px;
+    width: 75px;
     height: unset;
   }
 
@@ -3390,14 +3502,23 @@ a {
     padding: 8px 16px;
     max-width: 250px !important;
   }
+
 }
 .closeIcon {
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   position: absolute;
-  right: -23px;
+  right: -25px;
   top: -34px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 2px;
+  transition: ease-in;
+  transition-duration: 100ms;
+}
+.closeIcon:hover {
+  background-color: #ececec;
 }
 .header-common-closeIcon {
   width: 30px;

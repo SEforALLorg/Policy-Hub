@@ -184,5 +184,7 @@
     "ElectricityAccess":"Electricity Access",
     "CleanCooking":"Clean Cooking",
     "SustainableCooling":"Sustainable Cooling",
-    "EnergyEfficency":"Energy Efficency"
+    "EnergyEfficency":"Energy Efficency",
+    "back": "Back",
+    "shareAttachments": "Share Attachments"
 }

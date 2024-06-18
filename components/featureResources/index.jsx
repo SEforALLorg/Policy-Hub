@@ -14,6 +14,7 @@ import {
   DropdownToggle,
   UncontrolledDropdown,
 } from "reactstrap";
+import ResourcesCardSkeleton from "../skeleton/resourcesCardSkeleton";
 
 const Feature = () => {
   const { t } = useTranslation();
@@ -35,12 +36,25 @@ const Feature = () => {
     }
   );
   const setData = () => {
-    const mainData = filteredCards?.data?.data;
-    const filterData =
-      mainData?.filter((item) => item?.id === 12 || item?.id === 11) || [];
+    const mainData = filteredCards?.data?.data || [];
+    // Exclude this Phc reports only
+    const excludePhcData = mainData.filter(resource => {
+      if (
+        resource.attributes?.resources?.data &&
+        resource.attributes.resources.data.length > 0
+      ) {
+        for (let item of resource.attributes.resources.data) {
+          if (item.attributes?.Name === "Powering Healthcare") {
+            return false; 
+          }
+        }
+      }
+      return true; 
+    });
+    const filterData = excludePhcData.filter(item => item.id === 12 || item.id === 11) || [];
     const finalIds = filterData?.map((item) => item?.id);
     const finalData =
-      mainData
+    excludePhcData
         ?.filter((item) => !finalIds?.includes(item?.id))
         .sort((a, b) =>
           a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
@@ -147,7 +161,7 @@ const Feature = () => {
                     style={{ marginBottom: "0" }}
                     className="text-normal text-Primary xsm:text-xsmall laptop:text-xsmall rounded-[60px] text-normal border-2 border-transparent outline-0 py-[0px] px-[0px] ease-linear transition-all duration-500 mb-[5px] mr-[5px] card-tool-button"
                   >
-                    {t(filterType?.replace(' ', '')) || t("AllPlatforms")}
+                    {t(filterType?.replace(" ", "")) || t("AllPlatforms")}
                   </p>
                 </DropdownToggle>
                 <DropdownMenu style={{ marginRight: -8, marginTop: 7 }}>
@@ -155,6 +169,7 @@ const Feature = () => {
                     const isActive = resource?.label === t(filterType);
                     return (
                       <DropdownItem
+                      className="break-words !whitespace-normal"
                         onClick={() => {
                           filterData({
                             id: resource?.id,
@@ -169,7 +184,7 @@ const Feature = () => {
                           color: isActive ? "#fff" : "",
                         }}
                       >
-                        {t(resource?.label?.replace(' ', ''))}
+                        {t(resource?.label?.replace(" ", ""))}
                       </DropdownItem>
                     );
                   })}
@@ -197,9 +212,13 @@ const Feature = () => {
                   );
                 })
               ) : (
-                <div className="flex items-center flex-col h-full w-full justify-center">
-                  <Loader height={80} width={80} />
-                </div>
+                <>
+                  {Array(6)
+                    ?.fill(1)
+                    .map((_,index) => {
+                      return <ResourcesCardSkeleton key={index}/>;
+                    })}
+                </>
               )}
             </div>
           </div>
