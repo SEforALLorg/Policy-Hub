@@ -32,6 +32,7 @@ import {
   SUSTAINABLECOOLING,
   SUSTAINABLE_COOLING,
 } from "../../constant";
+import ReportSkeleton from "../skeleton/reportSkeleton";
 
 const RightWrapPage = ({
   publicationReports = [],
@@ -104,7 +105,6 @@ const RightWrapPage = ({
       40
     );
   }, [selectInputs, nonPublicationReports, publicationReports]);
-
   const { data: allReports, isFetching: isFetchingReports } = useQuery(
     ["getReports", query],
     () => getReports(query),
@@ -179,10 +179,10 @@ const RightWrapPage = ({
     })
     ?.filter((item) => item !== undefined);
 
-  // Share email modal
-  const toggleShareModal = () => {
-    setShareModal(!isShareModal);
-  };
+ // Share email modal
+ const toggleShareModal = () => {
+  setShareModal(!isShareModal);
+};
 
   // Filter onChange
   const onChange = (e) => {
@@ -335,7 +335,7 @@ const RightWrapPage = ({
         !showAllReports);
 
   let resourceClassName = "";
-  if (resourceType ===  "cleancooking" && isExpand) {
+  if (resourceType === "cleancooking" && isExpand) {
     resourceClassName = "cleanCooking";
   } else if (resourceType === "energyefficiency" && isExpand) {
     resourceClassName = "energy";
@@ -356,13 +356,11 @@ const RightWrapPage = ({
 
   let height;
   if (resourceType === "cleancooking" && isExpand) {
-    height = "calc(81vh - 100px)";
+    height = "calc(80vh - 120px)";
   } else if (resourceType === "energyefficiency" && isExpand) {
-    height = "calc(96vh - 100px)";
-  } else if (resourceType === "sustainablecooling" && isExpand) {
-    height = "calc(82vh - 100px)";
+    height = "calc(80vh - 120px)";
   } else {
-      height = ""
+    height = "";
   }
 
   return (
@@ -397,7 +395,7 @@ const RightWrapPage = ({
                 }
               })}
             </div>
-            <h5 className="font-bold text-[22px] m-0 text-text textColor">
+            <h5 className="font-bold text-[22px] m-0 text-text textColor mobileMax:!text-[20px]">
               {t("ResourcesInput")}
             </h5>
           </div>
@@ -438,13 +436,13 @@ const RightWrapPage = ({
                 ? "transform-filter-animation-show"
                 : "transform-filter-animation-hide"
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px] ${
-              !optionSelected && `mt-[6px]`
+              !optionSelected && ``
             }`}
           >
             <h5
-              className="font-bold text-[16px] text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center mt-[-5px]"
+              className="font-bold text-[16px] m-0 text-text pb-[5px] pl-[2px] tracking-[1px] flex justify-between textColor items-center relative"
               style={{
-                paddingBottom: paddingBottom,
+                paddingBottom: "9px",
                 marginTop:
                   (optionSelected && showAllReports) || optionSelected ? 0 : "",
               }}
@@ -453,8 +451,8 @@ const RightWrapPage = ({
 
               {optionSelected ? (
                 <button
-                  className={`filterButton bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium pt-[2px] resources-button button-animation mobile-hidden clear-filter-button`}
+                  className={`filterButton bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center !absolute top-0 right-0
+      text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium resources-button button-animation mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
                   {t("ClearFilters")}
@@ -463,7 +461,7 @@ const RightWrapPage = ({
               <IoClose
                 className="text-text mr-[5px] mobile-show close-icon"
                 onClick={() => setIsFilter(!isFilter)}
-                style={{ top: 14 }}
+                style={{ top: -7 }}
               />
             </h5>
             <div className="innerFilter">
@@ -596,7 +594,6 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
-
               <div className="apply-wrap">
                 <button
                   type="button"
@@ -629,55 +626,56 @@ const RightWrapPage = ({
             className={"report-right-wrap w-[70%]"}
             onClick={() => setIsOpen()}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[8px] pl-[2px] tracking-[1px] flex justify-between resource-buttons textColor">{t("Resources")}
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[8px] tracking-[1px] flex justify-between resource-buttons textColor">
+              {t("Resources")}
               <div className="flex resource-buttons-wrap">
-                <button
-                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium mt-[-20px] pt-[4px] resourcesButtonColor hover:opacity-[0.8] resources-button`}
-                  onClick={() => onDownload()}
-                  disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : "", width: 120 }}
+                <TooltipComponent
+                  content={t("clicktodownload")}
+                  hideInfo={true}
+                  top={true}
+                  hideContent={disableButtons}
+                  id={"download"}
+                  style={{ marginTop: -7 }}
                 >
-                  {!isLoader ? (
-                    <TooltipComponent
-                      content={t("clicktodownload")}
-                      hideInfo={true}
-                      top={true}
-                      hideContent={disableButtons}
-                      id={"download"}
-                      style={{ marginTop: -7 }}
-                    >
+                  <button
+                    className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium pt-[4px] resourcesButtonColor hover:opacity-[0.8] resources-button`}
+                    onClick={() => onDownload()}
+                    disabled={disableButtons}
+                    style={{ opacity: disableButtons ? 0.5 : "", width: 125 }}
+                  >
+                    {isLoader ? (
+                      <div className="flex items-center justify-center h-[100%]">
+                        <Loader />
+                      </div>
+                    ) : (
                       <div className="flex justify-center download-button-inner">
                         {t("Download")} <BsDownload style={{ marginLeft: 7 }} />
                       </div>
-                    </TooltipComponent>
-                  ) : (
-                    <div className="flex items-center justify-center h-[100%]">
-                      <Loader />
-                    </div>
-                  )}
-                </button>
-                <button
-                  className={`hover:opacity-[0.8] bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
-        text-xsmall h-[40px] border-0	text-white outline-0	no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button`}
-                  onClick={toggleShareModal}
-                  disabled={disableButtons}
-                  style={{ opacity: disableButtons ? 0.5 : "" }}
+                    )}
+                  </button>
+                </TooltipComponent>
+                <TooltipComponent
+                  content={t("clicktoreceive")}
+                  hideInfo={true}
+                  top={true}
+                  hideContent={disableButtons}
+                  id={"email"}
+                  style={{ marginTop: -7 }}
                 >
-                  <TooltipComponent
-                    content={t("clicktoreceive")}
-                    hideInfo={true}
-                    top={true}
-                    hideContent={disableButtons}
-                    id={"email"}
-                    style={{ marginTop: -7 }}
+                  <button
+                    className={`hover:opacity-[0.8] bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5
+        text-xsmall h-[40px] border-0	text-white outline-0 no-underline font-medium ml-[10px] mt-[-20px] pt-[4px] resourcesButtonColor resources-button`}
+                    onClick={toggleShareModal}
+                    disabled={disableButtons}
+                    style={{ opacity: disableButtons ? 0.5 : "" }}
                   >
-                    <div className="flex">
-                      {" "}
-                      {t("Email")} <AiOutlineMail style={{ marginLeft: 7 }} />
-                    </div>
-                  </TooltipComponent>
-                </button>
+                    
+                      <div className="flex">
+                        {t("Email")} <AiOutlineMail style={{ marginLeft: 7 }} />
+                      </div>
+                  </button>
+                </TooltipComponent>
               </div>
               {isShareModal ? (
                 <SharePublicationModal
@@ -703,8 +701,12 @@ const RightWrapPage = ({
             >
               <div className="relative mr-[0px] w-[100%] inline-block">
                 {(reportsLoader || isFetchingReports) && !isScrollLoader ? (
-                  <div className="flex items-center justify-center h-[100%]">
-                    <Loader />
+                  <div className="h-full">
+                    <ReportSkeleton />
+                    <ReportSkeleton />
+                    <ReportSkeleton />
+                    <ReportSkeleton />
+                    <ReportSkeleton />
                   </div>
                 ) : isFinalPublicationReports ||
                   Boolean(reports?.length) ||

@@ -17,6 +17,9 @@ const darkTheme = createTheme({
   radioColor: "#C4C4C4",
   radioActiveColor: "#018AA5",
   mediaIconColor: "#1F4349",
+  borderColor: "#065A89",
+  hoverText: "#065A89",
+  stepCount: "#065A89",
 });
 export default darkTheme;
 

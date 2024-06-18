@@ -1,18 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useQuery } from "react-query";
 import { useRouter } from "next/router.js";
 
-import { ErrorNotify } from "components/notification";
 import TopCard from "./topCard/index.jsx";
-import Dashboard from "../dashboard";
 import { landingPage } from "../../utilities/index.jsx";
-import { getResource } from "../../pages/api/resources.js";
 
-const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
+const LandingPage = ({ setIsDashboardOpen }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const [isBigCard, setIsBigCard] = useState(false);
-  const [resources, setResources] = useState();
 
   useEffect(() => {
     if (localStorage.getItem("UserId")) {
@@ -32,50 +26,15 @@ const LandingPage = ({ setIsDashboardOpen, selectedRes, footerRes }) => {
     }
   }, [isOpen]);
 
-  const {
-    data: resource,
-    isFetching: isFetchingResources,
-    refetch,
-  } = useQuery(["resource"], getResource, {
-    enabled: false,
-    onError: (error) => {
-      ErrorNotify(error?.response?.data?.error?.message);
-    },
-  });
-
   const handleOpen = useCallback(() => {
-    refetch();
-    setIsOpen(true);
+    router.push("/getresourcetypes")
   }, []);
-
-  const allResource = resource?.data?.data;
-
-  useEffect(() => {
-    setResources(allResource);
-  }, [allResource]);
 
   return (
     <>
       <div>
-        {!isOpen && <TopCard HandleOpen={handleOpen} />}
-        {isOpen && (
-          <div
-            className={`${
-              !isBigCard ? "h-[80vh]" : ""
-            }  flex relative items-center	justify-center bottom-view`}
-            id="bottom-view"
-          >
-            <Dashboard
-              questions={[]}
-              isFetchingQuestions={isFetchingResources}
-              setIsBigCard={setIsBigCard}
-              resources={resources}
-              selectedRes={selectedRes}
-              footerRes={footerRes}
-              setIsOpen={setIsOpen}
-            />
-          </div>
-        )}
+        {!isOpen && <div className="substain-box"> <TopCard HandleOpen={handleOpen} /></div>}
+
         <p className="fixed invisible z-0">
         Sustainable Energy for All (SEforALL) is an international organization
         that works in partnership with the United Nations and government

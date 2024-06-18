@@ -139,6 +139,56 @@ export const buttonOptions = [
     },
   },
 ];
+export const resourcesList =[
+  {
+    "id": 1,
+    "attributes": {
+      "Name": "Electricity Access",
+      "createdAt": "2022-11-03T12:05:58.176Z",
+      "updatedAt": "2023-04-19T12:44:32.100Z",
+      "publishedAt": "2022-11-03T12:06:01.609Z",
+      "QuestionId": "9",
+      "locale": "en",
+      "FrenchName": "Accès à l’électricité"
+    }
+  },
+  {
+    "id": 2,
+    "attributes": {
+      "Name": "Clean Cooking",
+      "createdAt": "2022-11-03T12:06:36.827Z",
+      "updatedAt": "2023-04-19T12:44:47.314Z",
+      "publishedAt": "2022-11-03T12:06:37.839Z",
+      "QuestionId": "32",
+      "locale": "en",
+      "FrenchName": "Cuisson propre"
+    }
+  },
+  {
+    "id": 3,
+    "attributes": {
+      "Name": "Energy Efficiency",
+      "createdAt": "2022-11-03T12:07:01.176Z",
+      "updatedAt": "2023-04-19T12:45:14.427Z",
+      "publishedAt": "2022-11-03T12:07:01.970Z",
+      "QuestionId": "80",
+      "locale": "en",
+      "FrenchName": "Efficacité énergétique"
+    }
+  },
+  {
+    "id": 4,
+    "attributes": {
+      "Name": "Sustainable Cooling",
+      "createdAt": "2022-11-03T12:07:23.964Z",
+      "updatedAt": "2023-04-24T10:22:54.789Z",
+      "publishedAt": "2022-11-03T12:07:25.369Z",
+      "QuestionId": "52",
+      "locale": "en",
+      "FrenchName": "Refroidissement durable"
+    }
+  },
+]
 
 export const logoData = [
   {

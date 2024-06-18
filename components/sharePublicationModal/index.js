@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { MdClose } from "react-icons/md";
 import ShareAttachment from "../shareAttachment";
@@ -11,6 +11,19 @@ const SharePublicationModal = ({
   searchTerm,
 }) => {
   const { t } = useTranslation();
+  
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest(".public-share-modal")) {
+        toggle();
+      }
+    };
+    document.body.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener("click", handleOutsideClick);
+    };
+  }, [toggle]);
 
   return (
     <div
@@ -31,11 +44,12 @@ const SharePublicationModal = ({
         >
           &#8203;
         </span>
-        <div className="relative inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full public-share-modal">
-          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div className="email-modal relative flex items-center h-full w-full bg-white mobile:min-w-[600px] mobile:min-h-[350px] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full public-share-modal">
+          <div className="bg-white mobile:p-5 laptop:p-8 py-4 px-3 w-full h-full">
+            <h2 className="text-center mb-10 font-bold mobile:text-medium text-tiny uppercase textColor">{t("shareAttachments")}</h2>
             <MdClose
               size={30}
-              className="absolute right-[15px] top-[15px] cursor-pointer"
+              className="absolute right-[8px] top-[8px] cursor-pointer w-10 p-1 h-10 rounded-full text-gray-400 hover:bg-[#ececec82]"
               color={"#bbb"}
               onClick={toggle}
             />
@@ -52,9 +66,9 @@ const SharePublicationModal = ({
               <button
                 type="button"
                 onClick={toggle}
-                className="ml-auto mr-auto flex justify-center rounded-full h-[50px] xsm:w-full extrasmall:w-52 
-                small:w-72 laptop:w-72 border border-gray-300 shadow-sm px-4 py-2 bg-white text-small font-medium 
-                text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 items-center"
+                className="ml-auto mr-auto flex justify-center rounded-full mobileMax:w-full tab:!w-[200px] px-10 h-[40px] font-bold xsm:w-full 
+              hover:border-2 hover:border-[#bdbcbc] ease-linear transition-all shadow-sm px-4 py-2 text-small leading-normal font-medium !bg-[#bdbcbc]
+                text-text hover:!bg-white focus:outline-none sm:mt-0 items-center"
               >
                 {t("Cancel")}
               </button>

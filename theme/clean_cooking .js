@@ -18,6 +18,9 @@ const greenTheme = createTheme({
     radioColor:"#C4C4C4",
     radioActiveColor:"#0A8055",
     mediaIconColor:"#fff",
+    borderColor: "#004F40",
+    hoverText: "#004F40",
+    stepCount: "#004F40",
 });
    export default greenTheme;
 

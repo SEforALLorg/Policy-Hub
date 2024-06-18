@@ -50,9 +50,10 @@ const Cleancooking = () => {
         setIsReload(true);
         router.push(`/cleancooking/${defaultQuestion}`);
       }
+    } else if (router?.query?.bigCard === "true" ) {
+      setIsReload(true);
     }
   }, [isReload, router, questions]);
-
   return (
     <main id="fullWrap" ref={ref} className={"clean_cooking"}>
       <Head>
@@ -78,7 +79,7 @@ const Cleancooking = () => {
             >
               <Header selectedRes={res} />
             </div>
-            <div>
+            <div className="mobile:min-h-[70vh] flex relative items-center	justify-center bottom-view">
               <Dashboard
                 questions={
                   questions || {

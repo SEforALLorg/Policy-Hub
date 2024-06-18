@@ -24,7 +24,7 @@ export const changingCardLogo = [
     [SUSTAINABLE_COOLING]: "/static/images/sustainable_cooling_card.svg",
   },
   {
-    [ENERGY_EFFICIENCY]: "/static/images/energy_efficiency_card.svg",
+    [ENERGY_EFFICIENCY]: "/static/images/energy_efficiency_group.svg",
   },
 ];
 
@@ -39,7 +39,7 @@ export const changingLeftWrapLogo = [
     [SUSTAINABLE_COOLING]: "/static/images/left_wrap_sustainable_cooling.svg",
   },
   {
-    [ENERGY_EFFICIENCY]: "/static/images/left_wrap_energy_efficiency.svg",
+    [ENERGY_EFFICIENCY]: "/static/images/left_box_energy_efficiency.svg",
   },
 ];
 
@@ -54,7 +54,7 @@ export const changingRightWrapLogo = [
     [SUSTAINABLE_COOLING]: "/static/images/right_wrap_sustainable_cooling.svg",
   },
   {
-    [ENERGY_EFFICIENCY]: "/static/images/right_wrap_energy_efficiency.svg",
+    [ENERGY_EFFICIENCY]: "/static/images/right_box_energy_efficiency.svg",
   },
 ];
 

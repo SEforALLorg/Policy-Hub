@@ -12,6 +12,7 @@ import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
 import Loader from "../loader";
+import LeftWrapSkeleton from "../skeleton/leftWrapSkeleton";
 
 const LeftWrapPage = ({
   questions,
@@ -26,6 +27,7 @@ const LeftWrapPage = ({
   newJourney,
   firstHit,
   isExpand,
+  completed,
   isFetchingQuestions,
 }) => {
   const router = useRouter();
@@ -39,7 +41,6 @@ const LeftWrapPage = ({
   const localStepQuestion = JSON.parse(
     localStorage.getItem("stepQuestions") || "[]"
   );
-
   useEffect(() => {
     if (router?.query?.id) {
       const questionId = Number(router?.query?.id);
@@ -125,7 +126,7 @@ const LeftWrapPage = ({
     resetFilters();
     let revisedArray = [...stepQuestion];
     const questionId =
-      revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id;
+    revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id;
     setNextQuestionId(questionId);
     router.push(
       {
@@ -226,6 +227,11 @@ const LeftWrapPage = ({
     );
   };
 
+  const findResourceType = localStorage.getItem("ResourceType");
+  const phcTheme = findResourceType === "poweringhealthcare";
+  // change user journey slice count for PHC theme
+  const sliceCount = phcTheme ? 2 : 3;
+
   const onMiniClick = (e) => {
     const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
     const questionId = e?.[0];
@@ -253,187 +259,195 @@ const LeftWrapPage = ({
     );
   };
 
+  useEffect(() => {
+    if(completed) {
+      setNextQuestionId(undefined)
+    }
+  }, [completed])
+
   return (
-    <div
-      className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
-      style={{
-        height:
-          !isExpand && localResource?.attributes?.Name !== CLEANCOOKING
-            ? 400
-            : "",
-      }}
-    >
-      <>
-        <div className="flex items-center pb-2.5">
-          <div className="flex items-center relative mr-5">
-            {changingLeftWrapLogo?.map((key) => {
-              if (
-                localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
-              ) {
-                return (
-                  <img
-                    className="w-[70px] h-[70px] left-header-image"
-                    src={Object.values(key)?.[0]}
-                    alt="card"
-                    key={Object.values(key)?.[0]}
-                  />
-                );
-              }
-            })}
-          </div>
-          <h1 className="font-bold text-medium leading-[26px] text-text m-0 textColor">
-            {isEnglish
-              ? localResource?.attributes?.Name
-              : localResource?.attributes?.FrenchName}
-          </h1>
-        </div>
-        {Boolean(userJourney?.length) &&
-          nextQuestionId &&
-          userJourney?.slice(0, 3)?.map((item, index) => (
-            <div
-              key={
-                item?.questionName ||
-                item?.attributes?.MainQuestion?.Question?.data?.attributes
-                  ?.Question
-              }
-              onClick={() => {
-                if (nextQuestionId) {
-                  onStepChange(item);
+    <>
+      {detailModal && isExpand && (
+        <DetailModal open={detailModal} firstHit={firstHit} />
+      )}
+      <div
+        className="w-[40%] p-7 shadow-lg z-50 relative dashboard-left-wrap z-[1] rounded-l-[20px]"
+        style={{
+          height:
+            !isExpand && localResource?.attributes?.Name !== CLEANCOOKING
+              ? 400
+              : "",
+        }}
+      >
+        <>
+          <div className="flex items-center pb-2.5">
+            <div className="flex items-center relative mr-5">
+              {changingLeftWrapLogo?.map((key) => {
+                if (
+                  localStorage.getItem("ResourceType") === Object.keys(key)?.[0]
+                ) {
+                  return (
+                    <img
+                      className="w-[70px] h-[70px] left-header-image"
+                      src={Object.values(key)?.[0]}
+                      alt="card"
+                      key={Object.values(key)?.[0]}
+                    />
+                  );
                 }
-                resetFilters();
-              }}
-              className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
-              style={{ height: 45 }}
-            >
-              <p className="flex items-center flex-1 pr-[5px] mb-[0px]">
-                <p className={`stepDot ${index === 0 && "hideDot"}`} />
-                <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor mb-[0px]">
-                  {item?.questionName ||
-                    (isEnglish
-                      ? item?.attributes?.MainQuestion?.Question?.data
-                          ?.attributes?.Question
-                      : item?.attributes?.MainQuestion?.Question?.data
-                          ?.attributes?.FrenchQuestion)}
-                </p>
-              </p>
-              <button className="yesButton">
-                {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
-              </button>
+              })}
             </div>
-          ))}
-        {Boolean(userJourney?.length) && nextQuestionId && (
-          <div
-            className="flex items-center w-[80px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
-            onClick={() => onRestart()}
-          >
-            <VscDebugRestart color={"#065a89"} />
-            <p
-              className="text-[14px] ml-[2px] mt-[2px] textColor mb-[0px]"
-              style={{ color: "#065a89" }}
+            <h1 className="font-bold text-medium leading-[26px] text-text m-0 textColor mobileMax:text-[20px]">
+              {isEnglish
+                ? localResource?.attributes?.Name
+                : localResource?.attributes?.FrenchName}
+            </h1>
+          </div>
+          {Boolean(userJourney?.length) &&
+            nextQuestionId &&
+            userJourney?.slice(0, 3)?.map((item, index) => (
+              <div
+                key={
+                  item?.questionName ||
+                  item?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.Question
+                }
+                onClick={() => {
+                  if (nextQuestionId) {
+                    onStepChange(item);
+                  }
+                  resetFilters();
+                }}
+                className="flex items-center pt-[4px] pb-[4px] cursor-pointer stepRow"
+                style={{ height: 45 }}
+              >
+                <p className="flex items-center flex-1 pr-[5px] mb-[0px]">
+                  <p className={`stepDot ${index === 0 && "hideDot"}`} />
+                  <p className="text-[14px] text-ellipsis overflow-hidden stepText flex-1 textColor mb-[0px]">
+                    {item?.questionName ||
+                      (isEnglish
+                        ? item?.attributes?.MainQuestion?.Question?.data
+                            ?.attributes?.Question
+                        : item?.attributes?.MainQuestion?.Question?.data
+                            ?.attributes?.FrenchQuestion)}
+                  </p>
+                </p>
+                <button className="yesButton">
+                  {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
+                </button>
+              </div>
+            ))}
+          {Boolean(userJourney?.length) && nextQuestionId && (
+            <div
+              className="flex items-center w-[100px] ml-auto mb-[-13px] cursor-pointer justify-end restartIconColor"
+              onClick={() => onRestart()}
             >
-              {t("Restart")}
-            </p>
-          </div>
-        )}
-        {nextQuestionId && (
-          <div
-            className={"mt-[16px] mb-[16px]"}
-            style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
-          />
-        )}
-        {!nextQuestionId && !isFetchingQuestions && (
-          <CompletedSteps
-            onRestart={() => onRestart()}
-            onMiniClick={(e) => onMiniClick(e)}
-          />
-        )}
-        {detailModal && isExpand && (
-          <DetailModal open={detailModal} firstHit={firstHit} />
-        )}
-        {isFetchingQuestions ? (
-          <div className="flex items-center flex-col h-full justify-start">
-            <Loader />
-          </div>
-        ) : questions?.length ? (
-          questions
-            .filter(
+              <VscDebugRestart color={"#065a89"} />
+              <p
+                className="text-[14px] ml-[2px] mt-[2px] textColor mb-[0px]"
+                style={{ color: "#065a89" }}
+              >
+                {t("Restart")}
+              </p>
+            </div>
+          )}
+          {nextQuestionId && (
+            <div
+              className={"mt-[16px] mb-[16px]"}
+              style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
+            />
+          )}
+          {!nextQuestionId &&
+            !isFetchingQuestions && (
+              <CompletedSteps
+                onRestart={() => onRestart()}
+                onMiniClick={(e) => onMiniClick(e)}
+              />
+            )}
+          {isFetchingQuestions ? (
+            <div className="flex items-center flex-col h-full justify-start">
+              <LeftWrapSkeleton />
+            </div>
+          ) : questions?.length ? (
+            questions .filter(
               (q) =>
                 q?.attributes?.MainQuestion?.Question?.data?.id ===
                 nextQuestionId
             )
-            .map((item, index) => {
-              const questionTitle = isEnglish
-                ? item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.Question
-                : item?.attributes?.MainQuestion?.Question?.data?.attributes
-                    ?.FrenchQuestion;
-              const singleAnswer = item?.attributes?.AddAnswer;
-              const questionType = item?.attributes?.QuestionType;
-              const ToolTipText = isEnglish
-                ? item?.attributes?.ToolTipText
-                : item?.attributes?.FrenchToolTipText;
-              const QuestionKeyType =
-                item?.attributes?.MainQuestion?.QuestionKeyType?.data
-                  ?.attributes?.QuestionKeyType;
-              let findSteps;
-              if (QuestionKeyType) {
-                findSteps = questions?.filter(
-                  (e) =>
-                    e?.attributes?.MainQuestion?.QuestionKeyType?.data
-                      ?.attributes?.QuestionKeyType === QuestionKeyType
-                );
-              }
-              return (
-                <div className={"QuestionWrap"} key={questionTitle}>
-                  {questionType === "Questionnaire" ? (
-                    <>
-                      <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
-                        {questionTitle}
-                        {ToolTipText && (
-                          <TooltipComponent
-                            id={"leftWrap"}
-                            content={ToolTipText}
-                          />
-                        )}
-                      </div>
-                      <div className="flex items-center flex-col w-[70%] my-[8rem] mx-auto left-wrap-buttons">
-                        {singleAnswer?.map((i) => {
-                          if (!i?.Answer) return null;
-                          return (
-                            <BlueButton
-                              className="mb-3 p-2"
-                              title={isEnglish ? i?.Answer : i?.FrenchAnswer}
-                              onClick={() => onSubmitAnswer(i, item)}
-                              key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+              .map((item, index) => {
+                const questionTitle = isEnglish
+                  ? item?.attributes?.MainQuestion?.Question?.data?.attributes
+                      ?.Question
+                  : item?.attributes?.MainQuestion?.Question?.data?.attributes
+                      ?.FrenchQuestion;
+                const singleAnswer = item?.attributes?.AddAnswer;
+                const questionType = item?.attributes?.QuestionType;
+                const ToolTipText = isEnglish
+                  ? item?.attributes?.ToolTipText
+                  : item?.attributes?.FrenchToolTipText;
+                const QuestionKeyType =
+                  item?.attributes?.MainQuestion?.QuestionKeyType?.data
+                    ?.attributes?.QuestionKeyType;
+                let findSteps;
+                if (QuestionKeyType) {
+                  findSteps = questions?.filter(
+                    (e) =>
+                      e?.attributes?.MainQuestion?.QuestionKeyType?.data
+                        ?.attributes?.QuestionKeyType === QuestionKeyType
+                  );
+                }
+                return (
+                  <div className={"QuestionWrap"} key={questionTitle}>
+                    {questionType === "Questionnaire" ? (
+                      <>
+                        <div className="font-bold text-[17px] leading-6 text-text mb-10 pr-5 textColor">
+                          {questionTitle}
+                          {ToolTipText && (
+                            <TooltipComponent
+                              id={"leftWrap"}
+                              content={ToolTipText}
                             />
+                          )}
+                        </div>
+                        <div className="flex items-center flex-col w-[80%] my-[4rem] mx-auto left-wrap-buttons">
+                          {singleAnswer?.map((i) => {
+                            if (!i?.Answer) return null;
+                            return (
+                              <BlueButton
+                                className="mb-3 p-2"
+                                title={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                                onClick={() => onSubmitAnswer(i, item)}
+                                key={isEnglish ? i?.Answer : i?.FrenchAnswer}
+                              />
+                            );
+                          })}
+                        </div>
+                      </>
+                    ) : (
+                      <StepComponent
+                        onNext={(e) => onNextQuestion(e)}
+                        setStepQuestion={(e) => {
+                          localStorage.setItem(
+                            "stepQuestions",
+                            JSON.stringify([e, ...stepQuestion])
                           );
-                        })}
-                      </div>
-                    </>
-                  ) : (
-                    <StepComponent
-                      onNext={(e) => onNextQuestion(e)}
-                      setStepQuestion={(e) => {
-                        localStorage.setItem(
-                          "stepQuestions",
-                          JSON.stringify([e, ...stepQuestion])
-                        );
-                        setStepQuestion([e, ...stepQuestion]);
-                      }}
-                      item={item}
-                      setOptionReport={onReportsFind}
-                      onPrevious={onPreviousQuestion}
-                      stepQuestion={stepQuestion}
-                      totalSteps={findSteps}
-                      sendData={newJourney}
-                    />
-                  )}
-                </div>
-              );
-            })
-        ) : null}
-      </>
-    </div>
+                          setStepQuestion([e, ...stepQuestion]);
+                        }}
+                        item={item}
+                        setOptionReport={onReportsFind}
+                        onPrevious={onPreviousQuestion}
+                        stepQuestion={stepQuestion}
+                        totalSteps={findSteps}
+                        sendData={newJourney}
+                      />
+                    )}
+                  </div>
+                );
+              })
+          ) : null}
+        </>
+      </div>
+    </>
   );
 };
 

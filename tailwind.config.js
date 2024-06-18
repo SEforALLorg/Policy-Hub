@@ -5,12 +5,14 @@ module.exports = {
   ],
   theme: {
     screens: {
-      mobileMax: {min: '340px', max: '767px'},
+      mobileMax: {min: '320px', max: '767px'},
       tabMax: {min: '768px', max: '1024px'},
+      belowTabMax: {min: '768px', max: '1023px'},
       xsm: "319px",
       extrasmall: "480px",
       small: "520px",
       mobile: "767px",
+      tab:"768px",
       medium: "991px",
       med: "920px",
       laptop: "1024px",
@@ -45,6 +47,7 @@ module.exports = {
       boldtext: "#393D3F",
       checkSpan: "#2e9fc7",
       dropShadow: "rgba(64, 93, 109, 0.15)",
+      skeleton: '#EBECEF',
     },
     fontSize: {
       xx: "12px",

@@ -19,5 +19,8 @@ const electricityTheme = createTheme({
     radioActiveColor:"#FBB800",
     mediaIconColor:"#fff",
     footerTextColor:"#fff",
+    borderColor: "#065A89",
+    hoverText: "#065A89",
+    stepCount: "#065A89",
 });
    export default electricityTheme;

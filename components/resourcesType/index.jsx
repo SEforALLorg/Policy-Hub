@@ -9,9 +9,12 @@ import {
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
+  resourcesList,
 } from "../../constant";
+import ResourcesTypeSkeleton from "../skeleton/resourcesTypeSkeleton";
 
 const visibleIds = [1, 2, 3, 4];
+
 const Resources = ({
   onYes,
   resourcesData,
@@ -21,7 +24,7 @@ const Resources = ({
   loader,
 }) => {
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const isEnglish = i18n.language === "en";
   const onAnswerClick = (i) => {
     localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
@@ -48,36 +51,39 @@ const Resources = ({
         break;
     }
   };
+  const getAllresources = resourcesData || resourcesList;
 
   return (
-    <div className="customize-card p-10 bg-white rounded-2xl w-full h-full m-auto">
-      <div className="flex items-center customize-header relative">
-        <img
-          className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height	mr-5"
-          src="/static/images/cards.svg"
-          alt="card"
-        />
+    <div className="customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px]">
+      {!loader && resourcesData ? (
+        <>
+          <div className="flex items-center customize-header relative">
+            <img
+              className="tabMax:w-[200px] laptop:w-[230px] h-[157px] object-contain object-contain-height	mr-5"
+              src="/static/images/cards.svg"
+              alt="card"
+            />
 
-        <h1 className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
-          {t("AssessYourCountry")}
-        </h1>
-        <div
+            <h1 className="customize-heading font-bold text-[51px] leading-[60px] text-text m-0">
+              {t("AssessYourCountry")}
+            </h1>
+            {/* <div
           onClick={() => setIsOpen(false)}
           className="closeIcon text-gray-400 hover:text-gray-900 "
         >
           <IoClose className="w-full h-full" />
-        </div>
-      </div>
-      <div className="my-3 border-b-[4px] border-primary opacity-20" />
-
-      {!loader && resourcesData ? (
-        <div>
-          <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mb-3">
-            {t("AreaWantToInvestigate")}
+        </div> */}
           </div>
-          <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
-            {resourcesData &&
-              Object?.values(resourcesData)
+          <div className="my-3 border-b-[4px] border-primary opacity-20" />
+
+          <div>
+            <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mobileMax:!mb-3 tab:!mb-[3rem]">
+              {t("AreaWantToInvestigate")}
+            </div>
+           <div className="min-h-[300px] mobileMax:min-w-[200px] flex items-center w-full">
+           <div className="w-full flex items-center justify-between flex-wrap customize-buttons customize-row-button">
+              {getAllresources &&
+                Object?.values(getAllresources)
                 ?.filter((resource) => visibleIds?.includes(resource?.id))
                 ?.map((resource) => (
                   <BlueButton
@@ -98,11 +104,13 @@ const Resources = ({
                     className="mb-[20px] h-[95px] !text-[23px]"
                   />
                 ))}
+            </div>
+           </div>
           </div>
-        </div>
+        </>
       ) : (
-        <div className="flex items-center flex-col h-full justify-center">
-          <Loader height={80} width={80} />{" "}
+        <div className="h-full w-full">
+          <ResourcesTypeSkeleton/>
         </div>
       )}
     </div>

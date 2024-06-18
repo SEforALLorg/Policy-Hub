@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import { getRoute, putJourneyStep } from "../../utilities";
 import { changingCardLogo } from "../../constant/changinglogo";
 import { useRouter } from "next/router";
+import { IoChevronBack } from "react-icons/io5";
+import CustomizeScreenSkeleton from "../skeleton/customizeScreenSkeleton";
 
 const Customize = ({
   onYes,
@@ -39,8 +41,8 @@ const Customize = ({
     };
     setJourney({
       ...firstQuestion,
-      answer: i?.Answer, 
-      frenchAnswer: i?.FrenchAnswer
+      answer: i?.Answer,
+      frenchAnswer: i?.FrenchAnswer,
     });
     let existing = JSON.parse(localStorage.getItem("userInfo"));
     let existingJourney = existing?.Journey;
@@ -71,18 +73,32 @@ const Customize = ({
     );
   };
 
+  const resourceType = localStorage.getItem("ResourceType");
+
   return (
     <div
-      className={`customize-card p-10 bg-white rounded-2xl w-full  m-auto ${
+      className={`customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px] ${
         i18n.language !== "fr" ? "h-full" : ""
       }`}
     >
+      <div className="h-full flex flex-col">
       {isFetchingQuestions || loader ? (
-        <div className="flex items-center flex-col h-full justify-center">
-          <Loader height={80} width={80} />{" "}
+        <div className="flex items-start flex-col h-full justify-center">
+          <CustomizeScreenSkeleton />
         </div>
       ) : (
         <>
+          <button
+            className={`flex items-center mb-6 mobileMax:mb-2 p-0 mobileMax:max-h-[25px] resource-backBtn ${
+              (resourceType === "sustainablecooling" ||
+                resourceType === "electricity") &&
+              "!text-[#60a8c7]"
+            }`}
+            onClick={() => router.push("/getresourcetypes")}
+          >
+            <IoChevronBack className="mr-0.5 mt-[-4px]" />
+            {t("back")}
+          </button>
           <div className="flex items-center customize-header">
             {changingCardLogo?.map((key) => {
               if (
@@ -101,12 +117,12 @@ const Customize = ({
               }
             })}
 
-            <h1 className="customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor">
+            <h1 className={`customize-heading font-bold text-3xl leading-4xl text-text m-0 textColor ${ i18n.language == "fr" && resourceType === "cleancooking" ? "!text-[35px] !leading-[48px] tabMax:!text-[28px] tabMax:!leading-[38px]": null}`}>
               {t("AssessYourCountry")}
             </h1>
           </div>
           <div className="my-3 border-b-[4px] border-primary opacity-20" />
-          <p className="customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] mt-7 pr-20 textColor">
+          <p className={`customize-title font-bold text-[45px] leading-[54px] text-text px-2.5 mb-[40px] tab:mt-4 pr-20 textColor ${ i18n.language == "fr" && resourceType === "cleancooking" ? "!text-[35px] !leading-[48px] tabMax:!text-[28px] tabMax:!leading-[38px]": null}`}>
             {title}
             {ToolTipText && (
               <TooltipComponent
@@ -116,7 +132,7 @@ const Customize = ({
               />
             )}
           </p>
-          <div className="flex items-center flex-col max-w-[40%] m-auto customize-buttons">
+          <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons">
             {singleAnswer?.map((i) => (
               <BlueButton
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}
@@ -128,6 +144,7 @@ const Customize = ({
           </div>
         </>
       )}
+      </div>
     </div>
   );
 };

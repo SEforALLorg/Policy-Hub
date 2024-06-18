@@ -47,6 +47,8 @@ const Sustainablecooling = () => {
         setIsReload(true);
         router.push(`/sustainablecooling/${defaultQuestion}`);
       }
+    }else if (router?.query?.bigCard === "true" ) {
+      setIsReload(true);
     }
   }, [router]);
   return (
@@ -75,7 +77,7 @@ const Sustainablecooling = () => {
             >
               <Header selectedRes={res} />
             </div>
-            <div>
+            <div className="mobile:min-h-[70vh] flex relative items-center	justify-center bottom-view">
               <Dashboard
                 questions={
                   questions || {
