@@ -76,7 +76,7 @@ const GetResourceType = () => {
     <div className="mobile:p-2.5 xsm:p-[5px]">
       <div className="custom-container mx-auto">
         <div
-          className="px-[1rem] py-2"
+          className="px-[1rem] py-2 main-header"
         >
           <Header selectedRes={res} />
         </div>
