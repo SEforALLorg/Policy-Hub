@@ -7,7 +7,12 @@ import BlueButton from "components/buttons/blueButton";
 import TooltipComponent from "components/tooltip";
 import StepComponent from "components/stepComponent";
 import CompletedSteps from "components/completedSteps";
-import { getResourceFirstQuestion, getRoute, shortName } from "../../utilities";
+import {
+  getResourceFirstQuestion,
+  getRoute,
+  shortName,
+  shortNamePhc,
+} from "../../utilities";
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
@@ -41,6 +46,7 @@ const LeftWrapPage = ({
   const localStepQuestion = JSON.parse(
     localStorage.getItem("stepQuestions") || "[]"
   );
+
   useEffect(() => {
     if (router?.query?.id) {
       const questionId = Number(router?.query?.id);
@@ -358,7 +364,8 @@ const LeftWrapPage = ({
             />
           )}
           {!nextQuestionId &&
-            !isFetchingQuestions && (
+            !isFetchingQuestions &&
+            userJourney.length > 1 && (
               <CompletedSteps
                 onRestart={() => onRestart()}
                 onMiniClick={(e) => onMiniClick(e)}
@@ -366,7 +373,7 @@ const LeftWrapPage = ({
             )}
           {isFetchingQuestions ? (
             <div className="flex items-center flex-col h-full justify-start">
-              <LeftWrapSkeleton />
+              <LeftWrapSkeleton nextQuestionId={nextQuestionId} userJourney={userJourney}/>
             </div>
           ) : questions?.length ? (
             questions .filter(

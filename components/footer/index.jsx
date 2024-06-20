@@ -30,19 +30,24 @@ const Footer = ({ footerRes }) => {
     setExpanded(!expanded);
   };
 
+  const basePath = typeof window !== 'undefined' &&  window?.location?.origin;
+
   const onClickHandler = (resource) => {
     switch (resource) {
       case "ElectricityAccess":
-        window.open("static/pdf/Electrification.pdf");
+        window.open(`${basePath}/static/pdf/Electrification.pdf`);
         break;
       case "CleanCooking":
-        window.open("static/pdf/Cleancooking.pdf");
+        window.open(`${basePath}/static/pdf/Cleancooking.pdf`);
         break;
       case "SustainableCooling":
-        window.open("static/pdf/Sustainablecooling.pdf");
+        window.open(`${basePath}/static/pdf/Sustainablecooling.pdf`);
         break;
       case "EnergyEfficency":
-        window.open("static/pdf/Energyefficiency.pdf");
+        window.open(`${basePath}/static/pdf/Energyefficiency.pdf`);
+        break;
+      case "PoweringHealthcare":
+        window.open(`${basePath}/static/pdf/Poweringhealthcare.pdf`);
         break;
       default:
         break;

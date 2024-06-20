@@ -1,8 +1,10 @@
 import React from 'react'
 
-const LeftWrapSkeleton = () => {
+const LeftWrapSkeleton = ({userJourney,nextQuestionId}) => {
   return (
     <div className="flex items-center flex-col h-full w-full justify-start">
+      {Boolean(userJourney?.length) && nextQuestionId ? null :
+      <>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center w-[80%] tabMax:w-[75%] mobileMax:w-[75%]">
           <div className="w-[10px] h-[10px] rounded-full bg-skeleton animate-pulse mr-1" />
@@ -15,6 +17,7 @@ const LeftWrapSkeleton = () => {
         className={"mt-[16px] mb-[16px] w-full"}
         style={{ borderBottom: "1.6px solid rgba(6, 90, 137, 0.2)" }}
       />
+      </>}
       <div className="w-full h-[65px] mt-2 bg-skeleton animate-pulse" />
       <div className="flex items-center flex-col w-[80%] my-[4rem] mx-auto mobileMax:my-[2rem]">
         {Array(2)
