@@ -685,7 +685,6 @@ a {
   background: var(--theme-button-color);
   border-radius: 10px;
 }
-
 .rightInnerWrap {
   overflow: auto;
   padding-right: 5px;
@@ -697,6 +696,27 @@ a {
   overflow-x: hidden;
 }
 
+.dashboard-left-wrap ::-webkit-scrollbar {
+  width: 7px;
+}
+
+.dashboard-left-wrap ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+  margin-top: 5px;
+}
+
+.dashboard-left-wrap ::-webkit-scrollbar-thumb {
+  background: var(--theme-button-color);
+  border-radius: 10px;
+}
+.left-questionBox {
+  max-height: 36vh;
+  overflow: auto;
+}
+.completeWrap {
+  max-height: 90%;
+  overflow: auto;
+}
 @media only screen and (min-width: 1300px) and (max-width: 1600px) {
   .rightInnerWrap.cleanCooking {
     height: calc(100vh - 100px) !important;
@@ -1736,6 +1756,11 @@ a {
      width: 49%;
   }
 }
+@media only screen and (min-width: 1120px) and (max-width: 1600px) {
+  .customize-modal-card .customize-header img {
+    transform: scale(0.95,0.90);
+  }
+}
 
 @media only screen and (min-width: 768px) and (max-width: 1100px) {
   .custom-container {
@@ -1836,7 +1861,7 @@ a {
   .OptionsWrap {
     padding: 0px;
     padding-left: 5px;
-    height: calc(30vh - 76px);
+    height: calc(35vh - 76px);
   }
 
   .optionItem {
@@ -2025,7 +2050,44 @@ a {
     padding: 0px 0px !important;
   }
 }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .customize-modal-card, .resourceCard {
+    transform: scale(0.92,1);
+    height: 680px !important;
+    padding: 30px 20px !important;
+  }
+  .customize-row-button {
+    transform: scale(1,0.95);
+  }
+  .customize-row-button button {
+    font-size: 20px !important;
+  }
+  .customize-heading {
+    font-size: 29px !important;
+    line-height: 38px !important;
+  }
 
+  .resource-backBtn {
+   font-size: 24px !important;
+  }
+  .customize-header {
+    line-height: 50px;
+    font-size: 45px;
+  }
+  .customize-modal-card .customize-header img {
+    transform: scale(0.92,1);
+  }
+  .customize-title {
+    font-size: 29px !important;
+    line-height: 38px !important;
+    padding: 0px 0rem 4rem 10px !important;
+    padding-bottom: 0px !important;
+  }
+  .expanded-card-height {
+    height: 680px !important;
+    margin-top:0 !important; 
+  }
+}
 @media only screen and (max-width: 990px) {
   .resourcesButtonColor .tooltipWrap .tooltip_content {
     display: none;

@@ -77,7 +77,7 @@ const Customize = ({
 
   return (
     <div
-      className={`customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px] ${
+      className={`customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px] ${
         i18n.language !== "fr" ? "h-full" : ""
       }`}
     >
@@ -132,7 +132,7 @@ const Customize = ({
               />
             )}
           </p>
-          <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons">
+          <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons mobileMax:!max-w-full">
             {singleAnswer?.map((i) => (
               <BlueButton
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}
