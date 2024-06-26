@@ -1,16 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
-import { IoClose } from "react-icons/io5";
-
-import Loader from "../loader";
 import {
-  CLEANCOOKING,
-  ELECTRICITYACCESS,
-  ENERGYEFFICIENCY,
-  SUSTAINABLECOOLING,
-  POWERINGHEALTHCARE,
   resourcesList,
+  CLEAN_COOKING,
+  ELECTRICITY_ACCESS,
+  SUSTAINABLE_COOLING,
+  ENERGY_EFFICIENCY,
+  POWERING_HEALTHCARE,
 } from "../../constant";
 import {
   cleanCookingFirstQuestion,
@@ -66,19 +63,19 @@ const Resources = ({
     const res = resourceType?.attributes?.Name;
     selected(resourceType);
     switch (res) {
-      case ELECTRICITYACCESS:
+      case ELECTRICITY_ACCESS:
         localStorage.setItem("ResourceType", res);
         break;
-      case CLEANCOOKING:
+      case CLEAN_COOKING:
         localStorage.setItem("ResourceType", res);
         break;
-      case SUSTAINABLECOOLING:
+      case SUSTAINABLE_COOLING:
         localStorage.setItem("ResourceType", res);
         break;
-      case ENERGYEFFICIENCY:
+      case ENERGY_EFFICIENCY:
         localStorage.setItem("ResourceType", res);
         break;
-      case POWERINGHEALTHCARE:
+      case POWERING_HEALTHCARE:
         localStorage.setItem("ResourceType", res);
         break;
       default:
