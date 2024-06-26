@@ -1524,6 +1524,9 @@ a {
 .navbar-brand {
   margin-right: 0px !important;
 }
+.expanded-card-height {
+  margin-top: -30px !important;
+}
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .cookies-wrap{
     font-size: 14px;
@@ -2047,13 +2050,14 @@ a {
   .customize-modal-card, .resourceCard {
     transform: scale(0.92,1);
     height: 680px !important;
-    padding: 30px 20px !important;
+    padding: 30px 0px !important;
   }
   .customize-row-button {
     transform: scale(1,0.95);
   }
   .customize-row-button button {
-    font-size: 20px !important;
+    font-size: 19px !important;
+    line-height: normal;
   }
   .customize-heading {
     font-size: 29px !important;
