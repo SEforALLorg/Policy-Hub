@@ -446,8 +446,8 @@ const LeftWrapPage = ({
                             />
                           )}
                         </div>
-                      <div className="left-questionBox">
-                        <div className={`flex items-center flex-col w-[80%] laptopMax:!w-[90%] mx-auto left-wrap-buttons ${singleAnswer.length >= 4 ? "!mt-[0rem] mb-0": "my-[4rem]"}`}>
+                      <div className={`${singleAnswer.length > 3 && "left-questionBox"}`}>
+                        <div className={`flex items-center flex-col w-[80%] laptopMax:!w-[90%] mx-auto ${singleAnswer.length >= 4 ? "!mt-[0rem] mb-0 left-buttonList": "my-[4rem] left-wrap-buttons"}`}>
                          {singleAnswer?.map((i) => {
                             if (!i?.Answer) return null;
                             return (

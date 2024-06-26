@@ -39,24 +39,24 @@ main {
   color: rgb(73 73 73 / var(--tw-text-opacity));
 }
 
-.headerContainer .dropdown{
+.headerContainer .dropdown {
   width: 215px;
 }
 .headerContainer .dropdown-menu {
   left: -8px !important;
   width: 100% !important;
   margin-bottom: 8px !important;
-} 
-.dropdown-menu-box{
+}
+.dropdown-menu-box {
   left: -25px !important;
   margin-bottom: 15px !important;
   width: 100% !important;
 }
 
-.en-dropdown{
+.en-dropdown {
   min-width: 11rem !important;
 }
-.fr-dropdown{
+.fr-dropdown {
   min-width: 13rem !important;
 }
 .electricity_access {
@@ -69,7 +69,7 @@ main {
   background-size: cover;
 }
 
-main.clean_cooking{
+main.clean_cooking {
   background-image: unset;
 }
 
@@ -95,7 +95,7 @@ main.clean_cooking{
 .BtnColor:hover {
   background: transparent !important;
   color: var(--theme-hover-text) !important;
-  border: 1px solid var(--theme-border)!important;
+  border: 1px solid var(--theme-border) !important;
 }
 
 .textColor {
@@ -187,7 +187,7 @@ main.clean_cooking{
 }
 
 .ButtonBox .buttonStyle {
-  padding: 15px !important;
+  padding: 14px !important;
   padding-top: 18px !important;
 }
 
@@ -257,7 +257,7 @@ a {
   /* position: fixed; */
   max-width: 1320px;
 }
-.main-header .header .nav-link{
+.main-header .header .nav-link {
   color: #fff !important;
 }
 
@@ -374,7 +374,7 @@ a {
 
 .dropdown-item:hover {
   color: #fff !important;
-  background-color: var(--theme-hover-text)!important;
+  background-color: var(--theme-hover-text) !important;
 }
 .dropdown-item a {
   color: #333;
@@ -714,10 +714,6 @@ a {
 .dashboard-left-wrap ::-webkit-scrollbar-thumb {
   background: var(--theme-button-color);
   border-radius: 10px;
-}
-.left-questionBox {
-  max-height: 36vh;
-  overflow: auto;
 }
 .completeWrap {
   max-height: 90%;
@@ -1080,7 +1076,7 @@ a {
 .go-report-btn:hover {
   background: transparent !important;
   color: var(--theme-hover-text) !important;
-  border: 1px solid var(--theme-border)!important;
+  border: 1px solid var(--theme-border) !important;
 }
 
 .checkWrap .container {
@@ -1268,7 +1264,7 @@ a {
   /* transition: max-height .5s ease-in; */
 }
 
-.header-dropdown a{
+.header-dropdown a {
   display: block;
   width: 100%;
 }
@@ -1480,7 +1476,7 @@ a {
   margin: 0px !important;
 }
 .loading-card {
-    animation: slide-y 2s ease-in-out;
+  animation: slide-y 2s ease-in-out;
 }
 @keyframes slide-y {
   from {
@@ -1528,7 +1524,7 @@ a {
   margin-top: -30px !important;
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .cookies-wrap{
+  .cookies-wrap {
     font-size: 14px;
   }
   .customize-title .tooltipWrap .customizeStyle {
@@ -1541,9 +1537,20 @@ a {
     height: 450px;
   } */
 }
+@media only screen and (min-width: 1024px) and (max-width: 1180px) and (orientation: landscape) {
+  .left-questionBox {
+    max-height: 57vh !important;
+    overflow: auto;
+  }
+}
 @media only screen and (min-width: 1024px) {
   .main-container {
     height: 34vh;
+  }
+
+  .left-questionBox {
+    max-height: 36vh;
+    overflow: auto;
   }
 }
 
@@ -1596,6 +1603,9 @@ a {
   }
   .yesButton {
     transition: all 0.1s;
+  }
+  .left-questionBox {
+    max-height: 46vh !important;
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -1749,12 +1759,18 @@ a {
     display: none;
   }
   .customize-row-button .ButtonBox {
-     width: 49%;
+    width: 49%;
   }
+}
+.left-buttonList button {
+  margin-bottom: 12px !important;
+}
+.left-buttonList .ButtonBox:last-child button {
+  margin-bottom: 0 !important;
 }
 @media only screen and (min-width: 1120px) and (max-width: 1600px) {
   .customize-modal-card .customize-header img {
-    transform: scale(0.95,0.90);
+    transform: scale(0.95, 0.9);
   }
 }
 
@@ -2047,13 +2063,14 @@ a {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .customize-modal-card, .resourceCard {
-    transform: scale(0.92,1);
+  .customize-modal-card,
+  .resourceCard {
+    transform: scale(0.92, 1);
     height: 680px !important;
     padding: 30px 0px !important;
   }
   .customize-row-button {
-    transform: scale(1,0.95);
+    transform: scale(1, 0.95);
   }
   .customize-row-button button {
     font-size: 19px !important;
@@ -2065,14 +2082,14 @@ a {
   }
 
   .resource-backBtn {
-   font-size: 24px !important;
+    font-size: 24px !important;
   }
   .customize-header {
     line-height: 50px;
     font-size: 45px;
   }
   .customize-modal-card .customize-header img {
-    transform: scale(0.92,1);
+    transform: scale(0.92, 1);
   }
   .customize-title {
     font-size: 29px !important;
@@ -2082,7 +2099,11 @@ a {
   }
   .expanded-card-height {
     height: 680px !important;
-    margin-top:0 !important; 
+    margin-top: 0 !important;
+  }
+  .left-questionBox {
+    max-height: 37vh !important;
+    overflow: auto;
   }
 }
 @media only screen and (max-width: 990px) {
@@ -2245,17 +2266,17 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
-  .dropdown-menu-box{
+  .dropdown-menu-box {
     left: 0px !important;
     width: 97% !important;
   }
-  .footer .DropdownToggle{
+  .footer .DropdownToggle {
     justify-content: center;
   }
-  .footer .dropdown-toggle::after{
+  .footer .dropdown-toggle::after {
     margin-left: 8px !important;
   }
-  .report-bottom-box .content{
+  .report-bottom-box .content {
     left: 50% !important;
     transform: translateX(-42%) !important;
   }
@@ -2533,10 +2554,10 @@ a {
   .powering_healthcare .left-wrap-buttons {
     width: 100% !important;
   }
-  .powering_healthcare .left-wrap-buttons .buttonStyle{
-    font-size: 13px!important;
+  .powering_healthcare .left-wrap-buttons .buttonStyle {
+    font-size: 13px !important;
     padding-top: 12px !important;
-    padding-bottom: 12px !important; 
+    padding-bottom: 12px !important;
   }
 
   .dashboard-left-wrap {
@@ -2583,7 +2604,7 @@ a {
 
   .inputFullWrap {
     display: block !important;
-    width: 67%;
+    width: 70%;
     margin: 0 auto;
     margin-bottom: 10px;
     margin-top: 10px !important;
@@ -2978,25 +2999,25 @@ a {
   }
 }
 @media only screen and (max-width: 360px) {
-  .innerFilter{
-    height: calc(81vh - 80px)  !important;
+  .innerFilter {
+    height: calc(81vh - 80px) !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar {
     width: 7px !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3) !important;
     margin-top: 5px !important;
   }
-  
+
   .innerFilter::-webkit-scrollbar-thumb {
     background: var(--theme-button-color) !important;
     border-radius: 10px !important;
   }
-  
-  .filterForm{
+
+  .filterForm {
     height: 100% !important;
     overflow: auto !important;
   }
@@ -3522,6 +3543,11 @@ a {
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .powering_healthcare .restartWrap {
+    width: 100% !important;
+  }
+}
 
 @media screen and (max-width: 767px) {
   .divider {
@@ -3530,7 +3556,7 @@ a {
   #container-main {
     margin-top: 1rem;
   }
-  .second-container{
+  .second-container {
     margin-top: 30px;
   }
 
@@ -3567,7 +3593,6 @@ a {
     padding: 8px 16px;
     max-width: 250px !important;
   }
-
 }
 .closeIcon {
   cursor: pointer;
