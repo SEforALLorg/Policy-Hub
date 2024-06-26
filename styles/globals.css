@@ -28,6 +28,7 @@ main {
   background-image: url("/static/images/BG.png");
   background-attachment: fixed;
   background-size: cover;
+  background-size: cover;
   overflow: hidden;
   overflow: auto !important;
   height: 100vh;
@@ -81,6 +82,11 @@ main.clean_cooking{
   background-image: url("/static/images/energy_efficiency_bg.png");
   background-size: cover;
 }
+.powering_healthcare {
+  background-image: url("/static/images/poweringtheme_bg.png") !important;
+  background-size: cover;
+}
+
 .BtnColor {
   background: var(--theme-button-color) !important;
   color: var(--theme-button-text-color) !important;

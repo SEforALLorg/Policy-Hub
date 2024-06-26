@@ -60,6 +60,9 @@ function MyApp({ Component, pageProps }) {
     } else if (localStorage.getItem("lang")){
       const local = localStorage.getItem("lang")
       window.history.pushState({}, "", `${window.location.href}${local}`);
+    } else if (window.location.href?.includes("en") || window.location.href?.includes("fr")){
+      localStorage.setItem("lang", router.locale);
+      changeLanguage(router.locale);
     } else {
       localStorage.setItem("lang", "en");
       window.history.pushState({}, "", `${window.location.href}en`);

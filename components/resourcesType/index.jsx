@@ -9,11 +9,17 @@ import {
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
+  POWERINGHEALTHCARE,
   resourcesList,
 } from "../../constant";
+import {
+  cleanCookingFirstQuestion,
+  electricityFirstQuestion,
+  energyEfficiencyFirstQuestion,
+  poweringHealthCareFirstQuestion,
+  sustainableCoolingFirstQuestion,
+} from "../../constant/firstQuestion";
 import ResourcesTypeSkeleton from "../skeleton/resourcesTypeSkeleton";
-
-const visibleIds = [1, 2, 3, 4];
 
 const Resources = ({
   onYes,
@@ -26,9 +32,34 @@ const Resources = ({
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === "en";
   const onAnswerClick = (i) => {
+    let questionLocalArray = [];
+    switch (i?.id) {
+      case 1:
+        questionLocalArray = [electricityFirstQuestion];
+        break;
+      case 2:
+        questionLocalArray = [cleanCookingFirstQuestion];
+        break;
+      case 3:
+        questionLocalArray = [energyEfficiencyFirstQuestion];
+        break;
+      case 4:
+        questionLocalArray = [sustainableCoolingFirstQuestion];
+        break;
+      case 9:
+        questionLocalArray = [poweringHealthCareFirstQuestion];
+        break;
+      default:
+        break;
+    }
+    const findSlug = questionLocalArray?.find(
+      (item) => item?.id === Number(i?.attributes?.QuestionId)
+    );
+    const slug =
+      findSlug?.attributes?.MainQuestion?.Question?.data?.attributes?.slug;
     localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
-    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes);
+    onNextQuestionId(slug, i?.attributes);
   };
 
   const changeColor = (resourceType) => {
@@ -45,6 +76,9 @@ const Resources = ({
         localStorage.setItem("ResourceType", res);
         break;
       case ENERGYEFFICIENCY:
+        localStorage.setItem("ResourceType", res);
+        break;
+      case POWERINGHEALTHCARE:
         localStorage.setItem("ResourceType", res);
         break;
       default:
@@ -80,12 +114,9 @@ const Resources = ({
             <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mobileMax:!mb-3 tab:!mb-[3rem]">
               {t("AreaWantToInvestigate")}
             </div>
-           <div className="min-h-[300px] mobileMax:min-w-[200px] flex items-center w-full">
-           <div className="w-full flex items-center justify-between flex-wrap customize-buttons customize-row-button">
+            <div className="flex items-center justify-between flex-wrap m-auto customize-buttons customize-row-button">
               {getAllresources &&
-                Object?.values(getAllresources)
-                ?.filter((resource) => visibleIds?.includes(resource?.id))
-                ?.map((resource) => (
+                Object?.values(getAllresources)?.map((resource) => (
                   <BlueButton
                     title={
                       isEnglish
@@ -105,7 +136,6 @@ const Resources = ({
                   />
                 ))}
             </div>
-           </div>
           </div>
         </>
       ) : (

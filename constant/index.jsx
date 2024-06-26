@@ -27,10 +27,12 @@ export const ELECTRICITY_ACCESS = "electricity";
 export const CLEAN_COOKING = "cleancooking";
 export const SUSTAINABLE_COOLING = "sustainablecooling";
 export const ENERGY_EFFICIENCY = "energyefficiency";
+export const POWERING_HEALTHCARE= "poweringhealthcare";
 export const ELECTRICITYACCESS = "Electricity Access";
 export const CLEANCOOKING = "Clean Cooking";
 export const SUSTAINABLECOOLING = "Sustainable Cooling";
 export const ENERGYEFFICIENCY = "Energy Efficiency";
+export const POWERINGHEALTHCARE = "Powering Healthcare";
 
 export const media = {
   smallMobile: "480px",
@@ -79,115 +81,135 @@ export const videosCard = [
 export const buttonOptions = [
   {
     [ELECTRICITY_ACCESS]: {
-      "Mini grids": [18, "../../static/images/mini-grid.png", 11, "MINI-RÉSEAUX"],
-      "Standalone systems": [24, "../../static/images/solaroutline.png", 11, "SYSTÈMES AUTONOMES"],
+      "Mini grids": ["determine-mini-grid-operator-and-ownership-model", "../../static/images/mini-grid.png", "review-policy-and-regulatory-framework-to-reflect-nes", "MINI-RÉSEAUX"],
+      "Standalone systems": ["collaborate-with-the-private-sector-to-promote-off-grid-electrification", "../../static/images/solaroutline.png", "review-policy-and-regulatory-framework-to-reflect-nes", "SYSTÈMES AUTONOMES"],
     },
   },
   {
     [CLEAN_COOKING]: {
       "Policy and institutional framework": [
-        51,
+        "set-clean-cooking-policy-targets",
         "../../static/images/framework.svg",
-        35,
+        "review-enabling-framework-for-implementing-clean-cooking-plan-strategy",
         "CADRE POLITIQUE ET LÉGAL"
       ],
-      "Regulations and Standards": [58, "../../static/images/Standards.svg", 35, "RÈGLEMENTS ET NORMES"],
+      "Regulations and Standards": ["set-up-regulatory-framework", "../../static/images/Standards.svg", "review-enabling-framework-for-implementing-clean-cooking-plan-strategy", "RÈGLEMENTS ET NORMES"],
       "Market development and financing": [
-        63,
+        "review-existing-subsidies-and-their-efficiency",
         "../../static/images/market_development.svg",
-        35,
+        "review-enabling-framework-for-implementing-clean-cooking-plan-strategy",
         "DÉVELOPPEMENT DU MARCHÉ ET FINANCEMENT"
       ],
-      "Awareness raising": [68, "../../static/images/awareness_raising.svg", 35, "SENSIBILISATION"],
+      "Awareness raising": ["develop-inclusive-awareness-raising-strategy-including-transversal-impacts-eg-health-economy-environment", "../../static/images/awareness_raising.svg", "review-enabling-framework-for-implementing-clean-cooking-plan-strategy", "SENSIBILISATION"],
     },
   },
   {
     [SUSTAINABLE_COOLING]: {
-      "Thermal comfort and safety": [76, "../../static/images/safety.svg", 54, "CONFORT THERMIQUE ET SÉCURITÉ"],
+      "Thermal comfort and safety": ["thermal-comfort-and-safety-regulation", "../../static/images/safety.svg", "review-enabling-framework-for-thematic-areas-related-to-access-to-cooling", "CONFORT THERMIQUE ET SÉCURITÉ"],
       "Food & agricultural cold chains": [
-        85,
+        "food-agricultural-cold-chains-regulation",
         "../../static/images/cold_chains.svg",
-        54,
+        "review-enabling-framework-for-thematic-areas-related-to-access-to-cooling",
         "CHAÎNE DU FROID ALIMENTAIRE ET AGRICOLE"
       ],
       "Healthcare and medical cold chains": [
-        93,
+        "regulation",
         "../../static/images/healthcare.svg",
-        54,
+        "review-enabling-framework-for-thematic-areas-related-to-access-to-cooling",
         "CHAÎNES DE FROID MÉDICALES ET DE SOINS DE SANTÉ"
       ],
     },
   },
   {
     [ENERGY_EFFICIENCY]: {
-      "Buildings": [108, "../../static/images/BUILDINGS.svg", 82, "BÂTIMENTS"],
-      "Industry": [116, "../../static/images/INDUSTRY.svg", 82, "L'INDUSTRIE"],
-      "Transport/ Mobility": [126, "../../static/images/TRANSPORT_MOBILITY.svg", 82, "TRANSPORT/ MOBILITÉ"],
+      "Buildings": ["buildings-regulation", "../../static/images/BUILDINGS.svg", "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors", "BÂTIMENTS"],
+      "Industry": ["industry-regulation", "../../static/images/INDUSTRY.svg", "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors", "L'INDUSTRIE"],
+      "Transport/ Mobility": ["transport-mobility-regulation", "../../static/images/TRANSPORT_MOBILITY.svg", "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors", "TRANSPORT/ MOBILITÉ"],
       "Products / Appliances": [
-        136,
+        "products-appliances-regulation",
         "../../static/images/PRODUCT_APPLIANCES.svg",
-        82,
+        "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors",
         "PRODUITS / APPAREILS"
       ],
-      "Utilities": [146, "../../static/images/UTILITIES.svg", 82, "SERVICES PUBLICS ET EFFICACITÉ ÉNERGÉTIQUE"],
+      "Utilities": ["utilities-regulation", "../../static/images/UTILITIES.svg", "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors", "SERVICES PUBLICS ET EFFICACITÉ ÉNERGÉTIQUE"],
       "Energy efficiency services": [
-        155,
+        "energy-efficiency-services-regulation",
         "../../static/images/ENERGY_EFFICIENCY_SERVICES.svg",
-        82,
+        "review-enabling-framework-and-energy-efficiency-policy-approaches-by-sectors",
         "SERVICES D'EFFICACITÉ ÉNERGÉTIQUE"
       ],
     },
   },
+  {
+    [POWERING_HEALTHCARE]: {
+      "Data collection and Analysis": ["understand-impact-data-and-nexus-between-sustainable-energy-health-and-other-dimensions", "../../static/images/DataCollection.svg", "develop-enabling-framework-conditions-for-health-facility-electrification", "COLLECTE ET ANALYSE DE DONNÉES"],
+      "Policy, planning and institutional  framework for implementation": ["nominate-a-coordinating-body-with-high-level-political-buy-in", "../../static/images/Policy.svg", "develop-enabling-framework-conditions-for-health-facility-electrification", "Politique, planification et cadre institutionnel pour la mise en œuvre"],
+      "Technical aspects to be  considered for policy and  regulations": ["technical-standards-for-healthcare-electrification", "../../static/images/TechnicalAspect.png", "develop-enabling-framework-conditions-for-health-facility-electrification", "Aspects techniques à considérer pour les politiques et les réglementations"],
+      "Financial conditions": ["identification-of-investment-needs-and-financing-gaps-based-on-new-or-revised-national-electrification-strategy-and-healthcare-components", "../../static/images/financial.png", "develop-enabling-framework-conditions-for-health-facility-electrification", "Condition financière"],
+    },
+  },
 ];
 export const resourcesList =[
-  {
-    "id": 1,
-    "attributes": {
-      "Name": "Electricity Access",
-      "createdAt": "2022-11-03T12:05:58.176Z",
-      "updatedAt": "2023-04-19T12:44:32.100Z",
-      "publishedAt": "2022-11-03T12:06:01.609Z",
-      "QuestionId": "9",
-      "locale": "en",
-      "FrenchName": "Accès à l’électricité"
+    {
+      "id": 1,
+      "attributes": {
+        "Name": "Electricity Access",
+        "createdAt": "2022-11-03T12:05:58.176Z",
+        "updatedAt": "2023-04-19T12:44:32.100Z",
+        "publishedAt": "2022-11-03T12:06:01.609Z",
+        "QuestionId": "9",
+        "locale": "en",
+        "FrenchName": "Accès à l’électricité"
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "Name": "Clean Cooking",
+        "createdAt": "2022-11-03T12:06:36.827Z",
+        "updatedAt": "2023-04-19T12:44:47.314Z",
+        "publishedAt": "2022-11-03T12:06:37.839Z",
+        "QuestionId": "32",
+        "locale": "en",
+        "FrenchName": "Cuisson propre"
+      }
+    },
+    {
+      "id": 3,
+      "attributes": {
+        "Name": "Energy Efficiency",
+        "createdAt": "2022-11-03T12:07:01.176Z",
+        "updatedAt": "2023-04-19T12:45:14.427Z",
+        "publishedAt": "2022-11-03T12:07:01.970Z",
+        "QuestionId": "80",
+        "locale": "en",
+        "FrenchName": "Efficacité énergétique"
+      }
+    },
+    {
+      "id": 4,
+      "attributes": {
+        "Name": "Sustainable Cooling",
+        "createdAt": "2022-11-03T12:07:23.964Z",
+        "updatedAt": "2023-04-24T10:22:54.789Z",
+        "publishedAt": "2022-11-03T12:07:25.369Z",
+        "QuestionId": "52",
+        "locale": "en",
+        "FrenchName": "Refroidissement durable"
+      }
+    },
+    {
+      "id": 9,
+      "attributes": {
+        "Name": "Powering Healthcare",
+        "createdAt": "2024-05-08T14:37:50.771Z",
+        "updatedAt": "2024-06-06T15:42:36.515Z",
+        "publishedAt": "2024-05-08T14:42:27.318Z",
+        "QuestionId": "172",
+        "locale": "en",
+        "FrenchName": "Alimenter les soins de santé"
+      }
     }
-  },
-  {
-    "id": 2,
-    "attributes": {
-      "Name": "Clean Cooking",
-      "createdAt": "2022-11-03T12:06:36.827Z",
-      "updatedAt": "2023-04-19T12:44:47.314Z",
-      "publishedAt": "2022-11-03T12:06:37.839Z",
-      "QuestionId": "32",
-      "locale": "en",
-      "FrenchName": "Cuisson propre"
-    }
-  },
-  {
-    "id": 3,
-    "attributes": {
-      "Name": "Energy Efficiency",
-      "createdAt": "2022-11-03T12:07:01.176Z",
-      "updatedAt": "2023-04-19T12:45:14.427Z",
-      "publishedAt": "2022-11-03T12:07:01.970Z",
-      "QuestionId": "80",
-      "locale": "en",
-      "FrenchName": "Efficacité énergétique"
-    }
-  },
-  {
-    "id": 4,
-    "attributes": {
-      "Name": "Sustainable Cooling",
-      "createdAt": "2022-11-03T12:07:23.964Z",
-      "updatedAt": "2023-04-24T10:22:54.789Z",
-      "publishedAt": "2022-11-03T12:07:25.369Z",
-      "QuestionId": "52",
-      "locale": "en",
-      "FrenchName": "Refroidissement durable"
-    }
-  },
 ]
 
 export const logoData = [
@@ -292,5 +314,41 @@ export const logoData = [
     title: "WEB Limited, Kenya",
     link: "https://www.linkedin.com/in/web-limited-8b34081b8/",
     width: "90%",
+  },
+  {
+    img: "../../static/images/AMDA.png",
+    title: "AMDA",
+    link: "https://africamda.org/",
+    width: "100%",
+  },
+  {
+    img: "../../static/images/world_bank.png",
+    title: "The World Bank",
+    link: "https://www.worldbank.org/",
+    width: "100%",
+  },
+  {
+    img: "../../static/images/chai.png",
+    title: "Clinton Health Access Initiative",
+    link: "https://www.clintonhealthaccess.org/",
+    width: "100%",
+  },
+  {
+    img: "../../static/images/irena.png",
+    title: "IRENA",
+    link: "https://www.irena.org/",
+    width: "100%",
+  },
+  {
+    img: "../../static/images/unicef.png",
+    title: "UNICEF",
+    link: "https://www.unicef.org/",
+    width: "100%",
+  },
+  {
+    img: "../../static/images/usaid.png",
+    title: "USAID",
+    link: "https://www.usaid.gov/",
+    width: "100%",
   },
 ];

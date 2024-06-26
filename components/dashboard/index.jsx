@@ -51,14 +51,16 @@ const Dashboard = ({
     publishing_organizations: [],
     sector: [],
     fuel: [],
+    power_supplies: [],
+    technology_solutions: [],
   });
   const [t, i18n] = useTranslation();
 
   useEffect(() => {
-    const { id } = router?.query;
+    const { slug } = router?.query;
     const resource = localStorage.getItem("ResourceType");
-    if (id) {
-      setFirstQuestionId(Number(id));
+    if (slug) {
+      setFirstQuestionId(slug);
       setIsResource(false);
       setSelectedResource(resource);
       selectedRes(resource);
@@ -112,6 +114,8 @@ const Dashboard = ({
       publishing_organizations: [],
       sector: [],
       fuel: [],
+      power_supplies: [],
+      technology_solutions: [],
     });
     setClearAll(!isClearAll);
   }, [isClearAll]);
@@ -143,12 +147,14 @@ const Dashboard = ({
 
   useEffect(() => {
     const question = questions?.data?.data?.find(
-      (q) => q?.id === Number(firstQuestionId)
+      (q) =>
+        q?.attributes?.MainQuestion?.Question?.data?.attributes?.slug ===
+        firstQuestionId
     );
     const firstQuestion = questions?.data?.data?.filter((item) => {
       return (
-        item?.attributes?.MainQuestion?.Question?.data?.id ===
-        Number(firstQuestionId)
+        item?.attributes?.MainQuestion?.Question?.data?.attributes?.slug ===
+        firstQuestionId
       );
     })?.[0]?.attributes?.MainQuestion?.Question?.data;
     setFirstQuestion(question || firstQuestion);

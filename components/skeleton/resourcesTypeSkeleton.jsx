@@ -14,7 +14,7 @@ const ResourcesTypeSkeleton = () => {
       <div className="my-3 border-b-[4px] border-primary opacity-20 w-full" />
       <div className="w-full bg-skeleton animate-pulse h-[70px] mb-4 mobileMax:!h-[30px]" />
         <div className="flex items-center justify-between flex-wrap m-auto customize-buttons customize-row-button mt-5">
-          {Array(4)
+          {Array(5)
             ?.fill(1)
             .map((index) => {
               return (

@@ -128,7 +128,7 @@ const DetailModal = ({ firstHit }) => {
           tabindex="-1"
           aria-hidden="true"
           style={{ backgroundColor: "#00000080" }}
-          className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-md z-50 p-4 w-full md:inset-0 h-modal md:h-full flex items-center justify-center"
+          className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-md h-screen z-[99999] p-4 w-full md:inset-0 h-modal md:h-full flex items-center justify-center"
         >
           <div className="relative w-full rounded-lg max-w-lg h-auto">
             {/* <!-- Modal content --> */}

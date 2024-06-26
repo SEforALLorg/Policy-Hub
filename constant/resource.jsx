@@ -3,4 +3,5 @@ export const resource = [
   "CleanCooking",
   "EnergyEfficency",
   "SustainableCooling",
+  "PoweringHealthcare"
 ];

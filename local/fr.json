@@ -58,7 +58,7 @@
     "Home": "ACCUEIL",
     "HomeTitle": "Énergie durable | Centre de politiques",
     "Hub": "Hub",
-    "InteractivePlatform": "est une plateforme interactive qui fournit aux décideurs et aux professionnels de l’énergie respectueuse de l’environnement des lignes directrices, outils, modèles et études de cas sur la politique et la réglementation énergétiques publiés par des organisations internationales et des leaders d’opinion. Dans sa phase actuelle, le centre offre des ressources essentielles sur l’accès à l’électricité, l’accès à une cuisine plus propre, le refroidissement durable et l’efficacité énergétique.",
+    "InteractivePlatform": "est une plate-forme interactive fournissant aux décideurs et aux praticiens de l'énergie durable des lignes directrices, des outils, des modèles et des cas prêts à l'emploi sur la politique et la réglementation énergétiques publiés par des organisations internationales et des leaders d'opinion. Dans sa phase actuelle, le hub offre des ressources essentielles sur l'accès à l'électricité, l'accès à une cuisine plus propre, le refroidissement durable, l'efficacité énergétique et l'alimentation des soins de santé.",
     "JamesE": " James E. Rogers Energy Access Project / Duke University;",
     "KeepUpToSpeed": "Restez informé de l’actualité du Sustainable Energy Policy Hub et de l’ensemble du mouvement pour l’énergie durable. Nous vous enverrons nos mises à jour régulières, ainsi que des informations spéciales et des invitations à des événements. Si vous souhaitez recommander une publication à inclure dans le Centre politique SEforALL, veuillez nous envoyer un e-mail à ",
     "Knowledge": "Connaissant",
@@ -108,7 +108,7 @@
     "TheGreenMini": "TheGreenMini",
     "TheGreenMini-Grids": "Le service d'assistance des mini-réseaux verts fournit aux développeurs de mini-réseaux et aux décideurs des informations pratiques sur les mini-réseaux, y compris des rapports de marché, des liens vers les parties prenantes de l'industrie, des guides d'instructions, des formulaires et modèles commerciaux et des modèles financiers. Il est mis en œuvre par la BAD, Sustainable Energy for All Africa Hub, SEFA, Energy4Impact et Inensus.",
     "TheGreenMini-GridsHelpDesk": "Le bureau d'aide de The Green Mini-Grids",
-    "TheKnowledgeHub": "Le Sustainable Energy Policy Hub explique le processus de prise de décision pour établir une politique énergétique et des cadres réglementaires solides. Son champ d’action couvre actuellement les domaines de l’accès à l’électricité, de la cuisson propre, de l’efficacité énergétique et de la réfrigération respectueuse de l’environnement.",
+    "TheKnowledgeHub": "Le Sustainable Energy Policy Hub explique le processus décisionnel pour établir une politique énergétique et des cadres réglementaires solides – il couvre actuellement les domaines de l’accès à l’électricité, de la cuisson propre, de l’efficacité énergétique, du refroidissement durable et de l’alimenter les soins de santé.",
     "TheNigeriaIntegrated": "L'outil de planification intégrée de l'énergie du Nigeria est une plateforme de visualisation de données interactive basée sur SIG destinée à soutenir les décideurs et les praticiens nigérians dans leur processus de prise de décision. Il a été développé par SEforALL en collaboration avec le gouvernement fédéral du Nigeria, avec le soutien de la Fondation Rockefeller.",
     "TheRightPolicies": "Avec les bonnes politiques et réglementations, ",
     "TheRockefellerFoundation": "La Fondation Rockefeller",
@@ -117,7 +117,7 @@
     "VIDEOS": "VIDÉOS",
     "ViaEmail": " les recevoir par e-mail.",
     "Viewallresources": "Voir toutes les ressources",
-    "WRI": " World Resources Institute (WRI);",
+    "WRI": " World Resources Institute (WRI); ",
     "WeAlsoThank": "Nous remercions également les personnes suivantes pour leur consultation et leur participation : ",
     "WebDevelopmentby": "Développement Web par",
     "Year": "Année",
@@ -156,5 +156,8 @@
     "SustainableCooling":"Refroidissement durable",
     "EnergyEfficency":"Efficacité énergétique",
     "back": "Dos",
-    "shareAttachments": "partagerPièces jointes"
+    "shareAttachments": "partagerPièces jointes",
+    "PoweringHealthcare": "Alimenter les soins de santé",
+    "PowerSupply": "Alimentation électrique",
+    "TechnologySolution": "Solutions technologiques"
 }

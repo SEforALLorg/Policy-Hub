@@ -18,6 +18,7 @@ import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
+  POWERINGHEALTHCARE,
   SUSTAINABLECOOLING,
 } from "../../constant";
 import { isMobile } from "../../utilities";
@@ -29,8 +30,7 @@ const Footer = ({ footerRes }) => {
   const toggleDropdown = () => {
     setExpanded(!expanded);
   };
-
-  const basePath = typeof window !== 'undefined' &&  window?.location?.origin;
+ const basePath = typeof window !== 'undefined' &&  window?.location?.origin;
 
   const onClickHandler = (resource) => {
     switch (resource) {
@@ -199,7 +199,8 @@ const Footer = ({ footerRes }) => {
           />
           {(footerRes === ELECTRICITYACCESS ||
             footerRes === CLEANCOOKING ||
-            footerRes === ENERGYEFFICIENCY) && (
+            footerRes === ENERGYEFFICIENCY || 
+            footerRes === POWERINGHEALTHCARE) && (
             <img
               src={
                 isMobile()
@@ -268,21 +269,21 @@ const Footer = ({ footerRes }) => {
             height={isMobile() ? "46px" : "52px"}
           />
           <div
-             className={`h-[90px] bg-white shadow-md rounded-2xl p-[20px] px-[10px] flex justify-center	items-center african-development`}
-             style={{ width: isMobile() ? "90px" : "" }}
-           >
-             <img
-               src={"/static/images/opecLogo.jpg"}
-               data-src={"/static/images/opecLogo.jpg"}
-               alt="rettangolare_logo"
-               className={`small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 cursor-pointer ${
-                 isMobile() ? "!w-[80]" : "!w-[90px]"
-               }`}
-               onClick={() => window.open("https://opecfund.org/")}
-               width={isMobile() ? "181px" : "104px"}
-               height={isMobile() ? "46px" : "52px"}
-             />
-           </div>
+            className={`h-[90px] bg-white shadow-md rounded-2xl p-[20px] px-[10px] mobileMax:mt-3 flex justify-center	items-center african-development`}
+            style={{ width: isMobile() ? "90px" : "" }}
+          >
+            <img
+              src={"/static/images/opecLogo.svg"}
+              data-src={"/static/images/opecLogo.svg"}
+              alt="rettangolare_logo"
+              className={`small:m-0 mr-[0px] xsm:mt-4 small:mt-0 xsm:m-auto  xsm:pr-0 cursor-pointer ${
+                isMobile() ? "w-[80]" : "w-[80px]"
+              }`}
+              onClick={() => window.open("https://www.esteri.it/en/ministero/")}
+              width={isMobile() ? "181px" : "104px"}
+              height={isMobile() ? "46px" : "52px"}
+            />
+          </div>
         </div>
       </div>
       <div className="border-b-[1.6px] border-white w-full my-[15px] mediaIconBorderColor"></div>

@@ -70,7 +70,7 @@ const StepComponent = ({
   };
 
   const onNextClick = (stepCount) => {
-    const questionId = optionData?.NextQuestion?.data?.id;
+    const questionId = optionData?.NextQuestion?.data?.attributes?.slug;
     onNext(questionId);
     setStepQuestion(item);
     if (!item?.attributes?.MainQuestion?.QuestionKeyType?.data) return null;
@@ -100,7 +100,7 @@ const StepComponent = ({
           {isEnglish ? item?.attributes?.QuestionTitle : item?.attributes?.frenchQuestionTitle}
         </h5>
       )}
-      <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] inner-section-content">
+      <p className="text-[15px] text-left text-darkText mb-[0px] pl-18 m-[0px] font-bold inner-section-content">
         {title}{" "}
         {ToolTipText && (
           <TooltipComponent id={"stepComponent"} content={ToolTipText} />

@@ -1,28 +1,31 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import Head from "next/head";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
 import { getResourceFirstQuestion, getResources } from "../../utilities";
-import { ENERGYEFFICIENCY } from "../../constant";
-import { energyEfficiencyFirstQuestion } from "../../constant/firstQuestion";
+import { ELECTRICITYACCESS } from "../../constant";
 import { useRouter } from "next/router";
-import Head from "next/head";
+import { electricityFirstQuestion } from "../../constant/firstQuestion";
 import dynamic from "next/dynamic";
 
-const Footer = dynamic(() => import('components/footer'));
-const Header = dynamic(() => import('components/header'));
-const Dashboard = dynamic(() => import('components/dashboard'));
+const Footer = dynamic(() => import("components/footer"));
+const Header = dynamic(() => import("components/header"));
+const Dashboard = dynamic(() => import("components/dashboard"));
 
-const pageTitle = "Sustainable Energy | Policy Hub | Energy Efficiency";
-const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
-const Energyefficiency = () => {
+const pageTitle = "Sustainable Energy | Policy Hub | Electricity";
+const pageDescription =
+  "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe.";
+  let reload = false;
+
+const Electricity = () => {
   const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
-  const res = ENERGYEFFICIENCY;
+  const res = ELECTRICITYACCESS;
   const [isReload, setIsReload] = useState(false);
-  
-  const query = getResources(3);
+
+  const query = getResources(1);
   const {
     data: questions,
     isFetching: isFetchingQuestions,
@@ -39,99 +42,102 @@ const Energyefficiency = () => {
     if (router?.query?.bigCard === "true" && !isReload) {
       setIsReload(true);
       refetch();
-    } else if (router?.query?.id && !isReload && !questions) {
-      const questionId = Number(router?.query?.id);
-      if (questionId !== Number(defaultQuestion)) {
+    } else if (router?.query?.slug && !isReload && !questions) {
+      const questionSlug = router?.query?.slug;
+      if (questionSlug !== defaultQuestion) {
         setIsReload(true);
-        router.push(`/energyefficiency/${defaultQuestion}`);
+        router.push(`/electricity/${defaultQuestion}`);
+      } else if (!reload) {
+        reload = true
+        router.push({pathname :`/electricity/${defaultQuestion}`, query: ""});
       }
-    } else if (router?.query?.bigCard === "true" ) {
+    }else if (router?.query?.bigCard === "true" ) {
       setIsReload(true);
     }
   }, [router]);
   return (
-    <main id="fullWrap" ref={ref} className={"energy_efficiency"}>
+    <main id="fullWrap" ref={ref} className={"electricity_access"}>
       <Head>
-        <title>Sustainable Energy | Policy Hub | Energy Efficiency</title>
+        <title>Sustainable Energy | Policy Hub | Electricity</title>
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={'/static/images/energy_efficiency_Black.png'} />
-        <meta property="image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta property="og:image" content={'/static/images/electricity_access_Black.png'} />
+        <meta property="image" content={'/static/images/electricity_access_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
-        <meta name="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta property="twitter:image" content={'/static/images/electricity_access_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/electricity_access_Black.png'} />
         {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
-        <div className="mobile:p-2.5 xsm:p-[5px]">
-          <div className="custom-container mx-auto">
-            <div
-              className={`px-[1rem] py-2 ${
-                !isDashboardOpen ? "header-title-wrap" : ""
-              }`}
-            >
-              <Header selectedRes={res} />
-            </div>
-            <div className="mobile:min-h-[70vh] flex relative items-center	justify-center bottom-view">
-              <Dashboard
-                questions={
-                  questions || {
-                    data: {
-                      data: [energyEfficiencyFirstQuestion],
-                    },
-                  }
+      <div className="mobile:p-2.5 xsm:p-[5px]">
+        <div className="custom-container mx-auto">
+          <div
+            className={`px-[1rem] py-2 ${
+              !isDashboardOpen ? "header-title-wrap" : ""
+            }`}
+          >
+            <Header selectedRes={res} />
+          </div>
+          <div className="mobile:min-h-[70vh] flex relative items-center	justify-center bottom-view">
+            <Dashboard
+              questions={
+                questions || {
+                  data: {
+                    data: [electricityFirstQuestion],
+                  },
                 }
-                isFetchingQuestions={isFetchingQuestions}
-                setIsBigCard={() => {
-                  setIsReload(true);
-                  refetch();
-                }}
-                resources={[]}
-                selectedRes={() => {}}
-                footerRes={res}
-                setIsOpen={() => {}}
-                isPage={true}
-              />
-            </div>
-            <div className="pt-[40px]">
-              <Footer footerRes={res} />
-            </div>
+              }
+              isFetchingQuestions={isFetchingQuestions}
+              setIsBigCard={() => {
+                setIsReload(true);
+                refetch();
+              }}
+              resources={[]}
+              selectedRes={() => {}}
+              footerRes={res}
+              setIsOpen={() => {}}
+              isPage={true}
+            />
+          </div>
+          <div className="pt-[40px]">
+            <Footer footerRes={res} />
           </div>
         </div>
-        <p className="fixed invisible z-0">
-        Assess your country's energy situation to identify resources matching your interest.
-        Sustainable Energy for All (SEforALL) is an international organization
-        that works in partnership with the United Nations and government
-        leaders, the private sector, financial institutions, civil society, and
-        philanthropies to drive faster action towards the achievement of
-        Sustainable Development Goal 7 (SDG7) access to affordable, reliable,
-        sustainable, and modern energy for all by 2030 in line with the Paris
-        Agreement on climate. To learn more about SEforALL, click here. The
-        Sustainable Energy Policy Hub is an interactive platform providing
-        sustainable energy policymakers and practitioners with off-the-shelf
-        guidelines, tools, templates and cases on energy policy and regulation
-        published by international organizations and thought leaders. In its
-        current phase, the hub offers essential resources on electricity access,
-        access to cleaner cooking, sustainable cooling, and energy efficiency.
-        An additional pillar on renewable energy will be added soon.The
-        Sustainable Energy Policy Hub is a collaborative work of SEforALL and
-        its partners and it managed by SEforALL. For any media requests, please
-        contact: Media@SEforALL.org Keep up-to-speed with what's happening at
-        the Sustainable Energy Policy Hub and across the sustainable energy
-        movement. We'll send you our regular updates, plus special news and
-        event invites. If you would like to recommend a publication to be
-        included in the SEforALL Policy Hub, please send us an e-mail at
-        PolicyHub@seforall.org. All of the Policy Hub’s resources are available
-        here for you to explore. Simply click on the button below to view all
-        the resources and apply filters to narrow your results. You can also
-        download the filtered resources or you can have them sent to you via
-        Email. Explore our database for tools and knowledge that will support
-        you in developing policy and regulatory frameworks for sustainable
-        energy. These resources are recommended by stakeholders across the
-        energy sector.
+      </div>
+      <p className="fixed invisible z-0">
+        Assess your country's energy situation to identify resources matching
+        your interest. Sustainable Energy for All (SEforALL) is an international
+        organization that works in partnership with the United Nations and
+        government leaders, the private sector, financial institutions, civil
+        society, and philanthropies to drive faster action towards the
+        achievement of Sustainable Development Goal 7 (SDG7) access to
+        affordable, reliable, sustainable, and modern energy for all by 2030 in
+        line with the Paris Agreement on climate. To learn more about SEforALL,
+        click here. The Sustainable Energy Policy Hub is an interactive platform
+        providing sustainable energy policymakers and practitioners with
+        off-the-shelf guidelines, tools, templates and cases on energy policy
+        and regulation published by international organizations and thought
+        leaders. In its current phase, the hub offers essential resources on
+        electricity access, access to cleaner cooking, sustainable cooling, and
+        energy efficiency. An additional pillar on renewable energy will be
+        added soon.The Sustainable Energy Policy Hub is a collaborative work of
+        SEforALL and its partners and it managed by SEforALL. For any media
+        requests, please contact: Media@SEforALL.org Keep up-to-speed with
+        what's happening at the Sustainable Energy Policy Hub and across the
+        sustainable energy movement. We'll send you our regular updates, plus
+        special news and event invites. If you would like to recommend a
+        publication to be included in the SEforALL Policy Hub, please send us an
+        e-mail at PolicyHub@seforall.org. All of the Policy Hub’s resources are
+        available here for you to explore. Simply click on the button below to
+        view all the resources and apply filters to narrow your results. You can
+        also download the filtered resources or you can have them sent to you
+        via Email. Explore our database for tools and knowledge that will
+        support you in developing policy and regulatory frameworks for
+        sustainable energy. These resources are recommended by stakeholders
+        across the energy sector.
       </p>
       <p className="fixed invisible z-0">
         In the past two weeks, global average temperatures have reached new
@@ -187,5 +193,4 @@ const Energyefficiency = () => {
     </main>
   );
 };
-
-export default Energyefficiency;
+export default Electricity;

@@ -22,6 +22,7 @@ export const electricityFirstQuestion = {
           data: {
             id: 13,
             attributes: {
+              slug:"are-mini-grids-and-stand-alone-systems-integrated-in-the-national-electrification-strategyplan-nesnep",
               Question:
                 "Are mini-grids  and stand-alone systems integrated in the National Electrification Strategy/Plan (NES/NEP)?",
               createdAt: "2022-02-23T18:13:15.563Z",
@@ -584,6 +585,7 @@ export const electricityFirstQuestion = {
           data: {
             id: 14,
             attributes: {
+              slug:"develop-or-update-national-electrification-strategy-or-plan-nesnep",
               Question:
                 "Develop or update National Electrification Strategy or Plan (NES/NEP)",
               createdAt: "2022-02-23T18:13:38.025Z",
@@ -615,6 +617,7 @@ export const electricityFirstQuestion = {
             locale: "en",
             FrenchQuestion:
               "Existe-t-il une stratégie/un plan national d'électrification (SNE/NEP) actualisé(e) ?",
+            slug:"does-an-up-to-date-national-electrification-strategyplan-nesnep-exist",
           },
         },
       },
@@ -675,6 +678,7 @@ export const cleanCookingFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "Existe-t-il un plan ou une stratégie national(e) ou régional(e) intégré(e) visant à élargir l'accès aux solutions de cuisson propre ?",
+              slug:"is-there-an-integrated-national-or-regional-plan-or-strategy-to-scale-up-access-to-clean-cooking-solutions"
             },
           },
         },
@@ -889,6 +893,7 @@ export const cleanCookingFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "Réviser la politique/stratégie énergétique nationale ou les CDN afin de refléter des objectifs réalistes en matière de cuisson propre.",
+              slug: "review-national-energy-policy-strategy-or-ndcs-to-reflect-realistic-targets-on-clean-cooking"
             },
           },
         },
@@ -1073,6 +1078,7 @@ export const cleanCookingFirstQuestion = {
             locale: "en",
             FrenchQuestion:
               "Les moyens de cuisson propre figurent-t-ils parmi les objectifs/priorités de la politique/stratégie énergétique nationale ou des contributions déterminées au niveau national?",
+            slug:"is-clean-cooking-featured-in-targetspriorities-of-the-national-energy-policy-strategy-or-nationally-determined-contributions-ndc",
           },
         },
       },
@@ -1131,6 +1137,7 @@ export const energyEfficiencyFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "L'efficacité énergétique a-t-elle été analysée et modélisée dans les secteurs concernés (bâtiments, industrie, transports, etc.) ?",
+              slug:"has-energy-efficiency-been-analyzed-and-modelled-across-relevant-sectors-buildings-industry-transport-etc"
             },
           },
         },
@@ -1331,6 +1338,7 @@ export const energyEfficiencyFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "Élaborer / réviser la politique/stratégie nationale en matière d'efficacité énergétique.",
+              slug: "develop-review-national-energy-efficiency-policystrategy"
             },
           },
         },
@@ -1554,6 +1562,7 @@ export const energyEfficiencyFirstQuestion = {
             locale: "en",
             FrenchQuestion:
               "Existe-t-il une politique ou une stratégie nationale actualisée en matière d'efficacité énergétique ?",
+            slug:"is-there-an-up-to-date-national-energy-efficiency-policy-or-strategy"
           },
         },
       },
@@ -1611,6 +1620,7 @@ export const sustainableCoolingFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "Existe-t-il une stratégie ou un plan d'action en matière de refroidissement ?",
+              slug: "is-there-a-cooling-strategy-action-plan"
             },
           },
         },
@@ -1744,6 +1754,7 @@ export const sustainableCoolingFirstQuestion = {
               locale: "en",
               FrenchQuestion:
                 "Revoir la politique ou la stratégie nationale en matière d'énergie afin d'y inclure le refroidissement en tant qu'élément clé.",
+              slug: "review-national-energy-policy-or-strategy-to-include-cooling-as-a-key-component"
             },
           },
         },
@@ -1874,6 +1885,7 @@ export const sustainableCoolingFirstQuestion = {
             locale: "en",
             FrenchQuestion:
               "L'accès au refroidissement est-il abordé dans la politique ou la stratégie nationale en matière d'efficacité énergétique ?",
+            slug: "is-access-to-cooling-addressed-in-the-national-energy-efficiency-policy-or-strategy"
           },
         },
       },
@@ -1901,4 +1913,270 @@ export const sustainableCoolingFirstQuestion = {
       },
     },
   },
+};
+
+
+
+export const poweringHealthCareFirstQuestion = {
+  "id": 172,
+  "attributes": {
+      "QuestionType": "Questionnaire",
+      "createdAt": "2024-05-14T14:39:29.999Z",
+      "updatedAt": "2024-06-06T16:27:53.535Z",
+      "QuestionTitle": null,
+      "ToolTipText": null,
+      "locale": "en",
+      "FrenchToolTipText": null,
+      "frenchQuestionTitle": null,
+      "AddAnswer": [
+          {
+              "id": 296,
+              "Answer": "Yes",
+              "AnswerToolTip": null,
+              "FrenchAnswer": "oui",
+              "FrenchAnswerToolTip": null,
+              "NextQuestion": {
+                  "data": {
+                      "id": 452,
+                      "attributes": {
+                          "Question": "Develop enabling  framework conditions for  health facility electrification",
+                          "createdAt": "2024-05-14T11:54:59.777Z",
+                          "updatedAt": "2024-06-06T14:46:16.995Z",
+                          "locale": "en",
+                          "FrenchQuestion": "Developper des conditions-cadres propices à l'électrification des établissements de santé",
+                          "slug": "develop-enabling-framework-conditions-for-health-facility-electrification"
+                      }
+                  }
+              },
+              "KeyPublication": {
+                  "data": [
+                      {
+                          "id": 1018,
+                          "attributes": {
+                              "ReportName": "State of the Market Report for Healthcare Facility Electrification",
+                              "URL": "https://www.seforall.org/system/files/2024-02/Report_SOTM_2024.pdf",
+                              "createdAt": "2024-05-09T18:39:57.111Z",
+                              "updatedAt": "2024-05-16T15:14:04.104Z",
+                              "KeyPublication": "Yes",
+                              "Description": "For sustainable healthcare electrification, a collaborative approach involving policymakers, the private sector and donors/investors is crucial, emphasizing the importance of long-term O&M strategies, tailored country taxonomies, enhanced inter-sectoral coordination, capacity building, champion engagement and consistent impact measurement. ➡ Policy and regulatory change is essential for sustainable health facility electrification. Governments in low-income countries often underestimate the maintenance needs, and associated costs, of solar energy systems, posing challenges to sustainable electrification, especially in healthcare facilities. A shift in perspective through capacity building is needed to recognize the importance of long-term O&M strategies.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1067,
+                          "attributes": {
+                              "ReportName": "Powering Healthcare Hub",
+                              "URL": "https://www.seforall.org/programmes/powering-healthcare-hub",
+                              "createdAt": "2024-05-13T17:00:49.280Z",
+                              "updatedAt": "2024-05-30T08:57:48.941Z",
+                              "KeyPublication": "Yes",
+                              "Description": "One billion people globally are served by healthcare facilities with no electricity access or with unreliable electricity. And an estimated USD 5 billion is needed to electrify health facilities in South Asia and Sub-Saharan Africa, complemented by innovative technologies and business models. The solution: The Powering Healthcare Hub serves as a platform for coordinated action for the wide-scale deployment of clean and reliable energy solutions in healthcare facilities with little to no access to electricity. Here you will find data, case studies, information on key stakeholders and latest developments in the sector. The Hub also monitors healthcare electrification progress through the Health Facility Electrification Energy Compact ",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1047,
+                          "attributes": {
+                              "ReportName": "Integrating Electricity Priorities Into Healthcare and Education in India: A Review of National and Subnational Policies",
+                              "URL": "https://files.wri.org/d8/s3fs-public/2021-11/energy%20policy-education-healthcare-education-india-working-paper.pdf?VersionId=KTY4L3WXyILSXIHPcLYb2WojoftwDDNn",
+                              "createdAt": "2024-05-13T13:03:22.153Z",
+                              "updatedAt": "2024-05-16T15:13:35.506Z",
+                              "KeyPublication": "Yes",
+                              "Description": "Policies must link electricity with development outcomes based on local information. Flexibility should\nbe embedded in funds (such as untied funds) to\nprovide local decision-makers with some agency in\nmitigating policy implementation barriers.\nProviding reliable electricity for health centers and\nschools should be the responsibility of centralized\ndecision-making entities at the state or national\nlevel. Individual facilities should not be burdened\nwith provisioning to qualify for policies or programs.\nEffective policy frameworks include strong accountability and enforcement mechanisms, such as policy\nmonitoring systems. Monitoring currently focuses\non physical progress and financial spending indicators.",
+                              "locale": "en"
+                          }
+                      }
+                  ]
+              },
+              "NonKeyPublication": {
+                  "data": [
+                      {
+                          "id": 992,
+                          "attributes": {
+                              "ReportName": "A Spoonful of Solar to Help the Medicine Go Down",
+                              "URL": "https://wri-india.org/sites/default/files/23_REP_Spoonful%20Solar_web.pdf",
+                              "createdAt": "2024-05-09T14:25:41.393Z",
+                              "updatedAt": "2024-05-17T12:46:56.905Z",
+                              "KeyPublication": "Yes",
+                              "Description": "The energy needs of a system will vary based on the type of facility, number of beds, medical services provided, population levels accessing the facility, patient footfall, disease prevalence etc. All this combined with the existing electricity supply situation, reliability and quality of power, and available backups help define the DRE system size and the required hours of battery backup. The overall demand assessment should also consider aspirational loads; that is, addition of equipment considered desirable for a facility, essential equipment not available on site, and staff quarters if present within the health facility building. This will allow the health facility to appropriately size the system to account for future\nexpansion of services in the facility.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 987,
+                          "attributes": {
+                              "ReportName": "Lasting Impact: Sustainable Off-Grid Solar Delivery Models to Power Health and Education",
+                              "URL": "https://www.seforall.org/system/files/2019-04/Powering-Health_042019.pdf ",
+                              "createdAt": "2024-05-08T16:05:24.814Z",
+                              "updatedAt": "2024-05-08T16:07:52.801Z",
+                              "KeyPublication": "No",
+                              "Description": null,
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1000,
+                          "attributes": {
+                              "ReportName": "Electrification of Health Facilities in Zambia: Action Plan",
+                              "URL": "https://www.powerforall.org/resources/action-plans/electrification-of-health-facilities-zambia-action-plan",
+                              "createdAt": "2024-05-09T15:16:26.961Z",
+                              "updatedAt": "2024-05-22T12:06:29.192Z",
+                              "KeyPublication": "Yes",
+                              "Description": "Financing and economic challenges probably represent the biggest challenge for upscaling renewable energy (RE) in Zambia and hence providing health facilities with power required. High upfront costs, including customs duties, coupled with limited access to capital and low electricity tariff requirements in the case of mini-grids, make it difficult for project developers to recoup their initial investment. In the case of rural health facilities, those which would benefit the most from offgrid electrification, are also the ones that are least profitable due to their small size and remote location. Access to finance is especially difficult for small and medium sized RE companies and concessional finance provided by international programmes has not been enough to leverage additional finance from the development community so the sector can scale. International lending is burdened with high transaction costs and lending from local banks results in high interest rates. Further the depreciation of the Kwacha makes the cost of borrowing extremely high.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1033,
+                          "attributes": {
+                              "ReportName": "National Electrification Program 2.0: Integrated Planning for Universal Access",
+                              "URL": "https://www.powermag.com/wp-content/uploads/2020/08/ethiopia-national-electrification-program.pdf",
+                              "createdAt": "2024-05-13T12:15:45.398Z",
+                              "updatedAt": "2024-05-16T15:15:33.705Z",
+                              "KeyPublication": "Yes",
+                              "Description": "By 2025, all primary and secondary schools and health facilities will be provided withaccess to adequate and reliable electricity serviceswhether on- or off-grid, and in compliance with the standards and guidelines set by the World HealthOrganization (WHO), United Nations InternationalChildren’s Emergency Fund (UNICEF), and other appropriate organizations.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1001,
+                          "attributes": {
+                              "ReportName": "Electrification with renewables: Enhancing healthcare delivery in Burkina Faso",
+                              "URL": "https://www.irena.org/publications/2022/Oct/Electrification-with-renewables-Enhancing-healthcare-delivery-in-Burkina-Faso",
+                              "createdAt": "2024-05-09T15:22:46.535Z",
+                              "updatedAt": "2024-05-28T16:00:17.242Z",
+                              "KeyPublication": "No",
+                              "Description": "Burkina Faso has a population of 20.3 million, with more than 77% of its population living in rural areas.However, only 5% of people in-country have access to electricity. The country has 2 330  healthcarefacilities, of which 1 800 are primary healthcare facilities that serve mostly rural communities. As in otherdeveloping country contexts, these communities travel longer distances and incur out-of-pocket expensesto access reliable healthcare. The government of Burkina Faso is focused on addressing these challenges and providing more accessible healthcare to the poor in a reliable and resilient manner.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1005,
+                          "attributes": {
+                              "ReportName": "SDG7 for Primary Healthcare Infrastructure",
+                              "URL": "https://selcofoundation.org/sdg7-for-primary-healthcare-infrastructure-2/",
+                              "createdAt": "2024-05-09T15:46:26.965Z",
+                              "updatedAt": "2024-05-17T14:56:44.824Z",
+                              "KeyPublication": "No",
+                              "Description": "The chosen solution option includes efficient appliances and solarenergy systems for basic energy needs, vaccine storage, labour room,and staff quarter energy needs with a power requirement of 1.02 KW, and a budgetary implication of approximately INR. 7.4 lakhs ($10,000) per center or INR 7.4 crore (approximately $ 1 million) for all100 Sub Centers; 50% of this will be contributed by the State NHM.",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1050,
+                          "attributes": {
+                              "ReportName": "The Role of Energy Poverty on the Gender-Health",
+                              "URL": "https://media.afreximbank.com/afrexim/APRWPS202406_The-Role-of-Energy-Poverty-on-the-Gender-Health-2.pdf",
+                              "createdAt": "2024-05-13T13:08:36.498Z",
+                              "updatedAt": "2024-05-20T19:00:17.451Z",
+                              "KeyPublication": "No",
+                              "Description": "The results confirmed the health difference across gender in Ghana. In particular, the results suggest that females are less likely to be healthy than their male counterparts, confirming the health imbalance that is argued to be bias against females in extant literature. On the effects of energy poverty on health outcomes, the results showed that those who use gas or charcoal as their main cooking fuel are more likely to be healthy than their counterparts who use firewood. Finally, there is some evidence suggesting that using cleaner cooking fuel may contribute to reducing the health gap across genders. In particular, part of our estimates suggested that the health benefits of using gas as a main cooking fuel in the household, compared with firewood, are greater for females than for males",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1053,
+                          "attributes": {
+                              "ReportName": "Africa Health Strategy 2016-2030",
+                              "URL": "https://au.int/sites/default/files/pages/32895-file-africa_health_strategy.pdf",
+                              "createdAt": "2024-05-13T14:40:44.100Z",
+                              "updatedAt": "2024-05-20T16:33:51.031Z",
+                              "KeyPublication": "Yes",
+                              "Description": "The ultimate accountability chain in achieving the objectives of the AHS 2016-2030 begins with the Member States approval in 2016, while the AUC and RECsprovide the added value of coordination, support, facilitation, monitoring and evaluation. Successful implementation of the Africa Health Strategy will take more than defining the role and responsibilities of all stakeholders",
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1012,
+                          "attributes": {
+                              "ReportName": "The link between healthcare and energy supply: how joined-up thinking can lead to more synergies between two policy fields",
+                              "URL": "https://www.ssoar.info/ssoar/bitstream/handle/document/62249/ssoar-2019-keim_et_al-The_link_between_healthcare_and.pdf?sequence=1&isAllowed=y&lnkname=ssoar-2019-keim_et_al-The_link_between_healthcare_and.pdf",
+                              "createdAt": "2024-05-09T16:14:33.143Z",
+                              "updatedAt": "2024-05-09T16:16:07.645Z",
+                              "KeyPublication": "No",
+                              "Description": null,
+                              "locale": "en"
+                          }
+                      },
+                      {
+                          "id": 1011,
+                          "attributes": {
+                              "ReportName": "Achieving Universal Electrification of Rural Healthcare Facilities in sub-Saharan Africa with Decentralized Renewable Energy Technologies",
+                              "URL": "https://www.cell.com/joule/pdf/S2542-4351(21)00438-4.pdf",
+                              "createdAt": "2024-05-09T16:11:19.007Z",
+                              "updatedAt": "2024-05-17T14:58:07.379Z",
+                              "KeyPublication": "Yes",
+                              "Description": "This study identifies a large gap in the electrification of healthcare facilities in SSA, and it shows that decentralized photovoltaic systems can offer a clean, reliable, quick, and cost-effective solution. The cost of providing renewable electricity to each health facility by a standalone PV system is analyzed for a given location (incorporating operational costs). The upfront investment cost for providing electricity with PV to >50,000 facilities (mostly primary health posts) currently without electricity is estimated at EUR 484 million. Analysis of the accessibility and population distribution shows that 281 million people could reduce their travel time to healthcare facilities (by an average of 50 min) if all facilities were electrified.",
+                              "locale": "en"
+                          }
+                      }
+                  ]
+              }
+          },
+          {
+              "id": 297,
+              "Answer": "No",
+              "AnswerToolTip": null,
+              "FrenchAnswer": "non",
+              "FrenchAnswerToolTip": null,
+              "NextQuestion": {
+                  "data": {
+                      "id": 453,
+                      "attributes": {
+                          "Question": "Include electrification of healthcare  facilities in national electrification  strategy / plan",
+                          "createdAt": "2024-05-14T11:56:30.185Z",
+                          "updatedAt": "2024-06-06T14:47:26.152Z",
+                          "locale": "en",
+                          "FrenchQuestion": "Inclure l'électrification des établissements de santé dans la stratégie / le plan national d'électrification (continuer avec 'oui')",
+                          "slug": "include-electrification-of-healthcare-facilities-in-national-electrification-strategy-plan"
+                      }
+                  }
+              },
+              "KeyPublication": {
+                  "data": []
+              },
+              "NonKeyPublication": {
+                  "data": []
+              }
+          }
+      ],
+      "MainQuestion": {
+          "id": 164,
+          "Question": {
+              "data": {
+                  "id": 451,
+                  "attributes": {
+                      "Question": "Is healthcare addressed in  the national electrification  plan/strategy?",
+                      "createdAt": "2024-05-13T19:27:16.393Z",
+                      "updatedAt": "2024-06-06T15:39:04.052Z",
+                      "locale": "en",
+                      "FrenchQuestion": "La santé est-elle abordée dans la stratégie nationale d'électrification?\t\t\t\t\t\t\t\t",
+                      "slug": "is-healthcare-addressed-in-the-national-electrification-plan-strategy"
+                  }
+              }
+          },
+          "QuestionKeyType": {
+              "data": null
+          }
+      },
+      "Resource": {
+          "id": 167,
+          "resources": {
+              "data": [
+                  {
+                      "id": 9,
+                      "attributes": {
+                          "Name": "Powering Healthcare",
+                          "createdAt": "2024-05-08T14:37:50.771Z",
+                          "updatedAt": "2024-06-06T15:42:36.515Z",
+                          "publishedAt": "2024-05-08T14:42:27.318Z",
+                          "QuestionId": "172",
+                          "locale": "en",
+                          "FrenchName": "Alimenter les soins de santé"
+                      }
+                  }
+              ]
+          }
+      }
+  }
 };

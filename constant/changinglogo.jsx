@@ -1,4 +1,4 @@
-import { CLEAN_COOKING, ELECTRICITY_ACCESS, ENERGY_EFFICIENCY, SUSTAINABLE_COOLING } from ".";
+import { CLEAN_COOKING, ELECTRICITY_ACCESS, ENERGY_EFFICIENCY, POWERING_HEALTHCARE, SUSTAINABLE_COOLING } from ".";
 
 export const changingHeaderLogo = [
   { [ELECTRICITY_ACCESS]: "static/images/electricity_access.svg" },
@@ -26,6 +26,9 @@ export const changingCardLogo = [
   {
     [ENERGY_EFFICIENCY]: "/static/images/energy_efficiency_group.svg",
   },
+  {
+    [POWERING_HEALTHCARE]: "/static/images/phc_group_card.svg",
+  },
 ];
 
 export const changingLeftWrapLogo = [
@@ -40,6 +43,9 @@ export const changingLeftWrapLogo = [
   },
   {
     [ENERGY_EFFICIENCY]: "/static/images/left_box_energy_efficiency.svg",
+  },
+  {
+    [POWERING_HEALTHCARE]: "/static/images/left_wrap_phc_theme.svg",
   },
 ];
 
@@ -56,6 +62,9 @@ export const changingRightWrapLogo = [
   {
     [ENERGY_EFFICIENCY]: "/static/images/right_box_energy_efficiency.svg",
   },
+  {
+    [POWERING_HEALTHCARE]: "/static/images/right_wrap_golden.svg",
+  },
 ];
 
 export const changingRestartLogo = [
@@ -71,6 +80,9 @@ export const changingRestartLogo = [
   {
     [ENERGY_EFFICIENCY]: "../../static/images/restart_energy_efficiency.svg",
   },
+  {
+    [POWERING_HEALTHCARE]: "../../static/images/restart_phc.svg",
+  },
 ];
 
 export const changingFileLogo = [
@@ -85,6 +97,9 @@ export const changingFileLogo = [
   },
   {
     [ENERGY_EFFICIENCY]: "../../static/images/file_energy_efficiency.svg",
+  },
+  {
+    [POWERING_HEALTHCARE]: "../../static/images/file_phc.svg",
   },
 ];
 

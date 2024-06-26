@@ -29,7 +29,9 @@ const GetResourceType = () => {
         case SUSTAINABLECOOLING:
           return setDynamicClass("Sustainable_cooling");
         case ENERGYEFFICIENCY:
-          return setDynamicClass("energy_efficiency");
+          return setDynamicClass("energy_efficiency");;
+          case POWERINGHEALTHCARE:
+            return setDynamicClass("powering_healthcare");
         default:
           setDynamicClass("");
           break;
