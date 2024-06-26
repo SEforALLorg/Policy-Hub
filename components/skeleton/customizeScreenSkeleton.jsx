@@ -17,18 +17,18 @@ const CustomizeScreenSkeleton = () => {
           width={"65px"}
           height={"45px"}
         />
-        <div className="animate-pulse bg-skeleton h-[150px] w-full mobileMax:!h-[60px]" />
+        <div className="animate-pulse bg-skeleton h-[140px] w-full mobileMax:!h-[60px]" />
       </div>
       <div className="border-b-[4px] border-primary opacity-20 w-full my-2" />
-      <div className="w-full bg-skeleton animate-pulse h-[120px] mobileMax:!h-[50px] mobileMax:mb-8 mt-[30px] mobileMax:mt-2" />
-      <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons">
+      <div className="w-full bg-skeleton animate-pulse h-[100px] mobileMax:!h-[50px] mobileMax:mb-8 mt-[25px] mobileMax:mt-2" />
+      <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons mobileMax:!max-w-full">
         {Array(2)
           ?.fill(1)
           .map((index) => {
             return (
               <div
                 key={index}
-                className="w-full h-[80px] mobile:mb-4 mobileMax:mb-[10px] bg-skeleton animate-pulse rounded-[65px] mobileMax:!h-[42px]"
+                className="w-full h-[80px] tabMax:!h-[60px] mobile:mb-4 mobileMax:mb-[10px] bg-skeleton animate-pulse rounded-[65px] mobileMax:!h-[42px]"
               />
             );
           })}

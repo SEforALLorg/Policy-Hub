@@ -213,7 +213,7 @@ const Dashboard = ({
   }, [newJourneyData]);
 
   return (
-    <Wrapper isExpand={isExpand}>
+    <Wrapper isExpand={isExpand} className={`${isExpand ? "" : "expanded-card-height"}`}>
       {!isResource ? (
         <>
           <div

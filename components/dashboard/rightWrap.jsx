@@ -361,9 +361,12 @@ const RightWrapPage = ({
 
   let height;
   if (resourceType === "cleancooking" && isExpand) {
-    height = "calc(80vh - 120px)";
+    // height = "calc(80vh - 120px)";
+    height= ""
   } else if (resourceType === "energyefficiency" && isExpand) {
-    height = "calc(80vh - 120px)";
+    // height = "calc(80vh - 120px)";
+
+    height= ""
   } else {
     height = "";
   }

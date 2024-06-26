@@ -446,8 +446,9 @@ const LeftWrapPage = ({
                             />
                           )}
                         </div>
-                        <div className="flex items-center flex-col w-[80%] my-[4rem] mx-auto left-wrap-buttons">
-                          {singleAnswer?.map((i) => {
+                      <div className="left-questionBox">
+                        <div className={`flex items-center flex-col w-[80%] laptopMax:!w-[90%] mx-auto left-wrap-buttons ${singleAnswer.length >= 4 ? "!mt-[0rem] mb-0": "my-[4rem]"}`}>
+                         {singleAnswer?.map((i) => {
                             if (!i?.Answer) return null;
                             return (
                               <BlueButton
@@ -459,6 +460,7 @@ const LeftWrapPage = ({
                             );
                           })}
                         </div>
+                      </div>
                       </>
                     ) : (
                       <StepComponent

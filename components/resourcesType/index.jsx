@@ -88,7 +88,7 @@ const Resources = ({
   const getAllresources = resourcesList || resourcesData;
 
   return (
-    <div className="customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px]">
+    <div className="customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px]">
       {!loader && resourcesData ? (
         <>
           <div className="flex items-center customize-header relative">
