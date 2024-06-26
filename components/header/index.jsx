@@ -21,6 +21,7 @@ import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
+  POWERINGHEALTHCARE,
   SUSTAINABLECOOLING,
 } from "../../constant";
 import { isMobile } from "../../utilities";
@@ -87,7 +88,7 @@ const Header = ({ selectedRes }) => {
               alt="clean_cooking_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
-              height={"49px"}
+              height={"53px"}
               width={"180px"}
             />
           )}
@@ -97,7 +98,7 @@ const Header = ({ selectedRes }) => {
               alt="sustainable_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
-              height={"49px"}
+              height={"53px"}
               width={"180px"}
             />
           )}
@@ -107,7 +108,17 @@ const Header = ({ selectedRes }) => {
               alt="energy_efficiency_logo"
               className=" cursor-pointer updatedLogo"
               onClick={() => window.location.reload()}
-              height={"49px"}
+              height={"53px"}
+              width={"180px"}
+            />
+          )}
+          {selectedRes === POWERINGHEALTHCARE && (
+            <img
+              src={"/static/images/powering-healthcare-logo.svg"}
+              alt="powering_healthcare_logo"
+              className=" cursor-pointer updatedLogo"
+              onClick={() => window.location.reload()}
+              height={"53px"}
               width={"180px"}
             />
           )}
@@ -150,7 +161,7 @@ const Header = ({ selectedRes }) => {
             <NavItem>
               <div>
                 <NavLink
-                  className={`${location === "/" ? "active" : ""}`}
+                  className={`${location === "/" ? "active" : ""} ${i18n.language === "fr" && "nav-fr-link"}`}
                   href={`/${lang === null ? "" : lang}`}
                   onClick={removeResource}
                 >
@@ -161,7 +172,7 @@ const Header = ({ selectedRes }) => {
             <NavItem>
               <div>
                 <NavLink
-                  className={`${location === "/resources" ? "active" : ""}`}
+                  className={`${location === "/resources" ? "active" : ""} ${i18n.language === "fr" && "nav-fr-link"}`}
                   href={`/${lang || "en"}/resources`}
                   onClick={removeResource}
                 >
@@ -172,7 +183,7 @@ const Header = ({ selectedRes }) => {
             <NavItem>
               <div>
                 <NavLink
-                  className={location === "/about" ? "active" : ""}
+                  className={`${location === "/about" ? "active" : ""} ${i18n.language === "fr" && "nav-fr-link"}`}
                   href={`/${lang || "en"}/about`}
                   onClick={removeResource}
                 >
@@ -183,7 +194,7 @@ const Header = ({ selectedRes }) => {
             <NavItem>
               <div>
                 <NavLink
-                  className={`${location === "/contact" ? "active" : ""}`}
+                  className={`${location === "/contact" ? "active" : ""} ${i18n.language === "fr" && "nav-fr-link"}`}
                   href={`/${lang || "en"}/contact`}
                   onClick={removeResource}
                 >
@@ -192,7 +203,7 @@ const Header = ({ selectedRes }) => {
               </div>
             </NavItem>
           </Nav>
-          <UncontrolledDropdown setActiveFromChild className="customDropdown">
+          <UncontrolledDropdown setActiveFromChild className="customDropdown ease-linear transition-all duration-500">
             <DropdownToggle
               className="DropdownToggle"
               tag="a"

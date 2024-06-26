@@ -15,6 +15,8 @@ import {
   CLEANCOOKING,
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
+  POWERINGHEALTHCARE,
+  POWERING_HEALTHCARE,
   SUSTAINABLECOOLING,
 } from "../../constant";
 
@@ -232,7 +234,7 @@ const MobileFilters = ({
       <div className={"right-wrap"}>
         <div className="flex mt-[30px] reports-inner-section">
           <div
-            className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button"
+            className="font-bold text-[16px] text-text pb-[10px] pl-[2px] tracking-[1px] flex mobile-show filter-button mobileMax:text-xsmall"
             onClick={() => setIsFilter(!isFilter)}
           >
             <BsSliders className="text-text mr-[5px]" />
@@ -255,11 +257,11 @@ const MobileFilters = ({
             } report-left-wrap relative w-[30%] mr-[16px] pl-[7px] pr-[7px]`}
             style={{ display: isBlock ? "block" : "" }}
           >
-            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor">
+            <h5 className="font-bold text-[16px] m-0 text-text pb-[15px] pl-[2px] tracking-[1px] flex justify-between textColor relative">
               {t("Filters")}
               {optionSelected ? (
                 <button
-                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center
+                  className={`bg-Secondary rounded-[69px] pl-[10px] pr-[10px] leading-5 text-center !absolute top-0 right-0
       text-xsmall h-[30px] border-0	text-white outline-0	no-underline font-medium mt-[-6px] pt-[0px] resources-button hover:opacity-[0.8] mobile-hidden clear-filter-button`}
                   onClick={() => onReset()}
                 >
@@ -269,7 +271,7 @@ const MobileFilters = ({
               <IoClose
                 className="text-text mr-[5px] mobile-show close-icon"
                 onClick={() => setIsFilter(!isFilter)}
-                style={{ top: 14 }}
+                style={{ top: -7 }}
               />
             </h5>
             <form className="filterForm">
@@ -390,6 +392,36 @@ const MobileFilters = ({
                     setSelectedOptions={setSelectedOptions}
                     isClearAll={isClearAll}
                   />
+                )}
+                 {(resourceType === POWERING_HEALTHCARE  || browseResource) && (
+                  <>
+                  <Select
+                    title={t("PowerSupply")}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(filters?.powerSupply)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.power_supplies}
+                    name={"power_supplies"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                  <Select
+                    title={t("TechnologySolution")}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
+                    options={getFormattedData(filters?.technologySolution)}
+                    onChange={(e) => onChange(e)}
+                    selected={selectInputs?.technology_solutions}
+                    name={"technology_solutions"}
+                    top={true}
+                    selectedOptions={selectedOptions}
+                    setSelectedOptions={setSelectedOptions}
+                    isClearAll={isClearAll}
+                  />
+                </>
                 )}
                 <div className="apply-wrap">
                   {isOpen && (

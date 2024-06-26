@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const OtherToolsCard = ({
@@ -9,13 +9,15 @@ const OtherToolsCard = ({
   filterData,
 }) => {
   const { t, i18n } = useTranslation();
+  const [isFocusAnimation, setIsFocusAnimation] = useState(false);
+  
   return (
     <div
       className={
-        "bg-white resourceShadow rounded-2xl  overflow-hidden w-full other-card flex mt-[20px] card-animation resourceCard"
+        "bg-white resourceShadow rounded-2xl overflow-hidden w-full other-card flex mt-[20px] card-animation resourceCard  transition-opacity duration-500 delay-500"
       }
     >
-      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px]  flex flex-col">
+      <div className="pt-[15px] pr-4 pb-[17px] pl-[22px] flex flex-col">
         <h3
           onClick={() => window.open(link)}
           className="font-[600] leading-6  text-darktext mb-1 text-medium otherTitle center-content cursor-pointer transition-all duration-1000 hover:underline"

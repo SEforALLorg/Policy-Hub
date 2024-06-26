@@ -37,24 +37,10 @@ const Feature = () => {
   );
   const setData = () => {
     const mainData = filteredCards?.data?.data || [];
-    // Exclude this Phc reports only
-    const excludePhcData = mainData.filter(resource => {
-      if (
-        resource.attributes?.resources?.data &&
-        resource.attributes.resources.data.length > 0
-      ) {
-        for (let item of resource.attributes.resources.data) {
-          if (item.attributes?.Name === "Powering Healthcare") {
-            return false; 
-          }
-        }
-      }
-      return true; 
-    });
-    const filterData = excludePhcData.filter(item => item.id === 12 || item.id === 11) || [];
+    const filterData = mainData.filter(item => item.id === 12 || item.id === 11) || [];
     const finalIds = filterData?.map((item) => item?.id);
     const finalData =
-    excludePhcData
+    mainData
         ?.filter((item) => !finalIds?.includes(item?.id))
         .sort((a, b) =>
           a?.attributes?.Title?.localeCompare(b?.attributes?.Title)
@@ -101,6 +87,10 @@ const Feature = () => {
     {
       label: "Sustainable Cooling",
       id: 4,
+    },
+    {
+      label: "Powering Healthcare",
+      id: 9,
     },
   ];
   return (

@@ -51,14 +51,16 @@ const Dashboard = ({
     publishing_organizations: [],
     sector: [],
     fuel: [],
+    power_supplies: [],
+    technology_solutions: [],
   });
   const [t, i18n] = useTranslation();
 
   useEffect(() => {
-    const { id } = router?.query;
+    const { slug } = router?.query;
     const resource = localStorage.getItem("ResourceType");
-    if (id) {
-      setFirstQuestionId(Number(id));
+    if (slug) {
+      setFirstQuestionId(slug);
       setIsResource(false);
       setSelectedResource(resource);
       selectedRes(resource);
@@ -86,15 +88,21 @@ const Dashboard = ({
           journey?.[0]?.attributes?.AddAnswer?.[0]?.NonKeyPublication?.data
         );
       }
-    }  else if (query?.id === "undefined") {
+    } else if (query?.slug === "undefined") {
+      const newQuery = { ...query, slug: "completed" };
+      const newPath = {
+        pathname: router.pathname,
+        query: newQuery,
+      };
+      router.replace(newPath, undefined, { shallow: true });
+    } else if (query?.id === "undefined") {
       setCompleted(true);
       setIsResource(false);
       setIsExpand(true);
     } else if (query?.bigCard === "true") {
       setIsResource(false);
       setIsExpand(true);
-    } 
-    else if (["32", "9", "80", "52"]?.includes(query?.id)) {
+    } else if (["32", "9", "80", "52", "172"]?.includes(query?.id)) {
       setIsExpand(false);
       setIsBigCard(false);
     }
@@ -112,6 +120,8 @@ const Dashboard = ({
       publishing_organizations: [],
       sector: [],
       fuel: [],
+      power_supplies: [],
+      technology_solutions: [],
     });
     setClearAll(!isClearAll);
   }, [isClearAll]);
@@ -143,12 +153,14 @@ const Dashboard = ({
 
   useEffect(() => {
     const question = questions?.data?.data?.find(
-      (q) => q?.id === Number(firstQuestionId)
+      (q) =>
+        q?.attributes?.MainQuestion?.Question?.data?.attributes?.slug ===
+        firstQuestionId
     );
     const firstQuestion = questions?.data?.data?.filter((item) => {
       return (
-        item?.attributes?.MainQuestion?.Question?.data?.id ===
-        Number(firstQuestionId)
+        item?.attributes?.MainQuestion?.Question?.data?.attributes?.slug ===
+        firstQuestionId
       );
     })?.[0]?.attributes?.MainQuestion?.Question?.data;
     setFirstQuestion(question || firstQuestion);
@@ -207,7 +219,10 @@ const Dashboard = ({
   }, [newJourneyData]);
 
   return (
-    <Wrapper isExpand={isExpand}>
+    <Wrapper
+      isExpand={isExpand}
+      className={`${isExpand ? "" : "expanded-card-height"}`}
+    >
       {!isResource ? (
         <>
           <div
@@ -219,9 +234,11 @@ const Dashboard = ({
             isExpand &&
             "increse-efficiency-bigCardAnimation-height"
           }
-          ${currentResourceType === "electricity" &&
-          isExpand &&
-          "increse-electricity-bigCardAnimation-height"}
+          ${
+            currentResourceType === "electricity" &&
+            isExpand &&
+            "increse-electricity-bigCardAnimation-height"
+          }
           ${
             currentResourceType === "poweringhealthcare" &&
             isExpand &&

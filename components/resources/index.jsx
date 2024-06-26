@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 
-const ALLReports = () => {
+const ALLReports = ({hidePhcFilters}) => {
   const [selectInputs, setSelectInputs] = useState({
     countries: [],
     regions: [],
@@ -16,6 +16,8 @@ const ALLReports = () => {
     publishing_organizations: [],
     sector: [],
     fuel: [],
+    power_supplies: [],
+    technology_solutions: []
   });
   const [isClearAll, setClearAll] = useState(false);
   const onResetFilter = () => {
@@ -30,6 +32,8 @@ const ALLReports = () => {
       publishing_organizations: [],
       sector: [],
       fuel: [],
+      power_supplies: [],
+      technology_solutions: []
     });
     setClearAll(!isClearAll);
   };
@@ -56,6 +60,7 @@ const ALLReports = () => {
         setClearAll={setClearAll}
         isClearAll={isClearAll}
         isExpand={false}
+        hidePhcFilters={hidePhcFilters}
       />
     </div>
   );

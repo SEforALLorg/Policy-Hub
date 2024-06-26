@@ -1,71 +1,76 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
 import { getResourceFirstQuestion, getResources } from "../../utilities";
-import { SUSTAINABLECOOLING } from "../../constant";
-import Head from "next/head";
-import { sustainableCoolingFirstQuestion } from "../../constant/firstQuestion";
+import { CLEANCOOKING } from "../../constant";
+import { cleanCookingFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
-import pageImage from "../../static/images/sustainable_cooling.svg";
+import Head from "next/head";
 import dynamic from "next/dynamic";
 
 const Footer = dynamic(() => import('components/footer'));
 const Header = dynamic(() => import('components/header'));
 const Dashboard = dynamic(() => import('components/dashboard'));
-
-const pageTitle = "Sustainable Energy | Policy Hub | Sustainable Cooling";
+let reload = false;
+const pageTitle = "Sustainable Energy | Policy Hub | Clean Cookings"
 const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
-
-const Sustainablecooling = () => {
+const Cleancooking = () => {
   const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
-  const res = SUSTAINABLECOOLING;
+  const res = CLEANCOOKING;
+  const [loader, setLoader] = useState(true);
   const [isReload, setIsReload] = useState(false);
 
-  const query = getResources(4);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
+  }, []);
+
+  const query = getResources(2);
   const {
     data: questions,
     isFetching: isFetchingQuestions,
     refetch,
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
+    // Don't enable the query initially to prevent unnecessary fetching
     enabled: false,
-    onError: (err) => {
-      // Handle the error (e.g., display an error message, log it, etc.)
-      console.error("Error fetching questions:", err);
-    },
   });
   const defaultQuestion = getResourceFirstQuestion();
+
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
       setIsReload(true);
       refetch();
-    } else if (router?.query?.id && !isReload && !questions) {
-      const questionId = Number(router?.query?.id);
-      if (questionId !== Number(defaultQuestion)) {
+    } else if (router?.query?.slug && !isReload && !questions) {
+      const questionSlug = router?.query?.slug;
+      if (questionSlug !== defaultQuestion) {
         setIsReload(true);
-        router.push(`/sustainablecooling/${defaultQuestion}`);
+        router.push(`/cleancooking/${defaultQuestion}`);
+      } else if (!reload) {
+        reload = true
+        router.push({pathname :`/cleancooking/${defaultQuestion}`, query: ""});
       }
-    }else if (router?.query?.bigCard === "true" ) {
+    } else if (router?.query?.bigCard === "true" ) {
       setIsReload(true);
     }
-  }, [router]);
+  }, [isReload, router, questions]);
   return (
-    <main id="fullWrap" ref={ref} className={"Sustainable_cooling"}>
+    <main id="fullWrap" ref={ref} className={"clean_cooking"}>
       <Head>
-        <title>Sustainable Energy | Policy Hub | Sustainable Cooling</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={'/static/images/sustainable_cooling_white.png'} />
-        <meta property="image" content={'/static/images/sustainable_cooling_white.png'} />
+        <meta property="og:image" content={'/static/images/clean_cooking_Black.png'} />
+        <meta property="image" content={'/static/images/clean_cooking_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={'/static/images/sustainable_cooling_white.png'} />
-        <meta name="twitter:image" content={'/static/images/sustainable_cooling_white.png'} />
-        {/* Additional meta tags or links can be added here */}
+        <meta property="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
         <div className="mobile:p-2.5 xsm:p-[5px]">
@@ -82,11 +87,11 @@ const Sustainablecooling = () => {
                 questions={
                   questions || {
                     data: {
-                      data: [sustainableCoolingFirstQuestion],
+                      data: [cleanCookingFirstQuestion],
                     },
                   }
                 }
-                isFetchingQuestions={isFetchingQuestions}
+                isFetchingQuestions={loader ? true : isFetchingQuestions}
                 setIsBigCard={() => {
                   setIsReload(true);
                   refetch();
@@ -189,5 +194,4 @@ const Sustainablecooling = () => {
     </main>
   );
 };
-
-export default Sustainablecooling;
+export default Cleancooking;

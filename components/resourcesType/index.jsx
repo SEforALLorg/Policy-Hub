@@ -1,19 +1,22 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
-import { IoClose } from "react-icons/io5";
-
-import Loader from "../loader";
 import {
-  CLEANCOOKING,
-  ELECTRICITYACCESS,
-  ENERGYEFFICIENCY,
-  SUSTAINABLECOOLING,
   resourcesList,
+  CLEAN_COOKING,
+  ELECTRICITY_ACCESS,
+  SUSTAINABLE_COOLING,
+  ENERGY_EFFICIENCY,
+  POWERING_HEALTHCARE,
 } from "../../constant";
+import {
+  cleanCookingFirstQuestion,
+  electricityFirstQuestion,
+  energyEfficiencyFirstQuestion,
+  poweringHealthCareFirstQuestion,
+  sustainableCoolingFirstQuestion,
+} from "../../constant/firstQuestion";
 import ResourcesTypeSkeleton from "../skeleton/resourcesTypeSkeleton";
-
-const visibleIds = [1, 2, 3, 4];
 
 const Resources = ({
   onYes,
@@ -26,25 +29,53 @@ const Resources = ({
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === "en";
   const onAnswerClick = (i) => {
+    let questionLocalArray = [];
+    switch (i?.id) {
+      case 1:
+        questionLocalArray = [electricityFirstQuestion];
+        break;
+      case 2:
+        questionLocalArray = [cleanCookingFirstQuestion];
+        break;
+      case 3:
+        questionLocalArray = [energyEfficiencyFirstQuestion];
+        break;
+      case 4:
+        questionLocalArray = [sustainableCoolingFirstQuestion];
+        break;
+      case 9:
+        questionLocalArray = [poweringHealthCareFirstQuestion];
+        break;
+      default:
+        break;
+    }
+    const findSlug = questionLocalArray?.find(
+      (item) => item?.id === Number(i?.attributes?.QuestionId)
+    );
+    const slug =
+      findSlug?.attributes?.MainQuestion?.Question?.data?.attributes?.slug;
     localStorage.setItem("resourceObj", JSON.stringify(i));
     onYes();
-    onNextQuestionId(i?.attributes?.QuestionId, i?.attributes);
+    onNextQuestionId(slug, i?.attributes);
   };
 
   const changeColor = (resourceType) => {
     const res = resourceType?.attributes?.Name;
     selected(resourceType);
     switch (res) {
-      case ELECTRICITYACCESS:
+      case ELECTRICITY_ACCESS:
         localStorage.setItem("ResourceType", res);
         break;
-      case CLEANCOOKING:
+      case CLEAN_COOKING:
         localStorage.setItem("ResourceType", res);
         break;
-      case SUSTAINABLECOOLING:
+      case SUSTAINABLE_COOLING:
         localStorage.setItem("ResourceType", res);
         break;
-      case ENERGYEFFICIENCY:
+      case ENERGY_EFFICIENCY:
+        localStorage.setItem("ResourceType", res);
+        break;
+      case POWERING_HEALTHCARE:
         localStorage.setItem("ResourceType", res);
         break;
       default:
@@ -54,7 +85,7 @@ const Resources = ({
   const getAllresources = resourcesList || resourcesData;
 
   return (
-    <div className="customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px]">
+    <div className="customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px]">
       {!loader && resourcesData ? (
         <>
           <div className="flex items-center customize-header relative">
@@ -80,12 +111,9 @@ const Resources = ({
             <div className="customize-heading font-bold text-[51px] leading-[60px] text-text mobileMax:!mb-3 tab:!mb-[3rem]">
               {t("AreaWantToInvestigate")}
             </div>
-           <div className="min-h-[300px] mobileMax:min-w-[200px] flex items-center w-full">
-           <div className="w-full flex items-center justify-between flex-wrap customize-buttons customize-row-button">
+            <div className="flex items-center justify-between flex-wrap m-auto customize-buttons customize-row-button">
               {getAllresources &&
-                Object?.values(getAllresources)
-                ?.filter((resource) => visibleIds?.includes(resource?.id))
-                ?.map((resource) => (
+                Object?.values(getAllresources)?.map((resource) => (
                   <BlueButton
                     title={
                       isEnglish
@@ -105,7 +133,6 @@ const Resources = ({
                   />
                 ))}
             </div>
-           </div>
           </div>
         </>
       ) : (

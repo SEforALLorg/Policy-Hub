@@ -17,23 +17,29 @@ const Customize = ({
   onNextQuestion,
   onReportsFind,
   setJourney,
-  loader
+  loader,
 }) => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language === 'en';
+  const isEnglish = i18n.language === "en";
   const firstQuestion = questions?.length && questions[0];
-  const title = isEnglish ? 
-    firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.Question : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes?.FrenchQuestion;
+  const title = isEnglish
+    ? firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
+        ?.Question
+    : firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
+        ?.FrenchQuestion;
   const singleAnswer = firstQuestion?.attributes?.AddAnswer;
-  const ToolTipText = isEnglish ? firstQuestion?.attributes?.ToolTipText : firstQuestion?.attributes?.FrenchToolTipText;
+  const ToolTipText = isEnglish
+    ? firstQuestion?.attributes?.ToolTipText
+    : firstQuestion?.attributes?.FrenchToolTipText;
   let count = localStorage.getItem("count");
 
   const onAnswerClick = (i) => {
+    const slug = i?.NextQuestion?.data?.attributes?.slug;
     const currentDate = new Date();
     localStorage.setItem("currentDate", currentDate);
     onYes();
-    onNextQuestion(i?.NextQuestion?.data?.id);
+    onNextQuestion(slug);
     onReportsFind(i);
     let payload = {
       question: title,
@@ -63,7 +69,7 @@ const Customize = ({
     }
     router.push(
       {
-        pathname: `/${i18n.language}/${getRoute()}/${i?.NextQuestion?.data?.id}`,
+        pathname: `/${i18n.language}/${getRoute()}/${slug}`,
         query: {
           bigCard: true,
         },
@@ -77,7 +83,7 @@ const Customize = ({
 
   return (
     <div
-      className={`customize-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px] ${
+      className={`customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[488px] ${
         i18n.language !== "fr" ? "h-full" : ""
       }`}
     >
@@ -132,7 +138,7 @@ const Customize = ({
               />
             )}
           </p>
-          <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons">
+          <div className="flex items-center flex-col max-w-[40%] w-full m-auto customize-buttons mobileMax:!max-w-full">
             {singleAnswer?.map((i) => (
               <BlueButton
                 title={isEnglish ? i?.Answer : i?.FrenchAnswer}

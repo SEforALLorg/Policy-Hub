@@ -19,7 +19,7 @@ export const DropDownList = styled.ul`
   overflow-y: scroll;
   left: 0px;
   top: 52px;
-  height: 160px;
+  max-height: 280px;
   z-index: 9999999999;
   box-shadow: 0px 4.90168px 17.1559px rgb(0 0 0 / 10%);
   @media only screen and (max-width: 1680px){
@@ -38,6 +38,9 @@ export const DropDownList = styled.ul`
   &::-webkit-scrollbar-thumb {
     background: var(--theme-button-color);
     border-radius: 10px;
+  }
+  @media only screen and (max-width: 1600px){
+    max-height: 170px;
   }
 `;
 

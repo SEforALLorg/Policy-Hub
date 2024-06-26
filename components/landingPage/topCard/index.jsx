@@ -21,7 +21,7 @@ const TopCard = ({ HandleOpen }) => {
       </div>
       <div id="container-main" className="flex my-[1.5rem]">
         <div className="container-box w-[50%]">
-          <div className="flex flex-col h-[50%] ">
+          <div className={`flex flex-col h-[50%] `}>
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[16%] mr-[8px] mt-[5px]"
@@ -31,7 +31,7 @@ const TopCard = ({ HandleOpen }) => {
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
               />
-              <p className="text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left">
+              <p className={`text-[15px] leading-[50px] text-[#000000a1] m-0 flex-1 text-left `}>
                 {t("PlatformThatSupports")}
               </p>
             </div>
@@ -47,7 +47,7 @@ const TopCard = ({ HandleOpen }) => {
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
               />
-              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+              <p className={`text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left `}>
                 {t("ResourcesOnAccess")}
               </p>
             </div>
@@ -56,7 +56,7 @@ const TopCard = ({ HandleOpen }) => {
         </div>
         <div className="divider w-[1px] border-b-[4px] border opacity-[1]" />
         <div className="container-box w-[50%]">
-          <div className="third-container flex flex-col h-[50%]">
+          <div className={`third-container flex flex-col h-[50%] `}>
             <div className="bg-white-900 mobile-card-width items-start card-section-wrap hover:scale-[1.06] transition-all duration-1000 card-inner-small-wrap p-[20px] flex h-[100%]">
               <img
                 className="w-[14%] mr-[8px] mt-[-8px]"
@@ -66,7 +66,7 @@ const TopCard = ({ HandleOpen }) => {
                 width={isMobile() ? "65px" : "70px"}
                 height={isMobile() ? "65px" : "70px"}
               />
-              <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+              <p className={`text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left `}>
                 {t("TheKnowledgeHub")}
               </p>
             </div>
@@ -81,7 +81,7 @@ const TopCard = ({ HandleOpen }) => {
               width={isMobile() ? "65px" : "70px"}
               height={isMobile() ? "65px" : "70px"}
             />
-            <p className="text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left">
+            <p className={`text-[12px] leading-[55px] text-[#000000a1] m-0 flex-1 text-left `}>
               {t("OnElectricity")}
             </p>
           </div>

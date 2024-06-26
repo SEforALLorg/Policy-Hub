@@ -6,6 +6,8 @@ import {
   ELECTRICITY_ACCESS,
   ENERGYEFFICIENCY,
   ENERGY_EFFICIENCY,
+  POWERINGHEALTHCARE,
+  POWERING_HEALTHCARE,
   SUSTAINABLECOOLING,
   SUSTAINABLE_COOLING,
 } from "../constant";
@@ -16,6 +18,7 @@ import electricityTheme from "../theme/Electricity";
 import yellowTheme from "../theme/EnergyEfficiency";
 import darkTheme from "../theme/SustainableCooling";
 import { applyTheme } from "../theme/utils";
+import PhcTheme from "../theme/PublicHealthCare";
 
 export const getFormattedData = (unFormattedData) => {
   const formattedData = unFormattedData?.map((objectData) => {
@@ -43,7 +46,7 @@ export const getReportQuery = (
   publicationReports,
   page,
   debouncedSearch,
-  showAllReports, 
+  showAllReports,
   pageSize
 ) => {
   if (
@@ -107,6 +110,16 @@ export const getReportQuery = (
             $in: selectInputs?.fuel,
           },
         },
+        power_supplies: {
+          id: {
+            $in: selectInputs?.power_supplies,
+          },
+        },
+        technology_solutions: {
+          id: {
+            $in: selectInputs?.technology_solutions,
+          },
+        },
       },
     },
   });
@@ -137,6 +150,8 @@ export const isSelectedInput = (selectInputs) => {
     selectInputs?.sector?.length ||
     selectInputs?.fuel?.length ||
     selectInputs?.generation_sources?.length;
+  selectInputs?.powerSupply?.length;
+  selectInputs?.powerSupply?.technologySolution;
   return optionSelected;
 };
 
@@ -155,6 +170,60 @@ export const shortName = (str) => {
   } else {
     string = str?.substring(0, 2)?.toUpperCase();
   }
+  return string || str;
+};
+
+export const shortNamePhc = (str) => {
+  const lang = typeof window !== "undefined" && localStorage.getItem("lang")
+  const matches = str?.match(/\b(\w)/g);
+  const acronym = matches?.join("");
+  let string;
+  if (str === "Yes" || str === "No" || str === "Oui" || str === "Non") {
+    return str;
+  } else if (str?.includes("-")) {
+    const matches = str?.replace("-", " ")?.match(/\b(\w)/g);
+    const acronym = matches?.join("");
+    string = acronym?.toUpperCase();
+  } else if (str?.indexOf(" ") >= 0) {
+    string = acronym?.toUpperCase();
+  } else {
+    string = lang === "en" ? str?.substring(0, 2)?.toUpperCase(): str?.substring(0, 3)?.toUpperCase();
+  }
+  if(lang === "en") {
+    if(string === "DCAA"){
+      return "DATA"
+    }
+    if(string === "PPAIFFI"){
+      return "PLCY"
+    }
+    if(string === "TATBCFPAR"){
+      return "TEC"
+      }
+    if(string === "FI"){
+      return "FIN"
+    }
+  }
+  if(lang === "fr") {
+    if(string === "OUI"){
+      return "Oui"
+    }
+    if(string === "NON"){
+      return "Non"
+    }
+    if(string === "CEADDE"){
+      return "DONN"
+    }
+    if(string === "PPECIPLMEU"){
+      return "PLTI"
+    }
+    if(string === "ATCRPLPELRG"){
+      return "TEC"
+      }
+    if(string === "CFR"){
+      return "FIN"
+    }
+  }
+  
   return string || str;
 };
 
@@ -287,6 +356,10 @@ export const changeTheme = (e) => {
       localStorage.setItem("ResourceType", e);
       applyTheme(yellowTheme); //blueTheme
       break;
+    case POWERING_HEALTHCARE:
+      localStorage.setItem("ResourceType", e);
+      applyTheme(PhcTheme);
+      break;
     default:
       applyTheme(baseTheme);
       break;
@@ -334,6 +407,9 @@ export const getResourceRoute = (resource) => {
     case SUSTAINABLECOOLING:
       return "sustainablecooling";
       break;
+    case POWERINGHEALTHCARE:
+      return "poweringhealthcare";
+      break;
     default:
       return "electricity";
       break;
@@ -341,29 +417,34 @@ export const getResourceRoute = (resource) => {
 };
 
 export const getRoute = () => {
-  return typeof window !== "undefined" && window?.location?.pathname?.split('/')?.[2]
-}
+  return (
+    typeof window !== "undefined" && window?.location?.pathname?.split("/")?.[2]
+  );
+};
 
 export const getResourceFirstQuestion = () => {
   switch (getRoute()) {
     case ELECTRICITY_ACCESS:
-      return "9";
+      return "does-an-up-to-date-national-electrification-strategyplan-nesnep-exist";
       break;
     case CLEAN_COOKING:
-      return "32";
+      return "is-clean-cooking-featured-in-targetspriorities-of-the-national-energy-policy-strategy-or-nationally-determined-contributions-ndc";
       break;
     case ENERGY_EFFICIENCY:
-      return "80";
+      return "is-there-an-up-to-date-national-energy-efficiency-policy-or-strategy";
       break;
     case SUSTAINABLE_COOLING:
-      return "52";
+      return "is-access-to-cooling-addressed-in-the-national-energy-efficiency-policy-or-strategy";
+      break;
+    case POWERING_HEALTHCARE:
+      return "is-healthcare-addressed-in-the-national-electrification-plan-strategy";
       break;
     default:
-      return "9";
+      return "does-an-up-to-date-national-electrification-strategyplan-nesnep-exist";
       break;
   }
-}
+};
 
 export const host = () => {
   return typeof window !== "undefined" && window.location.origin;
-}
+};

@@ -33,7 +33,7 @@ const Resources = () => {
         <div className="custom-container mx-auto">
           <Header />
           <div className="card-box">
-            <ALLReports />
+            <ALLReports hidePhcFilters={true}/>
           </div>
           <div className="pt-[40px]">
             <Footer />

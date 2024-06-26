@@ -4,6 +4,7 @@ import {
   ELECTRICITYACCESS,
   ENERGYEFFICIENCY,
   SUSTAINABLECOOLING,
+  POWERINGHEALTHCARE,
 } from "../../constant";
 import dynamic from "next/dynamic";
 
@@ -28,7 +29,9 @@ const Landing = () => {
       case SUSTAINABLECOOLING:
         return setDynamicClass("Sustainable_cooling");
       case ENERGYEFFICIENCY:
-        return setDynamicClass("energy_efficiency");
+        return setDynamicClass("energy_efficiency");;
+        case POWERINGHEALTHCARE:
+          return setDynamicClass("powering_healthcare");
       default:
         setDynamicClass("");
         break;

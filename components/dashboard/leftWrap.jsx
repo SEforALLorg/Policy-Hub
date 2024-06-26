@@ -12,11 +12,10 @@ import {
   getRoute,
   shortName,
   shortNamePhc,
-} from "../../utilities";
+} from "../../utilities"
 import DetailModal from "../detailModal";
 import { changingLeftWrapLogo } from "../../constant/changinglogo";
 import { CLEANCOOKING } from "../../constant";
-import Loader from "../loader";
 import LeftWrapSkeleton from "../skeleton/leftWrapSkeleton";
 
 const LeftWrapPage = ({
@@ -48,17 +47,18 @@ const LeftWrapPage = ({
   );
 
   useEffect(() => {
-    if (router?.query?.id) {
-      const questionId = Number(router?.query?.id);
+    if (router?.query?.slug) {
+      const questionId = router?.query?.slug;
       const findIndex = userJourney?.findIndex(
         (question) =>
-          question?.attributes?.MainQuestion?.Question?.data?.id === questionId
+          question?.attributes?.MainQuestion?.Question?.data?.attributes
+            ?.slug === questionId
       );
       if (findIndex > -1) {
         setUserJourney(userJourney.slice(0, findIndex));
       }
     }
-  }, [router?.query?.id]);
+  }, [router?.query?.slug]);
 
   useEffect(() => {
     if (localStepQuestion?.length) {
@@ -68,7 +68,10 @@ const LeftWrapPage = ({
 
   useEffect(() => {
     if (questions?.length && firstQuestion) {
-      setNextQuestionId(firstQuestion?.id || firstQuestion);
+      setNextQuestionId(
+        firstQuestion?.attributes?.MainQuestion?.Question?.data?.attributes
+          ?.slug || firstQuestion
+      );
     }
   }, [questions?.length, firstQuestion, stepAnswer]);
 
@@ -132,7 +135,8 @@ const LeftWrapPage = ({
     resetFilters();
     let revisedArray = [...stepQuestion];
     const questionId =
-    revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.id;
+      revisedArray[0]?.attributes?.MainQuestion?.Question?.data?.attributes
+        ?.slug;
     setNextQuestionId(questionId);
     router.push(
       {
@@ -155,7 +159,8 @@ const LeftWrapPage = ({
     let revisedArray = [...userJourney];
     const targetObject = revisedArray?.find((i) => i?.id === e?.id);
     const targetIndex = revisedArray?.indexOf(targetObject);
-    const questionId = e?.attributes?.MainQuestion?.Question?.data?.id || e?.id;
+    const questionId =
+      e?.attributes?.MainQuestion?.Question?.data?.attributes?.slug;
     onNextQuestion(questionId);
     revisedArray.splice(targetIndex, 2);
     setUserJourney(targetIndex === 0 ? [] : revisedArray);
@@ -197,6 +202,7 @@ const LeftWrapPage = ({
   };
 
   const onSubmitAnswer = (i, item) => {
+    const slug = i?.NextQuestion?.data?.attributes?.slug;
     onReportsFind(i);
     setUserJourney([
       ...userJourney,
@@ -223,9 +229,7 @@ const LeftWrapPage = ({
     newJourney(data);
     router.push(
       {
-        pathname: `/${i18n.language}/${getRoute()}/${
-          i?.NextQuestion?.data?.id
-        }`,
+        pathname: `/${i18n.language}/${getRoute()}/${slug}`,
         query: { bigCard: true, step: 1 },
       },
       undefined,
@@ -239,17 +243,32 @@ const LeftWrapPage = ({
   const sliceCount = phcTheme ? 2 : 3;
 
   const onMiniClick = (e) => {
-    const completeQuestion = questions?.find((item) => item?.id === e?.[1]);
+    const existingNO = JSON.parse(localStorage.getItem("userOldJourney"));
+    const completeQuestion = questions?.find(
+      (item) =>
+        item?.attributes?.MainQuestion?.Question?.data?.attributes?.slug ===
+        e?.[1]
+    );
     const questionId = e?.[0];
     setNextQuestionId(questionId);
-    const oldJourney = [
-      ...userJourney.splice(0, 2),
-      {
-        ...completeQuestion,
-        answer: e?.[2],
-        frenchAnswer: e?.[3],
-      },
-    ];
+    const oldJourney =
+      existingNO?.[0]?.answer === "No"
+        ? [
+            ...userJourney.splice(0, 1),
+            {
+              ...completeQuestion,
+              answer: e?.[2],
+              frenchAnswer: e?.[3],
+            },
+          ]
+        : [
+            ...userJourney.splice(0, phcTheme ? 1 : 2),
+            {
+              ...completeQuestion,
+              answer: e?.[2],
+              frenchAnswer: e?.[3],
+            },
+          ];
     setUserJourney([...oldJourney]);
     localStorage.setItem("userOldJourney", JSON.stringify([...oldJourney]));
     setStepQuestion([]);
@@ -311,7 +330,7 @@ const LeftWrapPage = ({
           </div>
           {Boolean(userJourney?.length) &&
             nextQuestionId &&
-            userJourney?.slice(0, 3)?.map((item, index) => (
+            userJourney?.slice(0, sliceCount)?.map((item, index) => (
               <div
                 key={
                   item?.questionName ||
@@ -339,7 +358,17 @@ const LeftWrapPage = ({
                   </p>
                 </p>
                 <button className="yesButton">
-                  {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
+                  {findResourceType === "poweringhealthcare" ? (
+                    <>
+                      {shortNamePhc(
+                        isEnglish ? item?.answer : item?.frenchAnswer
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {shortName(isEnglish ? item?.answer : item?.frenchAnswer)}
+                    </>
+                  )}
                 </button>
               </div>
             ))}
@@ -376,11 +405,12 @@ const LeftWrapPage = ({
               <LeftWrapSkeleton nextQuestionId={nextQuestionId} userJourney={userJourney}/>
             </div>
           ) : questions?.length ? (
-            questions .filter(
-              (q) =>
-                q?.attributes?.MainQuestion?.Question?.data?.id ===
-                nextQuestionId
-            )
+            questions
+              .filter(
+                (q) =>
+                  q?.attributes?.MainQuestion?.Question?.data?.attributes
+                    ?.slug === nextQuestionId
+              )
               .map((item, index) => {
                 const questionTitle = isEnglish
                   ? item?.attributes?.MainQuestion?.Question?.data?.attributes
@@ -416,8 +446,9 @@ const LeftWrapPage = ({
                             />
                           )}
                         </div>
-                        <div className="flex items-center flex-col w-[80%] my-[4rem] mx-auto left-wrap-buttons">
-                          {singleAnswer?.map((i) => {
+                      <div className="left-questionBox">
+                        <div className={`flex items-center flex-col w-[80%] laptopMax:!w-[90%] mx-auto left-wrap-buttons ${singleAnswer.length >= 4 ? "!mt-[0rem] mb-0": "my-[4rem]"}`}>
+                         {singleAnswer?.map((i) => {
                             if (!i?.Answer) return null;
                             return (
                               <BlueButton
@@ -429,6 +460,7 @@ const LeftWrapPage = ({
                             );
                           })}
                         </div>
+                      </div>
                       </>
                     ) : (
                       <StepComponent

@@ -31,6 +31,8 @@ import {
   ENERGY_EFFICIENCY,
   SUSTAINABLECOOLING,
   SUSTAINABLE_COOLING,
+  POWERING_HEALTHCARE,
+  POWERINGHEALTHCARE,
 } from "../../constant";
 import ReportSkeleton from "../skeleton/reportSkeleton";
 
@@ -45,6 +47,7 @@ const RightWrapPage = ({
   isClearAll,
   isResetPage,
   isExpand,
+  hidePhcFilters = false,
 }) => {
   const [isOpen, setIsOpen] = useState("");
   const [activeCard, setActiveCard] = useState({});
@@ -141,6 +144,8 @@ const RightWrapPage = ({
     generation_sources: selectInputs?.generation_sources,
     sector: selectInputs?.sector,
     fuel: selectInputs?.fuel,
+    power_supplies: selectInputs?.power_supplies,
+    technology_solutions: selectInputs?.technology_solutions,
   };
   const onDownload = () => {
     const filters = Object.values(selectedFilters).filter((key) => {
@@ -356,9 +361,12 @@ const RightWrapPage = ({
 
   let height;
   if (resourceType === "cleancooking" && isExpand) {
-    height = "calc(80vh - 120px)";
+    // height = "calc(80vh - 120px)";
+    height= ""
   } else if (resourceType === "energyefficiency" && isExpand) {
-    height = "calc(80vh - 120px)";
+    // height = "calc(80vh - 120px)";
+
+    height= ""
   } else {
     height = "";
   }
@@ -594,6 +602,37 @@ const RightWrapPage = ({
                   isClearAll={isClearAll}
                 />
               )}
+              {!hidePhcFilters &&
+                (resourceType === POWERING_HEALTHCARE || browseResource) && (
+                  <>
+                    <Select
+                      title={t("PowerSupply")}
+                      setIsOpen={setIsOpen}
+                      isOpen={isOpen}
+                      options={getFormattedData(filters?.powerSupply)}
+                      onChange={(e) => onChange(e)}
+                      selected={selectInputs?.power_supplies}
+                      name={"power_supplies"}
+                      top={true}
+                      selectedOptions={selectedOptions}
+                      setSelectedOptions={setSelectedOptions}
+                      isClearAll={isClearAll}
+                    />
+                    <Select
+                      title={t("TechnologySolution")}
+                      setIsOpen={setIsOpen}
+                      isOpen={isOpen}
+                      options={getFormattedData(filters?.technologySolution)}
+                      onChange={(e) => onChange(e)}
+                      selected={selectInputs?.technology_solutions}
+                      name={"technology_solutions"}
+                      top={true}
+                      selectedOptions={selectedOptions}
+                      setSelectedOptions={setSelectedOptions}
+                      isClearAll={isClearAll}
+                    />
+                  </>
+                )}
               <div className="apply-wrap">
                 <button
                   type="button"
@@ -628,6 +667,7 @@ const RightWrapPage = ({
           >
             <h5 className="font-bold text-[16px] m-0 text-text pb-[8px] tracking-[1px] flex justify-between resource-buttons textColor">
               {t("Resources")}
+              
               <div className="flex resource-buttons-wrap">
                 <TooltipComponent
                   content={t("clicktodownload")}
@@ -686,7 +726,7 @@ const RightWrapPage = ({
                   searchTerm={search}
                 />
               ) : null}
-            </h5>
+              </h5>
             <div
               id="rightWrap"
               className={`rightInnerWrap ${resourceClassName}`}
@@ -827,20 +867,23 @@ const RightWrapPage = ({
                       <RiSearch2Line />
                       {t("NoReportsFound")}
                     </p>
-                    <p
+                    {/* <p
                       className="cursor-pointer hover:underline text-[14px] text-Primary"
                       onClick={() => {
                         if (optionSelected) {
                           onReset();
                         } else {
-                          window.open(`/${i18n.language}/allresources`, "_self");
+                          window.open(
+                            `/${i18n.language}/allresources`,
+                            "_self"
+                          );
                         }
                       }}
                     >
                       {optionSelected
                         ? "Clear all filters"
                         : "Browse all resources"}
-                    </p>
+                    </p> */}
                   </div>
                 )}
                 {isFetchingReports && isScrollLoader ? (

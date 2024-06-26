@@ -46,7 +46,7 @@ const CompletedSteps = ({ onRestart, onMiniClick }) => {
                     <img
                       src={item[1]?.[1]}
                       alt="button_image"
-                      style={{ width: 50, height: 50 }}
+                      style={{ width: 55, height: 50 }}
                     />
                     <p>{isEnglish ? item?.[0] : item[1]?.[3]}</p>
                   </div>

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { getQuestions } from "pages/api/questions";
 
 import { useQuery } from "react-query";
 import { getResourceFirstQuestion, getResources } from "../../utilities";
-import { CLEANCOOKING } from "../../constant";
-import { cleanCookingFirstQuestion } from "../../constant/firstQuestion";
+import { ENERGYEFFICIENCY } from "../../constant";
+import { energyEfficiencyFirstQuestion } from "../../constant/firstQuestion";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import dynamic from "next/dynamic";
@@ -13,61 +13,61 @@ const Footer = dynamic(() => import('components/footer'));
 const Header = dynamic(() => import('components/header'));
 const Dashboard = dynamic(() => import('components/dashboard'));
 
-const pageTitle = "Sustainable Energy | Policy Hub | Clean Cookings"
+const pageTitle = "Sustainable Energy | Policy Hub | Energy Efficiency";
 const pageDescription = "The Sustainable Energy Policy Hub guides policymaking by providing best-in-class policy guidelines, reports, tools, & templates from countries across the globe."
-const Cleancooking = () => {
+let reload = false;
+const Energyefficiency = () => {
   const router = useRouter();
   const isDashboardOpen = false;
   const ref = useRef();
-  const res = CLEANCOOKING;
-  const [loader, setLoader] = useState(true);
+  const res = ENERGYEFFICIENCY;
   const [isReload, setIsReload] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
-  }, []);
-
-  const query = getResources(2);
+  
+  const query = getResources(3);
   const {
     data: questions,
     isFetching: isFetchingQuestions,
     refetch,
   } = useQuery(["getQuestions", query], () => getQuestions(query), {
-    // Don't enable the query initially to prevent unnecessary fetching
     enabled: false,
+    onError: (err) => {
+      // Handle the error (e.g., display an error message, log it, etc.)
+      console.error("Error fetching questions:", err);
+    },
   });
   const defaultQuestion = getResourceFirstQuestion();
-
   useEffect(() => {
     if (router?.query?.bigCard === "true" && !isReload) {
       setIsReload(true);
       refetch();
-    } else if (router?.query?.id && !isReload && !questions) {
-      const questionId = Number(router?.query?.id);
-      if (questionId !== Number(defaultQuestion)) {
+    } else if (router?.query?.slug && !isReload && !questions) {
+      const questionSlug = router?.query?.slug;
+      if (questionSlug !== defaultQuestion) {
         setIsReload(true);
-        router.push(`/cleancooking/${defaultQuestion}`);
+        router.push(`/energyefficiency/${defaultQuestion}`);
+      } else if (!reload) {
+        reload = true
+        router.push({pathname :`/energyefficiency/${defaultQuestion}`, query: ""});
       }
     } else if (router?.query?.bigCard === "true" ) {
       setIsReload(true);
     }
-  }, [isReload, router, questions]);
+  }, [router]);
   return (
-    <main id="fullWrap" ref={ref} className={"clean_cooking"}>
+    <main id="fullWrap" ref={ref} className={"energy_efficiency"}>
       <Head>
-        <title>{pageTitle}</title>
+        <title>Sustainable Energy | Policy Hub | Energy Efficiency</title>
         <meta name="description" content={pageDescription} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={'/static/images/clean_cooking_Black.png'} />
-        <meta property="image" content={'/static/images/clean_cooking_Black.png'} />
+        <meta property="og:image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta property="image" content={'/static/images/energy_efficiency_Black.png'} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
-        <meta name="twitter:image" content={'/static/images/clean_cooking_Black.png'} />
+        <meta property="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
+        <meta name="twitter:image" content={'/static/images/energy_efficiency_Black.png'} />
+        {/* Additional meta tags or links can be added here */}
         <link rel="preconnect" href="https://kmit-policyhub.herokuapp.com" />
       </Head>
         <div className="mobile:p-2.5 xsm:p-[5px]">
@@ -84,11 +84,11 @@ const Cleancooking = () => {
                 questions={
                   questions || {
                     data: {
-                      data: [cleanCookingFirstQuestion],
+                      data: [energyEfficiencyFirstQuestion],
                     },
                   }
                 }
-                isFetchingQuestions={loader ? true : isFetchingQuestions}
+                isFetchingQuestions={isFetchingQuestions}
                 setIsBigCard={() => {
                   setIsReload(true);
                   refetch();
@@ -191,4 +191,5 @@ const Cleancooking = () => {
     </main>
   );
 };
-export default Cleancooking;
+
+export default Energyefficiency;
