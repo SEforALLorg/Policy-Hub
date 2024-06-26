@@ -8,6 +8,7 @@ module.exports = {
       mobileMax: {min: '320px', max: '767px'},
       laptopMax: {min: '320px', max: '1024px'},
       tabMax: {min: '768px', max: '1024px'},
+      lgTabMax: {min: '768px', max: '1200px'},
       belowTabMax: {min: '768px', max: '1023px'},
       xsm: "319px",
       extrasmall: "480px",
