@@ -20,7 +20,7 @@ const ResourcesTypeSkeleton = () => {
               return (
                 <div
                   key={index}
-                  className="block ButtonBox w-full h-[90px] mb-[20px] mobileMax:!mb-[10px] bg-skeleton animate-pulse rounded-[65px] mobileMax:!h-[42px]"
+                  className="block ButtonBox w-full h-[90px] tabMax:h-[70px] mb-[20px] mobileMax:!mb-[10px] bg-skeleton animate-pulse rounded-[65px] mobileMax:!h-[42px]"
                 />
               );
             })}
