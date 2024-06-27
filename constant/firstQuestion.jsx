@@ -23,9 +23,9 @@ export const electricityFirstQuestion = {
             id: 13,
             attributes: {
               Question:
-                "Are mini-grids  and stand-alone systems integrated in the National Electrification Strategy/Plan (NES/PNE)?",
+                "Are mini-grids  and stand-alone systems integrated in the National Electrification Strategy/Plan (NES/NEP)?",
               createdAt: "2022-02-23T18:13:15.563Z",
-              updatedAt: "2024-06-27T11:51:26.061Z",
+              updatedAt: "2024-06-27T13:29:06.638Z",
               locale: "en",
               FrenchQuestion:
                 "Les mini-réseaux et les systèmes autonomes sont-ils intégrés dans la stratégie/le plan national d'électrification (SNE/PNE) ?",
@@ -586,9 +586,9 @@ export const electricityFirstQuestion = {
             id: 14,
             attributes: {
               Question:
-                "Develop or update National Electrification Strategy or Plan (NES/PNE)",
+                "Develop or update National Electrification Strategy or Plan (NES/NEP)",
               createdAt: "2022-02-23T18:13:38.025Z",
-              updatedAt: "2024-06-27T11:48:26.720Z",
+              updatedAt: "2024-06-27T13:28:18.613Z",
               locale: "en",
               FrenchQuestion:
                 "Développer ou mettre à jour la stratégie ou le plan national d'électrification (SNE/PNE).",
@@ -611,9 +611,9 @@ export const electricityFirstQuestion = {
           id: 12,
           attributes: {
             Question:
-              "Does an up-to-date National Electrification Strategy/Plan (NES/PNE) exist? ",
+              "Does an up-to-date National Electrification Strategy/Plan (NES/NEP) exist? ",
             createdAt: "2022-02-23T18:13:02.597Z",
-            updatedAt: "2024-06-27T11:39:47.269Z",
+            updatedAt: "2024-06-27T13:29:31.709Z",
             locale: "en",
             FrenchQuestion:
               "Existe-t-il une stratégie/un plan national d'électrification (SNE/PNE) actualisé(e) ?",
