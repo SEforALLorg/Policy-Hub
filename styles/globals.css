@@ -257,9 +257,6 @@ a {
   /* position: fixed; */
   max-width: 1320px;
 }
-.main-header .header .nav-link {
-  color: #fff !important;
-}
 
 .collapse {
   visibility: unset !important;
@@ -1761,6 +1758,10 @@ a {
   .customize-row-button .ButtonBox {
     width: 49%;
   }
+
+  .main-header .header .nav-link {
+    color: #fff !important;
+  }
 }
 .left-buttonList button {
   margin-bottom: 12px !important;
@@ -2525,20 +2526,18 @@ a {
     margin-right: 10px;
   }
 
-  .customize-card button {
+  .customize-card .ButtonBox .buttonStyle {
     height: 42px;
-    font-size: 13px !important;
-    line-height: 20px !important;
+    font-size: 12px !important;
+    line-height: 17px !important;
     margin-bottom: 10px;
-    padding-top: 12px;
+    padding-top: 12px !important;
   }
-
-  .ButtonBox .buttonStyle {
-    padding-top: 13px !important;
-  }
-
   .customize-buttons {
     max-width: 100%;
+  }
+  .ButtonBox .buttonStyle {
+    padding-top: 13px !important;
   }
 
   .customize-buttons .landing-button {
@@ -3157,7 +3156,7 @@ a {
   }
 
   .customize-card button {
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 13px;
   }
 
