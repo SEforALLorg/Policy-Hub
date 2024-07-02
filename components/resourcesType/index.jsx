@@ -2,12 +2,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import BlueButton from "components/buttons/blueButton";
 import {
-  resourcesList,
   CLEAN_COOKING,
   ELECTRICITY_ACCESS,
   SUSTAINABLE_COOLING,
   ENERGY_EFFICIENCY,
   POWERING_HEALTHCARE,
+  resourcesList,
 } from "../../constant";
 import {
   cleanCookingFirstQuestion,
@@ -86,7 +86,7 @@ const Resources = ({
 
   return (
     <div className="customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[525px]">
-      {!loader && resourcesData ? (
+      {!loader && getAllresources ? (
         <>
           <div className="flex items-center customize-header relative">
             <img
