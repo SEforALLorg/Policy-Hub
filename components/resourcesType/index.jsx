@@ -82,7 +82,8 @@ const Resources = ({
         break;
     }
   };
-  const getAllresources = resourcesList || resourcesData;
+  const getAllresources = resourcesList; 
+  // || resourcesData;
 
   return (
     <div className="customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[525px]">
