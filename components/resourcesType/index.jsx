@@ -87,7 +87,7 @@ const Resources = ({
 
   return (
     <div className="customize-card customize-modal-card p-10 bg-white rounded-2xl w-full m-auto tab:h-[770px] mobileMax:!h-[525px]">
-      {!loader && getAllresources ? (
+      {getAllresources ? (
         <>
           <div className="flex items-center customize-header relative">
             <img
