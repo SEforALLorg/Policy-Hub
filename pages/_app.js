@@ -46,7 +46,11 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    if ((window.location.href?.includes("en") || window.location.href?.includes("fr")) && localStorage.getItem('lang')) {
+    if (
+      (window.location.href?.includes("en") ||
+        window.location.href?.includes("fr")) &&
+      localStorage.getItem("lang")
+    ) {
       let lang = router.locale;
       const expires = new Date();
       expires.setFullYear(expires.getFullYear() + 100);
@@ -56,11 +60,14 @@ function MyApp({ Component, pageProps }) {
       });
       changeLanguage(lang);
       router.locale = lang;
-      return 
-    } else if (localStorage.getItem("lang")){
-      const local = localStorage.getItem("lang")
+      return;
+    } else if (localStorage.getItem("lang")) {
+      const local = localStorage.getItem("lang");
       window.history.pushState({}, "", `${window.location.href}${local}`);
-    } else if (window.location.href?.includes("en") || window.location.href?.includes("fr")){
+    } else if (
+      window.location.href?.includes("en") ||
+      window.location.href?.includes("fr")
+    ) {
       localStorage.setItem("lang", router.locale);
       changeLanguage(router.locale);
     } else {
@@ -92,12 +99,12 @@ function MyApp({ Component, pageProps }) {
     setMounted(true);
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     const pingHerokuServer = async () => {
       try {
         const response = await fetch(pingHerokuUrl);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const result = await response.json();
       } catch (error) {
@@ -106,8 +113,8 @@ function MyApp({ Component, pageProps }) {
     };
 
     pingHerokuServer();
-  },[])
-  
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
@@ -116,12 +123,14 @@ function MyApp({ Component, pageProps }) {
         {typeof window !== "undefined" && !isMobile() && (
           <Script src="/tailwindcss.js" />
         )}
+      </Head>
+      {typeof window !== "undefined" && (
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-QZE40XCZJQ"
         />
-        <script defer async src="/gtm.js"></script>
-      </Head>
+      )}
+      <script defer async src="/gtm.js"></script>
       <ToastContainer theme={"colored"} />
       {/* // {mounted && <Component {...pageProps} />} */}
       <Component {...pageProps} />
